@@ -1,0 +1,8 @@
+
+._img {
+	margin-left: 20rpx;
+}
+text {
+	line-height: 44px;
+}
+

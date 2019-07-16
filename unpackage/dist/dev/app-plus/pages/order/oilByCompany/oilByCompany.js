@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"mint-search { height: 100%; }\n.",[1],"companys { background-color: #fff; padding: 10px 0 20px 15px; border-bottom: 1px solid #d6d6d6; font-size: 14px; color: #666; line-height: 28px; }\n",],undefined,{path:"./pages/order/oilByCompany/oilByCompany.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/order/oilByCompany/oilByCompany.wxml') } }));

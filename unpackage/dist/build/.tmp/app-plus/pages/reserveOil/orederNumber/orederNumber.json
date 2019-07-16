@@ -1,0 +1,10 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "选择单号",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {}
+}

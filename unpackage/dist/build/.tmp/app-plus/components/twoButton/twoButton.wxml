@@ -1,0 +1,1 @@
+<view><button type="{{type}}" disabled="{{disabled}}" data-event-opts="{{[['tap',[['go',['$event']]]]]}}" bindtap="__e">{{content}}</button></view>

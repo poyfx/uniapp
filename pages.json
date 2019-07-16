@@ -1,0 +1,423 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		}
+			,{
+			"path": "pages/index/start",
+			"style": {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		}
+		
+		, {
+			"path": "pages/login/login",
+			"style": {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		}, {
+			"path": "pages/login/forget/forget",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "忘记密码",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+
+			}
+		}, {
+			"path": "pages/login/setPws/setPws",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "设置密码",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+
+			}
+		}, {
+			"path": "pages/register/register",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "注册",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+
+			}
+		}, {
+			"path": "pages/register/positive/positive",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "购油/提油授权资料",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+
+			}
+		}, {
+			"path": "pages/register/positive/positive1",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "购油/提油授权资料",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+
+			}
+		}, {
+			"path": "pages/info/info",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}, {
+			"path": "pages/info/userPhoneNumber/userPhoneNumber",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "编辑信息",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/info/apply/apply",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "申请权限",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/info/harvestaddress/harvestaddress",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "收货地址",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/info/harvestaddress/newAddress/newAddress",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "新增地址",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/info/modify/modify",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "修改密码",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/order/order",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "下单购油",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/order/oilByCompany/oilByCompany",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "选择公司",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/orderList/orderList",
+			"style": {
+				"navigationBarTitleText": "订单列表",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [ //{ //添加自定义按钮入口
+							// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
+							// 		"text": "返回",
+							// 		"fontSize": "28upx",
+							// 		"float": "left", //靠左第一个
+							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
+							// 	},
+							{
+
+								"text": "搜索",
+								"fontSize": "28upx",
+								"float": "right", //靠右第一个
+								"id": "xiaoxi"
+								//"redDot": true //默认图标按钮右上角有红色点状标志
+							}
+						]
+					}
+				}
+			}
+		}, {
+			"path": "pages/search/search",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "订单搜索",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+			}
+		}, {
+			"path": "pages/search/searchDateList/searchDateList",
+			"style": {
+				"navigationBarTitleText": "搜索列表",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [ //{ //添加自定义按钮入口
+							// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
+							// 		"text": "返回",
+							// 		"fontSize": "28upx",
+							// 		"float": "left", //靠左第一个
+							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
+							// 	},
+							{
+
+								"text": "搜索",
+								"fontSize": "28upx",
+								"float": "right", //靠右第一个
+								"id": "xiaoxi"
+								//"redDot": true //默认图标按钮右上角有红色点状标志
+							}
+						]
+					}
+				}
+			}
+		}, {
+			"path": "pages/orderList/orderDtails/orderDtails",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "订单详情",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+				}
+			}
+		}, {
+			"path": "pages/orderList/invoice/invoice",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "开具发票",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+				}
+			}
+		}, {
+			"path": "pages/reserveOil/reserveOil",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "预约提油",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+				}
+			}
+		}, {
+			"path": "pages/reserveOil/orederNumber/orederNumber",
+			"style": {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "选择单号",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+
+		}, {
+			"path": "pages/reserveOilList/reserveOilList",
+			"style": {
+			"navigationBarTitleText": "提油记录",
+			"app-plus": {
+				"titleNView": {
+					"buttons": [ //{ //添加自定义按钮入口
+						// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
+						// 		"text": "返回",
+						// 		"fontSize": "28upx",
+						// 		"float": "left", //靠左第一个
+						// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
+						// 	},
+						{
+			
+							"text": "搜索",
+							"fontSize": "28upx",
+							"float": "right", //靠右第一个
+							"id": "xiaoxi"
+							//"redDot": true //默认图标按钮右上角有红色点状标志
+						}
+					]
+				}
+			}
+		}
+}
+		, {
+			"path": "pages/reserveOilList/confirmed/confirmed",
+			
+				"style": {
+					"navigationBarTitleText": "预约详情",
+					"titleNView": {
+						"buttons": [ //{ //添加自定义按钮入口
+							// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
+							// 		"text": "返回",
+							// 		"fontSize": "28upx",
+							// 		"float": "left", //靠左第一个
+							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
+							// 	},
+							{
+								
+								"text": "提油码",
+								"fontSize": "28upx",
+								"float": "right", //靠右第一个
+								"id": "xiaoxi"
+								//"redDot": true //默认图标按钮右上角有红色点状标志
+							}
+						]
+					}
+				}
+			
+		}
+	    ,{
+            "path" : "pages/reserveOilList/confirmed/oliCode/oliCode",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "提油码",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+        }
+        ,{
+            "path" : "components/m-info-text/m-info-text",
+            "style" : {}
+        }
+        ,{
+            "path" : "components/m-info-img/m-info-img",
+            "style" : {}
+        }
+    ],
+	"tabBar": {
+		"color": "black",
+		"selectedColor": "#009DFF",
+		"backgroundColor": "#fff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/img/home2.png",
+			"selectedIconPath": "static/img/home1.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/info/info",
+			"iconPath": "static/img/mine1.png",
+			"selectedIconPath": "static/img/mine2.png",
+			"text": "我的"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff"
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "pages/index/start", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "搜索列表",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "搜索",
+        "fontSize": "28upx",
+        "float": "right",
+        "id": "xiaoxi"
+      }
+    ]
+  },
+  "usingComponents": {
+    "selects": "/static/js/xfl-select"
+  }
+}

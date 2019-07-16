@@ -1,0 +1,10 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "编辑信息",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,1 @@
+<button class="m-btn" type="{{type}}" size="{{size}}" disabled="{{disabled}}" data-event-opts="{{[['tap',[['go',['$event']]]]]}}" bindtap="__e">{{value}}</button>

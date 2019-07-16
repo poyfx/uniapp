@@ -1,0 +1,1 @@
+<view><view class="flex  m-info"><view class="flex center m-info-content"><text>{{textContent}}</text><input type="{{type}}" value="{{value}}" placeholder="{{placeholder}}" disabled="{{disabled}}"/></view><image src="../../static/img/right.png" mode="aspectFit"></image></view></view>

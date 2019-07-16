@@ -1,0 +1,1 @@
+<view class="fget-nums"><text class="phontNum">验证码</text><input class="getCodeInput" type="text" placeholder="请输入验证码" value=""/></view>

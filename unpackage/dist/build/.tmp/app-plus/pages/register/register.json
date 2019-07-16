@@ -1,0 +1,15 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "注册",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {
+    "uni-list": "/node-modules/@dcloudio/uni-ui/lib/uni-list/uni-list",
+    "uni-list-item": "/node-modules/@dcloudio/uni-ui/lib/uni-list-item/uni-list-item",
+    "set-password": "/components/setPassword/setPassword",
+    "m-button": "/components/m-button"
+  }
+}

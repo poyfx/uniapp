@@ -1,0 +1,43 @@
+
+.background.data-v-20ff2a30 {
+	background-color: #fff;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+.imgTop.data-v-20ff2a30 {
+	margin: 40px auto 44px;
+	text-align: center
+}
+.loginImg.data-v-20ff2a30 {
+	width: 200rpx;
+	height: 200rpx;
+}
+.p-font.data-v-20ff2a30 {
+	margin-top: 15px;
+}
+.p-font text.data-v-20ff2a30 {
+	font-size: 45rpx;
+	color: #666;
+}
+.loginInfo.data-v-20ff2a30 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	font-size: 12px;
+	padding: 7px 11% 10px;
+}
+.color-dff.data-v-20ff2a30 {
+	color: #009DFF;
+}
+.toReginster.data-v-20ff2a30 {
+	display: inline-block;
+}
+

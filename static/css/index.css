@@ -1,0 +1,671 @@
+.content {
+	margin: 0 auto;
+	padding-top: 15px;
+}
+
+.mContent {
+	margin: 0 auto;
+	padding: 0 10px;
+	padding-top: 15px;
+}
+
+/* 轮播图样式 */
+.banner {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	border-radius: 8px 8px 0 0;
+
+}
+
+/* 导航 */
+.nav {
+	background-color: #fff;
+	padding: 15px 13px 10px;
+	border-radius: 0 0 8px 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
+.navbar {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.navbar navigator {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	align-self: center;
+	text-align: center
+}
+
+.navbar navigator image {
+	width: 120upx;
+	height: 120upx;
+
+}
+
+.navbar navigator text {
+	font-size: 24upx;
+	color: #666;
+}
+
+/* 内容 */
+.main {
+	width: 100%;
+	margin-top: 10px;
+	border-radius: 8px;
+}
+
+.main .myManager {
+	width: 100%;
+	/* height: 157px; */
+	background-color: #fff;
+	padding: 15px 25px 15px 15px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+}
+
+.oilPrices {
+	width: 100%;
+	/* height: 157px; */
+	background-color: #fff;
+	padding: 15px 25px 39px 15px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+}
+
+.line {
+	position: relative;
+	top: 3px;
+}
+
+.title-p {
+	font-weight: bold;
+	font-size: 20px;
+	color: #666;
+	display: inline-block;
+}
+
+/* 客户电话 */
+.managerNum {}
+
+.title-p {
+	margin-bottom: 40upx;
+}
+
+.managerNum .manager {
+	font-size: 35upx
+}
+
+
+.managerNum .call {
+	display: flex;
+	justify-content: space-between;
+	padding:8px 0 0 0  ;
+	color: #999;
+}
+
+.numberBtn {
+	padding: 3px 14px;
+	background-color: #00A8FF;
+	border-radius: 5px;
+	font-size: 15px;
+	color: #fff;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
+}
+
+/* 当前油品批发价 */
+/* .oilPrices ul{
+    border-bottom: 1px solid #E5E5E5;
+    padding: 10px 0;
+} */
+.priceLi {
+	color: #666666;
+	border-bottom: 1px solid #E5E5E5;
+	padding: 10px 0;
+}
+
+.priceLi text {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+
+
+.userIntegraltitle {
+	font-size: 16px;
+	font-weight: bold;
+	color: #666666;
+}
+
+.userIntegraltitle>view>img {
+	width: 48upx;
+	margin-right: 8px;
+}
+
+/* 积分 */
+.userIntegral {
+	width: 100%;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.userIntegral .company {
+	padding-right: 10px;
+	margin: 11px 0 11px 15px;
+}
+
+.company {
+	font-size: 28upx;
+	font-weight: normal;
+	margin-top: 3px
+}
+
+.userIntegral .orderNumber {
+	padding-right: 10px;
+	margin: 11px 0 11px 15px;
+}
+
+.orderNumber view {
+	padding: 3px
+}
+
+.orderNumber view .numberTitle {
+	font-weight: bold;
+}
+
+.userIntegral .integral {
+
+	background-color: #00A8FF;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	align-self: center;
+	justify-content: center;
+	color: #fff;
+	padding: 20px;
+	border-radius: 0 8px 8px 0;
+}
+
+.userinfos {
+	padding-bottom: 11px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.userIntegral .integral view {
+	font-size: 30px;
+}
+
+.userIntegral .integral text {
+	color: #fff;
+}
+
+/* 页面user 信息 */
+.userinfo {
+	width: 100%;
+	padding: 10px 0px 0px 10px;
+	margin: 10px 0;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+}
+
+.userinfo text,
+input {
+	font-weight: normal;
+}
+
+.userinfo .setphone {
+	margin-right: 4px;
+}
+
+.userinfo .write {
+	padding: 3px 12px;
+	border-radius: 4px;
+	background-color: #fff;
+	font-size: 12px;
+	color: #999;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.16);
+	position: relative;
+	left: 85%;
+}
+
+.userinfo .fget-ul {
+	border: none;
+}
+
+.underline input {
+	color: #666666;
+	font-size: 16px;
+}
+
+.out {
+	width: 100%;
+	padding: 10px 0px 10px 10px;
+	margin: 10px 0;
+	/* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16); */
+}
+
+/* 退出 */
+.safeout {
+	width: 90%;
+	background-color: #c5cccf;
+	color: #fff;
+}
+
+/* .out .mint-cell*/
+.mint-cell-wrapper {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.out .btn {
+	width: 100%;
+	background-color: #c5cccf;
+	color: #ffffff;
+	font-size: 19px;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.userinfo .mint-cell:last-child,
+.mint-cell-wrapper {
+	background-image: none
+}
+
+
+/* 忘记密码 */
+
+/* 返回/标题 */
+
+.titleAll {
+	width: 100%;
+	height: 44px;
+	background-color: #fff;
+	text-align: center;
+	font-size: 17px;
+	color: #666666;
+	box-shadow: 0 0 10px #aaa;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+
+.titleAll a {
+	font-size: 15px
+}
+
+
+/* 忘记密码 */
+.fget{
+	width: 100%;
+	background-color: #fff;
+}
+
+.fget-num {
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
+.fget-num .fget-ul {
+	display: -webkit-flex;
+	display: flex;
+	height: 44px;
+	border-bottom: 1px solid #e5e5e5;
+	margin-left: 10px;
+	align-content: center;
+	align-items: center;
+	align-self: center;
+	justify-content: space-between;
+	padding-right: 15px;
+}
+
+
+/* 按钮 */
+.nextBox {
+	margin-top: 20px;
+}
+
+.nextBox .btn {
+	width: 334px;
+	height: 47px;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+.mhome .fget-num .fget-ul:last-child {
+	border: none;
+}
+
+/* 详细地址textarea */
+.fget-eara {
+	/* height:100px; */
+	padding: 10px 15px 10px 0;
+	color: #666;
+}
+
+.fget-num .fget-erea .secend-in textarea {
+	height: 44px;
+	padding: 0px 5px;
+	border: none;
+	font-family: "微软雅黑";
+	flex: 1;
+	font-size: 14px;
+}
+
+/* 授权信息样式 */
+.step-box {
+	width: 90%;
+	margin: 5%;
+	border-radius: 16px;
+	display: flex;
+	justify-content: space-around;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
+/* .step-box text{
+    width: 50px;
+    height: 50px;
+    font-size:12px; 
+    margin: 14px 14px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    background-color: #CBCBCB;
+} */
+
+
+.positive {
+	width: 90%;
+	margin: 5%;
+	border: 1px dashed #333;
+}
+
+.positive img {
+	width: 100%
+}
+
+.fget-num .tellinfo {
+	text-align: center;
+	padding: 0 0 20px 0;
+}
+
+.harvest {
+	width: 100%;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-bottom: 15px;
+}
+
+.harvest-name {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	font-size: 19px;
+	color: #333;
+}
+
+/* harvest收货地址 */
+.harvest-address {
+	width: 100%;
+	padding: 10px 10px 10px 0;
+	border-bottom: 1px solid #e5e5e5;
+	color: #333;
+	font-size: 14px;
+
+}
+
+.harvest-write {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+	align-self: center;
+	padding: 7px 0 0;
+	font-size: 12px;
+	line-height: 22px;
+}
+
+.operation {
+	display: flex;
+}
+
+.harvest-write .write {
+	border-radius: 4px;
+	background-color: #fff;
+	font-size: 12px;
+	color: #999;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.16);
+}
+
+.newaddress .btn {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #009DFF;
+	color: #fff;
+	font-size: 19px;
+	padding: 13px 0;
+	z-index: 1;
+}
+
+.fget-eara .first-li {
+	margin-bottom: 8px;
+}
+
+/* orderList */
+.orderList {
+	padding: 10px;
+	position: relative;
+	margin: 10px 0;
+}
+
+.orderList view {
+	padding: 5px 0;
+}
+
+.stateBox .orderListState {
+	position: absolute;
+	right: 20px;
+}
+
+/* top15 */
+.state {
+	color: #00A8FF;
+	top: 15px;
+}
+
+.stay {
+	color: #00A8FF;
+	top: 45px;
+}
+
+.unit {
+	bottom: 45px;
+	font-weight: bold;
+}
+
+.price {
+	font-weight: bold;
+	bottom: 15px;
+}
+
+/* 已拒绝颜色样式 */
+.stateBox .orderListoc,
+.oc {
+	color: #FD8E65
+}
+
+/* 加载更多 */
+.loading {
+	width: 100%;
+	height: 49px;
+	background-color: #fff;
+	color: #999;
+	text-align: center;
+	line-height: 44px;
+}
+
+/* 订单详情 */
+.detailsState {
+	padding: 55px 26px 10px 15px;
+	background: #fff;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 40px;
+	box-sizing: border-box;
+}
+
+.timeOut {
+	width: 90%;
+	height: 60px;
+	background: #00A8FF;
+	position: absolute;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	align-items: center;
+	align-self: center;
+	top: -26px;
+	left: 5%;
+	border-radius: 8px;
+}
+
+.time {
+	font-size: 28px;
+	color: #fff;
+}
+
+.timeOver {
+	font-size: 18px;
+	color: #fff;
+}
+
+.detailsState .stateBox view {
+	line-height: 28px;
+	font-size: 14px;
+}
+
+.detailsState .stateBox .state1 text {
+	color: #00A8FF;
+}
+
+.detailsState .stateBox .state2 text {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.discount {
+	width: 81px;
+	height: 53px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+	text-align: center;
+	padding: 3px 10px 20px;
+	align-content: center;
+	align-items: center;
+	align-self: center;
+	font-weight: bold
+}
+
+.discount view {
+	font-size: 17px;
+}
+
+.discount text {
+	font-size: 16px;
+	color: #FF0000;
+}
+
+.orderDetails {
+	padding: 10px 15px 10px;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	margin: 10px 0;
+}
+
+.orderDetails view {
+	line-height: 30px
+}
+
+.orderDetails:last-child text {
+	vertical-align: top;
+}
+
+.orderDetails:last-child textarea {
+	color: #666;
+}
+
+.pay {
+	height: 116px;
+	padding: 10px 15px 10px;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+}
+
+.pay view {
+	font-size: 16px;
+	line-height: 28px;
+}
+
+.pay view text {
+	font-weight: bold;
+	color: #FD8E65;
+}
+
+
+
+.m-two-btn .cal {
+	color: #fff;
+	background-color: #C5CCCF;
+	padding: 0;
+}
+
+.orderBtn .blue {
+	background-color: #00A8FF;
+}
+
+.flex {
+	display: flex;
+}
+
+/* .m-input-view {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 1px solid #e5e5e5;
+	}
+
+	.m-input {
+		width: 70%;
+		padding: 11px 15px;
+		border: none;
+		outline: none;
+	}
+
+	.m-eye {
+		position: absolute;
+		right: 5%;
+	}
+	.m-input-view text{
+		width: 80px;
+		padding: 10px;
+	} */

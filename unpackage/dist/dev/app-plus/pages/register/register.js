@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"setpws.",[1],"data-v-1a0afe74 { border-top: 1px solid #e5e5e5; }\n",],undefined,{path:"./pages/register/register.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/register/register.wxml') } }));

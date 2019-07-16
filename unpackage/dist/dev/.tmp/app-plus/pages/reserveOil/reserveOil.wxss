@@ -1,0 +1,104 @@
+
+.myanimate-enter-active {
+	-webkit-animation: show1 0.3s;
+	        animation: show1 0.3s;
+}
+.myanimate-leave-active {
+	-webkit-animation: leave 0.3s;
+	        animation: leave 0.3s;
+}
+.addressimg {
+	position: relative;
+}
+.addressimg ._img {
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	margin: -6px;
+}
+.footmodel {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
+.footmodel .modelmain view {
+	background-color: #fff;
+	padding: 13px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5ee;
+	font-size: 18px;
+	color: #666;
+}
+.footmodel .modelmain view {
+	display: block;
+	background-color: #fff;
+	padding: 13px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5ee;
+	font-size: 18px;
+	color: #666;
+}
+.footermain {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	-webkit-animation: show1 0.3s;
+	        animation: show1 0.3s;
+	-webkit-border-radius: 8px 8px 0 0;
+	        border-radius: 8px 8px 0 0;
+}
+.modelfooter {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 6px;
+	background-color: #fff;
+
+	line-height: 50px;
+}
+.modelfooter view {
+	width: 100%;
+	text-align: center;
+}
+.footmodel .modelmain view:hover {
+	background-color: #e5e5e5;
+}
+@-webkit-keyframes show1 {
+0% {
+		bottom: -241px;
+}
+100% {
+		bottom: 0px;
+}
+}
+@keyframes show1 {
+0% {
+		bottom: -241px;
+}
+100% {
+		bottom: 0px;
+}
+}
+@-webkit-keyframes leave {
+100% {
+		bottom: 0px;
+}
+0% {
+		bottom: -362px;
+}
+}
+@keyframes leave {
+100% {
+		bottom: 0px;
+}
+0% {
+		bottom: -362px;
+}
+}
+

@@ -1,0 +1,16 @@
+{
+    "success":true,
+    "data":[
+        {
+            "id":1,
+            "name":"admin",
+            "password":123456,
+            "username":"Mr.李",
+            "phone":15873221211,
+            "manager":"李阳",
+            "compneny":"橘子公司",
+            "city":"合肥"
+        }
+        
+    ]
+}

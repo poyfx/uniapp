@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"forget-content { -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16); box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16); }\n.",[1],"goNext { margin-top: 23px; }\n",],undefined,{path:"./pages/login/forget.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/login/forget.wxml') } }));

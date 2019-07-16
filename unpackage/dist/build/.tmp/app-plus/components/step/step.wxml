@@ -1,0 +1,1 @@
+<view><text data-ref="one" class="{{['stepNum vue-ref',actives]}}">{{value}}</text></view>

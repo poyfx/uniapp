@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"_img { margin-left: ",[0,20],"; }\nwx-text { line-height: 44px; }\n",],undefined,{path:"./pages/info/apply/apply.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/info/apply/apply.wxml') } }));

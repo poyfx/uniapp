@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"idCard { width: 100%; }\n",],undefined,{path:"./pages/register/positive/positive.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/register/positive/positive.wxml') } }));

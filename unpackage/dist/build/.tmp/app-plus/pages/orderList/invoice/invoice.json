@@ -1,0 +1,12 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "开具发票",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {
+    "t-button": "/components/twoButton/twoButton"
+  }
+}
