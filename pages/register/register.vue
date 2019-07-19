@@ -1,30 +1,5 @@
 <template>
 	<view class="content">
-		<!-- <mt-field label="角色" placeholder="请选择" type="text" v-model="user" style="font-size:12px" readonly>
-			<img src="../../static/img/right.png" alt>
-		</mt-field>
-		<mt-field label="公司" placeholder="XXXX有限公司" type="text" v-model="company" @click.native="oilByCompany" readonly>
-			<img src="../../static/img/right.png" alt>
-		</mt-field>
-
-		<mt-field label="姓名" placeholder="请输入姓名" type="text" v-model="userName">
-		</mt-field>
-
-		<mt-field label="身份证" placeholder="请输入18位身份证号" type="text" v-model="userId">
-		</mt-field>
-
-		<mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="phoneNum">
-		</mt-field>
-
-		<mt-field label="所在城市" placeholder="如：广东省深圳市" type="text" v-model="city">
-		</mt-field>
-
-		<mt-field label="客户经理姓名" placeholder="请输入姓名" type="text" v-model="customerName">
-		</mt-field> -->
-		
-			
-		
-
 		<view class="fget-num paddingLeft15">
 			<infoImg :textContent="text.user" :disabled="text.disabled" :placeholder="text.userP"></infoImg>
 			<infoImg :textContent="text.company" :disabled="text.disabled" :placeholder="text.companyP"></infoImg>
@@ -36,7 +11,10 @@
 			<setPassword :textValue="textValue" :placeholder="placeholder"></setPassword>
 			<setPassword :textValue="newTextValue" :placeholder="newPlaceholder"></setPassword>
 		</view>
-		<mButton :value="value" class="mTop20" :type="type" @goPositive="goPositive"></mButton>
+		<view class="mTop20">
+			<mButton :value="value" :type="type" @goPositive="goPositive"></mButton>
+		</view>
+		
 	</view>
 </template>
 

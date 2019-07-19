@@ -245,20 +245,12 @@
 				"navigationBarTitleText": "搜索列表",
 				"app-plus": {
 					"titleNView": {
-						"buttons": [ //{ //添加自定义按钮入口
-							// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
-							// 		"text": "返回",
-							// 		"fontSize": "28upx",
-							// 		"float": "left", //靠左第一个
-							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
-							// 	},
+						"buttons": [ 
 							{
-
 								"text": "搜索",
 								"fontSize": "28upx",
 								"float": "right", //靠右第一个
 								"id": "xiaoxi"
-								//"redDot": true //默认图标按钮右上角有红色点状标志
 							}
 						]
 					}
@@ -321,20 +313,14 @@
 			"navigationBarTitleText": "提油记录",
 			"app-plus": {
 				"titleNView": {
-					"buttons": [ //{ //添加自定义按钮入口
-						// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
-						// 		"text": "返回",
-						// 		"fontSize": "28upx",
-						// 		"float": "left", //靠左第一个
-						// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
-						// 	},
+					"buttons": [ 
 						{
 			
 							"text": "搜索",
 							"fontSize": "28upx",
 							"float": "right", //靠右第一个
 							"id": "xiaoxi"
-							//"redDot": true //默认图标按钮右上角有红色点状标志
+							
 						}
 					]
 				}
@@ -347,20 +333,14 @@
 				"style": {
 					"navigationBarTitleText": "预约详情",
 					"titleNView": {
-						"buttons": [ //{ //添加自定义按钮入口
-							// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
-							// 		"text": "返回",
-							// 		"fontSize": "28upx",
-							// 		"float": "left", //靠左第一个
-							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
-							// 	},
+						"buttons": [ 
 							{
 								
 								"text": "提油码",
 								"fontSize": "28upx",
 								"float": "right", //靠右第一个
 								"id": "xiaoxi"
-								//"redDot": true //默认图标按钮右上角有红色点状标志
+							
 							}
 						]
 					}
@@ -380,12 +360,16 @@
 			}
         }
         ,{
-            "path" : "components/m-info-text/m-info-text",
-            "style" : {}
-        }
-        ,{
-            "path" : "components/m-info-img/m-info-img",
-            "style" : {}
+            "path" : "pages/info/stayOil/stayOil",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "订单油量",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
         }
     ],
 	"tabBar": {
@@ -415,7 +399,7 @@
 		"list": [
 			{
 				"name": "", //模式名称
-				"path": "pages/index/start", //启动页面，必选
+				"path": "", //启动页面，必选
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

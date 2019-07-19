@@ -12,11 +12,11 @@
 			:class="{isRotate: isRotate}"
 		></span>
 		
-		<span 
+	<!-- 	<span 
 			v-show="clearable && selectText && selectText != placeholder" 
 			class="right-arrow" @click="clear" 
-		>
-			<span class="iconfont iconshanchu1 clear"></span>
+		> -->
+			<!-- <span class="iconfont iconshanchu1 clear"></span> -->
 		</span>
 		
 		

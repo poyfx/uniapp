@@ -4,9 +4,11 @@
 			<view class="userIntegral borderRadius8 bgcf">
 				<view class="company userIntegraltitle">
 					<view>
-						<img src="../../static/img/company.png" alt>公司
+						<!-- <img src="../../static/img/company.png" alt> -->
+						<image src="../../static/img/company.png" mode="aspectFit"></image>
+						<text>公司</text>
 					</view>
-					<text>合肥建成合肥建成合肥建成合肥建成</text>
+					<view style="color: #666;">合肥建成合肥建成合肥建成合肥建成</view>
 				</view>
 				<view class="integral">
 					<view>{{integral}}</view>
@@ -14,21 +16,23 @@
 				</view>
 			</view>
 			<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8">
-				<view class="userinfos">
-					<img src="../../static/img/user.png" alt>个人信息
+				<view class="userinfos flex">
+					<!-- <img src="../../static/img/user.png" alt> -->
+					<image src="../../static/img/user.png" mode="aspectFit"></image>
+					<text style="font-weight: bold;">个人信息</text>
 				</view>
-				<infoText :type="type" :disabled="disabled" :textValue="text1" :value="username"></infoText>
-				<infoText :type="type" :disabled="disabled" :textValue="userphone" :value="phoneNum"></infoText>
-				<infoText :type="type" :disabled="disabled" :textValue="usercity" :value="usercity"></infoText>
-				<infoText :type="type" :disabled="disabled" :textValue="customer" :value="customer"></infoText>
+				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.text1" :value="info.username"></infoText>
+				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="info.phoneNum"></infoText>
+				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.usercity" :value="info.usercity"></infoText>
+				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.customer" :value="info.customer"></infoText>
 
 			</view>
-			<view class="fget-num  bgcf borderRadius8">
+			<view class="fget-num  bgcf borderRadius8 infoThree">
 				<view class="out">
-					<infoImg :type="type" :disabled="disabled" :textContent="apply" @toApply="toApply"></infoImg>
-					<infoImg :type="type" :disabled="disabled" :textContent="oilNum"></infoImg>
-					<infoImg :type="type" :disabled="disabled" :textContent="address" @editAddress="editAddress"></infoImg>
-					<infoImg :type="type" :disabled="disabled" :textContent="editPsd" @toEditPsd="toEditPsd"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.apply" @toApply="toApply"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.oilNum" @toStayOil="toStayOil"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.address" @editAddress="editAddress"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.editPsd" @toEditPsd="toEditPsd"></infoImg>
 				</view>
 				<button class="safeout" @tap="outsafe">安全退出</button>
 			</view>
@@ -47,39 +51,41 @@
 	export default {
 		data() {
 			return {
-				username: "",
-				userphone: '手机号',
-				phoneNum: "15877771111",
-				compeny: "合肥城建",
-				usercity: '所在城市',
-				city: "合肥",
-				customer: '客户经理',
-				customerName: "李勇",
-				text1: '姓名',
-				disabled: true,
-				type: 'text',
-				apply: '申请权限',
-				oilNum: '订单油量',
-				address: '收货地址',
-				editPsd: '修改密码',
+				info: {
+					text1: '姓名',
+					userphone: '手机号',
+					compeny: "合肥城建",
+					usercity: '所在城市',
+					city: "合肥",
+					customer: '客户经理',
+					customerName: "李勇",
+					apply: '申请权限',
+					oilNum: '订单油量',
+					address: '收货地址',
+					editPsd: '修改密码',
+					disabled: true,
+					type: 'text',
+					username: "",
+					phoneNum: "15877771111",
+				},
 				integral: '0'
 			}
 		},
 		created() {
 			this.getserinfo();
-			var res =global.isLogin();
-			if(!res){
+			var res = global.isLogin();
+			if (!res) {
 				uni.showModal({
-					title:'请重新登录',
-					content:'身份已过期，请重新登录',
-					success:function(res){
+					title: '请重新登录',
+					content: '身份已过期，请重新登录',
+					success: function(res) {
 						uni.navigateTo({
-							url:'../login/login'
+							url: '../login/login'
 						})
 					}
 				})
 			}
-			
+
 		},
 
 		methods: {
@@ -89,19 +95,20 @@
 				uni.getStorage({
 					key: "userInfo",
 					success: function(res) {
-						// JSON.parse(res)
-						that.username = res.data.realname;
-						that.phoneNum = res.data.username
+						const data = JSON.parse(res.data)
+						console.log(data)
+						that.info.username = data.realname;
+						that.info.phoneNum = data.username
 					}
 				})
 
 				// console.log(this.$store.state.userInfo)
 			},
-			// editInfo() {
-			// 	uni.navigateTo({
-			// 		url: 'userPhoneNumber/userPhoneNumber?phone=' + this.phoneNum
-			// 	})
-			// },
+			toStayOil(){
+				uni.navigateTo({
+					url:'./stayOil/stayOil'
+				})
+			},
 			toApply() {
 				uni.navigateTo({
 					url: 'apply/apply'
@@ -131,12 +138,16 @@
 								uni.request({
 									url: that.$https + 'user/logout?',
 									method: "GET",
-									header:{"Content-Type": "application/x-www-form-urlencoded",  },
+									header: {
+										"Content-Type": "application/x-www-form-urlencoded",
+									},
 									success: function(res) {
 										console.log(res.data)
+										uni.navigateTo({
+											url: '../login/login'
+										})
 									}
 								})
-								
 							} else if (res.cancel) {
 								return
 							}
@@ -144,8 +155,8 @@
 					})
 				} else {
 					uni.navigateTo({
-									url: '../login/login'
-								})
+						url: '../login/login'
+					})
 				}
 
 			}
@@ -162,4 +173,11 @@
 </script>
 
 <style>
+	.infoThree {
+		padding: 10px 0;
+	}
+	image{
+		width: 25px;
+		height: 25px;
+	}
 </style>

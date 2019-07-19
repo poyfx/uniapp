@@ -6,5 +6,10 @@
     "fontWeight": "normal",
     "titleSize": "17px"
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "info-img": "/components/m-info-img/m-info-img",
+    "info-text": "/components/m-info-text/m-info-text",
+    "m-button": "/components/m-button",
+    "rui-date-picker": "/rattenking-dtpicker/rattenking-dtpicker"
+  }
 }

@@ -2,17 +2,7 @@
 	<view>
 		<view class="content">
 			<view class="fget-num paddingLeft15">
-				<!-- <mt-field label="购油公司" placeholder="XXXXXXXXXX公司" @click.native="GoOilByCompany" readonly disableClear >
-					<img src="../../static/img/right.png" alt>
-				</mt-field>
 
-				<mt-field label="选择油品" placeholder="选择油品" @click.native="chooseOilShow" readonly disableClear v-model="productOil">
-					<img src="../../static/img/right.png" alt>
-				</mt-field>
-				<mt-field label="提油方式" placeholder="选择提油方式" @click.native="modeShow" readonly disableClear v-model="modeOil">
-					<img src="../../static/img/right.png" alt>
-				</mt-field>
-				<mt-field label="购买数量(吨)" placeholder="输入阿拉伯数字" type="number" v-model="muchOil"></mt-field> -->
 				<!-- 公司 -->
 				<view class="flex  m-info" @tap="GoOilByCompany">
 					<view class="flex center m-info-content">
@@ -37,14 +27,22 @@
 					</view>
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
-				
-				<infoText :textValue="buyoilText" :type="number" :placeholder="placeholder"  :value="muchOil"></infoText>
-				
+
+				<view class="flex  m-info" @tap="payShow">
+					<view class="flex center m-info-content">
+						<text>付款方式</text>
+						<view>{{modePay}}</view>
+					</view>
+					<image src="../../static/img/right.png" mode="aspectFit"></image>
+				</view>
+
+				<infoText :textValue="info.buyoilText" :type="info.number" :placeholder="info.placeholder" :value="info.muchOil"></infoText>
+
 				<view class="fget-eara " @click="chooseAddress">
 					<view class="first-li">配送地址：</view>
 					<view class="addressimg">
 						<view style="width: 90%;"> {{address}}</view>
-						<img src="../../static/img/right.png" alt>
+						<image src="../../static/img/right.png" mode="aspectFit"></image>
 					</view>
 
 				</view>
@@ -56,13 +54,9 @@
 					</view>
 				</view>
 			</view>
-			<view class="mTop20" >
-				<mButton :type="btn.primary" class="mTop20" :value="btn.btnvalue" @toBuy="toBuy"></mButton>
+			<view class="mTop20">
+				<mButton :type="btn.primary"  :value="btn.btnvalue" @toBuy="toBuy"></mButton>
 			</view>
-
-			<!-- <view class="nextBox">
-				<mt-button class="btn"  type="primary" size="large" >提交意向单</mt-button>
-			</view> -->
 		</view>
 		<!-- 选择油号 -->
 		<view class="footmodel" v-show='show'>
@@ -80,7 +74,6 @@
 						<view @tap="chooseOilShow">取消</view>
 					</view>
 				</view>
-
 			</transition>
 		</view>
 		<!-- 提油方式 -->
@@ -93,8 +86,26 @@
 						<view @tap="chooseTwo" id="自提">自提</view>
 					</view>
 					<view class="modelfooter">
-
 						<view @tap="chooseOilLeave">取消</view>
+					</view>
+				</view>
+			</transition>
+		</view>
+		<!-- 选择付款方式 -->
+		<view class="footmodel" v-show='pay'>
+			<transition name="myanimate">
+				<view class="footermain">
+					<view class="modelmain">
+						<text>请选择付款方式</text>
+						<view @tap="pays" id='现金'>现金</view>
+						<view @tap="pays" id='支票'>支票</view>
+						<view @tap="pays" id='转账'>转账</view>
+						<view @tap="pays" id='信用卡'>信用卡</view>
+						<view @tap="pays" id='POS'>POS</view>
+						<view @tap="pays" id='信用销售'>信用销售</view>
+					</view>
+					<view class="modelfooter">
+						<view @tap="chooseOilShow">取消</view>
 					</view>
 				</view>
 			</transition>
@@ -108,19 +119,23 @@
 	export default {
 		data() {
 			return {
-				buyoilText: '购买数量',
-				number: 'number',
 				productOil: '选择油品',
 				modeOil: "选择提油方式",
 				buyOilP: "输入阿拉伯数字",
 				company: "小菊",
-				muchOil: "100",
 				address: "请选择提油方式请选择提油择提油方式",
 				show: false,
 				mode: false,
+				pay: false,
 				urlAddress: 'order',
-				Remarks: '你好',
-				placeholder:'请输入数量',
+				Remarks: '',
+				modePay: '',
+				info: {
+					placeholder: '请输入数量',
+					buyoilText: '购买数量',
+					number: 'number',
+					muchOil: "",
+				},
 				btn: {
 					primary: "primary",
 					btnvalue: "提交意向单",
@@ -138,16 +153,32 @@
 					url: 'oilByCompany/oilByCompany?address=' + this.urlAddress
 				})
 			},
+			// 付款方式
+			payShow() {
+				this.pay = !this.pay
+			},
+			//选择油品
 			chooseOilShow() {
+
 				this.show = !this.show;
 			},
+			// 取消
 			chooseOilLeave() {
 				this.mode = !this.mode;
 			},
 			chooseOne(val) {
-				this.show = !this.show;
-				this.productOil = val.target.id;
+				const that = this;
+				setTimeout(function() {
+					console.log(val)
+					that.show = !that.show;
+					that.productOil = val.target.id;
+				}, 100);
+
 				//  this.$refs.chooseOne.className="modelmainActive"
+			},
+			pays(val) {
+				this.pay = !this.pay;
+				this.modePay = val.target.id
 			},
 			modeShow() {
 				this.mode = !this.mode;
@@ -215,7 +246,9 @@
 		position: relative;
 	}
 
-	.addressimg img {
+	.addressimg image {
+		width: 12px;
+		height: 12px;
 		position: absolute;
 		right: 5px;
 		top: 50%;

@@ -6,5 +6,8 @@
     "fontWeight": "normal",
     "titleSize": "17px"
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "m-button": "/components/m-button",
+    "info-text": "/components/m-info-text/m-info-text"
+  }
 }

@@ -12,7 +12,10 @@
 				<input type="text" placeholder="请输入验证码" class="getCodeInput" v-model="codeNums" />
 			</view>
 		</view>
-		<mButton :value="value" class="goNext" :type="btnType" @goNext="goNext"></mButton>
+		<view class="goNext">
+			<mButton :value="value" :type="btnType" @goNext="goNext"></mButton>
+		</view>
+		
 	</view>
 
 </template>

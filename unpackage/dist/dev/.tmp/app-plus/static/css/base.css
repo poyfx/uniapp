@@ -50,6 +50,9 @@ text{
  .mTop15{
 	 margin-top: 15px;
  }
+ .mTop20{
+	 margin-top: 20px;
+ }
  .mTop30{
 	 margin-top: 30px;
  }
@@ -62,3 +65,7 @@ text{
 .borderRadius8{
 	border-radius:8px;
 }
+.paddingLeft15{
+	padding-left:15px ;
+}
+

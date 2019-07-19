@@ -78,9 +78,14 @@
 	border-radius: 8px;
 }
 
-.line {
+.line{
+	display: inline-block;
+	width: 4px;
+	height: 22px;
+	background-color: #00A8FF;
 	position: relative;
 	top: 3px;
+	margin-right: 5px;
 }
 
 .title-p {
@@ -105,7 +110,7 @@
 .managerNum .call {
 	display: flex;
 	justify-content: space-between;
-	padding:8px 0 0 0  ;
+	padding: 8px 0 0 0;
 	color: #999;
 }
 
@@ -115,7 +120,7 @@
 	border-radius: 5px;
 	font-size: 15px;
 	color: #fff;
-	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
 }
 
 /* 当前油品批发价 */
@@ -138,13 +143,13 @@
 
 
 
-.userIntegraltitle {
+.userIntegraltitle text{
 	font-size: 16px;
 	font-weight: bold;
 	color: #666666;
 }
 
-.userIntegraltitle>view>img {
+.userIntegraltitle>view>image {
 	width: 48upx;
 	margin-right: 8px;
 }
@@ -183,7 +188,7 @@
 }
 
 .userIntegral .integral {
-
+	min-width: 110px;
 	background-color: #00A8FF;
 	display: flex;
 	flex-direction: column;
@@ -241,6 +246,10 @@ input {
 	border: none;
 }
 
+.underline {
+	border-bottom: 1px solid #e5e5e5;
+}
+
 .underline input {
 	color: #666666;
 	font-size: 16px;
@@ -248,8 +257,7 @@ input {
 
 .out {
 	width: 100%;
-	padding: 10px 0px 10px 10px;
-	margin: 10px 0;
+	padding: 0px 0px 0px 10px;
 	/* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16); */
 }
 
@@ -258,6 +266,7 @@ input {
 	width: 90%;
 	background-color: #c5cccf;
 	color: #fff;
+	margin: 10px auto;
 }
 
 /* .out .mint-cell*/
@@ -304,7 +313,7 @@ input {
 
 
 /* 忘记密码 */
-.fget{
+.fget {
 	width: 100%;
 	background-color: #fff;
 }
@@ -518,14 +527,18 @@ input {
 	text-align: center;
 	line-height: 44px;
 }
+.loading image{
+	width:8px;
+	height: 8px;
+}
 
 /* 订单详情 */
 .detailsState {
-	padding: 55px 26px 10px 15px;
+	padding: 40px 26px 10px 15px;
 	background: #fff;
 	display: flex;
 	justify-content: space-between;
-	margin-top: 40px;
+	margin-top: 30px;
 	box-sizing: border-box;
 }
 
@@ -542,7 +555,7 @@ input {
 	align-content: center;
 	align-items: center;
 	align-self: center;
-	top: -26px;
+	top: 15px;
 	left: 5%;
 	border-radius: 8px;
 }

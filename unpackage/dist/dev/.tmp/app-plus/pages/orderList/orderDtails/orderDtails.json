@@ -7,6 +7,7 @@
     "titleSize": "17px"
   },
   "usingComponents": {
-    "t-button": "/components/twoButton/twoButton"
+    "t-button": "/components/twoButton/twoButton",
+    "m-button": "/components/m-button"
   }
 }

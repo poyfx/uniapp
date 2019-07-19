@@ -2,31 +2,38 @@
 	<view>
 		<view class="content">
 			<view class="fget-num paddingLeft15">
-	<!-- 
-				<mt-field label="提油时间" @click.native="selectData" placeholder="请选择提油时间" readonly disableClear v-model="day">
-					<img src="../../static/img/right.png" alt>
-				</mt-field> -->
-
 				<infoImg :textContent="text.orderNumberText" :disabled="text.disabled" :value="values.orderNumber" :placeholder="text.orderNumberP"
 				 @goOrderNumber="goOrderNumber"></infoImg>
-				<infoImg :textContent="text.dayTimeText" :disabled="text.disabled" :value="values.day" :placeholder="text.dayP"></infoImg>
-				
-				<view class="flex  m-info" :model="text">
+
+				<view class="flex  m-info">
 					<view class="flex center m-info-content">
+						<text>{{text.dayTimeText}}</text>
+						<ruiDatePicker class="minute" fields="minute" start="2010-00-00 00:00" end="2030-12-31 23:59" :value="day"
+						 @change="bindChange"></ruiDatePicker>
+					</view>
+					<view class="flex m-info-text">
+						<image src="../../static/img/right.png" mode="aspectFit" style="width: 12px; height: 12px;"></image>
+					</view>
+
+				</view>
+
+				<view class="flex  m-info" :model="text">
+					<view class="flex center m-info-contents">
 						<text>提油数量(吨)</text>
 						<input type="number" v-model="values.muchOil" :placeholder="text.muchOilText" />
 					</view>
 					<text class="allOil">全体</text>
-					
+
 				</view>
-				
+
 				<infoText :textValue="text.productOilText" :disabled="text.disabled" :value="values.productOil" :placeholder="text.productOilP"></infoText>
 				<infoText :textValue="text.modeOilText" :disabled="text.disabled" :value="values.modeOil" :placeholder="text.modeOilP"></infoText>
 				<view class="fget-eara " @tap="chooseAddress">
 					<view class="first-li">配送地址：</view>
 					<view class="addressimg">
 						<view style="width: 90%;">{{address}}</view>
-						<img src="../../static/img/right.png" alt>
+						<!-- <img src="../../static/img/right.png" alt> -->
+						<image src="../../static/img/right.png" mode="aspectFit"></image>
 					</view>
 
 				</view>
@@ -43,19 +50,16 @@
 			</view>
 
 		</view>
-		<!-- <mt-datetime-picker ref="datePicker" v-model="pickerVisible" type="datetime" :startDate="startDate" year-format="{value} "
-		 month-format="{value} " date-format="{value} " hour-format="{value}" minute-format="{value}" @confirm="handleConfirm"></mt-datetime-picker> -->
+
 	</view>
 </template>
 
 <script>
-	// import {
-	// 	DatetimePicker
-	// } from "mint-ui";
 	import {
 		formatDate,
 		formatDateMin
 	} from "../../static/js/date.js";
+	import ruiDatePicker from '../../rattenking-dtpicker/rattenking-dtpicker.vue'
 	import infoText from '../../components/m-info-text/m-info-text'
 	import infoImg from '../../components/m-info-img/m-info-img'
 	import mButton from '../../components/m-button.vue'
@@ -69,7 +73,7 @@
 					modeOilText: '提油方式',
 					muchOilText: '提油数量',
 					disabled: true,
-					orderNumberP:'选择订单编号',
+					orderNumberP: '选择订单编号',
 					dayP: '请选择时间',
 					productOilP: '选择提油油品',
 					modeOilP: '选择提油方式'
@@ -79,61 +83,24 @@
 					productOil: "", //提油油品
 					modeOil: "", //提油方式
 					muchOil: "", //提油数量
-					day: '',//formatDateMin(new Date())
+
 				},
 				address: "请选择提油方式选择提油方式请选择提油方式",
-				show: false,
-				mode: false,
 				startDate: new Date(),
-				pickerVisible: '',
 				url: 'reserveOil',
 				primary: 'primary',
-				btnValue: '提交'
+				btnValue: '提交',
+				day: '2019-01-01 00:00', //formatDateMin(new Date())
 			}
 		},
 		methods: {
 			GoOilByCompany() {
 				this.$router.push("/oilByCompany");
 			},
-			chooseOilShow() {
-				this.show = !this.show;
+			bindChange(val) {
+				this.day = val
 			},
-			chooseOilLeave() {
-				this.mode = !this.mode;
-			},
-			chooseOne(val) {
-				this.show = !this.show;
-				this.productOil = val.target.innerHTML;
-				//  this.$refs.chooseOne.className="modelmainActive"
-			},
-			modeShow() {
-				this.mode = !this.mode;
-			},
-			chooseTwo(val) {
-				console.log(val);
-				this.mode = !this.mode;
-				this.modeOil = val.target.innerHTML;
-			},
-			chooseAddress() {
-				// this.$router.push({
-				// 	path: '/oilAddress',
-				// 	query: {
-				// 		name: "reserveOil"
-				// 	}
-				// })
-			},
-			// 获取时间
-			selectData() {
-				if (this.selectdValue) {
-					this.pickerVisible = this.selectedValue;
-				} else {
-					this.pickerVisible = this.day;
-				}
-				this.$refs.datePicker.open();
-			},
-			handleConfirm() {
-				this.day = formatDateMin(this.pickerVisible);
-			},
+
 			commit() {
 				// this.$router.push('/reserveOilList')
 			},
@@ -149,7 +116,8 @@
 		components: {
 			infoImg,
 			infoText,
-			mButton
+			mButton,
+			ruiDatePicker
 		},
 	}
 </script>
@@ -162,26 +130,58 @@
 		align-self: center;
 		justify-content: space-between;
 	}
-	
-	.m-info-content {
+
+	.m-info-contents {
 		justify-content: flex-start;
 		flex: 1;
 	}
-	
-	.m-info .m-info-content text {
+
+	.m-info .m-info-contents text {
 		width: 80px;
 	}
-	.m-info-content input{
+
+	.m-info-contents input {
 		flex: 1;
 		padding-left: 10px;
 	}
-	.allOil{
+
+	.m-info-content {
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+		flex: 1;
+	}
+
+	.m-info-content text {
+		width: 80px;
+	}
+
+	.m-info-content .infoText {
+		flex: 1;
+	}
+
+	.m-info-text {
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+	}
+
+	.m-info image {
+		width: 12px;
+		height: 12px;
+		padding-right: 15px;
+		margin-left: 10px;
+	}
+
+	.allOil {
 		height: 100%;
-		padding: 10px 15px ;
+		padding: 10px 15px;
 		color: #009DFF;
 		border-left: 1px solid #e5e5e5;
 	}
-	
+
 	.myanimate-enter-active {
 		animation: show1 0.3s;
 	}
@@ -194,7 +194,9 @@
 		position: relative;
 	}
 
-	.addressimg img {
+	.addressimg image {
+		width: 12px;
+		height: 12px;
 		position: absolute;
 		right: 5px;
 		top: 50%;

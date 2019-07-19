@@ -2,8 +2,10 @@
 	<view class="m-input-view">
 		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
 		 @focus="onFocus" @blur="onBlur" />
-		<img @click="showname" v-if="show" src="../static/img/nopwd.png" class='m-eye' alt />
-		<img @click="showname" v-if="!show" src="../static/img/showpwd.png" class='m-eye' alt />
+		<image src="../../static/img/nopwd.png" @tap="showname" class='m-eye' v-if="show" mode="aspectFit"></image>
+		 <image src="../../static/img/showpwd.png" @tap="showname" class='m-eye' v-if="!show" mode="aspectFit"></image>
+		<!-- <img @click="showname" v-if="show" src="" class='m-eye' alt />
+		<img @click="showname" v-if="!show" src="../static/img/showpwd.png" class='m-eye' alt /> -->
 	</view>
 </template>
 
@@ -12,7 +14,7 @@
 		data() {
 			return {
 				show: true,
-				inputType:'password'
+				inputType: 'password'
 			}
 		},
 		props: {
@@ -100,6 +102,8 @@
 	}
 
 	.m-eye {
+		width: 25px;
+		height: 25px;
 		position: absolute;
 		right: 15%;
 	}

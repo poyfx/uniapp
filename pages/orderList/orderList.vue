@@ -5,11 +5,11 @@
 				<el-option v-for="item in options" :label="item.label" :value="item.value" :key="item.value"></el-option>
 			</el-select> -->
 			<view style="width: 120px;position: relative; left: 66%;">
-				<selects :list="list" :clearable="false" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
+				<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
 				 :placeholder="'placeholder'" :initValue="'全部订单'">
 				</selects>
 			</view>
-			<view class="fget-num orderList" @click="orderDtails">
+			<view class="fget-num orderList" @tap="orderDtails">
 				<view class="stateBox">
 					<view>
 						<text class="orderListState state ">等待价格</text>
@@ -155,9 +155,7 @@
 
 		</view>
 		<view class="loading">
-			<view>
-				<img src="../../static/img/loading.png" alt> &nbsp; 点击加载更多...
-			</view>
+				<!-- <img src="" alt> --><image src="../../static/img/loading.png" mode="aspectFit"></image> &nbsp; 点击加载更多...
 		</view>
 	</view>
 	</view>
@@ -168,36 +166,39 @@
 	export default {
 		data() {
 			return {
-				 list: [
-        {
-          value: "全部" ,
-          label:1
-        },
-        {
-          value: "已取消",
-          label: 2
-        },
-        {
-          value: "已完成 ",
-          label:3
-        },
-        {
-          value:"待付款",
-          label: 4 
-        },
-        {
-          value:"已确认价格",
-          label: 5 
-        },
-         {
-          value:"待财务确认收款" ,
-          label: 6
-        }
-      ]
+				list: [{
+						value: "全部",
+						label: 1
+					},
+					{
+						value: "已取消",
+						label: 2
+					},
+					{
+						value: "已完成 ",
+						label: 3
+					},
+					{
+						value: "待付款",
+						label: 4
+					},
+					{
+						value: "已确认价格",
+						label: 5
+					},
+					{
+						value: "待财务确认收款",
+						label: 6
+					}
+				]
 			}
 		},
 		methods: {
-
+			orderDtails(){
+				uni.navigateTo({
+					url:'./orderDtails/orderDtails'
+				})
+			},
 		},
 		onNavigationBarButtonTap(e) {
 			console.log(e)

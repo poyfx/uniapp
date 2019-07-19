@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "我的",
-  "usingComponents": {}
+  "usingComponents": {
+    "info-text": "/components/m-info-text/m-info-text",
+    "info-img": "/components/m-info-img/m-info-img"
+  }
 }

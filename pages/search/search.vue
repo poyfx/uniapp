@@ -1,72 +1,60 @@
 <template>
 	<view>
-		<div class="content">
-			<div class="fget-num">
-				<div class="orderDate">
-					<p>选择日期</p>
-					<div class="datetime" @click="selectData">{{day}}</div>
-					<p>订单编号</p>
+		<view class="content">
+			<view class="fget-num">
+				<view class="orderDate">
+					<view>选择日期</view>
+					 <ruiDatePicker class="datetime" fields="day" start="2010-00-00" end="2030-12-31" :value="values" @change="bindChange"></ruiDatePicker>
+
+					<view>订单编号</view>
 					<input type="number" v-model="ordernumber" value>
-				</div>
-			</div>
-			<div class="nextBox">
-				<mt-button class="btn" type="primary" size="large" @click.native="search">查询</mt-button>
-			</div>
-		</div>
-		<mt-datetime-picker ref="datePicker" v-model="pickerVisible" type="date" year-format="{value} 年" month-format="{value} 月"
-		 date-format="{value} 日" :startDate="stateDate" @confirm="handleConfirm"></mt-datetime-picker>
+				</view>
+			</view>
+			<view class="nextBox">
+				<mButton :type="btnType" :value="btnValue" @search="search"></mButton>
+		
+			</view>
+		</view>
+	
 	</view>
 </template>
 
 <script>
 
 	import {
-		DatetimePicker
-	} from "../../mint-ui";
-	import {
 		formatDate
 	} from "../../static/js/date.js";
+	import ruiDatePicker  from '../../rattenking-dtpicker/rattenking-dtpicker.vue'
+	import mButton from  '../../components/m-button.vue'
 	export default {
 		data() {
 			return {
-				title: "订单搜索",
 				ordernumber: '',
-				home: "home",
-				day: "",
-				pickerVisible: "",
 				date: "",
-				stateDate: new Date()
+				values: '',
+				btnType:'primary',
+				btnValue:"查询"
 			};
 		},
-		mounted() {
+		onLoad() {
 			this.date = new Date();
-			this.day = formatDate(this.date);
+			this.values = formatDate(this.date);
 		},
 		methods: {
-			selectData() {
-				if (this.selectdValue) {
-					this.pickerVisible = this.selectedValue;
-				} else {
-					this.pickerVisible = this.date;
-				}
-				this.$refs.datePicker.open();
-			},
-			handleConfirm() {
-				this.day = formatDate(this.pickerVisible);
+	
+			bindChange(value){
+				this.values = value
 			},
 			search() {
 				uni.navigateTo({
-					url:'searchDateList/searchDateList?times='+this.day
+					url:'searchDateList/searchDateList?times='+this.values
 				})
-				// console.log(this.day)
-				// this.$router.push({
-				// 	path: '/searchDateList',
-				// 	query: {
-				// 		date: this.day,
-				// 		number: this.ordernumber
-				// 	}
-				// })
+			
 			}
+		},
+		components: {
+			ruiDatePicker,
+			mButton
 		},
 	}
 </script>
@@ -84,7 +72,7 @@
   margin: 10px 0;
   padding-left: 10px;
   background-color: #fff;
-  text-align: center;
+ justify-content: center;
   line-height: 42px;
   box-sizing: border-box;
 }

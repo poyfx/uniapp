@@ -11,6 +11,8 @@
     ]
   },
   "usingComponents": {
-    "step": "/components/step/step"
+    "step": "/components/step/step",
+    "info-text": "/components/m-info-text/m-info-text",
+    "m-button": "/components/m-button"
   }
 }

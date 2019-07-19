@@ -5,8 +5,7 @@
     height: 50px;
     font-size:12px; 
     margin: 14px 14px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
+    border-radius: 50%;
     text-align: center;
     line-height: 50px;
     color: #fff;

@@ -1,1 +1,2 @@
+setCssToHead([".",[1],"infoThree { padding: 10px 0; }\n",],undefined,{path:"./pages/info/info.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/info/info.wxml') } }));

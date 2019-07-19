@@ -5,10 +5,10 @@
     "iPad"
   ],
   "id": "__UNI__C5F30A1",
-  "name": "ahsy默认",
+  "name": "安徽石油",
   "version": {
     "name": "1.0.0",
-    "code": "100"
+    "code": 1
   },
   "description": "",
   "launch_path": "__uniapptabbar.html",
@@ -100,7 +100,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.0.1",
+      "compilerVersion": "2.1.1",
       "control": "v8",
       "nvueCompiler": "weex"
     },

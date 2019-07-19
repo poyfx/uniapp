@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<mt-search v-model="value"></mt-search>
-		<view class="home">
+<!-- 		<mt-search v-model="value"></mt-search>
+ -->		<view class="home">
 			<view class="companys" @tap="chooseCompany(index)" v-for="(item,index) in datas" :key="item.id">
 				<view>{{item.id}}</view>
 				<view>{{item.name}}</view>

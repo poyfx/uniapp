@@ -3,8 +3,8 @@
     "pages/index/index",
     "pages/index/start",
     "pages/login/login",
-    "pages/login/forget",
-    "pages/login/setPws",
+    "pages/login/forget/forget",
+    "pages/login/setPws/setPws",
     "pages/register/register",
     "pages/register/positive/positive",
     "pages/register/positive/positive1",
@@ -26,8 +26,7 @@
     "pages/reserveOilList/reserveOilList",
     "pages/reserveOilList/confirmed/confirmed",
     "pages/reserveOilList/confirmed/oliCode/oliCode",
-    "components/m-info-text/m-info-text",
-    "components/m-info-img/m-info-img"
+    "pages/info/stayOil/stayOil"
   ],
   "subPackages": [],
   "window": {
@@ -60,7 +59,7 @@
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "ahsy默认",
-  "compilerVersion": "2.0.1",
+  "appname": "安徽石油",
+  "compilerVersion": "2.1.1",
   "usingComponents": {}
 }

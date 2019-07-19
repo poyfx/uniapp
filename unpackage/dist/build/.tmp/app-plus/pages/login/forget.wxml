@@ -1,1 +1,0 @@
-<view class="content"><view class="forget-content"><get-code vue-id="1" placeholder="{{placeholder}}" bind:__l="__l"></get-code><code-num vue-id="2" bind:__l="__l"></code-num></view><m-button class="goNext" vue-id="3" value="{{value}}" type="{{btnType}}" data-event-opts="{{[['^goNext',[['goNext']]]]}}" bind:goNext="__e" bind:__l="__l"></m-button></view>

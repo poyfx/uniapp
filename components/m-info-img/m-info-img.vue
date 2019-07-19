@@ -4,9 +4,9 @@
 			<view class="flex center m-info-content">
 				<text>{{textContent}}</text>
 				<input :type="type" :placeholder="placeholder" :value="value" class="infoText" :disabled="disabled" />
-			</view>
-			<view class="flex m-info-text">
-				<text>{{text}}</text>
+			<!-- </view>
+			<view class="flex m-info-text"> -->
+				<!-- <text>{{text}}</text> -->
 				<image src="../../static/img/right.png" mode="aspectFit"></image>
 			</view>
 
@@ -35,7 +35,9 @@
 				this.$emit("toApply");
 				this.$emit("editAddress");
 				this.$emit("toEditPsd");
-				this.$emit("goOrderNumber")
+				this.$emit("goOrderNumber");
+				this.$emit("getTime");
+				this.$emit("toStayOil")
 			}
 		}
 	}

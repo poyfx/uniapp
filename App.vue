@@ -73,4 +73,9 @@
 	.mint-field {
 		border-bottom: 1px solid #e5e5e5;
 	}
+	/* 提油码radio */
+	uni-radio .uni-radio-input{
+		width: 16px;
+		height: 16px;
+	}
 </style>

@@ -103,6 +103,6 @@
 	}
 	.m-input-view text{
 		width: 93px;
-		padding: 10px;
+		padding: 10px 10px 10px 0;
 	}
 </style>

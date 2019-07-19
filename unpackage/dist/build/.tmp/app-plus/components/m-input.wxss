@@ -1,5 +1,5 @@
 
-.m-input-view.data-v-5e777aef {
+.m-input-view.data-v-6b027565 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -14,12 +14,11 @@
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.m-input.data-v-5e777aef {
+.m-input.data-v-6b027565 {
 	width: 70%;
 	border: 1px solid #e5e5e5;
 	padding: 11px 15px;
-	-webkit-border-radius:4px 4px 0 0 ;
-	        border-radius:4px 4px 0 0 ;
+	border-radius:4px 4px 0 0 ;
 	font-size: 17px;
 	border-bottom: none;
 }

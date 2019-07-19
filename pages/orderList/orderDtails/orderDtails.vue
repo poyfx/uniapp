@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="home">
+		<view class="content">
 			<view class="timeOut">
 					<!-- <timer endTime="172800" :callback="callback" endText="已经结束了"></timer> -->
 					<text class="time">00:00:00</text>
@@ -79,7 +79,7 @@
 				<tButton :type="type" class="tButton" :content="con2" @sureBuy="sureBuy"></tButton>
 			</view>
 			<view class="nextBox"  v-show="!isbought">
-				<mt-button type="primary"  size="large" class="btn" @click.native="tell">提醒财务确认收款</mt-button>
+				<mButton :type="btntype" :value="btnValue" @tell="tell"></mButton>
 			</view>
 		</view>
 	</view>
@@ -87,6 +87,7 @@
 
 <script>
 	import tButton from '../../../components/twoButton/twoButton.vue'
+	import mButton from '../../../components/m-button.vue'
 	export default {
 		data() {
 			return {
@@ -94,7 +95,9 @@
 				type1:"defult",
 				type:"primary",
 				con1:'取消订单',
-				con2:'确认购买'
+				con2:'确认购买',
+				btntype:'primary',
+				btnValue:'提醒财务确认收款'
 			}
 		},
 		methods: {
@@ -105,7 +108,8 @@
 			},
 			tell(){
 				uni.showToast({
-					title:"已提醒财务确认,请耐心等待"
+					title:"已提醒财务确认,请耐心等待",
+					icon:"none"
 				})
 			},
 			cancelOrder(){
@@ -120,7 +124,8 @@
 			}
 		},
 		components:{
-			tButton
+			tButton,
+			mButton
 		}
 	}
 </script>

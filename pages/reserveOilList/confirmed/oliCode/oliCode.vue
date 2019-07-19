@@ -7,26 +7,28 @@
 		</view>
 		<view class="mContent bgcf otherOilCode ">
 			<view>提油码发送他人代提</view>
-			<mt-field placeholder="代提人手机号" style="border: 1px solid #e5e5e5; width: 90%;margin: 15px auto; padding-left: 8px;"></mt-field>
-			<view style="padding-left:40upx ;">
+			<input type="text" class="oilCodeInput" value="" />
+			<view class="read ;">
 				<label class="radio">
 					<radio value="已阅读" :checked='checked' @tap="cancel" />
 				</label>
 				<!-- <input type="checkbox" class="check" value="已阅读" @click="check" :checked="checked" /> -->
 				<text>已阅读</text>
 
-				<text href="javascript:;" style="color: #009DFF;">免责条款</text>
+				<text style="color: #009DFF; ;">免责条款</text>
 			</view>
 
 			<view class="nextBox">
-				<mt-button type="default" size="large" class="btn" @click="send" v-show="checkes" style="background:rgba(0,0,0,0.2)">发送</mt-button>
-				<mt-button type="primary" size="large" class="btn" @click="send" v-show="!checkes">发送</mt-button>
+				<button class="oilCodeBtn oilCodeBtnAll" v-show="checkes">发送</button>
+				<button type="primary" class="oilCodeBtnAll" v-show="!checkes">发送</button>
+
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import mButton from '../../../../components/m-button.vue'
 	export default {
 		data() {
 			return {
@@ -44,22 +46,25 @@
 				this.checked = !this.checked;
 				this.checkes = !this.checkes
 			},
-			  send() {
-      if (this.checkes == true) {
-        // Toast("请阅读免责条款,勾选后方可发送");
-		uni.showToast({
-			title:"请阅读免责条款,勾选后方可发送",
-			"icon":"none"
-		})
-      }
-      if (this.checkes == false) {
-        // Toast("发送成功");
-		uni.showToast({
-			title:'发送成功'
-		})
-      }
-    }
-		}
+			send() {
+				if (this.checkes == true) {
+					// Toast("请阅读免责条款,勾选后方可发送");
+					uni.showToast({
+						title: "请阅读免责条款,勾选后方可发送",
+						"icon": "none"
+					})
+				}
+				if (this.checkes == false) {
+					// Toast("发送成功");
+					uni.showToast({
+						title: '发送成功'
+					})
+				}
+			}
+		},
+		components: {
+			mButton
+		},
 	}
 </script>
 
@@ -94,12 +99,7 @@
 
 	.otherOilCode {
 		border-radius: 8px 8px 0 0;
-		height: 100%;
-	}
-
-	.otherOilCode p {
-		font-size: 17px;
-		color: #666;
+		height: 49.5%;
 	}
 
 	.otherOilCode .mint-cell {
@@ -123,5 +123,28 @@
 
 	.otherOilCode span {
 		color: #666;
+	}
+
+	.oilCodeInput {
+		border: 1px solid #e5e5e5;
+		width: 90%;
+		margin: 15px auto;
+		padding: 11px 15px 12px;
+		border-radius: 4px;
+	}
+
+	.oilCodeBtn {
+		background: rgba(0, 0, 0, 0.2);
+		color: #fff;
+	}
+	.oilCodeBtnAll{
+		width: 95%;
+		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+	}
+	.read{
+		padding-left: 18px;
+	}
+	.read text{
+		font-size: 12px;
 	}
 </style>

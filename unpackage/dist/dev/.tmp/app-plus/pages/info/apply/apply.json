@@ -6,5 +6,7 @@
     "fontWeight": "normal",
     "titleSize": "17px"
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "info-text": "/components/m-info-text/m-info-text"
+  }
 }

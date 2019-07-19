@@ -16,8 +16,9 @@ Vue.use(Vuex)
     getters:{},
     mutations:{
 		 login(state, provider) {  //改变登录状态
+		 console.log(provider)
 			 provider =JSON.stringify(provider)
-			console.log(provider)
+			 console.log(provider)
             state.hasLogin = true;  
             // state.token = provider.token;  
             state.userInfo = provider.user;  

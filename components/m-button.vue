@@ -23,8 +23,10 @@
 				this.$emit("oneSide");
 				this.$emit("handleLogin");
 				this.$emit("nextTep");
-				this.$emit("toBuy")
-				this.$emit("sureModify")
+				this.$emit("toBuy");
+				this.$emit("sureModify");
+				this.$emit("search");
+				this.$emit("tell");
 			}
 		}
 	}
@@ -33,5 +35,6 @@
 <style>
 	.m-btn{
 		width: 78%;
+		box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
 	}
 </style>

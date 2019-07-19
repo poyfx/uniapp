@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="fget-num">
+		<view class="fget-num paddingLeft15">
 			<setPassword :textValue="textValue" :placeholder="placeholder" v-model="setPassword"></setPassword>
 			<setPassword :textValue="newTextValue" :placeholder="newPlaceholder" v-model="newPassword"></setPassword>
 		</view>

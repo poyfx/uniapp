@@ -6,9 +6,6 @@
 					<view><text class="numberTitle">订单编号:</text> <text>{{ordernumber}}</text></view>
 					<view><text class="numberTitle">油品类型:</text> <text>{{type}}</text></view>
 					<view><text class="numberTitle">提油方式:</text> <text>{{mode}}</text></view>
-					<!-- <mt-field label="订单编号" v-model="ordernumber"></mt-field>
-          <mt-field label="油品类型" v-model="type"></mt-field>
-          <mt-field label="提油方式" v-model="mode"></mt-field> -->
 				</view>
 				<view class="integral">
 					<text>剩余油量(吨)</text>

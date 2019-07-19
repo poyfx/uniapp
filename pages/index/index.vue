@@ -9,7 +9,7 @@
 				<view class="managerNum">
 					<text class="manager">李勇</text>
 					<view class="call">
-						1587777777
+						{{tel}}
 						<text class="numberBtn" @click="callPhone(tel)">通话</text>
 					</view>
 				</view>
@@ -94,13 +94,17 @@
 		},
 		methods: {
 			callPhone(phoneNumber) {
+				console.log(phoneNumber)
 				uni.showModal({
-					title: "",
+					title: "呼叫客户经理-" + this.myManager,
 					confirmText: '呼叫',
-					content: "呼叫客户经理-" + this.myManager,
+					content:phoneNumber ,
 					success: function(res) {
 						if (res.confirm) {
-							window.location.href = "tel:" + this.tel;
+							// window.location.href = "tel:" +phoneNumber;
+							uni.makePhoneCall({
+								phoneNumber:phoneNumber
+							})
 						} else if (res.cancel) {
 							return
 						}

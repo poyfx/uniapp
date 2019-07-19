@@ -41,7 +41,8 @@
 	}
 
 	.m-info text {
-		width: 80px;
+		min-width: 70px;
+		margin-right: 10px;
 	}
 .m-info input{
 	flex: 1;

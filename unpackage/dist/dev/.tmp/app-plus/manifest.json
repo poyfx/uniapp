@@ -5,10 +5,10 @@
     "iPad"
   ],
   "id": "__UNI__C5F30A1",
-  "name": "ahsy默认",
+  "name": "安徽石油",
   "version": {
     "name": "1.0.0",
-    "code": "100"
+    "code": 1
   },
   "description": "",
   "launch_path": "__uniapptabbar.html",
@@ -92,7 +92,7 @@
         }
       }
     },
-    "arguments": "{\"name\":\"\",\"query\":\"\",\"id\":0,\"pathName\":\"pages/index/start\"}",
+    "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\",\"id\":0}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#fff",
@@ -101,14 +101,17 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.0.1",
+      "compilerVersion": "2.1.1",
       "control": "v8",
       "nvueCompiler": "weex"
     },
     "secondwebview": {
       "id": "1",
       "launch_path": "__uniappview.html",
-      "kernel": "WKWebview"
+      "kernel": "WKWebview",
+      "mode": "child",
+      "top": 0,
+      "bottom": 56
     }
   }
 }
