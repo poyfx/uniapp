@@ -1,5 +1,5 @@
 
-.background.data-v-3f0663aa {
+.background.data-v-2b20c7ae {
 	background-color: #fff;
 	position: absolute;
 	height: 100%;
@@ -7,22 +7,22 @@
 	left: 0;
 	top: 0;
 }
-.imgTop.data-v-3f0663aa {
+.imgTop.data-v-2b20c7ae {
 	margin: 40px auto 44px;
 	text-align: center
 }
-.loginImg.data-v-3f0663aa {
+.loginImg.data-v-2b20c7ae {
 	width: 200rpx;
 	height: 200rpx;
 }
-.p-font.data-v-3f0663aa {
+.p-font.data-v-2b20c7ae {
 	margin-top: 15px;
 }
-.p-font text.data-v-3f0663aa {
+.p-font text.data-v-2b20c7ae {
 	font-size: 45rpx;
 	color: #666;
 }
-.loginInfo.data-v-3f0663aa {
+.loginInfo.data-v-2b20c7ae {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -31,13 +31,13 @@
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
-	font-size: 12px;
+	font-size: 24rpx;
 	padding: 7px 11% 10px;
 }
-.color-dff.data-v-3f0663aa {
+.color-dff.data-v-2b20c7ae {
 	color: #009DFF;
 }
-.toReginster.data-v-3f0663aa {
+.toReginster.data-v-2b20c7ae {
 	display: inline-block;
 }
 

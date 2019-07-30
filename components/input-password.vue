@@ -106,5 +106,6 @@
 		height: 25px;
 		position: absolute;
 		right: 15%;
+		z-index: 333;
 	}
 </style>

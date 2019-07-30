@@ -2,10 +2,8 @@
 	<view>
 		<view class="flex  m-info" @tap="go">
 			<view class="flex center m-info-content">
-				<text>{{textContent}}</text>
-				<input :type="type" :placeholder="placeholder" :value="value" class="infoText" :disabled="disabled" />
-			<!-- </view>
-			<view class="flex m-info-text"> -->
+				<text>{{imgText}}</text>
+				<input :type="type" :placeholder="placeholder" :value="value"  class="infoText" :disabled="disabled" />
 				<!-- <text>{{text}}</text> -->
 				<image src="../../static/img/right.png" mode="aspectFit"></image>
 			</view>
@@ -22,12 +20,12 @@
 			}
 		},
 		props: {
-			textContent: String,
+			imgText: String,
 			text: String,
 			type: String,
 			placeholder: String,
 			disabled: Boolean,
-			value: String
+			value: String,
 		},
 		methods: {
 			go() {
@@ -37,7 +35,10 @@
 				this.$emit("toEditPsd");
 				this.$emit("goOrderNumber");
 				this.$emit("getTime");
-				this.$emit("toStayOil")
+				this.$emit("toStayOil");
+				this.$emit("oilByCompany");
+				this.$emit("chooseUser");
+				this.$emit("chooseCustomer");
 			}
 		}
 	}

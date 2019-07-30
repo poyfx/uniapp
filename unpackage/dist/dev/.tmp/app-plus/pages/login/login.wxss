@@ -31,7 +31,7 @@
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
-	font-size: 12px;
+	font-size: 24rpx;
 	padding: 7px 11% 10px;
 }
 .color-dff.data-v-20ff2a30 {

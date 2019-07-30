@@ -3,8 +3,10 @@
 		<text>{{textValue}}</text>
 		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
 		 @focus="onFocus" @blur="onBlur" />
-		<img @click="showname" v-if="show" src="../../static/img/nopwd.png" class='m-eye' alt />
-		<img @click="showname" v-if="!show" src="../../static/img/showpwd.png" class='m-eye' alt />
+		 <image @tap="showname" v-if="show" src="../../static/img/nopwd.png" class='m-eye' alt ></image>
+		 <image @tap="showname" v-if="!show" src="../../static/img/showpwd.png" class='m-eye' alt ></image>
+		<!-- <img @click="showname" v-if="show" src="../../static/img/nopwd.png" class='m-eye' alt />
+		<img @click="showname" v-if="!show" src="../../static/img/showpwd.png" class='m-eye' alt /> -->
 	</view>
 </template>
 <script>
@@ -98,8 +100,11 @@
 	}
 
 	.m-eye {
+		width: 24px;
+		height:24px;
 		position: absolute;
 		right: 5%;
+		z-index: 333;
 	}
 	.m-input-view text{
 		width: 93px;

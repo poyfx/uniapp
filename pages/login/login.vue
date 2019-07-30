@@ -44,6 +44,9 @@
 				}
 			}
 		},
+		onLoad() {
+			// console.log(getCurrentPages())
+		},
 		computed: {
 			...mapState(['hasLogin', 'userInfo'])
 		},
@@ -57,34 +60,32 @@
 				if (this.consumer.username != "" && this.consumer.username != null) {
 					if (this.consumer.password != "" && this.consumer.password != null) {
 						const that = this;
-
-						uni.request({
-							url: this.$https + 'user/login',
-							method: "GET",
-							header:{"Content-Type": "application/x-www-form-urlencoded",  },
-							data: {
-								username: this.consumer.username,
-								passwd: this.consumer.password
-							},
-							success: res => {
-								console.log(res)
-								const data = res.data;
-								const datas = data.value.user
-								if (data.errorCode == 0 && res.statusCode == 200) {
-									this.handeLogin(datas);
-									uni.switchTab({
-										url: '../index/index'
-									})
-								} else {
-									uni.showToast({
-										"title": data.message,
-										"icon": "none"
-									})
-								}
-
+						this.test.post('base/login', {
+							username: this.consumer.username,
+							passwd: this.consumer.password
+						}).then(res => {
+							console.log(res.data.value)
+							const data = res.data;
+							const datas = data.value
+							if (data.errorCode == 0 && res.statusCode == 200) {
+								this.handeLogin(datas);
+								uni.switchTab({
+									url: '../index/index'
+								})
+							} else {
+								uni.showToast({
+									"title": data.message,
+									"icon": "none"
+								})
 							}
-						});
-
+						}).catch(err => {
+							console.log(err)
+							uni.showToast({
+								title:err.errMsg,
+								icon:'none'
+							})
+						})
+					
 					} else {
 						return uni.showToast({
 							icon: "none",
@@ -141,7 +142,7 @@
 	.loginInfo {
 		display: flex;
 		justify-content: space-between;
-		font-size: 12px;
+		font-size: 24upx;
 		padding: 7px 11% 10px;
 	}
 

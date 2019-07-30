@@ -1,9 +1,8 @@
 
-.orderDate.data-v-78911f07 {
+.orderDate.data-v-7fc5bdd6 {
   padding: 10px 15px 24px;
 }
-.orderDate input.data-v-78911f07,
-.datetime.data-v-78911f07 {
+.orderDate input.data-v-7fc5bdd6, .datetimesty.data-v-7fc5bdd6{
   width: 100%;
   height: 42px;
   border: 1px solid #e5e5e5;

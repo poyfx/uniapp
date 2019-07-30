@@ -3,8 +3,8 @@
 		<view class="mContent">
 			<view class="harvest" v-for="(item,index) in info" :key="item.id">
 				<view class="harvest-name">
-					<view>{{item.name}}</view>
-					<view>{{item.phone}}</view>
+					<view>{{item.receiver}}</view>
+					<view>{{item.rephone}}</view>
 				</view>
 				<view class="harvest-address">
 					<view>{{item.address}}</view>
@@ -12,64 +12,77 @@
 				<view class="harvest-write">
 					<radio-group @change="sure">
 						<label class="radio">
-							<radio :value=item.value :checked="index === range" />设置为默认地址
+							<radio :value="String(item.is_default)"  :checked="index === range" />设置为默认地址
 						</label>
 					</radio-group>
-					<view class="operation">
+					<!-- 编辑修改地址 和删除地址 暂时不用 -->
+					<!-- <view class="operation">
 						<button type="defult" class="write" size="small" @tap="edit">编辑</button>
 						<button type="defult" class="write" size="small" @tap="delate">删除</button>
-					</view>
+					</view> -->
 				</view>
 			</view>
 
 		</view>
-		<view class="newaddress">
+		<!-- 新增地址暂时不用 -->
+		<!-- <view class="newaddress">
 			<button class="btn" @click="newadd">新增地址</button>
-		</view>
+		</view> -->
 	</view>
 </template>
 
 <script>
+	var that = this;
 	export default {
 		data() {
 			return {
-				info: [{
-						id: 1,
-						value: 'liyong',
-						name: '李勇',
-						phone: '1569886565',
-						address: '新华华书店'
-					},
-					{
-						id: 2,
-						name: '王子',
-						value: 'wangzi',
-						phone: '1569886565',
-						address: '阿华华书店'
-					}, {
-						id: 3,
-						name: '公主',
-						value: 'gongzhu',
-						phone: '1569886565',
-						address: '新世界华书店'
-					}
-				],
-				range: ''
+				info: [],
+				range: 0,
 			}
 		},
+		onLoad() {
+			// 页面加载获取后台地址数据
+			this.getAddressInfo()
+		},
 		methods: {
+			// 获取地址信息
+			getAddressInfo() {
+				this.test.post('user/getAddrList').then(res => {
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						this.info = res.data.value
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			},
+			// 确认默认地址
 			sure(e) {
-				console.log(e)
 				uni.showModal({
 					"title": "提示",
 					"content": '确认选择该地址为默认地址？',
 					success: res => {
 						if (res.confirm) {
 							for (let i = 0; i < this.info.length; i++) {
-								if (this.info[i].value === e.target.value) {
-									this.range = i
+								if (this.info[i].is_default == e.target.value) {
+									this.range = i;
+									console.log(this.info[i].id)
+									this.test.post("user/setDefaultAddr", {
+										 addr_id:this.info[i].id
+									}).then(res=>{
+										console.log(res)
+										if(res.statusCode == 200 && res.data.errorCode == 0){
+											uni.showToast({
+												title:'设置成功'
+											})
+										}
+									})
+									break;
 								}
 							}
+							// 点击取消
+						}else if(res.cancel){
+							this.info = '',
+							this.getAddressInfo()
 						}
 					}
 				})
@@ -79,8 +92,8 @@
 					url: 'newAddress/newAddress'
 				})
 			},
-			edit(){},
-			delate(){}
+			edit() {},
+			delate() {}
 		},
 	}
 </script>

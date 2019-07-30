@@ -8,6 +8,7 @@
     "pages/register/register",
     "pages/register/positive/positive",
     "pages/register/positive/positive1",
+    "pages/register/positive/positive2",
     "pages/info/info",
     "pages/info/userPhoneNumber/userPhoneNumber",
     "pages/info/apply/apply",
@@ -15,7 +16,7 @@
     "pages/info/harvestaddress/newAddress/newAddress",
     "pages/info/modify/modify",
     "pages/order/order",
-    "pages/order/oilByCompany/oilByCompany",
+    "pages/oilByCompany/oilByCompany",
     "pages/orderList/orderList",
     "pages/search/search",
     "pages/search/searchDateList/searchDateList",
@@ -26,9 +27,9 @@
     "pages/reserveOilList/reserveOilList",
     "pages/reserveOilList/confirmed/confirmed",
     "pages/reserveOilList/confirmed/oliCode/oliCode",
-    "pages/info/stayOil/stayOil"
+    "pages/info/stayOil/stayOil",
+    "pages/customer/customer"
   ],
-  "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "",
@@ -60,6 +61,6 @@
     "autoclose": false
   },
   "appname": "安徽石油",
-  "compilerVersion": "2.1.1",
+  "compilerVersion": "2.1.3",
   "usingComponents": {}
 }

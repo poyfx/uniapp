@@ -1,1 +1,1 @@
-<view><view class="flex m-info"><text>{{textValue}}</text><input type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}" value="{{value}}"/></view></view>
+<view><view class="flex m-info"><text>{{textValue}}</text><input type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}" data-event-opts="{{[['input',[['onInput',['$event']]]]]}}" value="{{value}}" bindinput="__e"/></view></view>

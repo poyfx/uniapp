@@ -136,7 +136,7 @@
 </template>
 
 <script>
-	import selects from '../../static/js/xfl-select.vue'
+	import selects from '../../common/js/xfl-select.vue'
 	export default {
 		data() {
 			return {

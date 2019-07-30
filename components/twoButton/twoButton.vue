@@ -21,6 +21,9 @@
 				this.$emit("lastStep");
 				this.$emit("nextStep");
 				this.$emit("threeStepLast");
+				this.$emit("threeStepNext");
+				this.$emit('fourStepLast');
+				this.$emit('fourStepNext');
 				this.$emit("sureBuy")
 			},
 		}

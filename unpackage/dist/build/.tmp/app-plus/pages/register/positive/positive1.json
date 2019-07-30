@@ -1,10 +1,15 @@
 {
   "titleNView": {
     "titleColor": "#666",
-    "titleText": "购油/提油授权资料",
+    "titleText": "购油授权资料",
     "backgroundColor": "#FFF",
     "fontWeight": "normal",
     "titleSize": "17px"
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "step": "/components/step/step",
+    "m-button": "/components/m-button",
+    "t-button": "/components/twoButton/twoButton",
+    "rui-date-picker": "/rattenking-dtpicker/rattenking-dtpicker"
+  }
 }

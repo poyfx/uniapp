@@ -14,7 +14,7 @@
 			</view>
 		</view>
 		<view class="flex m-apply" @tap="GoTakeApply">
-			<text>购油人权限</text>
+			<text>提油人权限</text>
 			<view class="flex never" v-show="!take">
 				<text>未申请</text>
 				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
@@ -27,32 +27,6 @@
 				<text>已拥有权限</text>
 			</view>
 		</view>
-		<!-- <mt-field label="购油人权限" readonly @click.native="GoBuyApply">
-			<view class="" v-show="!buy">
-				<text>未申请</text>
-				<img src="../../../static/img/right.png" class="never" alt>
-			</view>
-			<view class="" v-show="buy">
-				<label class="radio">
-					<radio value="r1" :checked="buy" />
-				</label>
-				<text>已拥有权限</text>
-			</view>
-
-		</mt-field>
-		<mt-field @click.native="GoTakeApply" label="提油人权限" readonly>
-			<view class="" v-show="!take">
-				<text>未申请</text>
-				<img src="../../../static/img/right.png" class="never" alt>
-			</view>
-
-			<view class="" v-show="take">
-				<label class="radio">
-					<radio value="r1" :checked="take" />
-				</label>
-				<text>已拥有权限</text>
-			</view>
-		</mt-field> -->
 	</view>
 </template>
 

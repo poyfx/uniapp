@@ -2,7 +2,7 @@
 	<view>
 		<view class="flex m-info" >
 			<text >{{textValue}}</text>
-			<input :type="type" :value="value" :placeholder="placeholder" :disabled="disabled"/>
+			<input :type="type" :value="value" :placeholder="placeholder" @input="onInput" :disabled="disabled"/>
 		</view>
 	</view>
 </template>
@@ -19,10 +19,13 @@
 			type:String,
 			value:String,
 			placeholder:String,
-			disabled:Boolean
+			disabled:Boolean,
 		},
 		methods: {
-			
+			onInput(e) {
+				this.$emit('input', e.target.value)
+				 // console.log(e.target.value)
+			}
 		}
 	}
 </script>

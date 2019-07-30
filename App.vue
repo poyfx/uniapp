@@ -1,31 +1,86 @@
 <script>
+	
+	import {
+		mapMutations,
+		mapState
+			} from 'vuex';
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			console.log('App Launch');
+			uni.getStorage({
+				key: 'userInfo',
+				success:(res) => {
+					// console.log(res)
+					// console.log(res.data)
+					this.login(res.data);
+					// 如果还需要重新校验或是想要刷新token的有效时间 就再联网请求一次
+					// uni.request({
+					// 	url: `${this.$serverUrl}/auth.php`,
+					// 	header: {
+					// 		"Content-Type": "application/x-www-form-urlencoded",
+					// 		"Token":res.data.token
+					// 	},
+					// 	data: {
+					// 		"username":res.data.user_name
+					// 	},
+					// 	method: "POST",
+					// 	success: (e) => {
+					// 		if (e.statusCode === 200 && e.data.code === 0) {
+					// 			this.login(e.data);
+					// 		}
+					// 	}
+					// })
+				}
+			});
 		},
 		onShow: function() {
 			console.log('App Show')
+		// 			if (this.hasLogin == false) {
+		// 				uni.showModal({
+		// 					title: '提示',
+		// 					content: '用户信息已失效，请重新登录',
+		// 					success: function(res) {
+		// 						if (res.confirm) {
+		// 							uni.navigateTo({
+		// 								url: '../login/login'
+		// 							})
+		// 						}else{
+		// 							uni.navigateTo({
+		// 								url: '../login/login'
+		// 							})
+		// 						}
+		// 					}
+		// 				})
+		// 
+		// 			}
 		},
 		onHide: function() {
 			console.log('App Hide')
 		},
-		created() {
-			global.isLogin = function(){
-				try{
-					// var id = uni.getStorageSync('id');
-					// var name = uni.getStorageSync("name")
-					var userInfo =uni.getStorageSync('userInfo')
-				}catch(e){
-					//TODO handle the exception
-				}
-				if(userInfo == ''){
-					return false
-				}else{
-					return [userInfo]
-				}
-			}
-			
-		}
+		// created() {
+		// 	global.isLogin = function(){
+		// 		try{
+		// 			// var id = uni.getStorageSync('id');
+		// 			// var name = uni.getStorageSync("name")
+		// 			var userInfo =uni.getStorageSync('userInfo')
+		// 		}catch(e){
+		// 			//TODO handle the exception
+		// 		}
+		// 		if(userInfo == ''){
+		// 			return false
+		// 		}else{
+		// 			return [userInfo]
+		// 		}
+		// 	}
+		// 	
+		// }
+		methods:{
+			...mapMutations(['login'])
+		},
+		computed: {
+			...mapState(["hasLogin", "userInfo"])
+		},
+		
 	}
 </script>
 

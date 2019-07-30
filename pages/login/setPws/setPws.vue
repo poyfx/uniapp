@@ -23,8 +23,8 @@
 				type: "primary",
 				setPassword: "",
 				newPassword: '',
-				username: '',
-				message: '',
+				username: '',//获取短信验证码传过来的username
+				message: '',//短信验证码
 			}
 		},
 		methods: {
@@ -34,29 +34,47 @@
 				if (this.setPassword !== '' && this.setPassword !== null) {
 					if (this.setPassword.length > 5) {
 						if (this.newPassword == this.setPassword) {
-							uni.request({
-								url:this.$https + 'user/forgetPwd/update',
-								data:{
-									username:this.username,
-									pswCode:this.message,
-									newPwd:this.newPassword
-								},
-								method:"GET",
-								header:{
-									"Content-Type": "application/x-www-form-urlencoded",
-								},
-								success:function(res){
-									uni.showToast({
-										"title":"修改成功",
-										"icon":"none",
-									})
-									setTimeout(function() {
-										uni.navigateTo({
-											url:'../login'
+							this.test.post('base/forgetPwd/update',{
+								username:this.username,
+								pswCode:this.message,
+								newPwd:this.newPassword
+							}).then(res=>{
+								console.log(res)
+								uni.showToast({
+											"title":"修改成功",
+											"icon":"none",
 										})
-									}, 1200)
-								}
+										setTimeout(function() {
+											uni.navigateTo({
+												url:'../login'
+											})
+										}, 1200)
+							}).catch(err=>{
+								console.log(err)
 							})
+							// uni.request({
+							// 	url:this.$https + 'user/forgetPwd/update',
+							// 	data:{
+							// 		username:this.username,
+							// 		pswCode:this.message,
+							// 		newPwd:this.newPassword
+							// 	},
+							// 	method:"GET",
+							// 	header:{
+							// 		"Content-Type": "application/x-www-form-urlencoded",
+							// 	},
+							// 	success:function(res){
+							// 		uni.showToast({
+							// 			"title":"修改成功",
+							// 			"icon":"none",
+							// 		})
+							// 		setTimeout(function() {
+							// 			uni.navigateTo({
+							// 				url:'../login'
+							// 			})
+							// 		}, 1200)
+							// 	}
+							// })
 						} else {
 							return uni.showToast({
 								"title": "两次密码不一致",

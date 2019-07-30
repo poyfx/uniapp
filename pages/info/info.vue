@@ -29,10 +29,10 @@
 			</view>
 			<view class="fget-num  bgcf borderRadius8 infoThree">
 				<view class="out">
-					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.apply" @toApply="toApply"></infoImg>
-					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.oilNum" @toStayOil="toStayOil"></infoImg>
-					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.address" @editAddress="editAddress"></infoImg>
-					<infoImg :type="info.type" :disabled="info.disabled" :textContent="info.editPsd" @toEditPsd="toEditPsd"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.apply" @toApply="toApply"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.oilNum" @toStayOil="toStayOil"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.address" @editAddress="editAddress"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.editPsd" @toEditPsd="toEditPsd"></infoImg>
 				</view>
 				<button class="safeout" @tap="outsafe">安全退出</button>
 			</view>
@@ -54,9 +54,9 @@
 				info: {
 					text1: '姓名',
 					userphone: '手机号',
-					compeny: "合肥城建",
+					compeny: '合肥城建',
 					usercity: '所在城市',
-					city: "合肥",
+					city: '合肥',
 					customer: '客户经理',
 					customerName: "李勇",
 					apply: '申请权限',
@@ -65,26 +65,53 @@
 					editPsd: '修改密码',
 					disabled: true,
 					type: 'text',
-					username: "",
-					phoneNum: "15877771111",
+					username: '',
+					phoneNum: '15877771111',
 				},
 				integral: '0'
 			}
 		},
-		created() {
-			this.getserinfo();
-			var res = global.isLogin();
-			if (!res) {
+		onShow() {
+// 			if (this.hasLogin == false) {
+// 				uni.showModal({
+// 					title: '提示',
+// 					content: '用户信息已失效，请重新登录',
+// 					success: function(res) {
+// 						if (res.confirm) {
+// 							uni.navigateTo({
+// 								url: '../login/login'
+// 							})
+// 						} else {
+// 							uni.navigateTo({
+// 								url: '../login/login'
+// 							})
+// 						}
+// 					}
+// 				})
+// 
+// 			};
+			const token = uni.getStorageSync('Token');
+			if (token == null || token == '' || token == undefined) {
 				uni.showModal({
-					title: '请重新登录',
-					content: '身份已过期，请重新登录',
+					title: '提示',
+					content: '用户信息已失效，请重新登录',
 					success: function(res) {
-						uni.navigateTo({
-							url: '../login/login'
-						})
+						if (res.confirm) {
+							uni.reLaunch({
+								url: '../login/login'
+							})
+						} else {
+							uni.reLaunch({
+								url: '../login/login'
+							})
+						}
 					}
 				})
 			}
+		},
+		onLoad(option) {
+			console.log(option)
+			this.getserinfo();
 
 		},
 
@@ -95,18 +122,18 @@
 				uni.getStorage({
 					key: "userInfo",
 					success: function(res) {
-						const data = JSON.parse(res.data)
-						console.log(data)
-						that.info.username = data.realname;
-						that.info.phoneNum = data.username
+						console.log(res.data)
+
+						that.info.username = res.data.user.realname;
+						that.info.phoneNum = res.data.user.username
 					}
 				})
 
 				// console.log(this.$store.state.userInfo)
 			},
-			toStayOil(){
+			toStayOil() {
 				uni.navigateTo({
-					url:'./stayOil/stayOil'
+					url: './stayOil/stayOil'
 				})
 			},
 			toApply() {
@@ -115,16 +142,19 @@
 				})
 
 			},
+			// 修改地址
 			editAddress() {
 				uni.navigateTo({
 					url: 'harvestaddress/harvestaddress'
 				})
 			},
+			//修改密码
 			toEditPsd() {
 				uni.navigateTo({
 					url: 'modify/modify'
 				})
 			},
+			//安全退出
 			outsafe() {
 				const that = this
 				console.log(this.hasLogin)
@@ -134,19 +164,16 @@
 						"content": "退出当前账号",
 						"success": function(res) {
 							if (res.confirm) {
-								that.handelOut();
-								uni.request({
-									url: that.$https + 'user/logout?',
-									method: "GET",
-									header: {
-										"Content-Type": "application/x-www-form-urlencoded",
-									},
-									success: function(res) {
-										console.log(res.data)
+								that.test.post('user/logout').then(res => {
+									console.log(res)
+									if (res.data.errorCode == 0 && res.statusCode) {
+										that.handelOut();
 										uni.navigateTo({
 											url: '../login/login'
 										})
 									}
+								}).catch(err => {
+									console.log(err)
 								})
 							} else if (res.cancel) {
 								return
@@ -167,7 +194,6 @@
 		components: {
 			infoText,
 			infoImg,
-
 		}
 	}
 </script>
@@ -176,7 +202,8 @@
 	.infoThree {
 		padding: 10px 0;
 	}
-	image{
+
+	image {
 		width: 25px;
 		height: 25px;
 	}

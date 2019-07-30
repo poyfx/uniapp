@@ -2,7 +2,7 @@
 .infoThree {
 	padding: 10px 0;
 }
-image{
+image {
 	width: 25px;
 	height: 25px;
 }

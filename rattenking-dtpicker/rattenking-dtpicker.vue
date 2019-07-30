@@ -213,9 +213,10 @@
 	  display: -webkit-flex;
 	  display: flex;
 	  align-items: center;
+	  justify-content: center;
 	  padding: 0 10px;
 	  box-sizing: border-box;
-	 /* border: 1px solid #aaa; */
+	/* border: 1px solid #e5e5e5; */
 	  border-radius: 3px;
 	}
 </style>

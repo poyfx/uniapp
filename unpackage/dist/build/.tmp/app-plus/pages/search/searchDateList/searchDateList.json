@@ -11,6 +11,6 @@
     ]
   },
   "usingComponents": {
-    "selects": "/static/js/xfl-select"
+    "selects": "/common/js/xfl-select"
   }
 }

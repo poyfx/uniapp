@@ -2,7 +2,7 @@
 	<view>
 		<view class="content">
 			<view class="fget-num paddingLeft15">
-				<infoImg :textContent="text.orderNumberText" :disabled="text.disabled" :value="values.orderNumber" :placeholder="text.orderNumberP"
+				<infoImg :imgText="text.orderNumberText" :disabled="text.disabled" :value="values.orderNumber" :placeholder="text.orderNumberP"
 				 @goOrderNumber="goOrderNumber"></infoImg>
 
 				<view class="flex  m-info">
@@ -22,7 +22,7 @@
 						<text>提油数量(吨)</text>
 						<input type="number" v-model="values.muchOil" :placeholder="text.muchOilText" />
 					</view>
-					<text class="allOil">全体</text>
+					<text class="allOil">全提</text>
 
 				</view>
 
@@ -58,7 +58,7 @@
 	import {
 		formatDate,
 		formatDateMin
-	} from "../../static/js/date.js";
+	} from "../../common/js/date.js";
 	import ruiDatePicker from '../../rattenking-dtpicker/rattenking-dtpicker.vue'
 	import infoText from '../../components/m-info-text/m-info-text'
 	import infoImg from '../../components/m-info-img/m-info-img'
@@ -278,4 +278,5 @@
 			bottom: -362px;
 		}
 	}
+	
 </style>

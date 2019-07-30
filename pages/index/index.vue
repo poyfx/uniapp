@@ -1,16 +1,16 @@
 <template>
 	<view class="mContent">
-		<banner></banner>
+		<banner :img="img"></banner>
 		<navs></navs>
 		<view class="main">
 			<view class="myManager">
 				<text class="line"></text>
 				<text class="title-p">我的客户经理</text>
 				<view class="managerNum">
-					<text class="manager">李勇</text>
+					<text class="manager">{{myManager}}</text>
 					<view class="call">
-						{{tel}}
-						<text class="numberBtn" @click="callPhone(tel)">通话</text>
+						{{managerTel}}
+						<text class="numberBtn" @click="callPhone(managerTel)">通话</text>
 					</view>
 				</view>
 			</view>
@@ -18,10 +18,34 @@
 		<view class="oilPrices">
 			<text class="line"></text>
 			<p class="title-p">当前油品批发价</p>
-			<view class="priceLi" v-for="item in datas" :key="item.id">
+			<view class="priceLi">
 				<view class="nowPrice">
-					<text>{{item.name}}</text>
-					<text class="price">{{item.price}}</text>
+					<text>0#柴油</text>
+					<text class="price">￥{{datas.diesel_0}}/吨</text>
+				</view>
+			</view>
+			<view class="priceLi">
+				<view class="nowPrice">
+					<text>-10#柴油</text>
+					<text class="price">￥{{datas.diesel_10}}/吨</text>
+				</view>
+			</view>
+			<view class="priceLi">
+				<view class="nowPrice">
+					<text>92#国六</text>
+					<text class="price">￥{{datas.gas_92}}/吨</text>
+				</view>
+			</view>
+			<view class="priceLi">
+				<view class="nowPrice">
+					<text>95#国六</text>
+					<text class="price">￥{{datas.gas_95}}/吨</text>
+				</view>
+			</view>
+			<view class="priceLi">
+				<view class="nowPrice">
+					<text>98#国六</text>
+					<text class="price">￥{{datas.gas_98}}/吨</text>
 				</view>
 			</view>
 		</view>
@@ -34,76 +58,76 @@
 <script>
 	import banner from '../../components/banner/banner'
 	import navs from '../../components/nav/nav'
+	import {
+		mapState,
+		mapActions
+	} from 'vuex'
 	export default {
 		data() {
 			return {
 				title: '',
-				tel: "15873222222",
-				myManager: '李勇',
-				datas: [{
-						id: 1,
-						name: "#92",
-						price: "$6000/吨"
-					},
-					{
-						id: 2,
-						name: "#92",
-						price: "$6000/吨"
-					},
-					{
-						id: 3,
-						name: "#92",
-						price: "$6000/吨"
-					},
-					{
-						id: 4,
-						name: "#92",
-						price: "$6000/吨"
-					},
-					{
-						id: 5,
-						name: "#92",
-						price: "$6000/吨"
-					},
-					{
-						id: 6,
-						name: "#92",
-						price: "$6000/吨"
-					},
-					{
-						id: 7,
-						name: "#92",
-						price: "$6000/吨"
-					}
-				],
+				managerTel: "",
+				myManager: '',
+				datas: [],
+				img: []
 			}
 		},
-		onLoad() {
-			var res = global.isLogin();
-			if (!res) {
+		onShow() {
+
+			const token = uni.getStorageSync('Token');
+			if (token == null || token == '' || token == undefined) {
 				uni.showModal({
-					title: '请重新登录',
-					content: '身份已过期，请重新登录',
+					title: '提示',
+					content: '用户信息已失效，请重新登录',
 					success: function(res) {
-						uni.navigateTo({
-							url: '../login/login'
-						})
+						if (res.confirm) {
+							uni.reLaunch({
+								url: '../login/login'
+							})
+						} else {
+							uni.reLaunch({
+								url: '../login/login'
+							})
+						}
 					}
 				})
 			}
 		},
+		onLoad() {
+			this.getInfo()
+		},
 		methods: {
+			getInfo() {
+				const that =this;
+				uni.getStorage({
+					key: 'userInfo',
+					success: function(res) {
+						console.log(res)
+						let price = res.data.oilPrize; //获取当前油价油价
+						that.datas = price;
+
+						let managerInfo = res.data.user;
+						that.myManager = managerInfo.manager_name; //客户经理信息
+						that.managerTel = managerInfo.manager_phone;
+
+						let images = res.data.banners; //banner图
+						that.img = images;
+						console.log(that.img)
+					}
+				})
+
+			},
 			callPhone(phoneNumber) {
 				console.log(phoneNumber)
 				uni.showModal({
 					title: "呼叫客户经理-" + this.myManager,
 					confirmText: '呼叫',
-					content:phoneNumber ,
+					content: phoneNumber,
 					success: function(res) {
 						if (res.confirm) {
 							// window.location.href = "tel:" +phoneNumber;
 							uni.makePhoneCall({
-								phoneNumber:phoneNumber
+								phoneNumber: phoneNumber
 							})
 						} else if (res.cancel) {
 							return
@@ -111,6 +135,9 @@
 					}
 				})
 			}
+		},
+		computed: {
+			...mapState(["hasLogin", "userInfo"])
 		},
 		components: {
 			banner,

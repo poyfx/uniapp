@@ -30,6 +30,61 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*每个页面公共css */
 uni-page-head .uni-page-head__title {
 	font-weight: 400;
@@ -157,8 +212,10 @@ input::-webkit-input-placeholdert{
 .paddingLeft15{
 	padding-left:15px ;
 }
-
-
+ 
+.mBotton{
+	margin-bottom: 50px;
+}
 .content {
 	margin: 0 auto;
 	padding-top: 15px;
@@ -418,7 +475,7 @@ input::-webkit-input-placeholdert{
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	color: #fff;
-	padding: 20px;
+	padding: 22px;
 	border-radius: 0 8px 8px 0;
 }
 
@@ -617,7 +674,7 @@ input {
 
 .step-box {
 	width: 90%;
-	margin: 5%;
+	margin: 0 5% 5%;
 	border-radius: 16px;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -630,18 +687,6 @@ input {
 	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
 }
-
-/* .step-box text{
-    width: 50px;
-    height: 50px;
-    font-size:12px; 
-    margin: 14px 14px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
-    color: #fff;
-    background-color: #CBCBCB;
-} */
 
 .positive {
 	width: 90%;
@@ -804,6 +849,8 @@ input {
 	color: #999;
 	text-align: center;
 	line-height: 44px;
+	position: fixed;
+	bottom: 0;
 }
 
 .loading image{
@@ -860,18 +907,18 @@ input {
 }
 
 .time {
-	font-size: 28px;
+	font-size: 56rpx;
 	color: #fff;
 }
 
 .timeOver {
-	font-size: 18px;
+	font-size: 36rpx;
 	color: #fff;
 }
 
 .detailsState .stateBox view {
 	line-height: 28px;
-	font-size: 14px;
+	font-size: 28rpx;
 }
 
 .detailsState .stateBox .state1 text {
@@ -880,7 +927,7 @@ input {
 
 .detailsState .stateBox .state2 text {
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 32rpx;
 }
 
 .discount {
@@ -904,11 +951,11 @@ input {
 }
 
 .discount view {
-	font-size: 17px;
+	font-size: 34rpx;
 }
 
 .discount text {
-	font-size: 16px;
+	font-size: 32px;
 	color: #FF0000;
 }
 
@@ -955,7 +1002,7 @@ input {
 }
 
 .pay view {
-	font-size: 16px;
+	font-size: 32rpx;
 	line-height: 28px;
 }
 
@@ -981,29 +1028,9 @@ input {
 	display: flex;
 }
 
-/* .m-input-view {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-bottom: 1px solid #e5e5e5;
-	}
-
-	.m-input {
-		width: 70%;
-		padding: 11px 15px;
-		border: none;
-		outline: none;
-	}
-
-	.m-eye {
-		position: absolute;
-		right: 5%;
-	}
-	.m-input-view text{
-		width: 80px;
-		padding: 10px;
-	} */
+.footmodel{
+	z-index: 999;
+}
 
 /* Cell Component */
 /* Header Component */

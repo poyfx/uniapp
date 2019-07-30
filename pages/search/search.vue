@@ -4,8 +4,10 @@
 			<view class="fget-num">
 				<view class="orderDate">
 					<view>选择日期</view>
-					 <ruiDatePicker class="datetime" fields="day" start="2010-00-00" end="2030-12-31" :value="values" @change="bindChange"></ruiDatePicker>
-
+					<view class="datetimesty">
+						 <ruiDatePicker class="datetime" fields="day" start="2010-00-00" end="2030-12-31" :value="values" @change="bindChange"></ruiDatePicker>
+					</view>
+					
 					<view>订单编号</view>
 					<input type="number" v-model="ordernumber" value>
 				</view>
@@ -23,7 +25,7 @@
 
 	import {
 		formatDate
-	} from "../../static/js/date.js";
+	} from "../../common/js/date.js";
 	import ruiDatePicker  from '../../rattenking-dtpicker/rattenking-dtpicker.vue'
 	import mButton from  '../../components/m-button.vue'
 	export default {
@@ -63,8 +65,9 @@
 .orderDate {
   padding: 10px 15px 24px;
 }
-.orderDate input,
-.datetime {
+
+	
+.orderDate input, .datetimesty{
   width: 100%;
   height: 42px;
   border: 1px solid #e5e5e5;

@@ -159,7 +159,6 @@
 			},
 			//选择油品
 			chooseOilShow() {
-
 				this.show = !this.show;
 			},
 			// 取消
@@ -167,13 +166,9 @@
 				this.mode = !this.mode;
 			},
 			chooseOne(val) {
-				const that = this;
-				setTimeout(function() {
-					console.log(val)
-					that.show = !that.show;
-					that.productOil = val.target.id;
-				}, 100);
-
+				console.log(val)
+					this.show = !this.show;
+					this.productOil = val.target.id;
 				//  this.$refs.chooseOne.className="modelmainActive"
 			},
 			pays(val) {

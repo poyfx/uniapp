@@ -2,38 +2,49 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
- const store = new Vuex.Store ({
-    state:{
-		userInfo:uni.getStorage({
-			key:"userInfo"
-		}),
-		hasLogin:false,
+const store = new Vuex.Store({
+	state: {
+		userInfo: {},
+		hasLogin: false, //未登录
+		Token:'',
+		photo:[]
 		// id:'',
 		// name:''
 		// realname:'',
 		// username:''
 	},
-    getters:{},
-    mutations:{
-		 login(state, provider) {  //改变登录状态
-		 console.log(provider)
-			 provider =JSON.stringify(provider)
-			 console.log(provider)
-            state.hasLogin = true;  
-            // state.token = provider.token;  
-            state.userInfo = provider.user;  
-            uni.setStorage({
-            	key:'userInfo',
-				data:provider
-            })
-        },  
-        logout(state) {  //退出登录
-            state.hasLogin = false;  
-            state.userInfo = {};  
-           uni.removeStorage({
-			   key:'userInfo'
-		   })
-        }  ,
+	getters: {},
+	mutations: {
+		login(state, provider) { //改变登录状态
+			 // console.log(provider)
+			state.hasLogin = true;
+			state.Token = provider.token;
+			state.userInfo = provider;
+			// state.userInfo.realname = provider.realname;
+			uni.setStorage({
+				key: 'Token',
+				data: provider.token
+			})
+			uni.setStorage({
+				key: 'userInfo',
+				data: provider
+			})
+		},
+		logout(state) { //退出登录
+			state.hasLogin = false;
+			state.userInfo = {};
+			state.Token = '',
+			uni.removeStorage({
+				key: 'userInfo'
+			}),
+			uni.removeStorage({
+				key: 'Token'
+			})
+		},
+		getPhoto(state,provider){
+			console.log(provider);
+			state.photo = provider
+		}
 		// setId(state,id){
 		// 	state.id = id;
 		// 	  uni.setStorageSync('id', id);
@@ -46,21 +57,28 @@ Vue.use(Vuex)
 		// 	state.username = username
 		// },
 	},
-    actions:{
-		handeLogin({commit},data){
-			
+	actions: {
+		handeLogin({
+			commit
+		}, data) {
+
 			// const datas = data.value.user;
-			commit('login',data)
+			commit('login', data)
 			// commit('setId',datas.user.id)
 			// commit('setRealname',datas.user.realname)
 			// commit('setUsername',datas.username)
 		},
-		handelOut({commit}){
+		handelOut({
+			commit
+		}) {
 			commit('logout')
+		},
+		handeGetPhoto({commit},data){
+			commit("getPhoto",data)
 		}
 	},
-    modules:{
-       
-    }
+	modules: {
+
+	}
 });
 export default store;

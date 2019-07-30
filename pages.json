@@ -88,7 +88,22 @@
 				"app-plus": {
 					"titleNView": {
 						"titleColor": "#666",
-						"titleText": "购油/提油授权资料",
+						"titleText": "购油授权资料",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "17px"
+					}
+
+				}
+
+			}
+		}, {
+			"path": "pages/register/positive/positive2",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#666",
+						"titleText": "提油授权资料",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
 						"titleSize": "17px"
@@ -187,7 +202,7 @@
 				}
 			}
 		}, {
-			"path": "pages/order/oilByCompany/oilByCompany",
+			"path": "pages/oilByCompany/oilByCompany",
 			"style": {
 				"app-plus": {
 					"titleNView": {
@@ -365,6 +380,18 @@
 				"titleNView": {
 					"titleColor": "#666",
 					"titleText": "订单油量",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+        }
+        ,{
+            "path" : "pages/customer/customer",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "选择客户经理",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
 					"titleSize": "17px"
