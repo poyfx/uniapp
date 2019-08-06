@@ -2,53 +2,67 @@
 	<view>
 		<view class="content">
 			<view class="fget-num paddingLeft15">
-				<!-- <mt-field label="开票公司" placeholder="XXXXXXXXXX公司" v-model="company"></mt-field>
-				<mt-field label="开票金额" placeholder="￥540000.00" v-model="money"></mt-field>
-				<mt-field label="发票拆分" readonly>
-					<mt-switch v-model="value" @change="showIncoice()"></mt-switch>
-				</mt-field> -->
-				<infoText :textValue="invoice.company" v-model="company"></infoText>
-				<infoText :textValue="invoice.money" v-model="money"></infoText>
-				<infoImg :textContent="invoice.type" :disabled="disabled" :value="types"></infoImg>
+				<infoText :textValue="invoice.company" v-model="invoice.company" :disabled="invoice.disabled"></infoText>
+				<infoText :textValue="invoice.money" v-model="invoice.money" :disabled="invoice.disabled"></infoText>
+				<view class="fget-eara flex invoiceType underline" @tap="chooseInvoice">
+					<view class="">
+						<text class="first-li" style="margin-right: 10px;">发票类型：</text>
+						<text>{{typeInvoice}}</text>
+					</view>
+					<image src="../../../static/img/right.png" style="width: 12px; height: 12px;" mode="aspectFit"></image>
+				</view>
 				<view class="flex invoiceSplit">
 					<text>发票拆分</text>
 					<switch @change="showIncoice" />
 				</view>
 			</view>
-			<view class="fget-num paddingLeft15" style="margin-top: 10px" v-show="show">
-				<!-- <mt-field label="拆分方式" placeholder="按数量"></mt-field>
-				<mt-field label="当前购油数量" :value="all"></mt-field> -->
-				<infoText :textValue="invoice.way" value="按数量" :disabled="disabled"></infoText>
-				<infoText :textValue="invoice.currentOil" v-model="currentOil" :disabled="disabled"></infoText>
+			<view class="fget-num paddingLeft15" style="margin-top: 10px;" v-show="show">
+				
+				<infoText :textValue="invoice.way" value="按数量" :disabled="invoice.disabled"></infoText>
+				<infoText :textValue="invoice.currentOil" v-model="currentOil" :disabled="invoice.disabled"></infoText>
 				<view class="underline">
 					<view class="first-li" style="padding:10px 0 15px 0px; color: #666;">拆分方案(单位:吨)</view>
 					<view class="splitNum">
 						<view class="invoiceMeth">
-							<input type="text" v-model="num" placeholder="0">
-							<!-- <img src="../../../static/img/add.png" @tap="add" alt> -->
-							<image src="../../../static/img/add.png" mode="aspectFit"></image>
+							<input type="number" v-model="num" placeholder="0">
+						
+							<image src="../../../static/img/add.png" @tap="add" mode="aspectFit"></image>
 						</view>
-						<view class="invoiceMeth">
-							<input type="text" v-model="num1" placeholder="0">
-							<!-- <img src="../../../static/img/move.png" alt> -->
-							<image src="../../../static/img/move.png" mode="aspectFit"></image>
+						<view class="invoiceMeth" v-for="(item,index) in list" :key="index">
+							<input type="text" v-model="item.nums" placeholder="0">
+						
+							<image src="../../../static/img/move.png" @tap="detal(index)" mode="aspectFit"></image>
 						</view>
 						<view v-show="move"></view>
 					</view>
 				</view>
-				<!-- <infoText :textValue="invoice.surplus" :value="surplusOil" :disabled="disabled"></infoText> -->
+				
 				<view class="flex m-info">
 					<text>{{invoice.surplus}}</text>
-					<input type="type" :value="surplusOil" :disabled="disabled" />
+					<input type="type" :value="surplusOil" :disabled="invoice.disabled" />
 				</view>
-				<!-- <mt-field label="剩余数量" placeholder="90.00000吨" v-model="surplus" style="border-top: 1px solid #e5e5e5;"></mt-field> -->
+				
 			</view>
 			<view class="m-two-btn mTop15">
-				<!-- <button @click="goDtails">无需发票</button>
-        <button class="blue" @click="invoiceSure">确 &nbsp; &nbsp; 认</button> -->
+				
 				<button class="tButton cal" @tap="cancelOrder">无需发票</button>
-				<tButton :type="btn.type" class="tButton" :content="btn.con2"></tButton>
+				<tButton :type="btn.type" class="tButton" :disabled="btn.disabled" :content="btn.con2" @invoiceSure="invoiceSure(invoice.currentOil)"></tButton>
 			</view>
+		</view>
+		<!-- 角色 -->
+		<view class="footmodel" v-show='invoiceTypes'>
+			<transition name="myanimate">
+				<view class="footermain">
+					<view class="modelmain">
+						<text>- 请选择发票类型 -</text>
+						<view @tap="invoiceType" id='增值税专用发票'>增值税专用发票</view>
+						<view @tap="invoiceType" id='增值税普通发票'>增值税普通发票</view>
+					</view>
+					<view class="modelfooter">
+						<view @tap="chooseUsersShow">取消</view>
+					</view>
+				</view>
+			</transition>
 		</view>
 	</view>
 </template>
@@ -63,44 +77,183 @@
 				btn: {
 					type: 'primary',
 					con2: '确认',
+					dsiabled: false
 				},
-				show: false,
+				show: false, //发票开关，默认关
 				value: false,
-				currentOil: "90",
-				num: "23",
-				num1: "28",
+				num: '', //第一个拆分数量
+				currentOil:'',
 				move: false,
-				company: 'xxxxxxxx公司',
-				money: '111111111',
-				types: '22222222',
-				disabled: true,
 				invoice: {
+					company: 'xxxxxxxx公司',
+					disabled: true,
+					money: '111111111',
+					placeholder: '22222222',
 					company: '开票公司',
 					money: '开票金额',
-					type: '发票类型',
+					types: '发票类型',
 					way: '拆分方式',
 					currentOil: '当前购油量',
 					surplus: '剩余未拆油量',
-				}
+				},
+				list: [],
+				ids: -1, //默认不需要发票
+				typeInvoice: '请选择发票类型',
+				invoiceTypes: false,
+				id: '',
+				invoiceNum: [],
 			}
 		},
+		onLoad(option) {
+			this.id = option.id;
+			this.currentOil = option.number;
+		},
 		methods: {
-			showIncoice() {
+			// 点击选择发票类型
+			chooseInvoice() {
+				this.invoiceTypes = !this.invoiceTypes
+			},
+			// 选择发票类型
+			invoiceType(e) {
+				console.log(e)
+				this.typeInvoice = e.target.id;
+				this.invoiceTypes = !this.invoiceTypes
+			},
+			// 点击取消选择
+			chooseUsersShow() {
+				this.invoiceTypes = !this.invoiceTypes
+			},
+			// 展开发票  
+			showIncoice(e) {
+				if (e.target.value) {
+					this.ids = 1; //
+				} else {
+					this.ids = -1
+				}
 				this.show = !this.show;
 			},
-			add() {},
-			cancelOrder() {}
+			// 点击加号添加一行
+			add() {
+				this.list.push({
+					nums: ''
+				})
+			},
+			// 点击减号删除一行
+			detal(val) {
+				this.list.splice(val, 1)
+			},
+			// 不需要发票
+			cancelOrder() {
+				this.test.post('order/make_invoice', {
+					id: this.id,
+					is_invoice: this.ids
+				}).then(res => {
+					console.log(res)
+				}).catch(err => {
+					console.log(err)
+				})
+			},
+			invoiceSure(invoiceAll) {
+				if (this.typeInvoice == "请选择发票类型") {
+					uni.showToast({
+						title: '请选择发票类型',
+						icon: 'none'
+					});
+				} else {
+					this.invoiceNum = [];
+					const that = this;
+					if (this.list.length == 0) {
+						this.invoiceNum.push(this.num)
+						this.invoiceNum = String(this.invoiceNum)
+					} else {
+						this.invoiceNum.push(this.num)
+
+						this.list.forEach(el => {
+							console.log(el)
+							that.invoiceNum.push(el.nums)
+
+						})
+						this.invoiceNum = String(this.invoiceNum)
+					}
+
+					console.log(this.invoiceNum)
+					if (this.ids == 1) {
+						if (this.invoiceNum !== '') {
+							if(this.surplusOil == 0){
+								this.test.post('order/make_invoice', {
+								id: this.id,
+								invoice_type: this.typeInvoice,
+								is_invoice: this.ids,
+								invoice_split: this.invoiceNum
+							}).then(res => {
+								console.log(res)
+							}).catch(err => {
+								console.log(err)
+							})
+							}else{
+								uni.showToast({
+									title:'发票拆分数量必须与当前油量一致',
+									icon:'none'
+								})
+							}
+							
+						}else{
+							uni.showToast({
+								title:'请填写拆分数量',
+								icon:'none'
+							})
+						}
+
+					} else if (this.ids == -1) {
+						this.test.post('order/make_invoice', {
+							id: this.id,
+							is_invoice: this.ids
+						}).then(res => {
+							console.log(res)
+						}).catch(err => {
+							console.log(err)
+						})
+					}
+				}
+			}
+
 		},
 		components: {
 			tButton,
 			infoImg,
 			infoText
 		},
+		watch: {
+			// 监听用户是否输入数量超过购买总数
+			surplusOil(newValue, oldValue) {
+				console.log(newValue, oldValue)
+				if (newValue < 0) {
+					this.btn.disabled = true;
+					uni.showToast({
+						title: '输入的数字不能超过总吨数',
+						icon: 'none'
+					})
+				} else {
+					this.btn.disabled = false;
+				}
+			},
+		},
 		computed: {
+			// 计算拆分发票油的数量
 			surplusOil() {
+				if (this.list.length === 0) {
+					return parseFloat(this.currentOil - this.num)
+				} else {
+					let sum = parseFloat(this.currentOil - this.num)
+					for (let i = 0; i < this.list.length; i++) {
+						sum = sum - this.list[i].nums;
+					}
+					return sum
+				}
 
-				return parseFloat(this.currentOil - this.num - this.num1)
-			}
+
+			},
+
 		}
 	}
 </script>
@@ -154,5 +307,13 @@
 
 	.m-info input {
 		flex: 1;
+	}
+
+	.invoiceType {
+		position: relative;
+		justify-content: space-between;
+		align-content: center;
+		align-items: center;
+		align-self: center;
 	}
 </style>

@@ -56,8 +56,20 @@ text{
  .mTop30{
 	 margin-top: 30px;
  }
+ .mTop10{
+	 margin-top: 10px;
+ }
  .color-dff{
 	 color: #009DFF;
+ }
+ .mB{
+	 margin-bottom: 20px;
+ }
+ .mB10{
+	 margin-bottom: 10px;
+ }
+ .pB10{
+	 padding-bottom: 10px;
  }
 .bgcf{
 	background-color: #fff;

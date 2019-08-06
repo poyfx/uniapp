@@ -1,133 +1,53 @@
 <template>
 	<view>
-		<view class="mContent">
+		<view class="mContent" style="margin-bottom: 50px;">
 			<view style="width: 120px;position: relative; left: 66%;">
 				<selects :list="list" :clearable="false" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
-				 :placeholder="'placeholder'" :initValue="'预约单状态'">
+				 :placeholder="'placeholder'" :initValue="'预约单状态'" @change="changeMsg">
 				</selects>
 			</view>
-			<view class="fget-num orderList" @click="reserveList">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state ">等待预约确认</text>
-						<text class="orderListState stay "></text>
-
+			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.order_sn)" v-for="item in oil" :key="item.reserve_id">
+				<view class="stateBox flex">
+					<view class="">
+						<view>
+							<text>订单编号：</text>
+							<text>{{item.order_sn}}</text>
+						</view>
+						<view>
+							<text>预约时间：</text>
+							<text>{{time}}</text>
+						</view>
+						<view>
+							<text>提油类型：</text>
+							<text>{{item.oil_type}}</text>
+						</view>
+						<view>
+							<text>购油数量：</text>
+							<text>{{item.extract_num}} &nbsp;吨</text>
+						</view>
+						<view>
+							<text>提油方式：</text>
+							<text v-if="item.get_type == 0">配送</text>
+							<text v-else>自提</text>
+						</view>
+						<view v-if="item.status==-1">
+							<text>拒绝原因：</text>
+							<text>油库没油</text>
+						</view>
 					</view>
-
-					<view>
-						订单编号：
-						<text>2817273654213</text>
-					</view>
-					<view>
-						预约时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						提油类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
-					</view>
-					<view>
-						提油方式：
-						<text>配送</text>
-					</view>
-				</view>
-			</view>
-			<view class="fget-num orderList" @click="complete">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state oc">已拒绝</text>
-					</view>
-					<view>
-						订单编号：
-						<text>2817273654213</text>
-					</view>
-					<view>
-						预约时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						提油数量：
-						<text>90.00000吨</text>
-					</view>
-					<view>
-						提油方式：
-						<text>配送</text>
-					</view>
-					<view>
-						原因
-						<text>油库没油了</text>
+					<view class="flex reserveStatus" style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
+						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
+						<text class="orderListState state " v-if="item.status==2 || item.status==4">预约已确认</text>
+						<text class="orderListState state " v-if="item.status==2 || item.status==4">待发油</text>
+						<text class="orderListState state " v-if="item.status==3 || item.status==5">已发油</text>
+						<text class="orderListState state " v-if="item.status==3 || item.status==5">待收油</text>
+						<text class="orderListState oc " v-if="item.status==-1">已拒绝</text>
+						<text class="orderListState state " v-if="item.status==9">已完成</text>
 					</view>
 				</view>
 			</view>
-			<view class="fget-num orderList">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state">待付款</text>
-						<text class="orderListState unit">单价:</text>
-						<text class="orderListState price">￥7900/吨</text>
-					</view>
-					<view>
-						订单编号：
-						<text>2817273654213</text>
-					</view>
-					<view>
-						下单时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
-					</view>
-					<!-- <view>
-            提油方式：
-            <text>配送</text>
-          </view> -->
-				</view>
-			</view>
-			<view class="fget-num orderList">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state">待付款</text>
-						<text class="orderListState unit">单价:</text>
-						<text class="orderListState price">￥7900/吨</text>
-					</view>
-					<view>
-						订单编号：
-						<text>2817273654213</text>
-					</view>
-					<view>
-						下单时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
-					</view>
-					<!-- <view>
-            提油方式：
-            <text>配送</text>
-          </view> -->
-				</view>
-			</view>
-
 		</view>
-		<view class="loading">
+		<view class="loading" @tap="Smore" v-show="more">
 			<view>
 				<img src="../../static/img/loading.png" alt> &nbsp; 点击加载更多...
 			</view>
@@ -141,48 +61,103 @@
 		data() {
 			return {
 				list: [{
-						value:"全部" ,
-						label: 1
+						value: "全部",
+						label: 0
 					},
 					{
-						value:"已拒绝" ,
-						label:2 
+						value: "已拒绝",
+						label: -1
 					},
 					{
-						value:"已发油",
-						label: 3 
-					},
-					{
-						value:  "已完成",
-						label:4
-					},
-					{
-						value: "预约已确定",
+						value: "已发油",
 						label: 5
 					},
 					{
+						value: "已完成",
+						label: 9
+					},
+					{
+						value: "预约已确定",
+						label: 4
+					},
+					{
 						value: "等待预约确定",
-						label:6 
+						label: 1
 					}
-				]
+				],
+				page: 1,
+				pageSize: 10,
+				oil: [], //所有订单
+				more:true,
+				status:'',
+				time:'',
 			}
 		},
+		onLoad() {
+			this.getReserveList();
+		},
 		methods: {
-			reserveList() {
+			getReserveList() {
+				this.test.post('order/search_reserve', {
+					order_sn: '',
+					status: this.status,
+					start_time: '',
+					end_time: '',
+					page: this.page,
+					pageSize: this.pageSize,
+				}).then(res => {
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						this.oil = res.data.value;
+						this.oil.forEach(el=>{
+							this.time = el.reserve_time
+							this.time = new Date(this.time + 8*3600*1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g, '-')
+						})
+							if (res.data.value.length < 10 && res.data.value.length > 0) {
+							this.more = false;
+						} else if (res.data.value.length == 0) {
+							this.more = false;
+							uni.showToast({
+								title: '没有更多了',
+								icon: "none",
+							})
+						};
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			},
+			reserveList(rId,oId) {
 				uni.navigateTo({
-					url:'confirmed/confirmed'
+					url: 'confirmed/confirmed?reserve_id='+rId+'&order_sn='+oId,
 				})
 			},
 			complete() {
 				// this.$router.push('/complete');
+			},
+			changeMsg(e){
+				this.page=1;
+				this.status = e.orignItem.label;
+				this.getReserveList();
+				
+			},
+			Smore(){
+				this.page += 1;
+				this.getReserveList();
 			}
 		},
-		components:{
+		onNavigationBarButtonTap(e) {
+			uni.navigateTo({
+				url: "../search/search?name=" + 'reserveOilList'
+			})
+		},
+		components: {
 			selects
 		}
 	}
 </script>
 
 <style>
-
+.reserveStatus text{
+	margin: 5px 0;
+}
 </style>

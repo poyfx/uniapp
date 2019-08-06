@@ -8,6 +8,7 @@
   },
   "usingComponents": {
     "t-button": "/components/twoButton/twoButton",
-    "m-button": "/components/m-button"
+    "m-button": "/components/m-button",
+    "w-picker": "/common/js/w-picker"
   }
 }

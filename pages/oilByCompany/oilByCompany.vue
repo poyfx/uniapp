@@ -14,7 +14,6 @@
 		</view>
 		<view class="loading" @tap="more">
 			<view>
-				<!-- <img src="/../static/img/loading.png" alt /> -->
 				<image src="/../static/img/loading.png" mode="aspectFit" style="width: 8px ;height: 8px;"></image>&nbsp; 点击加载更多...
 			</view>
 		</view>

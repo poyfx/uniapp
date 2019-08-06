@@ -4,7 +4,7 @@
     "buttons": [
       {
         "text": "搜索",
-        "fontSize": "28upx",
+        "fontSize": "14px",
         "float": "right",
         "id": "xiaoxi"
       }

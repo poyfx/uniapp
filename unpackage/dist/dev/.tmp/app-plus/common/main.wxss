@@ -197,8 +197,24 @@ input::-webkit-input-placeholdert{
 	 margin-top: 30px;
  }
  
+.mTop10{
+	 margin-top: 10px;
+ }
+ 
 .color-dff{
 	 color: #009DFF;
+ }
+ 
+.mB{
+	 margin-bottom: 20px;
+ }
+ 
+.mB10{
+	 margin-bottom: 10px;
+ }
+ 
+.pB10{
+	 padding-bottom: 10px;
  }
  
 .bgcf{
@@ -300,6 +316,8 @@ input::-webkit-input-placeholdert{
 	width: 100%;
 	margin-top: 10px;
 	border-radius: 8px;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
 }
 
 .main .myManager {
@@ -339,14 +357,30 @@ input::-webkit-input-placeholdert{
 
 /* 客户电话 */
 
-.managerNum {}
+.managerNum {
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+	margin-top:22px;
+}
 
-.title-p {
-	margin-bottom: 40rpx;
+.index-title {
+	margin-bottom: 10px;
 }
 
 .managerNum .manager {
-	font-size: 35rpx
+	margin-right: 10px;
 }
 
 .managerNum .call {
@@ -358,8 +392,8 @@ input::-webkit-input-placeholdert{
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
-	padding: 8px 0 0 0;
-	color: #999;
+	
+	color: #666;
 }
 
 .numberBtn {
@@ -394,6 +428,10 @@ input::-webkit-input-placeholdert{
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
+}
+
+.priceLi .titles text{
+	font-size: 12px;
 }
 
 .userIntegraltitle text{
@@ -437,7 +475,7 @@ input::-webkit-input-placeholdert{
 
 .userIntegral .orderNumber {
 	padding-right: 10px;
-	margin: 11px 0 11px 15px;
+	margin: 11px 0 11px 10px;
 }
 
 .orderNumber view {
@@ -475,7 +513,7 @@ input::-webkit-input-placeholdert{
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	color: #fff;
-	padding: 22px;
+	padding: 22px 0;
 	border-radius: 0 8px 8px 0;
 }
 
@@ -489,6 +527,10 @@ input::-webkit-input-placeholdert{
 }
 
 .userIntegral .integral text {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
 	color: #fff;
 }
 
@@ -674,7 +716,7 @@ input {
 
 .step-box {
 	width: 90%;
-	margin: 0 5% 5%;
+	margin: 15px 5% 5%;
 	border-radius: 16px;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -797,7 +839,7 @@ input {
 /* orderList */
 
 .orderList {
-	padding: 10px;
+	padding:0 10px;
 	position: relative;
 	margin: 10px 0;
 }
@@ -806,9 +848,55 @@ input {
 	padding: 5px 0;
 }
 
+.stateBox{
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.stateBox .state-right{
+	 -webkit-box-orient: vertical;
+	 -webkit-box-direction: normal;
+	 -webkit-flex-direction: column;
+	     -ms-flex-direction: column;
+	         flex-direction: column;
+	-webkit-box-align: end;
+	-webkit-align-items: flex-end;
+	    -ms-flex-align: end;
+	        align-items: flex-end;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.oilPrice{
+	 -webkit-box-orient: vertical;
+	 -webkit-box-direction: normal;
+	 -webkit-flex-direction: column;
+	     -ms-flex-direction: column;
+	         flex-direction: column;
+	-webkit-box-align: end;
+	-webkit-align-items: flex-end;
+	    -ms-flex-align: end;
+	        align-items: flex-end;
+	
+}
+
+.unit {
+	bottom: 45px;
+	font-weight: bold;
+}
+
+.price {
+	font-weight: bold;
+	bottom: 15px;
+}
+
 .stateBox .orderListState {
-	position: absolute;
-	right: 20px;
+	/* position: absolute;
+	right: 20px; */
 }
 
 /* top15 */
@@ -823,19 +911,9 @@ input {
 	top: 45px;
 }
 
-.unit {
-	bottom: 45px;
-	font-weight: bold;
-}
-
-.price {
-	font-weight: bold;
-	bottom: 15px;
-}
-
 /* 已拒绝颜色样式 */
 
-.stateBox .orderListoc,
+.stateBox 
 .oc {
 	color: #FD8E65
 }
@@ -917,26 +995,39 @@ input {
 }
 
 .detailsState .stateBox view {
-	line-height: 28px;
 	font-size: 28rpx;
+	padding: 3px 0;
 }
 
-.detailsState .stateBox .state1 text {
+.detailsState .stateBox .state1 view text {
 	color: #00A8FF;
 }
 
-.detailsState .stateBox .state2 text {
+.detailsState .stateBox .state2 view text {
 	font-weight: bold;
 	font-size: 32rpx;
 }
 
+.state1,.state2 {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+
 .discount {
-	width: 81px;
-	height: 53px;
+	/* width: 81px;
+	height: 53px; */
 	-webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
 	text-align: center;
-	padding: 3px 10px 20px;
+	padding: 5px 15px 10px;
 	-webkit-align-content: center;
 	    -ms-flex-line-pack: center;
 	        align-content: center;
@@ -955,7 +1046,7 @@ input {
 }
 
 .discount text {
-	font-size: 32px;
+	font-size: 32rpx;
 	color: #FF0000;
 }
 
@@ -1006,7 +1097,7 @@ input {
 	line-height: 28px;
 }
 
-.pay view text {
+.pay>view>view>text {
 	font-weight: bold;
 	color: #FD8E65;
 }
@@ -1032,6 +1123,104 @@ input {
 	z-index: 999;
 }
 
+.footmodel {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+	}
+
+.footmodel .modelmain view {
+		background-color: #fff;
+		padding: 13px;
+		text-align: center;
+		border-bottom: 1px solid #e5e5ee;
+		font-size: 18px;
+		color: #666;
+	}
+
+.footmodel .modelmain text {
+		display: block;
+		background-color: #fff;
+		padding: 13px;
+		text-align: center;
+		border-bottom: 1px solid #e5e5ee;
+		font-size: 18px;
+		color: #666;
+	}
+
+.footermain {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		-webkit-animation: show1 0.3s;
+		        animation: show1 0.3s;
+		border-radius: 8px 8px 0 0;
+	}
+
+.modelfooter {
+		width: 100%;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		margin-top: 6px;
+		background-color: #fff;
+
+		line-height: 50px;
+	}
+
+.modelfooter view {
+		width: 100%;
+		text-align: center;
+	}
+
+.footmodel .modelmain view:hover {
+		background-color: #e5e5e5;
+	}
+
+@-webkit-keyframes show1 {
+		0% {
+			bottom: -241px;
+		}
+
+		100% {
+			bottom: 0px;
+		}
+	}
+
+@keyframes show1 {
+		0% {
+			bottom: -241px;
+		}
+
+		100% {
+			bottom: 0px;
+		}
+	}
+
+@-webkit-keyframes leave {
+		100% {
+			bottom: 0px;
+		}
+
+		0% {
+			bottom: -362px;
+		}
+	}
+
+@keyframes leave {
+		100% {
+			bottom: 0px;
+		}
+
+		0% {
+			bottom: -362px;
+		}
+	}
 /* Cell Component */
 /* Header Component */
 /* Button Component */

@@ -1,163 +1,88 @@
 <template>
 	<view>
-		<view class="mContent">
-			<!-- <el-select v-model="value" size="mini" style="width:120px;left:66%">
-				<el-option v-for="item in options" :label="item.label" :value="item.value" :key="item.value"></el-option>
-			</el-select> -->
-			<view style="width: 120px;position: relative; left: 66%;">
+		<view class="mContent" style="margin-bottom: 50px; padding-top: 38px;">
+			<view class="times" v-show="day" style="position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
+			<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
 				<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
-				 :placeholder="'placeholder'" :initValue="'全部订单'">
+				 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
 				</selects>
 			</view>
-			<view class="fget-num orderList" @tap="orderDtails">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state ">等待价格</text>
-						<text class="orderListState stay ">待发油</text>
-						<text class="orderListState unit">单价:</text>
-						<text class="orderListState price">￥7900/吨</text>
+			<view class="fget-num orderList" v-for="item in info" :key='item.id'>
+				<view class="stateBox flex" @tap="orderDtails(item.status,item.id)">
+					<view class="state-left">
+						<view>
+							订单编号：
+							<text>{{item.order_sn}}</text>
+						</view>
+						<view>
+							下单时间：
+							<text>{{time}}</text><!--  -->
+						</view>
+						<view>
+							油品类型：
+							<text>{{item.oil_type}}</text>
+						</view>
+						<view>
+							购油数量：
+							<text>{{item.count}}</text>
+						</view>
+					</view>
+					<view class="state-right" v-if='item.status == 1'>
+						<view class="">
+							<text class="orderListState state ">等待价格</text>
+						</view>
 					</view>
 
-					<view>
-						订单编号：
-						<text>2817273654213</text>
+					<view class="state-right flex" v-else-if='item.status == 2'>
+						<view class="">
+							<text class="orderListState state ">已确认价格</text>
+						</view>
+						<view class="oilPrice flex">
+							<text class="orderListState unit">单价:</text>
+							<text class="orderListState price">￥7900/吨</text>
+						</view>
 					</view>
-					<view>
-						下单时间：
-						<text>2019-12-12 20:20</text>
+
+					<view class="state-right flex" v-else-if='item.status == 3'>
+						<view class="">
+							<text class="orderListState state ">待付款</text>
+						</view>
+						<view class="oilPrice flex">
+							<text class="orderListState unit">总金额:</text>
+							<text class="orderListState price">￥7900/吨</text>
+						</view>
 					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
+
+					<view class="state-right" v-if='item.status == -1'>
+						<view class="">
+							<text class="orderListState oc ">已取消</text>
+						</view>
 					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
+
+					<view class="state-right" v-if='item.status == 9'>
+						<view class="">
+							<text class="orderListState state ">已完成</text>
+						</view>
 					</view>
-					<!-- <view>
-            提油方式：
-            <text>配送</text>
-          </view> -->
-				</view>
-			</view>
-			<view class="fget-num orderList">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state">等待价格</text>
+
+					<view class="state-right" v-if='item.status == 4'>
+						<view class="">
+							<text class="orderListState state ">待确认收款</text>
+						</view>
 					</view>
-					<view>
-						订单编号：
-						<text>2817273654213</text>
+
+					<view class="state-right" v-if='item.status == 5'>
+						<view class="">
+							<text class="orderListState state ">待开票</text>
+						</view>
 					</view>
-					<view>
-						下单时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
-					</view>
-					<!-- <view>
-            提油方式：
-            <text>配送</text>
-          </view> -->
-				</view>
-			</view>
-			<view class="fget-num orderList">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state oc">已取消</text>
-					</view>
-					<view>
-						订单编号：
-						<text>2817273654213</text>
-					</view>
-					<view>
-						下单时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
-					</view>
-					<!-- <view>
-            提油方式：
-            <text>配送</text>
-          </view> -->
-				</view>
-			</view>
-			<view class="fget-num orderList">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state">待付款</text>
-						<text class="orderListState unit">单价:</text>
-						<text class="orderListState price">￥7900/吨</text>
-					</view>
-					<view>
-						订单编号：
-						<text>2817273654213</text>
-					</view>
-					<view>
-						下单时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
-					</view>
-					<!-- <view>
-            提油方式：
-            <text>配送</text>
-          </view> -->
-				</view>
-			</view>
-			<view class="fget-num orderList">
-				<view class="stateBox">
-					<view>
-						<text class="orderListState state">待付款</text>
-						<text class="orderListState unit">单价:</text>
-						<text class="orderListState price">￥7900/吨</text>
-					</view>
-					<view>
-						订单编号：
-						<text>2817273654213</text>
-					</view>
-					<view>
-						下单时间：
-						<text>2019-12-12 20:20</text>
-					</view>
-					<view>
-						油品类型：
-						<text>92#乙醇汽油</text>
-					</view>
-					<view>
-						购油数量：
-						<text>90.00000吨</text>
-					</view>
-					<!-- <view>
-            提油方式：
-            <text>配送</text>
-          </view> -->
 				</view>
 			</view>
 
+			<view class="loading" @tap="more" v-show="showMore">
+				<image src="../../static/img/loading.png" mode="aspectFit"></image> &nbsp; 点击加载更多...
+			</view>
 		</view>
-		<view class="loading">
-				<!-- <img src="" alt> --><image src="../../static/img/loading.png" mode="aspectFit"></image> &nbsp; 点击加载更多...
-		</view>
-	</view>
 	</view>
 </template>
 
@@ -168,42 +93,117 @@
 			return {
 				list: [{
 						value: "全部",
-						label: 1
+						label: 0
 					},
 					{
 						value: "已取消",
-						label: 2
+						label: -1
 					},
 					{
 						value: "已完成 ",
-						label: 3
+						label: 9
 					},
 					{
 						value: "待付款",
-						label: 4
+						label: 3
 					},
 					{
-						value: "已确认价格",
+						value: "待开票",
 						label: 5
 					},
 					{
-						value: "待财务确认收款",
-						label: 6
+						value: "已确认价格",
+						label: 2
+					},
+					{
+						value: "待确认收款",
+						label: 4
 					}
-				]
+				],
+				orderNumber: '', //订单编号
+				buyTime: '', //下单时间
+				oilType: '', //油品类型
+				count: '', //购买数量
+				info: [], //所有信息
+				page: 1,
+				pageSize: 10,
+				status: 0,
+				showMore: false,
+				day: '',
+				time:'',
 			}
 		},
+		onLoad(option) {
+			this.day = option.times;
+			this.orderNumber = option.ordernumber;
+			this.getOrderListInfo();
+		},
 		methods: {
-			orderDtails(){
-				uni.navigateTo({
-					url:'./orderDtails/orderDtails'
+			//获取订单列表信息
+			getOrderListInfo() {
+				if (this.day == undefined || this.day == '' || this.day == null) {
+					this.day = ''
+				};
+				if (this.orderNumber == undefined || this.orderNumber == '' || this.orderNumber == null) {
+					this.orderNumber = ''
+				};
+				this.test.post('order/search_order', {
+					start_time: this.day,
+					end_time: this.day,
+					status: this.status,
+					order_sn: this.orderNumber,
+					page: this.page,
+					pageSize: this.pageSize,
+				}).then(res => {
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						const data = res.data.value;
+						this.info = data;
+						this.info.forEach(el=>{
+							this.time = new Date(el.create_time+8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g, '-')
+						});
+						if (data.length >= 10) {
+							this.showMore = true;
+						} else if (data.length < 10 && data.length > 0) {
+							this.showMore = false;
+						} else if (data.length <= 0) {
+							this.showMore = false;
+							uni.showToast({
+								title: '没有数据了',
+								icon: "none"
+							})
+						};
+					}
+				}).catch(err => {
+					console.log(err)
 				})
 			},
+			orderDtails(status, id) {
+				if (status == 1) {
+					uni.showToast({
+						title: '价格正在计算中,请稍等',
+						icon: 'none'
+					})
+				} else {
+					uni.navigateTo({
+						url: './orderDtails/orderDtails?id=' + id
+					})
+				}
+
+			},
+			changeMsg(e) {
+				this.status = e.orignItem.label;
+				this.page = 1;
+				this.getOrderListInfo()
+			},
+			more() {
+				this.page += 1;
+				this.getOrderListInfo();
+			},
+
 		},
 		onNavigationBarButtonTap(e) {
-			console.log(e)
 			uni.navigateTo({
-				url: "../search/search"
+				url: "../search/search?name=" + 'orderList'
 			})
 		},
 		components: {
@@ -213,5 +213,15 @@
 </script>
 
 <style>
+	.loading {
+		left: 0;
+	}
 
+	.times {
+		display: inline-block;
+		border-radius: 5px;
+		padding: 4px 15px;
+		background-color: #fff;
+		text-align: center;
+	}
 </style>

@@ -41,11 +41,14 @@
 				consumer: {
 					username: '',
 					password: '',
-				}
+				},
+				status: '',
 			}
 		},
-		onLoad() {
+		onLoad(option) {
 			// console.log(getCurrentPages())
+			this.status = option.val;
+			this.showToasts()
 		},
 		computed: {
 			...mapState(['hasLogin', 'userInfo'])
@@ -81,11 +84,11 @@
 						}).catch(err => {
 							console.log(err)
 							uni.showToast({
-								title:err.errMsg,
-								icon:'none'
+								title: err.errMsg,
+								icon: 'none'
 							})
 						})
-					
+
 					} else {
 						return uni.showToast({
 							icon: "none",
@@ -98,6 +101,16 @@
 						title: "账号不能为空"
 					})
 				}
+			},
+			showToasts() {
+				if (this.status == 1) {
+				uni.showToast({
+						title: '注册已提交，审核成功后即可登录使用',
+						position: 'bottom',
+						icon: 'none'
+					});
+				}
+
 			}
 		},
 		...mapMutations(['login']),

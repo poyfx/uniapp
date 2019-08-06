@@ -27,7 +27,8 @@
 				this.$emit("sureModify");
 				this.$emit("search");
 				this.$emit("tell");
-				
+				this.$emit("commit");
+				this.$emit("close");
 			}
 		}
 	}

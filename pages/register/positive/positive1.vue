@@ -104,12 +104,14 @@
 				idCardF: '',
 				buyOil: '',
 				register: '',
-				img: []
+				img: [],
+				name: '',
 			}
 		},
-		onLoad() {
+		onLoad(option) {
 			this.register = uni.getStorageSync('register');
 			this.day = formatDate(new Date());
+			this.name = option.name
 		},
 		methods: {
 			all() {
@@ -135,13 +137,6 @@
 						success: function(res) {
 							console.log(res.tempFiles);
 							that.count = 2;
-							// pathToBase64(res.tempFilePaths).then(res => {
-							// 	console.log(res)
-							// 	that.idCardF = res;
-							// }).catch(err => {
-							// 	console.log(res)
-							// })
-							// that.idCardF = res.tempFilePaths;
 							that.img.push({
 								name: 'id_bphoto',
 								uri: res.tempFilePaths[0]
@@ -165,7 +160,7 @@
 				}
 
 			},
-		
+
 			// 第一步下一步
 
 			oneSide() {
@@ -177,7 +172,7 @@
 				this.src = two;
 				this.step.active = "step-ago",
 					this.step.kong = "step-active"
-				
+
 			},
 			//第二步上一步
 			lastStep() {
@@ -202,7 +197,7 @@
 				this.step.active = "step-ago",
 					this.step.kong = "step-ago"
 				this.step.kong1 = "step-active"
-		
+
 			},
 			//第三步上一步
 			threeStepLast() {
@@ -216,63 +211,116 @@
 			},
 
 			threeStepNext() {
-				console.log(this.register.role)
-				const imgs = this.img.map((value,index)=>{
-					return {
-						name:value.name,
-						uri:value.uri
-					}
-				})
-				if (this.count == 3) {
-					const that = this;
-					if (this.ifday == true) {
-						uni.uploadFile({
-							// url:'http://dev.pjy.name:8180/api/bizcust/base/registCusmter',
-							url: 'http://192.168.0.156:8080/api/bizcust/base/registCusmter',
-							 files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
-							fileType:'image',
-							filePath: '',
-							name: 'file',
-							formData: {
-								"username": this.register.userPhoneNum,
-								"passwd": this.register.newPwd2,
-								"role": this.register.role,
-								"customer_id": this.register.companyId,
-								"manager_id": this.register.customerId,
-								"realname": this.register.userName,
-								"id_card": this.register.userId,
-								"phone": this.register.userPhoneNum,
-								"city": this.register.userCity,
-							 // "id_fphoto": this.idCardZ[0],
-								// "id_bphoto": this.idCardF[0],
-								// "buy_auth_photo": this.buyOil[0],
-								// // "get_auth_photo": '',
-								 "buy_auth_exp": this.day,
-								//  "get_auth_exp": ''
-							},
-							success: res => {
-								console.log(res)
-								
-								uni.showToast({
-									title:res.data,
-									icon:'none'
-								})
-							}
-						})
-						
-					} else if (this.ifday == false) {
-						console.log(this.ifday)
+				if (this.name == "register") {
+					console.log(this.register.role)
+					const imgs = this.img.map((value, index) => {
+						return {
+							name: value.name,
+							uri: value.uri
+						}
+					})
+					if (this.count == 3) {
+						const that = this;
+						if (this.ifday == true) {
+							uni.uploadFile({
+
+								url: 'base/registCusmter',
+								files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
+								fileType: 'image',
+								filePath: '',
+								name: 'file',
+								formData: {
+									"username": this.register.userPhoneNum,
+									"passwd": this.register.newPwd2,
+									"role": this.register.role,
+									"customer_id": this.register.companyId,
+									"manager_id": this.register.customerId,
+									"realname": this.register.userName,
+									"id_card": this.register.userId,
+									"phone": this.register.userPhoneNum,
+									"city": this.register.userCity,
+									"buy_auth_exp": this.day,
+								},
+								success: res => {
+									if (res.statusCode == 200 && res.data.errorCode == 0) {
+										if (res.data.value == 1) {
+											uni.navigateTo({
+												url: '../../login/login?val=' + res.data.value,
+											});
+										} else {
+											uni.uni.showToast({
+												title: '用户已存在',
+												icon: 'none'
+											});
+										}
+
+									}
+								}
+							})
+
+						} else if (this.ifday == false) {
+							console.log(this.ifday)
+							return uni.showToast({
+								title: '请选择授权有效期',
+								icon: 'none'
+							})
+						}
+					} else {
 						return uni.showToast({
-							title: '请选择授权有效期',
+							title: '请上传购油授权书',
 							icon: 'none'
 						})
 					}
+					//申请提油人权限
 				} else {
-					return uni.showToast({
-						title: '请上传购油授权书',
-						icon: 'none'
+					console.log(this.register.role)
+					const imgs = this.img.map((value, index) => {
+						return {
+							name: value.name,
+							uri: value.uri
+						}
 					})
+					if (this.count == 3) {
+						const that = this;
+						if (this.ifday == true) {
+							uni.uploadFile({
+
+								url: 'user/oil_authorize',
+								files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
+								fileType: 'image',
+								filePath: '',
+								name: 'file',
+								formData: {
+									"role": 2,
+									"buy_auth_exp": this.day,
+								},
+								success: res => {
+									if (res.statusCode == 200 && res.data.errorCode == 0) {
+										if (res.data.value == 1) {
+											uni.showToast({
+												title: '申请成功，待审批',
+												icon: 'none'
+											})
+										}
+									}
+								}
+							})
+
+						} else if (this.ifday == false) {
+							console.log(this.ifday)
+							return uni.showToast({
+								title: '请选择授权有效期',
+								icon: 'none'
+							})
+						}
+					} else {
+						return uni.showToast({
+							title: '请上传购油授权书',
+							icon: 'none'
+						})
+					}
 				}
+
 			},
 			// 选择时间
 			changeTimes() {

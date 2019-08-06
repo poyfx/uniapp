@@ -178,7 +178,7 @@
 															if (_this.user == '购油人') {
 																this.info.role = 1;
 																uni.navigateTo({
-																	url: "positive/positive1" ,
+																	url: "positive/positive1?name="+"register" ,
 																	success: res => {
 																		uni.setStorage({
 																			key: 'register',
@@ -200,7 +200,7 @@
 															}else if( _this.user == '提油人'){
 																this.info.role = 2;
 																uni.navigateTo({
-																	url: "positive/positive2",
+																	url: "positive/positive2?name="+"register",
 																	success: res => {
 																		uni.setStorage({
 																			key: 'register',

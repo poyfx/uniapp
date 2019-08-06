@@ -1,1 +1,2 @@
+setCssToHead([".",[1],"loading { left: 0; }\n.",[1],"times { display: inline-block; border-radius: 5px; padding: 4px 15px; background-color: #fff; text-align: center; }\n",],undefined,{path:"./pages/orderList/orderList.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/orderList/orderList.wxml') } }));

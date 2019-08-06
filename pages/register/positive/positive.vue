@@ -312,10 +312,10 @@
 					this.step.kong2 = ''
 			},
 			fourStepNext() {
-					const imgs = this.img.map((value,index)=>{
+				const imgs = this.img.map((value, index) => {
 					return {
-						name:value.name,
-						uri:value.uri
+						name: value.name,
+						uri: value.uri
 					}
 				})
 				if (this.count == 4) {
@@ -340,29 +340,21 @@
 							},
 							success: res => {
 								console.log(res)
+								if (res.statusCode == 200 && res.data.errorCode == 0) {
+									if (res.data.value == 1) {
+										uni.navigateTo({
+											url: '../../login/login?val='+res.data.value,
+										});
+									} else {
+										uni.uni.showToast({
+											title: '用户已存在',
+											icon: 'none'
+										});
+									}
+
+								}
 							}
 						})
-						// this.test.post('base/registCusmter', {
-						// 	username: this.register.userPhoneNum,
-						// 	passwd: this.register.newPwd2,
-						// 	role: this.register.role,
-						// 	customer_id: this.register.companyId,
-						// 	manager_id: this.register.customerId,
-						// 	realname: this.register.userName,
-						// 	id_card: this.register.userId,
-						// 	phone: this.register.userPhoneNum,
-						// 	city: this.register.userCity,
-						// 	id_fphoto:'' ,//this.idCardZ
-						// 	id_bphoto:'' ,//this.idCardF
-						// 	buy_auth_photo:'' ,//this.buyOil
-						// 	get_auth_photo:'', //this.takeOil
-						// 	buy_auth_exp: this.day,
-						// 	get_auth_exp: this.days,
-						// }).then(res => {
-						// 	console.log(res)
-						// }).catch(err => {
-						// 	console.log(err)
-						// })
 					} else if (this.ifdays == false) {
 						return uni.showToast({
 							title: '请选择授权有效期',

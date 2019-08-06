@@ -9,6 +9,8 @@ Vue.config.productionTip = false
 
 
 
+
+
 // Vue.prototype.$https="http://dev.pjy.name:8170/api/bizcust/"
  Vue.prototype.$store = store  
  Vue.prototype.test = test

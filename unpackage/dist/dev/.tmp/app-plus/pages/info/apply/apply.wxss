@@ -20,10 +20,10 @@
 .m-apply image {
 	width: 12px;
 	height: 12px;
-	
+
 	margin-left: 10px;
 }
-.never{
+.never {
 	-webkit-box-pack: end;
 	-webkit-justify-content: flex-end;
 	    -ms-flex-pack: end;

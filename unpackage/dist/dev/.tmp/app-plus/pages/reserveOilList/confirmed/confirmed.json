@@ -1,14 +1,12 @@
 {
-  "navigationBarTitleText": "预约详情",
-  "titleNView": {
-    "buttons": [
-      {
-        "text": "提油码",
-        "fontSize": "28upx",
-        "float": "right",
-        "id": "xiaoxi"
-      }
-    ]
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 100,
+  "bounce": "none",
+  "titleNView": false,
+  "statusbar": {
+    "background": "black"
   },
   "usingComponents": {
     "step": "/components/step/step",

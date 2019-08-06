@@ -4,7 +4,6 @@ test.setConfig((config) => { /* 设置全局配置 */
 	let token = '';
 	try {
 		let st = uni.getStorageSync('Token');
-		console.log(st)
 		if (st) {
 			token = st
 		}

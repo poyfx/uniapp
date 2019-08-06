@@ -163,70 +163,72 @@
 </template>
 
 <script>
-	import selects from '../../../common/js/xfl-select.vue'
-	export default {
-		data() {
-			return {
-				list: [{
-						value: "全部",
-						label: 1
-					},
-					{
-						value: "已取消",
-						label: 2
-					},
-					{
-						value: "已完成",
-						label: 3
-					},
-					{
-						value: "已发油",
-						label: 4
-					},
-					{
-						value: "待付款",
-						label: 5
-					},
-					{
-						value: "等待价格",
-						label: 6
-					},
-					{
-						value: "待确认收款",
-						label: 7
-					}
-				],
-				arr: [],
-				day: ""
-			}
-		},
-		onLoad(option) {
-			this.day = option.times
-		},
-		methods: {
-orderDtails(){
-	uni.navigateTo({
-		url:"../../orderList/orderDtails/orderDtails"
-	})
-}
-		},
-		components: {
-			selects
-		},
-		onNavigationBarButtonTap(e) {
-			uni.navigateTo({
-				url: "../search"
-			})
-		}
-	}
+// 	import selects from '../../../common/js/xfl-select.vue'
+// 	export default {
+// 		data() {
+// 			return {
+// 				list: [{
+// 						value: "全部",
+// 						label: 1
+// 					},
+// 					{
+// 						value: "已取消",
+// 						label: 2
+// 					},
+// 					{
+// 						value: "已完成",
+// 						label: 3
+// 					},
+// 					{
+// 						value: "已发油",
+// 						label: 4
+// 					},
+// 					{
+// 						value: "待付款",
+// 						label: 5
+// 					},
+// 					{
+// 						value: "等待价格",
+// 						label: 6
+// 					},
+// 					{
+// 						value: "待确认收款",
+// 						label: 7
+// 					}
+// 				],
+// 				arr: [],
+// 				day: ""
+// 			}
+// 		},
+// 		onLoad(option) {
+// 			this.day = option.times
+// 			this.arr = option.data
+// 			console.log(JSON.stringify(this.arr))
+// 		},
+// 		methods: {
+// orderDtails(){
+// 	uni.navigateTo({
+// 		url:"../../orderList/orderDtails/orderDtails"
+// 	})
+// }
+// 		},
+// 		components: {
+// 			selects
+// 		},
+// 		onNavigationBarButtonTap(e) {
+// 			uni.navigateTo({
+// 				url: "../search"
+// 			})
+// 		}
+// 	}
 </script>
 
 <style>
-	.times {
+	/* .times {
 		display: inline-block;
 		border-radius: 5px;
 		padding: 4px 15px;
 		background-color: #fff;
 		text-align: center;
-	}
+	} */
 </style>
