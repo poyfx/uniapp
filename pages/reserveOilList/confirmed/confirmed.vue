@@ -7,7 +7,7 @@
 			<view class="flex title">
 				<image src="../../../static/img/back.png" mode="aspectFit" @tap="back"></image>
 				<view>预约详情</view>
-				<view>提油码</view>
+				<view v-show="status == 2 || status == 3 || status == 4 || status == 5" @tap="getCode">提油码</view>
 			</view>
 			<view>
 				<view class="step-box" v-if="status == 1 || status == 2 || status == 3 || status == 4 || status == 5">
@@ -80,19 +80,19 @@
 					value: '关闭'
 				},
 				disabled: true,
-				address: '1111', //提油地址
-				order: '111111', //预约单号
-				time: '111111', //预约时间
-				company: '111111', //提油单位
-				oil: '11', //油的类型
-				much: '111111', //油量
-				main: '111111111', //提油方式
-				status: '11111111', //预约状态
+				address: '', //提油地址
+				order: '', //预约单号
+				company: '', //提油单位
+				oil: '', //油的类型
+				much: '', //油量
+				main: '', //提油方式
+				status: '', //预约状态
 				right: true,
-				rId: '11111', //reserveId
-				oId: '1111111', //orderId
-				reserveInfo: '1111111111',
+				rId: '', //reserveId
+				oId: '', //orderId
+				reserveInfo: '',
 				showAddress: false,
+				time: '',
 			}
 		},
 		onLoad(option) {
@@ -116,6 +116,7 @@
 						this.much = String(this.reserveInfo.extract_num);
 						this.address = this.reserveInfo.ship_addr;
 						this.company = this.reserveInfo.org_name;
+						this.oil = this.reserveInfo.oil_type;
 						if (this.reserveInfo.get_type == 0) {
 							this.main = '配送'
 						} else {
@@ -155,22 +156,22 @@
 				})
 			},
 			back() {
-				uni.navigateTo({
+				uni.redirectTo({
 					url: '../reserveOilList'
 				})
 
-			}
+			},
+			getCode(){
+				uni.navigateTo({
+					url: "oliCode/oliCode"
+				})
+			},
 		},
 		components: {
 			step,
 			infoText,
 			mButton
 		},
-		onNavigationBarButtonTap(e) {
-			uni.navigateTo({
-				url: "oliCode/oliCode"
-			})
-		}
 	}
 </script>
 
@@ -191,7 +192,7 @@
 
 	.title {
 		width: 100%;
-		height:  44px;
+		height: 44px;
 		padding: 7px 3px;
 		box-sizing: border-box;
 		/* background-color: black; */
@@ -199,26 +200,25 @@
 		align-content: center;
 		align-items: center;
 		align-self: center;
-		/* background-color:rgba(255,255,255,0.5); */
-		justify-content: space-between;
-	}
-
-	.title image,
-	text {
-		align-content: center;
-		align-items: center;
-		align-self: center;
+		background-color: rgba(255, 255, 255, 1);
+		justify-content: center;
 	}
 
 	.title image {
 		width: 18px;
 		height: 18px;
 		margin-left: 5px;
+		position: absolute;
+		left: 8px;
 	}
 
-	.title text {
-		flex: 1;
-		font-size: 17px;
+	.title view {
+		font-size: 16px;
+	}
 
+	.title view:last-child {
+		font-size: 14px;
+		position: absolute;
+		right: 8px;
 	}
 </style>
