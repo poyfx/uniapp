@@ -55,6 +55,14 @@ text{
  }
  .mTop30{
 	 margin-top: 30px;
+	 
+ }
+ .mTop30p{
+ 	 margin-top: 30px;
+ 	 padding: 40px 26px 10px 15px;
+ }
+ .padding11{
+ 	 padding: 11px 26px 10px 15px
  }
  .mTop10{
 	 margin-top: 10px;
@@ -82,4 +90,10 @@ text{
 }
 .mBotton{
 	margin-bottom: 50px;
+}
+.oT{
+	color: #fd8e65;
+}
+.oL{
+	color: #00a8ff;
 }

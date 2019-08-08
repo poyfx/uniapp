@@ -1,36 +1,37 @@
 <template>
 	<view>
-		<view class="content" v-for="item in order" :key="item.id">
-			<view class="timeOut">
+		<view class="content">
+			<view class="timeOut" v-if="status == 2 || status == 3 || status == 4">
 				<!-- <timer endTime="172800" :callback="callback" endText="已经结束了"></timer> -->
-				<text class="time">00:00:00</text>
+				<text class="time">{{countDown}}</text>
 				<text class="timeOver">订单自动取消</text>
 			</view>
-			<view class="fget-num detailsState">
+			<view class="fget-num detailsState" :class="have? 'padding11' : 'mTop30p'" ref="detail">
 				<view class="stateBox">
 					<view class="state1 flex">
 						<text>订单状态：</text>
 						<view class="">
-							<text v-if="item.status == -1">已拒绝</text>
-							<text v-if="item.status == 2">已确认价格</text>
-							<text v-if="item.status == 3">待付款</text>
-							<text v-if="item.status == 4">待确认收款</text>
-							<text v-if="item.status == 5">待开票</text>
-							<text v-if="item.status == 9">已完成</text>
+							<text class="oT" v-if="status == -1">已取消</text>
+							<text class="oT" v-if="status == -2">超时已取消</text>
+							<text class="oL" v-if="status == 2">已确认价格</text>
+							<text class="oL" v-if="status == 3">待付款</text>
+							<text class="oL" v-if="status == 4">待确认收款</text>
+							<text class="oL" v-if="status == 5">待开票</text>
+							<text class="oL" v-if="status == 9">已完成</text>
 						</view>
 
 					</view>
 					<view class="state2 flex">
 						<text>当前价格：</text>
 						<view class="">
-							<text>{{oil_price}}</text>/吨
+							<text>{{order.oil_price}}</text>/吨
 						</view>
 
 					</view>
 					<view class="state2 flex">
 						<text>市场定价：</text>
 						<view class="">
-							<text>{{market_price}}</text>/吨
+							<text>{{order.market_price}}</text>/吨
 						</view>
 
 
@@ -56,7 +57,7 @@
 				<view class="orderDetails">
 					<view>
 						<text>订单编号：</text>
-						<text>{{item.order_sn}}</text>
+						<text>{{order.order_sn}}</text>
 					</view>
 					<view>
 						<text>下单时间：</text>
@@ -64,58 +65,62 @@
 					</view>
 					<view>
 						<text>购油单位：</text>
-						<text>{{item.org_name}}</text>
+						<text>{{order.org_name}}</text>
 					</view>
 					<view>
 						<text>油品类型：</text>
-						<text>{{item.oil_type}}</text>
+						<text>{{order.oil_type}}</text>
 					</view>
 					<view>
 						<text>购油数量：</text>
-						<text>{{item.count}}吨</text>
+						<text>{{order.count}}吨</text>
 					</view>
 					<view>
 						<text>提油方式：</text>
-						<text v-if="item.get_type ==0">配送</text>
+						<text v-if="order.get_type ==0">配送</text>
 					</view>
 					<view>
 						<text>送油地址：</text>
 
-						<text>{{item.ship_addr}}</text>
+						<text>{{order.ship_addr}}</text>
 					</view>
 				</view>
 			</view>
 			<view class="pay">
 				<view class="flex">
 					<text>配送金额：</text>
-					<view style="margin-left: 16px;"><text>￥100.00</text></view>
+					<view style="margin-left: 16px;"><text>￥{{delivery}}</text></view>
 				</view>
 				<view class="flex">
 					<text>油品总金额：</text>
 					<view class="">
-						<text>￥540000.00</text>
+						<text>￥{{oilPrice}}</text>
 					</view>
 
 				</view>
 				<view class="flex">
 					<text>订单总金额：</text>
 					<view class="">
-						<text>￥540100.00</text>
+						<text>￥{{orderPrice}}</text>
 					</view>
 
 				</view>
 			</view>
 
-			<view class="m-two-btn mTop15 mB" v-if="item.status ==2 || item.status ==3">
+			<view class="m-two-btn mTop15 mB" v-if="status ==2">
 				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
-				<tButton :type="type" class="tButton" :content="con2" @sureBuy="sureBuy(item.count)"></tButton>
+				<tButton :type="type" class="tButton" :content="con2" @sureBuy="sureBuy(order.count)"></tButton>
 			</view>
-			<view class=" nextBox mTop15 mB" v-else-if="item.status ==-1 || item.status ==9">
-				<mButton :type="btntype" :value="closed" @tell="closePage"></mButton>
+			<view class=" nextBox mTop15 mB" v-else-if="status ==-1 || status ==9 || status ==-2 || status ==5">
+				<mButton :type="type" :value="closed" @tell="closePage"></mButton>
 			</view>
 
-			<view class="nextBox mTop15 mB" v-else-if="item.status ==4  || item.status ==5">
-				<mButton :type="btntype" :value="btnValue" @tell="tell"></mButton>
+			<view class="m-two-btn mTop15 mB" v-else-if="status ==3  ">
+				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
+				<tButton :type="type" class="tButton" :content="btnValue" :disabled="disabled" @tell="tell"></tButton>
+			</view>
+			<view class="nextBox mTop15 mB" v-else-if="status ==4  ">
+				<mButton :type="type" :value="btnValue" :disabled="disabled" @tell="tell"></mButton>
 			</view>
 		</view>
 	</view>
@@ -124,6 +129,7 @@
 <script>
 	import tButton from '../../../components/twoButton/twoButton.vue'
 	import mButton from '../../../components/m-button.vue'
+	import {formatSeconds} from "../../../common/js/date.js"
 	// import wPicker from '../../../common/js/w-picker.js'
 	export default {
 		data() {
@@ -132,34 +138,59 @@
 				type: "primary",
 				con1: '取消订单',
 				con2: '确认购买',
-				btntype: 'primary',
 				btnValue: '确认已付款',
 				closed: '关闭',
 				dates: '2019-08-12 08:12',
 				rotate: false,
 				orderId: '', //订单ID
+				order_sn:'',
 				order: [],
-				time:'',
+				time: '',//下单时间
+				countDown:'',//倒计时
+				disabled: false,
+				have:'',
+				status:'',
+				delivery:'100',
 			}
 		},
 		onLoad(option) {
 			this.orderId = option.id;
+			this.status  = option.status;
+			this.order_sn = option.order_sn;
 			this.getOrderDtails();
+			if(this.status == -2 || this.status == -1 || this.status == 9 || this.status == 5){
+				 this.have = true
+				
+			} else{
+				 this.have = false
+			}
 		},
 		methods: {
 			getOrderDtails() {
-				this.test.post('order/query_OrderById', {
+				this.test.post('http://192.168.0.156:8080/api/bizcust/order/query_OrderById', {
 					id: this.orderId
 				}).then(res => {
+					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.order = res.data.value;
-						this.order.forEach(el=>{
-							this.time = new Date(el.create_time + 8*3600*1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g, '-')
-						})
+						this.time = new Date(this.order.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
+						const a = this.order.difference
+						this.cutDown(a)
+						
 					}
 				}).catch(err => {
 					console.log(err)
 				})
+			},
+			cutDown(time){
+				const that =this;
+				if(time == 0){
+					clearInterval()
+				}
+				setInterval(function(){
+					time -- ;
+					that.countDown =formatSeconds(time)
+				},1000)
 			},
 			sureBuy(num) {
 				uni.navigateTo({
@@ -167,6 +198,7 @@
 				})
 			},
 			tell() {
+				this.disabled = !this.disabled
 				uni.showToast({
 					title: "已提醒财务确认,请耐心等待",
 					icon: "none"
@@ -206,6 +238,14 @@
 			},
 			goRotate() {
 				this.rotate = !this.rotate
+			}
+		},
+		computed: {
+			oilPrice() {
+				return parseFloat(this.order.oil_price*this.order.count).toFixed(2)
+			},
+			orderPrice(){
+				return (parseFloat(this.oilPrice) + parseFloat(this.delivery)).toFixed(2)
 			}
 		},
 		components: {

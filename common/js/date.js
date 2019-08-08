@@ -29,3 +29,25 @@ export function formatDateMin (secs) {
     if (second < 10) { second = '0' + second }
     return year + '-' + month + '-' + date + ' ' + hour + ':' + minute 
 }
+
+export function formatSeconds(time){
+	var middle,hour,second,result;
+	result = [];
+	hour = 0;
+	middle = 0;
+	second = 0
+	if(time > 0){
+		hour = Math.floor(time/(60*60));
+		middle = Math.floor(time / 60) - (hour*60);
+		second = Math.floor(time) - (hour*60*60) - (middle*60);
+	}
+	if(hour <= 9) hour = '0' +hour;
+	if(middle<=9) middle = "0" + middle;
+	if(second<=9) second = "0"  + second;
+	
+	
+	result = hour + ':' + middle + ":" +second
+	
+	
+	return result;
+}

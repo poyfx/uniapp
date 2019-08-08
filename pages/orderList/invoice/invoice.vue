@@ -17,7 +17,7 @@
 				</view>
 			</view>
 			<view class="fget-num paddingLeft15" style="margin-top: 10px;" v-show="show">
-				
+
 				<infoText :textValue="invoice.way" value="按数量" :disabled="invoice.disabled"></infoText>
 				<infoText :textValue="invoice.currentOil" v-model="currentOil" :disabled="invoice.disabled"></infoText>
 				<view class="underline">
@@ -25,26 +25,26 @@
 					<view class="splitNum">
 						<view class="invoiceMeth">
 							<input type="number" v-model="num" placeholder="0">
-						
+
 							<image src="../../../static/img/add.png" @tap="add" mode="aspectFit"></image>
 						</view>
 						<view class="invoiceMeth" v-for="(item,index) in list" :key="index">
 							<input type="text" v-model="item.nums" placeholder="0">
-						
+
 							<image src="../../../static/img/move.png" @tap="detal(index)" mode="aspectFit"></image>
 						</view>
 						<view v-show="move"></view>
 					</view>
 				</view>
-				
+
 				<view class="flex m-info">
 					<text>{{invoice.surplus}}</text>
 					<input type="type" :value="surplusOil" :disabled="invoice.disabled" />
 				</view>
-				
+
 			</view>
 			<view class="m-two-btn mTop15">
-				
+
 				<button class="tButton cal" @tap="cancelOrder">无需发票</button>
 				<tButton :type="btn.type" class="tButton" :disabled="btn.disabled" :content="btn.con2" @invoiceSure="invoiceSure(invoice.currentOil)"></tButton>
 			</view>
@@ -82,7 +82,7 @@
 				show: false, //发票开关，默认关
 				value: false,
 				num: '', //第一个拆分数量
-				currentOil:'',
+				currentOil: '', //当前购油数量
 				move: false,
 				invoice: {
 					company: 'xxxxxxxx公司',
@@ -126,7 +126,7 @@
 			// 展开发票  
 			showIncoice(e) {
 				if (e.target.value) {
-					this.ids = 1; //
+					this.ids = 1; //需要发票
 				} else {
 					this.ids = -1
 				}
@@ -144,15 +144,21 @@
 			},
 			// 不需要发票
 			cancelOrder() {
-				this.test.post('order/make_invoice', {
+				this.test.post('http://192.168.0.156:8080/api/bizcust/order/make_invoice', {
 					id: this.id,
 					is_invoice: this.ids
 				}).then(res => {
 					console.log(res)
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						uni.redirectTo({
+							url: '../orderDtails/orderDtails?id=' + this.id
+						})
+					}
 				}).catch(err => {
 					console.log(err)
 				})
 			},
+			// 确认开票
 			invoiceSure(invoiceAll) {
 				if (this.typeInvoice == "请选择发票类型") {
 					uni.showToast({
@@ -179,37 +185,55 @@
 					console.log(this.invoiceNum)
 					if (this.ids == 1) {
 						if (this.invoiceNum !== '') {
-							if(this.surplusOil == 0){
+							if (this.surplusOil == 0) {
 								this.test.post('order/make_invoice', {
-								id: this.id,
-								invoice_type: this.typeInvoice,
-								is_invoice: this.ids,
-								invoice_split: this.invoiceNum
-							}).then(res => {
-								console.log(res)
-							}).catch(err => {
-								console.log(err)
-							})
-							}else{
+									id: this.id,
+									invoice_type: this.typeInvoice,
+									is_invoice: this.ids,
+									invoice_split: this.invoiceNum
+								}).then(res => {
+									console.log(res)
+									if (res.statusCode == 200 && res.data.errorCode == 0) {
+										uni.showToast({
+											title: '开票成功'
+										})
+										uni.redirectTo({
+											url: '../orderDtails/orderDtails?id=' + this.id
+										})
+									}
+								}).catch(err => {
+									console.log(err)
+								})
+							} else {
 								uni.showToast({
-									title:'发票拆分数量必须与当前油量一致',
-									icon:'none'
+									title: '发票拆分数量必须与当前油量一致',
+									icon: 'none'
 								})
 							}
-							
-						}else{
+
+						} else {
 							uni.showToast({
-								title:'请填写拆分数量',
-								icon:'none'
+								title: '请填写拆分数量',
+								icon: 'none'
 							})
 						}
 
 					} else if (this.ids == -1) {
-						this.test.post('order/make_invoice', {
+						this.test.post('http://192.168.0.156:8080/api/bizcust/order/make_invoice', {
 							id: this.id,
-							is_invoice: this.ids
+							invoice_type: this.typeInvoice,
+							is_invoice: this.ids,
+							invoice_split: this.currentOil,
 						}).then(res => {
 							console.log(res)
+							if (res.statusCode == 200 && res.data.errorCode == 0) {
+								uni.showToast({
+									title: '开票成功'
+								})
+								uni.redirectTo({
+									url: '../orderDtails/orderDtails?id=' + this.id
+								})
+							}
 						}).catch(err => {
 							console.log(err)
 						})

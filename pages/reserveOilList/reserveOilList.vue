@@ -1,17 +1,18 @@
 <template>
 	<view>
-		<view class="mContent" style="margin-bottom: 50px;">
-			<view style="width: 120px;position: relative; left: 66%;">
+		<view class="mContent" style="margin-bottom: 50px; padding-top: 38px;">
+			<view class="times" v-show="day" style="position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
+			<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
 				<selects :list="list" :clearable="false" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
 				 :placeholder="'placeholder'" :initValue="'预约单状态'" @change="changeMsg">
 				</selects>
 			</view>
-			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.order_sn)" v-for="item in oil" :key="item.reserve_id">
+			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.reserve_sn)" v-for="item in oil" :key="item.reserve_id">
 				<view class="stateBox flex">
 					<view class="">
 						<view>
 							<text>订单编号：</text>
-							<text>{{item.order_sn}}</text>
+							<text>{{item.reserve_sn}}</text>
 						</view>
 						<view>
 							<text>预约时间：</text>
@@ -91,21 +92,24 @@
 				more:true,
 				status:'',
 				time:'',
+				day:'',
 			}
 		},
-		onLoad() {
+		onLoad(option) {
+			this.day = option.times
 			this.getReserveList();
 		},
 		methods: {
 			getReserveList() {
 				this.test.post('order/search_reserve', {
-					order_sn: '',
+					reserve_sn: '',
 					status: this.status,
 					start_time: '',
 					end_time: '',
 					page: this.page,
 					pageSize: this.pageSize,
 				}).then(res => {
+					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.oil = res.data.value;
 						this.oil.forEach(el=>{
@@ -128,7 +132,7 @@
 			},
 			reserveList(rId,oId) {
 				uni.navigateTo({
-					url: 'confirmed/confirmed?reserve_id='+rId+'&order_sn='+oId,
+					url: 'confirmed/confirmed?reserve_id='+rId+'&reserve_sn='+oId,
 				})
 			},
 			complete() {

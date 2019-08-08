@@ -8,7 +8,7 @@
 				</selects>
 			</view>
 			<view class="fget-num orderList" v-for="item in info" :key='item.id'>
-				<view class="stateBox flex" @tap="orderDtails(item.status,item.id)">
+				<view class="stateBox flex" @tap="orderDtails(item.status,item.id,item.order_sn)">
 					<view class="state-left">
 						<view>
 							订单编号：
@@ -58,7 +58,11 @@
 							<text class="orderListState oc ">已取消</text>
 						</view>
 					</view>
-
+					<view class="state-right" v-if='item.status == -2'>
+						<view class="">
+							<text class="orderListState oc ">超时已取消</text>
+						</view>
+					</view>
 					<view class="state-right" v-if='item.status == 9'>
 						<view class="">
 							<text class="orderListState state ">已完成</text>
@@ -130,7 +134,7 @@
 				status: 0,
 				showMore: false,
 				day: '',
-				time:'',
+				time: '',
 			}
 		},
 		onLoad(option) {
@@ -141,6 +145,7 @@
 		methods: {
 			//获取订单列表信息
 			getOrderListInfo() {
+				const that = this;
 				if (this.day == undefined || this.day == '' || this.day == null) {
 					this.day = ''
 				};
@@ -155,11 +160,13 @@
 					page: this.page,
 					pageSize: this.pageSize,
 				}).then(res => {
+					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						const data = res.data.value;
 						this.info = data;
-						this.info.forEach(el=>{
-							this.time = new Date(el.create_time+8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g, '-')
+						this.info.forEach(el => {
+							this.time = new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,
+								'-')
 						});
 						if (data.length >= 10) {
 							this.showMore = true;
@@ -169,7 +176,11 @@
 							this.showMore = false;
 							uni.showToast({
 								title: '没有数据了',
-								icon: "none"
+								icon: "none",
+								success: function() {
+									that.page = 1
+									that.getOrderListInfo()
+								}
 							})
 						};
 					}
@@ -177,7 +188,7 @@
 					console.log(err)
 				})
 			},
-			orderDtails(status, id) {
+			orderDtails(status, id,order) {
 				if (status == 1) {
 					uni.showToast({
 						title: '价格正在计算中,请稍等',
@@ -185,7 +196,7 @@
 					})
 				} else {
 					uni.navigateTo({
-						url: './orderDtails/orderDtails?id=' + id
+						url: './orderDtails/orderDtails?id=' + id + '&order_sn='+order + '&status='+status
 					})
 				}
 

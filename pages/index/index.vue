@@ -249,6 +249,7 @@
 				uni.getStorage({
 					key: 'userInfo',
 					success: function(res) {
+						console.log(res)
 						let price = res.data.oilPrize; //获取当前油价油价
 						that.datas = price;
 						let managerInfo = res.data.user;

@@ -25,7 +25,8 @@
 				this.$emit('fourStepLast');
 				this.$emit('fourStepNext');
 				this.$emit("sureBuy");
-				this.$emit("invoiceSure")
+				this.$emit("invoiceSure");
+				this.$emit("tell")
 			},
 		}
 	}
