@@ -10,6 +10,7 @@
     "step": "/components/step/step",
     "m-button": "/components/m-button",
     "t-button": "/components/twoButton/twoButton",
-    "rui-date-picker": "/rattenking-dtpicker/rattenking-dtpicker"
+    "rui-date-picker": "/rattenking-dtpicker/rattenking-dtpicker",
+    "w-picker": "/components/w-picker/w-picker"
   }
 }

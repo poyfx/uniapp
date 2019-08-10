@@ -2,8 +2,8 @@
 	<view>
 		<view class="content">
 			<view class="fget-num paddingLeft15">
-				<infoText :textValue="invoice.company" v-model="invoice.company" :disabled="invoice.disabled"></infoText>
-				<infoText :textValue="invoice.money" v-model="invoice.money" :disabled="invoice.disabled"></infoText>
+				<infoText :textValue="invoice.company" v-model="company" :disabled="invoice.disabled"></infoText>
+				<infoText :textValue="invoice.moeny" v-model="moeny"></infoText>
 				<view class="fget-eara flex invoiceType underline" @tap="chooseInvoice">
 					<view class="">
 						<text class="first-li" style="margin-right: 10px;">发票类型：</text>
@@ -79,34 +79,42 @@
 					con2: '确认',
 					dsiabled: false
 				},
-				show: false, //发票开关，默认关
-				value: false,
-				num: '', //第一个拆分数量
-				currentOil: '', //当前购油数量
-				move: false,
 				invoice: {
 					company: 'xxxxxxxx公司',
 					disabled: true,
-					money: '111111111',
+					moeny: '111111111',
 					placeholder: '22222222',
 					company: '开票公司',
-					money: '开票金额',
+					moeny: '开票金额',
 					types: '发票类型',
 					way: '拆分方式',
 					currentOil: '当前购油量',
 					surplus: '剩余未拆油量',
 				},
-				list: [],
+				list: [],//拆分次数集合
 				ids: -1, //默认不需要发票
 				typeInvoice: '请选择发票类型',
 				invoiceTypes: false,
 				id: '',
-				invoiceNum: [],
+				invoiceNum: [],//拆分数量
+				show: false, //发票开关，默认关
+				value: false,
+				num: '', //第一个拆分数量
+				currentOil: '', //当前购油数量
+				move: false,
+				order_sn:'',
+				company:'',
+				status:'',
+				moeny:'',
 			}
 		},
 		onLoad(option) {
-			this.id = option.id;
-			this.currentOil = option.number;
+			this.id = option.id;//id
+			this.currentOil = option.number;//油量
+			this.order_sn = option.order_sn;//订单编号
+			this.company = option.company;//购油公司
+			this.status = option.status;//状态
+			this.moeny = option.moeny;//油价
 		},
 		methods: {
 			// 点击选择发票类型
@@ -144,14 +152,14 @@
 			},
 			// 不需要发票
 			cancelOrder() {
-				this.test.post('http://192.168.0.156:8080/api/bizcust/order/make_invoice', {
+				this.test.post('order/make_invoice', {
 					id: this.id,
 					is_invoice: this.ids
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						uni.redirectTo({
-							url: '../orderDtails/orderDtails?id=' + this.id
+							url: '../orderDtails/orderDtails?id=' + this.id + '&order_sn=' + this.order_sn + '&status=' + this.status
 						})
 					}
 				}).catch(err => {
@@ -198,7 +206,7 @@
 											title: '开票成功'
 										})
 										uni.redirectTo({
-											url: '../orderDtails/orderDtails?id=' + this.id
+											url: '../orderDtails/orderDtails?id=' + this.id + '&order_sn=' + this.order_sn + '&status=' + this.status
 										})
 									}
 								}).catch(err => {
@@ -219,7 +227,7 @@
 						}
 
 					} else if (this.ids == -1) {
-						this.test.post('http://192.168.0.156:8080/api/bizcust/order/make_invoice', {
+						this.test.post('order/make_invoice', {
 							id: this.id,
 							invoice_type: this.typeInvoice,
 							is_invoice: this.ids,
@@ -231,7 +239,7 @@
 									title: '开票成功'
 								})
 								uni.redirectTo({
-									url: '../orderDtails/orderDtails?id=' + this.id
+									url: '../orderDtails/orderDtails?id=' + this.id + '&order_sn=' + this.order_sn + '&status=' + this.status
 								})
 							}
 						}).catch(err => {

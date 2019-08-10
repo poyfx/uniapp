@@ -93,19 +93,27 @@
 				status:'',
 				time:'',
 				day:'',
+				reserve_sn:'',
 			}
 		},
 		onLoad(option) {
-			this.day = option.times
-			this.getReserveList();
+			this.reserve_sn = option.ordernumber;
+			this.day = option.times;
+			this.getReserveList(this.reserve_sn);
 		},
 		methods: {
 			getReserveList() {
+				if (this.day == undefined || this.day == '' || this.day == null) {
+					this.day = ''
+				};
+				if (this.reserve_sn == undefined || this.reserve_sn == '' || this.reserve_sn == null) {
+					this.reserve_sn = ''
+				};
 				this.test.post('order/search_reserve', {
-					reserve_sn: '',
+					reserve_sn: this.reserve_sn,
 					status: this.status,
-					start_time: '',
-					end_time: '',
+					start_time: this.day,
+					end_time: this.day,
 					page: this.page,
 					pageSize: this.pageSize,
 				}).then(res => {

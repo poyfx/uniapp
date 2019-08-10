@@ -77,15 +77,15 @@
 	background: rgba(0, 0, 0, 0.2);
 	color: #fff;
 }
-.oilCodeBtnAll{
+.oilCodeBtnAll {
 	width: 95%;
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
-.read{
+.read {
 	padding-left: 18px;
 }
-.read text{
+.read text {
 	font-size: 12px;
 }
 

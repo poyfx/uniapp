@@ -78,6 +78,7 @@
 					<view>
 						<text>提油方式：</text>
 						<text v-if="order.get_type ==0">配送</text>
+						<text v-if="order.get_type ==1">自提</text>
 					</view>
 					<view>
 						<text>送油地址：</text>
@@ -146,7 +147,7 @@
 				order_sn:'',
 				order: [],
 				time: '',//下单时间
-				countDown:'',//倒计时
+				countDown:'00:00:00',//倒计时
 				disabled: false,
 				have:'',
 				status:'',
@@ -167,7 +168,7 @@
 		},
 		methods: {
 			getOrderDtails() {
-				this.test.post('http://192.168.0.156:8080/api/bizcust/order/query_OrderById', {
+				this.test.post('order/query_OrderById', {
 					id: this.orderId
 				}).then(res => {
 					console.log(res)
@@ -194,7 +195,7 @@
 			},
 			sureBuy(num) {
 				uni.navigateTo({
-					url: "../invoice/invoice?id=" + this.orderId + '&number=' + num
+					url: "../invoice/invoice?id=" + this.orderId + '&number=' + num + '&order_sn=' + this.order_sn + '&status=' + this.status + '&company=' + this.order.org_name + '&moeny=' + this.oilPrice
 				})
 			},
 			tell() {
@@ -215,6 +216,9 @@
 								id: that.orderId
 							}).then(res => {
 								if (res.statusCode == 200 && res.data.errorCode == 0) {
+									uni.redirectTo({
+										url:'../orderList'
+									})
 									uni.showToast({
 										title: '取消订单成功',
 									})

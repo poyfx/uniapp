@@ -112,9 +112,9 @@
 				},
 				info: {
 					user: '',
-					role:'',
+					role: '',
 					company: '',
-					companyId:'',
+					companyId: '',
 					userName: '',
 					userId: '',
 					userPhoneNum: '',
@@ -177,34 +177,44 @@
 															console.log(_this.user)
 															if (_this.user == '购油人') {
 																this.info.role = 1;
-																uni.navigateTo({
-																	url: "positive/positive1?name="+"register" ,
-																	success: res => {
-																		uni.setStorage({
-																			key: 'register',
-																			data: this.info
+																uni.setStorage({
+																	key: 'register',
+																	data: this.info,
+																	success: function() {
+																		uni.navigateTo({
+																			url: "positive/positive1?name=" + "register",
+																			success: res => {
+
+																			}
 																		})
 																	}
 																})
+
 															} else if (_this.user == '购油人和提油人') {
 																this.info.role = 3;
-																uni.navigateTo({
-																	url: "positive/positive",
-																	success: res => {
-																		uni.setStorage({
-																			key: 'register',
-																			data: this.info
+																uni.setStorage({
+																	key: 'register',
+																	data: this.info,
+																	success: function() {
+																		uni.navigateTo({
+																			url: "positive/positive?name=" + "register",
+																			success: res => {
+																
+																			}
 																		})
 																	}
 																})
-															}else if( _this.user == '提油人'){
+															} else if (_this.user == '提油人') {
 																this.info.role = 2;
-																uni.navigateTo({
-																	url: "positive/positive2?name="+"register",
-																	success: res => {
-																		uni.setStorage({
-																			key: 'register',
-																			data: this.info
+																uni.setStorage({
+																	key: 'register',
+																	data: this.info,
+																	success: function() {
+																		uni.navigateTo({
+																			url: "positive/positive2?name=" + "register",
+																			success: res => {
+																
+																			}
 																		})
 																	}
 																})
@@ -296,7 +306,7 @@
 				this.showCompany = !this.showCompany;
 			},
 			// 选中公司
-			chooseCompany(e,id) {
+			chooseCompany(e, id) {
 				this.info.companyId = id;
 				this.info.company = this.datas[e].addr
 				this.showCompany = !this.showCompany
@@ -306,31 +316,31 @@
 				this.Cpage = 1
 				if (this.inputValue !== '' && this.inputValue !== null) {
 					this.getCompanyInfo()
-// 					this.test.post('base/listCustCompany', {
-// 						search: this.inputValue,
-// 						page: this.Cpage,
-// 						pageSize: this.pageSize,
-// 					}).then(res => {
-// 						console.log(res)
-// 
-// 						if (res.statusCode == 200 && res.data.errorCode == 0) {
-// 							console.log(res.data.value.length)
-// 							if (res.data.value.length < 10) {
-// 								this.Cmore = false
-// 							}
-// 							this.datas = res.data.value;
-// 							if (res.data.value.length === 0) {
-// 								uni.showToast({
-// 									title: '没有更多了',
-// 									icon: 'none'
-// 								})
-// 							}
-// 						} else {
-// 
-// 						}
-// 					}).catch(err => {
-// 						console.log(err)
-// 					})
+					// 					this.test.post('base/listCustCompany', {
+					// 						search: this.inputValue,
+					// 						page: this.Cpage,
+					// 						pageSize: this.pageSize,
+					// 					}).then(res => {
+					// 						console.log(res)
+					// 
+					// 						if (res.statusCode == 200 && res.data.errorCode == 0) {
+					// 							console.log(res.data.value.length)
+					// 							if (res.data.value.length < 10) {
+					// 								this.Cmore = false
+					// 							}
+					// 							this.datas = res.data.value;
+					// 							if (res.data.value.length === 0) {
+					// 								uni.showToast({
+					// 									title: '没有更多了',
+					// 									icon: 'none'
+					// 								})
+					// 							}
+					// 						} else {
+					// 
+					// 						}
+					// 					}).catch(err => {
+					// 						console.log(err)
+					// 					})
 				} else if (this.inputValue == '' && this.inputValue == null) {
 					this.getCompanyInfo()
 				}
@@ -348,8 +358,8 @@
 						console.log(res.data.value.length)
 						this.datas = res.data.value;
 						// if (res.data.value.length == 0) {} else
-							
-						 if (res.data.value.length < 10 && res.data.value.length > 0) {
+
+						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.Cmore = false;
 							uni.showToast({
 								title: '没有更多了',
@@ -379,7 +389,7 @@
 				this.showCoutomer = !this.showCoutomer;
 
 			},
-			chooseCustomers(e,id) {
+			chooseCustomers(e, id) {
 				this.info.customerId = id;
 				this.info.customer = this.datas[e].realname;
 				this.showCoutomer = !this.showCoutomer
@@ -389,27 +399,27 @@
 				this.page = 1;
 				if (this.value !== '' && this.value !== null) {
 					this.getCustomerInfo();
-// 					this.test.post('base/listCustManager', {
-// 						search: this.value,
-// 						page: this.page,
-// 						pageSize: this.pageSize,
-// 					}).then(res => {
-// 						console.log(res)
-// 						if (res.statusCode == 200 && res.data.errorCode == 0) {
-// 							// console.log(res.data.value.length)
-// 							this.datas = res.data.value;
-// 							if (res.data.value.length === 0) {
-// 								uni.showToast({
-// 									title: '没有更多了',
-// 									icon: 'none'
-// 								})
-// 							}
-// 						} else {
-// 
-// 						}
-// 					}).catch(err => {
-// 						console.log(err)
-// 					})
+					// 					this.test.post('base/listCustManager', {
+					// 						search: this.value,
+					// 						page: this.page,
+					// 						pageSize: this.pageSize,
+					// 					}).then(res => {
+					// 						console.log(res)
+					// 						if (res.statusCode == 200 && res.data.errorCode == 0) {
+					// 							// console.log(res.data.value.length)
+					// 							this.datas = res.data.value;
+					// 							if (res.data.value.length === 0) {
+					// 								uni.showToast({
+					// 									title: '没有更多了',
+					// 									icon: 'none'
+					// 								})
+					// 							}
+					// 						} else {
+					// 
+					// 						}
+					// 					}).catch(err => {
+					// 						console.log(err)
+					// 					})
 				} else if (this.inputValue == '' && this.inputValue == null) {
 					this.getCompanyInf()
 				}
@@ -426,15 +436,15 @@
 
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.datas = res.data.value;
-						 if (res.data.value.length < 10 && res.data.value.length>0) {
+						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
-						}else if (res.data.value.length == 0) {
+						} else if (res.data.value.length == 0) {
 							this.more = false;
-								uni.showToast({
+							uni.showToast({
 								title: '没有更多了',
 								icon: "none"
 							})
-						} 
+						}
 					}
 				}).catch(err => {
 					console.log(err)

@@ -67,7 +67,7 @@
 							username: this.consumer.username,
 							passwd: this.consumer.password
 						}).then(res => {
-							console.log(res.data.value)
+							console.log(res)
 							const data = res.data;
 							const datas = data.value
 							if (data.errorCode == 0 && res.statusCode == 200) {

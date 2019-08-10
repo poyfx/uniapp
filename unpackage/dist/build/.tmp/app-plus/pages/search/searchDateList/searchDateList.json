@@ -10,7 +10,5 @@
       }
     ]
   },
-  "usingComponents": {
-    "selects": "/common/js/xfl-select"
-  }
+  "usingComponents": {}
 }

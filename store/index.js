@@ -7,7 +7,8 @@ const store = new Vuex.Store({
 		userInfo: {},
 		hasLogin: false, //未登录
 		Token:'',
-		photo:[]
+		photo:[],
+		role:'',//角色
 		// id:'',
 		// name:''
 		// realname:'',
@@ -20,6 +21,7 @@ const store = new Vuex.Store({
 			state.hasLogin = true;
 			state.Token = provider.token;
 			state.userInfo = provider;
+			state.role = provider.user.role;
 			// state.userInfo.realname = provider.realname;
 			uni.setStorage({
 				key: 'Token',
@@ -29,6 +31,7 @@ const store = new Vuex.Store({
 				key: 'userInfo',
 				data: provider
 			})
+			
 		},
 		logout(state) { //退出登录
 			state.hasLogin = false;

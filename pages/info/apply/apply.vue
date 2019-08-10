@@ -47,7 +47,7 @@
 		},
 		methods: {
 			getJurisdiction() {
-				this.test.post('http://192.168.0.156:8080/api/bizcust/user/query_user_role').then(res => {
+				this.test.post('user/query_user_role').then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.role = res.data.value;

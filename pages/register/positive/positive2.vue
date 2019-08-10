@@ -22,10 +22,13 @@
 					<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;"
 					 v-model="inputs" />
 					<view class="" v-show="!times">
-						<ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"
-						 v-show="!times"></ruiDatePicker>
+						<view class="" @tap="changeTimes">
+							{{days}}
+						</view>
 					</view>
-
+					<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="onConfirm"
+					 ref="date" themeColor="#f00">
+					</w-picker>
 				</view>
 				<view class="flex m-info-text">
 					<image src="../../../static/img/right.png" mode="aspectFit" style="width: 12px; height: 12px;"></image>
@@ -34,15 +37,15 @@
 			</view>
 
 		</view>
-		<view class="mTop30" v-show="btn.stepOne">
+		<view class="mTop30 mB" v-show="btn.stepOne">
 			<mButton :type="btn.type" :value="btn.value" @oneSide="oneSide"></mButton>
 		</view>
 
-		<view class="m-two-btn mTop30" v-show="btn.stepTwo">
+		<view class="m-two-btn mTop30 mB"  v-show="btn.stepTwo">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @lastStep="lastStep" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @nextStep="nextStep" :content="btn.value"></tButton>
 		</view>
-		<view class="m-two-btn mTop30" v-show="btn.stepThree">
+		<view class="m-two-btn mTop30 mB" v-show="btn.stepThree">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepLast="threeStepLast" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepNext="threeStepNext" :content="btn.commit"></tButton>
 		</view>
@@ -57,10 +60,13 @@
 	import step from '../../../components/step/step'
 	import mButton from '../../../components/m-button.vue'
 	import tButton from '../../../components/twoButton/twoButton'
-	import ruiDatePicker from '../../../rattenking-dtpicker/rattenking-dtpicker.vue'
+	import wPicker from "@/components/w-picker/w-picker.vue";
 	import {
 		formatDate
 	} from "../../../common/js/date.js";
+	import {
+		mapState,
+	} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -102,12 +108,17 @@
 				img: [],
 				inputs: '',
 				name: '',
+				mode: 'date', //时间
+				// resultInfo: {
+				// 	result: "2019-12-20 10:00:00"
+				// }
 			}
 		},
 		onLoad(option) {
 			this.register = uni.getStorageSync('register');
-			this.day = formatDate(new Date());
-			this.name = option.name
+			// this.day = formatDate(new Date());
+			console.log(this.register)
+			this.name = option.name;
 		},
 		methods: {
 			all() {
@@ -163,6 +174,7 @@
 			// 第一步下一步
 
 			oneSide() {
+				console.log(this.register.role)
 				if (this.count == 1) {
 					this.btn.stepOne = false;
 					this.btn.stepTwo = true;
@@ -222,6 +234,7 @@
 			},
 
 			threeStepNext() {
+
 				if (this.name == "register") {
 					const imgs = this.img.map((value, index) => {
 						return {
@@ -248,20 +261,34 @@
 
 									"get_auth_exp": this.days
 								},
-								success: res => {
-									if (res.statusCode == 200 && res.data.errorCode == 0) {
-										if (res.data.value == 1) {
+								success: function(res) {
+									// console.log(res)
+									// console.log(res.data)
+									// console.log(res.data.errorCode)
+									// console.log(res.data.message)
+									var data = JSON.parse(res.data)
+									console.log(data)
+									if (res.statusCode == 200) {
+										if (data.errorCode == 10109) {
+											uni.showToast({
+												"title":data.message
+											})
+											uni.removeStorage({
+												key: 'register'
+											})
 											uni.navigateTo({
-												url: '../../login/login?val=' + res.data.value,
+												url: '../../login/login?val=' + data.value,
 											});
-										} else {
-											uni.uni.showToast({
-												title: '用户已存在',
-												icon: 'none'
-											});
-										}
 
+										} else {
+											uni.showToast({
+												"title":data.message,
+												"icon": 'none'
+											});
+
+										}
 									}
+
 								}
 							})
 						} else if (this.ifdays == false) {
@@ -276,9 +303,8 @@
 							icon: 'none'
 						})
 					}
-				} else {
-
-					console.log(this.register.role)
+				} else if (this.name == "apply") {
+					// console.log(this.register.role)
 					const imgs = this.img.map((value, index) => {
 						return {
 							name: value.name,
@@ -287,32 +313,61 @@
 					})
 					if (this.count == 3) {
 						const that = this;
-						if (this.ifday == true) {
+						if (this.ifdays == true) {
+							console.log(1)
 							uni.uploadFile({
-
-								url: 'user/oil_authorize',
+								url: 'http://dev.pjy.name:8180/api/bizcust/user/oil_authorize',
 								files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 								fileType: 'image',
-								filePath: '',
-								name: 'file',
+								header:{
+									"Token":this.Token,
+									"Content-Type" : "multipart/form-data"
+								},
 								formData: {
 									"role": 2,
 									"buy_auth_exp": this.days,
 								},
-								success: res => {
-									if (res.statusCode == 200 && res.data.errorCode == 0) {
-										if (res.data.value == 1) {
+								success: function(res) {
+									// console.log(res)
+									// console.log(res.data)
+									// console.log(res.data.errorCode)
+									// console.log(res.data.message)
+									var data = JSON.parse(res.data)
+									console.log(data)
+									if (res.statusCode == 200) {
+										if (data.errorCode == 10109) {
 											uni.showToast({
-												title: '申请成功，待审批',
-												icon: 'none'
+												"title":data.message
 											})
+											uni.removeStorage({
+												key: 'register'
+											})
+											uni.navigateTo({
+												url: '../../../info/info?val=' + data.value,
+											});
+
+										} else {
+											uni.showToast({
+												"title":data.message,
+												"icon": 'none'
+											});
+
 										}
 									}
+
 								}
+									// if (res.statusCode == 200 && res.data.errorCode == 0) {
+									// 	if (res.data.value == 1) {
+									// 		uni.showToast({
+									// 			title: '申请成功，待审批',
+									// 			icon: 'none'
+									// 		})
+									// 	}
+									// }
+						
 							})
 
-						} else if (this.ifday == false) {
-							console.log(this.ifday)
+						} else {
 							return uni.showToast({
 								title: '请选择授权有效期',
 								icon: 'none'
@@ -330,17 +385,22 @@
 			// 选择时间
 			changeTimes() {
 				this.times = false
+				this.$refs.date.show();
 			},
-			bindChange(val) {
-				this.days = val;
+			onConfirm(val) {
+				this.days = val.result;
+				// this.resultInfo = val;
 				this.ifdays = true
 			},
+		},
+		computed: {
+			...mapState(['Token'])
 		},
 		components: {
 			step,
 			mButton,
 			tButton,
-			ruiDatePicker
+			wPicker
 		}
 	}
 </script>

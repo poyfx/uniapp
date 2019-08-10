@@ -1,1 +1,2 @@
+setCssToHead([".",[1],"loading { left: 0; }\n",],undefined,{path:"./pages/orderList/orderList.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/orderList/orderList.wxml') } }));

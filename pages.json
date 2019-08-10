@@ -228,11 +228,11 @@
 							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
 							// 	},
 							{
-
 								"text": "搜索",
-								"fontSize": "14px",
+								"fontSize": "15px",
 								"float": "right", //靠右第一个
-								"id": "xiaoxi"
+								"width": "46px",
+								"color":"#666"
 								//"redDot": true //默认图标按钮右上角有红色点状标志
 							}
 						]

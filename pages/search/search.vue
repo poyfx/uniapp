@@ -12,7 +12,7 @@
 					</view>
 
 					<view>订单编号</view>
-					<input type="number" v-model="ordernumber" value>
+					<input type="text" v-model="ordernumber" value>
 				</view>
 			</view>
 			<view class="nextBox">
@@ -53,6 +53,7 @@
 				this.date = val.detail.value
 			},
 			search() {
+				if(this.date == '请选择时间') this.date = '';
 				if (this.name == "orderList") {
 					this.test.post('order/search_order', {
 						order_sn: this.ordernumber, //订单编号
@@ -61,6 +62,7 @@
 						page: this.page,
 						pageSize: this.pageSize,
 					}).then(res => {
+						console.log(res)
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							if (res.data.value.length <= 0) {
 								uni.showToast({
@@ -79,7 +81,7 @@
 					})
 				} else if (this.name == "reserveOilList") {
 					this.test.post('order/search_reserve', {
-						order_sn: this.ordernumber, //订单编号
+						reserve_sn: this.ordernumber, //订单编号
 						start_time: this.date,
 						end_time: this.date,
 						page: this.page,

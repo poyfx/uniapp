@@ -3,7 +3,7 @@
 		<!-- 轮播图 -->
 		<banner :img="img"></banner>
 		<!-- 导航 -->
-		<navs></navs>
+		<navs :role='roles'></navs>
 		<!-- 天气 -->
 		<view class="sy-weather">
 			<view class="weather-left">
@@ -47,13 +47,13 @@
 					<text class="line"></text>
 					<text class="title-p">当前油品批发价</text>
 				</view>
-				<text>{{date}}</text>
+				<text class="paddingRight15">{{date}}</text>
 			</view>
 			<view class="priceLi">
-				<view class="nowPrice titles">
+				<view class="flex titles">
 					<text>油品名称</text>
 					<text>价格(元/吨)</text>
-					<text>涨跌幅</text>
+					<text class="paddingRight15">涨跌幅</text>
 				</view>
 			</view>
 			<view class="priceLi">
@@ -114,13 +114,13 @@
 					<text class="line"></text>
 					<text class="title-p">地炼价格行情</text>
 				</view>
-				<text>{{date}}</text>
+				<text  class="paddingRight15">{{date}}</text>
 			</view>
 			<view class="priceLi">
-				<view class="nowPrice titles">
+				<view class="flex titles">
 					<text>油品名称</text>
 					<text>价格(元/吨)</text>
-					<text>涨跌幅</text>
+					<text class="paddingRight15">涨跌幅</text>
 				</view>
 			</view>
 			<view class="priceLi">
@@ -153,13 +153,13 @@
 					<text class="line"></text>
 					<text class="title-p">国际原油价格</text>
 				</view>
-				<text>{{date}}</text>
+				<text class="paddingRight15">{{date}}</text>
 			</view>
 			<view class="priceLi">
-				<view class="nowPrice titles">
+				<view class="flex titles">
 					<text>油品名称</text>
 					<text>价格(元/吨)</text>
-					<text>涨跌幅</text>
+					<text class="paddingRight15">涨跌幅</text>
 				</view>
 			</view>
 			<view class="priceLi">
@@ -203,6 +203,7 @@
 				myManager: '',
 				datas: [],
 				img: [],
+				roles:this.role,
 				address: '',
 				city: '深圳',
 				district: '龙华区',
@@ -217,6 +218,7 @@
 		},
 		onShow() {
 			//获取token
+			this.roles = this.role;
 			const token = uni.getStorageSync('Token');
 			if (token == null || token == '' || token == undefined) {
 				uni.showModal({
@@ -384,7 +386,7 @@
 			}
 		},
 		computed: {
-			...mapState(["hasLogin", "userInfo"])
+			...mapState(["hasLogin", "userInfo","role"])
 		},
 		components: {
 			banner,
@@ -398,11 +400,8 @@
 		display: flex;
 		justify-content: space-between
 	}
-
-
-	.price {
-		font-size: 35upx;
-		font-weight: bold;
+	.nowPrice:first-child>text{
+		width: 62px;
 	}
 
 	.index-title {

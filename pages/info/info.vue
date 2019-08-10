@@ -158,6 +158,7 @@
 			outsafe() {
 				const that = this
 				console.log(this.hasLogin)
+				uni.clearStorage()
 				if (this.hasLogin) {
 					uni.showModal({
 						"title": '提示',

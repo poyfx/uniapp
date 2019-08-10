@@ -1,1 +1,2 @@
+setCssToHead([".",[1],"reserveStatus wx-text{ margin: 5px 0; }\n",],undefined,{path:"./pages/reserveOilList/reserveOilList.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/reserveOilList/reserveOilList.wxml') } }));

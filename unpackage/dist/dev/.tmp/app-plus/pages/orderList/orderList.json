@@ -4,9 +4,10 @@
     "buttons": [
       {
         "text": "搜索",
-        "fontSize": "14px",
+        "fontSize": "15px",
         "float": "right",
-        "id": "xiaoxi"
+        "width": "46px",
+        "color": "#666"
       }
     ]
   },

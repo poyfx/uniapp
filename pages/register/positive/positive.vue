@@ -24,7 +24,15 @@
 					<text>授权书有效期</text>
 					<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
 					<view class="" v-show="!times">
-						<ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"></ruiDatePicker>
+						<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"></ruiDatePicker> -->
+						<view class="" v-show="!times">
+							<view class="" @tap="changeTimes">
+								{{day}}
+							</view>
+						</view>
+						<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="onConfirm"
+						 ref="date" themeColor="#f00">
+						</w-picker>
 					</view>
 
 				</view>
@@ -36,9 +44,17 @@
 			<view class="flex  m-info" v-show="btn.dates">
 				<view class="flex center m-info-content">
 					<text>授权书有效期</text>
-					<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
-					<view class="" v-show="!times">
-						<ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="days" @change="bindChanges"></ruiDatePicker>
+					<input placeholder="请选择,需与授权书的有效日期一致" v-show="timess" @tap="changeTime" disabled="true" style="width: 222px; height: 37.5px;" />
+					<view class="" v-show="!timess">
+						<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="days" @change="bindChanges"></ruiDatePicker> -->
+						<view class="" v-show="!timess  ">
+							<view class="" @tap="changeTime">
+								{{days}}
+							</view>
+						</view>
+						<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="onConfirms"
+						 ref="date1" themeColor="#f00">
+						</w-picker>
 					</view>
 
 				</view>
@@ -50,18 +66,18 @@
 
 		</view>
 
-		<view class="mTop30" v-show="btn.stepOne">
+		<view class="mTop30 mB" v-show="btn.stepOne">
 			<mButton :type="btn.type" :value="btn.value" class="mTop30" @oneSide="oneSide"></mButton>
 		</view>
-		<view class="m-two-btn mTop30" v-show="btn.stepTwo">
+		<view class="m-two-btn mTop30 mB" v-show="btn.stepTwo">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @lastStep="lastStep" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @nextStep="nextStep" :content="btn.value"></tButton>
 		</view>
-		<view class="m-two-btn mTop30" v-show="btn.stepThree">
+		<view class="m-two-btn mTop30 mB" v-show="btn.stepThree">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepLast="threeStepLast" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepNext="threeStepNext" :content="btn.value"></tButton>
 		</view>
-		<view class="m-two-btn mTop30" v-show="btn.stepFour">
+		<view class="m-two-btn mTop30 mB" v-show="btn.stepFour">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @fourStepLast="fourStepLast" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @fourStepNext="fourStepNext" :content="btn.commit"></tButton>
 		</view>
@@ -77,6 +93,7 @@
 	import mButton from '../../../components/m-button.vue'
 	import tButton from '../../../components/twoButton/twoButton'
 	import ruiDatePicker from '../../../rattenking-dtpicker/rattenking-dtpicker.vue'
+	import wPicker from "@/components/w-picker/w-picker.vue";
 	import {
 		formatDate
 	} from "../../../common/js/date.js";
@@ -117,17 +134,20 @@
 				num: 0,
 				count: 0,
 				src: one,
-				day: '2019-01-01', //购油有效期
-				days: '2019-01-01', //提油有效期
+
 				ifday: false,
 				ifdays: false,
 				times: true,
+				timess: true,
 				idCardZ: '',
 				idCardF: '',
 				buyOil: '',
 				takeOil: '',
 				register: '',
-				img: []
+				img: [],
+				mode: 'date', //时间
+				day: '2019-01-01', //购油有效期
+				days: '2019-01-01', //提油有效期
 				// photo: false
 			}
 		},
@@ -135,7 +155,7 @@
 			this.register = uni.getStorageSync('register');
 
 			console.log(this.register)
-			this.day = formatDate(new Date());
+			// this.day = formatDate(new Date());
 		},
 		methods: {
 			all() {
@@ -209,6 +229,7 @@
 
 			// 第一步下一步
 			oneSide() {
+				console.log(this.register.role)
 				console.log(this.count)
 				if (this.count == 1) {
 					this.btn.stepOne = false;
@@ -318,10 +339,12 @@
 						uri: value.uri
 					}
 				})
+				
 				if (this.count == 4) {
 					if (this.ifdays == true) {
 						uni.uploadFile({
 							url: 'http://dev.pjy.name:8180/api/bizcust/base/registCusmter',
+							// url: 'http://192.168.0.156:8080/api/bizcust/base/registCusmter',
 							files: imgs,
 							// filePath: this.idCardZ[0],
 							// name: 'file',
@@ -338,20 +361,28 @@
 								"buy_auth_exp": this.day,
 								"get_auth_exp": this.days
 							},
-							success: res => {
-								console.log(res)
-								if (res.statusCode == 200 && res.data.errorCode == 0) {
-									if (res.data.value == 1) {
+							success: function(res) {
+								var data = JSON.parse(res.data)
+								console.log(data)
+								if (res.statusCode == 200) {
+									if (data.errorCode == 10109) {
+										uni.showToast({
+											"title": data.message
+										})
+										uni.removeStorage({
+											key: 'register'
+										})
 										uni.navigateTo({
-											url: '../../login/login?val='+res.data.value,
+											url: '../../login/login?val=' + data.value,
 										});
-									} else {
-										uni.uni.showToast({
-											title: '用户已存在',
-											icon: 'none'
-										});
-									}
 
+									} else {
+										uni.showToast({
+											"title": data.message,
+											"icon": 'none'
+										});
+
+									}
 								}
 							}
 						})
@@ -370,14 +401,20 @@
 			},
 			// 选择时间
 			changeTimes() {
-				this.times = false
+				this.times = false;
+				this.$refs.date.show();
 			},
-			bindChange(val) {
-				this.day = val;
+			changeTime() {
+				this.timess = false;
+				this.$refs.date1.show();
+			},
+			onConfirm(val) {
+				console.log(val)
+				this.day = val.result;
 				this.ifday = true
 			},
-			bindChanges(val) {
-				this.days = val;
+			onConfirms(val) {
+				this.days = val.result;
 				this.ifdays = true
 			},
 
@@ -386,7 +423,8 @@
 			step,
 			mButton,
 			tButton,
-			ruiDatePicker
+			ruiDatePicker,
+			wPicker
 		},
 	}
 </script>

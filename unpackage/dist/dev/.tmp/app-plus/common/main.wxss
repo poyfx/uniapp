@@ -195,6 +195,20 @@ input::-webkit-input-placeholdert{
  
 .mTop30{
 	 margin-top: 30px;
+	 
+ }
+ 
+#mRight15{
+	 margin-right: 15px;
+ }
+ 
+.mTop30p{
+ 	 margin-top: 30px;
+ 	 padding: 40px 26px 10px 15px;
+ }
+ 
+.padding11{
+ 	 padding: 11px 26px 10px 15px
  }
  
 .mTop10{
@@ -225,12 +239,24 @@ input::-webkit-input-placeholdert{
 	border-radius:8px;
 }
  
+.paddingRight15{
+	padding-right:15px ;
+}
+ 
 .paddingLeft15{
 	padding-left:15px ;
 }
  
 .mBotton{
 	margin-bottom: 50px;
+}
+ 
+.oT{
+	color: #fd8e65;
+}
+ 
+.oL{
+	color: #00a8ff;
 }
 .content {
 	margin: 0 auto;
@@ -275,7 +301,7 @@ input::-webkit-input-placeholdert{
 	        justify-content: center;
 }
 
-.navbar navigator {
+.navbar view {
 	width: 20%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -299,13 +325,13 @@ input::-webkit-input-placeholdert{
 	text-align: center
 }
 
-.navbar navigator image {
+.navbar view image {
 	width: 120rpx;
 	height: 120rpx;
 
 }
 
-.navbar navigator text {
+.navbar view text {
 	font-size: 24rpx;
 	color: #666;
 }
@@ -333,7 +359,7 @@ input::-webkit-input-placeholdert{
 	width: 100%;
 	/* height: 157px; */
 	background-color: #fff;
-	padding: 15px 25px 39px 15px;
+	padding: 15px 0px 39px 15px;
 	margin-bottom: 10px;
 	border-radius: 8px;
 }
@@ -424,6 +450,13 @@ input::-webkit-input-placeholdert{
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.priceLi .titles{
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
@@ -939,7 +972,6 @@ input {
 /* 订单详情 */
 
 .detailsState {
-	padding: 40px 26px 10px 15px;
 	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -949,7 +981,6 @@ input {
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
-	margin-top: 30px;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
@@ -997,10 +1028,6 @@ input {
 .detailsState .stateBox view {
 	font-size: 28rpx;
 	padding: 3px 0;
-}
-
-.detailsState .stateBox .state1 view text {
-	color: #00A8FF;
 }
 
 .detailsState .stateBox .state2 view text {
@@ -1220,6 +1247,14 @@ input {
 		0% {
 			bottom: -362px;
 		}
+	}
+
+.times {
+		display: inline-block;
+		border-radius: 5px;
+		/* padding: 4px 15px; */
+		background-color: #fff;
+		text-align: center;
 	}
 /* Cell Component */
 /* Header Component */

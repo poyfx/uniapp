@@ -1,12 +1,19 @@
 <template>
 	<view>
-		<view class="mContent" style="margin-bottom: 50px; padding-top: 38px;">
-			<view class="times" v-show="day" style="position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
-			<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
-				<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
-				 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
-				</selects>
+		<view class="" style="position: relative; width: 100%;height: 25px;padding: 15px 0 10px 0;">
+				<view class="times" v-show="day">
+					<view class="times" style="padding: 4px 15px; position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
+				</view>
+
+				<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
+					<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
+					 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
+					</selects>
+				</view>
 			</view>
+		<view class="mContent" style="margin-bottom: 50px;">
+			
+
 			<view class="fget-num orderList" v-for="item in info" :key='item.id'>
 				<view class="stateBox flex" @tap="orderDtails(item.status,item.id,item.order_sn)">
 					<view class="state-left">
@@ -134,6 +141,7 @@
 				status: 0,
 				showMore: false,
 				day: '',
+				days: false,
 				time: '',
 			}
 		},
@@ -164,23 +172,23 @@
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						const data = res.data.value;
 						this.info = data;
-						this.info.forEach(el => {
-							this.time = new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,
-								'-')
-						});
+						// this.info.forEach(el => {
+						// 	this.time = new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,
+						// 		'-')
+						// });
 						if (data.length >= 10) {
 							this.showMore = true;
 						} else if (data.length < 10 && data.length > 0) {
 							this.showMore = false;
 						} else if (data.length <= 0) {
 							this.showMore = false;
-							uni.showToast({
+							return uni.showToast({
 								title: '没有数据了',
 								icon: "none",
-								success: function() {
-									that.page = 1
-									that.getOrderListInfo()
-								}
+								// success: function() {
+								// 	that.page = 1
+								// 	// that.getOrderListInfo()
+								// }
 							})
 						};
 					}
@@ -188,7 +196,7 @@
 					console.log(err)
 				})
 			},
-			orderDtails(status, id,order) {
+			orderDtails(status, id, order) {
 				if (status == 1) {
 					uni.showToast({
 						title: '价格正在计算中,请稍等',
@@ -196,7 +204,7 @@
 					})
 				} else {
 					uni.navigateTo({
-						url: './orderDtails/orderDtails?id=' + id + '&order_sn='+order + '&status='+status
+						url: './orderDtails/orderDtails?id=' + id + '&order_sn=' + order + '&status=' + status
 					})
 				}
 
@@ -226,13 +234,5 @@
 <style>
 	.loading {
 		left: 0;
-	}
-
-	.times {
-		display: inline-block;
-		border-radius: 5px;
-		padding: 4px 15px;
-		background-color: #fff;
-		text-align: center;
 	}
 </style>

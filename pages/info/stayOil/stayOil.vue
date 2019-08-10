@@ -1,8 +1,7 @@
 <template>
 	<view>
 		<view class="mContent pB10" style="margin-bottom: 50px;">
-			<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="getOrderNumber" v-for="(item,index) in orderInfo"
-			 :key="item.id">
+			<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="getOrderNumber" v-for="(item,index) in orderInfo" :key="item.id">
 				<view class="orderNumber">
 					<view><text class="numberTitle">订单编号:</text> <text>{{item.order_sn}}</text></view>
 					<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
@@ -23,6 +22,9 @@
 </template>
 
 <script>
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -30,11 +32,11 @@
 				type: '95#乙醇汽油',
 				mode: "配送",
 				title: "选择单号",
-				url:'',
-				page:1,
-				pageSize:10,
-				orderInfo:[],
-				more:true,
+				url: '',
+				page: 1,
+				pageSize: 10,
+				orderInfo: [],
+				more: true,
 			}
 		},
 		methods: {
@@ -62,19 +64,30 @@
 				})
 			},
 			getOrderNumber() {
-				uni.navigateTo({
-					url:"../../reserveOilList/confirmed/oliCode/oliCode"
-				})
+				if (this.role == 2 || this.role == 3) {
+					uni.navigateTo({
+						url: "../../reserveOilList/confirmed/oliCode/oliCode"
+					})
+				}else{
+					uni.showToast({
+						title:'权限不够，请在用户信息界面申请权限',
+						icon:'none'
+					})
+				}
+
 			},
 			Smore() {
 				this.page += 1;
 				this.getorderNumberInfo()
 			},
 		},
-		onLoad(option){
+		onLoad(option) {
 			this.url = option.url;
-			this.getorderNumberInfo()
-		}
+			this.getorderNumberInfo();
+		},
+		computed: {
+			...mapState(['role'])
+		},
 	}
 </script>
 

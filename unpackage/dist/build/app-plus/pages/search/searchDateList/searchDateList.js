@@ -1,1 +1,2 @@
+setCssToHead([],undefined,{path:"./pages/search/searchDateList/searchDateList.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/search/searchDateList/searchDateList.wxml') } }));

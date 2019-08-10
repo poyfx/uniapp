@@ -22,8 +22,16 @@
 						<text>授权书有效期</text>
 						<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
 						<view class="" v-show="!times">
-							<ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"
-							 v-show="!times"></ruiDatePicker>
+							<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"
+							 v-show="!times"></ruiDatePicker> -->
+							<view class="" v-show="!times">
+								<view class="" @tap="changeTimes">
+									{{day}}
+								</view>
+							</view>
+							<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="onConfirm"
+							 ref="date" themeColor="#f00">
+							</w-picker>
 						</view>
 
 					</view>
@@ -36,15 +44,15 @@
 			</view>
 		</form>
 
-		<view class="mTop30" v-show="btn.stepOne">
+		<view class="mTop30 mB" v-show="btn.stepOne">
 			<mButton :type="btn.type" :value="btn.value" @oneSide="oneSide"></mButton>
 		</view>
 
-		<view class="m-two-btn mTop30" v-show="btn.stepTwo">
+		<view class="m-two-btn mTop30 mB" v-show="btn.stepTwo">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @lastStep="lastStep" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @nextStep="nextStep" :content="btn.value"></tButton>
 		</view>
-		<view class="m-two-btn mTop30" v-show="btn.stepThree">
+		<view class="m-two-btn mTop30 mB" v-show="btn.stepThree">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepLast="threeStepLast" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepNext="threeStepNext" :content="btn.commit"></tButton>
 		</view>
@@ -60,6 +68,7 @@
 	import mButton from '../../../components/m-button.vue'
 	import tButton from '../../../components/twoButton/twoButton'
 	import ruiDatePicker from '../../../rattenking-dtpicker/rattenking-dtpicker.vue'
+	import wPicker from "@/components/w-picker/w-picker.vue";
 	import {
 		pathToBase64
 	} from '../../../common/js/image-tools/index.js'
@@ -106,12 +115,14 @@
 				register: '',
 				img: [],
 				name: '',
+				mode: 'date', //时间
 			}
 		},
 		onLoad(option) {
 			this.register = uni.getStorageSync('register');
-			this.day = formatDate(new Date());
+			// this.day = formatDate(new Date());
 			this.name = option.name
+			console.log(this.register)
 		},
 		methods: {
 			all() {
@@ -223,8 +234,8 @@
 						const that = this;
 						if (this.ifday == true) {
 							uni.uploadFile({
-
-								url: 'base/registCusmter',
+							//注册地址
+								url: 'http://dev.pjy.name:8180/api/bizcust/base/registCusmter',
 								files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 								fileType: 'image',
 								filePath: '',
@@ -241,20 +252,34 @@
 									"city": this.register.userCity,
 									"buy_auth_exp": this.day,
 								},
-								success: res => {
-									if (res.statusCode == 200 && res.data.errorCode == 0) {
-										if (res.data.value == 1) {
+								success: function(res) {
+									// console.log(res)
+									// console.log(res.data)
+									// console.log(res.data.errorCode)
+									// console.log(res.data.message)
+									var data = JSON.parse(res.data)
+									console.log(data)
+									if (res.statusCode == 200) {
+										if (data.errorCode == 10109) {
+											uni.showToast({
+												"title":data.message
+											})
+											uni.removeStorage({
+												key: 'register'
+											})
 											uni.navigateTo({
-												url: '../../login/login?val=' + res.data.value,
+												url: '../../login/login?val=' + data.value,
 											});
-										} else {
-											uni.uni.showToast({
-												title: '用户已存在',
-												icon: 'none'
-											});
-										}
 
+										} else {
+											uni.showToast({
+												"title":data.message,
+												"icon": 'none'
+											});
+
+										}
 									}
+
 								}
 							})
 
@@ -284,8 +309,8 @@
 						const that = this;
 						if (this.ifday == true) {
 							uni.uploadFile({
-
-								url: 'user/oil_authorize',
+							//申请权限地址
+								url: 'http://dev.pjy.name:8180/api/bizcust/user/oil_authorize',
 								files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 								fileType: 'image',
 								filePath: '',
@@ -294,13 +319,27 @@
 									"role": 2,
 									"buy_auth_exp": this.day,
 								},
-								success: res => {
-									if (res.statusCode == 200 && res.data.errorCode == 0) {
-										if (res.data.value == 1) {
+								success: function(res) {
+									var data = JSON.parse(res.data)
+									console.log(data)
+									if (res.statusCode == 200) {
+										if (data.errorCode == 10109) {
 											uni.showToast({
-												title: '申请成功，待审批',
-												icon: 'none'
+												"title": data.message
 											})
+											uni.removeStorage({
+												key: 'register'
+											})
+											uni.navigateTo({
+												url: '../../../info/info?val=' + data.value,
+											});
+
+										} else {
+											uni.showToast({
+												"title": data.message,
+												"icon": 'none'
+											});
+
 										}
 									}
 								}
@@ -324,10 +363,11 @@
 			},
 			// 选择时间
 			changeTimes() {
-				this.times = false
+				this.times = false;
+				this.$refs.date.show();
 			},
-			bindChange(val) {
-				this.day = val;
+			onConfirm(val) {
+				this.day = val.result;
 				this.ifday = true
 			},
 		},
@@ -335,7 +375,8 @@
 			step,
 			mButton,
 			tButton,
-			ruiDatePicker
+			ruiDatePicker,
+			wPicker
 		}
 	}
 </script>

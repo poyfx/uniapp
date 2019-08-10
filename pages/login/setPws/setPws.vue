@@ -4,7 +4,10 @@
 			<setPassword :textValue="textValue" :placeholder="placeholder" v-model="setPassword"></setPassword>
 			<setPassword :textValue="newTextValue" :placeholder="newPlaceholder" v-model="newPassword"></setPassword>
 		</view>
-		<mButton :value="value" class="mTop15" :type="type" @sureModify="sureModify"></mButton>
+		<view class="goNext">
+			<mButton :value="value" :type="type" @sureModify="sureModify"></mButton>
+		</view>
+		
 	</view>
 
 </template>
@@ -107,4 +110,7 @@
 </script>
 
 <style>
+	.goNext {
+		margin-top: 23px;
+	}
 </style>
