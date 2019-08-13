@@ -4,8 +4,6 @@
 		 @focus="onFocus" @blur="onBlur" />
 		<image src="../../static/img/nopwd.png" @tap="showname" class='m-eye' v-if="show" mode="aspectFit"></image>
 		 <image src="../../static/img/showpwd.png" @tap="showname" class='m-eye' v-if="!show" mode="aspectFit"></image>
-		<!-- <img @click="showname" v-if="show" src="" class='m-eye' alt />
-		<img @click="showname" v-if="!show" src="../static/img/showpwd.png" class='m-eye' alt /> -->
 	</view>
 </template>
 

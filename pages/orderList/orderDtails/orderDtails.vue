@@ -57,7 +57,7 @@
 				<view class="orderDetails">
 					<view>
 						<text>订单编号：</text>
-						<text>{{order.order_sn}}</text>
+						<text>{{order.no}}</text>
 					</view>
 					<view>
 						<text>下单时间：</text>
@@ -118,7 +118,7 @@
 
 			<view class="m-two-btn mTop15 mB" v-else-if="status ==3  ">
 				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
-				<tButton :type="type" class="tButton" :content="btnValue" :disabled="disabled" @tell="tell"></tButton>
+				<tButton :type="type" class="tButton" :content="btnValue" :disabled="disabled" @tell="tells"></tButton>
 			</view>
 			<view class="nextBox mTop15 mB" v-else-if="status ==4  ">
 				<mButton :type="type" :value="btnValue" :disabled="disabled" @tell="tell"></mButton>
@@ -144,7 +144,7 @@
 				dates: '2019-08-12 08:12',
 				rotate: false,
 				orderId: '', //订单ID
-				order_sn:'',
+				no:'',
 				order: [],
 				time: '',//下单时间
 				countDown:'00:00:00',//倒计时
@@ -157,7 +157,7 @@
 		onLoad(option) {
 			this.orderId = option.id;
 			this.status  = option.status;
-			this.order_sn = option.order_sn;
+			this.no = option.no;
 			this.getOrderDtails();
 			if(this.status == -2 || this.status == -1 || this.status == 9 || this.status == 5){
 				 this.have = true
@@ -174,6 +174,7 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.order = res.data.value;
+						this.status = res.data.value.status;
 						this.time = new Date(this.order.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
 						const a = this.order.difference
 						this.cutDown(a)
@@ -195,7 +196,7 @@
 			},
 			sureBuy(num) {
 				uni.navigateTo({
-					url: "../invoice/invoice?id=" + this.orderId + '&number=' + num + '&order_sn=' + this.order_sn + '&status=' + this.status + '&company=' + this.order.org_name + '&moeny=' + this.oilPrice
+					url: "../invoice/invoice?id=" + this.orderId + '&number=' + num + '&no=' + this.no + '&status=' + this.status + '&company=' + this.order.org_name + '&moeny=' + this.oilPrice
 				})
 			},
 			tell() {
@@ -203,6 +204,18 @@
 				uni.showToast({
 					title: "已提醒财务确认,请耐心等待",
 					icon: "none"
+				})
+			},
+			tells(){
+				this.test.post('order/com_payment',{
+					id:this.orderId,
+				}).then(res=>{
+					console.log(res)
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						this.getOrderDtails()
+					}
+				}).catch(err=>{
+					console.log(err)
 				})
 			},
 			//取消订单
@@ -215,6 +228,7 @@
 							that.test.post('order/cancel_order', {
 								id: that.orderId
 							}).then(res => {
+								console.log(res)
 								if (res.statusCode == 200 && res.data.errorCode == 0) {
 									uni.redirectTo({
 										url:'../orderList'

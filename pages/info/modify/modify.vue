@@ -49,14 +49,21 @@
 										title:"修改成功"
 									})
 								}else{
-									uni.showToast({
-										title:res.data.message,
-										icon:"none"
+									uni.showModal({
+										title: '提示',
+										content: res.data.message,
+										success: function(res) {
+											if (res.confirm) {
+												uni.reLaunch({
+													url: '../../login/login'
+												})
+											} else {
+												uni.reLaunch({
+													url: '../../login/login'
+												})
+											}
+										}
 									})
-									// 清除密码框类容
-									// this.oldpws = '';
-									// this.newpws1 = '',
-									// this.newpws2=''
 								}
 							}).catch(err => {
 								console.log(err)

@@ -1,13 +1,18 @@
 <template>
 	<view>
 		<view class="mContent" style="margin-bottom: 50px; padding-top: 38px;">
-			<view class="times" v-show="day" style="position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
+			<!-- <view class="times" v-show="day">
+				<view style="padding: 4px 15px;position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
+			</view> -->
+			<view class="times" v-show="day">
+				<view class="times" style="padding: 4px 15px; position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
+			</view>
 			<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
 				<selects :list="list" :clearable="false" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
 				 :placeholder="'placeholder'" :initValue="'预约单状态'" @change="changeMsg">
 				</selects>
 			</view>
-			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.reserve_sn)" v-for="item in oil" :key="item.reserve_id">
+			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.reserve_sn)" v-for="(item,index) in oil" :key="item.reserve_id">
 				<view class="stateBox flex">
 					<view class="">
 						<view>
@@ -16,7 +21,7 @@
 						</view>
 						<view>
 							<text>预约时间：</text>
-							<text>{{time}}</text>
+							<text>{{time[index]}}</text>
 						</view>
 						<view>
 							<text>提油类型：</text>
@@ -120,9 +125,9 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.oil = res.data.value;
+						this.time = [];
 						this.oil.forEach(el=>{
-							this.time = el.reserve_time
-							this.time = new Date(this.time + 8*3600*1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g, '-')
+							this.time.push(new Date(el.reserve_time + 8*3600*1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g, '-')) 
 						})
 							if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
@@ -133,6 +138,22 @@
 								icon: "none",
 							})
 						};
+					}else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.message,
+							success: function(res) {
+								if (res.confirm) {
+									uni.reLaunch({
+										url: '../login/login'
+									})
+								} else {
+									uni.reLaunch({
+										url: '../login/login'
+									})
+								}
+							}
+						})
 					}
 				}).catch(err => {
 					console.log(err)

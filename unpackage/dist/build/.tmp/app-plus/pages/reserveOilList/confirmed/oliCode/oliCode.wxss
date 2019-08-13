@@ -1,6 +1,6 @@
 
 .oilCode {
-	width: 100%;
+	/* width: 100%; */
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -11,10 +11,22 @@
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	border-radius: 4px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	margin: 16px;
+	background: #fff;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .oilCodeBox {
-	width: 275px;
-	height: 275px;
+	width: 245px;
+	height: 245px;
 	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -43,8 +55,11 @@
 	border: 1px solid #e5e5e5;
 }
 .otherOilCode {
+	width: 100%;
 	border-radius: 8px 8px 0 0;
-	height: 49.5%;
+	position: absolute;
+	top: 349px;
+	bottom: 0;
 }
 .otherOilCode .mint-cell {
 	margin: 15px 0 10px 0;

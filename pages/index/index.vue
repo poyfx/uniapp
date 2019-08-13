@@ -59,11 +59,11 @@
 			<view class="priceLi">
 				<view class="nowPrice">
 					<text>0#柴油</text>
-					<view class="">
-						<text>{{datas.diesel_0}}</text>
+					<view >
+						<text class="s">{{datas.diesel_0}}</text>
 					</view>
 
-					<text>+2.33%</text>
+					<text class="s">+2.33%</text>
 				</view>
 			</view>
 			<view class="priceLi">
@@ -219,24 +219,24 @@
 		onShow() {
 			//获取token
 			this.roles = this.role;
-			const token = uni.getStorageSync('Token');
-			if (token == null || token == '' || token == undefined) {
-				uni.showModal({
-					title: '提示',
-					content: '用户信息已失效，请重新登录',
-					success: function(res) {
-						if (res.confirm) {
-							uni.reLaunch({
-								url: '../login/login'
-							})
-						} else {
-							uni.reLaunch({
-								url: '../login/login'
-							})
-						};
-					}
-				})
-			}
+			// const token = uni.getStorageSync('Token');
+			// if (token == null || token == '' || token == undefined) {
+			// 	uni.showModal({
+			// 		title: '提示',
+			// 		content: '用户信息已失效，请重新登录',
+			// 		success: function(res) {
+			// 			if (res.confirm) {
+			// 				uni.reLaunch({
+			// 					url: '../login/login'
+			// 				})
+			// 			} else {
+			// 				uni.reLaunch({
+			// 					url: '../login/login'
+			// 				})
+			// 			};
+			// 		}
+			// 	})
+			// }
 			this.getlocation();
 			this.getAdcode();
 			this.getDate();
@@ -288,10 +288,11 @@
 					type: 'wgs84',
 					geocode: true,
 					success: function(res) {
+						console.log(res)
 						const longitude = res.longitude;
 						const latitude = res.latitude;
-						that.address = res.address.city + res.address.district;
 						that.city = res.address.city;
+						that.address = res.address.city + res.address.district;
 						that.district = res.address.district;
 					},
 

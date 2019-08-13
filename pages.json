@@ -330,7 +330,8 @@
 							"text": "搜索",
 							"fontSize": "14px",
 							"float": "right", //靠右第一个
-							"id": "xiaoxi"
+							"width": "46px",
+							"color":"#666"
 
 						}]
 					}
@@ -383,7 +384,7 @@
 			"style": {
 				"titleNView": {
 					"titleColor": "#666",
-					"titleText": "订单油量",
+					"titleText": "待提油量",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
 					"titleSize": "17px"
@@ -401,7 +402,19 @@
 				}
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/info/stayOil/oilCodeDetali/oilCodeDetali",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "提油码",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+        }
+    ],
 	"tabBar": {
 		"color": "black",
 		"selectedColor": "#009DFF",

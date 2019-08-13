@@ -328,7 +328,7 @@
 									"buy_auth_exp": this.days,
 								},
 								success: function(res) {
-									// console.log(res)
+									console.log(res)
 									// console.log(res.data)
 									// console.log(res.data.errorCode)
 									// console.log(res.data.message)

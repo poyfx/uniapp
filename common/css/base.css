@@ -103,3 +103,14 @@ text{
 .oL{
 	color: #00a8ff;
 }
+
+/* 油价升 */
+.s{
+	color: #FF596A;
+}
+.j{
+	color: #28C792;
+}
+.underLine{
+	border-bottom: 1px solid #e5e5e5;
+}

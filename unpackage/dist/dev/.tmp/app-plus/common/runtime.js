@@ -102,7 +102,7 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/banner/banner":1,"components/input-password":1,"components/m-button":1,"components/m-input":1,"components/codeNum/codeNum":1,"components/getCode/getCode":1,"components/setPassword/setPassword":1,"components/m-info-img/m-info-img":1,"components/m-info-text/m-info-text":1,"components/w-picker/w-picker":1,"rattenking-dtpicker/rattenking-dtpicker":1,"components/step/step":1,"common/js/xfl-select":1,"components/tki-qrcode/tki-qrcode":1};
+/******/ 		var cssChunks = {"components/banner/banner":1,"components/input-password":1,"components/m-button":1,"components/m-input":1,"components/codeNum/codeNum":1,"components/getCode/getCode":1,"components/setPassword/setPassword":1,"components/m-info-img/m-info-img":1,"components/m-info-text/m-info-text":1,"components/w-picker/w-picker":1,"rattenking-dtpicker/rattenking-dtpicker":1,"components/step/step":1,"components/twoButton/twoButton":1,"common/js/xfl-select":1,"components/tki-qrcode/tki-qrcode":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {

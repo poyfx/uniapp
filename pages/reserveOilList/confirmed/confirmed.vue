@@ -104,7 +104,6 @@
 			getReserveOilList() {
 				this.test.post('order/query_reserve_info', {
 					reserve_id: this.rId,
-					reserve_sn: this.oId,
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
@@ -188,6 +187,7 @@
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
+		background: #000000;
 	}
 
 	.title {

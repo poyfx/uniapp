@@ -102,7 +102,7 @@
 				num: '', //第一个拆分数量
 				currentOil: '', //当前购油数量
 				move: false,
-				order_sn:'',
+				no:'',
 				company:'',
 				status:'',
 				moeny:'',
@@ -111,7 +111,7 @@
 		onLoad(option) {
 			this.id = option.id;//id
 			this.currentOil = option.number;//油量
-			this.order_sn = option.order_sn;//订单编号
+			this.no = option.no;//订单编号
 			this.company = option.company;//购油公司
 			this.status = option.status;//状态
 			this.moeny = option.moeny;//油价
@@ -154,12 +154,13 @@
 			cancelOrder() {
 				this.test.post('order/make_invoice', {
 					id: this.id,
-					is_invoice: this.ids
+					is_invoice: this.ids,
+					invoice_money:this.moeny
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						uni.redirectTo({
-							url: '../orderDtails/orderDtails?id=' + this.id + '&order_sn=' + this.order_sn + '&status=' + this.status
+							url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
 						})
 					}
 				}).catch(err => {
@@ -168,6 +169,7 @@
 			},
 			// 确认开票
 			invoiceSure(invoiceAll) {
+				
 				if (this.typeInvoice == "请选择发票类型") {
 					uni.showToast({
 						title: '请选择发票类型',
@@ -189,7 +191,7 @@
 						})
 						this.invoiceNum = String(this.invoiceNum)
 					}
-
+console.log(typeof(this.invoiceNum))
 					console.log(this.invoiceNum)
 					if (this.ids == 1) {
 						if (this.invoiceNum !== '') {
@@ -198,7 +200,8 @@
 									id: this.id,
 									invoice_type: this.typeInvoice,
 									is_invoice: this.ids,
-									invoice_split: this.invoiceNum
+									invoice_split: this.invoiceNum,
+									invoice_money:this.moeny
 								}).then(res => {
 									console.log(res)
 									if (res.statusCode == 200 && res.data.errorCode == 0) {
@@ -206,7 +209,7 @@
 											title: '开票成功'
 										})
 										uni.redirectTo({
-											url: '../orderDtails/orderDtails?id=' + this.id + '&order_sn=' + this.order_sn + '&status=' + this.status
+											url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
 										})
 									}
 								}).catch(err => {
@@ -232,6 +235,7 @@
 							invoice_type: this.typeInvoice,
 							is_invoice: this.ids,
 							invoice_split: this.currentOil,
+							invoice_money:this.moeny
 						}).then(res => {
 							console.log(res)
 							if (res.statusCode == 200 && res.data.errorCode == 0) {
@@ -239,7 +243,7 @@
 									title: '开票成功'
 								})
 								uni.redirectTo({
-									url: '../orderDtails/orderDtails?id=' + this.id + '&order_sn=' + this.order_sn + '&status=' + this.status
+									url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
 								})
 							}
 						}).catch(err => {

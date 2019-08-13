@@ -258,6 +258,20 @@ input::-webkit-input-placeholdert{
 .oL{
 	color: #00a8ff;
 }
+ 
+/* 油价升 */
+ 
+.s{
+	color: #FF596A;
+}
+ 
+.j{
+	color: #28C792;
+}
+ 
+.underLine{
+	border-bottom: 1px solid #e5e5e5;
+}
 .content {
 	margin: 0 auto;
 	padding-top: 15px;
@@ -276,7 +290,7 @@ input::-webkit-input-placeholdert{
 	overflow: hidden;
 	position: relative;
 	border-radius: 8px 8px 0 0;
-
+	
 }
 
 /* 导航 */
@@ -468,7 +482,7 @@ input::-webkit-input-placeholdert{
 }
 
 .userIntegraltitle text{
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: bold;
 	color: #666666;
 }
@@ -508,7 +522,7 @@ input::-webkit-input-placeholdert{
 
 .userIntegral .orderNumber {
 	padding-right: 10px;
-	margin: 11px 0 11px 10px;
+	margin: 6px 0 6px 10px;
 }
 
 .orderNumber view {
@@ -520,7 +534,8 @@ input::-webkit-input-placeholdert{
 }
 
 .userIntegral .integral {
-	min-width: 110px;
+	min-width: 105px;
+	max-height: 90px;
 	background-color: #00A8FF;
 	display: -webkit-box;
 	display: -webkit-flex;

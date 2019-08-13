@@ -4,8 +4,8 @@
 			<view class="fget-nums">
 				<text class="phontNum">手机号</text>
 				<input type="tel" class="getCodeInput" placeholder="请输入手机号码" v-model="phoneNum" />
-				<button class="getCode" @tap="getCodes" v-show="show" href="javascript:;">获取验证码</button>
-				<button class="getCode1" @tap="getCodes" v-show="!show" :disabled="disabled">重新获取({{count}}s)</button>
+				<view class="getCode" @tap="getCodes" v-show="show" href="javascript:;">获取验证码</view>
+				<view class="getCode1" v-show="!show">重新获取({{count}}s)</view>
 			</view>
 			<view class="f-get-code-num">
 				<text class="f-get-code-numtitle">验证码</text>
@@ -24,7 +24,7 @@
 	import getCode from "../../../components/getCode/getCode.vue"
 	import codeNum from "../../../components/codeNum/codeNum.vue"
 	import mButton from '../../../components/m-button.vue'
-	
+
 	export default {
 		data() {
 			return {
@@ -37,7 +37,7 @@
 				mess: '', //获取的短信验证码
 				disabled: true,
 				count: "60",
-
+				lock: true
 			}
 		},
 		methods: {
@@ -46,6 +46,7 @@
 				if (this.phoneNum != "" && this.phoneNum != null) {
 					if (this.codeNums != "" && this.codeNums != null) {
 						if (this.codeNums == this.mess) {
+
 							this.test.post('base/forgetPwd/confSms', {
 								username: that.phoneNum,
 								pswCode: that.codeNums
@@ -61,40 +62,16 @@
 											url: "../setPws/setPws?user=" + that.phoneNum + '&message=' + that.codeNums
 										})
 									}, 1000)
-								}else{
+								} else {
 									uni.showToast({
-										title:res.data.message,
-										icon:'none'
+										title: res.data.message,
+										icon: 'none'
 									})
 								}
 							}).catch(err => {
 								console.log(err)
 							})
-							// uni.request({
-							// 	url: that.$https + 'user/forgetPwd/confSms',
-							// 	header: {
-							// 		"Content-Type": "application/x-www-form-urlencoded"
-							// 	},
-							// 	data: {
-							// 		username: this.phoneNum,
-							// 		pswCode: this.codeNums
-							// 	},
-							// 	method: "GET",
-							// 	success: function(res) {
-							// 		console.log(res)
-							// 		if (res.data.errorCode == 0) {
-							// 			uni.showToast({
-							// 				"title": "验证成功",
-							// 				"icon": 'none'
-							// 			});
-							// 			setTimeout(function() {
-							// 				uni.redirectTo({
-							// 					url: "../setPws/setPws?user="+that.phoneNum+'&message='+that.codeNums
-							// 				})
-							// 			}, 1200)
-							// 		}
-							// 	}
-							// })
+
 						} else {
 							uni.showToast({
 								"title": "验证码错误",
@@ -133,67 +110,55 @@
 			//获取短信验证码
 			getCodes() {
 				const that = this;
-				console.log(this.phoneNum, this.codeNums);
-				if (this.phoneNum != "" && this.phoneNum != null) {
-					if (!/^1[3456789]\d{9}$/.test(this.phoneNum)) {
+				console.log(this.lock)
+				var a = 1;
+				if (that.lock == true) {
+					a++;
+					console.log(a)
+					this.lock = false
+					console.log(this.phoneNum, this.codeNums);
+					if (this.phoneNum != "" && this.phoneNum != null) {
+						if (!/^1[3456789]\d{9}$/.test(this.phoneNum)) {
+							return uni.showToast({
+								"title": '请填写正确的手机号码',
+								"icon": "none"
+							})
+						} else {
+
+							this.test.post('base/forgetPwd/getSms', {
+								username: that.phoneNum
+							}).then(res => {
+								console.log(res)
+								console.log(res.data.value)
+
+								this.lock = !this.lock;
+								if (res.data.errorCode == 0 && res.statusCode == 200) {
+									this.show = !that.show;
+									uni.showToast({
+										title: '短信已发送'
+									})
+									that.mess = res.data.value;
+									that.timeDown(60);
+
+								} else {
+									uni.showToast({
+										title: res.data.message,
+										icon: 'none'
+									})
+								}
+							}).catch(err => {
+								console.log(err)
+							})
+						}
+
+
+					} else if (this.phoneNum == "" || this.phoneNum == null) {
 						return uni.showToast({
-							"title": '请填写正确的手机号码',
+							"title": "手机号码不能为空",
 							"icon": "none"
 						})
-					} else {
-						this.test.post('base/forgetPwd/getSms', {
-							username: that.phoneNum
-						}).then(res => {
-							console.log(res)
-							console.log(res.data.value)
-							if (res.data.errorCode == 0 && res.statusCode == 200) {
-								uni.showToast({
-									title: '短信已发送'
-								})
-								that.show = !that.show;
-								that.mess = res.data.value;
-								that.timeDown(60)
-							} else {
-								uni.showToast({
-									title: res.data.message,
-									icon: 'none'
-								})
-							}
-						}).catch(err => {
-							console.log(err)
-						})
-						// uni.request({
-						// 	url: that.$https + 'user/forgetPwd/getSms',
-						// 	header: {
-						// 		"Content-Type": "application/x-www-form-urlencoded"
-						// 	},
-						// 	data: {
-						// 		username: that.phoneNum
-						// 	},
-						// 	method: "POST",
-						// 	success: function(res) {
-						// 		console.log(res)
-						// 		if (res.data.errorCode == 0) {
-						// 			that.mess = res.data.value
-						// 			console.log(that.mess)
-						// 			that.timeDown(60);
-						// 			that.show = false;
-						// 		}else{
-						// 			uni.showToast({
-						// 				"title":res.data.message,
-						// 				"icon":"none"
-						// 			})
-						// 		}
-						// 	}
-						// })
-
-
 					}
-				} else if (this.phoneNum == "" || this.phoneNum == null) {
-					return uni.showToast({
-						"title": "手机号码不能为空",
-						"icon": "none"
-					})
+
 				}
 			}
 		},
@@ -236,13 +201,15 @@
 		color: #009DFF;
 		font-size: 12px;
 		border: none;
-		padding: 10px;
+		padding: 17px 10px;
+		text-align: center;
 		border-left: 1px solid #e5e5e5;
 	}
 
 	.getCodeInput {
 		flex: 1;
-		margin-left: 18upx;
+		margin-left: 9px;
+
 	}
 
 	uni-button:after {

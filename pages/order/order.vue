@@ -36,10 +36,10 @@
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
 
-				<infoText :textValue="infos.buyoilText" :type="infos.number" @input="setNumber" :placeholder="infos.placeholder" :value="infos.muchOil"
-				 v-model="count"></infoText>
+				<infoText :textValue="infos.buyoilText" :type="infos.number" @input="setNumber" :placeholder="infos.placeholder"
+				 :value="infos.muchOil" v-model="count"></infoText>
 
-				<view class="fget-eara " @click="chooseAddr" v-show="addrShow">
+				<view class="fget-eara underLine" @click="chooseAddr" v-show="addrShow">
 					<view class="first-li">配送地址：</view>
 					<view class="addressimg">
 						<view style="width: 90%;"> {{address}}</view>
@@ -113,12 +113,12 @@
 		</view>
 		<!-- 地址信息 -->
 		<view class="chooseAddress" v-show="chooseAddress">
-			<view class="flex title">
+			<!-- <view class="flex title">
 				<image src="../../static/img/back.png" mode="aspectFit" @tap="chooseAddress = !chooseAddress"></image>
 				<text>选择地址</text>
-			</view>
+			</view> -->
 			<view class="mContent">
-				<view class="harvest" v-for="(item,index) in info" :key="item.id" >
+				<view class="harvest" v-for="(item,index) in info" :key="item.id">
 					<view class="harvest-name" @tap="isAddress(item.address)">
 						<view>{{item.receiver}}</view>
 						<view>{{item.rephone}}</view>
@@ -192,12 +192,17 @@
 				const that = this;
 				this.test.post('user/order_company')
 					.then(res => {
-						res.data.value.forEach(el => {
-							const info = el
-							if (res.statusCode == 200 && res.data.errorCode == 0) {
-								that.company = info.name
-							}
-						})
+					console.log(res)
+					console.log(res)
+						if (res.statusCode == 200 && res.data.errorCode == 0) {
+							// res.data.value.forEach(el => {
+							// 	const info = el
+								that.company = res.data.value.name
+							// })
+						}else {
+							
+						}
+
 
 					}).catch(err => {
 						console.log(err)
@@ -207,7 +212,7 @@
 			payShow() {
 				this.pay = !this.pay
 			},
-			chooseOilShowPay(){
+			chooseOilShowPay() {
 				this.pay = !this.pay
 			},
 			//选择油品
@@ -244,13 +249,13 @@
 				this.modeOil = val.target.id;
 
 			},
-			
+
 			chooseAddr() {
 				this.getAddressInfo();
 				this.chooseAddress = !this.chooseAddress;
 				uni.showToast({
-					title:'选择你要收货的地址,然后点确认',
-					icon:'none'
+					title: '选择你要收货的地址,然后点确认',
+					icon: 'none'
 				})
 			},
 			// 获取地址信息
@@ -259,10 +264,10 @@
 				this.test.post('user/getAddrList').then(res => {
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value;
-							this.info.forEach(el=>{
-								if(el.is_default ==1){
-									that.address = el.address
-								}
+						this.info.forEach(el => {
+							if (el.is_default == 1) {
+								that.address = el.address
+							}
 						})
 					}
 				}).catch(err => {
@@ -270,34 +275,33 @@
 				})
 			},
 			//设置输入框只能为正整数
-			setNumber(val){
+			setNumber(val) {
 				console.log(val)
-				if(val == 0){
+				if (val == 0) {
 					this.count = ''
 					uni.showToast({
-						title:'购买数量不能为0',
-						icon:'none'
+						title: '购买数量不能为0',
+						icon: 'none'
 					})
+				} else if (val !== 0) {
+					this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
 				}
-				else if(val !== 0){
-					this.count = this.count.replace(/^(0+)|[^\d]+/g,'')
-				}
-				
+
 			},
-			
-			
-			
+
+
+
 			// 选择地址
 			isAddress(val) {
 				console.log(val)
-				const that =this ;
+				const that = this;
 				uni.showModal({
 					content: '确定选择该地址为收货地址',
 					success: function(res) {
 						if (res.confirm) {
 							that.chooseAddress = !that.chooseAddress
 							that.address = val;
-						}else if(res.cancel){
+						} else if (res.cancel) {
 							return;
 						}
 
@@ -316,12 +320,12 @@
 									this.range = i;
 									console.log(this.info[i].id)
 									this.test.post("user/setDefaultAddr", {
-										 addr_id:this.info[i].id
-									}).then(res=>{
+										addr_id: this.info[i].id
+									}).then(res => {
 										console.log(res)
-										if(res.statusCode == 200 && res.data.errorCode == 0){
+										if (res.statusCode == 200 && res.data.errorCode == 0) {
 											uni.showToast({
-												title:'设置成功'
+												title: '设置成功'
 											})
 										}
 									})
@@ -329,67 +333,83 @@
 								}
 							}
 							// 点击取消
-						}else if(res.cancel){
+						} else if (res.cancel) {
 							this.info = '',
-							this.getAddressInfo()
+								this.getAddressInfo()
 						}
 					}
 				})
 			},
-		toBuy() {
-			if(this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品'){
-				if(this.getTpe !== null && this.getTpe !== ''){
-					if(this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式'){
-						if(this.count !== null && this.count !== ''){
-							this.test.post('order/make_order', {
-								oil_type: this.productOil,
-								get_type: this.getTpe,
-								pay_type: this.modePay,
-								count: this.count,
-								ship_addr: this.address,
-								remark: this.Remarks,
-							}).then(res => {
-								console.log(res)
-								if(res.statusCode == 200 && res.data.errorCode == 0){
-									uni.navigateTo({
-										url: '../orderList/orderList'
-									})
-								}
-							}).catch(err => {
-								console.log(err)
-							})
-						//购油数量	
-						}else{
+			toBuy() {
+				if (this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品') {
+					if (this.getTpe !== null && this.getTpe !== '') {
+						if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
+							if (this.count !== null && this.count !== '') {
+								this.test.post('order/make_order', {
+									oil_type: this.productOil,
+									get_type: this.getTpe,
+									pay_type: this.modePay,
+									count: this.count,
+									ship_addr: this.address,
+									remark: this.Remarks,
+								}).then(res => {
+									console.log(res)
+									if (res.statusCode == 200 && res.data.errorCode == 0) {
+										uni.redirectTo({
+											url: '../orderList/orderList'
+										})
+									}else {
+										uni.showModal({
+											title: '提示',
+											content: '用户信息已失效，请重新登录',
+											success: function(res) {
+												if (res.confirm) {
+													uni.reLaunch({
+														url: '../login/login'
+													})
+												} else {
+													uni.reLaunch({
+														url: '../login/login'
+													})
+												}
+											}
+										})
+									}
+								}).catch(err => {
+									console.log(err)
+								})
+								//购油数量	
+							} else {
+								uni.showToast({
+									title: '请输入购油数量',
+									icon: 'none'
+								})
+							}
+							//付款方式
+						} else {
 							uni.showToast({
-								title:'请输入购油数量',
-								icon:'none'
+								title: '请选择付款方式',
+								icon: 'none'
 							})
 						}
-					//付款方式
-					}else{
+						//提油	方式
+					} else {
 						uni.showToast({
-							title:'请选择付款方式',
-							icon:'none'
+							title: '请选择提油方式',
+							icon: 'none'
 						})
 					}
-				//提油	方式
-				}else{
+					//油品	
+				} else {
 					uni.showToast({
-						title:'请选择提油方式',
-						icon:'none'
+						title: '请选择油品',
+						icon: 'none'
 					})
 				}
-			//油品	
-			}else{
-				uni.showToast({
-					title:'请选择油品',
-					icon:'none'
-				})
-			}
-			
+
+			},
 		},
-		},
-		
+
 		components: {
 			mButton,
 			infoText
@@ -416,7 +436,9 @@
 	.m-info-content {
 		justify-content: flex-start;
 	}
-
+.m-info-content view{
+	color: #666;
+}
 	.m-info text {
 		width: 80px;
 	}

@@ -66,6 +66,22 @@
 								this.buy = false
 							}
 						}
+					}else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.message,
+							success: function(res) {
+								if (res.confirm) {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								} else {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								}
+							}
+						})
 					}
 				}).catch(err => {
 					console.log(err)

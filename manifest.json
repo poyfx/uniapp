@@ -16,7 +16,8 @@
         },
         /* 模块配置 */
         "modules" : {
-            "Push" : {}
+            "Push" : {},
+            "Maps" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -53,23 +54,28 @@
             },
             /* ios打包配置 */
             "ios" : {},
-            /* SDK配置 */
-            "sdkConfigs" : {
-                "push" : {
-                    "unipush" : {}
-                }
-            },
+            /* SDK配置 */// "sdkConfigs" : {
+            //     "push" : {
+            //         "unipush" : {}
+            //     }
+            // },
             "icons" : {
                 "android" : {
-                    "hdpi" : "",
-                    "xhdpi" : "",
-                    "xxhdpi" : ""
+                    "hdpi" : "D:/my/安徽石油切图/安徽石油切图/@1/启动页图标.png",
+                    "xhdpi" : "D:/my/安徽石油切图/安徽石油切图/@3/启动页图标@3x.png",
+                    "xxhdpi" : "D:/my/安徽石油切图/安徽石油切图/@3/启动页图标@3x.png",
+                    "xxxhdpi" : "D:/my/安徽石油切图/安徽石油切图/@3/启动页图标@3x.png"
                 }
             },
             "splashscreen" : {
                 "android" : {
                     "hdpi" : "C:/Users/DESIGN/Pictures/启动页.png",
                     "xhdpi" : "C:/Users/DESIGN/Pictures/启动页@2x.png"
+                }
+            },
+            "sdkConfigs" : {
+                "push" : {
+                    "unipush" : {}
                 }
             }
         }
@@ -99,6 +105,7 @@
         },
         "devServer" : {
             "port" : 8080
-        }
+        },
+        "domain" : "www.poyfx.top"
     }
 }

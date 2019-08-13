@@ -26,7 +26,7 @@
 
 				<infoText :textValue="text.productOilText" :disabled="text.disabled" :value="values.productOil" :placeholder="text.productOilP"></infoText>
 				<infoText :textValue="text.modeOilText" :disabled="text.disabled"  v-model="values.modeOil" :placeholder="text.modeOilP"></infoText>
-				<view class="fget-eara " v-show="showAddress">
+				<view class="fget-eara underLine" v-show="showAddress">
 					<view class="first-li">配送地址：</view>
 					<view class="addressimg">
 						<view style="width: 90%;">{{address}}</view>
@@ -57,7 +57,7 @@
 				<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
 				 :key="item.id">
 					<view class="orderNumber">
-						<view><text class="numberTitle">订单编号:</text> <text>{{item.order_sn}}</text></view>
+						<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 						<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
 						<view><text class="numberTitle">提油方式:</text> <text v-if="item.get_type == 0">配送</text><text v-else>自提</text></view>
 					</view>
@@ -154,6 +154,22 @@
 								icon: "none"
 							})
 						}
+					}else{
+						// uni.showModal({
+						// 	title: '提示',
+						// 	content: res.data.message,
+						// 	success: function(res) {
+						// 		if (res.confirm) {
+						// 			uni.reLaunch({
+						// 				url: '../../login/login'
+						// 			})
+						// 		} else {
+						// 			uni.reLaunch({
+						// 				url: '../../login/login'
+						// 			})
+						// 		}
+						// 	}
+						// })
 					}
 				}).catch(err => {
 					console.log(err)
@@ -183,7 +199,7 @@
 			chooseNumbers(e, id) {
 				console.log(e)
 				this.id = id;
-				this.values.orderNumber = this.chooseNumber.orderInfo[e].order_sn;
+				this.values.orderNumber = this.chooseNumber.orderInfo[e].no;
 				this.values.productOil = this.chooseNumber.orderInfo[e].oil_type;
 				if (this.chooseNumber.orderInfo[e].get_type == 0) {
 					this.values.modeOil = '配送'
@@ -247,7 +263,7 @@
 						}).then(res => {
 							console.log(res)
 							if (res.statusCode == 200 && res.data.errorCode == 0) {
-								uni.navigateTo({
+								uni.redirectTo({
 									url: '../reserveOilList/reserveOilList',
 								});
 							}

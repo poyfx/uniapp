@@ -56,7 +56,7 @@
 				if(this.date == '请选择时间') this.date = '';
 				if (this.name == "orderList") {
 					this.test.post('order/search_order', {
-						order_sn: this.ordernumber, //订单编号
+						no: this.ordernumber, //订单编号
 						start_time: this.date,
 						end_time: this.date,
 						page: this.page,

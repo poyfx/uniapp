@@ -3,18 +3,20 @@
 		<text>{{textValue}}</text>
 		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
 		 @focus="onFocus" @blur="onBlur" />
-		 <image @tap="showname" v-if="show" src="../../static/img/nopwd.png" class='m-eye' alt ></image>
-		 <image @tap="showname" v-if="!show" src="../../static/img/showpwd.png" class='m-eye' alt ></image>
-		<!-- <img @click="showname" v-if="show" src="../../static/img/nopwd.png" class='m-eye' alt />
-		<img @click="showname" v-if="!show" src="../../static/img/showpwd.png" class='m-eye' alt /> -->
+		 <image @tap="showname" v-if="show" :src="noSrc" class='m-eye' alt mode="aspectFit" ></image>
+		 <image @tap="showname" v-if="!show" :src="showSrc" class='m-eye' alt  mode="aspectFit"></image>
 	</view>
 </template>
 <script>
+	import no from '../../static/img/nopwd.png'
+	import show from '../../static/img/showpwd.png'
 	export default {
 		data() {
 			return {
 				show: true,
 				inputType:'password',
+				noSrc:no,
+				showSrc:show
 			}
 		},
 		props: {
@@ -94,7 +96,7 @@
 
 	.m-input {
 		width: 70%;
-		padding: 11px 15px;
+		padding: 11px 15px 11px 0;
 		border: none;
 		outline: none;
 	}
@@ -107,7 +109,8 @@
 		z-index: 333;
 	}
 	.m-input-view text{
-		width: 93px;
+		width: 80px;
+		box-sizing: border-box;
 		padding: 10px 10px 10px 0;
 	}
 </style>

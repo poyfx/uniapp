@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<view class="mContent pB10" style="margin-bottom: 50px;">
-			<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="getOrderNumber" v-for="(item,index) in orderInfo" :key="item.id">
+			<view class="userIntegral mTop10 bgcf  borderRadius8"  v-for="item in orderInfo" :key="item.id"><!-- @tap="getOrderNumber(item.reserve_sn,item.oil_remain)" -->
 				<view class="orderNumber">
-					<view><text class="numberTitle">订单编号:</text> <text>{{item.order_sn}}</text></view>
+					<view><text class="numberTitle">订单编号:</text> <text>{{item.reserve_sn}}</text></view>
 					<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
 					<view><text class="numberTitle">提油方式:</text> <text v-if="item.get_type == 0">配送</text><text v-else>自提</text></view>
 				</view>
@@ -58,22 +58,32 @@
 								icon: "none"
 							})
 						}
+					}else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.message,
+							success: function(res) {
+								if (res.confirm) {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								} else {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								}
+							}
+						})
 					}
 				}).catch(err => {
 					console.log(err)
 				})
 			},
-			getOrderNumber() {
-				if (this.role == 2 || this.role == 3) {
+			getOrderNumber(sn,oli) {
 					uni.navigateTo({
-						url: "../../reserveOilList/confirmed/oliCode/oliCode"
+						url: "./oilCodeDetali/oilCodeDetali?reserve_sn="+ sn + '&oil_remain=' + oli
 					})
-				}else{
-					uni.showToast({
-						title:'权限不够，请在用户信息界面申请权限',
-						icon:'none'
-					})
-				}
+				
 
 			},
 			Smore() {

@@ -14,16 +14,16 @@
 		<view class="mContent" style="margin-bottom: 50px;">
 			
 
-			<view class="fget-num orderList" v-for="item in info" :key='item.id'>
-				<view class="stateBox flex" @tap="orderDtails(item.status,item.id,item.order_sn)">
+			<view class="fget-num orderList"  v-for="(item,index) in info" :key='item.id'>
+				<view class="stateBox flex"  @tap="orderDtails(item.status,item.id,item.no)">
 					<view class="state-left">
 						<view>
 							订单编号：
-							<text>{{item.order_sn}}</text>
+							<text>{{item.no}}</text>
 						</view>
 						<view>
 							下单时间：
-							<text>{{time}}</text><!--  -->
+							<text>{{time[index]}}</text><!--  -->
 						</view>
 						<view>
 							油品类型：
@@ -142,7 +142,7 @@
 				showMore: false,
 				day: '',
 				days: false,
-				time: '',
+				time: [],
 			}
 		},
 		onLoad(option) {
@@ -164,7 +164,7 @@
 					start_time: this.day,
 					end_time: this.day,
 					status: this.status,
-					order_sn: this.orderNumber,
+					no: this.orderNumber,
 					page: this.page,
 					pageSize: this.pageSize,
 				}).then(res => {
@@ -172,10 +172,12 @@
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						const data = res.data.value;
 						this.info = data;
-						// this.info.forEach(el => {
-						// 	this.time = new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,
-						// 		'-')
-						// });
+						console.log(this.info)
+						this.time = [];
+						this.info.forEach(el => {
+							this.time.push(new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')) 
+							
+						});
 						if (data.length >= 10) {
 							this.showMore = true;
 						} else if (data.length < 10 && data.length > 0) {
@@ -191,6 +193,22 @@
 								// }
 							})
 						};
+					}else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.message,
+							success: function(res) {
+								if (res.confirm) {
+									uni.reLaunch({
+										url: '../login/login'
+									})
+								} else {
+									uni.reLaunch({
+										url: '../login/login'
+									})
+								}
+							}
+						})
 					}
 				}).catch(err => {
 					console.log(err)
@@ -204,7 +222,7 @@
 					})
 				} else {
 					uni.navigateTo({
-						url: './orderDtails/orderDtails?id=' + id + '&order_sn=' + order + '&status=' + status
+						url: './orderDtails/orderDtails?id=' + id + '&no=' + order + '&status=' + status
 					})
 				}
 

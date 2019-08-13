@@ -41,6 +41,7 @@
 	width: 80px;
 }
 .m-info-content .infoText {
+	color: #666;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;

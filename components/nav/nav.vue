@@ -33,74 +33,166 @@
 </template>
 
 <script>
+	
 	export default {
-		props:['role'],
+		props: ['role'],
 		data() {
 			return {
 
 			}
 		},
 		methods: {
-			order(role){
-				if(role == 1 || role == 3){
-					uni.navigateTo({
-						url:'../../pages/order/order'
-					})
-				}else{
-					uni.showToast({
-						title:'权限不够，请在用户信息界面申请权限',
-						icon:'none'
-					})
-				}
-			},
-			orderList(role){
-				 if(role == 1 || role == 3){
-					uni.navigateTo({
-						url:'../../pages/orderList/orderList',
-						icon:'none'
-					})
-				}else
-				{
-					uni.showToast({
-						title:'权限不够，请在用户信息界面申请权限',
-						icon:'none'
-					})
-				}
-			},
-			reserveOil(role){
-				 if(role == 2 || role == 3){
-					uni.navigateTo({
-						url:'../../pages/reserveOil/reserveOil'
-					})
-				}else
-				{
-					uni.showToast({
-						title:'权限不够，请在用户信息界面申请权限',
-						icon:'none'
-					})
-				}
-			},
-			reserveOilList(role){
-				 if(role == 2 || role == 3){
-					uni.navigateTo({
-						url:'../../pages/reserveOilList/reserveOilList'
-					})
-				}else
+
+			order(role) {
 				
-				{
-					uni.showToast({
-						title:'权限不够，请在用户信息界面申请权限',
-						icon:'none'
+				const token = uni.getStorageSync('Token');
+				if (token == null || token == '' || token == undefined) {
+					uni.showModal({
+						title: '提示',
+						content: '用户信息已失效，请重新登录',
+						success: function(res) {
+							if (res.confirm) {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							} else {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							};
+						}
 					})
+				} else {
+					if (role == 1 || role == 3) {
+						uni.navigateTo({
+							url: '../../pages/order/order'
+						})
+					} else {
+						uni.showToast({
+							title: '权限不够，请在用户信息界面申请权限',
+							icon: 'none'
+						})
+					}
 				}
+
+
+
 			},
-			integral(){
+			orderList(role) {
+				
+				const token = uni.getStorageSync('Token');
+				if (token == null || token == '' || token == undefined) {
+					uni.showModal({
+						title: '提示',
+						content: '用户信息已失效，请重新登录',
+						success: function(res) {
+							if (res.confirm) {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							} else {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							};
+						}
+					})
+				} else {
+					if (role == 1 || role == 3) {
+						uni.navigateTo({
+							url: '../../pages/orderList/orderList',
+							icon: 'none'
+						})
+					} else {
+						uni.showToast({
+							title: '权限不够，请在用户信息界面申请权限',
+							icon: 'none'
+						})
+					}
+				}
+
+
+
+			},
+			reserveOil(role) {
+				
+				const token = uni.getStorageSync('Token');
+				if (token == null || token == '' || token == undefined) {
+					uni.showModal({
+						title: '提示',
+						content: '用户信息已失效，请重新登录',
+						success: function(res) {
+							if (res.confirm) {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							} else {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							};
+						}
+					})
+				} else {
+					console.log(role)
+					if (role == 2 || role == 3) {
+						uni.navigateTo({
+							url: '../../pages/reserveOil/reserveOil'
+						})
+					} else {
+						uni.showToast({
+							title: '权限不够，请在用户信息界面申请权限',
+							icon: 'none'
+						})
+					}
+				}
+
+
+			},
+			reserveOilList(role) {
+				
+				const token = uni.getStorageSync('Token');
+				if (token == null || token == '' || token == undefined) {
+					uni.showModal({
+						title: '提示',
+						content: '用户信息已失效，请重新登录',
+						success: function(res) {
+							if (res.confirm) {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							} else {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							};
+						}
+					})
+				} else {
+					if (role == 2 || role == 3) {
+						uni.navigateTo({
+							url: '../../pages/reserveOilList/reserveOilList'
+						})
+					} else
+
+					{
+						uni.showToast({
+							title: '权限不够，请在用户信息界面申请权限',
+							icon: 'none'
+						})
+					}
+				}
+
+
+			},
+			integral() {
 				uni.showToast({
-					title:'待开放，敬请期待',
-					icon:'none'
+					title: '待开放，敬请期待',
+					icon: 'none'
 				})
 			},
-		}
+		},
+		
 	}
 </script>
 

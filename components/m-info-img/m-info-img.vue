@@ -67,6 +67,7 @@
 	}
 
 	.m-info-content .infoText {
+		color: #666;
 		flex: 1;
 	}
 

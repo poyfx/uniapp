@@ -3,7 +3,7 @@
 		<view class="mContent">
 			<view class="userIntegral mB10 bgcf borderRadius8" @tap="getOrderNumber" v-for="item in orderInfo" :key="item.id">
 				<view class="orderNumber">
-					<view><text class="numberTitle">订单编号:</text> <text>{{item.order_sn}}</text></view>
+					<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 					<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
 					<view><text class="numberTitle">提油方式:</text> <text v-if="item.get_type == 0">配送</text><text v-else>自提</text></view>
 				</view>

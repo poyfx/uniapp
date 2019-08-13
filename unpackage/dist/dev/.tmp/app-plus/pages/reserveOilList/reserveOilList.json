@@ -6,7 +6,8 @@
         "text": "搜索",
         "fontSize": "14px",
         "float": "right",
-        "id": "xiaoxi"
+        "width": "46px",
+        "color": "#666"
       }
     ]
   },

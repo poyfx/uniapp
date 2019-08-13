@@ -37,12 +37,13 @@ const store = new Vuex.Store({
 			state.hasLogin = false;
 			state.userInfo = {};
 			state.Token = '',
-			uni.removeStorage({
-				key: 'userInfo'
-			}),
-			uni.removeStorage({
-				key: 'Token'
-			})
+			// uni.removeStorage({
+			// 	key: 'userInfo'
+			// }),
+			// uni.removeStorage({
+			// 	key: 'Token'
+			// })
+			uni.clearStorage()
 		},
 		getPhoto(state,provider){
 			console.log(provider);
