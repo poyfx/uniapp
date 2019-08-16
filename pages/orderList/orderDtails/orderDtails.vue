@@ -43,12 +43,29 @@
 				</view>
 			</view>
 
-			<view class="fget-num detailsProcess" @tap="goRotate">
-				<view class="processText">
-					<view class="">您的付款未到账，请稍后重新点击‘确认已付款’，让收款员继续查收</view>
+			<view class="fget-num detailsProcess" @tap="goRotate" v-if="status == 2 || status == 3 || status == 4 || status == 5 ||status == 9">
+				<view class="processText" v-if="status == 2">
+					<view class="" >客户经理已确认价格，是否购买</view>
 					<view>{{dates}}</view>
 				</view>
-
+				<view class="processText" v-if="status == 4">
+					<view class="">确认已付款，待收款员确认收款</view>
+					<view>{{dates}}</view>
+				</view>
+				<view class="processText" v-if="status == 3">
+					<view class="">付款后请点击‘确认已付款’</view>
+					<view>{{dates}}</view>
+				</view>
+				
+				<view class="processText" v-if="status == 5">
+					<view class="">收款员已确认收款，待开票员开票</view>
+					<view>{{dates}}</view>
+				</view>
+				
+				<view class="processText" v-if="status == 9">
+					<view class="">订单已完成</view>
+					<view>{{dates}}</view>
+				</view>
 
 				<image :class="rotate ? 'go' : 'imgs'" src="../../../static/img/right.png" mode="aspectFit"></image>
 			</view>
@@ -200,6 +217,7 @@
 				})
 			},
 			tell() {
+				console.log(this.status)
 				this.disabled = !this.disabled
 				uni.showToast({
 					title: "已提醒财务确认,请耐心等待",
@@ -212,7 +230,23 @@
 				}).then(res=>{
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.getOrderDtails()
+						// this.getOrderDtails()
+						this.test.post('order/query_OrderById', {
+							id: this.orderId
+						}).then(res => {
+							console.log(res)
+							if (res.statusCode == 200 && res.data.errorCode == 0) {
+								this.order = res.data.value;
+								this.status = res.data.value.status;
+								this.time = new Date(this.order.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
+								clearInterval();
+								const a = this.order.difference
+								this.cutDown(a)
+								
+							}
+						}).catch(err => {
+							console.log(err)
+						})
 					}
 				}).catch(err=>{
 					console.log(err)

@@ -6,10 +6,10 @@
 				<!-- 公司 -->
 				<view class="flex  m-info">
 					<view class="flex center m-info-content">
-						<text>购油公司</text>
+						<text>售油公司</text>
 						<view>{{company}}</view>
 					</view>
-					<image src="../../static/img/right.png" mode="aspectFit"></image>
+					<!-- <image src="../../static/img/right.png" mode="aspectFit"></image> -->
 				</view>
 				<!-- 油品 -->
 				<view class="flex  m-info" @tap="chooseOilShow">
@@ -50,7 +50,7 @@
 				<view class="fget-eara">
 					<view class="first-li">备注：</view>
 					<view class="secend-in ml">
-						<textarea type="text" cols="38" auto-height placeholder="如：XXXXXXXXXXXXXXXXXX" v-model="Remarks"></textarea>
+						<textarea type="text" cols="38" auto-height placeholder="(选填)" v-model="Remarks"></textarea>
 						<b></b>
 					</view>
 				</view>
@@ -120,8 +120,8 @@
 			<view class="mContent">
 				<view class="harvest" v-for="(item,index) in info" :key="item.id">
 					<view class="harvest-name" @tap="isAddress(item.address)">
-						<view>{{item.receiver}}</view>
-						<view>{{item.rephone}}</view>
+						<view>{{item.realname}}</view>
+						<view>{{item.phone}}</view>
 					</view>
 					<view class="harvest-address" @tap="isAddress(item.address)">
 						<view>{{item.address}}</view>

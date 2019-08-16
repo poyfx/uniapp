@@ -46,7 +46,7 @@
 						</view>
 						<view class="oilPrice flex">
 							<text class="orderListState unit">单价:</text>
-							<text class="orderListState price">￥7900/吨</text>
+							<text class="orderListState price">{{item.oil_price}}/吨</text>
 						</view>
 					</view>
 
@@ -56,7 +56,7 @@
 						</view>
 						<view class="oilPrice flex">
 							<text class="orderListState unit">总金额:</text>
-							<text class="orderListState price">￥7900/吨</text>
+							<text class="orderListState price">￥{{item.oil_price*item.count}}</text>
 						</view>
 					</view>
 

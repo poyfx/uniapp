@@ -1,6 +1,7 @@
 <template>
 	<view class="m-input-view">
-		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
+		<!-- :focus="focus_" -->
+		<input  :type="inputType" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
 		 @focus="onFocus" @blur="onBlur" />
 		<image src="../../static/img/nopwd.png" @tap="showname" class='m-eye' v-if="show" mode="aspectFit"></image>
 		 <image src="../../static/img/showpwd.png" @tap="showname" class='m-eye' v-if="!show" mode="aspectFit"></image>

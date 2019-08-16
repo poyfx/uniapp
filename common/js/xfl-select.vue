@@ -452,7 +452,7 @@
 				box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 				padding: 5px 0;
 				position: absolute;
-				top: inherit;
+				top: 9px;
 				//***************************  弹出框中每一项样式  ***************************
 				.item{
 					&:hover{

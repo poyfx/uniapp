@@ -33,14 +33,11 @@
 				<view class="flex m-info-text">
 					<image src="../../../static/img/right.png" mode="aspectFit" style="width: 12px; height: 12px;"></image>
 				</view>
-
 			</view>
-
 		</view>
 		<view class="mTop30 mB" v-show="btn.stepOne">
 			<mButton :type="btn.type" :value="btn.value" @oneSide="oneSide"></mButton>
 		</view>
-
 		<view class="m-two-btn mTop30 mB"  v-show="btn.stepTwo">
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @lastStep="lastStep" :content="btn.content"></tButton>
 			<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @nextStep="nextStep" :content="btn.value"></tButton>

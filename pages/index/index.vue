@@ -1,7 +1,7 @@
 <template>
 	<view class="mContent">
 		<!-- 轮播图 -->
-		<banner :img="img"></banner>
+		<banner :img="img" ></banner>
 		<!-- 导航 -->
 		<navs :role='roles'></navs>
 		<!-- 天气 -->
@@ -53,62 +53,62 @@
 				<view class="flex titles">
 					<text>油品名称</text>
 					<text>价格(元/吨)</text>
-					<text class="paddingRight15">涨跌幅</text>
+					<text class="paddingRight19">涨跌幅</text>
 				</view>
 			</view>
 			<view class="priceLi">
-				<view class="nowPrice">
+				<view class="nowPrice" >
 					<text>0#柴油</text>
 					<view >
-						<text class="s">{{datas.diesel_0}}</text>
+						<text :class="gain.diesel_0>0?s:j">{{datas.diesel_0}}</text>
 					</view>
 
-					<text class="s">+2.33%</text>
+					<text :class="gain.diesel_0>0?s:j">{{gain.diesel_0}}%</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
 					<text>-10#柴油</text>
 					<view class="">
-						<text>{{datas.diesel_10}}</text>
+						<text :class="gain.diesel_10>0?s:j">{{datas.diesel_10}}</text>
 					</view>
 
-					<text>+2.33%</text>
+					<text :class="gain.diesel_10>0?s:j">{{gain.diesel_10}}%</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
 					<text>92#国六</text>
 					<view class="">
-						<text>{{datas.gas_92}}</text>
+						<text :class="gain.gas_92>0?s:j">{{datas.gas_92}}</text>
 					</view>
 
-					<text>+2.33%</text>
+					<text :class="gain.gas_92>0?s:j">{{gain.gas_92}}%</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
 					<text>95#国六</text>
 					<view class="">
-						<text>{{datas.gas_95}}</text>
+						<text :class="gain.gas_95>0?s:j">{{datas.gas_95}}</text>
 					</view>
 
-					<text>+2.33%</text>
+					<text :class="gain.gas_95>0?s:j">{{gain.gas_95}}%</text>
 				</view>
 			</view>
-			<view class="priceLi">
+			<view class="priceLiNo">
 				<view class="nowPrice">
 					<text>98#国六</text>
 					<view class="">
-						<text>{{datas.gas_98}}</text>
+						<text :class="gain.gas_98>0?s:j">{{datas.gas_98}}</text>
 					</view>
-					<text>+2.33%</text>
+					<text :class="gain.gas_98>0?s:j">{{gain.gas_98}}%</text>
 				</view>
 			</view>
 		</view>
 
 		<!-- 地炼价格行情 -->
-		<view class="oilPrices">
+		<!-- <view class="oilPrices">
 			<view class="flex index-title">
 				<view class="">
 					<text class="line"></text>
@@ -120,34 +120,34 @@
 				<view class="flex titles">
 					<text>油品名称</text>
 					<text>价格(元/吨)</text>
-					<text class="paddingRight15">涨跌幅</text>
+					<text class="paddingRight19">涨跌幅</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
 					<text>0#柴油</text>
 					<view class="">
-						<text>{{datas.diesel_0}}</text>
+						<text>{{datas.oilPrice.diesel_0}}</text>
 					</view>
 
 					<text>+2.33%</text>
 				</view>
 			</view>
 
-			<view class="priceLi">
+			<view class="priceLiNo">
 				<view class="nowPrice">
 					<text>92#国六</text>
 					<view class="">
-						<text>{{datas.gas_92}}</text>
+						<text>{{datas.oilPrice.diesel_0}}</text>
 					</view>
 
 					<text>+2.33%</text>
 				</view>
 			</view>
 		</view>
-
+ -->
 		<!-- 国际原油价格 -->
-		<view class="oilPrices">
+		<!-- <view class="oilPrices">
 			<view class="flex index-title">
 				<view class="">
 					<text class="line"></text>
@@ -159,31 +159,31 @@
 				<view class="flex titles">
 					<text>油品名称</text>
 					<text>价格(元/吨)</text>
-					<text class="paddingRight15">涨跌幅</text>
+					<text class="paddingRight19">涨跌幅</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
 					<text>0#柴油</text>
 					<view class="">
-						<text>{{datas.diesel_0}}</text>
+						<text>{{datas.oilPrize.diesel_0}}</text>
 					</view>
 
 					<text>+2.33%</text>
 				</view>
 			</view>
 
-			<view class="priceLi">
+			<view class="priceLiNo">
 				<view class="nowPrice">
 					<text>92#国六</text>
 					<view class="">
-						<text>{{datas.gas_92}}</text>
+						<text>{{datas.oilPrice.diesel_0}}</text>
 					</view>
 
 					<text>+2.33%</text>
 				</view>
 			</view>
-		</view>
+		</view> -->
 
 	</view>
 </template>
@@ -201,9 +201,10 @@
 				title: '',
 				managerTel: "",
 				myManager: '',
-				datas: [],
+				datas: [],//油价
+				 gain:[],
 				img: [],
-				roles:this.role,
+				// role:'',
 				address: '',
 				city: '深圳',
 				district: '龙华区',
@@ -214,11 +215,15 @@
 				date: '', //日期
 				week: '', //星期
 				temperature: '', //温度
+				s:'s',
+				j:'j'
 			}
 		},
 		onShow() {
+			
 			//获取token
-			this.roles = this.role;
+			// this.role = this.roles;
+			// console.log(this.role)
 			// const token = uni.getStorageSync('Token');
 			// if (token == null || token == '' || token == undefined) {
 			// 	uni.showModal({
@@ -253,13 +258,15 @@
 					success: function(res) {
 						console.log(res)
 						let price = res.data.oilPrize; //获取当前油价油价
-						that.datas = price;
+						that.datas = price.oilPrice;
+						that.gain = price.oilAmplitude
+						console.log( that.datas.gas_98)
 						let managerInfo = res.data.user;
 						that.myManager = managerInfo.manager_name; //客户经理信息
 						that.managerTel = managerInfo.manager_phone;
 						let images = res.data.banners; //banner图
 						that.img = images;
-
+						
 					}
 				})
 
@@ -387,7 +394,7 @@
 			}
 		},
 		computed: {
-			...mapState(["hasLogin", "userInfo","role"])
+			...mapState(["hasLogin", "userInfo","roles"])
 		},
 		components: {
 			banner,

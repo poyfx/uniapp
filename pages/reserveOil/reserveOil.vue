@@ -38,7 +38,7 @@
 				<view class="fget-eara">
 					<view class="first-li">备注：</view>
 					<view class="secend-in ml">
-						<textarea auto-height="" placeholder="如：XXXXXXXXXXXXXXXXXX" v-model="remark"></textarea>
+						<textarea auto-height="" placeholder="(选填)" v-model="remark"></textarea>
 						<b></b>
 					</view>
 				</view>
@@ -132,7 +132,7 @@
 			}
 		},
 		onLoad() {
-			this.getorderNumberInfo();
+			
 
 		},
 		methods: {
@@ -193,6 +193,7 @@
 			},
 			// 订单编号的显示
 			goOrderNumber() {
+				this.getorderNumberInfo();
 				this.showOrderNumber = !this.showOrderNumber
 			},
 			// 点击点单编号

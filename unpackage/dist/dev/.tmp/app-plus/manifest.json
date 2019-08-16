@@ -50,16 +50,19 @@
     "distribute": {
       "icons": {
         "android": {
-          "hdpi": "D:/my/安徽石油切图/安徽石油切图/@1/启动页图标.png",
-          "xhdpi": "D:/my/安徽石油切图/安徽石油切图/@3/启动页图标@3x.png",
-          "xxhdpi": "D:/my/安徽石油切图/安徽石油切图/@3/启动页图标@3x.png",
-          "xxxhdpi": "D:/my/安徽石油切图/安徽石油切图/@3/启动页图标@3x.png"
+          "hdpi": "./static/img/icon.png",
+          "xhdpi": "./static/img/icon.png",
+          "xxhdpi": "./static/img/icon.png",
+          "xxxhdpi": "./static/img/icon.png"
+        },
+        "ios": {
+          "appstore": "./static/img/store.png"
         }
       },
       "splashscreen": {
         "android": {
-          "hdpi": "C:/Users/DESIGN/Pictures/启动页.png",
-          "xhdpi": "C:/Users/DESIGN/Pictures/启动页@2x.png"
+          "hdpi": "./static/img/start.png",
+          "xhdpi": "./static/img/start.png"
         }
       },
       "google": {
@@ -97,6 +100,7 @@
         "push": {
           "unipush": {}
         },
+        "oauth": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"
@@ -104,18 +108,25 @@
         }
       }
     },
-    "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\",\"id\":0}",
-    "allowsInlineMediaPlayback": true,
     "safearea": {
-      "background": "#fff",
+      "background": "#e5e5e5",
       "bottom": {
-        "offset": "auto"
+        "offset": "none"
+      },
+      "left": {
+        "offset": "none"
+      },
+      "right": {
+        "offset": "none"
       }
     },
+    "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\",\"id\":0}",
+    "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.1.3",
+      "compilerVersion": "2.2.1",
       "control": "v8",
-      "nvueCompiler": "weex"
+      "nvueCompiler": "weex",
+      "renderer": "auto"
     },
     "secondwebview": {
       "id": "1",

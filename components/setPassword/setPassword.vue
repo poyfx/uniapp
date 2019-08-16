@@ -1,7 +1,8 @@
 <template>
 	<view class="m-input-view" >
 		<text>{{textValue}}</text>
-		<input :focus="focus_" :type="inputType" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
+		<!-- :focus="focus_" -->
+		<input  :type="inputType" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
 		 @focus="onFocus" @blur="onBlur" />
 		 <image @tap="showname" v-if="show" :src="noSrc" class='m-eye' alt mode="aspectFit" ></image>
 		 <image @tap="showname" v-if="!show" :src="showSrc" class='m-eye' alt  mode="aspectFit"></image>
@@ -49,7 +50,7 @@
 				this.showPassword = !this.showPassword
 			},
 			onFocus() {
-				this.isFocus = true
+				this.isFocus = false
 			},
 			onBlur() {
 				this.$nextTick(() => {
@@ -90,7 +91,7 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		border-bottom: 1px solid #e5e5e5;
 	}
 

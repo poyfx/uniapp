@@ -414,6 +414,30 @@
 				}
 			}
         }
+        ,{
+            "path" : "pages/newWeb/newWeb",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "跳转",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+        }
+        ,{
+            "path" : "pages/info/feedback/feedback",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "用户反馈",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+        }
     ],
 	"tabBar": {
 		"color": "black",

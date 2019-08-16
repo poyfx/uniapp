@@ -1,33 +1,33 @@
 <template>
 	<view class="mTop15 bgcf">
-		<view class="flex m-apply" @tap="GoBuyApply">
-			<text>购油人权限</text>
-			<view class="flex never" v-show="!buy">
-				<text>未申请</text>
+		<view class="flex m-apply" @tap="GoBuyApply(item.status)" v-for="item in role" :key="item.id">
+			<text>{{item.name}}</text>
+			<view class="flex never good" v-if="item.status == 1">
+				<image src="../../../static/img/good.png" mode=""></image>
+				<text>审核通过</text>
+			</view>
+			<view class="flex never" v-else>
+				<text v-if="item.status == 0">未申请</text>
+				<!-- <text v-else-if="item.status == 1">审核通过</text> -->
+				<text v-else-if="item.status == -1">等待后台审核</text>
+				<text v-else-if="item.status == 9">审核不通过</text>
 				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
 			</view>
 
-			<view class="flex never" v-show="buy">
-				<label class="radio">
-					<radio value="r1" :checked="buy" />
-				</label>
-				<text>已拥有权限</text>
-			</view>
+			
 		</view>
-		<view class="flex m-apply" @tap="GoTakeApply">
+		<!-- <view class="flex m-apply" @tap="GoTakeApply">
 			<text>提油人权限</text>
 			<view class="flex never" v-show="!take">
 				<text>未申请</text>
 				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
 			</view>
 
-			<view class="flex never" v-show="take">
-				<label class="radio">
-					<radio value="r1" :checked="take" />
-				</label>
+			<view class="flex never good" v-show="take">
+			<image src="../../../static/img/good.png" mode=""></image>
 				<text>已拥有权限</text>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -39,6 +39,7 @@
 				buy: true,
 				take: false,
 				role: [],
+				statusAll:'',
 			}
 		},
 		onLoad() {
@@ -51,6 +52,7 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.role = res.data.value;
+						console.log(this.role)
 						if (this.role.length == 2) {
 							console.log(1)
 							this.buy = true;
@@ -90,30 +92,40 @@
 
 
 
-			GoBuyApply() {
-				if (this.buy !== true) {
+			GoBuyApply(stu) {
+				if (stu == 0) {
 					uni.navigateTo({
 						url: '../../register/positive/positive1?name=' + "apply"
 					})
-				} else {
+				} else if(stu == 1){
 					uni.showToast({
 						"title": "您已有权限",
-
+						icon:'none'
+					})
+				} else if(stu == -1){
+					uni.showToast({
+						"title": "审核中...",
+						icon:'none'
+					})
+				}else{
+					uni.showToast({
+						"title": "审核未通过",
+						icon:'none'
 					})
 				}
 			},
-			GoTakeApply() {
-				if (this.take !== true) {
-					uni.navigateTo({
-						url: '../../register/positive/positive2?name=' + "apply"
-					})
-				} else {
-					uni.showToast({
-						"title": "您已有权限",
-
-					})
-				}
-			}
+// 			GoTakeApply() {
+// 				if (this.take !== true) {
+// 					uni.navigateTo({
+// 						url: '../../register/positive/positive2?name=' + "apply"
+// 					})
+// 				} else {
+// 					uni.showToast({
+// 						"title": "您已有权限",
+// 
+// 					})
+// 				}
+// 			}
 		},
 		components: {
 			infoText
@@ -136,10 +148,14 @@
 	.m-apply image {
 		width: 12px;
 		height: 12px;
-
 		margin-left: 10px;
 	}
-
+.m-apply .good image{
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+ 
 	.never {
 		justify-content: flex-end;
 		align-content: center;

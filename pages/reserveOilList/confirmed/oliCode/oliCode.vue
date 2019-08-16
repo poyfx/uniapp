@@ -11,7 +11,7 @@
 		
 		<view class="mContent bgcf otherOilCode ">
 			<view>提油码发送他人代提</view>
-			<input type="text" class="oilCodeInput" disabled="disabled" v-model="otherNumber" />
+			<input type="text" class="oilCodeInput" v-model="otherNumber" />
 			<view class="read ;">
 				<label class="radio">
 					<radio value="已阅读" :checked='checked' @tap="cancel" />

@@ -20,10 +20,8 @@
 				<view class="flex  m-info" v-show="btn.stepThree">
 					<view class="flex center m-info-content">
 						<text>授权书有效期</text>
-						<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
+						<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" v-model="inputs"/>
 						<view class="" v-show="!times">
-							<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"
-							 v-show="!times"></ruiDatePicker> -->
 							<view class="" v-show="!times">
 								<view class="" @tap="changeTimes">
 									{{day}}
@@ -33,17 +31,13 @@
 							 ref="date" themeColor="#f00">
 							</w-picker>
 						</view>
-
 					</view>
 					<view class="flex m-info-text">
 						<image src="../../../static/img/right.png" mode="aspectFit" style="width: 12px; height: 12px;"></image>
 					</view>
-
 				</view>
-
 			</view>
 		</form>
-
 		<view class="mTop30 mB" v-show="btn.stepOne">
 			<mButton :type="btn.type" :value="btn.value" @oneSide="oneSide"></mButton>
 		</view>
@@ -115,6 +109,7 @@
 				register: '',
 				img: [],
 				name: '',
+				inputs:'',
 				mode: 'date', //时间
 			}
 		},
@@ -175,18 +170,24 @@
 			// 第一步下一步
 
 			oneSide() {
-				// if (this.count == 1) {
-				this.btn.stepOne = false;
-				this.btn.stepTwo = true;
-				this.num = 1;
-				// this.count += 1;
-				this.src = two;
-				this.step.active = "step-ago",
-					this.step.kong = "step-active"
-
+				if (this.count == 1) {
+					this.btn.stepOne = false;
+					this.btn.stepTwo = true;
+					this.num = 1;
+					// this.count += 1;
+					this.src = two;
+					this.step.active = "step-ago",
+						this.step.kong = "step-active"
+				} else {
+					return uni.showToast({
+						title: '请上传身份证正面照',
+						icon: 'none'
+					})
+				}
 			},
 			//第二步上一步
 			lastStep() {
+
 				this.btn.stepOne = true;
 				this.btn.stepTwo = false;
 				this.num = 0;
@@ -194,21 +195,27 @@
 				this.src = one;
 				this.active = "step-active",
 					this.kong = ""
+
 			},
 			// 第二步下一步
 			nextStep() {
 				console.log(this.count)
-				// if (this.count == 2) {
-				this.btn.stepTwo = false;
-				this.btn.stepThree = true;
-				this.btn.Dates = true;
-				this.num = 2;
-				// this.count += 1;
-				this.src = three;
-				this.step.active = "step-ago",
-					this.step.kong = "step-ago"
-				this.step.kong1 = "step-active"
-
+				if (this.count == 2) {
+					this.btn.stepTwo = false;
+					this.btn.stepThree = true;
+					this.btn.Dates = true;
+					this.num = 2;
+					// this.count += 1;
+					this.src = three;
+					this.step.active = "step-ago",
+						this.step.kong = "step-ago"
+					this.step.kong1 = "step-active"
+				} else {
+					return uni.showToast({
+						title: '请上传身份证反面照',
+						icon: 'none'
+					})
+				}
 			},
 			//第三步上一步
 			threeStepLast() {
@@ -234,7 +241,7 @@
 						const that = this;
 						if (this.ifday == true) {
 							uni.uploadFile({
-							//注册地址
+								//注册地址
 								url: 'http://dev.pjy.name:8180/api/bizcust/base/registCusmter',
 								files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 								fileType: 'image',
@@ -262,7 +269,7 @@
 									if (res.statusCode == 200) {
 										if (data.errorCode == 10109) {
 											uni.showToast({
-												"title":data.message
+												"title": data.message
 											})
 											uni.removeStorage({
 												key: 'register'
@@ -273,7 +280,7 @@
 
 										} else {
 											uni.showToast({
-												"title":data.message,
+												"title": data.message,
 												"icon": 'none'
 											});
 
@@ -309,7 +316,7 @@
 						const that = this;
 						if (this.ifday == true) {
 							uni.uploadFile({
-							//申请权限地址
+								//申请权限地址
 								url: 'http://dev.pjy.name:8180/api/bizcust/user/oil_authorize',
 								files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 								fileType: 'image',

@@ -1,6 +1,6 @@
 <template>
 	<view class="m-input-view">
-		<input :focus="focus_" type="type" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
+		<input  type="type" :value="value" @input="onInput" class="m-input" :placeholder="placeholder"
 		 @focus="onFocus" @blur="onBlur" />
 	</view>
 </template>

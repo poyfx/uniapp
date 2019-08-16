@@ -35,6 +35,7 @@
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.oilNum" @toStayOil="toStayOil"></infoImg>
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.address" @editAddress="editAddress"></infoImg>
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.editPsd" @toEditPsd="toEditPsd"></infoImg>
+					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.feedback" @toEditPsd="toFeedback"></infoImg>
 				</view>
 				<button class="safeout" @tap="outsafe">安全退出</button>
 			</view>
@@ -65,6 +66,7 @@
 					oilNum: '待提油量',
 					address: '收货地址',
 					editPsd: '修改密码',
+					feedback:'用户反馈',
 					disabled: true,
 					type: 'text',
 					username: '',
@@ -107,8 +109,6 @@
 				uni.getStorage({
 					key: "userInfo",
 					success: function(res) {
-						console.log(res.data)
-
 						that.info.username = res.data.user.realname;
 						that.info.phoneNum = res.data.user.username
 						that.info.city = res.data.user.city;
@@ -116,8 +116,6 @@
 						that.info.customerName = res.data.user.manager_name;
 					}
 				})
-
-				// console.log(this.$store.state.userInfo)
 			},
 			toStayOil() {
 				uni.navigateTo({
@@ -190,7 +188,13 @@
 					})
 				}
 
-			}
+			},
+			//用户反馈
+			toFeedback(){
+				// uni.navigateTo({
+				// 	url:'feedback/feedback'
+				// })
+			},
 		},
 		computed: {
 			...mapState(["hasLogin", "userInfo"])

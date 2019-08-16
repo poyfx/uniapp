@@ -1,1 +1,2 @@
+setCssToHead([".",[1],"new { border: none; }\n",],undefined,{path:"./pages/info/modify/modify.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/info/modify/modify.wxml') } }));

@@ -3,12 +3,12 @@
 		<view class="fget-num paddingLeft15">
 			<setPassword :textValue="old" :placeholder="placeholder" v-model="oldpws"></setPassword>
 			<setPassword :textValue="new1" :placeholder="newPlaceholder" v-model="newpws1"></setPassword>
-			<setPassword :textValue="new2" :placeholder="newPlaceholder" v-model="newpws2"></setPassword>
+			<setPassword class="new" :textValue="new2" :placeholder="newPlaceholder" v-model="newpws2"></setPassword>
 		</view>
 		<view class="mTop20">
 			<mButton :value="value" class="mTop15" :type="type" @sureModify="sureModify"></mButton>
 		</view>
-		
+
 	</view>
 
 
@@ -38,42 +38,50 @@
 				const that = this;
 				if (this.oldpws !== '' && this.oldpws !== null) {
 					if (this.newpws1 !== '' && this.newpws1 !== null) {
-						if (this.newpws1 == this.newpws2) {
-							this.test.post('user/updatePwd', {
-								oldPwd: this.oldpws,
-								newPwd: this.newpws2
-							}).then(res => {
-								console.log(res)
-								if(res.statusCode ==200 && res.data.errorCode ==0){
-									uni.showToast({
-										title:"修改成功"
-									})
-								}else{
-									uni.showModal({
-										title: '提示',
-										content: res.data.message,
-										success: function(res) {
-											if (res.confirm) {
-												uni.reLaunch({
-													url: '../../login/login'
-												})
-											} else {
-												uni.reLaunch({
-													url: '../../login/login'
-												})
+						if (this.newpws1.length >= 6) {
+							if (this.newpws1 == this.newpws2) {
+								this.test.post('user/updatePwd', {
+									oldPwd: this.oldpws,
+									newPwd: this.newpws2
+								}).then(res => {
+									console.log(res)
+									if (res.statusCode == 200 && res.data.errorCode == 0) {
+										uni.showToast({
+											title: "修改成功"
+										})
+									} else {
+										uni.showModal({
+											title: '提示',
+											content: res.data.message,
+											success: function(res) {
+												if (res.confirm) {
+													uni.reLaunch({
+														url: '../../login/login'
+													})
+												} else {
+													uni.reLaunch({
+														url: '../../login/login'
+													})
+												}
 											}
-										}
-									})
-								}
-							}).catch(err => {
-								console.log(err)
-							})
-						} else {
+										})
+									}
+								}).catch(err => {
+									console.log(err)
+								})
+							} else {
+								uni.showToast({
+									title: "两次密码不一致",
+									icon: "none"
+								})
+							}
+						}else{
 							uni.showToast({
-								title: "两次密码不一致",
+								title: "密码长度不能小于6",
 								icon: "none"
 							})
 						}
+
 					} else {
 						uni.showToast({
 							title: "请输入新密码",
@@ -96,5 +104,7 @@
 </script>
 
 <style>
-
+	.new {
+		border: none;
+	}
 </style>

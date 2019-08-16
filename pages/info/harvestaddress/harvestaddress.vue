@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<view class="mContent">
-			<view class="harvest" v-for="(item,index) in info" :key="item.id">
+			<view class="harvest" v-for="(item,index) in info" :key="index">
 				<view class="harvest-name">
-					<view>{{item.receiver}}</view>
-					<view>{{item.rephone}}</view>
+					<view>{{item.realname}}</view>
+					<view>{{item.phone}}</view>
 				</view>
 				<view class="harvest-address">
 					<view>{{item.address}}</view>
@@ -48,23 +48,13 @@
 			// 获取地址信息
 			getAddressInfo() {
 				this.test.post('user/getAddrList').then(res => {
+					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value
 					}else{
-						uni.showModal({
-							title: '提示',
-							content: res.data.message,
-							success: function(res) {
-								if (res.confirm) {
-									uni.reLaunch({
-										url: '../../login/login'
-									})
-								} else {
-									uni.reLaunch({
-										url: '../../login/login'
-									})
-								}
-							}
+						uni.showToast({
+							title:res.data.message,
+							icon:'none'
 						})
 					}
 				}).catch(err => {
@@ -73,17 +63,19 @@
 			},
 			// 确认默认地址
 			sure(e) {
+				console.log(e)
 				uni.showModal({
 					"title": "提示",
 					"content": '确认选择该地址为默认地址？',
 					success: res => {
 						if (res.confirm) {
 							for (let i = 0; i < this.info.length; i++) {
+								console.log(res)
 								if (this.info[i].is_default == e.target.value) {
 									this.range = i;
-									console.log(this.info[i].id)
+									console.log(this.info[i].cl_id)
 									this.test.post("user/setDefaultAddr", {
-										 addr_id:this.info[i].id
+										 addr_id:this.info[i].cl_id
 									}).then(res=>{
 										console.log(res)
 										if(res.statusCode == 200 && res.data.errorCode == 0){

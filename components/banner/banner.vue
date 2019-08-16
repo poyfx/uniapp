@@ -5,7 +5,7 @@
 				<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 					<swiper-item v-for="item in img" :key="item.id">
 				<!-- 	<web-view :src="item.link"> -->
-						<view class="swiper-item"><image :src="item.photo" ></image></view>
+						<view class="swiper-item"><image :src="item.photo" @tap="otherWeb(item.link)"></image></view>
 					<!-- </web-view> -->
 					</swiper-item>
 				</swiper>
@@ -20,9 +20,21 @@
 			return {
 			}
 		},
-		props:['img'],
+		props:{
+			img:{
+				type:Array,
+				
+			}
+		},
 		methods: {
-			
+			otherWeb(web){
+				uni.navigateTo({
+					url: '../../pages/newWeb/newWeb?web='+web,
+					success: res => {},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
 		}
 	}
 </script>
