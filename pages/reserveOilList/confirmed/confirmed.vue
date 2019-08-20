@@ -5,7 +5,11 @@
 
 			</view>
 			<view class="flex title">
-				<image src="../../../static/img/back.png" mode="aspectFit" @tap="back"></image>
+				<view class="left" @tap="back">
+					<uni-icon type="arrowleft" size="27"></uni-icon>
+				</view>
+
+				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
 				<view>预约详情</view>
 				<view v-show="status == 2 || status == 3 || status == 4 || status == 5" @tap="getCode">提油码</view>
 			</view>
@@ -52,6 +56,7 @@
 	import step from '../../../components/step/step.vue'
 	import infoText from '../../../components/m-info-text/m-info-text'
 	import mButton from '../../../components/m-button.vue'
+	import uniIcon from "@/components/uni-icon/uni-icon.vue"
 	export default {
 		data() {
 			return {
@@ -155,26 +160,27 @@
 				})
 			},
 			back() {
-				uni.redirectTo({
+				uni.navigateBack({
 					url: '../reserveOilList'
 				})
 
 			},
-			getCode(){
+			getCode() {
 				uni.navigateTo({
-					url: "oliCode/oliCode?id="+this.rId + '&reserve_sn='+ this.oId
+					url: "oliCode/oliCode?id=" + this.rId + '&reserve_sn=' + this.oId
 				})
 			},
 		},
 		components: {
 			step,
 			infoText,
-			mButton
+			mButton,
+			uniIcon
 		},
 	}
 </script>
 
-<style>
+<style scoped>
 	/* .chooseAddress {
 		position: absolute;
 		top: 0;
@@ -187,7 +193,8 @@
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
-		background: #000000;
+		background: rgba(51, 51, 51, 0.5);
+
 	}
 
 	.title {
@@ -204,12 +211,13 @@
 		justify-content: center;
 	}
 
-	.title image {
-		width: 18px;
-		height: 18px;
+	.title .left {
+		width: 25px;
+		height: 25px;
 		margin-left: 5px;
 		position: absolute;
-		left: 8px;
+		left: 10px;
+		top: 7px
 	}
 
 	.title view {

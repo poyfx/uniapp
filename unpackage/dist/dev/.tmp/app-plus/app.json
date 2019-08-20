@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/index/start",
-    "pages/login/login",
     "pages/login/forget/forget",
     "pages/login/setPws/setPws",
     "pages/register/register",
@@ -65,6 +65,6 @@
     "autoclose": false
   },
   "appname": "安徽石油",
-  "compilerVersion": "2.2.1",
+  "compilerVersion": "2.2.2",
   "usingComponents": {}
 }

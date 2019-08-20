@@ -124,7 +124,10 @@
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.oil = res.data.value;
+						// this.oil = res.data.value;
+						res.data.value.forEach(el=>{
+							this.oil.push(el)
+						})
 						this.time = [];
 						this.oil.forEach(el=>{
 							this.time.push(new Date(el.reserve_time + 8*3600*1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g, '-')) 
@@ -168,6 +171,7 @@
 				// this.$router.push('/complete');
 			},
 			changeMsg(e){
+				this.oil = [];
 				this.page=1;
 				this.status = e.orignItem.label;
 				this.getReserveList();

@@ -144,7 +144,10 @@
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.chooseNumber.orderInfo = res.data.value
+						// this.chooseNumber.orderInfo = res.data.value
+						res.data.value.forEach(el=>{
+							this.chooseNumber.orderInfo.push(el)
+						})
 						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
 						} else if (res.data.value.length == 0) {
@@ -193,6 +196,7 @@
 			},
 			// 订单编号的显示
 			goOrderNumber() {
+				this.chooseNumber.orderInfo=[]
 				this.getorderNumberInfo();
 				this.showOrderNumber = !this.showOrderNumber
 			},

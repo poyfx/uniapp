@@ -35,7 +35,7 @@
 				url: '',
 				page: 1,
 				pageSize: 10,
-				orderInfo: [],
+				orderInfo: [],//总油量
 				more: true,
 			}
 		},
@@ -48,7 +48,11 @@
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.orderInfo = res.data.value
+						// this.orderInfo = res.data.value
+						res.data.value.forEach(el=>{
+							this.orderInfo.push(el)
+						})
+						
 						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
 						} else if (res.data.value.length == 0) {

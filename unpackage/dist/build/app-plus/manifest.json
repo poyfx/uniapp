@@ -122,7 +122,7 @@
     },
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.2.1",
+      "compilerVersion": "2.2.2",
       "control": "v8",
       "nvueCompiler": "weex",
       "renderer": "auto"
@@ -130,10 +130,7 @@
     "secondwebview": {
       "id": "1",
       "launch_path": "__uniappview.html",
-      "kernel": "WKWebview",
-      "mode": "child",
-      "top": 0,
-      "bottom": 56
+      "kernel": "WKWebview"
     }
   }
 }

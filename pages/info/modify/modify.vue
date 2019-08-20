@@ -46,24 +46,20 @@
 								}).then(res => {
 									console.log(res)
 									if (res.statusCode == 200 && res.data.errorCode == 0) {
-										uni.showToast({
-											title: "修改成功"
+										uni.showModal({
+											title: "修改成功",
+											content:'修改密码成功请重新登录',
+											showCancel:false,
+											success:function(){
+												uni.reLaunch({
+													url:"../../login/login"
+												})
+											}
 										})
 									} else {
-										uni.showModal({
-											title: '提示',
-											content: res.data.message,
-											success: function(res) {
-												if (res.confirm) {
-													uni.reLaunch({
-														url: '../../login/login'
-													})
-												} else {
-													uni.reLaunch({
-														url: '../../login/login'
-													})
-												}
-											}
+										uni.showToast({
+											title: res.data.message,
+											icon:"none"
 										})
 									}
 								}).catch(err => {

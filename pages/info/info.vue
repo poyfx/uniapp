@@ -191,9 +191,9 @@
 			},
 			//用户反馈
 			toFeedback(){
-				// uni.navigateTo({
-				// 	url:'feedback/feedback'
-				// })
+				uni.navigateTo({
+					url:'feedback/feedback'
+				})
 			},
 		},
 		computed: {

@@ -171,8 +171,10 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						const data = res.data.value;
-						this.info = data;
-						console.log(this.info)
+						// this.info = data (显示十条)
+						data.forEach(el=>{
+							this.info.push(el);
+						});
 						this.time = [];
 						this.info.forEach(el => {
 							this.time.push(new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')) 
@@ -228,6 +230,7 @@
 
 			},
 			changeMsg(e) {
+				this.info = [];
 				this.status = e.orignItem.label;
 				this.page = 1;
 				this.getOrderListInfo()

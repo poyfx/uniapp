@@ -66,7 +66,7 @@
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							if (res.data.value.length <= 0) {
 								uni.showToast({
-									title: '搜索失败,订单编号无效或日期不正确',
+									title: '没有找到相关的订单，请重新查询',
 									icon: 'none',
 								})
 							} else if (res.data.value.length > 0) {
@@ -91,7 +91,7 @@
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							if (res.data.value.length <= 0) {
 								uni.showToast({
-									title: '搜索失败,订单编号无效或日期不正确',
+									title: '没有找到相关的订单，请重新查询',
 									icon: 'none'
 								})
 							} else if (res.data.value.length > 0) {

@@ -64,7 +64,7 @@
 				<input type="text" value="" placeholder="搜索" v-model="value" @input="searchCustomer" />
 			</view>
 			<view class="content" style="margin:50px 0 49px;">
-				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in datas" :key="item.id">
+				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
 					<view>{{item.realname}}</view>
 					<view>{{item.phone}}</view>
 				</view>
@@ -133,7 +133,8 @@
 				showCoutomer: false,
 				users: false, //角色选择显示隐藏
 				value: "",
-				datas: [],
+				datas: [], //公司集合
+				man: [], //客户经理集合
 				inputValue: "",
 				Cpage: 1,
 				page: 1,
@@ -199,7 +200,7 @@
 																		uni.navigateTo({
 																			url: "positive/positive?name=" + "register",
 																			success: res => {
-																
+
 																			}
 																		})
 																	}
@@ -213,7 +214,7 @@
 																		uni.navigateTo({
 																			url: "positive/positive2?name=" + "register",
 																			success: res => {
-																
+
 																			}
 																		})
 																	}
@@ -303,44 +304,21 @@
 			//选择公司
 			oilByCompany() {
 				this.getCompanyInfo()
+				this.datas = [];
 				this.showCompany = !this.showCompany;
 			},
 			// 选中公司
 			chooseCompany(e, id) {
 				this.info.companyId = id;
-				this.info.company = this.datas[e].addr
-				this.showCompany = !this.showCompany
+				this.info.company = this.datas[e].addr;
+				this.showCompany = !this.showCompany;
+
 			},
 			//公司输入框搜索
 			searchCompany() {
 				this.Cpage = 1
 				if (this.inputValue !== '' && this.inputValue !== null) {
 					this.getCompanyInfo()
-					// 					this.test.post('base/listCustCompany', {
-					// 						search: this.inputValue,
-					// 						page: this.Cpage,
-					// 						pageSize: this.pageSize,
-					// 					}).then(res => {
-					// 						console.log(res)
-					// 
-					// 						if (res.statusCode == 200 && res.data.errorCode == 0) {
-					// 							console.log(res.data.value.length)
-					// 							if (res.data.value.length < 10) {
-					// 								this.Cmore = false
-					// 							}
-					// 							this.datas = res.data.value;
-					// 							if (res.data.value.length === 0) {
-					// 								uni.showToast({
-					// 									title: '没有更多了',
-					// 									icon: 'none'
-					// 								})
-					// 							}
-					// 						} else {
-					// 
-					// 						}
-					// 					}).catch(err => {
-					// 						console.log(err)
-					// 					})
 				} else if (this.inputValue == '' && this.inputValue == null) {
 					this.getCompanyInfo()
 				}
@@ -356,9 +334,9 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						console.log(res.data.value.length)
-						this.datas = res.data.value;
-						// if (res.data.value.length == 0) {} else
-
+						res.data.value.forEach(el => {
+							this.datas.push(el);
+						})
 						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.Cmore = false;
 							uni.showToast({
@@ -387,11 +365,11 @@
 			chooseCustomer(e) {
 				this.getCustomerInfo();
 				this.showCoutomer = !this.showCoutomer;
-
+				this.man = [];
 			},
 			chooseCustomers(e, id) {
 				this.info.customerId = id;
-				this.info.customer = this.datas[e].realname;
+				this.info.customer = this.man[e].realname;
 				this.showCoutomer = !this.showCoutomer
 			},
 			// 搜索客户经理
@@ -399,33 +377,13 @@
 				this.page = 1;
 				if (this.value !== '' && this.value !== null) {
 					this.getCustomerInfo();
-					// 					this.test.post('base/listCustManager', {
-					// 						search: this.value,
-					// 						page: this.page,
-					// 						pageSize: this.pageSize,
-					// 					}).then(res => {
-					// 						console.log(res)
-					// 						if (res.statusCode == 200 && res.data.errorCode == 0) {
-					// 							// console.log(res.data.value.length)
-					// 							this.datas = res.data.value;
-					// 							if (res.data.value.length === 0) {
-					// 								uni.showToast({
-					// 									title: '没有更多了',
-					// 									icon: 'none'
-					// 								})
-					// 							}
-					// 						} else {
-					// 
-					// 						}
-					// 					}).catch(err => {
-					// 						console.log(err)
-					// 					})
-				} else if (this.inputValue == '' && this.inputValue == null) {
-					this.getCompanyInf()
+				} else if (this.value == '' && this.value == null) {
+					this.getCustomerInfo();
 				}
 			},
 			//获取客户经理
 			getCustomerInfo() {
+
 				console.log(this.page, this.pageSize)
 				this.test.post('base/listCustManager', {
 					search: this.value,
@@ -435,7 +393,12 @@
 					console.log(res)
 
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.datas = res.data.value;
+
+						res.data.value.forEach(el => {
+							this.man.push(el)
+						})
+
+
 						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
 						} else if (res.data.value.length == 0) {
