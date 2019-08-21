@@ -67,6 +67,9 @@
 				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
 					<view>{{item.realname}}</view>
 					<view>{{item.phone}}</view>
+					<view >
+						{{item.departmentText}}
+					</view>
 				</view>
 			</view>
 			<view class="loading" @tap="Smore" v-show="more">
@@ -533,7 +536,7 @@
 
 	.customerCompany {
 		background-color: #fff;
-		padding: 10px 0 20px 15px;
+		padding: 10px 0 10px 15px;
 		border-bottom: 1px solid #d6d6d6;
 		font-size: 14px;
 		color: #666;

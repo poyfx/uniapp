@@ -119,6 +119,7 @@
 					console.log(this.phoneNum, this.codeNums);
 					if (this.phoneNum != "" && this.phoneNum != null) {
 						if (!/^1[3456789]\d{9}$/.test(this.phoneNum)) {
+							this.lock = !this.lock;
 							return uni.showToast({
 								"title": '请填写正确的手机号码',
 								"icon": "none"
@@ -131,7 +132,7 @@
 								console.log(res)
 								console.log(res.data.value)
 
-								this.lock = !this.lock;
+
 								if (res.data.errorCode == 0 && res.statusCode == 200) {
 									this.show = !that.show;
 									uni.showToast({
@@ -139,8 +140,9 @@
 									})
 									that.mess = res.data.value;
 									that.timeDown(60);
-
+									this.lock = !this.lock;
 								} else {
+									this.lock = !this.lock;
 									uni.showToast({
 										title: res.data.message,
 										icon: 'none'
@@ -153,6 +155,7 @@
 
 
 					} else if (this.phoneNum == "" || this.phoneNum == null) {
+						this.lock = !this.lock;
 						return uni.showToast({
 							"title": "手机号码不能为空",
 							"icon": "none"

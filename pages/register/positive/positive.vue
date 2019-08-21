@@ -165,7 +165,7 @@
 						count: 1,
 						success: function(res) {
 							that.count = 1;
-							console.log(res);
+							console.log(res.tempFiles[0].path);
 							that.idCardZ = res.tempFilePaths;
 							that.src = res.tempFiles[0].path;
 							that.img.push({
@@ -231,7 +231,8 @@
 			oneSide() {
 				console.log(this.register.role)
 				console.log(this.count)
-				if (this.count == 1) {
+				if (this.img.length == 1) {
+					console.log(1)
 					this.btn.stepOne = false;
 					this.btn.stepTwo = true;
 					this.num = 1;
@@ -239,7 +240,17 @@
 					this.src = two;
 					this.step.active = "step-ago",
 						this.step.kong = "step-active"
-				} else {
+				}else if(this.img.length > 1){
+					console.log(2)
+					this.btn.stepOne = false;
+					this.btn.stepTwo = true;
+					this.num = 1;
+					// this.count += 1;
+					this.src = this.img[1].uri;
+					this.step.active = "step-ago",
+						this.step.kong = "step-active"
+				}
+				 else {
 					return uni.showToast({
 						title: '请上传身份证正面照',
 						icon: 'none'
@@ -249,24 +260,36 @@
 			},
 			//第二步上一步
 			lastStep() {
+				console.log(this.img[0].uri)
+				this.src = this.img[0].uri
 				this.btn.stepOne = true;
 				this.btn.stepTwo = false;
 				this.num = 0;
-				this.count -= 1;
-				this.src = one;
-				this.step.active = "step-active",
-					this.step.kong = ""
+				// this.count -= 1;
+				// this.src = one;
+				this.step.active = "step-active";
+				this.step.kong = ""
 			},
 			// 第二步下一步
 			nextStep() {
 				console.log(this.count)
-				if (this.count == 2) {
+				if (this.img.length == 2) {
 					this.btn.stepTwo = false;
 					this.btn.stepThree = true;
 					this.btn.Dates = true;
 					this.num = 2;
 					// this.count += 1;
 					this.src = three;
+					this.step.active = "step-ago",
+						this.step.kong = "step-ago"
+					this.step.kong1 = "step-active"
+				}else if(this.img.length > 2){
+					this.btn.stepTwo = false;
+					this.btn.stepThree = true;
+					this.btn.Dates = true;
+					this.num = 2;
+					// this.count += 1;
+					this.src = this.img[2].uri;
 					this.step.active = "step-ago",
 						this.step.kong = "step-ago"
 					this.step.kong1 = "step-active"
@@ -282,18 +305,18 @@
 				this.btn.stepThree = false;
 				this.btn.stepTwo = true;
 				this.btn.Dates = false;
-				this.num = 1;
-				this.count -= 1;
-				this.src = two;
-				this.step.active = "step-ago",
-					this.step.kong = "step-active",
-					this.step.kong1 = ''
+				// this.num = 1;
+				// this.count -= 1;
+				this.src = this.img[1].uri;
+				this.step.active = "step-ago";
+				this.step.kong = "step-active";
+				this.step.kong1 = '';
 			},
 			// 第三步下一步
 			threeStepNext() {
 				console.log(this.register.role)
 				console.log(this.count)
-				if (this.count == 3) {
+				if (this.img.length == 3) {
 					if (this.ifday == true) {
 						this.btn.stepThree = false;
 						this.btn.stepFour = true;
@@ -312,6 +335,17 @@
 						})
 					}
 
+				}else if(this.img.length > 3){
+					this.btn.stepThree = false;
+					this.btn.stepFour = true;
+					this.btn.Dates = false;
+					this.btn.dates = true;
+					this.num = 2;
+					// this.count += 1;
+					this.src = this.img[3].uri;
+					this.step.kong = "step-ago",
+						this.step.kong1 = "step-ago"
+					this.step.kong2 = "step-active"
 				} else {
 					return uni.showToast({
 						title: '请上传购油授权书',
@@ -325,9 +359,9 @@
 				this.btn.stepThree = true;
 				this.btn.Dates = true;
 				this.btn.dates = false;
-				this.num = 2;
-				this.count -= 1;
-				this.src = three;
+				// this.num = 2;
+				// this.count -= 1;
+				this.src = this.img[2].uri;
 				this.step.kong = "step-ago",
 					this.step.kong1 = "step-active",
 					this.step.kong2 = ''
@@ -339,8 +373,9 @@
 						uri: value.uri
 					}
 				})
-				
-				if (this.count == 4) {
+
+				if (this.img.length >= 4) {
+					console.log(imgs)
 					if (this.ifdays == true) {
 						uni.uploadFile({
 							url: 'http://dev.pjy.name:8180/api/bizcust/base/registCusmter',

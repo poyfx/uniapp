@@ -119,11 +119,11 @@
 			</view> -->
 			<view class="mContent">
 				<view class="harvest" v-for="(item,index) in info" :key="item.id">
-					<view class="harvest-name" @tap="isAddress(item.address)">
+					<view class="harvest-name" @tap="isAddress(index)">
 						<view>{{item.realname}}</view>
 						<view>{{item.phone}}</view>
 					</view>
-					<view class="harvest-address" @tap="isAddress(item.address)">
+					<view class="harvest-address" @tap="isAddress(index)">
 						<view>{{item.address}}</view>
 					</view>
 					<view class="harvest-write">
@@ -159,7 +159,7 @@
 				productOil: '选择油品',
 				modeOil: "选择提油方式",
 				modePay: '请选择付款方式',
-				address: "请选择提油方式请选择提油择提油方式",
+				address: "请选择地址",
 				count: '',
 				Remarks: '',
 				show: false,
@@ -176,7 +176,7 @@
 					primary: "primary",
 					btnvalue: "提交意向单",
 				},
-				info: [],
+				info: [],//地址
 				range: 0,
 				chooseAddress: false,
 				getTpe: '',
@@ -264,7 +264,9 @@
 				this.test.post('user/getAddrList').then(res => {
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value;
+						console.log(this.info)
 						this.info.forEach(el => {
+							console.log(el)
 							if (el.is_default == 1) {
 								that.address = el.address
 							}
@@ -292,15 +294,16 @@
 
 
 			// 选择地址
-			isAddress(val) {
-				console.log(val)
+			isAddress(inx) {
+				console.log(inx,this.info)
 				const that = this;
 				uni.showModal({
 					content: '确定选择该地址为收货地址',
 					success: function(res) {
 						if (res.confirm) {
+							that.address = that.info[inx].address;
 							that.chooseAddress = !that.chooseAddress
-							that.address = val;
+							console.log(that.address)
 						} else if (res.cancel) {
 							return;
 						}

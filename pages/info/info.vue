@@ -57,7 +57,7 @@
 				info: {
 					text1: '姓名',
 					userphone: '手机号',
-					company: '合肥城建',
+					company: '',
 					usercity: '所在城市',
 					city: '合肥',
 					customer: '客户经理',
@@ -109,10 +109,11 @@
 				uni.getStorage({
 					key: "userInfo",
 					success: function(res) {
+						console.log(res)
 						that.info.username = res.data.user.realname;
 						that.info.phoneNum = res.data.user.username
 						that.info.city = res.data.user.city;
-						that.info.compeny = res.data.user.customer_name;
+						that.info.company = res.data.user.customer_name;
 						that.info.customerName = res.data.user.manager_name;
 					}
 				})

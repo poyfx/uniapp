@@ -39,7 +39,7 @@
 				</view>
 				<view class="discount">
 					<view>已优惠</view>
-					<text>10%</text>
+					<text>{{discounts}}%</text>
 				</view>
 			</view>
 
@@ -66,8 +66,8 @@
 					<view class="">订单已完成</view>
 					<view>{{dates}}</view>
 				</view>
-
-				<image :class="rotate ? 'go' : 'imgs'" src="../../../static/img/right.png" mode="aspectFit"></image>
+<image class="imgs" src="../../../static/img/right.png" mode="aspectFit"></image>
+				<!-- <image :class="rotate ? 'go' : 'imgs'" src="../../../static/img/right.png" mode="aspectFit"></image> -->
 			</view>
 
 			<view class="fget-num">
@@ -159,7 +159,7 @@
 				btnValue: '确认已付款',
 				closed: '关闭',
 				dates: '2019-08-12 08:12',
-				rotate: false,
+				// rotate: false,//日志动画
 				orderId: '', //订单ID
 				no:'',
 				order: [],
@@ -168,7 +168,8 @@
 				disabled: false,
 				have:'',
 				status:'',
-				delivery:'100',
+				// delivery:'100',
+				// discount:this.order.oil_price,//优惠
 			}
 		},
 		onLoad(option) {
@@ -193,6 +194,7 @@
 						this.order = res.data.value;
 						this.status = res.data.value.status;
 						this.time = new Date(this.order.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
+						this.dates = new Date(this.order.confirm_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
 						const a = this.order.difference
 						this.cutDown(a)
 						
@@ -289,7 +291,7 @@
 				});
 			},
 			goRotate() {
-				this.rotate = !this.rotate
+				// this.rotate = !this.rotate//日志样式改变
 			}
 		},
 		computed: {
@@ -298,6 +300,12 @@
 			},
 			orderPrice(){
 				return (parseFloat(this.oilPrice) + parseFloat(this.delivery)).toFixed(2)
+			},
+			discounts(){
+				return (((this.order.market_price - this.order.oil_price)/this.order.market_price)*100).toFixed(2)
+			},
+			delivery(){
+				return (this.order.ship_price*this.order.ship_dis).toFixed(2)
 			}
 		},
 		components: {
