@@ -93,6 +93,7 @@
 				},
 				list: [],//拆分次数集合
 				ids: -1, //默认不需要发票
+				yesORno:'否',
 				typeInvoice: '请选择发票类型',
 				invoiceTypes: false,
 				id: '',
@@ -134,8 +135,10 @@
 			// 展开发票  
 			showIncoice(e) {
 				if (e.target.value) {
+					this.yesORno = "是"
 					this.ids = 1; //需要发票
 				} else {
+					this.yesORno = "否"
 					this.ids = -1
 				}
 				this.show = !this.show;
@@ -154,7 +157,7 @@
 			cancelOrder() {
 				this.test.post('order/make_invoice', {
 					id: this.id,
-					is_invoice: this.ids,
+					is_invoice: this.yesORno,
 					invoice_money:this.moeny
 				}).then(res => {
 					console.log(res)
@@ -199,7 +202,7 @@ console.log(typeof(this.invoiceNum))
 								this.test.post('order/make_invoice', {
 									id: this.id,
 									invoice_type: this.typeInvoice,
-									is_invoice: this.ids,
+									is_invoice: this.yesORno,
 									invoice_split: this.invoiceNum,
 									invoice_money:this.moeny
 								}).then(res => {
@@ -233,7 +236,7 @@ console.log(typeof(this.invoiceNum))
 						this.test.post('order/make_invoice', {
 							id: this.id,
 							invoice_type: this.typeInvoice,
-							is_invoice: this.ids,
+							is_invoice: this.yesORno,
 							invoice_split: this.currentOil,
 							invoice_money:this.moeny
 						}).then(res => {

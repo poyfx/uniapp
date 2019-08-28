@@ -27,6 +27,8 @@
 				this.$emit("sureBuy");
 				this.$emit("invoiceSure");
 				this.$emit("tell")
+				this.$emit("fiveStepLast")
+				this.$emit("fiveStepNext")
 			},
 		}
 	}

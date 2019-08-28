@@ -59,7 +59,7 @@
 					<view class="orderNumber">
 						<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 						<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
-						<view><text class="numberTitle">提油方式:</text> <text v-if="item.get_type == 0">配送</text><text v-else>自提</text></view>
+						<view><text class="numberTitle">提油方式:</text> <text >{{item.get_type}}</text></view>
 					</view>
 					<view class="integral">
 						<text>剩余油量(吨)</text>
@@ -206,11 +206,13 @@
 				this.id = id;
 				this.values.orderNumber = this.chooseNumber.orderInfo[e].no;
 				this.values.productOil = this.chooseNumber.orderInfo[e].oil_type;
-				if (this.chooseNumber.orderInfo[e].get_type == 0) {
-					this.values.modeOil = '配送'
-				} else {
-					this.values.modeOil = '自提'
-				}
+				
+				this.values.modeOil = this.chooseNumber.orderInfo[e].get_type;
+				// if (this.chooseNumber.orderInfo[e].get_type == 0) {
+				// 	this.values.modeOil = '配送'
+				// } else {
+				// 	this.values.modeOil = '自提'
+				// }
 				if (this.values.modeOil == '' || this.values.modeOil == '配送') {
 					this.showAddress = true
 				} else if (this.values.modeOil == '自提') {

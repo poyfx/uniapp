@@ -6,9 +6,9 @@ const store = new Vuex.Store({
 	state: {
 		userInfo: {},
 		hasLogin: false, //未登录
-		Token:'',
-		photo:[],
-		roles:'',//角色
+		Token: '',
+		photo: [],
+		roles: '', //角色
 		// id:'',
 		// name:''
 		// realname:'',
@@ -17,7 +17,7 @@ const store = new Vuex.Store({
 	getters: {},
 	mutations: {
 		login(state, provider) { //改变登录状态
-			 // console.log(provider)
+			// console.log(provider)
 			state.hasLogin = true;
 			state.Token = provider.token;
 			state.userInfo = provider;
@@ -31,21 +31,21 @@ const store = new Vuex.Store({
 				key: 'userInfo',
 				data: provider
 			})
-			
+
 		},
 		logout(state) { //退出登录
 			state.hasLogin = false;
 			state.userInfo = {};
 			state.Token = '',
-			// uni.removeStorage({
-			// 	key: 'userInfo'
-			// }),
-			// uni.removeStorage({
-			// 	key: 'Token'
-			// })
-			uni.clearStorage()
+				// uni.removeStorage({
+				// 	key: 'userInfo'
+				// }),
+				// uni.removeStorage({
+				// 	key: 'Token'
+				// })
+				uni.clearStorage()
 		},
-		getPhoto(state,provider){
+		getPhoto(state, provider) {
 			console.log(provider);
 			state.photo = provider
 		}
@@ -77,8 +77,10 @@ const store = new Vuex.Store({
 		}) {
 			commit('logout')
 		},
-		handeGetPhoto({commit},data){
-			commit("getPhoto",data)
+		handeGetPhoto({
+			commit
+		}, data) {
+			commit("getPhoto", data)
 		}
 	},
 	modules: {

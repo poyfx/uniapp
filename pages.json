@@ -1,5 +1,22 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
+		{
+			"path": "pages/index/start",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}
+		
+		, 
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
 		{
 			"path": "pages/login/login",
 			"style": {
@@ -8,21 +25,8 @@
 				}
 			}
 		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "首页"
-			}
-		}, {
-			"path": "pages/index/start",
-			"style": {
-				"app-plus": {
-					"titleNView": false
-				}
-			}
-		}
 
-		,  {
+		{
 			"path": "pages/login/forget/forget",
 			"style": {
 				"app-plus": {
@@ -73,7 +77,7 @@
 				"app-plus": {
 					"titleNView": {
 						"titleColor": "#666",
-						"titleText": "购油/提油授权资料",
+						"titleText": "上传授权资料",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
 						"titleSize": "17px"
@@ -88,7 +92,7 @@
 				"app-plus": {
 					"titleNView": {
 						"titleColor": "#666",
-						"titleText": "购油授权资料",
+						"titleText": "上传授权资料",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
 						"titleSize": "17px"
@@ -103,7 +107,7 @@
 				"app-plus": {
 					"titleNView": {
 						"titleColor": "#666",
-						"titleText": "提油授权资料",
+						"titleText": "上传授权资料",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
 						"titleSize": "17px"
@@ -233,7 +237,7 @@
 								"fontSize": "15px",
 								"float": "right", //靠右第一个
 								"width": "46px",
-								"color":"#666"
+								"color": "#666"
 								//"redDot": true //默认图标按钮右上角有红色点状标志
 							}
 						]
@@ -332,7 +336,7 @@
 							"fontSize": "14px",
 							"float": "right", //靠右第一个
 							"width": "46px",
-							"color":"#666"
+							"color": "#666"
 
 						}]
 					}
@@ -402,10 +406,9 @@
 					"titleSize": "17px"
 				}
 			}
-		}
-	    ,{
-            "path" : "pages/info/stayOil/oilCodeDetali/oilCodeDetali",
-            "style" : {
+		}, {
+			"path": "pages/info/stayOil/oilCodeDetali/oilCodeDetali",
+			"style": {
 				"titleNView": {
 					"titleColor": "#666",
 					"titleText": "提油码",
@@ -414,10 +417,9 @@
 					"titleSize": "17px"
 				}
 			}
-        }
-        ,{
-            "path" : "pages/newWeb/newWeb",
-            "style" : {
+		}, {
+			"path": "pages/newWeb/newWeb",
+			"style": {
 				"titleNView": {
 					"titleColor": "#666",
 					"titleText": "跳转",
@@ -426,10 +428,9 @@
 					"titleSize": "17px"
 				}
 			}
-        }
-        ,{
-            "path" : "pages/info/feedback/feedback",
-            "style" : {
+		}, {
+			"path": "pages/info/feedback/feedback",
+			"style": {
 				"titleNView": {
 					"titleColor": "#666",
 					"titleText": "用户反馈",
@@ -438,8 +439,22 @@
 					"titleSize": "17px"
 				}
 			}
-        }
-    ],
+		}, {
+			"path": "pages/orderList/orderDtails/orderStatus/orderStatus",
+			"style": {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "订单详情",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+		}, {
+			"path": "pages/info/test/test",
+			"style": {}
+		}
+	],
 	"tabBar": {
 		"color": "black",
 		"selectedColor": "#009DFF",

@@ -3,9 +3,9 @@
 		<view class="mContent pB10" style="margin-bottom: 50px;">
 			<view class="userIntegral mTop10 bgcf  borderRadius8"  v-for="item in orderInfo" :key="item.id"><!-- @tap="getOrderNumber(item.reserve_sn,item.oil_remain)" -->
 				<view class="orderNumber">
-					<view><text class="numberTitle">订单编号:</text> <text>{{item.reserve_sn}}</text></view>
+					<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 					<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
-					<view><text class="numberTitle">提油方式:</text> <text v-if="item.get_type == 0">配送</text><text v-else>自提</text></view>
+					<view><text class="numberTitle">提油方式:</text> <text  >{{item.get_type}}</text></view>
 				</view>
 				<view class="integral">
 					<text>剩余油量(吨)</text>

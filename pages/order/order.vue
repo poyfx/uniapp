@@ -65,8 +65,8 @@
 				<view class="footermain">
 					<view class="modelmain">
 						<text>请选择油品</text>
-						<view ref="chooseOne" @tap="chooseOne" id='95#国六'>95#国六</view>
 						<view ref="chooseOne" @tap="chooseOne" id='92#国六'>92#国六</view>
+						<view ref="chooseOne" @tap="chooseOne" id='95#国六'>95#国六</view>
 						<view ref="chooseOne" @tap="chooseOne" id='98#国六'>98#国六</view>
 						<view ref="chooseOne" @tap="chooseOne" id='-10#柴油'>-10#柴油</view>
 						<view ref="chooseOne" @tap="chooseOne" id='0#柴油'>0#柴油</view>
@@ -176,7 +176,7 @@
 					primary: "primary",
 					btnvalue: "提交意向单",
 				},
-				info: [],//地址
+				info: [], //地址
 				range: 0,
 				chooseAddress: false,
 				getTpe: '',
@@ -192,15 +192,15 @@
 				const that = this;
 				this.test.post('user/order_company')
 					.then(res => {
-					console.log(res)
-					console.log(res)
+						console.log(res)
+						console.log(res)
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							// res.data.value.forEach(el => {
 							// 	const info = el
-								that.company = res.data.value.name
+							that.company = res.data.value.name
 							// })
-						}else {
-							
+						} else {
+
 						}
 
 
@@ -239,13 +239,15 @@
 			chooseTwo(val) {
 				console.log(val);
 				this.mode = !this.mode;
-				if (val.target.id == '配送') {
-					this.getTpe = 0;
-					this.addrShow = true
-				} else {
-					this.getTpe = 1;
-					this.addrShow = false
-				}
+				this.getTpe = val.target.id
+				// if (val.target.id == '配送') {
+				// 	this.getTpe = 0;
+				// 	this.addrShow = true
+				// } else {
+				// 	this.getTpe = 1;
+				// 	this.addrShow = false
+				// }
+				this.addrShow = false
 				this.modeOil = val.target.id;
 
 			},
@@ -295,7 +297,7 @@
 
 			// 选择地址
 			isAddress(inx) {
-				console.log(inx,this.info)
+				console.log(inx, this.info)
 				const that = this;
 				uni.showModal({
 					content: '确定选择该地址为收货地址',
@@ -343,44 +345,60 @@
 					}
 				})
 			},
+
 			toBuy() {
+				const that =this;
 				if (this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品') {
 					if (this.getTpe !== null && this.getTpe !== '') {
 						if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
 							if (this.count !== null && this.count !== '') {
-								this.test.post('order/make_order', {
-									oil_type: this.productOil,
-									get_type: this.getTpe,
-									pay_type: this.modePay,
-									count: this.count,
-									ship_addr: this.address,
-									remark: this.Remarks,
-								}).then(res => {
-									console.log(res)
-									if (res.statusCode == 200 && res.data.errorCode == 0) {
-										uni.redirectTo({
-											url: '../orderList/orderList'
-										})
-									}else {
-										uni.showModal({
-											title: '提示',
-											content: '用户信息已失效，请重新登录',
-											success: function(res) {
-												if (res.confirm) {
-													uni.reLaunch({
-														url: '../login/login'
+
+								uni.showModal({
+									title: '提示',
+									content: '提交后无法修改，是否提交',
+									success: function(res) {
+										if (res.confirm) {
+											that.test.post('order/make_order', {
+												oil_type: that.productOil,
+												get_type: that.getTpe,
+												pay_type: that.modePay,
+												count: that.count,
+												ship_addr: that.address,
+												remark: that.Remarks,
+											}).then(res => {
+												console.log(res)
+												if (res.statusCode == 200 && res.data.errorCode == 0) {
+													uni.redirectTo({
+														url: '../orderList/orderList'
 													})
 												} else {
-													uni.reLaunch({
-														url: '../login/login'
+													uni.showModal({
+														title: '提示',
+														content: '用户信息已失效，请重新登录',
+														success: function(res) {
+															if (res.confirm) {
+																uni.reLaunch({
+																	url: '../login/login'
+																})
+															} else {
+																uni.reLaunch({
+																	url: '../login/login'
+																})
+															}
+														}
 													})
 												}
-											}
-										})
+											}).catch(err => {
+												console.log(err)
+											})
+										} else {
+											return;
+										}
 									}
-								}).catch(err => {
-									console.log(err)
 								})
+
+
+
 								//购油数量	
 							} else {
 								uni.showToast({
@@ -428,7 +446,7 @@
 
 <style>
 	.m-info {
-		padding: 10px 0;
+		padding: 12px 0;
 		border-bottom: 1px solid #E5E5E5;
 		align-content: center;
 		align-items: center;
@@ -439,9 +457,11 @@
 	.m-info-content {
 		justify-content: flex-start;
 	}
-.m-info-content view{
-	color: #666;
-}
+
+	.m-info-content view {
+		color: #666;
+	}
+
 	.m-info text {
 		width: 80px;
 	}

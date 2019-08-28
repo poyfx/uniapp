@@ -121,11 +121,12 @@
 						this.address = this.reserveInfo.ship_addr;
 						this.company = this.reserveInfo.org_name;
 						this.oil = this.reserveInfo.oil_type;
-						if (this.reserveInfo.get_type == 0) {
-							this.main = '配送'
-						} else {
-							this.main = '自提'
-						};
+						this.main =this.reserveInfo.get_type;
+						// if (this.reserveInfo.get_type == 0) {
+						// 	this.main = '配送'
+						// } else {
+						// 	this.main = '自提'
+						// };
 						if (this.main == '配送') {
 							this.showAddress = true
 						} else {
@@ -217,7 +218,7 @@
 		margin-left: 5px;
 		position: absolute;
 		left: 10px;
-		top: 7px
+		
 	}
 
 	.title view {

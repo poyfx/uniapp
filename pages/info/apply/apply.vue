@@ -1,6 +1,6 @@
 <template>
 	<view class="mTop15 bgcf">
-		<view class="flex m-apply" @tap="GoBuyApply(item.status)" v-for="item in role" :key="item.id">
+		<view class="flex m-apply" @tap="GoBuyApply(item.status,item.name,index)" v-for="(item,index) in role" :key="item.id">
 			<text>{{item.name}}</text>
 			<view class="flex never good" v-if="item.status == 1">
 				<image src="../../../static/img/good.png" mode=""></image>
@@ -40,11 +40,13 @@
 				take: false,
 				role: [],
 				statusAll:'',
+				userCode:''
 			}
 		},
-		onLoad() {
+		onLoad(option) {
 			this.getJurisdiction()
-
+			this.userCode = option.userCode;
+			
 		},
 		methods: {
 			getJurisdiction() {
@@ -92,10 +94,10 @@
 
 
 
-			GoBuyApply(stu) {
+			GoBuyApply(stu,name,ind) {
 				if (stu == 0) {
 					uni.navigateTo({
-						url: '../../register/positive/positive1?name=' + "apply"
+						url: '../../register/positive/positive1?name=' + "apply" +'&user='+name +'&userCode='+this.role[ind].code
 					})
 				} else if(stu == 1){
 					uni.showToast({
@@ -135,7 +137,7 @@
 
 <style>
 	.m-apply {
-		padding: 10px 10px;
+		padding: 12px 12px;
 		border-bottom: 1px solid #E5E5E5;
 		align-content: center;
 		align-items: center;

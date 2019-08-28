@@ -33,8 +33,8 @@
 						</view>
 						<view>
 							<text>提油方式：</text>
-							<text v-if="item.get_type == 0">配送</text>
-							<text v-else>自提</text>
+							<text>{{item.get_type}}</text>
+							
 						</view>
 						<view v-if="item.status==-1">
 							<text>拒绝原因：</text>

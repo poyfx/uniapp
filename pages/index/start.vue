@@ -2,7 +2,7 @@
   <view class="background">
     <view class="mContent">
       <view class="ce mt300">
-        <img class="startimg" :src="src" alt>
+        <image class="startimg" :src="src" mode="aspectFit" ></image>
       </view>
       <view class="p-bx">
         <view class="p-size">{{name}}</view>
@@ -13,6 +13,10 @@
 </template>
 <script>
 import logo from "../../static/img/logo.png"
+import {
+		mapState,
+		mapActions
+	} from 'vuex'
 export default {
     name:'Start',
     data(){
@@ -21,13 +25,38 @@ export default {
             src:logo
         }
     },
+	onShow() {
+		if(this.hasLogin ==false){
+			const timer = setTimeout(function(){
+				uni.navigateTo({
+				url:'../login/login',
+				success:function(){
+					clearTimeout(timer)
+				}
+			})
+			},2000)
+			
+		}else{
+			const timer = setTimeout(function(){
+				uni.switchTab({
+				url:'index',
+				success:function(){
+					clearTimeout(timer)
+				}
+			})
+			},2000)
+		}
+	},
     mounted() {
     
     },
     methods:{
   
         
-    }
+    },
+	computed: {
+		...mapState(["hasLogin", "userInfo","roles"])
+	},
 }
 </script>
 <style scoped>

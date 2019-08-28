@@ -95,15 +95,24 @@
 				})
 			};
 			this.getserinfo();
+			this.getclient();
 		},
 		onLoad(option) {
 			console.log(option)
 			
-
 		},
-
 		methods: {
 			...mapActions(['handelOut']),
+			getclient(){
+				const that = this;
+				uni.getStorage({
+					key:'clientid',
+					success:function(res){
+						that.info.company = res.data;
+						console.log(res)
+					}
+				})
+			},
 			getserinfo() {
 				const that = this;
 				uni.getStorage({
@@ -113,7 +122,7 @@
 						that.info.username = res.data.user.realname;
 						that.info.phoneNum = res.data.user.username
 						that.info.city = res.data.user.city;
-						that.info.company = res.data.user.customer_name;
+						// that.info.company = res.data.user.customer_name;
 						that.info.customerName = res.data.user.manager_name;
 					}
 				})
@@ -127,7 +136,6 @@
 				uni.navigateTo({
 					url: 'apply/apply'
 				})
-
 			},
 			// 修改地址
 			editAddress() {
@@ -188,7 +196,6 @@
 						url: '../login/login'
 					})
 				}
-
 			},
 			//用户反馈
 			toFeedback(){
@@ -211,7 +218,6 @@
 	.infoThree {
 		padding: 10px 0;
 	}
-
 	image {
 		width: 25px;
 		height: 25px;

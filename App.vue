@@ -57,23 +57,7 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
-		// created() {
-		// 	global.isLogin = function(){
-		// 		try{
-		// 			// var id = uni.getStorageSync('id');
-		// 			// var name = uni.getStorageSync("name")
-		// 			var userInfo =uni.getStorageSync('userInfo')
-		// 		}catch(e){
-		// 			//TODO handle the exception
-		// 		}
-		// 		if(userInfo == ''){
-		// 			return false
-		// 		}else{
-		// 			return [userInfo]
-		// 		}
-		// 	}
-		// 	
-		// }
+		
 		methods:{
 			...mapMutations(['login'])
 		},

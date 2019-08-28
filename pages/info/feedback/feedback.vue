@@ -41,6 +41,7 @@
 <script>
 	import robbyImageUpload from '@/components/robby-image-upload/robby-image-upload.vue'
 	import mButton from '@/components/m-button.vue'
+	import {mapState} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -80,25 +81,86 @@
 				console.log(e)
 			},
 			commit(){
-				console.log(this.imageData)
-				const imgs = this.imageData.map((value, index) => {
-					return {
-						name: value.name,
-						uri: value.uri
-					}
-				})
-			console.log(imgs)  
-				uni.uploadFile({
-					url: 'order/submit_feedback',
-					files: imgs,
-					formData: {
-						feedback:this.feedbacks
-					},
-					success: function(res) {
-						console.log(res)
-					}
-				})
+				if(this.feedbacks.length == 0){
+					return uni.showToast({
+						title:'请填写反馈意见',
+						icon:'none'
+					})
+				}else if(this.feedbacks.length < 10){
+					return uni.showToast({
+						title:'反馈意见必须是10个字及以上',
+						icon:'none'
+					})
+				}else{
+					if(this.imageData.length <= 0){
+						this.test.post('order/submit_feedback_notPhoto',{
+							feedback:this.feedbacks
+						}).then(res=>{
+							console.log(res)
+							if(res.statusCode == 200 && res.data.errorCode == 0){
+								uni.showToast({
+									title:'上传成功',
+										
+									});
+								uni.switchTab({
+									url:'../info'
+									})
+								}else{
+									uni.showToast({
+										title:'上传失败',
+										icon:'none'
+								})
+							}
+						}).catch(err=>{
+							console.log(err)
+						})
+						}
+					 else{
+						console.log(this.imageData)
+							const imgs = this.imageData.map((value, index) => {
+								return {
+									name: value.name,
+									uri: value.uri
+								}
+							})
+						console.log(imgs,this.feedbacks)  
+							uni.uploadFile({
+								url: 'http://dev.pjy.name:8180/api/bizcust/order/submit_feedback',
+								files: imgs,
+								formData: {
+									feedback:this.feedbacks
+								},
+								success: function(res) {
+									console.log(res)
+									var data = JSON.parse(res.data)
+									console.log(data)
+									if(res.statusCode == 200 && data.errorCode == 0){
+										uni.showToast({
+											title:'上传成功',
+											
+										})
+										  uni.switchTab({
+											url:'../info'
+										})
+									}else{
+										uni.showToast({
+											title:'上传失败',
+											icon:'none'
+										})
+									} 
+								},
+								header:{
+									Token:this.Token
+								}
+							})
+					 }
+				}
+				
+	
 			},
+		},
+		computed:{
+			...mapState(["Token"])
 		},
 		components:{
 			robbyImageUpload,

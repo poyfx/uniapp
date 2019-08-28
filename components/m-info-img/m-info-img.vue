@@ -46,7 +46,7 @@
 
 <style>
 	.m-info {
-		padding: 10px 0;
+		padding: 12px 0;
 		border-bottom: 1px solid #E5E5E5;
 		align-content: center;
 		align-items: center;

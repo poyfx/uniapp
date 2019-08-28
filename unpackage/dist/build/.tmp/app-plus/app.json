@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/index/index",
     "pages/index/start",
+    "pages/index/index",
+    "pages/login/login",
     "pages/login/forget/forget",
     "pages/login/setPws/setPws",
     "pages/register/register",
@@ -31,7 +31,9 @@
     "pages/customer/customer",
     "pages/info/stayOil/oilCodeDetali/oilCodeDetali",
     "pages/newWeb/newWeb",
-    "pages/info/feedback/feedback"
+    "pages/info/feedback/feedback",
+    "pages/orderList/orderDtails/orderStatus/orderStatus",
+    "pages/info/test/test"
   ],
   "window": {
     "navigationBarTextStyle": "black",

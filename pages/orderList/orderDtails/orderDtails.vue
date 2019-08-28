@@ -45,25 +45,25 @@
 
 			<view class="fget-num detailsProcess" @tap="goRotate" v-if="status == 2 || status == 3 || status == 4 || status == 5 ||status == 9">
 				<view class="processText" v-if="status == 2">
-					<view class="" >客户经理已确认价格，是否购买</view>
+					<view class="" >{{statusinfo.content}}</view>
 					<view>{{dates}}</view>
 				</view>
 				<view class="processText" v-if="status == 4">
-					<view class="">确认已付款，待收款员确认收款</view>
+					<view class="">{{statusinfo.content}}</view>
 					<view>{{dates}}</view>
 				</view>
 				<view class="processText" v-if="status == 3">
-					<view class="">付款后请点击‘确认已付款’</view>
+					<view class="">{{statusinfo.content}}</view>
 					<view>{{dates}}</view>
 				</view>
 				
 				<view class="processText" v-if="status == 5">
-					<view class="">收款员已确认收款，待开票员开票</view>
+					<view class="">{{statusinfo.content}}</view>
 					<view>{{dates}}</view>
 				</view>
 				
 				<view class="processText" v-if="status == 9">
-					<view class="">订单已完成</view>
+					<view class="">{{statusinfo.content}}</view>
 					<view>{{dates}}</view>
 				</view>
 <image class="imgs" src="../../../static/img/right.png" mode="aspectFit"></image>
@@ -94,8 +94,8 @@
 					</view>
 					<view>
 						<text>提油方式：</text>
-						<text v-if="order.get_type ==0">配送</text>
-						<text v-if="order.get_type ==1">自提</text>
+						<text >{{order.get_type}}</text>
+						<!-- <text v-if="order.get_type ==1">自提</text> -->
 					</view>
 					<view>
 						<text>送油地址：</text>
@@ -168,6 +168,7 @@
 				disabled: false,
 				have:'',
 				status:'',
+				statusinfo:[],
 				// delivery:'100',
 				// discount:this.order.oil_price,//优惠
 			}
@@ -193,8 +194,9 @@
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.order = res.data.value;
 						this.status = res.data.value.status;
+						this.statusinfo = this.order.latestHis
 						this.time = new Date(this.order.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
-						this.dates = new Date(this.order.confirm_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
+						this.dates = new Date(this.statusinfo.time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
 						const a = this.order.difference
 						this.cutDown(a)
 						
@@ -291,7 +293,9 @@
 				});
 			},
 			goRotate() {
-				// this.rotate = !this.rotate//日志样式改变
+				uni.navigateTo({
+					url:'./orderStatus/orderStatus?id='+this.orderId +'&user_id='+this.order.user_id
+				})
 			}
 		},
 		computed: {

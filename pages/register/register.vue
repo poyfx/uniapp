@@ -1,7 +1,16 @@
 <template>
 	<view class="content">
 		<view class="fget-num paddingLeft15">
-			<infoImg :imgText="text.user" :disabled="text.disabled" :placeholder="text.userP" v-model="info.user" @chooseUser="chooseUser"></infoImg>
+			<!-- <infoImg :imgText="text.user" :disabled="text.disabled" :placeholder="text.userP" v-model="info.user" @chooseUser="chooseUser"></infoImg> -->
+			<view class="flex  m-info" @tap="chooseUser">
+				<view class="flex center m-info-content">
+					<text>角色</text>
+					<input type="text" placeholder="请选择角色" class="infoText" v-model="info.user" disabled="disabled" />
+
+					<image src="../../static/img/right.png" mode="aspectFit"></image>
+				</view>
+			</view>
+
 			<infoImg :imgText="text.company" :disabled="text.disabled" :placeholder="text.companyP" @oilByCompany="oilByCompany"
 			 v-model="info.company"></infoImg>
 			<infoText :textValue="text.userName" :placeholder="text.userNameP" v-model="info.userName"></infoText>
@@ -20,14 +29,25 @@
 		<view class="footmodel" v-show='users'>
 			<transition name="myanimate">
 				<view class="footermain">
-					<view class="modelmain">
-						<text>请选择角色</text>
-						<view @tap="buyAndCarry" id='购油人'>购油人</view>
+					<view class="modelmains">
+						<text>请选择角色(多选)</text>
+						<!-- <view @tap="buyAndCarry" id='购油人'>购油人</view>
 						<view @tap="buyAndCarry" id='提油人'>提油人</view>
-						<view @tap="buyAndCarry" id='购油人和提油人'>购油人和提油人</view>
+						<view @tap="buyAndCarry" id='购油人和提油人'>购油人和提油人</view> -->
+						<view class="uni-list">
+							<checkbox-group @change="checkboxChange">
+								<label class="flex user-list" v-for="item in items" :key="item.id">
+									<view>
+										<checkbox :value="item.value" :checked="item.checked" />
+									</view>
+									<view>{{item.name}}</view>
+								</label>
+							</checkbox-group>
+						</view>
 					</view>
 					<view class="modelfooter">
-						<view @tap="chooseUsersShow">取消</view>
+						<view @tap="chooseUsersShow" style="border-right: 1px solid #e5e5e5;">取消</view>
+						<view style="color: #008aff;" @tap="buyAndCarry">确认</view>
 					</view>
 				</view>
 			</transition>
@@ -67,7 +87,7 @@
 				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
 					<view>{{item.realname}}</view>
 					<view>{{item.phone}}</view>
-					<view >
+					<view>
 						{{item.departmentText}}
 					</view>
 				</view>
@@ -90,7 +110,7 @@
 		data() {
 			return {
 				text: {
-					user: '角色',
+					// user: '角色',
 					userName: '姓名',
 					userId: '身份证',
 					company: '公司',
@@ -98,7 +118,7 @@
 					city: '所在城市',
 					customerName: '客户经理',
 					disabled: true,
-					userP: '请选择角色',
+					// userP: '请选择角色',
 					companyP: '选择公司',
 					userNameP: '姓名',
 					userIdP: '身份证号码',
@@ -132,6 +152,19 @@
 					type: 'primary',
 					value: '下一步',
 				},
+				items: [{
+					id: '1',
+					value: '购油人',
+					name: '购油人'
+				}, {
+					id: '2',
+					value: '提油人',
+					name: '提油人'
+				}, {
+					id: '3',
+					value: '发票领取人',
+					name: '发票领取人'
+				}],
 				showCompany: false,
 				showCoutomer: false,
 				users: false, //角色选择显示隐藏
@@ -143,7 +176,8 @@
 				page: 1,
 				pageSize: 10,
 				Cmore: true,
-				more: true
+				more: true,
+				checkUser: '',
 			}
 		},
 
@@ -157,8 +191,8 @@
 			},
 			// 下一步
 			goPositive() {
-
-				const _this = this.info
+				const that = this;
+				const _this = this.info;
 				console.log(_this.userName)
 				if (_this.user !== '' && _this.user !== null) {
 					if (_this.company !== '' && _this.company !== null) {
@@ -178,15 +212,23 @@
 													console.log(_this.newPwd1.length, _this.userId.length)
 													if (_this.newPwd1.length >= 6) {
 														if (_this.newPwd1 === _this.newPwd2) {
-															console.log(_this.user)
-															if (_this.user == '购油人') {
-																this.info.role = 1;
+															console.log(this.checkUser)
+															if (this.checkUser.length == 1) {
+																console.log(_this.user)
+																if (this.checkUser[0] == '购油人') {
+																	this.info.role = '1';
+																} else if (this.checkUser[0] == '提油人') {
+																	this.info.role = '2';
+																} else {
+																	this.info.role = '3';
+																}
+																console.log(this.info.role)
 																uni.setStorage({
 																	key: 'register',
 																	data: this.info,
 																	success: function() {
 																		uni.navigateTo({
-																			url: "positive/positive1?name=" + "register",
+																			url: "positive/positive1?name=" + "register" +"&user="+that.checkUser,
 																			success: res => {
 
 																			}
@@ -194,28 +236,38 @@
 																	}
 																})
 
-															} else if (_this.user == '购油人和提油人') {
-																this.info.role = 3;
+															} else if (this.checkUser.length == 2) {
+																console.log(_this.user)
+																if (this.checkUser[0] == '购油人' && this.checkUser[1] == '提油人') {
+																	this.info.role = '1,2';
+																} else if (this.checkUser[0] == '购油人' && this.checkUser[1] == '发票领取人') {
+																	this.info.role = '1,3';
+																} else {
+																	this.info.role = '2,3';
+																}
+																console.log(this.info.role)
 																uni.setStorage({
 																	key: 'register',
 																	data: this.info,
 																	success: function() {
 																		uni.navigateTo({
-																			url: "positive/positive?name=" + "register",
+																			url: "positive/positive2?name=" + "register"+"&user="+that.checkUser,
 																			success: res => {
 
 																			}
 																		})
 																	}
 																})
-															} else if (_this.user == '提油人') {
-																this.info.role = 2;
+															} else if (this.checkUser.length == 3) {
+																console.log(_this.user)
+																this.info.role = '1,2,3';
+																console.log(this.info.role)
 																uni.setStorage({
 																	key: 'register',
 																	data: this.info,
 																	success: function() {
 																		uni.navigateTo({
-																			url: "positive/positive2?name=" + "register",
+																			url: "positive/positive?name=" + "register"+"&user="+that.checkUser,
 																			success: res => {
 
 																			}
@@ -228,7 +280,8 @@
 															// 判断密码是否一致	
 														} else {
 															return uni.showToast({
-																title: '两次密码不一致'
+																title: '两次密码不一致',
+																icon: 'none'
 															})
 														}
 													} else {
@@ -313,7 +366,7 @@
 			// 选中公司
 			chooseCompany(e, id) {
 				this.info.companyId = id;
-				this.info.company = this.datas[e].addr;
+				this.info.company = this.datas[e].name;
 				this.showCompany = !this.showCompany;
 
 			},
@@ -355,11 +408,27 @@
 
 
 			//角色选择
-			buyAndCarry(e) {
-				console.log(e)
-				this.info.user = e.target.id;
+			buyAndCarry() {
+				// console.log(this.checkUser)
+				this.info.user = String(this.checkUser);
 				this.users = !this.users;
 			},
+			checkboxChange(e) {
+				// console.log(e)
+				this.checkUser = e.target.value;
+				var items = this.items,
+					values = e.detail.value;
+				for (var i = 0, lenI = items.length; i < lenI; ++i) {
+					const item = items[i]
+					if (values.includes(item.value)) {
+						this.$set(item, 'checked', true)
+					} else {
+						this.$set(item, 'checked', false)
+					}
+				}
+			},
+
+
 			// 取消
 			chooseUsersShow() {
 				this.users = !this.users
@@ -450,23 +519,29 @@
 		left: 0;
 	}
 
-	.footmodel .modelmain view {
+	.footmodel .modelmains view {
 		background-color: #fff;
-		padding: 13px;
 		text-align: center;
-		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
 		color: #666;
 	}
 
-	.footmodel .modelmain text {
+	.user-list {
+		padding: 13px;
+		text-align: center;
+		border-bottom: 1px solid #e5e5ee;
+		display: flex;
+		justify-content: center;
+	}
+
+	.footmodel .modelmains text {
 		display: block;
 		background-color: #fff;
-		padding: 13px;
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
 		color: #666;
+		padding: 13px;
 	}
 
 	.footermain {
@@ -526,7 +601,7 @@
 		position: fixed;
 	}
 
-	.search input {
+	 input {
 		background-color: #e5e5e5;
 		border-radius: 14px;
 		width: 100%;
@@ -581,5 +656,45 @@
 		flex: 1;
 		font-size: 17px;
 
+	}
+
+	.m-info {
+		padding: 10px 0;
+		border-bottom: 1px solid #E5E5E5;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+		justify-content: space-between;
+	}
+
+	.m-info-content {
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+		flex: 1;
+	}
+
+	.m-info-content text {
+		width: 80px;
+	}
+
+	.m-info-content .infoText {
+		color: #666;
+		flex: 1;
+	}
+
+	.m-info-text {
+		justify-content: flex-start;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+	}
+
+	.m-info image {
+		width: 12px;
+		height: 12px;
+		padding-right: 15px;
+		margin-left: 10px;
 	}
 </style>

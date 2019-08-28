@@ -7,7 +7,7 @@
     "titleSize": "17px"
   },
   "usingComponents": {
-    "rui-date-picker": "/rattenking-dtpicker/rattenking-dtpicker",
+    "w-picker": "/components/w-picker/w-picker",
     "m-button": "/components/m-button"
   }
 }

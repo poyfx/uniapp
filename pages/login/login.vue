@@ -30,6 +30,9 @@
 	} from 'vuex';
 	import Login from '../../api.js'
 	import crypto from 'crypto'
+	import {
+		getClentId
+	} from '@/common/js/getCLentId.js'
 	export default {
 		data() {
 			return {
@@ -43,20 +46,51 @@
 					password: '',
 				},
 				status: '',
+				clientId:'',
 			}
 		},
 		onLoad(option) {
 			// console.log(getCurrentPages())
+
+			
 			this.status = option.val;
-			this.showToasts()
+			this.showToasts();
+			// this.getPushClientID();
+			 this.getclientId();
 		},
 		computed: {
 			...mapState(['hasLogin', 'userInfo'])
 		},
 		methods: {
 			...mapActions(['handeLogin']),
-
+			// getPushClientID() {
+			// 	var clientObj = plus.push.getClientInfo();
+			// 	console.log(JSON.stringify(clientObj));
+			// 	console.log(clientObj.clientid);
+			// 	this.clientid = clientObj.clientid
+			// 	this.autoLogin();
+			// },
+			getclientId() {
+					// 扩展API加载完毕，现在可以正常调用扩展API
+					// 获取客户端标识信息
+					var info = plus.push.getClientInfo();
+					console.log( JSON.stringify( info ) );
+					// alert(info)
+					this.clientId = info .clientid;
+					 // alert(this.clientId)
+					uni.setStorage({
+						key:'clientid',
+						data:this.clientId
+					})
+					// 添加监听从系统消息中心点击消息启动事件
+					plus.push.addEventListener( "click", function ( msg ) {
+						// 分析msg.payload处理业务逻辑 
+						alert( "You clicked: " + msg.content ); 
+					}, false ); 
+			},
 			handleLogin() {
+				this.getclientId();
+				// getClentId();
 				// var md5 = crypto.createHash("md5");
 				// md5.update(password); //需要加密的密码
 				// const passwd = md5.digest("hex"); //password 加密完的密码
@@ -104,7 +138,7 @@
 			},
 			showToasts() {
 				if (this.status == 1) {
-				uni.showToast({
+					uni.showToast({
 						title: '注册已提交，审核成功后即可登录使用',
 						position: 'bottom',
 						icon: 'none'
