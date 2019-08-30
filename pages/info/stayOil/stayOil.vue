@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="mContent pB10" style="margin-bottom: 50px;">
-			<view class="userIntegral mTop10 bgcf  borderRadius8"  v-for="item in orderInfo" :key="item.id"><!-- @tap="getOrderNumber(item.reserve_sn,item.oil_remain)" -->
+			<view class="userIntegral mTop10 bgcf  borderRadius8"  v-for="item in orderInfo" :key="item.id"><!-- @tap="getOrderNumber(item.no,item.oil_remain)" -->
 				<view class="orderNumber">
 					<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 					<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
@@ -85,7 +85,7 @@
 			},
 			getOrderNumber(sn,oli) {
 					uni.navigateTo({
-						url: "./oilCodeDetali/oilCodeDetali?reserve_sn="+ sn + '&oil_remain=' + oli
+						url: "./oilCodeDetali/oilCodeDetali?no="+ sn + '&oil_remain=' + oli
 					})
 				
 

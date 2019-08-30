@@ -115,6 +115,12 @@ uni-radio .uni-radio-input{
 	width: 16px;
 	height: 16px;
 }
+uni-page-wrapper{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
 
 /*
  * @Author: mikey.pi 

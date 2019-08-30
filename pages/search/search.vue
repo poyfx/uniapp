@@ -94,7 +94,7 @@
 					})
 				} else if (this.name == "reserveOilList") {
 					this.test.post('order/search_reserve', {
-						reserve_sn: this.ordernumber, //订单编号
+						no: this.ordernumber, //订单编号
 						start_time: this.from,
 						end_time: this.to,
 						page: this.page,

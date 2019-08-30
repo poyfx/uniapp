@@ -15,7 +15,7 @@
 			</view>
 			<view class="weather-right">
 				<text class="r-weather">{{weather}}</text>
-				<text class="r-city">{{address}}</text>
+				<text class="r-city">{{city}}</text>
 			</view>
 		</view>
 		<!-- 客户经理 -->
@@ -206,8 +206,8 @@
 				img: [],
 				// role:'',
 				address: '',
-				city: '深圳',
-				district: '龙华区',
+				city: '',
+				district: '',
 				adcode: '', //城市编码
 				cityInfo: '', //城市信息
 				weather: '', //天气
@@ -221,7 +221,7 @@
 		},
 		onShow() {
 			this.getlocation();
-			this.getAdcode();
+			
 			this.getDate();
 			console.log(this.hasLogin)
 			this.getInfo();
@@ -272,53 +272,76 @@
 			// 获取地址
 			getlocation() {
 				const that = this;
-				uni.getLocation({
-					type: 'wgs84',
-					geocode: true,
-					success: function(res) {
-						console.log(res)
-						const longitude = res.longitude;
-						const latitude = res.latitude;
-						that.city = res.address.city;
-						that.address = res.address.city + res.address.district;
-						that.district = res.address.district;
-					},
-
-				});
-			},
-			getAdcode() {
-				const that = this
 				uni.request({
-					url: 'https://restapi.amap.com/v3/config/district?parameters',
+					url:"https://restapi.amap.com/v3/ip?parameters",
 					header: {
 						'Content-Type': 'application/json;charset=UTF-8'
 					},
-					data: {
+					data:{
 						key: 'b5066e0a9a2a996397e9172fc67fdf40',
-						keywords: "深圳市",
-						subdistrict: 1
 					},
-					methods: 'GET',
-					success: function(res) {
-						res.data.districts.forEach(res => {
-							that.cityInfo = res
-						})
-						if (res.statusCode == 200 && res.data.status == 1) {
-							for (let i = 0; i < that.cityInfo.districts.length; i++) {
-								if (that.district == that.cityInfo.districts[i].name) {
-								
-									
-									that.adcode = that.cityInfo.districts[i].adcode
-								}
-							}
-						}
-						that.getWeather()
+					success:res=>{
+						console.log(res)
+						that.city = res.data.city;
+						that.adcode = res.data.adcode;
+						// that.getAdcode();
+						that.getWeather();
 					}
 				})
+				
+// 				uni.getLocation({
+// 					type: 'wgs84',
+// 					geocode: true,
+// 					success: function(res) {
+// 						console.log(res)
+// 						const longitude = res.longitude;
+// 						const latitude = res.latitude;
+// 						that.city = res.address.city;
+// 						that.address = res.address.city + res.address.district;
+// 						that.district = res.address.district;
+// 						that.getAdcode();
+// 					},
+// 
+// 				});
 			},
+			// getAdcode() {
+			// 	const that = this
+			// 	console.log(that.city)
+			// 	uni.request({
+			// 		//行政区域查询
+			// 		url: 'https://restapi.amap.com/v3/config/district?parameters',
+			// 		header: {
+			// 			'Content-Type': 'application/json;charset=UTF-8'
+			// 		},
+			// 		data: {
+			// 			key: 'b5066e0a9a2a996397e9172fc67fdf40',
+			// 			keywords:that.city,
+			// 			subdistrict: 1
+			// 		},
+			// 		methods: 'GET',
+			// 		success: function(res) {
+			// 			console.log(res)
+			// 			res.data.districts.forEach(res => {
+			// 				console.log(res)
+			// 				that.cityInfo = res
+			// 				console.log(that.cityInfo)
+			// 			})
+			// 			if (res.statusCode == 200 && res.data.status == 1) {
+			// 				for (let i = 0; i < that.cityInfo.districts.length; i++) {
+			// 					// if (that.district == that.cityInfo.districts[i].name) {
+			// 					// 	that.adcode = that.cityInfo.districts[i].adcode
+			// 					// 	that.district = 
+			// 					// 	that.getWeather()
+			// 					// }
+			// 				}
+			// 			}
+			// 			
+			// 		}
+			// 	})
+			// },
 			getWeather() {
 				const that = this;
-			
+			console.log(that.adcode)
 				uni.request({
 					url: 'https://restapi.amap.com/v3/weather/weatherInfo?parameters',
 					header: {
@@ -331,11 +354,10 @@
 					},
 					methods: 'GET',
 					success: function(res) {
-					
 						res.data.lives.forEach(res => {
-						
-							that.temperature = res.temperature;
-							that.weather = res.weather
+							that.temperature = res.temperature;//天气摄氏度
+							that.weather = res.weather;//天气
+							console.log(that.temperature,that.weather)
 						})
 					}
 				})

@@ -58,20 +58,20 @@
 				loadMake: true, // 组件加载完成后自动生成二维码
 				src: '', // 二维码生成后的图片地址或base64
 				id: '',
-				reserve_sn: '',
+				no: '',
 				otherNumber: '' //他人号码
 			}
 		},
 		onLoad(option) {
 			this.id = option.id;
-			this.reserve_sn = option.reserve_sn;
+			this.no = option.no;
 			this.getCode();
 		},
 		methods: {
 			getCode() {
 				this.test.post('order/reserve_encrypt', {
 					id: this.id,
-					reserve_sn: this.reserve_sn,
+					no: this.no,
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {

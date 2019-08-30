@@ -12,12 +12,12 @@
 				 :placeholder="'placeholder'" :initValue="'预约单状态'" @change="changeMsg">
 				</selects>
 			</view>
-			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.reserve_sn)" v-for="(item,index) in oil" :key="item.reserve_id">
+			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.no)" v-for="(item,index) in oil" :key="item.reserve_id">
 				<view class="stateBox flex">
 					<view class="">
 						<view>
 							<text>订单编号：</text>
-							<text>{{item.reserve_sn}}</text>
+							<text>{{item.no}}</text>
 						</view>
 						<view>
 							<text>预约时间：</text>
@@ -98,24 +98,24 @@
 				status:'',
 				time:'',
 				day:'',
-				reserve_sn:'',
+				no:'',
 			}
 		},
 		onLoad(option) {
-			this.reserve_sn = option.ordernumber;
+			this.no = option.ordernumber;
 			this.day = option.times;
-			this.getReserveList(this.reserve_sn);
+			this.getReserveList(this.no);
 		},
 		methods: {
 			getReserveList() {
 				if (this.day == undefined || this.day == '' || this.day == null) {
 					this.day = ''
 				};
-				if (this.reserve_sn == undefined || this.reserve_sn == '' || this.reserve_sn == null) {
-					this.reserve_sn = ''
+				if (this.no == undefined || this.no == '' || this.no == null) {
+					this.no = ''
 				};
 				this.test.post('order/search_reserve', {
-					reserve_sn: this.reserve_sn,
+					no: this.no,
 					status: this.status,
 					start_time: this.day,
 					end_time: this.day,
@@ -141,7 +141,7 @@
 								icon: "none",
 							})
 						};
-					}else {
+					}else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003 ){
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -157,6 +157,11 @@
 								}
 							}
 						})
+					}else{
+						uni.showToast({
+							title:res.data.message,
+							icon:'none'
+						})
 					}
 				}).catch(err => {
 					console.log(err)
@@ -164,7 +169,7 @@
 			},
 			reserveList(rId,oId) {
 				uni.navigateTo({
-					url: 'confirmed/confirmed?reserve_id='+rId+'&reserve_sn='+oId,
+					url: 'confirmed/confirmed?reserve_id='+rId+'&no='+oId,
 				})
 			},
 			complete() {

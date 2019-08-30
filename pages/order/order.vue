@@ -4,13 +4,23 @@
 			<view class="fget-num paddingLeft15">
 
 				<!-- 公司 -->
-				<view class="flex  m-info">
+				<view class="flex  m-info" @tap="getNewCompany()">
 					<view class="flex center m-info-content">
 						<text>售油公司</text>
 						<view>{{company}}</view>
 					</view>
-					<!-- <image src="../../static/img/right.png" mode="aspectFit"></image> -->
+					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
+
+				<!-- 客户经理 -->
+				<view class="flex  m-info" @tap="getNewCustemerInfo()">
+					<view class="flex center m-info-content">
+						<text>客户经理</text>
+						<view>{{myManager}}</view>
+					</view>
+					<image src="../../static/img/right.png" mode="aspectFit"></image>
+				</view>
+
 				<!-- 油品 -->
 				<view class="flex  m-info" @tap="chooseOilShow">
 					<view class="flex center m-info-content">
@@ -146,6 +156,40 @@
 				<button class="btn" @click="newadd">新增地址</button>
 			</view> -->
 		</view>
+
+
+		<!-- 公司 -->
+		<view v-show="showCompany" class="companyCustomer mTop15">
+			<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
+				<view class="newCompany">{{item.name}}</view>
+			</view>
+		</view>
+
+		<!-- 客户经理 -->
+		<view v-show="showCoutomer" class="companyCustomer">
+			<!-- <view class="flex title">
+				<image src="../../static/img/back.png" mode="aspectFit" @tap="showCoutomer = !showCoutomer"></image>
+				<text>选择客户经理</text>
+			</view> -->
+			<view class="search flex">
+				<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
+			</view>
+			<view class="content" style="margin:50px 0 49px;">
+				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="index">
+					<view>{{item.realname}}</view>
+					<view>{{item.phone}}</view>
+					<view>
+						{{item.departmentText}}
+					</view>
+				</view>
+			</view>
+			<view class="loading" @tap="Smore" v-show="more">
+				<view>
+					<img src="../../static/img/loading.png" alt /> &nbsp; 点击加载更多...
+				</view>
+			</view>
+		</view>
+
 	</view>
 </template>
 
@@ -180,6 +224,18 @@
 				range: 0,
 				chooseAddress: false,
 				getTpe: '',
+				myManager: '', //客户经理
+				newDatas: [],
+				showCompany: false,
+				companyId: '',
+				showCoutomer: false,
+				size: 1,
+				pageSize: 10,
+				man: [],
+				more: true,
+				value: '',
+				myManagerId: '',
+
 			}
 		},
 		onLoad() {
@@ -188,12 +244,13 @@
 		},
 
 		methods: {
+			//获取默认公司
 			getCompanyInfo() {
 				const that = this;
 				this.test.post('user/order_company')
 					.then(res => {
-						console.log(res)
-						console.log(res)
+						// console.log(res)
+						// 
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							// res.data.value.forEach(el => {
 							// 	const info = el
@@ -206,7 +263,93 @@
 
 					}).catch(err => {
 						console.log(err)
+					});
+				uni.getStorage({
+					key: 'userInfo',
+					success: function(res) {
+						// console.log(res)
+						that.myManager = res.data.user.manager_name; //客户经理信息
+					}
+				})
+			},
+			getNewCompany() {
+				const that = this;
+				this.showCompany = true;
+				this.test.post('order/listOrgs')
+					.then(res => {
+						console.log(res)
+						that.newDatas = res.data.value;
+
 					})
+			},
+
+
+			//选择公司
+			chooseCompany(e) {
+				console.log(this.newDatas)
+				this.company = this.newDatas[e].name;
+				this.companyId = this.newDatas[e].id;
+				this.showCompany = !this.showCompany;
+				this.getNewCustemer();
+				console.log( this.man)
+				
+				
+			},
+
+			getNewCustemerInfo() {
+				this.getNewCustemer();
+				this.showCoutomer = true;
+				
+			},
+			getNewCustemer() {
+				this.test.post('order/listManagers', {
+						realname: this.value,
+						org_id: this.companyId,
+						size: this.size,
+						pageSize: this.pageSize,
+					})
+					.then(res => {
+						
+						// that.newDatas = res.data.value
+						if (res.statusCode == 200 && res.data.errorCode == 0) {
+							// console.log()
+							res.data.value.forEach(el => {
+							
+								this.man.push(el)
+								
+							})
+							this.myManager = this.man[0].realname;
+							if (res.data.value.length < 10 && res.data.value.length > 0) {
+								this.more = false;
+							} else if (res.data.value.length == 0) {
+								this.more = false;
+								uni.showToast({
+									title: '没有更多了',
+									icon: "none"
+								})
+							}
+						}
+					})
+			},
+
+			// 搜索客户经理
+			searchCustomer() {
+				this.page = 1;
+				if (this.value !== '' && this.value !== null) {
+					this.getNewCustemer();
+				} else if (this.value == '' && this.value == null) {
+					this.getNewCustemer();
+				}
+			},
+			chooseCustomers(e, id) {
+				this.myManagerId = id;
+				this.myManager = this.man[e].realname;
+				this.showCoutomer = !this.showCoutomer
+			},
+			// 点击加载更多
+			Smore() {
+				this.size += 1;
+				this.getNewCustemer()
 			},
 			// 付款方式
 			payShow() {
@@ -241,10 +384,10 @@
 				this.mode = !this.mode;
 				this.getTpe = val.target.id
 				if (val.target.id == '配送') {
-					
+
 					this.addrShow = true
 				} else {
-				
+
 					this.addrShow = false
 				}
 				this.modeOil = val.target.id;
@@ -265,9 +408,9 @@
 				this.test.post('user/getAddrList').then(res => {
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value;
-						console.log(this.info)
+						//  console.log(this.info)
 						this.info.forEach(el => {
-							console.log(el)
+							// console.log(el)
 							if (el.is_default == 1) {
 								that.address = el.address
 							}
@@ -346,7 +489,7 @@
 			},
 
 			toBuy() {
-				const that =this;
+				const that = this;
 				if (this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品') {
 					if (this.getTpe !== null && this.getTpe !== '') {
 						if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
@@ -357,7 +500,10 @@
 									content: '提交后无法修改，是否提交',
 									success: function(res) {
 										if (res.confirm) {
-											that.test.post('order/make_order', {//http://192.168.0.156:8080/api/bizcust/
+											that.test.post('order/make_order', { //http://192.168.0.156:8080/api/bizcust/
+												org_id: that.companyId,
+												manager_id: that.myManagerId,
+												manager_name: that.myManager,
 												oil_type: that.productOil,
 												get_type: that.getTpe,
 												pay_type: that.modePay,
@@ -370,10 +516,10 @@
 													uni.redirectTo({
 														url: '../orderList/orderList'
 													})
-												}else if(res.data.errorCode == 10118){
+												} else if (res.data.errorCode == 10118) {
 													uni.showToast({
-														title:res.data.message,
-														icon:"none"
+														title: res.data.message,
+														icon: "none"
 													})
 												} else {
 													uni.showModal({
@@ -610,6 +756,45 @@
 	.title text {
 		flex: 1;
 		font-size: 17px;
+
+	}
+
+	.companyCustomer {
+		position: absolute;
+		top: 0;
+		z-index: 997;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+	}
+
+	.customerCompany {
+		background-color: #fff;
+		padding: 10px 0 10px 15px;
+		border-bottom: 1px solid #d6d6d6;
+		font-size: 14px;
+		color: #666;
+		line-height: 28px;
+	}
+
+	/* .newCompany{
+		border-bottom: 1px solid #e5e5e5;
+		padding: 12px 15px;
+	} */
+	.search {
+		width: 100%;
+		justify-content: center;
+		background-color: #fff;
+		padding: 12px 15px;
+		box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
+		position: fixed;
+	}
+
+	.search_input {
+		background-color: #e5e5e5;
+		border-radius: 14px;
+		width: 100%;
+		padding: 4px 15px;
 
 	}
 </style>

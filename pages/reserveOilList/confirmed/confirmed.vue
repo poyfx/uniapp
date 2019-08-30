@@ -102,7 +102,7 @@
 		},
 		onLoad(option) {
 			this.rId = option.reserve_id;
-			this.oId = option.reserve_sn;
+			this.oId = option.no;
 			this.getReserveOilList();
 		},
 		methods: {
@@ -116,7 +116,7 @@
 						this.status = this.reserveInfo.status;
 						this.time = new Date(this.reserveInfo.reserve_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(
 							/-/g, '-');
-						this.order = this.reserveInfo.reserve_sn
+						this.order = this.reserveInfo.no
 						this.much = String(this.reserveInfo.extract_num);
 						this.address = this.reserveInfo.ship_addr;
 						this.company = this.reserveInfo.org_name;
@@ -168,7 +168,7 @@
 			},
 			getCode() {
 				uni.navigateTo({
-					url: "oliCode/oliCode?id=" + this.rId + '&reserve_sn=' + this.oId
+					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.oId
 				})
 			},
 		},
