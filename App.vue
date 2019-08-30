@@ -10,7 +10,7 @@
 			uni.getStorage({
 				key: 'userInfo',
 				success:(res) => {
-					// console.log(res)
+					console.log(res)
 					// console.log(res.data)
 					this.login(res.data);
 					// 如果还需要重新校验或是想要刷新token的有效时间 就再联网请求一次
@@ -117,4 +117,7 @@
 		width: 16px;
 		height: 16px;
 	}
+	uni-page-wrapper{
+		display: flex;
+		}
 </style>

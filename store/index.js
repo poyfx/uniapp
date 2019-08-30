@@ -17,16 +17,16 @@ const store = new Vuex.Store({
 	getters: {},
 	mutations: {
 		login(state, provider) { //改变登录状态
-			// console.log(provider)
+			console.log(provider)
 			state.hasLogin = true;
 			state.Token = provider.token;
 			state.userInfo = provider;
 			state.roles = provider.user.roles;
 			// state.userInfo.realname = provider.realname;
-			uni.setStorage({
-				key: 'Token',
-				data: provider.token
-			})
+			// uni.setStorage({
+			// 	key: 'Token',
+			// 	data: provider.token
+			// })
 			uni.setStorage({
 				key: 'userInfo',
 				data: provider

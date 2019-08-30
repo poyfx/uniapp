@@ -25,7 +25,7 @@
 				</view>
 
 				<infoText :textValue="text.productOilText" :disabled="text.disabled" :value="values.productOil" :placeholder="text.productOilP"></infoText>
-				<infoText :textValue="text.modeOilText" :disabled="text.disabled"  v-model="values.modeOil" :placeholder="text.modeOilP"></infoText>
+				<infoText :textValue="text.modeOilText" :disabled="text.disabled" v-model="values.modeOil" :placeholder="text.modeOilP"></infoText>
 				<view class="fget-eara underLine" v-show="showAddress">
 					<view class="first-li">配送地址：</view>
 					<view class="addressimg">
@@ -59,7 +59,7 @@
 					<view class="orderNumber">
 						<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 						<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
-						<view><text class="numberTitle">提油方式:</text> <text >{{item.get_type}}</text></view>
+						<view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view>
 					</view>
 					<view class="integral">
 						<text>剩余油量(吨)</text>
@@ -132,7 +132,7 @@
 			}
 		},
 		onLoad() {
-			
+
 
 		},
 		methods: {
@@ -145,7 +145,7 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						// this.chooseNumber.orderInfo = res.data.value
-						res.data.value.forEach(el=>{
+						res.data.value.forEach(el => {
 							this.chooseNumber.orderInfo.push(el)
 						})
 						if (res.data.value.length < 10 && res.data.value.length > 0) {
@@ -157,7 +157,12 @@
 								icon: "none"
 							})
 						}
-					}else{
+					} else if (res.data.errorCode == 10118) {
+						uni.showToast({
+							title: res.data.message,
+							icon: none
+						})
+					} else {
 						// uni.showModal({
 						// 	title: '提示',
 						// 	content: res.data.message,
@@ -196,7 +201,7 @@
 			},
 			// 订单编号的显示
 			goOrderNumber() {
-				this.chooseNumber.orderInfo=[]
+				this.chooseNumber.orderInfo = []
 				this.getorderNumberInfo();
 				this.showOrderNumber = !this.showOrderNumber
 			},
@@ -206,7 +211,7 @@
 				this.id = id;
 				this.values.orderNumber = this.chooseNumber.orderInfo[e].no;
 				this.values.productOil = this.chooseNumber.orderInfo[e].oil_type;
-				
+
 				this.values.modeOil = this.chooseNumber.orderInfo[e].get_type;
 				// if (this.chooseNumber.orderInfo[e].get_type == 0) {
 				// 	this.values.modeOil = '配送'
@@ -262,7 +267,7 @@
 				if (this.values.orderNumber !== '' && this.values.orderNumber !== null) {
 					if (this.values.muchOil !== '' && this.values.muchOil !== null) {
 						console.log(typeof(oilNumbers), typeof(this.id))
-						this.test.post('order/mark_reserve', {
+						this.test.post('order/mark_reserve', {//http://192.168.0.156:8080/api/bizcust/
 							bz_order_id: this.id,
 							reserve_time: day,
 							extract_num: oilNumbers,
@@ -273,7 +278,28 @@
 								uni.redirectTo({
 									url: '../reserveOilList/reserveOilList',
 								});
-							}
+							}else if(res.data.errorCode == 10118){
+													uni.showToast({
+														title:res.data.message,
+														icon:"none"
+													})
+												} else {
+													uni.showModal({
+														title: '提示',
+														content: '用户信息已失效，请重新登录',
+														success: function(res) {
+															if (res.confirm) {
+																uni.reLaunch({
+																	url: '../login/login'
+																})
+															} else {
+																uni.reLaunch({
+																	url: '../login/login'
+																})
+															}
+														}
+													})
+												}
 						}).catch(err => {
 							console.log(err)
 						})

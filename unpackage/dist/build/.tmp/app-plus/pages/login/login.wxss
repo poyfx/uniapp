@@ -1,5 +1,5 @@
 
-.background.data-v-14ab43e0 {
+.background.data-v-68b9f632 {
 	background-color: #fff;
 	position: absolute;
 	height: 100%;
@@ -7,22 +7,22 @@
 	left: 0;
 	top: 0;
 }
-.imgTop.data-v-14ab43e0 {
+.imgTop.data-v-68b9f632 {
 	margin: 40px auto 44px;
 	text-align: center
 }
-.loginImg.data-v-14ab43e0 {
+.loginImg.data-v-68b9f632 {
 	width: 200rpx;
 	height: 200rpx;
 }
-.p-font.data-v-14ab43e0 {
+.p-font.data-v-68b9f632 {
 	margin-top: 15px;
 }
-.p-font text.data-v-14ab43e0 {
+.p-font text.data-v-68b9f632 {
 	font-size: 45rpx;
 	color: #666;
 }
-.loginInfo.data-v-14ab43e0 {
+.loginInfo.data-v-68b9f632 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -34,10 +34,10 @@
 	font-size: 24rpx;
 	padding: 7px 11% 10px;
 }
-.color-dff.data-v-14ab43e0 {
+.color-dff.data-v-68b9f632 {
 	color: #009DFF;
 }
-.toReginster.data-v-14ab43e0 {
+.toReginster.data-v-68b9f632 {
 	display: inline-block;
 }
 

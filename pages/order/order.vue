@@ -240,14 +240,13 @@
 				console.log(val);
 				this.mode = !this.mode;
 				this.getTpe = val.target.id
-				// if (val.target.id == '配送') {
-				// 	this.getTpe = 0;
-				// 	this.addrShow = true
-				// } else {
-				// 	this.getTpe = 1;
-				// 	this.addrShow = false
-				// }
-				this.addrShow = false
+				if (val.target.id == '配送') {
+					
+					this.addrShow = true
+				} else {
+				
+					this.addrShow = false
+				}
 				this.modeOil = val.target.id;
 
 			},
@@ -358,7 +357,7 @@
 									content: '提交后无法修改，是否提交',
 									success: function(res) {
 										if (res.confirm) {
-											that.test.post('order/make_order', {
+											that.test.post('order/make_order', {//http://192.168.0.156:8080/api/bizcust/
 												oil_type: that.productOil,
 												get_type: that.getTpe,
 												pay_type: that.modePay,
@@ -370,6 +369,11 @@
 												if (res.statusCode == 200 && res.data.errorCode == 0) {
 													uni.redirectTo({
 														url: '../orderList/orderList'
+													})
+												}else if(res.data.errorCode == 10118){
+													uni.showToast({
+														title:res.data.message,
+														icon:"none"
 													})
 												} else {
 													uni.showModal({

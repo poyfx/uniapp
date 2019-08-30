@@ -28,7 +28,7 @@
 		mapMutations,
 		mapActions
 	} from 'vuex';
-	import Login from '../../api.js'
+	// import Login from '../../api.js'
 	import crypto from 'crypto'
 	import {
 		getClentId
@@ -51,11 +51,8 @@
 		},
 		onLoad(option) {
 			// console.log(getCurrentPages())
-
-			
 			this.status = option.val;
 			this.showToasts();
-			// this.getPushClientID();
 			 this.getclientId();
 		},
 		computed: {
@@ -63,30 +60,24 @@
 		},
 		methods: {
 			...mapActions(['handeLogin']),
-			// getPushClientID() {
-			// 	var clientObj = plus.push.getClientInfo();
-			// 	console.log(JSON.stringify(clientObj));
-			// 	console.log(clientObj.clientid);
-			// 	this.clientid = clientObj.clientid
-			// 	this.autoLogin();
-			// },
+			
 			getclientId() {
 					// 扩展API加载完毕，现在可以正常调用扩展API
 					// 获取客户端标识信息
-					var info = plus.push.getClientInfo();
-					console.log( JSON.stringify( info ) );
-					// alert(info)
-					this.clientId = info .clientid;
-					 // alert(this.clientId)
-					uni.setStorage({
-						key:'clientid',
-						data:this.clientId
-					})
-					// 添加监听从系统消息中心点击消息启动事件
-					plus.push.addEventListener( "click", function ( msg ) {
-						// 分析msg.payload处理业务逻辑 
-						alert( "You clicked: " + msg.content ); 
-					}, false ); 
+					// var info = plus.push.getClientInfo();
+					// console.log( JSON.stringify( info ) );
+					// // alert(info)
+					// this.clientId = info .clientid;
+					//  // alert(this.clientId)
+					// uni.setStorage({
+					// 	key:'clientid',
+					// 	data:this.clientId
+					// })
+					// // 添加监听从系统消息中心点击消息启动事件
+					// plus.push.addEventListener( "click", function ( msg ) {
+					// 	// 分析msg.payload处理业务逻辑 
+					// 	alert( "You clicked: " + msg.content ); 
+					// }, false ); 
 			},
 			handleLogin() {
 				this.getclientId();
@@ -105,6 +96,11 @@
 							const data = res.data;
 							const datas = data.value
 							if (data.errorCode == 0 && res.statusCode == 200) {
+								console.log(res)
+								uni.setStorage({
+									key: 'Token',
+									data: res.data.value.token
+								})
 								this.handeLogin(datas);
 								uni.switchTab({
 									url: '../index/index'
@@ -148,7 +144,7 @@
 			}
 		},
 		...mapMutations(['login']),
-
+		
 		components: {
 			mInput,
 			pwsInput,

@@ -109,7 +109,7 @@
 	        box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
 	position: fixed;
 }
-input.data-v-1a0afe74 {
+.search_input.data-v-1a0afe74 {
 	background-color: #e5e5e5;
 	border-radius: 14px;
 	width: 100%;

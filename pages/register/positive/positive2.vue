@@ -148,7 +148,7 @@
 				mode: 'date', //时间
 				day: '2019-01-01', //购油有效期
 				days: '2019-01-01', //提油有效期
-				// photo: false
+				clientID:'',
 			}
 		},
 		onLoad() {
@@ -165,9 +165,19 @@
 				console.log(this.info)
 			}
 			console.log(this.info)
-			// this.day = formatDate(new Date());
+			this.getclientid();
 		},
 		methods: {
+			getclientid(){
+					const that = this;
+					uni.getStorage({
+						key:'clientid',
+						success:function(res){
+							that.clientID= res.data;
+							console.log(res)
+						}
+					})
+			},
 			all() {
 				if (this.btn.stepOne == true) {
 					const that = this;
@@ -463,7 +473,8 @@
 									"phone": this.register.userPhoneNum,
 									"city": this.register.userCity,
 									"buy_auth_exp": this.day,
-									"get_auth_exp": this.days
+									"get_auth_exp": this.days,
+									"client_id" :this.clientID,
 								},
 								success: function(res) {
 									var data = JSON.parse(res.data)
@@ -472,7 +483,8 @@
 									if (res.statusCode == 200) {
 										if (data.errorCode == 0) {
 											uni.showToast({
-												"title": '注册已提交，审核成功后即可登录使用'
+												"title": '注册已提交，审核成功后即可登录使用',
+												icon: 'none'
 											})
 											uni.removeStorage({
 												key: 'register'
@@ -507,7 +519,8 @@
 									"phone": this.register.userPhoneNum,
 									"city": this.register.userCity,
 									"buy_auth_exp": this.day,
-									"bill_auth_exp": this.days
+									"bill_auth_exp": this.days,
+									"client_id" :this.clientID,
 								},
 								success: function(res) {
 									var data = JSON.parse(res.data)
@@ -516,7 +529,8 @@
 									if (res.statusCode == 200) {
 										if (data.errorCode == 0) {
 											uni.showToast({
-												"title": '注册已提交，审核成功后即可登录使用'
+												"title": '注册已提交，审核成功后即可登录使用',
+												icon: 'none'
 											})
 											uni.removeStorage({
 												key: 'register'
@@ -551,7 +565,8 @@
 									"phone": this.register.userPhoneNum,
 									"city": this.register.userCity,
 									"get_auth_exp": this.day,
-									"bill_auth_exp": this.days
+									"bill_auth_exp": this.days,
+									"client_id" :this.clientID,
 								},
 								success: function(res) {
 									var data = JSON.parse(res.data)
@@ -560,7 +575,8 @@
 									if (res.statusCode == 200) {
 										if (data.errorCode == 0) {
 											uni.showToast({
-												"title": '注册已提交，审核成功后即可登录使用'
+												"title": '注册已提交，审核成功后即可登录使用',
+												icon: 'none',
 											})
 											uni.removeStorage({
 												key: 'register'

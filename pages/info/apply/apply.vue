@@ -8,26 +8,14 @@
 			</view>
 			<view class="flex never" v-else>
 				<text v-if="item.status == 0">未申请</text>
-				<!-- <text v-else-if="item.status == 1">审核通过</text> -->
 				<text v-else-if="item.status == -1">等待后台审核</text>
 				<text v-else-if="item.status == 9">审核不通过</text>
 				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
 			</view>
 
-			
-		</view>
-		<!-- <view class="flex m-apply" @tap="GoTakeApply">
-			<text>提油人权限</text>
-			<view class="flex never" v-show="!take">
-				<text>未申请</text>
-				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
-			</view>
 
-			<view class="flex never good" v-show="take">
-			<image src="../../../static/img/good.png" mode=""></image>
-				<text>已拥有权限</text>
-			</view>
-		</view> -->
+		</view>
+
 	</view>
 </template>
 
@@ -39,14 +27,14 @@
 				buy: true,
 				take: false,
 				role: [],
-				statusAll:'',
-				userCode:''
+				statusAll: '',
+				userCode: ''
 			}
 		},
 		onLoad(option) {
 			this.getJurisdiction()
 			this.userCode = option.userCode;
-			
+
 		},
 		methods: {
 			getJurisdiction() {
@@ -64,13 +52,13 @@
 								console.log(2)
 								this.buy = true
 								this.take = false
-							} else if (this.role[0].role_id == 2){
+							} else if (this.role[0].role_id == 2) {
 								console.log(3)
 								this.take = true
 								this.buy = false
 							}
 						}
-					}else {
+					} else {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -94,40 +82,28 @@
 
 
 
-			GoBuyApply(stu,name,ind) {
+			GoBuyApply(stu, name, ind) {
 				if (stu == 0) {
 					uni.navigateTo({
-						url: '../../register/positive/positive1?name=' + "apply" +'&user='+name +'&userCode='+this.role[ind].code
+						url: './uploadImg/uploadImg?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code
 					})
-				} else if(stu == 1){
+				} else if (stu == 1) {
 					uni.showToast({
 						"title": "您已有权限",
-						icon:'none'
+						icon: 'none'
 					})
-				} else if(stu == -1){
+				} else if (stu == -1) {
 					uni.showToast({
 						"title": "审核中...",
-						icon:'none'
+						icon: 'none'
 					})
-				}else{
+				} else {
 					uni.showToast({
 						"title": "审核未通过",
-						icon:'none'
+						icon: 'none'
 					})
 				}
 			},
-// 			GoTakeApply() {
-// 				if (this.take !== true) {
-// 					uni.navigateTo({
-// 						url: '../../register/positive/positive2?name=' + "apply"
-// 					})
-// 				} else {
-// 					uni.showToast({
-// 						"title": "您已有权限",
-// 
-// 					})
-// 				}
-// 			}
 		},
 		components: {
 			infoText
@@ -152,12 +128,13 @@
 		height: 12px;
 		margin-left: 10px;
 	}
-.m-apply .good image{
+
+	.m-apply .good image {
 		width: 16px;
 		height: 16px;
 		margin-right: 4px;
 	}
- 
+
 	.never {
 		justify-content: flex-end;
 		align-content: center;

@@ -220,36 +220,17 @@
 			}
 		},
 		onShow() {
-			
-			//获取token
-			// this.role = this.roles;
-			// console.log(this.role)
-			// const token = uni.getStorageSync('Token');
-			// if (token == null || token == '' || token == undefined) {
-			// 	uni.showModal({
-			// 		title: '提示',
-			// 		content: '用户信息已失效，请重新登录',
-			// 		success: function(res) {
-			// 			if (res.confirm) {
-			// 				uni.reLaunch({
-			// 					url: '../login/login'
-			// 				})
-			// 			} else {
-			// 				uni.reLaunch({
-			// 					url: '../login/login'
-			// 				})
-			// 			};
-			// 		}
-			// 	})
-			// }
 			this.getlocation();
 			this.getAdcode();
 			this.getDate();
-		},
-		onLoad() {
+			console.log(this.hasLogin)
 			this.getInfo();
 		},
+		onLoad() {
+			
+		},
 		methods: {
+		
 			// 获取首页信息
 			getInfo() {
 				const that = this;
@@ -257,10 +238,10 @@
 					key: 'userInfo',
 					success: function(res) {
 						console.log(res)
-						let price = res.data.oilPrize; //获取当前油价油价
+						let price = res.data.oilPrice; //获取当前油价油价
 						that.datas = price.oilPrice;
-						that.gain = price.oilAmplitude
-						console.log( that.datas.gas_98)
+						that.gain = price.oilAmplitude;
+						console.log( that.datas.gas_98);
 						let managerInfo = res.data.user;
 						that.myManager = managerInfo.manager_name; //客户经理信息
 						that.managerTel = managerInfo.manager_phone;
@@ -394,7 +375,7 @@
 			}
 		},
 		computed: {
-			...mapState(["hasLogin", "userInfo","roles"])
+			...mapState(["hasLogin", "userInfo","roles",'Token'])
 		},
 		components: {
 			banner,

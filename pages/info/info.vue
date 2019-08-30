@@ -94,8 +94,8 @@
 					}
 				})
 			};
-			this.getserinfo();
-			this.getclient();
+			this.getuserinfo();
+			// this.getclient();
 		},
 		onLoad(option) {
 			console.log(option)
@@ -103,17 +103,17 @@
 		},
 		methods: {
 			...mapActions(['handelOut']),
-			getclient(){
-				const that = this;
-				uni.getStorage({
-					key:'clientid',
-					success:function(res){
-						that.info.company = res.data;
-						console.log(res)
-					}
-				})
-			},
-			getserinfo() {
+			// getclient(){
+			// 	const that = this;
+			// 	uni.getStorage({
+			// 		key:'clientid',
+			// 		success:function(res){
+			// 			that.info.company = res.data;
+			// 			console.log(res)
+			// 		}
+			// 	})
+			// },
+			getuserinfo() {
 				const that = this;
 				uni.getStorage({
 					key: "userInfo",
@@ -122,7 +122,7 @@
 						that.info.username = res.data.user.realname;
 						that.info.phoneNum = res.data.user.username
 						that.info.city = res.data.user.city;
-						// that.info.company = res.data.user.customer_name;
+						 that.info.company = res.data.user.customer_name;
 						that.info.customerName = res.data.user.manager_name;
 					}
 				})

@@ -454,7 +454,19 @@
 			"path": "pages/info/test/test",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/info/apply/uploadImg/uploadImg",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#666",
+					"titleText": "上传授权资料",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "17px"
+				}
+			}
+        }
+    ],
 	"tabBar": {
 		"color": "black",
 		"selectedColor": "#009DFF",

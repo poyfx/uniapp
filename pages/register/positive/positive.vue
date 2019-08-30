@@ -197,16 +197,26 @@
 				day: '2019-01-01', //购油有效期
 				days: '2019-01-01', //提油有效期
 				voiceDate: '2019-01-01', //领取发票时间
-				// photo: false
+				clientID:'',
 			}
 		},
 		onLoad() {
 			this.register = uni.getStorageSync('register');
 
 			console.log(this.register)
-			// this.day = formatDate(new Date());
+			this.getclientid();
 		},
 		methods: {
+			getclientid(){
+					const that = this;
+					uni.getStorage({
+						key:'clientid',
+						success:function(res){
+							that.clientID= res.data;
+							console.log(res)
+						}
+					})
+			},
 			all() {
 				if (this.btn.stepOne == true) {
 					const that = this;
@@ -535,7 +545,8 @@
 								"city": this.register.userCity,
 								"buy_auth_exp": this.day,
 								"get_auth_exp": this.days,
-								"bill_auth_exp": this.voiceDate
+								"bill_auth_exp": this.voiceDate,
+								"client_id" :this.clientID,
 							},
 							success: function(res) {
 								var data = JSON.parse(res.data)
@@ -544,7 +555,8 @@
 								if (res.statusCode == 200) {
 									if (data.errorCode == 0) {
 										uni.showToast({
-											"title": '注册已提交，审核成功后即可登录使用'
+											"title": '注册已提交，审核成功后即可登录使用',
+											icon: 'none',
 										})
 										uni.removeStorage({
 											key: 'register'

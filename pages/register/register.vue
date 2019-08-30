@@ -6,7 +6,6 @@
 				<view class="flex center m-info-content">
 					<text>角色</text>
 					<input type="text" placeholder="请选择角色" class="infoText" v-model="info.user" disabled="disabled" />
-
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
 			</view>
@@ -59,7 +58,7 @@
 				<text>选择公司</text>
 			</view>
 			<view class="search flex">
-				<input type="text" value="" placeholder="搜索" @input="searchCompany" v-model="inputValue" />
+				<input type="text" value="" placeholder="搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
 			</view>
 			<view class="content " style="margin:50px 0 49px;">
 				<view class="customerCompany" @tap="chooseCompany(index,item.id)" v-for="(item,index) in datas" :key="item.id">
@@ -81,7 +80,7 @@
 				<text>选择客户经理</text>
 			</view>
 			<view class="search flex">
-				<input type="text" value="" placeholder="搜索" v-model="value" @input="searchCustomer" />
+				<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
 			</view>
 			<view class="content" style="margin:50px 0 49px;">
 				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
@@ -601,7 +600,7 @@
 		position: fixed;
 	}
 
-	 input {
+	 .search_input {
 		background-color: #e5e5e5;
 		border-radius: 14px;
 		width: 100%;
