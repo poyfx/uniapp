@@ -84,7 +84,7 @@
 								})
 							} else if (res.data.value.length > 0) {
 								uni.redirectTo({
-									url: '../orderList/orderList?times=' + this.date + '&ordernumber=' + this.ordernumber
+									url: '../orderList/orderList?from=' + this.from +'&to=' + this.to + '&ordernumber=' + this.ordernumber + '&times=' + this.date
 								})
 
 							}
@@ -109,7 +109,7 @@
 								})
 							} else if (res.data.value.length > 0) {
 								uni.redirectTo({
-									url: '../reserveOilList/reserveOilList?times=' + this.date + '&ordernumber=' + this.ordernumber
+									url: '../reserveOilList/reserveOilList?times=' + this.date + '&ordernumber=' + this.ordernumber + '&from=' + this.from +'&to=' + this.to
 								})
 
 							}

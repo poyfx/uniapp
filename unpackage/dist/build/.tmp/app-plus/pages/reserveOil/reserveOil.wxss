@@ -201,7 +201,7 @@
 .companyCustomer {
 	position: absolute;
 	top: 0;
-	z-index: 999;
+	z-index: 997;
 	width: 100%;
 	height: 100%;
 	background-color: #EFEFF4;

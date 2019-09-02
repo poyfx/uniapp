@@ -6,7 +6,10 @@ import './common/css/index.css'
 import './common/css/style.css'
 import {test,http} from './utils/request/index.js'
 Vue.config.productionTip = false
-
+import titles from './components/title.vue'
+Vue.component('titles',titles)
+import uniIcon from './components/uni-icon/uni-icon.vue'
+Vue.component('uni-icon',uniIcon)
 
 
 

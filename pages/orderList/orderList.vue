@@ -143,10 +143,14 @@
 				day: '',
 				days: false,
 				time: [],
+				from:'',
+				to:'',
 			}
 		},
 		onLoad(option) {
 			this.day = option.times;
+			this.to = option.to;
+			this.from = option.from;
 			this.orderNumber = option.ordernumber;
 			this.getOrderListInfo();
 		},
@@ -154,15 +158,18 @@
 			//获取订单列表信息
 			getOrderListInfo() {
 				const that = this;
-				if (this.day == undefined || this.day == '' || this.day == null) {
-					this.day = ''
+				if (this.from == undefined || this.from == '' || this.from == null) {
+					this.from = ''
+				};
+				if (this.to == undefined || this.to == '' || this.to == null) {
+					this.to = ''
 				};
 				if (this.orderNumber == undefined || this.orderNumber == '' || this.orderNumber == null) {
 					this.orderNumber = ''
 				};
 				this.test.post('order/search_order', {
-					start_time: this.day,
-					end_time: this.day,
+					start_time: this.from,
+					end_time: this.to,
 					status: this.status,
 					no: this.orderNumber,
 					page: this.page,

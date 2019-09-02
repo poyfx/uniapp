@@ -121,7 +121,7 @@
 						this.address = this.reserveInfo.ship_addr;
 						this.company = this.reserveInfo.org_name;
 						this.oil = this.reserveInfo.oil_type;
-						this.main =this.reserveInfo.get_type;
+						this.main = this.reserveInfo.get_type;
 						// if (this.reserveInfo.get_type == 0) {
 						// 	this.main = '配送'
 						// } else {
@@ -194,7 +194,7 @@
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
-		background: rgba(51, 51, 51, 0.5);
+		background: #e5e5e5;
 
 	}
 
@@ -208,7 +208,7 @@
 		align-content: center;
 		align-items: center;
 		align-self: center;
-		background-color: rgba(255, 255, 255, 1);
+		background-color: rgba(255,255,255,0.8);
 		justify-content: center;
 	}
 
@@ -218,7 +218,7 @@
 		margin-left: 5px;
 		position: absolute;
 		left: 10px;
-		
+
 	}
 
 	.title view {

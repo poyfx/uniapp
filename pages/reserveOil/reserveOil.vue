@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<titles :titles="titles"></titles>
 		<view class="content">
 			<view class="fget-num paddingLeft15">
 				<infoImg :imgText="text.orderNumberText" :disabled="text.disabled" :value="values.orderNumber" :placeholder="text.orderNumberP"
@@ -53,6 +54,18 @@
 				<image src="../../static/img/back.png" mode="aspectFit" @tap="showOrderNumber = !showOrderNumber"></image>
 				<text>选择单号</text>
 			</view> -->
+			<view class="self_header ">
+				<view class="self_header_bar">
+					
+				</view>
+				<view class="self_header_title flex self_header_position">
+					<view class="leftBtn" @tap="showOrderNumber =! showOrderNumber">
+						<uniIcon type="arrowleft" size="27"></uniIcon>
+					</view>
+					<view>选择单号</view>
+				</view>
+			</view>
+			
 			<view class="mContent pB10" style="margin-bottom: 50px;">
 				<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
 				 :key="item.id">
@@ -91,6 +104,7 @@
 	export default {
 		data() {
 			return {
+				titles:"预约提油",
 				text: {
 					orderNumberText: "订单编号",
 					dayTimeText: '提油时间',
@@ -488,7 +502,7 @@
 	.companyCustomer {
 		position: absolute;
 		top: 0;
-		z-index: 999;
+		z-index: 997;
 		width: 100%;
 		height: 100%;
 		background-color: #EFEFF4;

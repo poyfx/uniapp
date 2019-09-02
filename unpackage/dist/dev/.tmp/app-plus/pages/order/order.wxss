@@ -183,4 +183,53 @@ text {
 	        flex: 1;
 	font-size: 17px;
 }
+.companyCustomer {
+	position: absolute;
+	top: 0;
+	z-index: 997;
+	width: 100%;
+	height: 100%;
+	background-color: #e5e5e5;
+}
+.customerCompany {
+	background-color: #fff;
+	padding: 10px 0 10px 15px;
+	border-bottom: 1px solid #d6d6d6;
+	font-size: 14px;
+	color: #666;
+	line-height: 28px;
+}
+
+/* .newCompany{
+	border-bottom: 1px solid #e5e5e5;
+	padding: 12px 15px;
+} */
+.search {
+	width: 100%;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	background-color: #fff;
+	padding: 12px 15px;
+	-webkit-box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
+	        box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
+	position: fixed;
+	left: 0;
+	top: 78px;
+}
+.search_input {
+	background-color: #e5e5e5;
+	border-radius: 14px;
+	width: 100%;
+	padding: 4px 15px;
+}
+.self_header_position{
+	position: fixed;
+	
+	left: 0;
+}
+.company_content{
+	margin-top: 55px;
+}
 

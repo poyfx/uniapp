@@ -1,10 +1,12 @@
 {
-  "titleNView": {
-    "titleColor": "#666",
-    "titleText": "预约提油",
-    "backgroundColor": "#FFF",
-    "fontWeight": "normal",
-    "titleSize": "17px"
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 100,
+  "bounce": "none",
+  "titleNView": false,
+  "statusbar": {
+    "background": "black"
   },
   "usingComponents": {
     "info-img": "/components/m-info-img/m-info-img",

@@ -1,8 +1,9 @@
 <template>
 	<view>
+		<titles :titles="titles"></titles>
+		
 		<view class="content">
 			<view class="fget-num paddingLeft15">
-
 				<!-- 公司 -->
 				<view class="flex  m-info" @tap="getNewCompany()">
 					<view class="flex center m-info-content">
@@ -127,7 +128,18 @@
 				<image src="../../static/img/back.png" mode="aspectFit" @tap="chooseAddress = !chooseAddress"></image>
 				<text>选择地址</text>
 			</view> -->
-			<view class="mContent">
+			<view class="self_header ">
+				<view class="self_header_bar">
+					
+				</view>
+				<view class="self_header_title flex self_header_position">
+					<view class="leftBtn" @tap="chooseAddress =! chooseAddress">
+						<uniIcon type="arrowleft" size="27"></uniIcon>
+					</view>
+					<view>{{addrTitles}}</view>
+				</view>
+			</view>
+			<view class="mContent" style="margin-top:44px">
 				<view class="harvest" v-for="(item,index) in info" :key="item.id">
 					<view class="harvest-name" @tap="isAddress(index)">
 						<view>{{item.realname}}</view>
@@ -159,10 +171,24 @@
 
 
 		<!-- 公司 -->
-		<view v-show="showCompany" class="companyCustomer mTop15">
-			<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
+		<view v-show="showCompany" class="companyCustomer">
+			<view class="self_header ">
+				<view class="self_header_bar">
+					
+				</view>
+				<view class="self_header_title flex self_header_position">
+					<view class="leftBtn" @tap="showCompany =! showCompany">
+						<uniIcon type="arrowleft" size="27"></uniIcon>
+					</view>
+					<view>{{companyTitles}}</view>
+				</view>
+			</view>
+			<view class="company_content">
+				<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
 				<view class="newCompany">{{item.name}}</view>
 			</view>
+			</view>
+			
 		</view>
 
 		<!-- 客户经理 -->
@@ -171,16 +197,29 @@
 				<image src="../../static/img/back.png" mode="aspectFit" @tap="showCoutomer = !showCoutomer"></image>
 				<text>选择客户经理</text>
 			</view> -->
+			<!-- <titles :titles="coutomerTitles"></titles> -->
+			<view class="self_header">
+				<view class="self_header_bar">
+					
+				</view>
+				<view class="self_header_title flex self_header_position">
+					<view class="leftBtn" @tap="showCoutomer = !showCoutomer">
+						<uniIcon type="arrowleft" size="27"></uniIcon>
+					</view>
+					<view>{{coutomerTitles}}</view>
+				</view>
+			</view>
+			
 			<view class="search flex">
 				<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
 			</view>
-			<view class="content" style="margin:50px 0 49px;">
+			<view class="content" style="margin:95px 0 49px;">
 				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="index">
 					<view>{{item.realname}}</view>
 					<view>{{item.phone}}</view>
-					<view>
+					<!-- <view>
 						{{item.departmentText}}
-					</view>
+					</view> -->
 				</view>
 			</view>
 			<view class="loading" @tap="Smore" v-show="more">
@@ -196,9 +235,14 @@
 <script>
 	import infoText from '../../components/m-info-text/m-info-text'
 	import mButton from '../../components/m-button.vue'
+	import uniIcon from '../../components/uni-icon/uni-icon.vue'
 	export default {
 		data() {
 			return {
+				titles:'下单购油',
+				addrTitles:'选择地址',
+				coutomerTitles:'选择客户经理',
+				companyTitles:'选择公司',
 				company: "",
 				productOil: '选择油品',
 				modeOil: "选择提油方式",
@@ -229,7 +273,7 @@
 				showCompany: false,
 				companyId: '',
 				showCoutomer: false,
-				size: 1,
+				page: 1,
 				pageSize: 10,
 				man: [],
 				more: true,
@@ -249,12 +293,13 @@
 				const that = this;
 				this.test.post('user/order_company')
 					.then(res => {
-						// console.log(res)
+						console.log(res)
 						// 
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							// res.data.value.forEach(el => {
 							// 	const info = el
-							that.company = res.data.value.name
+							that.company = res.data.value.name;
+							that.companyId = res.data.value.id 
 							// })
 						} else {
 
@@ -286,37 +331,24 @@
 
 			//选择公司
 			chooseCompany(e) {
+				const that = this;
 				console.log(this.newDatas)
 				this.company = this.newDatas[e].name;
 				this.companyId = this.newDatas[e].id;
 				this.showCompany = !this.showCompany;
-				this.getNewCustemer();
-				console.log( this.man)
-				
-				
-			},
-
-			getNewCustemerInfo() {
-				this.getNewCustemer();
-				this.showCoutomer = true;
-				
-			},
-			getNewCustemer() {
-				this.test.post('order/listManagers', {
+				this.test.post('order/listManagers', { //选择公司后默认第一个客户经理
 						realname: this.value,
 						org_id: this.companyId,
-						size: this.size,
+						size: this.page,
 						pageSize: this.pageSize,
 					})
 					.then(res => {
-						
 						// that.newDatas = res.data.value
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							// console.log()
+							that.man = [];
 							res.data.value.forEach(el => {
-							
-								this.man.push(el)
-								
+								that.man.push(el)
 							})
 							this.myManager = this.man[0].realname;
 							if (res.data.value.length < 10 && res.data.value.length > 0) {
@@ -330,13 +362,52 @@
 							}
 						}
 					})
+				console.log(this.man)
+
+
+			},
+
+			getNewCustemerInfo() {
+					this.man = [];
+					this.getNewCustemer();
+					this.showCoutomer = true;
+			},
+			getNewCustemer() {
+
+				this.test.post('order/listManagers', {
+						realname: this.value,
+						org_id: this.companyId,
+						size: this.page,
+						pageSize: this.pageSize,
+					})
+					.then(res => {
+						// that.newDatas = res.data.value
+						if (res.statusCode == 200 && res.data.errorCode == 0) {
+							// console.log()
+							res.data.value.forEach(el => {
+								this.man.push(el)
+							})
+							this.myManager = this.man[0].realname;
+							if (res.data.value.length < 10 && res.data.value.length > 0) {
+								this.more = false;
+							} else if (res.data.value.length == 0) {
+								this.more = false;
+								uni.showToast({
+									title: '没有更多了',
+									icon: "none"
+								})
+							}
+						}
+					})
+
+
 			},
 
 			// 搜索客户经理
 			searchCustomer() {
 				this.page = 1;
 				if (this.value !== '' && this.value !== null) {
-					this.getNewCustemer();
+					this.getNewCustemerInfo();
 				} else if (this.value == '' && this.value == null) {
 					this.getNewCustemer();
 				}
@@ -348,7 +419,7 @@
 			},
 			// 点击加载更多
 			Smore() {
-				this.size += 1;
+				this.page += 1;
 				this.getNewCustemer()
 			},
 			// 付款方式
@@ -583,7 +654,8 @@
 
 		components: {
 			mButton,
-			infoText
+			infoText,
+			uniIcon
 		},
 		mounted() {
 			// setTimeout(() => { }, 0),
@@ -765,7 +837,7 @@
 		z-index: 997;
 		width: 100%;
 		height: 100%;
-		background-color: #fff;
+		background-color: #e5e5e5;
 	}
 
 	.customerCompany {
@@ -788,6 +860,8 @@
 		padding: 12px 15px;
 		box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
 		position: fixed;
+		left: 0;
+		top: 78px;
 	}
 
 	.search_input {
@@ -795,6 +869,13 @@
 		border-radius: 14px;
 		width: 100%;
 		padding: 4px 15px;
-
+	}
+	.self_header_position{
+		position: fixed;
+		
+		left: 0;
+	}
+	.company_content{
+		margin-top: 55px;
 	}
 </style>

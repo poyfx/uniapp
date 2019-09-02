@@ -1,103 +1,140 @@
 <template>
-	<view class="content">
-		<view class="fget-num paddingLeft15">
-			<!-- <infoImg :imgText="text.user" :disabled="text.disabled" :placeholder="text.userP" v-model="info.user" @chooseUser="chooseUser"></infoImg> -->
-			<view class="flex  m-info" @tap="chooseUser">
-				<view class="flex center m-info-content">
-					<text>角色</text>
-					<input type="text" placeholder="请选择角色" class="infoText" v-model="info.user" disabled="disabled" />
-					<image src="../../static/img/right.png" mode="aspectFit"></image>
-				</view>
+	<view class="">
+		<view class="self_header ">
+			<view class="self_header_bar">
+				
 			</view>
-
-			<infoImg :imgText="text.company" :disabled="text.disabled" :placeholder="text.companyP" @oilByCompany="oilByCompany"
-			 v-model="info.company"></infoImg>
-			<infoText :textValue="text.userName" :placeholder="text.userNameP" v-model="info.userName"></infoText>
-			<infoText :textValue="text.userId" :placeholder="text.userIdP" v-model="info.userId"></infoText>
-			<infoText :textValue="text.phoneNum" :placeholder="text.phoneNumP" v-model="info.userPhoneNum"></infoText>
-			<infoText :textValue="text.city" :placeholder="text.cityP" v-model="info.userCity"></infoText>
-			<infoImg :imgText="text.customerName" :placeholder="text.customerNameP" :disabled="text.disabled" class="noneB"
-			 v-model="info.customer" @chooseCustomer="chooseCustomer"></infoImg>
-			<setPassword :textValue="pws.textValue" :placeholder="pws.placeholder" v-model="info.newPwd1"></setPassword>
-			<setPassword :textValue="pws.newTextValue" :placeholder="pws.newPlaceholder" v-model="info.newPwd2"></setPassword>
+			<view class="self_header_title flex">
+				<view class="leftBtn" @tap="back">
+					<uni-icon type="arrowleft" size="27"></uni-icon>
+				</view>
+				<view>注册</view>
+			</view>
 		</view>
-		<view class="mTop20">
-			<mButton :value="btn.value" :type="btn.type" @goPositive="goPositive"></mButton>
-		</view>
-		<!-- 角色 -->
-		<view class="footmodel" v-show='users'>
-			<transition name="myanimate">
-				<view class="footermain">
-					<view class="modelmains">
-						<text>请选择角色(多选)</text>
-						<!-- <view @tap="buyAndCarry" id='购油人'>购油人</view>
-						<view @tap="buyAndCarry" id='提油人'>提油人</view>
-						<view @tap="buyAndCarry" id='购油人和提油人'>购油人和提油人</view> -->
-						<view class="uni-list">
-							<checkbox-group @change="checkboxChange">
-								<label class="flex user-list" v-for="item in items" :key="item.id">
-									<view>
-										<checkbox :value="item.value" :checked="item.checked" />
-									</view>
-									<view>{{item.name}}</view>
-								</label>
-							</checkbox-group>
+		<view class="mTop15">
+			
+			<view class="fget-num paddingLeft15">
+				<!-- <infoImg :imgText="text.user" :disabled="text.disabled" :placeholder="text.userP" v-model="info.user" @chooseUser="chooseUser"></infoImg> -->
+				<view class="flex  m-info" @tap="chooseUser">
+					<view class="flex center m-info-content">
+						<text>角色</text>
+						<input type="text" placeholder="请选择角色" class="infoText" v-model="info.user" disabled="disabled" />
+						<image src="../../static/img/right.png" mode="aspectFit"></image>
+					</view>
+				</view>
+		
+				<infoImg :imgText="text.company" :disabled="text.disabled" :placeholder="text.companyP" @oilByCompany="oilByCompany"
+				 v-model="info.company"></infoImg>
+				<infoText :textValue="text.userName" :placeholder="text.userNameP" v-model="info.userName"></infoText>
+				<infoText :textValue="text.userId" :placeholder="text.userIdP" v-model="info.userId"></infoText>
+				<infoText :textValue="text.phoneNum" :placeholder="text.phoneNumP" v-model="info.userPhoneNum"></infoText>
+				<infoText :textValue="text.city" :placeholder="text.cityP" v-model="info.userCity"></infoText>
+				<infoImg :imgText="text.customerName" :placeholder="text.customerNameP" :disabled="text.disabled" class="noneB"
+				 v-model="info.customer" @chooseCustomer="chooseCustomer"></infoImg>
+				<setPassword :textValue="pws.textValue" :placeholder="pws.placeholder" v-model="info.newPwd1"></setPassword>
+				<setPassword :textValue="pws.newTextValue" :placeholder="pws.newPlaceholder" v-model="info.newPwd2"></setPassword>
+			</view>
+			<view class="mTop20">
+				<mButton :value="btn.value" :type="btn.type" @goPositive="goPositive"></mButton>
+			</view>
+			<!-- 角色 -->
+			<view class="footmodel" v-show='users'>
+				<transition name="myanimate">
+					<view class="footermain">
+						<view class="modelmains">
+							<text>请选择角色(多选)</text>
+							<!-- <view @tap="buyAndCarry" id='购油人'>购油人</view>
+							<view @tap="buyAndCarry" id='提油人'>提油人</view>
+							<view @tap="buyAndCarry" id='购油人和提油人'>购油人和提油人</view> -->
+							<view class="uni-list">
+								<checkbox-group @change="checkboxChange">
+									<label class="flex user-list" v-for="item in items" :key="item.id">
+										<view>
+											<checkbox :value="item.value" :checked="item.checked" />
+										</view>
+										<view>{{item.name}}</view>
+									</label>
+								</checkbox-group>
+							</view>
+						</view>
+						<view class="modelfooter">
+							<view @tap="chooseUsersShow" style="border-right: 1px solid #e5e5e5;">取消</view>
+							<view style="color: #008aff;" @tap="buyAndCarry">确认</view>
 						</view>
 					</view>
-					<view class="modelfooter">
-						<view @tap="chooseUsersShow" style="border-right: 1px solid #e5e5e5;">取消</view>
-						<view style="color: #008aff;" @tap="buyAndCarry">确认</view>
+				</transition>
+			</view>
+			<!-- 公司 -->
+			<view v-show="showCompany" class="companyCustomer">
+				<!-- <view class="flex title">
+					<image src="../../static/img/back.png" mode="aspectFit" @tap="showCompany = !showCompany"></image>
+					<text>选择公司</text>
+				</view> -->
+				<view class="self_header ">
+					<view class="self_header_bar">
+						
+					</view>
+					<view class="self_header_title flex self_header_position">
+						<view class="leftBtn" @tap="showCompany =! showCompany">
+							<uni-icon type="arrowleft" size="27"></uni-icon>
+						</view>
+						<view>选择公司</view>
 					</view>
 				</view>
-			</transition>
-		</view>
-		<!-- 公司 -->
-		<view v-show="showCompany" class="companyCustomer">
-			<view class="flex title">
-				<image src="../../static/img/back.png" mode="aspectFit" @tap="showCompany = !showCompany"></image>
-				<text>选择公司</text>
-			</view>
-			<view class="search flex">
-				<input type="text" value="" placeholder="搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
-			</view>
-			<view class="content " style="margin:50px 0 49px;">
-				<view class="customerCompany" @tap="chooseCompany(index,item.id)" v-for="(item,index) in datas" :key="item.id">
-					<view>{{item.id}}</view>
-					<view>{{item.name}}</view>
-					<view>{{item.addr}}</view>
+				<view class="search flex">
+					<input type="text" value="" placeholder="搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
 				</view>
-			</view>
-			<view class="loading" @tap="mores" v-show="Cmore">
-				<view>
-					<image src="/../static/img/loading.png" mode="aspectFit" style="width: 8px ;height: 8px;"></image>&nbsp; 点击加载更多...
+				<view class="content " style="margin:95px 0 49px;">
+					<view class="customerCompany" @tap="chooseCompany(index,item.id)" v-for="(item,index) in datas" :key="item.id">
+						<view>{{item.id}}</view>
+						<view>{{item.name}}</view>
+						<view>{{item.addr}}</view>
+					</view>
 				</view>
-			</view>
-		</view>
-		<!-- 客户经理 -->
-		<view v-show="showCoutomer" class="companyCustomer">
-			<view class="flex title">
-				<image src="../../static/img/back.png" mode="aspectFit" @tap="showCoutomer = !showCoutomer"></image>
-				<text>选择客户经理</text>
-			</view>
-			<view class="search flex">
-				<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
-			</view>
-			<view class="content" style="margin:50px 0 49px;">
-				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
-					<view>{{item.realname}}</view>
-					<view>{{item.phone}}</view>
+				<view class="loading" @tap="mores" v-show="Cmore">
 					<view>
-						{{item.departmentText}}
+						<image src="/../static/img/loading.png" mode="aspectFit" style="width: 8px ;height: 8px;"></image>&nbsp; 点击加载更多...
 					</view>
 				</view>
 			</view>
-			<view class="loading" @tap="Smore" v-show="more">
-				<view>
-					<img src="../../static/img/loading.png" alt /> &nbsp; 点击加载更多...
+			<!-- 客户经理 -->
+			<view v-show="showCoutomer" class="companyCustomer">
+				<!-- <view class="flex title">
+					<image src="../../static/img/back.png" mode="aspectFit" @tap="showCoutomer = !showCoutomer"></image>
+					<text>选择客户经理</text>
+				</view -->
+				<view class="self_header ">
+					<view class="self_header_bar">
+						
+					</view>
+					<view class="self_header_title flex self_header_position">
+						<view class="leftBtn" @tap="showCoutomer =! showCoutomer">
+							<uni-icon type="arrowleft" size="27"></uni-icon>
+						</view>
+						<view>选择客户经理</view>
+					</view>
+				</view>
+				<view class="search flex">
+					<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
+				</view>
+				<view class="content" style="margin:95px 0 49px;">
+					<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
+						<view>{{item.realname}}</view>
+						<view>{{item.phone}}</view>
+						<view>
+							{{item.departmentText}}
+						</view>
+					</view>
+				</view>
+				<view class="loading" @tap="Smore" v-show="more">
+					<view>
+						<img src="../../static/img/loading.png" alt /> &nbsp; 点击加载更多...
+					</view>
 				</view>
 			</view>
 		</view>
 	</view>
+	
 </template>
 
 <script>
@@ -105,9 +142,12 @@
 	import infoImg from '../../components/m-info-img/m-info-img'
 	import setPassword from "../../components/setPassword/setPassword"
 	import mButton from '../../components/m-button.vue'
+	import titles from '../../components/title.vue'
+	import uniIcon from '../../components/uni-icon/uni-icon.vue'
 	export default {
 		data() {
 			return {
+				titles:"注册",
 				text: {
 					// user: '角色',
 					userName: '姓名',
@@ -493,12 +533,20 @@
 				this.Cpage += 1;
 				this.getCompanyInfo()
 			},
+			back(){
+				uni.navigateBack({
+					delta:1
+				})
+			},
 		},
 		components: {
 			infoText,
 			infoImg,
 			setPassword,
-			mButton
+			mButton,
+			uniIcon,
+			titles,
+			
 		},
 
 	}
@@ -598,6 +646,7 @@
 		padding: 12px 15px;
 		box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
 		position: fixed;
+		top: 78px;
 	}
 
 	 .search_input {
@@ -695,5 +744,10 @@
 		height: 12px;
 		padding-right: 15px;
 		margin-left: 10px;
+	}
+	.self_header_position{
+		position: fixed;
+		
+		left: 0;
 	}
 </style>

@@ -99,17 +99,24 @@
 				time:'',
 				day:'',
 				no:'',
+				from:'',
+				to:'',
 			}
 		},
 		onLoad(option) {
+			this.to = option.to;
+			this.from = option.from;
 			this.no = option.ordernumber;
 			this.day = option.times;
 			this.getReserveList(this.no);
 		},
 		methods: {
 			getReserveList() {
-				if (this.day == undefined || this.day == '' || this.day == null) {
-					this.day = ''
+				if (this.from == undefined || this.from == '' || this.from == null) {
+					this.from = ''
+				};
+				if (this.to == undefined || this.to == '' || this.to == null) {
+					this.to = ''
 				};
 				if (this.no == undefined || this.no == '' || this.no == null) {
 					this.no = ''
@@ -117,8 +124,8 @@
 				this.test.post('order/search_reserve', {
 					no: this.no,
 					status: this.status,
-					start_time: this.day,
-					end_time: this.day,
+					start_time: this.from,
+					end_time: this.to,
 					page: this.page,
 					pageSize: this.pageSize,
 				}).then(res => {

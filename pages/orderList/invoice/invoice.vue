@@ -3,7 +3,7 @@
 		<view class="content">
 			<view class="fget-num paddingLeft15">
 				<infoText :textValue="invoice.company" v-model="company" :disabled="invoice.disabled"></infoText>
-				<infoText :textValue="invoice.moeny" v-model="moeny"></infoText>
+				<infoText :textValue="invoice.moeny" v-model="moeny" :disabled="invoice.disabled"></infoText>
 				<view class="fget-eara flex invoiceType underline" @tap="chooseInvoice">
 					<view class="">
 						<text class="first-li" style="margin-right: 10px;">发票类型：</text>
@@ -24,12 +24,12 @@
 					<view class="first-li" style="padding:10px 0 15px 0px; color: #666;">拆分方案(单位:吨)</view>
 					<view class="splitNum">
 						<view class="invoiceMeth">
-							<input type="number" v-model="num" placeholder="0">
+							<input type="number" v-model="num" value="0">
 
 							<image src="../../../static/img/add.png" @tap="add" mode="aspectFit"></image>
 						</view>
 						<view class="invoiceMeth" v-for="(item,index) in list" :key="index">
-							<input type="text" v-model="item.nums" placeholder="0">
+							<input type="text" v-model="item.nums" value="0">
 
 							<image src="../../../static/img/move.png" @tap="detal(index)" mode="aspectFit"></image>
 						</view>
@@ -91,31 +91,31 @@
 					currentOil: '当前购油量',
 					surplus: '剩余未拆油量',
 				},
-				list: [],//拆分次数集合
+				list: [], //拆分次数集合
 				ids: -1, //默认不需要发票
-				yesORno:'否',
+				yesORno: '否',
 				typeInvoice: '请选择发票类型',
 				invoiceTypes: false,
 				id: '',
-				invoiceNum: [],//拆分数量
+				invoiceNum: [], //拆分数量
 				show: false, //发票开关，默认关
 				value: false,
-				num: '', //第一个拆分数量
+				num: 0, //第一个拆分数量
 				currentOil: '', //当前购油数量
 				move: false,
-				no:'',
-				company:'',
-				status:'',
-				moeny:'',
+				no: '',
+				company: '',
+				status: '',
+				moeny: '',
 			}
 		},
 		onLoad(option) {
-			this.id = option.id;//id
-			this.currentOil = option.number;//油量
-			this.no = option.no;//订单编号
-			this.company = option.company;//购油公司
-			this.status = option.status;//状态
-			this.moeny = option.moeny;//油价
+			this.id = option.id; //id
+			this.currentOil = option.number; //油量
+			this.no = option.no; //订单编号
+			this.company = option.company; //购油公司
+			this.status = option.status; //状态
+			this.moeny = option.moeny; //油价
 		},
 		methods: {
 			// 点击选择发票类型
@@ -155,24 +155,35 @@
 			},
 			// 不需要发票
 			cancelOrder() {
-				this.test.post('order/make_invoice', {
-					id: this.id,
-					is_invoice: this.yesORno,
-					invoice_money:this.moeny
-				}).then(res => {
-					console.log(res)
-					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						uni.redirectTo({
-							url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
-						})
+				uni.showModal({
+					title: '提示',
+					content: '确认不开发票吗?',
+					success: (res) => {
+						if (res.confirm) {
+							this.test.post('order/make_invoice', {
+								id: this.id,
+								is_invoice: this.yesORno,
+								invoice_money: this.moeny
+							}).then(res => {
+								console.log(res)
+								if (res.statusCode == 200 && res.data.errorCode == 0) {
+									uni.redirectTo({
+										url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
+									})
+								}
+							}).catch(err => {
+								console.log(err)
+							})
+						} else {
+							return;
+						}
 					}
-				}).catch(err => {
-					console.log(err)
 				})
+
 			},
 			// 确认开票
 			invoiceSure(invoiceAll) {
-				
+
 				if (this.typeInvoice == "请选择发票类型") {
 					uni.showToast({
 						title: '请选择发票类型',
@@ -194,30 +205,43 @@
 						})
 						this.invoiceNum = String(this.invoiceNum)
 					}
-console.log(typeof(this.invoiceNum))
-					console.log(this.invoiceNum)
+					// console.log(typeof(this.invoiceNum))
+					// console.log(this.invoiceNum)
 					if (this.ids == 1) {
 						if (this.invoiceNum !== '') {
 							if (this.surplusOil == 0) {
-								this.test.post('order/make_invoice', {
-									id: this.id,
-									invoice_type: this.typeInvoice,
-									is_invoice: this.yesORno,
-									invoice_split: this.invoiceNum,
-									invoice_money:this.moeny
-								}).then(res => {
-									console.log(res)
-									if (res.statusCode == 200 && res.data.errorCode == 0) {
-										uni.showToast({
-											title: '开票成功'
-										})
-										uni.redirectTo({
-											url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
-										})
+								uni.showModal({
+									title: '提示',
+									content: '确认开票',
+									success: (res) => {
+										if (res.confirm) {
+											this.test.post('order/make_invoice', {
+												id: this.id,
+												invoice_type: this.typeInvoice,
+												is_invoice: this.yesORno,
+												invoice_split: this.invoiceNum,
+												invoice_money: this.moeny
+											}).then(res => {
+												console.log(res)
+												if (res.statusCode == 200 && res.data.errorCode == 0) {
+													uni.showToast({
+														title: '开票成功'
+													})
+													uni.redirectTo({
+														url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
+													})
+												}
+											}).catch(err => {
+												console.log(err)
+											})
+										} else {
+											return;
+										}
 									}
-								}).catch(err => {
-									console.log(err)
+
+
 								})
+
 							} else {
 								uni.showToast({
 									title: '发票拆分数量必须与当前油量一致',
@@ -233,24 +257,37 @@ console.log(typeof(this.invoiceNum))
 						}
 
 					} else if (this.ids == -1) {
-						this.test.post('order/make_invoice', {
-							id: this.id,
-							invoice_type: this.typeInvoice,
-							is_invoice: this.yesORno,
-							invoice_split: this.currentOil,
-							invoice_money:this.moeny
-						}).then(res => {
-							console.log(res)
-							if (res.statusCode == 200 && res.data.errorCode == 0) {
-								uni.showToast({
-									title: '开票成功'
-								})
-								uni.redirectTo({
-									url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
-								})
+						const that = this;
+						uni.showModal({
+							title: '提示',
+							content: '确认开票',
+							success: (res) => {
+								console.log(res)
+								if (res.confirm) {
+									console.log(1)
+									this.test.post('order/make_invoice', {
+										id: this.id,
+										invoice_type: this.typeInvoice,
+										is_invoice: this.yesORno,
+										invoice_split: this.currentOil,
+										invoice_money: this.moeny
+									}).then(res => {
+										console.log(res)
+										if (res.statusCode == 200 && res.data.errorCode == 0) {
+											uni.showToast({
+												title: '开票成功'
+											})
+											uni.redirectTo({
+												url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
+											})
+										}
+									}).catch(err => {
+										console.log(err)
+									})
+								} else {
+									return;
+								}
 							}
-						}).catch(err => {
-							console.log(err)
 						})
 					}
 				}

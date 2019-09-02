@@ -59,15 +59,16 @@
 		}, {
 			"path": "pages/register/register",
 			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
 				"app-plus": {
-					"titleNView": {
-						"titleColor": "#666",
-						"titleText": "注册",
-						"backgroundColor": "#FFF",
-						"fontWeight": "normal",
-						"titleSize": "17px"
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "black"
 					}
-
 				}
 
 			}
@@ -194,15 +195,16 @@
 		}, {
 			"path": "pages/order/order",
 			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
 				"app-plus": {
-					"titleNView": {
-						"titleColor": "#666",
-						"titleText": "下单购油",
-						"backgroundColor": "#FFF",
-						"fontWeight": "normal",
-						"titleSize": "17px"
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "black"
 					}
-
 				}
 			}
 		}, {
@@ -302,13 +304,15 @@
 		}, {
 			"path": "pages/reserveOil/reserveOil",
 			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
 				"app-plus": {
-					"titleNView": {
-						"titleColor": "#666",
-						"titleText": "预约提油",
-						"backgroundColor": "#FFF",
-						"fontWeight": "normal",
-						"titleSize": "17px"
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "black"
 					}
 				}
 			}
