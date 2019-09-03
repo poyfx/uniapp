@@ -27,7 +27,7 @@
 		},
 		onShow() {
 			console.log(this.hasLogin)
-			if (this.hasLogin == '') {
+			if (this.Token == '') {
 				const timer = setTimeout(function() {
 					uni.navigateTo({
 						url: '../login/login',

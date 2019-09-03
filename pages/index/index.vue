@@ -241,7 +241,6 @@
 						let price = res.data.oilPrice; //获取当前油价油价
 						that.datas = price.oilPrice;
 						that.gain = price.oilAmplitude;
-						console.log( that.datas.gas_98);
 						let managerInfo = res.data.user;
 						that.myManager = managerInfo.manager_name; //客户经理信息
 						that.managerTel = managerInfo.manager_phone;
@@ -281,7 +280,6 @@
 						key: 'b5066e0a9a2a996397e9172fc67fdf40',
 					},
 					success:res=>{
-						console.log(res)
 						that.city = res.data.city;
 						that.adcode = res.data.adcode;
 						// that.getAdcode();
@@ -341,7 +339,6 @@
 			// },
 			getWeather() {
 				const that = this;
-			console.log(that.adcode)
 				uni.request({
 					url: 'https://restapi.amap.com/v3/weather/weatherInfo?parameters',
 					header: {
@@ -357,7 +354,6 @@
 						res.data.lives.forEach(res => {
 							that.temperature = res.temperature;//天气摄氏度
 							that.weather = res.weather;//天气
-							console.log(that.temperature,that.weather)
 						})
 					}
 				})

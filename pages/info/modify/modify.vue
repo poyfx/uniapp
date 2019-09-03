@@ -48,18 +48,34 @@
 									if (res.statusCode == 200 && res.data.errorCode == 0) {
 										uni.showModal({
 											title: "修改成功",
-											content:'修改密码成功请重新登录',
-											showCancel:false,
-											success:function(){
+											content: '修改密码成功请重新登录',
+											showCancel: false,
+											success: function() {
 												uni.reLaunch({
-													url:"../../login/login"
+													url: "../../login/login"
 												})
+											}
+										})
+									} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+										uni.showModal({
+											title: '提示',
+											content: res.data.message,
+											success: function(res) {
+												if (res.confirm) {
+													uni.reLaunch({
+														url: '../login/login'
+													})
+												} else {
+													uni.reLaunch({
+														url: '../login/login'
+													})
+												}
 											}
 										})
 									} else {
 										uni.showToast({
 											title: res.data.message,
-											icon:"none"
+											icon: "none"
 										})
 									}
 								}).catch(err => {
@@ -71,7 +87,7 @@
 									icon: "none"
 								})
 							}
-						}else{
+						} else {
 							uni.showToast({
 								title: "密码长度不能小于6",
 								icon: "none"

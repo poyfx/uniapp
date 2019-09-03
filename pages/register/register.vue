@@ -413,14 +413,16 @@
 			searchCompany() {
 				this.Cpage = 1
 				if (this.inputValue !== '' && this.inputValue !== null) {
+					this.datas = [];
 					this.getCompanyInfo()
-				} else if (this.inputValue == '' && this.inputValue == null) {
+				} else  {
+					this.inputValue='';
+					this.datas=[];
 					this.getCompanyInfo()
 				}
 			},
 			// 获取公司信息
 			getCompanyInfo() {
-				console.log(this.Cpage, this.pageSize)
 				this.test.post('base/listCustCompany', {
 					search: this.inputValue,
 					page: this.Cpage,
@@ -428,7 +430,7 @@
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						console.log(res.data.value.length)
+						console.log(res)
 						res.data.value.forEach(el => {
 							this.datas.push(el);
 						})
@@ -487,8 +489,11 @@
 			searchCustomer() {
 				this.page = 1;
 				if (this.value !== '' && this.value !== null) {
+					this.man=[];
 					this.getCustomerInfo();
-				} else if (this.value == '' && this.value == null) {
+				} else {
+					this.value='';
+					this.man=[];
 					this.getCustomerInfo();
 				}
 			},
@@ -506,6 +511,7 @@
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 
 						res.data.value.forEach(el => {
+							console.log(el)
 							this.man.push(el)
 						})
 

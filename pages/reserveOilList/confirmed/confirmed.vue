@@ -74,7 +74,7 @@
 				},
 				confirmed: {
 					order: '预约单号',
-					time: '预约时间',
+					time: '提油时间',
 					company: '提油单位',
 					oil: '油品类型',
 					much: '提油数量(吨)',

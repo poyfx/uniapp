@@ -1,5 +1,5 @@
 
-.background.data-v-70ff1cd6 {
+.background.data-v-9d17e9a6 {
 	background-color: #fff;
 	position: absolute;
 	top: 0;
@@ -8,12 +8,12 @@
 	height: 100%;
 	text-align: center;
 }
-.startimg.data-v-70ff1cd6 {
+.startimg.data-v-9d17e9a6 {
 	width: 200px;
 	height: 200px;
 	margin-top: 125px;
 }
-.p-bx.data-v-70ff1cd6 {
+.p-bx.data-v-9d17e9a6 {
 	width: 130px;
 	position: absolute;
 	bottom: 20px;
@@ -21,7 +21,7 @@
 	margin-left: -65px;
 	text-align: center
 }
-.p-size.data-v-70ff1cd6 {
+.p-size.data-v-9d17e9a6 {
 	font-size: 16px;
 	margin-bottom: 6px;
 }

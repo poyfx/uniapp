@@ -134,7 +134,7 @@
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="chooseAddress =! chooseAddress">
-						<uniIcon type="arrowleft" size="27"></uniIcon>
+						<uni-icon type="arrowleft" size="27"></uni-icon>
 					</view>
 					<view>{{addrTitles}}</view>
 				</view>
@@ -178,7 +178,7 @@
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="showCompany =! showCompany">
-						<uniIcon type="arrowleft" size="27"></uniIcon>
+						<uni-icon type="arrowleft" size="27"></uni-icon>
 					</view>
 					<view>{{companyTitles}}</view>
 				</view>
@@ -204,7 +204,7 @@
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="showCoutomer = !showCoutomer">
-						<uniIcon type="arrowleft" size="27"></uniIcon>
+						<uni-icon type="arrowleft" size="27"></uni-icon>
 					</view>
 					<view>{{coutomerTitles}}</view>
 				</view>
@@ -373,7 +373,7 @@
 					this.showCoutomer = true;
 			},
 			getNewCustemer() {
-
+				console.log(this.value)
 				this.test.post('order/listManagers', {
 						realname: this.value,
 						org_id: this.companyId,
@@ -382,6 +382,7 @@
 					})
 					.then(res => {
 						// that.newDatas = res.data.value
+						console.log(res)
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							// console.log()
 							res.data.value.forEach(el => {
@@ -404,12 +405,14 @@
 			},
 
 			// 搜索客户经理
-			searchCustomer() {
+			searchCustomer(e) {
+				console.log(e)
 				this.page = 1;
-				if (this.value !== '' && this.value !== null) {
+				if (e.target.value !== '' && e.target.value !== null) {
 					this.getNewCustemerInfo();
-				} else if (this.value == '' && this.value == null) {
-					this.getNewCustemer();
+				} else {
+					this.value = '';
+					this.getNewCustemerInfo();
 				}
 			},
 			chooseCustomers(e, id) {
@@ -587,12 +590,7 @@
 													uni.redirectTo({
 														url: '../orderList/orderList'
 													})
-												} else if (res.data.errorCode == 10118) {
-													uni.showToast({
-														title: res.data.message,
-														icon: "none"
-													})
-												} else {
+												}  else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003){
 													uni.showModal({
 														title: '提示',
 														content: '用户信息已失效，请重新登录',
@@ -607,6 +605,11 @@
 																})
 															}
 														}
+													})
+												}else{
+													uni.showToast({
+														title: res.data.message,
+														icon: "none"
 													})
 												}
 											}).catch(err => {

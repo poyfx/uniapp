@@ -20,7 +20,7 @@
 							<text>{{item.no}}</text>
 						</view>
 						<view>
-							<text>预约时间：</text>
+							<text>提油时间：</text>
 							<text>{{time[index]}}</text>
 						</view>
 						<view>

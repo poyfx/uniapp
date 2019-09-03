@@ -10,7 +10,7 @@
 					<view class="flex center m-info-content">
 						<text>{{text.dayTimeText}}</text>
 						<ruiDatePicker class="minute" fields="minute" start="2010-00-00 00:00" end="2030-12-31 23:59" :value="day"
-						 @change="bindChange"></ruiDatePicker>
+						 @change="bindChange" style="width: 220px; justify-content:flex-start"></ruiDatePicker>
 					</view>
 					<view class="flex m-info-text">
 						<image src="../../static/img/right.png" mode="aspectFit" style="width: 12px; height: 12px;"></image>
@@ -56,16 +56,16 @@
 			</view> -->
 			<view class="self_header ">
 				<view class="self_header_bar">
-					
+
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="showOrderNumber =! showOrderNumber">
-						<uniIcon type="arrowleft" size="27"></uniIcon>
+						<uni-icon type="arrowleft" size="27"></uni-icon>
 					</view>
 					<view>选择单号</view>
 				</view>
 			</view>
-			
+
 			<view class="mContent pB10" style="margin-bottom: 50px;">
 				<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
 				 :key="item.id">
@@ -104,7 +104,7 @@
 	export default {
 		data() {
 			return {
-				titles:"预约提油",
+				titles: "预约提油",
 				text: {
 					orderNumberText: "订单编号",
 					dayTimeText: '提油时间',
@@ -171,27 +171,27 @@
 								icon: "none"
 							})
 						}
-					} else if (res.data.errorCode == 10118) {
-						uni.showToast({
-							title: res.data.message,
-							icon: none
+					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+						uni.showModal({
+							title: '提示',
+							content: res.data.message,
+							success: function(res) {
+								if (res.confirm) {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								} else {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								}
+							}
 						})
 					} else {
-						// uni.showModal({
-						// 	title: '提示',
-						// 	content: res.data.message,
-						// 	success: function(res) {
-						// 		if (res.confirm) {
-						// 			uni.reLaunch({
-						// 				url: '../../login/login'
-						// 			})
-						// 		} else {
-						// 			uni.reLaunch({
-						// 				url: '../../login/login'
-						// 			})
-						// 		}
-						// 	}
-						// })
+						uni.showToast({
+							title: res.data.message,
+							icon: "none"
+						})
 					}
 				}).catch(err => {
 					console.log(err)
@@ -200,6 +200,7 @@
 			//获取时间
 			bindChange(val) {
 				console.log(val)
+				this.day = val;
 				// const date1 = new Date(this.day.replace(/-/g,"\/"))//now
 				// const date2 = new Date(val.replace(/-/g,"\/"))//选择时间
 				// if(date1>date2){
@@ -281,9 +282,9 @@
 				if (this.values.orderNumber !== '' && this.values.orderNumber !== null) {
 					if (this.values.muchOil !== '' && this.values.muchOil !== null) {
 						console.log(typeof(oilNumbers), typeof(this.id))
-						this.test.post('order/mark_reserve', {//http://192.168.0.156:8080/api/bizcust/
+						this.test.post('order/mark_reserve', { //http://192.168.0.156:8080/api/bizcust/
 							bz_order_id: this.id,
-							reserve_time: day,
+							reserve_time: this.day,
 							extract_num: oilNumbers,
 							remark: this.remark,
 						}).then(res => {
@@ -292,28 +293,28 @@
 								uni.redirectTo({
 									url: '../reserveOilList/reserveOilList',
 								});
-							}else if(res.data.errorCode == 10118){
-													uni.showToast({
-														title:res.data.message,
-														icon:"none"
-													})
-												} else {
-													uni.showModal({
-														title: '提示',
-														content: '用户信息已失效，请重新登录',
-														success: function(res) {
-															if (res.confirm) {
-																uni.reLaunch({
-																	url: '../login/login'
-																})
-															} else {
-																uni.reLaunch({
-																	url: '../login/login'
-																})
-															}
-														}
-													})
-												}
+							} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+								uni.showModal({
+									title: '提示',
+									content: '用户信息已失效，请重新登录',
+									success: function(res) {
+										if (res.confirm) {
+											uni.reLaunch({
+												url: '../login/login'
+											})
+										} else {
+											uni.reLaunch({
+												url: '../login/login'
+											})
+										}
+									}
+								})
+							} else {
+								uni.showToast({
+									title: res.data.message,
+									icon: "none"
+								})
+							}
 						}).catch(err => {
 							console.log(err)
 						})
@@ -348,6 +349,7 @@
 		align-items: center;
 		align-self: center;
 		justify-content: space-between;
+
 	}
 
 	.m-info-contents {
@@ -365,6 +367,7 @@
 	}
 
 	.m-info-content {
+		padding: 4px 0;
 		justify-content: flex-start;
 		align-content: center;
 		align-items: center;
@@ -396,7 +399,7 @@
 
 	.allOil {
 		height: 100%;
-		padding: 10px 15px;
+		padding: 12px 15px;
 		color: #009DFF;
 		border-left: 1px solid #e5e5e5;
 	}

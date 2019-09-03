@@ -64,20 +64,20 @@
 			getclientId() {
 					// 扩展API加载完毕，现在可以正常调用扩展API
 					// 获取客户端标识信息
-					var info = plus.push.getClientInfo();
-					console.log( JSON.stringify( info ) );
-					// alert(info)
-					this.clientId = info .clientid;
-					 // alert(this.clientId)
-					uni.setStorage({
-						key:'clientid',
-						data:this.clientId
-					})
-					// 添加监听从系统消息中心点击消息启动事件
-					plus.push.addEventListener( "click", function ( msg ) {
-						// 分析msg.payload处理业务逻辑 
-						alert( "You clicked: " + msg.content ); 
-					}, false ); 
+					// var info = plus.push.getClientInfo();
+					// console.log( JSON.stringify( info ) );
+					// // alert(info)
+					// this.clientId = info .clientid;
+					//  // alert(this.clientId)
+					// uni.setStorage({
+					// 	key:'clientid',
+					// 	data:this.clientId
+					// })
+					// // 添加监听从系统消息中心点击消息启动事件
+					// plus.push.addEventListener( "click", function ( msg ) {
+					// 	// 分析msg.payload处理业务逻辑 
+					// 	alert( "You clicked: " + msg.content ); 
+					// }, false ); 
 			},
 			handleLogin() {
 				this.getclientId();

@@ -202,7 +202,7 @@
 								// }
 							})
 						};
-					}else {
+					}else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003){
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -217,6 +217,11 @@
 									})
 								}
 							}
+						})
+					}else{
+						uni.showToast({
+							title: res.data.message,
+							icon: "none"
 						})
 					}
 				}).catch(err => {

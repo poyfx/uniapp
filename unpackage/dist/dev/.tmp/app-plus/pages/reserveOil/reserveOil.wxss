@@ -37,6 +37,7 @@
 	padding-left: 10px;
 }
 .m-info-content {
+	padding: 4px 0;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	    -ms-flex-pack: start;
@@ -89,7 +90,7 @@
 }
 .allOil {
 	height: 100%;
-	padding: 10px 15px;
+	padding: 12px 15px;
 	color: #009DFF;
 	border-left: 1px solid #e5e5e5;
 }
