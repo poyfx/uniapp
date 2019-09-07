@@ -39,7 +39,7 @@
 					<picker-view-column>
 						<view class="w-picker-item" v-for="(item,index) in data.fdays" :key="index">{{item}}</view>
 					</picker-view-column>
-					<view>--</view>
+					<!-- <view>--</view> -->
 					<picker-view-column>
 						<view class="w-picker-item">-</view>
 					</picker-view-column>

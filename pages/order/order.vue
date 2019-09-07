@@ -210,10 +210,11 @@
 				</view>
 			</view>
 			
-			<view class="search flex">
-				<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
-			</view>
-			<view class="content" style="margin:95px 0 49px;">
+			
+			<view class="content" style="margin-top:44px; padding: 0;">
+				<view class="search flex">
+					<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
+				</view>
 				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="index">
 					<view>{{item.realname}}</view>
 					<view>{{item.phone}}</view>
@@ -319,6 +320,7 @@
 			},
 			getNewCompany() {
 				const that = this;
+				this.page = 1;
 				this.showCompany = true;
 				this.test.post('order/listOrgs')
 					.then(res => {
@@ -333,10 +335,11 @@
 			chooseCompany(e) {
 				const that = this;
 				console.log(this.newDatas)
+				this.more = true;
 				this.company = this.newDatas[e].name;
 				this.companyId = this.newDatas[e].id;
 				this.showCompany = !this.showCompany;
-				this.test.post('order/listManagers', { //选择公司后默认第一个客户经理
+				this.test.post('base/listManagers', { //选择公司后默认第一个客户经理
 						realname: this.value,
 						org_id: this.companyId,
 						size: this.page,
@@ -369,12 +372,14 @@
 
 			getNewCustemerInfo() {
 					this.man = [];
+					this.page = 1;
+					this.more = true;
 					this.getNewCustemer();
 					this.showCoutomer = true;
 			},
 			getNewCustemer() {
 				console.log(this.value)
-				this.test.post('order/listManagers', {
+				this.test.post('base/listManagers', {
 						realname: this.value,
 						org_id: this.companyId,
 						size: this.page,
@@ -862,9 +867,10 @@
 		background-color: #fff;
 		padding: 12px 15px;
 		box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
-		position: fixed;
+		margin-bottom: 15px;
+		/* position: fixed;
 		left: 0;
-		top: 78px;
+		top: 78px; */
 	}
 
 	.search_input {

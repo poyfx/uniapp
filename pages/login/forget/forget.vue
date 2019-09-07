@@ -45,8 +45,6 @@
 				const that = this;
 				if (this.phoneNum != "" && this.phoneNum != null) {
 					if (this.codeNums != "" && this.codeNums != null) {
-						if (this.codeNums == this.mess) {
-
 							this.test.post('base/forgetPwd/confSms', {
 								username: that.phoneNum,
 								pswCode: that.codeNums
@@ -71,13 +69,6 @@
 							}).catch(err => {
 								console.log(err)
 							})
-
-						} else {
-							uni.showToast({
-								"title": "验证码错误",
-								"icon": 'none'
-							});
-						}
 					} else if (this.number == "" || this.number == null) {
 						return uni.showToast({
 							"title": "验证码不能为空",

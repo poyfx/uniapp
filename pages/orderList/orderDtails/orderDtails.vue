@@ -88,6 +88,11 @@
 						<text>油品类型：</text>
 						<text>{{order.oil_type}}</text>
 					</view>
+					<view v-show="status == 3 || status == 4 || status == 5 || status == 9">
+						<text>发票状态：</text>
+						<text v-if="order.is_invoice == '是'">已开发票</text>
+						<text v-else>未开发票</text>
+					</view>
 					<view>
 						<text>购油数量：</text>
 						<text>{{order.count}}吨</text>
@@ -97,7 +102,7 @@
 						<text >{{order.get_type}}</text>
 						<!-- <text v-if="order.get_type ==1">自提</text> -->
 					</view>
-					<view>
+					<view v-show="order.get_type == '配送'">
 						<text>送油地址：</text>
 
 						<text>{{order.ship_addr}}</text>
@@ -129,7 +134,7 @@
 				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
 				<tButton :type="type" class="tButton" :content="con2" @sureBuy="sureBuy(order.count)"></tButton>
 			</view>
-			<view class=" nextBox mTop15 mB" v-else-if="status ==-1 || status ==9 || status ==-2 || status ==5">
+			<view class=" nextBox mTop15 mB" v-else-if="status ==-1  || status ==-2 || status ==5">
 				<mButton :type="type" :value="closed" @tell="closePage"></mButton>
 			</view>
 
@@ -139,6 +144,10 @@
 			</view>
 			<view class="nextBox mTop15 mB" v-else-if="status ==4  ">
 				<mButton :type="type" :value="btnValue" :disabled="disabled" @tell="tell"></mButton>
+			</view>
+			<view class="m-two-btn mTop15 mB" v-else-if="status == 9  ">
+				<button class="tButton cal" @tap="closePage">关闭</button>
+				<button class="tButton " type="primary" style="padding: 0;" @tap="sureBuy(order.count)" v-show="order.is_invoice == '否'" >补开发票</button>
 			</view>
 		</view>
 	</view>
@@ -187,7 +196,7 @@
 		},
 		methods: {
 			getOrderDtails() {
-				this.test.post('order/query_OrderById', {
+				this.test.post('http://192.168.0.156:8080/api/bizcust/order/query_OrderById', {
 					id: this.orderId
 				}).then(res => {
 					console.log(res)
@@ -195,7 +204,9 @@
 						this.order = res.data.value;
 						this.status = res.data.value.status;
 						this.statusinfo = this.order.latestHis
+						//倒计时时间
 						this.time = new Date(this.order.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
+						// 订单流程时间
 						this.dates = new Date(this.statusinfo.time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')
 						const a = this.order.difference
 						this.cutDown(a)
@@ -216,7 +227,7 @@
 				},1000)
 			},
 			sureBuy(num) {
-				uni.navigateTo({
+				uni.redirectTo({
 					url: "../invoice/invoice?id=" + this.orderId + '&number=' + num + '&no=' + this.no + '&status=' + this.status + '&company=' + this.order.org_name + '&moeny=' + this.oilPrice
 				})
 			},

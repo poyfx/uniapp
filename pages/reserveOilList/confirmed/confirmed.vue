@@ -11,13 +11,19 @@
 
 				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
 				<view>预约详情</view>
-				<view v-show="status == 2 || status == 3 || status == 4 || status == 5" @tap="getCode">提油码</view>
+				<view v-show="status == 2 || status == 3 " @tap="getCode">提油码</view>
 			</view>
 			<view>
-				<view class="step-box" v-if="status == 1 || status == 2 || status == 3 || status == 4 || status == 5">
-					<step :value="step.value1" :actives="step.waitSure"></step>
-					<step :value="step.value2" :actives="step.waitSend"></step>
+				<view class="step-box" v-show="main == '配送'"  v-if=" status == 1 || status == 2 || status == 3 ">
+					<step :value="status == 1? step.value1 :step.value11" :actives="step.waitSure"></step>
+					<step :value="status == 2 ? step.value2 :step.value22" :actives="step.waitSend"></step>
 					<step :value="step.value3" :actives="step.waitGet"></step>
+				</view>
+				
+				<view class="step-box" v-show="main == '自提'" v-if="status == 1 || status == 2 || status == 3 ">
+					<step :value="status == 1? step.value1 :step.value11" :actives="step.waitSure"></step>
+					<step :value="status == 2 || status == 1? step.selfget :step.selfget1" :actives="step.waitSend"></step>
+					<step :value="step.selfget2" :actives="step.waitGet"></step>
 				</view>
 
 				<view class="step-box" v-if="status == -1">
@@ -41,8 +47,12 @@
 							<view>{{address}}</view>
 						</view>
 					</view>
-					<view class="nextBox">
+					<view class="nextBox" v-show="status == 1 ||  status == 2 || status == -1 || status == 9">
 						<mButton :type='btn.type' :value="btn.value" @close="close"></mButton>
+					</view>
+					<view class="m-two-btn mTop30 mB" v-show="status == 3">
+						<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepLast="close" :content="btn.value"></tButton>
+						<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepNext="finish" :content="main == '配送' ? btn.commit : btn.commit1"></tButton>
 					</view>
 				</view>
 			</view>
@@ -57,12 +67,18 @@
 	import infoText from '../../../components/m-info-text/m-info-text'
 	import mButton from '../../../components/m-button.vue'
 	import uniIcon from "@/components/uni-icon/uni-icon.vue"
+	import tButton from '../../../components/twoButton/twoButton'
 	export default {
 		data() {
 			return {
 				step: {
+					selfget:'待提油',
+					selfget1:'已提油',
+					selfget2:'请确认',
 					value1: '待确认',
+					value11: '已确认',
 					value2: '待发油',
+					value22: '已发油',
 					value3: '待收油',
 					value4: '已拒绝',
 					value5: '已完成',
@@ -82,7 +98,9 @@
 				},
 				btn: {
 					type: 'primary',
-					value: '关闭'
+					value: '关闭',
+					commit:'确认收油',
+					commit1:'确认提油'
 				},
 				disabled: true,
 				address: '', //提油地址
@@ -156,19 +174,30 @@
 				})
 			},
 			close() {
-				uni.navigateBack({
-					delta: 1
+				uni.redirectTo({
+					url: '../reserveOilList'
 				})
 			},
 			back() {
-				uni.navigateBack({
+				uni.redirectTo({
 					url: '../reserveOilList'
 				})
-
+			},
+			finish(){
+				this.test.post('order/confirm_reserve',{
+					id:this.rId
+				}).then(res=>{
+					console.log(res)
+					if(res.statusCode == 200 && res.data.errorCode == 0){
+						this.getReserveOilList()
+					}
+				}).catch(err=>{
+					console.log(err)
+				})
 			},
 			getCode() {
 				uni.navigateTo({
-					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.oId
+					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.order
 				})
 			},
 		},
@@ -176,7 +205,8 @@
 			step,
 			infoText,
 			mButton,
-			uniIcon
+			uniIcon,
+			tButton
 		},
 	}
 </script>

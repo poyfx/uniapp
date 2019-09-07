@@ -81,7 +81,7 @@
 					console.log(this.arr)
 					if (this.buy_apply) {
 						console.log(this.arr.role_status)
-						if (this.arr.role_status == 1) {
+						if (this.arr.role_status == 1 || this.arr.role_status == 2) {
 							uni.navigateTo({
 								url: '../../pages/order/order'
 							})
@@ -134,21 +134,21 @@
 						}
 					})
 					if (this.buy_apply) {
-						if (this.arr.role_status == 1) {
+						// if (this.arr.role_status == 1 || this.arr.role_status == 2) {
 							uni.navigateTo({
 								url: '../../pages/orderList/orderList'
 							})
-						} else if (this.arr.role_status == -1) {
-							uni.showToast({
-								title: '审核中...待审核通过后请重新登录',
-								icon: 'none'
-							})
-						} else {
-							uni.showToast({
-								title: '权限不够，请在用户信息界面申请权限',
-								icon: 'none'
-							})
-						}
+						// } else if (this.arr.role_status == -1) {
+						// 	uni.showToast({
+						// 		title: '审核中...待审核通过后请重新登录',
+						// 		icon: 'none'
+						// 	})
+						// } else {
+						// 	uni.showToast({
+						// 		title: '权限不够，请在用户信息界面申请权限',
+						// 		icon: 'none'
+						// 	})
+						// }
 					} else {
 						uni.showToast({
 							title: '权限不够，请在用户信息界面申请权限',
@@ -185,7 +185,7 @@
 						}
 					})
 					if (this.get_apply) {
-						if (this.arr.role_status == 1) {
+						if (this.arr.role_status == 1 || this.arr.role_status == 2) {
 							uni.navigateTo({
 								url: '../../pages/reserveOil/reserveOil'
 							})
@@ -218,21 +218,21 @@
 					}
 				})
 				if (this.get_apply) {
-					if (this.arr.role_status == 1) {
+					// if (this.arr.role_status == 1 || this.arr.role_status == 2) {
 						uni.navigateTo({
 							url: '../../pages/reserveOilList/reserveOilList'
 						})
-					} else if (this.arr.role_status == -1) {
-						uni.showToast({
-							title: '审核中...待审核通过后请重新登录',
-							icon: 'none'
-						})
-					} else {
-						uni.showToast({
-							title: '权限不够，请在用户信息界面申请权限',
-							icon: 'none'
-						})
-					}
+					// } else if (this.arr.role_status == -1) {
+					// 	uni.showToast({
+					// 		title: '审核中...待审核通过后请重新登录',
+					// 		icon: 'none'
+					// 	})
+					// } else {
+					// 	uni.showToast({
+					// 		title: '权限不够，请在用户信息界面申请权限',
+					// 		icon: 'none'
+					// 	})
+					// }
 				} else {
 					uni.showToast({
 						title: '权限不够，请在用户信息界面申请权限',

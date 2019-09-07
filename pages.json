@@ -67,7 +67,7 @@
 					"bounce": "none",
 					"titleNView": false,
 					"statusbar": {
-						"background": "black"
+						"background": "white"
 					}
 				}
 
@@ -203,7 +203,7 @@
 					"bounce": "none",
 					"titleNView": false,
 					"statusbar": {
-						"background": "black"
+						"background": "white"
 					}
 				}
 			}
@@ -312,7 +312,7 @@
 					"bounce": "none",
 					"titleNView": false,
 					"statusbar": {
-						"background": "black"
+						"background": "white"
 					}
 				}
 			}
@@ -331,20 +331,31 @@
 		}, {
 			"path": "pages/reserveOilList/reserveOilList",
 			"style": {
-				"navigationBarTitleText": "提油记录",
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
 				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-
-							"text": "搜索",
-							"fontSize": "14px",
-							"float": "right", //靠右第一个
-							"width": "46px",
-							"color": "#666"
-
-						}]
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "white"
 					}
 				}
+// 				"navigationBarTitleText": "提油记录",
+// 				"app-plus": {
+// 					"titleNView": {
+// 						"buttons": [{
+// 
+// 							"text": "搜索",
+// 							"fontSize": "14px",
+// 							"float": "right", //靠右第一个
+// 							"width": "46px",
+// 							"color": "#666"
+// 
+// 						}]
+// 					}
+// 				}
 			}
 		}, {
 			"path": "pages/reserveOilList/confirmed/confirmed",
@@ -357,7 +368,7 @@
 					"bounce": "none",
 					"titleNView": false,
 					"statusbar": {
-						"background": "black"
+						"background": "white"
 					}
 				}
 
@@ -467,6 +478,22 @@
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
 					"titleSize": "17px"
+				}
+			}
+        }
+        ,{
+            "path" : "pages/reserveOilList/confirmed/exemption/exemption",
+            "style" : {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "white"
+					}
 				}
 			}
         }

@@ -10,7 +10,7 @@
         "usingComponents" : true,
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
-            "waiting" : true,
+            "waiting" : false,
             "autoclose" : true,
             "delay" : 0
         },
@@ -72,8 +72,9 @@
             },
             "splashscreen" : {
                 "android" : {
-                    "hdpi" : "",
-                    "xhdpi" : ""
+                    "hdpi" : "./static/img/start.png",
+                    "xhdpi" : "./static/img/start.png",
+                    "xxhdpi" : "./static/img/start.png"
                 }
             },
             "sdkConfigs" : {

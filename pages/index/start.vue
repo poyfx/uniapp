@@ -1,6 +1,6 @@
 <template>
 	<view class="background">
-		<view class="mContent">
+		<view class="">
 			<view class="ce mt300">
 				<image class="startimg" :src="src" mode="aspectFit"></image>
 			</view>
@@ -53,7 +53,9 @@
 			//app退出再次进入时获取最新信息
 			getNewInfo() {
 			
-				this.test.post('user/get_base_data').then(res => {
+				this.test.post('user/get_base_data',{
+					Token:this.Token
+				}).then(res => {
 					console.log(res)
 					// debugger
 					uni.setStorageSync('userInfo',res.data.value)
@@ -74,7 +76,9 @@
 </script>
 <style scoped>
 	.background {
-		background-color: #fff;
+		/* background-color: #fff; */
+		background:url('https://wx4.sinaimg.cn/mw690/006C8C6Vgy1g6pwy2elotj30u01hdn3t.jpg') no-repeat ;
+		background-size:100% 100% ;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -86,7 +90,8 @@
 	.startimg {
 		width: 200px;
 		height: 200px;
-		margin-top: 125px;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+		margin-top: 108px;
 	}
 
 	.p-bx {
@@ -95,7 +100,8 @@
 		bottom: 20px;
 		left: 50%;
 		margin-left: -65px;
-		text-align: center
+		text-align: center;
+		color:#666666;
 	}
 
 	.p-size {

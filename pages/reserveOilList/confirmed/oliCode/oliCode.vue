@@ -1,14 +1,14 @@
 <template>
-	<view  style="position: absolute;width: 100%; height: 100%;">
+	<view style="position: absolute;width: 100%; height: 100%;">
 		<view class="oilCode">
 			<view class="oilCodeBox">
 				<tki-qrcode v-if="ifShow" cid="qrcode2" ref="qrcode2" :val="val" :size="size" :onval="onval" :loadMake="loadMake"
 				 :usingComponents="true" @result="qrR" />
-				
+
 			</view>
-			 <view style="text-align: center;padding-top: 16px; font-size: 24upx;">{{val}}</view>
+			<view style="padding-top: 16px; font-size: 28upx; text-align: center;">{{val}}</view>
 		</view>
-		
+
 		<view class="mContent bgcf otherOilCode ">
 			<view>提油码发送他人代提</view>
 			<input type="text" class="oilCodeInput" v-model="otherNumber" />
@@ -19,7 +19,7 @@
 				<!-- <input type="checkbox" class="check" value="已阅读" @click="check" :checked="checked" /> -->
 				<text>已阅读</text>
 
-				<text style="color: #009DFF; ;">免责条款</text>
+				<text style="color: #009DFF; ;" @tap="exemption">《免责条款》</text>
 			</view>
 
 			<view class="nextBox">
@@ -76,7 +76,7 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.val = res.data.value
-					}else{
+					} else {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -104,26 +104,56 @@
 			qrR(res) {
 				this.src = res
 			},
+			exemption(){
+				uni.navigateTo({
+					url:'../exemption/exemption'
+				})
+			},
 			send() {
-				if (this.otherNumber !== '') {
-					if (this.checkes == true) {
-						// Toast("请阅读免责条款,勾选后方可发送");
-						return uni.showToast({
-							title: "请阅读免责条款,勾选后方可发送",
-							"icon": "none"
-						})
-					} else {
-						// Toast("发送成功");
-						uni.showToast({
-							title: '发送成功'
-						})
-					}
-				} else {
+
+				if (this.checkes == true) {
+					// Toast("请阅读免责条款,勾选后方可发送");
 					return uni.showToast({
-						title: "请填写手机号码",
+						title: "请阅读免责条款,勾选后方可发送",
 						"icon": "none"
 					})
+				} else {
+					if (this.otherNumber !== '') {
+						if (!/^1[3456789]\d{9}$/.test(this.otherNumber)) {
+							return uni.showToast({
+								"title": '请填写正确的手机号码',
+								"icon": "none"
+							})
+						} else {
+							this.test.post('order/send_get_encrypt', {
+								phone: this.otherNumber,
+								encrypt_sn: this.val
+							}).then(res => {
+								console.log(res)
+								if (res.statusCode == 200 && res.data.errorCode == 0) {
+									uni.showToast({
+										title: '发送成功'
+									})
+								}else{
+									uni.showToast({
+										title:res.data.message,
+										icon:'none'
+									})
+								}
+							}).catch(err => {
+								console.log(err)
+							})
+
+						}
+					} else {
+						return uni.showToast({
+							title: "请填写手机号码",
+							"icon": "none"
+						})
+					}
+
 				}
+
 
 			}
 		},
@@ -145,7 +175,7 @@
 		margin: 16px;
 		background: #fff;
 		border-radius: 4px;
-		box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 		box-sizing: border-box;
 	}
 

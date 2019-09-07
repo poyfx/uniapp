@@ -11,7 +11,7 @@
 					</selects>
 				</view>
 			</view>
-		<view class="mContent" style="margin-bottom: 50px;">
+		<view class="mContent">
 			
 
 			<view class="fget-num orderList"  v-for="(item,index) in info" :key='item.id'>

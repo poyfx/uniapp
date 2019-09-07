@@ -31,7 +31,7 @@ text {
 
 .mContent,
 .content,
-.titleAll,
+/* .titleAll, */
 .footer {
 	padding: 0;
 	margin: 0 auto;
@@ -180,11 +180,12 @@ input::-webkit-input-placeholdert {
 	align-content: center;
 	align-items: center;
 	align-self: center;
-	background-color: rgba(255,255,255,0.8);
+	background-color: rgba(255,255,255,1);
 	justify-content: center;
 	color: #666;
 	font-size: 17px;
-
+	z-index: 997;
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
 
 }
 

@@ -319,14 +319,16 @@ input::-webkit-input-placeholdert {
 	-webkit-align-self: center;
 	    -ms-flex-item-align: center;
 	        align-self: center;
-	background-color: rgba(255,255,255,0.8);
+	background-color: rgba(255,255,255);
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	color: #666;
 	font-size: 17px;
-
+	z-index: 997;
+	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+	        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
 
 }
 
@@ -1048,8 +1050,8 @@ input {
 	color: #999;
 	text-align: center;
 	line-height: 44px;
-	position: fixed;
-	bottom: 0;
+/* 	position: fixed; */
+	/* bottom: 0; */
 }
 
 .loading image{

@@ -1,15 +1,16 @@
 <template>
-	<view class="mTop15 bgcf">
-		<view class="flex m-apply" @tap="GoBuyApply(item.status,item.name,index)" v-for="(item,index) in role" :key="item.id">
+	<view class="mTop15 bgcf apply">
+		<view class="flex m-apply" @tap="GoBuyApply(item.role_status,item.name,index)" v-for="(item,index) in role" :key="item.id">
 			<text>{{item.name}}</text>
-			<view class="flex never good" v-if="item.status == 1">
+			<view class="flex never good" v-if="item.role_status == 1">
 				<image src="../../../static/img/good.png" mode=""></image>
 				<text>审核通过</text>
 			</view>
 			<view class="flex never" v-else>
-				<text v-if="item.status == 0">未申请</text>
-				<text v-else-if="item.status == -1">等待后台审核</text>
-				<text v-else-if="item.status == 9">审核不通过</text>
+				<text v-if="item.role_status == 0">未申请</text>
+				<text v-else-if="item.role_status == 2">已过期</text>
+				<text v-else-if="item.role_status == -1">等待后台审核</text>
+				<text v-else-if="item.role_status == 9">审核不通过</text>
 				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
 			</view>
 
@@ -38,26 +39,26 @@
 		},
 		methods: {
 			getJurisdiction() {
-				this.test.post('user/query_user_role').then(res => {
+				this.test.post('user/list_user_role').then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.role = res.data.value;
 						console.log(this.role)
-						if (this.role.length == 2) {
-							console.log(1)
-							this.buy = true;
-							this.take = true;
-						} else if (this.role.length == 1) {
-							if (this.role[0].role_id == 1) {
-								console.log(2)
-								this.buy = true
-								this.take = false
-							} else if (this.role[0].role_id == 2) {
-								console.log(3)
-								this.take = true
-								this.buy = false
-							}
-						}
+						// if (this.role.length == 2) {
+						// 	console.log(1)
+						// 	this.buy = true;
+						// 	this.take = true;
+						// } else if (this.role.length == 1) {
+						// 	if (this.role[0].role_id == 1) {
+						// 		console.log(2)
+						// 		this.buy = true
+						// 		this.take = false
+						// 	} else if (this.role[0].role_id == 2) {
+						// 		console.log(3)
+						// 		this.take = true
+						// 		this.buy = false
+						// 	}
+						// }
 					} else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003){
 						uni.showModal({
 							title: '提示',
@@ -88,7 +89,7 @@
 
 
 			GoBuyApply(stu, name, ind) {
-				if (stu == 0) {
+				if (stu == 0 || stu == 2) {
 					uni.navigateTo({
 						url: './uploadImg/uploadImg?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code
 					})
@@ -117,6 +118,10 @@
 </script>
 
 <style>
+	.apply{
+		width: 100%;
+		box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	}
 	.m-apply {
 		padding: 12px 12px;
 		border-bottom: 1px solid #E5E5E5;

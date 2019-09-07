@@ -1,6 +1,8 @@
 
 .background.data-v-638134ec {
-	background-color: #fff;
+	/* background-color: #fff; */
+	background:url('https://wx4.sinaimg.cn/mw690/006C8C6Vgy1g6pwy2elotj30u01hdn3t.jpg') no-repeat ;
+	background-size:100% 100% ;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -11,7 +13,7 @@
 .startimg.data-v-638134ec {
 	width: 200px;
 	height: 200px;
-	margin-top: 125px;
+	margin-top: 108px;
 }
 .p-bx.data-v-638134ec {
 	width: 130px;
@@ -19,7 +21,8 @@
 	bottom: 20px;
 	left: 50%;
 	margin-left: -65px;
-	text-align: center
+	text-align: center;
+	color:#666666;
 }
 .p-size.data-v-638134ec {
 	font-size: 16px;

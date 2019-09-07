@@ -34,7 +34,7 @@
     "splashscreen": {
       "target": "id:1",
       "autoclose": true,
-      "waiting": true,
+      "waiting": false,
       "delay": 0
     },
     "popGesture": "close",
@@ -61,8 +61,9 @@
       },
       "splashscreen": {
         "android": {
-          "hdpi": "",
-          "xhdpi": ""
+          "hdpi": "./static/img/start.png",
+          "xhdpi": "./static/img/start.png",
+          "xxhdpi": "./static/img/start.png"
         }
       },
       "google": {

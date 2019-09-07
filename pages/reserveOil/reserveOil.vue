@@ -66,7 +66,7 @@
 				</view>
 			</view>
 
-			<view class="mContent pB10" style="margin-bottom: 50px;">
+			<view class="mContent pB10">
 				<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
 				 :key="item.id">
 					<view class="orderNumber">

@@ -1,15 +1,39 @@
 <script>
-	
 	import {
 		mapMutations,
 		mapState
-			} from 'vuex';
+	} from 'vuex';
 	export default {
 		onLaunch: function() {
 			console.log('App Launch');
+
+			//#ifdef APP-PLUS  
+			var server = "https://www.example.com/update"; //检查更新地址  
+			var req = { //升级检测数据  
+				"appid": plus.runtime.appid,
+				"version": plus.runtime.version
+			};
+			uni.request({
+				url: server,
+				data: req,
+				success: (res) => {
+					if (res.statusCode == 200 && res.data.status === 1) {
+						uni.showModal({ //提醒用户更新  
+							title: "更新提示",
+							content: res.data.note,
+							success: (res) => {
+								if (res.confirm) {
+									plus.runtime.openURL(res.data.url);
+								}
+							}
+						})
+					}
+				}
+			})
+			//#endif  
 			uni.getStorage({
 				key: 'userInfo',
-				success:(res) => {
+				success: (res) => {
 					console.log(res)
 					// console.log(res.data)
 					this.login(res.data);
@@ -35,36 +59,36 @@
 		},
 		onShow: function() {
 			console.log('App Show')
-		// 			if (this.hasLogin == false) {
-		// 				uni.showModal({
-		// 					title: '提示',
-		// 					content: '用户信息已失效，请重新登录',
-		// 					success: function(res) {
-		// 						if (res.confirm) {
-		// 							uni.navigateTo({
-		// 								url: '../login/login'
-		// 							})
-		// 						}else{
-		// 							uni.navigateTo({
-		// 								url: '../login/login'
-		// 							})
-		// 						}
-		// 					}
-		// 				})
-		// 
-		// 			}
+			// 			if (this.hasLogin == false) {
+			// 				uni.showModal({
+			// 					title: '提示',
+			// 					content: '用户信息已失效，请重新登录',
+			// 					success: function(res) {
+			// 						if (res.confirm) {
+			// 							uni.navigateTo({
+			// 								url: '../login/login'
+			// 							})
+			// 						}else{
+			// 							uni.navigateTo({
+			// 								url: '../login/login'
+			// 							})
+			// 						}
+			// 					}
+			// 				})
+			// 
+			// 			}
 		},
 		onHide: function() {
 			console.log('App Hide')
 		},
-		
-		methods:{
+
+		methods: {
 			...mapMutations(['login'])
 		},
 		computed: {
 			...mapState(["hasLogin", "userInfo"])
 		},
-		
+
 	}
 </script>
 
@@ -75,7 +99,7 @@
 
 	}
 
-	uni-page-head .uni-page-head{
+	uni-page-head .uni-page-head {
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	}
 
@@ -112,12 +136,14 @@
 	.mint-field {
 		border-bottom: 1px solid #e5e5e5;
 	}
+
 	/* 提油码radio */
-	uni-radio .uni-radio-input{
+	uni-radio .uni-radio-input {
 		width: 16px;
 		height: 16px;
 	}
-	uni-page-wrapper{
+
+	uni-page-wrapper {
 		display: flex;
-		}
+	}
 </style>

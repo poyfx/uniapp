@@ -12,8 +12,8 @@
 	text-align: center
 }
 .loginImg.data-v-20ff2a30 {
-	width: 200rpx;
-	height: 200rpx;
+	width: 100px;
+	height: 100px;
 }
 .p-font.data-v-20ff2a30 {
 	margin-top: 15px;
@@ -36,6 +36,7 @@
 }
 .color-dff.data-v-20ff2a30 {
 	color: #009DFF;
+	font-size: 12px;
 }
 .toReginster.data-v-20ff2a30 {
 	display: inline-block;

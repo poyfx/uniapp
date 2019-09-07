@@ -46,38 +46,40 @@
 					password: '',
 				},
 				status: '',
-				clientId:'',
+				clientId: '',
 			}
 		},
 		onLoad(option) {
 			// console.log(getCurrentPages())
 			this.status = option.val;
 			this.showToasts();
-			 this.getclientId();
+			this.getclientId();
 		},
 		computed: {
 			...mapState(['hasLogin', 'userInfo'])
 		},
 		methods: {
 			...mapActions(['handeLogin']),
-			
+
 			getclientId() {
-					// 扩展API加载完毕，现在可以正常调用扩展API
-					// 获取客户端标识信息
-					// var info = plus.push.getClientInfo();
-					// console.log( JSON.stringify( info ) );
-					// // alert(info)
-					// this.clientId = info .clientid;
-					//  // alert(this.clientId)
-					// uni.setStorage({
-					// 	key:'clientid',
-					// 	data:this.clientId
-					// })
-					// // 添加监听从系统消息中心点击消息启动事件
-					// plus.push.addEventListener( "click", function ( msg ) {
-					// 	// 分析msg.payload处理业务逻辑 
-					// 	alert( "You clicked: " + msg.content ); 
-					// }, false ); 
+				// 扩展API加载完毕，现在可以正常调用扩展API
+				// 获取客户端标识信息
+				//#ifdef APP-PLUS  
+				var info = plus.push.getClientInfo();
+				console.log(JSON.stringify(info));
+				// alert(info)
+				this.clientId = info.clientid;
+				// alert(this.clientId)
+				uni.setStorage({
+					key: 'clientid',
+					data: this.clientId
+				})
+				// 添加监听从系统消息中心点击消息启动事件
+				plus.push.addEventListener("click", function(msg) {
+					// 分析msg.payload处理业务逻辑 
+					alert("You clicked: " + msg.content);
+				}, false);
+				//#endif  
 			},
 			handleLogin() {
 				this.getclientId();
@@ -90,7 +92,8 @@
 						const that = this;
 						this.test.post('base/login', {
 							username: this.consumer.username,
-							passwd: this.consumer.password
+							passwd: this.consumer.password,
+							client_id: this.clientId,
 						}).then(res => {
 							console.log(res)
 							const data = res.data;
@@ -144,7 +147,7 @@
 			}
 		},
 		...mapMutations(['login']),
-		
+
 		components: {
 			mInput,
 			pwsInput,
@@ -169,8 +172,8 @@
 	}
 
 	.loginImg {
-		width: 200upx;
-		height: 200upx;
+		width: 100px;
+		height: 100px;
 	}
 
 	.p-font {
@@ -191,6 +194,7 @@
 
 	.color-dff {
 		color: #009DFF;
+		font-size: 12px;
 	}
 
 	.toReginster {

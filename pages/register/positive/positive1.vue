@@ -389,6 +389,7 @@
 					})
 					if (this.img.length == 3) {
 						const that = this;
+						console.log(this.register.companyId,this.register.customerId)
 						if (this.ifday == true) {
 							console.log(typeof this.register.role)
 							if (this.register.user == '购油人') {
@@ -396,7 +397,7 @@
 								uni.uploadFile({
 									//注册地址
 									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									url: 'http://dev.pjy.name:8180/api/bizcust/base/regist',
+									 url: 'http://dev.pjy.name:8180/api/bizcust/base/regist',
 									files: imgs,
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -412,7 +413,7 @@
 										"client_id" :this.clientID,
 									},
 									success: function(res) {
-										var data = JSON.parse(res.data)
+										 var data = JSON.parse(res.data)
 										//	var data = res.data
 										console.log(res)
 										if (res.statusCode == 200) {
