@@ -45,7 +45,7 @@
 			</view>
 			<view class="m-two-btn mTop15">
 
-				<button class="tButton cal" @tap="cancelOrder">无需发票</button>
+				<button class="tButton cal" v-show="status == 2" @tap="cancelOrder">无需发票</button>
 				<tButton :type="btn.type" class="tButton" :disabled="btn.disabled" :content="btn.con2" @invoiceSure="invoiceSure(invoice.currentOil)"></tButton>
 			</view>
 		</view>
@@ -93,7 +93,7 @@
 				},
 				list: [], //拆分次数集合
 				ids: -1, //默认不需要发票
-				yesORno: '否',
+				yesORno: '是',
 				typeInvoice: '请选择发票类型',
 				invoiceTypes: false,
 				id: '',
@@ -162,7 +162,7 @@
 						if (res.confirm) {
 							this.test.post('order/make_invoice', {
 								id: this.id,
-								is_invoice: this.yesORno,
+								is_invoice: '否',
 								invoice_money: this.moeny
 							}).then(res => {
 								console.log(res)
@@ -170,6 +170,11 @@
 									uni.redirectTo({
 										url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
 									})
+								} else {
+									uni.showToast({
+										title: res.data.message,
+										icon: 'none'
+									});
 								}
 							}).catch(err => {
 								console.log(err)
@@ -207,89 +212,199 @@
 					}
 					// console.log(typeof(this.invoiceNum))
 					// console.log(this.invoiceNum)
-					if (this.ids == 1) {
-						if (this.invoiceNum !== '') {
-							if (this.surplusOil == 0) {
-								uni.showModal({
-									title: '提示',
-									content: '确认开票',
-									success: (res) => {
-										if (res.confirm) {
-											this.test.post('order/make_invoice', {
-												id: this.id,
-												invoice_type: this.typeInvoice,
-												is_invoice: this.yesORno,
-												invoice_split: this.invoiceNum,
-												invoice_money: this.moeny
-											}).then(res => {
-												console.log(res)
-												if (res.statusCode == 200 && res.data.errorCode == 0) {
-													uni.showToast({
-														title: '开票成功'
-													})
-													uni.redirectTo({
-														url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
-													})
-												}
-											}).catch(err => {
-												console.log(err)
-											})
-										} else {
-											return;
+					//第一次开发票
+					if (this.status == 2) {
+						if (this.ids == 1) {
+							if (this.invoiceNum !== '') {
+								if (this.surplusOil == 0) {
+									uni.showModal({
+										title: '提示',
+										content: '确认开票',
+										success: (res) => {
+											if (res.confirm) {
+												this.test.post('order/make_invoice', {
+													id: this.id,
+													invoice_type: this.typeInvoice,
+													is_invoice: this.yesORno,
+													invoice_split: this.invoiceNum,
+													invoice_money: this.moeny
+												}).then(res => {
+													console.log(res)
+													if (res.statusCode == 200 && res.data.errorCode == 0) {
+														uni.showToast({
+															title: '开票成功'
+														})
+														uni.redirectTo({
+															url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
+														})
+													} else {
+														uni.showToast({
+															title: res.data.message,
+															icon: 'none'
+														});
+													}
+												}).catch(err => {
+													console.log(err)
+												})
+											} else {
+												return;
+											}
 										}
-									}
 
 
-								})
+									})
+
+								} else {
+									uni.showToast({
+										title: '发票拆分数量必须与当前油量一致',
+										icon: 'none'
+									})
+								}
 
 							} else {
 								uni.showToast({
-									title: '发票拆分数量必须与当前油量一致',
+									title: '请填写拆分数量',
 									icon: 'none'
 								})
 							}
 
-						} else {
-							uni.showToast({
-								title: '请填写拆分数量',
-								icon: 'none'
+						} else if (this.ids == -1) {
+							const that = this;
+							uni.showModal({
+								title: '提示',
+								content: '确认开票',
+								success: (res) => {
+									console.log(res)
+									if (res.confirm) {
+										console.log(1)
+										this.test.post('order/make_invoice', {
+											id: this.id,
+											invoice_type: this.typeInvoice,
+											is_invoice: this.yesORno,
+											invoice_split: this.currentOil,
+											invoice_money: this.moeny
+										}).then(res => {
+											console.log(res)
+											if (res.statusCode == 200 && res.data.errorCode == 0) {
+												uni.showToast({
+													title: '开票成功'
+												})
+												uni.redirectTo({
+													url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
+												})
+											} else {
+												uni.showToast({
+													title: res.data.message,
+													icon: 'none'
+												});
+											}
+										}).catch(err => {
+											console.log(err)
+										})
+									} else {
+										return;
+									}
+								}
 							})
 						}
 
-					} else if (this.ids == -1) {
-						const that = this;
-						uni.showModal({
-							title: '提示',
-							content: '确认开票',
-							success: (res) => {
-								console.log(res)
-								if (res.confirm) {
-									console.log(1)
-									this.test.post('order/make_invoice', {
-										id: this.id,
-										invoice_type: this.typeInvoice,
-										is_invoice: this.yesORno,
-										invoice_split: this.currentOil,
-										invoice_money: this.moeny
-									}).then(res => {
-										console.log(res)
-										if (res.statusCode == 200 && res.data.errorCode == 0) {
-											uni.showToast({
-												title: '开票成功'
-											})
-											uni.redirectTo({
-												url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
-											})
+					}else{//补开发票
+						if (this.ids == 1) {
+							if (this.invoiceNum !== '') {
+								if (this.surplusOil == 0) {
+									uni.showModal({
+										title: '提示',
+										content: '确认开票',
+										success: (res) => {
+											if (res.confirm) {
+												this.test.post('order/repair_invoic', {
+													id: this.id,
+													invoice_type: this.typeInvoice,
+													is_invoice: this.yesORno,
+													invoice_split: this.invoiceNum,
+													invoice_money: this.moeny
+												}).then(res => {
+													console.log(res)
+													if (res.statusCode == 200 && res.data.errorCode == 0) {
+														uni.showToast({
+															title: '开票成功'
+														})
+														uni.redirectTo({
+															url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
+														})
+													} else {
+														uni.showToast({
+															title: res.data.message,
+															icon: 'none'
+														});
+													}
+												}).catch(err => {
+													console.log(err)
+												})
+											} else {
+												return;
+											}
 										}
-									}).catch(err => {
-										console.log(err)
+						
+						
 									})
+						
 								} else {
-									return;
+									uni.showToast({
+										title: '发票拆分数量必须与当前油量一致',
+										icon: 'none'
+									})
 								}
+						
+							} else {
+								uni.showToast({
+									title: '请填写拆分数量',
+									icon: 'none'
+								})
 							}
-						})
+						
+						} else if (this.ids == -1) {
+							const that = this;
+							uni.showModal({
+								title: '提示',
+								content: '确认开票',
+								success: (res) => {
+									console.log(res)
+									if (res.confirm) {
+										console.log(1)
+										this.test.post('order/repair_invoic', {
+											id: this.id,
+											invoice_type: this.typeInvoice,
+											is_invoice: this.yesORno,
+											invoice_split: this.currentOil,
+											invoice_money: this.moeny
+										}).then(res => {
+											console.log(res)
+											if (res.statusCode == 200 && res.data.errorCode == 0) {
+												uni.showToast({
+													title: '开票成功'
+												})
+												uni.redirectTo({
+													url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
+												})
+											} else {
+												uni.showToast({
+													title: res.data.message,
+													icon: 'none'
+												});
+											}
+										}).catch(err => {
+											console.log(err)
+										})
+									} else {
+										return;
+									}
+								}
+							})
+						}
+						
 					}
+
 				}
 			}
 

@@ -65,8 +65,8 @@
   "nvueCompiler": "weex",
   "renderer": "auto",
   "splashscreen": {
-    "alwaysShowBeforeRender": true,
-    "autoclose": false
+    "alwaysShowBeforeRender": false,
+    "autoclose": true
   },
   "appname": "安徽石油",
   "compilerVersion": "2.2.2",

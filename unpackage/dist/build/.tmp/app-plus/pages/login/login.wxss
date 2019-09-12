@@ -1,5 +1,5 @@
 
-.background.data-v-7fa4811a {
+.background.data-v-2d3e1c50 {
 	background-color: #fff;
 	position: absolute;
 	height: 100%;
@@ -7,22 +7,22 @@
 	left: 0;
 	top: 0;
 }
-.imgTop.data-v-7fa4811a {
+.imgTop.data-v-2d3e1c50 {
 	margin: 40px auto 44px;
 	text-align: center
 }
-.loginImg.data-v-7fa4811a {
+.loginImg.data-v-2d3e1c50 {
 	width: 100px;
 	height: 100px;
 }
-.p-font.data-v-7fa4811a {
+.p-font.data-v-2d3e1c50 {
 	margin-top: 15px;
 }
-.p-font text.data-v-7fa4811a {
+.p-font text.data-v-2d3e1c50 {
 	font-size: 45rpx;
 	color: #666;
 }
-.loginInfo.data-v-7fa4811a {
+.loginInfo.data-v-2d3e1c50 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -34,11 +34,11 @@
 	font-size: 24rpx;
 	padding: 7px 11% 10px;
 }
-.color-dff.data-v-7fa4811a {
+.color-dff.data-v-2d3e1c50 {
 	color: #009DFF;
 	font-size: 12px;
 }
-.toReginster.data-v-7fa4811a {
+.toReginster.data-v-2d3e1c50 {
 	display: inline-block;
 }
 

@@ -2,23 +2,23 @@
     "name" : "安徽石油",
     "appid" : "__UNI__C5F30A1",
     "description" : "",
-    "versionName" : "1.0.0",
+    "versionName" : "0.0.2",
     "versionCode" : 1,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
         "usingComponents" : true,
         "splashscreen" : {
-            "alwaysShowBeforeRender" : true,
-            "waiting" : false,
+            "alwaysShowBeforeRender" : false,
+            "waiting" : true,
             "autoclose" : true,
             "delay" : 0
         },
         /* 模块配置 */
-        "modules" : {
-            "Push" : {},
-            "Maps" : {}
-        },
+        "modules" : {},
+        // "Push" : {}
+        // "Push" : {},
+        // "Maps" : {}
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
@@ -67,20 +67,23 @@
                     "xxxhdpi" : "./static/img/icon.png"
                 },
                 "ios" : {
-                    "appstore" : "./static/img/store.png"
+                    "appstore" : "./static/img/store.png",
+                    "iphone" : {
+                        "app@2x" : "./static/img/icon.png"
+                    }
                 }
             },
             "splashscreen" : {
                 "android" : {
-                    "hdpi" : "./static/img/start.png",
-                    "xhdpi" : "./static/img/start.png",
-                    "xxhdpi" : "./static/img/start.png"
+                    "hdpi" : "",
+                    "xhdpi" : "",
+                    "xxhdpi" : ""
                 }
             },
             "sdkConfigs" : {
-                "push" : {
-                    "unipush" : {}
-                },
+                // "push" : {
+                //     "unipush" : {}
+                // },
                 "oauth" : {}
             }
         },

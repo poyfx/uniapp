@@ -1,4 +1,9 @@
 
+.apply{
+	width: 100%;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+}
 .m-apply {
 	padding: 12px 12px;
 	border-bottom: 1px solid #E5E5E5;

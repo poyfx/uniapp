@@ -15,7 +15,7 @@
 	import logo from "../../static/img/logo.png"
 	import {
 		mapState,
-		mapActions
+		mapActions,
 	} from 'vuex'
 	export default {
 		name: 'Start',
@@ -27,7 +27,7 @@
 		},
 		onShow() {
 			console.log(this.hasLogin)
-			if (this.Token == '') {
+			if (this.hasLogin == false) {
 				const timer = setTimeout(function() {
 					uni.navigateTo({
 						url: '../login/login',
@@ -46,23 +46,28 @@
 						}
 					})
 				}, 2000)
+				 this.getNewInfo();
 			};
-			 this.getNewInfo();
+			
 		},
 		methods: {
+			
 			//app退出再次进入时获取最新信息
 			getNewInfo() {
-			
+			const that = this;
 				this.test.post('user/get_base_data',{
 					Token:this.Token
 				}).then(res => {
-					console.log(res)
+					// console.log(res)
 					// debugger
-					uni.setStorageSync('userInfo',res.data.value)
-					// ({
-					// 	key: 'userInfo',
-					// 	data: res.data.value
-					// })
+					// uni.setStorageSync('userInfo',res.data.value)
+					uni.setStorage({
+					    key: 'userInfo',
+					    data: res.data.value,
+					});
+					
+					
+					
 				}).catch(err => {
 					console.log(err)
 				})
@@ -77,7 +82,7 @@
 <style scoped>
 	.background {
 		/* background-color: #fff; */
-		background:url('https://wx4.sinaimg.cn/mw690/006C8C6Vgy1g6pwy2elotj30u01hdn3t.jpg') no-repeat ;
+		background:url('http://dev.pjy.name:8180/uploads/bizcust_main.png') no-repeat ;
 		background-size:100% 100% ;
 		position: absolute;
 		top: 0;
@@ -90,7 +95,7 @@
 	.startimg {
 		width: 200px;
 		height: 200px;
-		box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+		/* box-shadow: 0 1px 3px rgba(0,0,0,0.14); */
 		margin-top: 108px;
 	}
 

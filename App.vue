@@ -8,28 +8,56 @@
 			console.log('App Launch');
 
 			//#ifdef APP-PLUS  
-			var server = "https://www.example.com/update"; //检查更新地址  
-			var req = { //升级检测数据  
-				"appid": plus.runtime.appid,
-				"version": plus.runtime.version
-			};
-			uni.request({
-				url: server,
-				data: req,
-				success: (res) => {
-					if (res.statusCode == 200 && res.data.status === 1) {
+			// var server = "http://dev.pjy.name:8180/api/bizcust/base/get_version"; //检查更新地址  
+			var appid = plus.runtime.appid
+			var version = plus.runtime.version
+
+			// var req = { //升级检测数据  
+			// 	"appid": plus.runtime.appid,
+			// 	"version": plus.runtime.version
+			// };
+			console.log(plus.runtime.appid, plus.runtime.version)
+			this.test.get('base/get_version', {
+				appid: appid,
+				version: version,
+			}).then(res => {
+				var	url = res.data.value.url
+				if (res.statusCode == 200 && res.data.errorCode === 0) {
+					if (res.data.value.status == 1) {
 						uni.showModal({ //提醒用户更新  
 							title: "更新提示",
-							content: res.data.note,
+							content: res.data.value.note,
 							success: (res) => {
 								if (res.confirm) {
-									plus.runtime.openURL(res.data.url);
+									plus.runtime.openURL(url);
 								}
 							}
 						})
 					}
+
 				}
+			}).catch(err => {
+				console.log(err)
 			})
+			// uni.request({
+			// 	url: server,
+			// 	data: req,
+			// 	success: (res) => {
+			// 		console.log(res)
+			// 		if (res.statusCode == 200 && res.data.status === 0) {
+			// 			
+			// 			uni.showModal({ //提醒用户更新  
+			// 				title: "更新提示",
+			// 				content: res.data.note,
+			// 				success: (res) => {
+			// 					if (res.confirm) {
+			// 						plus.runtime.openURL(res.data.url);
+			// 					}
+			// 				}
+			// 			})
+			// 		}
+			// 	}
+			// })
 			//#endif  
 			uni.getStorage({
 				key: 'userInfo',
@@ -59,24 +87,6 @@
 		},
 		onShow: function() {
 			console.log('App Show')
-			// 			if (this.hasLogin == false) {
-			// 				uni.showModal({
-			// 					title: '提示',
-			// 					content: '用户信息已失效，请重新登录',
-			// 					success: function(res) {
-			// 						if (res.confirm) {
-			// 							uni.navigateTo({
-			// 								url: '../login/login'
-			// 							})
-			// 						}else{
-			// 							uni.navigateTo({
-			// 								url: '../login/login'
-			// 							})
-			// 						}
-			// 					}
-			// 				})
-			// 
-			// 			}
 		},
 		onHide: function() {
 			console.log('App Hide')

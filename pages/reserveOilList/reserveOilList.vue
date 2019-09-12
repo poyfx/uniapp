@@ -225,8 +225,8 @@
 				})
 			},
 			back() {
-				uni.reLaunch({
-					url:'../index/index'
+				uni.switchTab({
+					url: '../index/index',
 				})
 			},
 		},
@@ -243,11 +243,13 @@
 	.reserveStatus text {
 		margin: 5px 0;
 	}
-.select_day{
-	position: relative;
-	width: 100%;
-	height: 40px;
-}
+
+	.select_day {
+		position: relative;
+		width: 100%;
+		height: 40px;
+	}
+
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;

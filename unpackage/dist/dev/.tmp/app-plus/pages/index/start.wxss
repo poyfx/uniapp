@@ -13,6 +13,7 @@
 .startimg.data-v-638134ec {
 	width: 200px;
 	height: 200px;
+	/* box-shadow: 0 1px 3px rgba(0,0,0,0.14); */
 	margin-top: 108px;
 }
 .p-bx.data-v-638134ec {

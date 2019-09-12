@@ -237,7 +237,7 @@
 				uni.getStorage({
 					key: 'userInfo',
 					success: function(res) {
-						console.log(res)
+						// console.log(res)
 						let price = res.data.oilPrice; //获取当前油价油价
 						that.datas = price.oilPrice;
 						that.gain = price.oilAmplitude;

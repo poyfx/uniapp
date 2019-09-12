@@ -69,11 +69,45 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*每个页面公共css */
 uni-page-head .uni-page-head__title {
 	font-weight: 400;
 }
-uni-page-head .uni-page-head{
+uni-page-head .uni-page-head {
 	-webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
@@ -111,11 +145,11 @@ uni-page-head .uni-page-head{
 	border-bottom: 1px solid #e5e5e5;
 }
 /* 提油码radio */
-uni-radio .uni-radio-input{
+uni-radio .uni-radio-input {
 	width: 16px;
 	height: 16px;
 }
-uni-page-wrapper{
+uni-page-wrapper {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -318,7 +352,7 @@ input::-webkit-input-placeholdert {
 	-webkit-align-self: center;
 	    -ms-flex-item-align: center;
 	        align-self: center;
-	background-color: rgba(255,255,255);
+	background-color: rgba(255,255,255,1);
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;

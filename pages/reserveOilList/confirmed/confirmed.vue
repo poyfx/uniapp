@@ -179,8 +179,10 @@
 				})
 			},
 			back() {
-				uni.redirectTo({
-					url: '../reserveOilList'
+				uni.navigateBack({
+					delta:1,
+					"animationType": "pop-out",
+					"animationDuration": 200,
 				})
 			},
 			finish(){

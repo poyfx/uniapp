@@ -315,6 +315,7 @@
 					success: function(res) {
 						// console.log(res)
 						that.myManager = res.data.user.manager_name; //客户经理信息
+						that.myManagerId = res.data.user.manager_id; //客户经理信息
 					}
 				})
 			},
@@ -484,6 +485,7 @@
 			// 获取地址信息
 			getAddressInfo() {
 				const that = this;
+				this.range=0;
 				this.test.post('user/getAddrList').then(res => {
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value;
@@ -518,6 +520,7 @@
 
 			// 选择地址
 			isAddress(inx) {
+				
 				console.log(inx, this.info)
 				const that = this;
 				uni.showModal({
@@ -544,9 +547,9 @@
 							for (let i = 0; i < this.info.length; i++) {
 								if (this.info[i].is_default == e.target.value) {
 									this.range = i;
-									console.log(this.info[i].id)
+									console.log(this.info,e)
 									this.test.post("user/setDefaultAddr", {
-										addr_id: this.info[i].id
+										addr_id: this.info[i].cl_id
 									}).then(res => {
 										console.log(res)
 										if (res.statusCode == 200 && res.data.errorCode == 0) {

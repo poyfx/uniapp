@@ -279,45 +279,57 @@
 				const oilNumbers = Number(this.values.muchOil)
 				const day = this.day
 				console.log(day)
+				const that = this;
 				if (this.values.orderNumber !== '' && this.values.orderNumber !== null) {
 					if (this.values.muchOil !== '' && this.values.muchOil !== null) {
-						console.log(typeof(oilNumbers), typeof(this.id))
-						this.test.post('order/mark_reserve', { //http://192.168.0.156:8080/api/bizcust/
-							bz_order_id: this.id,
-							reserve_time: this.day,
-							extract_num: oilNumbers,
-							remark: this.remark,
-						}).then(res => {
-							console.log(res)
-							if (res.statusCode == 200 && res.data.errorCode == 0) {
-								uni.redirectTo({
-									url: '../reserveOilList/reserveOilList',
-								});
-							} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
-								uni.showModal({
-									title: '提示',
-									content: '用户信息已失效，请重新登录',
-									success: function(res) {
-										if (res.confirm) {
-											uni.reLaunch({
-												url: '../login/login'
+						uni.showModal({
+							title: '提示',
+							content: '提交后无法修改，确认提交？',
+							success: function(res) {
+								if (res.confirm) {
+									console.log(typeof(oilNumbers), typeof(that.id))
+									that.test.post('order/mark_reserve', { //http://192.168.0.156:8080/api/bizcust/
+										bz_order_id: that.id,
+										reserve_time: that.day,
+										extract_num: oilNumbers,
+										remark: that.remark,
+									}).then(res => {
+										console.log(res)
+										if (res.statusCode == 200 && res.data.errorCode == 0) {
+											uni.redirectTo({
+												url: '../reserveOilList/reserveOilList',
+											});
+										} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+											uni.showModal({
+												title: '提示',
+												content: '用户信息已失效，请重新登录',
+												success: function(res) {
+													if (res.confirm) {
+														uni.reLaunch({
+															url: '../login/login'
+														})
+													} else {
+														uni.reLaunch({
+															url: '../login/login'
+														})
+													}
+												}
 											})
 										} else {
-											uni.reLaunch({
-												url: '../login/login'
+											uni.showToast({
+												title: res.data.message,
+												icon: "none"
 											})
 										}
-									}
-								})
-							} else {
-								uni.showToast({
-									title: res.data.message,
-									icon: "none"
-								})
+									}).catch(err => {
+										console.log(err)
+									})
+								} else {
+									return;
+								}
 							}
-						}).catch(err => {
-							console.log(err)
 						})
+
 					} else {
 						uni.showToast({
 							title: '请输入提油数量',

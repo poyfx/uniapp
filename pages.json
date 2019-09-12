@@ -336,6 +336,8 @@
 				"enablePullDownRefresh": false,
 				"onReachBottomDistance": 100,
 				"app-plus": {
+					"animationType": "pop-out",
+					"animationDuration": 200,
 					"bounce": "none",
 					"titleNView": false,
 					"statusbar": {

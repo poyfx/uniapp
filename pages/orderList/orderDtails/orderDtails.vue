@@ -195,8 +195,9 @@
 			}
 		},
 		methods: {
+			// 订单详情获取数据
 			getOrderDtails() {
-				this.test.post('http://192.168.0.156:8080/api/bizcust/order/query_OrderById', {
+				this.test.post('order/query_OrderById', {
 					id: this.orderId
 				}).then(res => {
 					console.log(res)
@@ -216,6 +217,7 @@
 					console.log(err)
 				})
 			},
+			// 倒计时
 			cutDown(time){
 				const that =this;
 				if(time == 0){

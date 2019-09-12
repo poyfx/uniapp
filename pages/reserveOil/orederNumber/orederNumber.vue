@@ -35,7 +35,7 @@
 
 		methods: {
 			getorderNumberInfo() {
-				this.test.post('http://192.168.0.156:8080/api/bizcust/order/query_orderSnInfo', {
+				this.test.post('order/query_orderSnInfo', {
 					page: this.page,
 					pageSize: this.pageSize,
 				}).then(res => {

@@ -3,6 +3,8 @@
   "navigationStyle": "custom",
   "enablePullDownRefresh": false,
   "onReachBottomDistance": 100,
+  "animationType": "pop-out",
+  "animationDuration": 200,
   "bounce": "none",
   "titleNView": false,
   "statusbar": {
