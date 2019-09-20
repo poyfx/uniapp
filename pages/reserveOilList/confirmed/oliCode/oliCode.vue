@@ -24,7 +24,7 @@
 
 			<view class="nextBox">
 				<button class="oilCodeBtn oilCodeBtnAll" v-show="checkes" @tap="send">发送</button>
-				<button type="primary" class="oilCodeBtnAll" v-show="!checkes" @tap="send">发送</button>
+				<button type="primary" class="oilCodeBtnAll m-btn" v-show="!checkes" @tap="send">发送</button>
 
 			</view>
 		</view>
@@ -227,7 +227,7 @@
 	}
 
 	.otherOilCode span {
-		color: #666;
+		color: #616161;
 	}
 
 	.oilCodeInput {
@@ -254,5 +254,8 @@
 
 	.read text {
 		font-size: 12px;
+	}
+	.m-btn{
+		background: #00A8FF;
 	}
 </style>

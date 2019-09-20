@@ -135,7 +135,7 @@
 			themeColor:{
 				type:String,
 				default(){
-					return "#f5a200"
+					return "#00A8FF"
 				}
 			},
 			startYear:{

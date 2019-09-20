@@ -79,7 +79,7 @@
 	font-size: 12px;
 }
 .otherOilCode ._span {
-	color: #666;
+	color: #616161;
 }
 .oilCodeInput {
 	border: 1px solid #e5e5e5;
@@ -102,5 +102,8 @@
 }
 .read text {
 	font-size: 12px;
+}
+.m-btn{
+	background: #00A8FF;
 }
 

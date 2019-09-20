@@ -28,7 +28,6 @@
     "pages/reserveOilList/confirmed/confirmed",
     "pages/reserveOilList/confirmed/oliCode/oliCode",
     "pages/info/stayOil/stayOil",
-    "pages/customer/customer",
     "pages/info/stayOil/oilCodeDetali/oilCodeDetali",
     "pages/newWeb/newWeb",
     "pages/info/feedback/feedback",

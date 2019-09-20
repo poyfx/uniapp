@@ -45,7 +45,7 @@
 							</view>
 						</view>
 						<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="onConfirm"
-						 ref="date" themeColor="#f00">
+						 ref="date" themeColor="#00A8FF">
 						</w-picker>
 					</view>
 
@@ -68,7 +68,7 @@
 							</view>
 						</view>
 						<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="onConfirms"
-						 ref="date1" themeColor="#f00">
+						 ref="date1" themeColor="#00A8FF">
 						</w-picker>
 					</view>
 
@@ -90,7 +90,7 @@
 							</view>
 						</view>
 						<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="voicedates"
-						 ref="date2" themeColor="#f00">
+						 ref="date2" themeColor="#00A8FF">
 						</w-picker>
 					</view>
 
@@ -680,7 +680,7 @@
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footmodel .modelmain text {
@@ -690,7 +690,7 @@
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footermain {

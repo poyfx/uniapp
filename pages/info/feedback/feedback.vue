@@ -64,15 +64,21 @@
 			},
 			addImage(e){
 				const that = this
+				
 				uni.chooseImage({
 					count: 1,
 					success: function(res) {
+						
 						console.log(res)
 						that.imageData.push({
 							name: 'feedback' + that.imageData.length,
 							uri: res.tempFilePaths[0]
 						})
 						console.log(that.imageData)
+					},
+					complete:function(complete){
+				
+						console.log(complete)
 					}
 				
 				});
@@ -93,9 +99,13 @@
 					})
 				}else{
 					if(this.imageData.length <= 0){
+						uni.showLoading({
+							title:'提交中...'
+						})
 						this.test.post('order/submit_feedback_notPhoto',{
 							feedback:this.feedbacks
 						}).then(res=>{
+							uni.hideLoading()
 							console.log(res)
 							if(res.statusCode == 200 && res.data.errorCode == 0){
 								uni.showToast({
@@ -112,6 +122,11 @@
 								})
 							}
 						}).catch(err=>{
+							uni.hideLoading();
+							uni.showToast({
+								title:'提交失败',
+								icon:'none'
+							})
 							console.log(err)
 						})
 						}

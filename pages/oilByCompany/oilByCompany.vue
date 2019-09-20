@@ -124,7 +124,7 @@
 		padding: 10px 0 20px 15px;
 		border-bottom: 1px solid #d6d6d6;
 		font-size: 14px;
-		color: #666;
+		color: #616161;
 		line-height: 28px;
 	}
 </style>

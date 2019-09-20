@@ -3,22 +3,25 @@
 		<view class="status_bar">
 
 		</view>
-		<view class="flex title">
-			<view class="left" @tap="back">
-				<uni-icon type="arrowleft" size="27"></uni-icon>
-			</view>
+		<view class="title_content">
+			<view class="flex title">
+				<view class="left" @tap="back">
+					<uni-icon type="arrowleft" size="27"></uni-icon>
+				</view>
 
-			<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
-			<view>提油记录</view>
-			<view @tap="searchs" style="padding-right:5px ;">搜索</view>
+				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
+				<view>提油记录</view>
+				<view @tap="searchs" style="padding-right:5px ;">搜索</view>
+			</view>
 		</view>
+
 		<view class="select_day">
 			<view class="times" v-show="day">
 				<view class="times" style="padding: 4px 15px; position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
 			</view>
 			<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
 				<selects :list="list" :clearable="false" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
-				 :placeholder="'placeholder'" :initValue="'预约单状态'" @change="changeMsg">
+				 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
 				</selects>
 			</view>
 		</view>
@@ -45,7 +48,7 @@
 							<text>{{item.oil_type}}</text>
 						</view>
 						<view>
-							<text>购油数量：</text>
+							<text>提油数量：</text>
 							<text>{{item.extract_num}} &nbsp;吨</text>
 						</view>
 						<view>
@@ -92,7 +95,7 @@
 		data() {
 			return {
 				list: [{
-						value: "全部",
+						value: "全部订单",
 						label: 0
 					},
 					{
@@ -101,7 +104,7 @@
 					},
 					{
 						value: "已发油",
-						label: 5
+						label: 3
 					},
 					{
 						value: "已完成",
@@ -109,7 +112,7 @@
 					},
 					{
 						value: "预约已确定",
-						label: 4
+						label: 2
 					},
 					{
 						value: "等待预约确定",
@@ -155,7 +158,9 @@
 					pageSize: this.pageSize,
 				}).then(res => {
 					console.log(res)
+				uni.hideLoading();
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
+							
 						// this.oil = res.data.value;
 						res.data.value.forEach(el => {
 							this.oil.push(el)
@@ -197,6 +202,11 @@
 						})
 					}
 				}).catch(err => {
+					uni.hideLoading();
+					uni.showToast({
+						title:'加载失败',
+						icon:'none'
+					})
 					console.log(err)
 				})
 			},
@@ -209,6 +219,8 @@
 				// this.$router.push('/complete');
 			},
 			changeMsg(e) {
+				console.log(e)
+				this.more = true;
 				this.oil = [];
 				this.page = 1;
 				this.status = e.orignItem.label;
@@ -216,6 +228,9 @@
 
 			},
 			Smore() {
+				uni.showLoading({
+					title:'加载中...'
+				})
 				this.page += 1;
 				this.getReserveList();
 			},
@@ -257,6 +272,8 @@
 
 	}
 
+	
+
 	.title {
 		width: 100%;
 		height: 44px;
@@ -267,8 +284,10 @@
 		align-content: center;
 		align-items: center;
 		align-self: center;
-		background-color: rgba(255, 255, 255, 0.8);
+		background-color: rgba(255, 255, 255, 1);
 		justify-content: center;
+		position: fixed;
+		z-index: 998;
 	}
 
 	.title .left {

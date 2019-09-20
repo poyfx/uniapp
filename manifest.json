@@ -2,7 +2,7 @@
     "name" : "安徽石油",
     "appid" : "__UNI__C5F30A1",
     "description" : "",
-    "versionName" : "0.0.2",
+    "versionName" : "0.0.5",
     "versionCode" : 1,
     "transformPx" : false,
     /* 5+App特有相关 */
@@ -14,8 +14,9 @@
             "autoclose" : true,
             "delay" : 0
         },
-        /* 模块配置 */
-        "modules" : {},
+        /* 模块配置 */// "modules" : {
+        //     "Push" : {}
+        // },
         // "Push" : {}
         // "Push" : {},
         // "Maps" : {}
@@ -69,7 +70,25 @@
                 "ios" : {
                     "appstore" : "./static/img/store.png",
                     "iphone" : {
-                        "app@2x" : "./static/img/icon.png"
+                        "app@2x" : "./static/img/icon.png",
+                        "app@3x" : "./static/img/icon.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png"
+                    },
+                    "ipad" : {
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png"
                     }
                 }
             },
@@ -84,9 +103,15 @@
                 // "push" : {
                 //     "unipush" : {}
                 // },
-                "oauth" : {}
+                "oauth" : {},
+                // "push" : {},
+                "speech" : {},
+                "push" : {
+                    "unipush" : {}
+                }
             }
         },
+        // "push" : {}
         "safearea" : {
             "background" : "#e5e5e5", // 安全区域外的背景颜色，默认值为"#FFFFFF"  
             "bottom" : {
@@ -100,6 +125,9 @@
             "right" : {
                 "offset" : "none"
             }
+        },
+        "modules" : {
+            "Push" : {}
         }
     },
     /* 快应用特有相关 */
@@ -131,3 +159,9 @@
         "domain" : "www.poyfx.top"
     }
 }
+// "push" : {}
+// 安全区域外的背景颜色，默认值为"#FFFFFF"  
+// 底部安全区域配置  
+//|auto // 底部安全区域偏移，"none"表示不空出安全区域，"auto"自动计算空出安全区域，默认值为"none"  
+// 左侧安全区域配置（横屏显示时有效）  
+

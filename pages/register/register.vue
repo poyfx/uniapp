@@ -59,8 +59,8 @@
 							</view>
 						</view>
 						<view class="modelfooter">
-							<view @tap="chooseUsersShow" style="border-right: 1px solid #e5e5e5;">取消</view>
-							<view style="color: #008aff;" @tap="buyAndCarry">确认</view>
+							<view @tap="chooseUsersShow" style="border-right: 1px solid #e5e5e5; font-size: 18px;">取消</view>
+							<view style="color: #009dff; font-size: 18px;" @tap="buyAndCarry">确认</view>
 						</view>
 					</view>
 				</transition>
@@ -85,10 +85,10 @@
 				
 				<view class="content " style="margin-top:44px;padding: 0; background: #EFEFF4;">
 					<view class="search flex">
-						<input type="text" value="" placeholder="搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
+						<input type="text" value="" placeholder="根据编号和公司名称搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
 					</view>
 					<view class="customerCompany" @tap="chooseCompany(index,item.id)" v-for="(item,index) in datas" :key="item.id">
-						<view>{{item.id}}</view>
+						<view>{{item.num}}</view>
 						<view>{{item.name}}</view>
 						<view>{{item.addr}}</view>
 					</view>
@@ -120,7 +120,7 @@
 				
 				<view class="content" style="margin-top:44px;padding: 0;background: #EFEFF4;">
 					<view class="search flex">
-						<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
+						<input type="text" value="" placeholder="根据客户经理名称搜索" class="search_input" v-model="value" @input="searchCustomer" />
 					</view>
 					<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
 						<view>{{item.realname}}</view>
@@ -276,6 +276,9 @@
 				this.Cmore = true;
 				this.datas = [];
 				this.showCompany = !this.showCompany;
+				uni.showLoading({
+					title:'加载中...'
+				})
 			},
 			// 选中公司
 			chooseCompany(e, id) {
@@ -303,6 +306,7 @@
 					page: this.Cpage,
 					pageSize: this.pageSize
 				}).then(res => {
+					uni.hideLoading()
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						console.log(res)
@@ -318,6 +322,11 @@
 						}
 					}
 				}).catch(err => {
+					uni.hideLoading();
+					uni.showToast({
+						title:'加载失败',
+						icon:'none'
+					})
 					console.log(err)
 				})
 			},
@@ -392,6 +401,9 @@
 				this.more = true;
 				this.man = [];
 				if (this.ciytId !== '') {
+					uni.showLoading({
+						title:'加载中...'
+					})
 					this.getCustomerInfo();
 					this.showCoutomer = !this.showCoutomer;
 				} else {
@@ -429,6 +441,7 @@
 					size: this.page,
 					pageSize: this.pageSize
 				}).then(res => {
+					uni.hideLoading();
 					console.log(res)
 
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
@@ -450,6 +463,11 @@
 						}
 					}
 				}).catch(err => {
+					uni.hideLoading();
+					uni.showToast({
+						title:'加载失败',
+						icon:'none'
+					})
 					console.log(err)
 				})
 			},
@@ -457,8 +475,14 @@
 			Smore() {
 				this.page += 1;
 				this.getCustomerInfo()
+				uni.showLoading({
+					title:'加载中...'
+				})
 			},
 			mores() {
+				uni.showLoading({
+					title:'加载中...'
+				})
 				this.Cpage += 1;
 				this.getCompanyInfo()
 			},
@@ -668,7 +692,7 @@
 		background-color: #fff;
 		text-align: center;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.user-list {
@@ -685,7 +709,7 @@
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 		padding: 13px;
 	}
 
@@ -761,7 +785,7 @@
 		padding: 10px 0 10px 15px;
 		border-bottom: 1px solid #d6d6d6;
 		font-size: 14px;
-		color: #666;
+		color: #616161;
 		line-height: 28px;
 	}
 
@@ -835,7 +859,7 @@
 	}
 
 	.m-info-content .infoText {
-		color: #666;
+		color: #616161;
 		flex: 1;
 	}
 

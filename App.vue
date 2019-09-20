@@ -6,39 +6,89 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch');
+			
+
+
 
 			//#ifdef APP-PLUS  
-			// var server = "http://dev.pjy.name:8180/api/bizcust/base/get_version"; //检查更新地址  
-			var appid = plus.runtime.appid
-			var version = plus.runtime.version
-
-			// var req = { //升级检测数据  
-			// 	"appid": plus.runtime.appid,
-			// 	"version": plus.runtime.version
-			// };
-			console.log(plus.runtime.appid, plus.runtime.version)
-			this.test.get('base/get_version', {
-				appid: appid,
-				version: version,
-			}).then(res => {
-				var	url = res.data.value.url
-				if (res.statusCode == 200 && res.data.errorCode === 0) {
-					if (res.data.value.status == 1) {
-						uni.showModal({ //提醒用户更新  
-							title: "更新提示",
-							content: res.data.value.note,
-							success: (res) => {
-								if (res.confirm) {
-									plus.runtime.openURL(url);
-								}
+			
+			
+			switch (uni.getSystemInfoSync().platform) {
+				case 'android':
+					console.log('运行Android上');
+					// var server = "http://dev.pjy.name:8180/api/bizcust/base/get_version"; //检查更新地址
+					var appid = plus.runtime.appid
+					var version = plus.runtime.version
+					
+					// var req = { //升级检测数据  
+					// 	"appid": plus.runtime.appid,
+					// 	"version": plus.runtime.version
+					// };
+					console.log(plus.runtime.appid, plus.runtime.version)
+					this.test.get('base/get_version', {
+						appid: appid,
+						version: version,
+						type:'android'
+					}).then(res => {
+						var url = res.data.value.url
+						if (res.statusCode == 200 && res.data.errorCode === 0) {
+							if (res.data.value.status == 1) {
+								uni.showModal({ //提醒用户更新  
+									title: "更新提示",
+									content: res.data.value.note,
+									success: (res) => {
+										if (res.confirm) {
+											plus.runtime.openURL(url);
+										}
+									}
+								})
 							}
-						})
-					}
-
-				}
-			}).catch(err => {
-				console.log(err)
-			})
+					
+						}
+					}).catch(err => {
+						console.log(err)
+					})
+					break;
+				case 'ios':
+					console.log('运行iOS上');
+					// var server = "http://dev.pjy.name:8180/api/bizcust/base/get_version"; //检查更新地址
+					var appid = plus.runtime.appid
+					var version = plus.runtime.version
+					
+					// var req = { //升级检测数据  
+					// 	"appid": plus.runtime.appid,
+					// 	"version": plus.runtime.version
+					// };
+					console.log(plus.runtime.appid, plus.runtime.version)
+					this.test.get('base/get_version', {
+						appid: appid,
+						version: version,
+						type:'ios'
+					}).then(res => {
+						var url = res.data.value.url
+						if (res.statusCode == 200 && res.data.errorCode === 0) {
+							if (res.data.value.status == 1) {
+								uni.showModal({ //提醒用户更新  
+									title: "更新提示",
+									content: res.data.value.note,
+									success: (res) => {
+										if (res.confirm) {
+											plus.runtime.openURL(url);
+										}
+									}
+								})
+							}
+					
+						}
+					}).catch(err => {
+						console.log(err)
+					})
+					break;
+				default:
+					console.log('运行在开发者工具上')
+					break;
+			}
+			
 			// uni.request({
 			// 	url: server,
 			// 	data: req,
@@ -116,7 +166,7 @@
 	/* 注册样式mtfield */
 	.mint-cell .mint-cell-wrapper {
 		font-size: 14px;
-		color: #666;
+		color: #616161;
 		border: none;
 		padding: 0
 	}

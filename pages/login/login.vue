@@ -13,7 +13,10 @@
 				<navigator url="forget/forget" class="forgetPwd color-dff">忘记密码</navigator>
 				<navigator url="../register/register" class="toReginster"> 没有账号？<text class="color-dff">马上注册</text></navigator>
 			</view>
-			<mButton :type="btnType" :disabled="btnDisabled" :value="btnValue" @handleLogin="handleLogin"></mButton>
+			<view class="mTop30">
+				<mButton :type="btnType" :disabled="btnDisabled" :value="btnValue" @handleLogin="handleLogin"></mButton>
+			</view>
+			
 		</view>
 
 	</view>
@@ -181,20 +184,20 @@
 	}
 
 	.p-font text {
-		font-size: 45upx;
-		color: #666;
+		font-size: 49upx;
+		color: #424242;
 	}
 
 	.loginInfo {
 		display: flex;
 		justify-content: space-between;
-		font-size: 24upx;
-		padding: 7px 11% 10px;
+		font-size: 28upx;
+		padding: 12px 11% 10px;
 	}
 
 	.color-dff {
 		color: #009DFF;
-		font-size: 12px;
+		font-size: 28upx;
 	}
 
 	.toReginster {

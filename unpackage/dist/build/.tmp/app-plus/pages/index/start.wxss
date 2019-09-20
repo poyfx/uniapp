@@ -1,5 +1,5 @@
 
-.background.data-v-24a37c78 {
+.background.data-v-42ba793c {
 	/* background-color: #fff; */
 	background:url('http://dev.pjy.name:8180/uploads/bizcust_main.png') no-repeat ;
 	background-size:100% 100% ;
@@ -10,23 +10,26 @@
 	height: 100%;
 	text-align: center;
 }
-.startimg.data-v-24a37c78 {
+.startimg.data-v-42ba793c {
 	width: 200px;
 	height: 200px;
 	/* box-shadow: 0 1px 3px rgba(0,0,0,0.14); */
 	margin-top: 108px;
 }
-.p-bx.data-v-24a37c78 {
+.p-bx.data-v-42ba793c {
 	width: 130px;
 	position: absolute;
 	bottom: 20px;
 	left: 50%;
 	margin-left: -65px;
 	text-align: center;
-	color:#666666;
+	color:#616161;
 }
-.p-size.data-v-24a37c78 {
-	font-size: 16px;
+.p-bx view.data-v-42ba793c{
+	font-size: 24rpx;
+}
+.p-bx .p-size.data-v-42ba793c {
+	font-size: 33rpx;
 	margin-bottom: 6px;
 }
 

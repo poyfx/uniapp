@@ -21,7 +21,7 @@
 				<infoText :textValue="invoice.way" value="按数量" :disabled="invoice.disabled"></infoText>
 				<infoText :textValue="invoice.currentOil" v-model="currentOil" :disabled="invoice.disabled"></infoText>
 				<view class="underline">
-					<view class="first-li" style="padding:10px 0 15px 0px; color: #666;">拆分方案(单位:吨)</view>
+					<view class="first-li" style="padding:10px 0 15px 0px; color: #616161;">拆分方案(单位:吨)</view>
 					<view class="splitNum">
 						<view class="invoiceMeth">
 							<input type="number" v-model="num" value="0">

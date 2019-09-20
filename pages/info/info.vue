@@ -8,7 +8,7 @@
 						<image src="../../static/img/company.png" mode="aspectFit"></image>
 						<text>公司</text>
 					</view>
-					<view style="color: #666;margin-top: 5px;">{{info.company}}</view>
+					<view style="color: #616161;margin-top: 5px;">{{info.company}}</view>
 				</view>
 				<view class="integral">
 					<view>{{integral}}</view>
@@ -215,9 +215,6 @@
 </script>
 
 <style>
-	.infoThree {
-		padding: 10px 0;
-	}
 	image {
 		width: 25px;
 		height: 25px;

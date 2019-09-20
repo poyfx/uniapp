@@ -103,7 +103,7 @@
 		data() {
 			return {
 				list: [{
-						value: "全部",
+						value: "全部订单",
 						label: 0
 					},
 					{
@@ -139,7 +139,7 @@
 				page: 1,
 				pageSize: 10,
 				status: 0,
-				showMore: false,
+				showMore: true,
 				day: '',
 				days: false,
 				time: [],
@@ -176,6 +176,7 @@
 					pageSize: this.pageSize,
 				}).then(res => {
 					console.log(res)
+					uni.hideLoading()
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						const data = res.data.value;
 						// this.info = data (显示十条)
@@ -225,6 +226,11 @@
 						})
 					}
 				}).catch(err => {
+					uni.hideLoading()
+					uni.showToast({
+						title:'加载失败',
+						icon:'none'
+					})
 					console.log(err)
 				})
 			},
@@ -242,6 +248,7 @@
 
 			},
 			changeMsg(e) {
+				this.showMore = true;
 				this.info = [];
 				this.status = e.orignItem.label;
 				this.page = 1;
@@ -250,6 +257,9 @@
 			more() {
 				this.page += 1;
 				this.getOrderListInfo();
+				uni.showLoading({
+					title:'加载中...'
+				})
 			},
 
 		},
@@ -262,7 +272,7 @@
 			selects
 		}
 	}
-</script>
+</script> 
 
 <style>
 	.loading {

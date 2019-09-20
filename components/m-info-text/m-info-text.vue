@@ -49,7 +49,7 @@
 	}
 .m-info input{
 	flex: 1;
-	color: #666;
+	color: #616161;
 }
 
 </style>

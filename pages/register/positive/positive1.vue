@@ -31,7 +31,7 @@
 								</view>
 							</view>
 							<w-picker mode="date" startYear="2019" endYear="2030" :defaultVal="[0,1,3]" :current="true" @confirm="onConfirm"
-							 ref="date" themeColor="#f00">
+							 ref="date" themeColor="#00A8FF">
 							</w-picker>
 						</view>
 					</view>

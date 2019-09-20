@@ -3,13 +3,14 @@
 		<view class="content">
 			<view class="fget-num">
 				<view class="orderDate">
-					<view>选择日期</view>
+					<view v-if="name=='orderList'">选择下单购油日期</view>
+					<view v-else>选择预约提油日期</view>
 					<view class="datetimesty">
 
 						<view style="text-align: center;" @tap="bindChange">{{date}}</view>
 
 						<w-picker mode="range" startYear="2019" endYear="2030" :defaultVal="[0,0,0,0,0,0,0]" :current="true" @confirm="onConfirm"
-						 ref="range" themeColor="#f00"></w-picker>
+						 ref="range" themeColor="#00A8FF"></w-picker>
 					</view>
 
 					<view>订单编号</view>
@@ -68,6 +69,9 @@
 			search() {
 				if (this.date == '请选择时间') this.date = '';
 				if (this.name == "orderList") {
+					uni.showLoading({
+						title:'查询中...'
+					})
 					this.test.post('order/search_order', {
 						no: this.ordernumber, //订单编号
 						start_time: this.from,
@@ -75,6 +79,7 @@
 						page: this.page,
 						pageSize: this.pageSize,
 					}).then(res => {
+						uni.hideLoading()
 						console.log(res)
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							if (res.data.value.length <= 0) {
@@ -90,9 +95,17 @@
 							}
 						}
 					}).catch(err => {
+						uni.hideLoading();
+						uni.showToast({
+							title:'查询失败',
+							icon:'none'
+						})
 						console.log(err)
 					})
 				} else if (this.name == "reserveOilList") {
+					uni.showLoading({
+						title:'查询中...'
+					})
 					this.test.post('order/search_reserve', {
 						no: this.ordernumber, //订单编号
 						start_time: this.from,
@@ -100,6 +113,7 @@
 						page: this.page,
 						pageSize: this.pageSize,
 					}).then(res => {
+						uni.hideLoading();
 						console.log(res);
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							if (res.data.value.length <= 0) {
@@ -115,6 +129,11 @@
 							}
 						}
 					}).catch(err => {
+						uni.hideLoading();
+						uni.showToast({
+							title:'查询失败',
+							icon:'none'
+						})
 						console.log(err)
 					})
 				}
@@ -131,6 +150,7 @@
 <style scoped>
 	.orderDate {
 		padding: 10px 15px 24px;
+		color: #616161;
 	}
 
 

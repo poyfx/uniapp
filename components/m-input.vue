@@ -76,10 +76,11 @@
 
 	.m-input {
 		width: 70%;
-		border: 1px solid #e5e5e5;
+		border: 1px solid #c3c3c3;
 		padding: 11px 15px;
 		border-radius:4px 4px 0 0 ;
 		font-size: 17px;
 		border-bottom: none;
+		color:#616161
 	}
 </style>

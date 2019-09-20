@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<titles :titles="titles"></titles>
-		
+
 		<view class="content">
 			<view class="fget-num paddingLeft15">
 				<!-- 公司 -->
@@ -130,7 +130,7 @@
 			</view> -->
 			<view class="self_header ">
 				<view class="self_header_bar">
-					
+
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="chooseAddress =! chooseAddress">
@@ -148,18 +148,18 @@
 					<view class="harvest-address" @tap="isAddress(index)">
 						<view>{{item.address}}</view>
 					</view>
-					<view class="harvest-write">
+					<!-- <view class="harvest-write">
 						<radio-group @change="sure">
 							<label class="radio">
 								<radio :value="String(item.is_default)" :checked="index === range" />设置为默认地址
 							</label>
-						</radio-group>
+						</radio-group> -->
 						<!-- 编辑修改地址 和删除地址 暂时不用 -->
 						<!-- <view class="operation">
 							<button type="defult" class="write" size="small" @tap="edit">编辑</button>
 							<button type="defult" class="write" size="small" @tap="delate">删除</button>
 						</view> -->
-					</view>
+					<!-- </view> -->
 				</view>
 
 			</view>
@@ -174,7 +174,7 @@
 		<view v-show="showCompany" class="companyCustomer">
 			<view class="self_header ">
 				<view class="self_header_bar">
-					
+
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="showCompany =! showCompany">
@@ -185,10 +185,10 @@
 			</view>
 			<view class="company_content">
 				<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
-				<view class="newCompany">{{item.name}}</view>
+					<view class="newCompany">{{item.name}}</view>
+				</view>
 			</view>
-			</view>
-			
+
 		</view>
 
 		<!-- 客户经理 -->
@@ -200,7 +200,7 @@
 			<!-- <titles :titles="coutomerTitles"></titles> -->
 			<view class="self_header">
 				<view class="self_header_bar">
-					
+
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="showCoutomer = !showCoutomer">
@@ -209,8 +209,8 @@
 					<view>{{coutomerTitles}}</view>
 				</view>
 			</view>
-			
-			
+
+
 			<view class="content" style="margin-top:44px; padding: 0;">
 				<view class="search flex">
 					<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
@@ -240,10 +240,10 @@
 	export default {
 		data() {
 			return {
-				titles:'下单购油',
-				addrTitles:'选择地址',
-				coutomerTitles:'选择客户经理',
-				companyTitles:'选择公司',
+				titles: '下单购油',
+				addrTitles: '选择地址',
+				coutomerTitles: '选择客户经理',
+				companyTitles: '选择公司',
 				company: "",
 				productOil: '选择油品',
 				modeOil: "选择提油方式",
@@ -300,7 +300,7 @@
 							// res.data.value.forEach(el => {
 							// 	const info = el
 							that.company = res.data.value.name;
-							that.companyId = res.data.value.id 
+							that.companyId = res.data.value.id
 							// })
 						} else {
 
@@ -323,11 +323,22 @@
 				const that = this;
 				this.page = 1;
 				this.showCompany = true;
+				uni.showLoading({
+					title:'加载中...'
+				})
 				this.test.post('order/listOrgs')
 					.then(res => {
-						console.log(res)
+						uni.hideLoading();
+						console.log(res);
 						that.newDatas = res.data.value;
 
+					}).catch(err=>{
+							uni.hideLoading();
+							uni.showToast({
+								title:'加载失败',
+								icon:'none'
+							})
+						console.log(err)
 					})
 			},
 
@@ -340,43 +351,47 @@
 				this.company = this.newDatas[e].name;
 				this.companyId = this.newDatas[e].id;
 				this.showCompany = !this.showCompany;
-				this.test.post('base/listManagers', { //选择公司后默认第一个客户经理
-						realname: this.value,
-						org_id: this.companyId,
-						size: this.page,
-						pageSize: this.pageSize,
-					})
-					.then(res => {
-						// that.newDatas = res.data.value
-						if (res.statusCode == 200 && res.data.errorCode == 0) {
-							// console.log()
-							that.man = [];
-							res.data.value.forEach(el => {
-								that.man.push(el)
-							})
-							this.myManager = this.man[0].realname;
-							if (res.data.value.length < 10 && res.data.value.length > 0) {
-								this.more = false;
-							} else if (res.data.value.length == 0) {
-								this.more = false;
-								uni.showToast({
-									title: '没有更多了',
-									icon: "none"
-								})
-							}
-						}
-					})
-				console.log(this.man)
+				this.myManager = '请选择';
+				// this.test.post('base/listManagers', { //选择公司后默认第一个客户经理
+				// 		realname: this.value,
+				// 		org_id: this.companyId,
+				// 		size: this.page,
+				// 		pageSize: this.pageSize,
+				// 	})
+				// 	.then(res => {
+				// 		// that.newDatas = res.data.value
+				// 		if (res.statusCode == 200 && res.data.errorCode == 0) {
+				// 			// console.log()
+				// 			that.man = [];
+				// 			res.data.value.forEach(el => {
+				// 				that.man.push(el)
+				// 			})
+				// 			this.myManager = this.man[0].realname;
+				// 			if (res.data.value.length < 10 && res.data.value.length > 0) {
+				// 				this.more = false;
+				// 			} else if (res.data.value.length == 0) {
+				// 				this.more = false;
+				// 				uni.showToast({
+				// 					title: '没有更多了',
+				// 					icon: "none"
+				// 				})
+				// 			}
+				// 		}
+				// 	})
+				// console.log(this.man)
 
 
 			},
 
 			getNewCustemerInfo() {
-					this.man = [];
-					this.page = 1;
-					this.more = true;
-					this.getNewCustemer();
-					this.showCoutomer = true;
+				this.man = [];
+				this.page = 1;
+				this.more = true;
+				this.getNewCustemer();
+				this.showCoutomer = true;
+				uni.showLoading({
+					title:'加载中...'
+				})
 			},
 			getNewCustemer() {
 				console.log(this.value)
@@ -388,13 +403,14 @@
 					})
 					.then(res => {
 						// that.newDatas = res.data.value
+						uni.hideLoading()
 						console.log(res)
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							// console.log()
 							res.data.value.forEach(el => {
 								this.man.push(el)
 							})
-							this.myManager = this.man[0].realname;
+							// this.myManager = this.man[0].realname;
 							if (res.data.value.length < 10 && res.data.value.length > 0) {
 								this.more = false;
 							} else if (res.data.value.length == 0) {
@@ -405,6 +421,13 @@
 								})
 							}
 						}
+					}).catch(err=>{
+						uni.hideLoading();
+						uni.showToast({
+							title:'加载失败',
+							icon:'none'
+						})
+						console.log(err)
 					})
 
 
@@ -430,6 +453,9 @@
 			Smore() {
 				this.page += 1;
 				this.getNewCustemer()
+				uni.showLoading({
+					title:'加载中...'
+				})
 			},
 			// 付款方式
 			payShow() {
@@ -485,7 +511,7 @@
 			// 获取地址信息
 			getAddressInfo() {
 				const that = this;
-				this.range=0;
+				this.range = 0;
 				this.test.post('user/getAddrList').then(res => {
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value;
@@ -520,7 +546,7 @@
 
 			// 选择地址
 			isAddress(inx) {
-				
+
 				console.log(inx, this.info)
 				const that = this;
 				uni.showModal({
@@ -547,7 +573,7 @@
 							for (let i = 0; i < this.info.length; i++) {
 								if (this.info[i].is_default == e.target.value) {
 									this.range = i;
-									console.log(this.info,e)
+									console.log(this.info, e)
 									this.test.post("user/setDefaultAddr", {
 										addr_id: this.info[i].cl_id
 									}).then(res => {
@@ -572,93 +598,113 @@
 
 			toBuy() {
 				const that = this;
-				if (this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品') {
-					if (this.getTpe !== null && this.getTpe !== '') {
-						if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
-							if (this.count !== null && this.count !== '') {
+				if (this.myManager !== null && this.myManager !== '' && this.myManager !== '请选择') {
+					if (this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品') {
+						if (this.getTpe !== null && this.getTpe !== '') {
+							if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
+								if (this.count !== null && this.count !== '') {
 
-								uni.showModal({
-									title: '提示',
-									content: '提交后无法修改，是否提交',
-									success: function(res) {
-										if (res.confirm) {
-											that.test.post('order/make_order', { //http://192.168.0.156:8080/api/bizcust/
-												org_id: that.companyId,
-												manager_id: that.myManagerId,
-												manager_name: that.myManager,
-												oil_type: that.productOil,
-												get_type: that.getTpe,
-												pay_type: that.modePay,
-												count: that.count,
-												ship_addr: that.address,
-												remark: that.Remarks,
-											}).then(res => {
-												console.log(res)
-												if (res.statusCode == 200 && res.data.errorCode == 0) {
-													uni.redirectTo({
-														url: '../orderList/orderList'
-													})
-												}  else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003){
-													uni.showModal({
-														title: '提示',
-														content: '用户信息已失效，请重新登录',
-														success: function(res) {
-															if (res.confirm) {
-																uni.reLaunch({
-																	url: '../login/login'
-																})
-															} else {
-																uni.reLaunch({
-																	url: '../login/login'
-																})
+									uni.showModal({
+										title: '提示',
+										content: '提交后无法修改，是否提交',
+										success: function(res) {
+											
+											if (res.confirm) {
+												uni.showLoading({
+													title:'提交中...'
+												})
+												that.test.post('order/make_order', { //http://192.168.0.156:8080/api/bizcust/
+													org_id: that.companyId,
+													manager_id: that.myManagerId,
+													manager_name: that.myManager,
+													oil_type: that.productOil,
+													get_type: that.getTpe,
+													pay_type: that.modePay,
+													count: that.count,
+													ship_addr: that.address,
+													remark: that.Remarks,
+												}).then(res => {
+													console.log(res)
+													uni.hideLoading()
+													if (res.statusCode == 200 && res.data.errorCode == 0) {
+														uni.redirectTo({
+															url: '../orderList/orderList'
+														})
+													} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+														uni.showModal({
+															title: '提示',
+															content: '用户信息已失效，请重新登录',
+															success: function(res) {
+																if (res.confirm) {
+																	uni.reLaunch({
+																		url: '../login/login'
+																	})
+																} else {
+																	uni.reLaunch({
+																		url: '../login/login'
+																	})
+																}
 															}
-														}
-													})
-												}else{
+														})
+													} else {
+														uni.showToast({
+															title: res.data.message,
+															icon: "none"
+														})
+													}
+												}).catch(err => {
+													uni.hideLoading();
 													uni.showToast({
-														title: res.data.message,
-														icon: "none"
+														title:'提交失败',
+														icon:'none'
 													})
-												}
-											}).catch(err => {
-												console.log(err)
-											})
-										} else {
-											return;
+													console.log(err)
+												})
+											} else {
+												return;
+											}
 										}
-									}
-								})
+									})
 
 
 
-								//购油数量	
+									//购油数量	
+								} else {
+									uni.showToast({
+										title: '请输入购油数量',
+										icon: 'none'
+									})
+								}
+								//付款方式
 							} else {
 								uni.showToast({
-									title: '请输入购油数量',
+									title: '请选择付款方式',
 									icon: 'none'
 								})
 							}
-							//付款方式
+							//提油	方式
 						} else {
 							uni.showToast({
-								title: '请选择付款方式',
+								title: '请选择提油方式',
 								icon: 'none'
 							})
 						}
-						//提油	方式
+						//油品	
 					} else {
 						uni.showToast({
-							title: '请选择提油方式',
+							title: '请选择油品',
 							icon: 'none'
 						})
 					}
-					//油品	
 				} else {
 					uni.showToast({
-						title: '请选择油品',
-						icon: 'none'
+						title: '请选择客户经理',
+						icon: "none"
 					})
 				}
+
+
+
 
 			},
 		},
@@ -692,11 +738,11 @@
 	}
 
 	.m-info-content view {
-		color: #666;
+		color: #616161;
 	}
 
 	.m-info text {
-		width: 80px;
+		width: 4rem;
 	}
 
 	.m-info image {
@@ -741,7 +787,7 @@
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footmodel .modelmain text {
@@ -751,7 +797,7 @@
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footermain {
@@ -856,7 +902,7 @@
 		padding: 10px 0 10px 15px;
 		border-bottom: 1px solid #d6d6d6;
 		font-size: 14px;
-		color: #666;
+		color: #616161;
 		line-height: 28px;
 	}
 
@@ -882,12 +928,14 @@
 		width: 100%;
 		padding: 4px 15px;
 	}
-	.self_header_position{
+
+	.self_header_position {
 		position: fixed;
-		
+
 		left: 0;
 	}
-	.company_content{
+
+	.company_content {
 		margin-top: 55px;
 	}
 </style>

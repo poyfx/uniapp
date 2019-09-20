@@ -143,7 +143,7 @@
 				<tButton :type="type" class="tButton" :content="btnValue" :disabled="disabled" @tell="tells"></tButton>
 			</view>
 			<view class="nextBox mTop15 mB" v-else-if="status ==4  ">
-				<mButton :type="type" :value="btnValue" :disabled="disabled" @tell="tell"></mButton>
+				<mButton :type="type" :value="btnValue" :disabled="disabled" @tell="payment"></mButton>
 			</view>
 			<view class="m-two-btn mTop15 mB" v-else-if="status == 9  ">
 				<button class="tButton cal" @tap="closePage">关闭</button>
@@ -233,14 +233,6 @@
 					url: "../invoice/invoice?id=" + this.orderId + '&number=' + num + '&no=' + this.no + '&status=' + this.status + '&company=' + this.order.org_name + '&moeny=' + this.oilPrice
 				})
 			},
-			tell() {
-				console.log(this.status)
-				this.disabled = !this.disabled
-				uni.showToast({
-					title: "已提醒财务确认,请耐心等待",
-					icon: "none"
-				})
-			},
 			tells(){
 				this.test.post('order/com_payment',{
 					id:this.orderId,
@@ -308,6 +300,27 @@
 			goRotate() {
 				uni.navigateTo({
 					url:'./orderStatus/orderStatus?id='+this.orderId +'&user_id='+this.order.user_id
+				})
+			},
+			payment(){
+				this.test.post('http://192.168.0.156:8080/api/bizcust/order/urgent_payment',{
+					id:this.orderId
+				}).then(res=>{
+					console.log(res)
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						this.disabled = !this.disabled;
+						uni.showToast({
+							title: res.data.message,
+							icon: "none"
+						})
+					}else{
+						uni.showToast({
+							title: res.data.message,
+							icon: "none"
+						})
+					}
+				}).catch(err=>{
+					console.log(err)
 				})
 			}
 		},

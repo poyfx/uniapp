@@ -58,51 +58,51 @@
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice" >
-					<text>0#柴油</text>
-					<view >
+					<text class="oilName">0#柴油</text>
+					<view class="oilPrice">
 						<text :class="gain.diesel_0>0?s:j">{{datas.diesel_0}}</text>
 					</view>
 
-					<text :class="gain.diesel_0>0?s:j">{{gain.diesel_0}}%</text>
+					<text class="paddingLeft10" :class="gain.diesel_0>0?s:j">{{gain.diesel_0}}%</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
-					<text>-10#柴油</text>
-					<view class="">
+					<text class="oilName">-10#柴油</text>
+					<view  class="oilPrice">
 						<text :class="gain.diesel_10>0?s:j">{{datas.diesel_10}}</text>
 					</view>
 
-					<text :class="gain.diesel_10>0?s:j">{{gain.diesel_10}}%</text>
+					<text class="paddingLeft10" :class="gain.diesel_10>0?s:j">{{gain.diesel_10}}%</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
-					<text>92#国六</text>
-					<view class="">
+					<text  class="oilName">92#国六</text>
+					<view class="oilPrice">
 						<text :class="gain.gas_92>0?s:j">{{datas.gas_92}}</text>
 					</view>
 
-					<text :class="gain.gas_92>0?s:j">{{gain.gas_92}}%</text>
+					<text class="paddingLeft10" :class="gain.gas_92>0?s:j">{{gain.gas_92}}%</text>
 				</view>
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
-					<text>95#国六</text>
-					<view class="">
+					<text class="oilName">95#国六</text>
+					<view class="oilPrice">
 						<text :class="gain.gas_95>0?s:j">{{datas.gas_95}}</text>
 					</view>
 
-					<text :class="gain.gas_95>0?s:j">{{gain.gas_95}}%</text>
+					<text class="paddingLeft10" :class="gain.gas_95>0?s:j">{{gain.gas_95}}%</text>
 				</view>
 			</view>
 			<view class="priceLiNo">
 				<view class="nowPrice">
-					<text>98#国六</text>
-					<view class="">
+					<text class="oilName">98#国六</text>
+					<view class="oilPrice">
 						<text :class="gain.gas_98>0?s:j">{{datas.gas_98}}</text>
 					</view>
-					<text :class="gain.gas_98>0?s:j">{{gain.gas_98}}%</text>
+					<text class="paddingLeft10" :class="gain.gas_98>0?s:j">{{gain.gas_98}}%</text>
 				</view>
 			</view>
 		</view>
@@ -405,10 +405,11 @@
 <style>
 	.nowPrice {
 		display: flex;
-		justify-content: space-between
+		justify-content: space-between;
+		
 	}
 	.nowPrice:first-child>text{
-		width: 62px;
+		width: 4rem;
 	}
 
 	.index-title {
@@ -452,6 +453,8 @@
 	.temperature {
 		font-size: 80upx;
 		padding-bottom: 9px;
+		font-weight: 100;
+		text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 	}
 
 	.weather-right {
@@ -470,5 +473,8 @@
 
 	.r-weather {
 		padding-bottom: 10px;
+	}
+	.oilName,.oilPrice{
+		flex: 1;
 	}
 </style>

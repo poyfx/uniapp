@@ -1,5 +1,5 @@
 
-.m-input-view.data-v-2853b8a9 {
+.m-input-view.data-v-6f3d4ee2 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -14,12 +14,13 @@
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.m-input.data-v-2853b8a9 {
+.m-input.data-v-6f3d4ee2 {
 	width: 70%;
-	border: 1px solid #e5e5e5;
+	border: 1px solid #c3c3c3;
 	padding: 11px 15px;
 	border-radius:4px 4px 0 0 ;
 	font-size: 17px;
 	border-bottom: none;
+	color:#616161
 }
 

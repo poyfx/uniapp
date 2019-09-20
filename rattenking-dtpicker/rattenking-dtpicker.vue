@@ -209,7 +209,7 @@
 	.rui-picker{
 	  height: 10vw;
 	  font-size: 4vw;
-	  color: #000;
+	  color: #616161;
 	  display: -webkit-flex;
 	  display: flex;
 	  align-items: center;

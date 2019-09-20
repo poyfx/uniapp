@@ -1,3 +1,4 @@
+
 .content {
 	margin: 0 auto;
 	padding-top: 15px;
@@ -50,7 +51,7 @@
 
 .navbar view text {
 	font-size: 24upx;
-	color: #666;
+	color: #616161;
 }
 
 /* 内容 */
@@ -93,7 +94,7 @@
 .title-p {
 	font-weight: bold;
 	font-size: 20px;
-	color: #666;
+	color: #424242;
 	display: inline-block;
 }
 
@@ -119,7 +120,7 @@
 	display: flex;
 	justify-content: space-between;
 	
-	color: #666;
+	color: #616161;
 }
 
 .numberBtn {
@@ -160,9 +161,8 @@
 
 
 .userIntegraltitle text{
-	font-size: 14px;
 	font-weight: bold;
-	color: #666666;
+	color: #616161;
 }
 
 .userIntegraltitle>view>image {
@@ -221,9 +221,12 @@
 .userinfos {
 	padding-bottom: 11px;
 	border-bottom: 1px solid #e5e5e5;
+	align-content: center;
+	align-self: center;
 }
 
 .userIntegral .integral view {
+	color: #fff;
 	font-size: 30px;
 }
 
@@ -269,7 +272,7 @@ input {
 }
 
 .underline input {
-	color: #666666;
+	color: #616161;
 	font-size: 16px;
 }
 
@@ -318,7 +321,7 @@ input {
 	background-color: #fff;
 	text-align: center;
 	font-size: 17px;
-	color: #666666;
+	color: #616161;
 	box-shadow: 0 0 10px #aaa;
 	position: fixed;
 	top: 0;
@@ -376,14 +379,13 @@ input {
 .fget-eara {
 	/* height:100px; */
 	padding: 10px 15px 10px 0;
-	color: #666;
+	color: #616161;
 }
 
 .fget-num .fget-erea .secend-in textarea {
 	height: 44px;
 	padding: 0px 5px;
 	border: none;
-	font-family: "微软雅黑";
 	flex: 1;
 	font-size: 14px;
 }
@@ -643,7 +645,7 @@ input {
 }
 
 .orderDetails:last-child textarea {
-	color: #666;
+	color: #616161;
 }
 
 .pay {
@@ -698,7 +700,7 @@ input {
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footmodel .modelmain text {
@@ -708,7 +710,7 @@ input {
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footermain {

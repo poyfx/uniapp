@@ -31,11 +31,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "忘记密码",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -46,11 +46,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "设置密码",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -77,11 +77,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "上传授权资料",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -92,11 +92,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "上传授权资料",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -107,11 +107,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "上传授权资料",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -127,11 +127,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "编辑信息",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -141,11 +141,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "申请权限",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -155,11 +155,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "收货地址",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -169,11 +169,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "新增地址",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -183,11 +183,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "修改密码",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -212,11 +212,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "选择公司",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -239,7 +239,7 @@
 								"fontSize": "15px",
 								"float": "right", //靠右第一个
 								"width": "46px",
-								"color": "#666"
+								"color": "#424242"
 								//"redDot": true //默认图标按钮右上角有红色点状标志
 							}
 						]
@@ -251,11 +251,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "订单搜索",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 
 				}
@@ -280,11 +280,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "订单详情",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 				}
 			}
@@ -293,11 +293,11 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"titleColor": "#666",
+						"titleColor": "#424242",
 						"titleText": "开具发票",
 						"backgroundColor": "#FFF",
 						"fontWeight": "normal",
-						"titleSize": "17px"
+						"titleSize": "40upx"
 					}
 				}
 			}
@@ -320,11 +320,11 @@
 			"path": "pages/reserveOil/orederNumber/orederNumber",
 			"style": {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "选择单号",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
 
@@ -353,7 +353,7 @@
 // 							"fontSize": "14px",
 // 							"float": "right", //靠右第一个
 // 							"width": "46px",
-// 							"color": "#666"
+// 							"color": "#424242"
 // 
 // 						}]
 // 					}
@@ -394,77 +394,66 @@
 			"path": "pages/reserveOilList/confirmed/oliCode/oliCode",
 			"style": {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "提油码",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
 		}, {
 			"path": "pages/info/stayOil/stayOil",
 			"style": {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "待提油量",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
-				}
-			}
-		}, {
-			"path": "pages/customer/customer",
-			"style": {
-				"titleNView": {
-					"titleColor": "#666",
-					"titleText": "选择客户经理",
-					"backgroundColor": "#FFF",
-					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
 		}, {
 			"path": "pages/info/stayOil/oilCodeDetali/oilCodeDetali",
 			"style": {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "提油码",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
 		}, {
 			"path": "pages/newWeb/newWeb",
 			"style": {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "跳转",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
 		}, {
 			"path": "pages/info/feedback/feedback",
 			"style": {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "用户反馈",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
 		}, {
 			"path": "pages/orderList/orderDtails/orderStatus/orderStatus",
 			"style": {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "订单详情",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
 		}, {
@@ -475,11 +464,11 @@
             "path" : "pages/info/apply/uploadImg/uploadImg",
             "style" : {
 				"titleNView": {
-					"titleColor": "#666",
+					"titleColor": "#424242",
 					"titleText": "上传授权资料",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
-					"titleSize": "17px"
+					"titleSize": "40upx"
 				}
 			}
         }

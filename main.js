@@ -3,7 +3,7 @@ import App from './App'
 import store from './store/index.js'
 import './common/css/base.css'
 import './common/css/index.css'
-import './common/css/style.css'
+// import './common/css/style.css'
 import {test,http} from './utils/request/index.js'
 Vue.config.productionTip = false
 import titles from './components/title.vue'

@@ -7,7 +7,7 @@
   "id": "__UNI__C5F30A1",
   "name": "安徽石油",
   "version": {
-    "name": "0.0.2",
+    "name": "0.0.5",
     "code": 1
   },
   "description": "",
@@ -18,6 +18,7 @@
     "url": ""
   },
   "permissions": {
+    "Push": {},
     "UniNView": {
       "description": "UniNView原生渲染"
     }
@@ -53,7 +54,25 @@
         "ios": {
           "appstore": "./static/img/store.png",
           "iphone": {
-            "app@2x": "./static/img/icon.png"
+            "app@2x": "./static/img/icon.png",
+            "app@3x": "./static/img/icon.png",
+            "spotlight@2x": "unpackage/res/icons/80x80.png",
+            "spotlight@3x": "unpackage/res/icons/120x120.png",
+            "settings@2x": "unpackage/res/icons/58x58.png",
+            "settings@3x": "unpackage/res/icons/87x87.png",
+            "notification@2x": "unpackage/res/icons/40x40.png",
+            "notification@3x": "unpackage/res/icons/60x60.png"
+          },
+          "ipad": {
+            "app": "unpackage/res/icons/76x76.png",
+            "app@2x": "unpackage/res/icons/152x152.png",
+            "notification": "unpackage/res/icons/20x20.png",
+            "notification@2x": "unpackage/res/icons/40x40.png",
+            "proapp@2x": "unpackage/res/icons/167x167.png",
+            "settings": "unpackage/res/icons/29x29.png",
+            "settings@2x": "unpackage/res/icons/58x58.png",
+            "spotlight": "unpackage/res/icons/40x40.png",
+            "spotlight@2x": "unpackage/res/icons/80x80.png"
           }
         }
       },
@@ -97,6 +116,10 @@
       "apple": {},
       "plugins": {
         "oauth": {},
+        "speech": {},
+        "push": {
+          "unipush": {}
+        },
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"

@@ -370,7 +370,7 @@
 	}
 
 	.m-info .m-info-contents text {
-		width: 80px;
+		width: 5rem;
 	}
 
 	.m-info-contents input {
@@ -388,7 +388,7 @@
 	}
 
 	.m-info-content text {
-		width: 80px;
+		width:4rem;
 	}
 
 	.m-info-content .infoText {
@@ -452,7 +452,7 @@
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footmodel .modelmain view {
@@ -462,7 +462,7 @@
 		text-align: center;
 		border-bottom: 1px solid #e5e5ee;
 		font-size: 18px;
-		color: #666;
+		color: #616161;
 	}
 
 	.footermain {

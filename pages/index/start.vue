@@ -6,7 +6,7 @@
 			</view>
 			<view class="p-bx">
 				<view class="p-size">{{name}}</view>
-				<view>version 1.0</view>
+				<view>version {{version}}</view>
 			</view>
 		</view>
 	</view>
@@ -22,12 +22,25 @@
 		data() {
 			return {
 				name: '安徽石油商户中心',
-				src: logo
+				src: logo,
+				version: '',
+				token:'',
 			}
 		},
 		onShow() {
+			//#ifdef APP-PLUS  
+				this.version = plus.runtime.version
+			//#endif
 			console.log(this.hasLogin)
-			if (this.hasLogin == false) {
+			const that = this;
+			uni.getStorage({
+				key:"Token",
+				success:function(res){
+					console.log(res)
+					 that.token = res.data
+				}
+			})
+			if (this.token == '' || this.token== null) {
 				const timer = setTimeout(function() {
 					uni.navigateTo({
 						url: '../login/login',
@@ -46,28 +59,28 @@
 						}
 					})
 				}, 2000)
-				 this.getNewInfo();
+				this.getNewInfo();
 			};
-			
+
 		},
 		methods: {
-			
+
 			//app退出再次进入时获取最新信息
 			getNewInfo() {
-			const that = this;
-				this.test.post('user/get_base_data',{
-					Token:this.Token
+				const that = this;
+				this.test.post('user/get_base_data', {
+					Token: this.Token
 				}).then(res => {
 					// console.log(res)
 					// debugger
 					// uni.setStorageSync('userInfo',res.data.value)
 					uni.setStorage({
-					    key: 'userInfo',
-					    data: res.data.value,
+						key: 'userInfo',
+						data: res.data.value,
 					});
-					
-					
-					
+
+
+
 				}).catch(err => {
 					console.log(err)
 				})
@@ -75,15 +88,15 @@
 
 		},
 		computed: {
-			...mapState(["hasLogin", "userInfo", "roles",'Token'])
+			...mapState(["hasLogin", "userInfo", "roles"])
 		},
 	}
 </script>
 <style scoped>
 	.background {
 		/* background-color: #fff; */
-		background:url('http://dev.pjy.name:8180/uploads/bizcust_main.png') no-repeat ;
-		background-size:100% 100% ;
+		background: url('http://dev.pjy.name:8180/uploads/bizcust_main.png') no-repeat;
+		background-size: 100% 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -106,11 +119,15 @@
 		left: 50%;
 		margin-left: -65px;
 		text-align: center;
-		color:#666666;
+		color: #616161;
 	}
 
-	.p-size {
-		font-size: 16px;
+	.p-bx view {
+		font-size: 24upx;
+	}
+
+	.p-bx .p-size {
+		font-size: 33upx;
 		margin-bottom: 6px;
 	}
 </style>
