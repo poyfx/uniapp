@@ -75,7 +75,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e5e5ee;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 }
 .footmodel .modelmain text.data-v-4dd35464 {
 	display: block;
@@ -84,7 +84,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e5e5ee;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 }
 .footermain.data-v-4dd35464 {
 	width: 100%;

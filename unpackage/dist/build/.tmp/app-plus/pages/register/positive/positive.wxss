@@ -1,8 +1,8 @@
 
-.idCard.data-v-7e64c4bf {
+.idCard.data-v-b4251c44 {
 	width: 100%;
 }
-.m-info.data-v-7e64c4bf {
+.m-info.data-v-b4251c44 {
 	padding: 10px 10px;
 	border-top: 1px solid #E5E5E5;
 	-webkit-align-content: center;
@@ -20,7 +20,7 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.m-info-content.data-v-7e64c4bf {
+.m-info-content.data-v-b4251c44 {
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	    -ms-flex-pack: start;
@@ -36,10 +36,10 @@
 	    -ms-flex-item-align: center;
 	        align-self: center;
 }
-.m-info-content text.data-v-7e64c4bf {
+.m-info-content text.data-v-b4251c44 {
 	width: 100px;
 }
-.m-info-text.data-v-7e64c4bf {
+.m-info-text.data-v-b4251c44 {
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	    -ms-flex-pack: start;
@@ -55,13 +55,13 @@
 	    -ms-flex-item-align: center;
 	        align-self: center;
 }
-.m-info image.data-v-7e64c4bf {
+.m-info image.data-v-b4251c44 {
 	width: 12px;
 	height: 12px;
 
 	margin-left: 10px;
 }
-.footmodel.data-v-7e64c4bf {
+.footmodel.data-v-b4251c44 {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.4);
@@ -69,7 +69,7 @@
 	bottom: 0px;
 	left: 0;
 }
-.footmodel .modelmain view.data-v-7e64c4bf {
+.footmodel .modelmain view.data-v-b4251c44 {
 	background-color: #fff;
 	padding: 13px;
 	text-align: center;
@@ -77,7 +77,7 @@
 	font-size: 18px;
 	color: #616161;
 }
-.footmodel .modelmain text.data-v-7e64c4bf {
+.footmodel .modelmain text.data-v-b4251c44 {
 	display: block;
 	background-color: #fff;
 	padding: 13px;
@@ -86,16 +86,16 @@
 	font-size: 18px;
 	color: #616161;
 }
-.footermain.data-v-7e64c4bf {
+.footermain.data-v-b4251c44 {
 	width: 100%;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	-webkit-animation: show1-data-v-7e64c4bf 0.3s;
-	        animation: show1-data-v-7e64c4bf 0.3s;
+	-webkit-animation: show1-data-v-b4251c44 0.3s;
+	        animation: show1-data-v-b4251c44 0.3s;
 	border-radius: 8px 8px 0 0;
 }
-.modelfooter.data-v-7e64c4bf {
+.modelfooter.data-v-b4251c44 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -106,14 +106,14 @@
 
 	line-height: 50px;
 }
-.modelfooter view.data-v-7e64c4bf {
+.modelfooter view.data-v-b4251c44 {
 	width: 100%;
 	text-align: center;
 }
-.footmodel .modelmain view.data-v-7e64c4bf:hover {
+.footmodel .modelmain view.data-v-b4251c44:hover {
 	background-color: #e5e5e5;
 }
-@-webkit-keyframes show1-data-v-7e64c4bf {
+@-webkit-keyframes show1-data-v-b4251c44 {
 0% {
 		bottom: -241px;
 }
@@ -121,7 +121,7 @@
 		bottom: 0px;
 }
 }
-@keyframes show1-data-v-7e64c4bf {
+@keyframes show1-data-v-b4251c44 {
 0% {
 		bottom: -241px;
 }
@@ -129,7 +129,7 @@
 		bottom: 0px;
 }
 }
-@-webkit-keyframes leave-data-v-7e64c4bf {
+@-webkit-keyframes leave-data-v-b4251c44 {
 100% {
 		bottom: 0px;
 }
@@ -137,7 +137,7 @@
 		bottom: -362px;
 }
 }
-@keyframes leave-data-v-7e64c4bf {
+@keyframes leave-data-v-b4251c44 {
 100% {
 		bottom: 0px;
 }
@@ -145,7 +145,7 @@
 		bottom: -362px;
 }
 }
-.stepNum.data-v-7e64c4bf {
+.stepNum.data-v-b4251c44 {
 	display: inline-block;
 	width: 45px;
 	height: 45px;
@@ -157,13 +157,13 @@
 	color: #fff;
 	background-color: #CBCBCB;
 }
-.step-active.data-v-7e64c4bf {
+.step-active.data-v-b4251c44 {
 	background-color: #00a8ff;
 }
-.step-ago.data-v-7e64c4bf {
+.step-ago.data-v-b4251c44 {
 	background: #7eeab8;
 }
-.step-wait.data-v-7e64c4bf {
+.step-wait.data-v-b4251c44 {
 	background-color: #FD8E65;
 }
 

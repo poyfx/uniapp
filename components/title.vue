@@ -1,9 +1,9 @@
 <template>
 	<view class="self_header">
 		<view class="self_header_bar">
-			
+			<view class="top_view"></view>  
 		</view>
-		<view class="self_header_title flex">
+		<view class="self_header_title flex" >
 			<view class="leftBtn" @tap="back">
 				<uni-icon type="arrowleft" size="27"></uni-icon>
 			</view>

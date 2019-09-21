@@ -1,10 +1,10 @@
 {
   "titleNView": {
-    "titleColor": "#666",
+    "titleColor": "#424242",
     "titleText": "提油码",
     "backgroundColor": "#FFF",
     "fontWeight": "normal",
-    "titleSize": "17px"
+    "titleSize": "40upx"
   },
   "usingComponents": {
     "m-button": "/components/m-button",

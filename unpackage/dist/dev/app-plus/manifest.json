@@ -7,7 +7,7 @@
   "id": "__UNI__C5F30A1",
   "name": "安徽石油",
   "version": {
-    "name": "0.0.1",
+    "name": "0.0.7",
     "code": 1
   },
   "description": "",
@@ -19,9 +19,6 @@
   },
   "permissions": {
     "Push": {},
-    "Maps": {
-      "coordType": "gcj02"
-    },
     "UniNView": {
       "description": "UniNView原生渲染"
     }
@@ -32,9 +29,8 @@
       "concatenate": true
     },
     "splashscreen": {
-      "target": "id:1",
-      "autoclose": true,
-      "waiting": false,
+      "autoclose": false,
+      "waiting": true,
       "delay": 0
     },
     "popGesture": "close",
@@ -56,14 +52,35 @@
           "xxxhdpi": "./static/img/icon.png"
         },
         "ios": {
-          "appstore": "./static/img/store.png"
+          "appstore": "./static/img/store.png",
+          "iphone": {
+            "app@2x": "./static/img/icon.png",
+            "app@3x": "./static/img/icon.png",
+            "spotlight@2x": "unpackage/res/icons/80x80.png",
+            "spotlight@3x": "unpackage/res/icons/120x120.png",
+            "settings@2x": "unpackage/res/icons/58x58.png",
+            "settings@3x": "unpackage/res/icons/87x87.png",
+            "notification@2x": "unpackage/res/icons/40x40.png",
+            "notification@3x": "unpackage/res/icons/60x60.png"
+          },
+          "ipad": {
+            "app": "unpackage/res/icons/76x76.png",
+            "app@2x": "unpackage/res/icons/152x152.png",
+            "notification": "unpackage/res/icons/20x20.png",
+            "notification@2x": "unpackage/res/icons/40x40.png",
+            "proapp@2x": "unpackage/res/icons/167x167.png",
+            "settings": "unpackage/res/icons/29x29.png",
+            "settings@2x": "unpackage/res/icons/58x58.png",
+            "spotlight": "unpackage/res/icons/40x40.png",
+            "spotlight@2x": "unpackage/res/icons/80x80.png"
+          }
         }
       },
       "splashscreen": {
         "android": {
-          "hdpi": "./static/img/start.png",
-          "xhdpi": "./static/img/start.png",
-          "xxhdpi": "./static/img/start.png"
+          "hdpi": "",
+          "xhdpi": "",
+          "xxhdpi": ""
         }
       },
       "google": {
@@ -98,10 +115,11 @@
       },
       "apple": {},
       "plugins": {
+        "oauth": {},
+        "speech": {},
         "push": {
           "unipush": {}
         },
-        "oauth": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"

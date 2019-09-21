@@ -1,5 +1,19 @@
 <template>
 	<view>
+		<view class="self_header_bar">
+			<view class="top_view"></view>  
+		</view>
+		<view class="title_content">
+			<view class="flex title">
+				<view class="left" @tap="back">
+					<uni-icon type="arrowleft" size="27"></uni-icon>
+				</view>
+		
+				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
+				<view style="font-size:40upx">订单列表</view>
+				<view @tap="searchs" style="padding-right:5px ;">搜索</view>
+			</view>
+		</view>
 		<view class="" style="position: relative; width: 100%;height: 25px;padding: 15px 0 10px 0;">
 				<view class="times" v-show="day">
 					<view class="times" style="padding: 4px 15px; position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
@@ -72,7 +86,7 @@
 					</view>
 					<view class="state-right" v-if='item.status == 9'>
 						<view class="">
-							<text class="orderListState state ">已完成</text>
+							<text class="orderListState stay ">已完成</text>
 						</view>
 					</view>
 
@@ -90,7 +104,7 @@
 				</view>
 			</view>
 
-			<view class="loading" @tap="more" v-show="showMore">
+			<view class="loadings" @tap="more" v-show="showMore">
 				<image src="../../static/img/loading.png" mode="aspectFit"></image> &nbsp; 点击加载更多...
 			</view>
 		</view>
@@ -139,7 +153,7 @@
 				page: 1,
 				pageSize: 10,
 				status: 0,
-				showMore: true,
+				showMore: false,
 				day: '',
 				days: false,
 				time: [],
@@ -261,13 +275,23 @@
 					title:'加载中...'
 				})
 			},
+			back() {
+				uni.switchTab({
+					url: '../index/index',
+				})
+			},
+			searchs(){
+				uni.navigateTo({
+					url: "../search/search?name=" + 'orderList'
+				})
+			},
 
 		},
-		onNavigationBarButtonTap(e) {
-			uni.navigateTo({
-				url: "../search/search?name=" + 'orderList'
-			})
-		},
+		// onNavigationBarButtonTap(e) {
+		// 	uni.navigateTo({
+		// 		url: "../search/search?name=" + 'orderList'
+		// 	})
+		// },
 		components: {
 			selects
 		}
@@ -275,7 +299,53 @@
 </script> 
 
 <style>
-	.loading {
+	.title {
+		width: 100%;
+		height: 44px;
+		padding: 7px 3px;
+		box-sizing: border-box;
+		/* background-color: black; */
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+		align-content: center;
+		align-items: center;
+		align-self: center;
+		background-color: rgba(255, 255, 255, 1);
+		justify-content: center;
+		position: fixed;
+		z-index: 998;
+	}
+	
+	.title .left {
+		width: 25px;
+		height: 25px;
+		margin-left: 5px;
+		position: absolute;
+		left: 10px;
+	
+	}
+	
+	.title view {
+		font-size: 16px;
+	}
+	
+	.title view:last-child {
+		font-size: 14px;
+		position: absolute;
+		right: 8px;
+	}
+	.loadings {
+		width: 100%;
+		height: 49px;
+		background-color: #fff;
+		color: #999;
+		text-align: center;
+		line-height: 44px;
+		position: relative;
+		bottom: 0;
 		left: 0;
+	}
+	.loadings image{
+		width:8px;
+		height: 8px;
 	}
 </style>

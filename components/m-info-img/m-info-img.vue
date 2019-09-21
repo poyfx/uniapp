@@ -63,7 +63,7 @@
 	}
 
 	.m-info-content text {
-		width: 80px;
+		width: 5rem;
 	}
 
 	.m-info-content .infoText {

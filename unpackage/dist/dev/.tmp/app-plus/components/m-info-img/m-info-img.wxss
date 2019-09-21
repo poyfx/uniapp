@@ -38,10 +38,10 @@
 	        flex: 1;
 }
 .m-info-content text {
-	width: 80px;
+	width: 5rem;
 }
 .m-info-content .infoText {
-	color: #666;
+	color: #616161;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;

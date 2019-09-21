@@ -44,8 +44,9 @@
 	}
 
 	.m-info text {
-		min-width: 70px;
-		margin-right: 10px;
+		width: 5rem;
+		/* min-width: 70px;
+		margin-right: 10px; */
 	}
 .m-info input{
 	flex: 1;

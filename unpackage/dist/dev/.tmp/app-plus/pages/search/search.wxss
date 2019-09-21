@@ -1,6 +1,7 @@
 
 .orderDate.data-v-425d6f58 {
 	padding: 10px 15px 24px;
+	color: #616161;
 }
 .orderDate input.data-v-425d6f58,
 .datetimesty.data-v-425d6f58 {

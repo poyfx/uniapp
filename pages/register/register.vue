@@ -2,16 +2,16 @@
 	<view class="">
 		<view class="self_header ">
 			<view class="self_header_bar">
-
+				<view class="top_view"></view>  
 			</view>
-			<view class="self_header_title flex">
+			<view class="self_header_title flex" >
 				<view class="leftBtn" @tap="back">
 					<uni-icon type="arrowleft" size="27"></uni-icon>
 				</view>
 				<view>注册</view>
 			</view>
 		</view>
-		<view class="mTop15">
+		<view class="mTop15" >
 
 			<view class="fget-num paddingLeft15">
 				<!-- <infoImg :imgText="text.user" :disabled="text.disabled" :placeholder="text.userP" v-model="info.user" @chooseUser="chooseUser"></infoImg> -->
@@ -72,26 +72,29 @@
 					<text>选择公司</text>
 				</view> -->
 				<view class="self_header ">
-					<view class="self_header_bar">
-
+					<view class="self_header_bar" >
+						<view class="top_view"></view>  
 					</view>
-					<view class="self_header_title flex self_header_position">
+					<view class="self_header_title flex self_header_position" >
 						<view class="leftBtn" @tap="showCompany =! showCompany">
 							<uni-icon type="arrowleft" size="27"></uni-icon>
 						</view>
 						<view>选择公司</view>
 					</view>
 				</view>
-				
-				<view class="content " style="margin-top:44px;padding: 0; background: #EFEFF4;">
+
+				<view class="content " style="margin-top:44px;padding: 0; background: #EFEFF4;height: 100%;" >
 					<view class="search flex">
 						<input type="text" value="" placeholder="根据编号和公司名称搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
 					</view>
-					<view class="customerCompany" @tap="chooseCompany(index,item.id)" v-for="(item,index) in datas" :key="item.id">
-						<view>{{item.num}}</view>
-						<view>{{item.name}}</view>
-						<view>{{item.addr}}</view>
-					</view>
+					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:450px; position: relative;">
+						<view class="customerCompany" @tap="chooseCompany(index,item.id)" v-for="(item,index) in datas" :key="item.id">
+							<view>{{item.num}}</view>
+							<view>{{item.name}}</view>
+							<view>{{item.addr}}</view>
+						</view>
+
+					</scroll-view>
 				</view>
 				<view class="loading" @tap="mores" v-show="Cmore">
 					<view>
@@ -101,34 +104,36 @@
 				</view>
 			</view>
 			<!-- 客户经理 -->
-			<view v-show="showCoutomer" class="companyCustomer">
+			<view v-show="showCoutomer" class="companyCustomerCity">
 				<!-- <view class="flex title">
 					<image src="../../static/img/back.png" mode="aspectFit" @tap="showCoutomer = !showCoutomer"></image>
 					<text>选择客户经理</text>
 				</view -->
 				<view class="self_header ">
 					<view class="self_header_bar">
-
+						<view class="top_view"></view>  
 					</view>
-					<view class="self_header_title flex self_header_position">
+					<view class="self_header_title flex self_header_position" >
 						<view class="leftBtn" @tap="showCoutomer =! showCoutomer">
 							<uni-icon type="arrowleft" size="27"></uni-icon>
 						</view>
 						<view>选择客户经理</view>
 					</view>
 				</view>
-				
-				<view class="content" style="margin-top:44px;padding: 0;background: #EFEFF4;">
+
+				<view class="content" style="margin-top:44px;padding: 0;background: #EFEFF4; height: 100%;" >
 					<view class="search flex">
 						<input type="text" value="" placeholder="根据客户经理名称搜索" class="search_input" v-model="value" @input="searchCustomer" />
 					</view>
-					<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
-						<view>{{item.realname}}</view>
-						<view>{{item.phone}}</view>
-						<view>
-							{{item.departmentText}}
+					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:450px; position: relative;">
+						<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
+							<view>{{item.realname}}</view>
+							<view>{{item.phone}}</view>
+							<view>
+								{{item.departmentText}}
+							</view>
 						</view>
-					</view>
+					</scroll-view>
 				</view>
 				<view class="loading" @tap="Smore" v-show="more">
 					<view>
@@ -145,9 +150,9 @@
 				</view> -->
 				<view class="self_header ">
 					<view class="self_header_bar">
-
+						<view class="top_view"></view>  
 					</view>
-					<view class="self_header_title flex self_header_position">
+					<view class="self_header_title flex self_header_position" >
 						<view class="leftBtn" @tap="showCity =! showCity">
 							<uni-icon type="arrowleft" size="27"></uni-icon>
 						</view>
@@ -157,12 +162,14 @@
 				<!-- <view class="search flex">
 					<input type="text" value="" placeholder="搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
 				</view> -->
-				<view class="content " style="margin:45px 0 0px;">
-					<view class="customerCompany" @tap="chooseCity(index,item.id)" v-for="(item,index) in cityDatas" :key="index">
-						<!-- 	<view>{{item.id}}</view> -->
-						<view>{{item.name}}</view>
-						<!-- <view>{{item.addr}}</view> -->
-					</view>
+				<view class="content " style="margin-top:44px;padding: 0;background: #EFEFF4; height: 100%;" >
+					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:490px; position: relative;">
+						<view class="customerCompany" @tap="chooseCity(index,item.id)" v-for="(item,index) in cityDatas" :key="index">
+							<!-- 	<view>{{item.id}}</view> -->
+							<view>{{item.name}}</view>
+							<!-- <view>{{item.addr}}</view> -->
+						</view>
+					</scroll-view>
 				</view>
 				<!-- <view class="loading" @tap="mores" v-show="Cmore">
 					<view>
@@ -252,12 +259,17 @@
 				Cpage: 1,
 				page: 1,
 				pageSize: 10,
-				Cmore: true, //公司查看更多
-				more: true, //客户经理查看更多
+				Cmore: false, //公司查看更多
+				more: false, //客户经理查看更多
 				checkUser: '',
 				showCity: false, //城市页面
 				cityDatas: [], //城市集合
 				ciytId: '', //城市ID
+				scrollTop: 0,
+				old: {
+					scrollTop: 0,
+				},
+				barHeight:25,
 			}
 		},
 
@@ -277,7 +289,7 @@
 				this.datas = [];
 				this.showCompany = !this.showCompany;
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 			},
 			// 选中公司
@@ -324,8 +336,8 @@
 				}).catch(err => {
 					uni.hideLoading();
 					uni.showToast({
-						title:'加载失败',
-						icon:'none'
+						title: '加载失败',
+						icon: 'none'
 					})
 					console.log(err)
 				})
@@ -383,14 +395,14 @@
 				this.ciytId = id;
 				this.page = 1;
 				this.test.post('base/listManagers', {
-					realname: this.value,
+					search: this.value,
 					org_id: this.ciytId,
 					size: this.page,
 					pageSize: this.pageSize
 				}).then(res => {
 					console.log(res)
 					this.info.customer = res.data.value[0].realname
-					this.info.customerId =  res.data.value[0].id
+					this.info.customerId = res.data.value[0].id
 				}).catch(err => {})
 			},
 
@@ -402,7 +414,7 @@
 				this.man = [];
 				if (this.ciytId !== '') {
 					uni.showLoading({
-						title:'加载中...'
+						title: '加载中...'
 					})
 					this.getCustomerInfo();
 					this.showCoutomer = !this.showCoutomer;
@@ -465,8 +477,8 @@
 				}).catch(err => {
 					uni.hideLoading();
 					uni.showToast({
-						title:'加载失败',
-						icon:'none'
+						title: '加载失败',
+						icon: 'none'
 					})
 					console.log(err)
 				})
@@ -476,12 +488,12 @@
 				this.page += 1;
 				this.getCustomerInfo()
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 			},
 			mores() {
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 				this.Cpage += 1;
 				this.getCompanyInfo()
@@ -766,8 +778,8 @@
 		justify-content: center;
 		background-color: #fff;
 		padding: 12px 15px;
-		box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
-		margin-bottom: 15px;
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		margin-bottom: 1px;
 		/* position: fixed;
 		top: 78px; */
 	}
@@ -855,7 +867,7 @@
 	}
 
 	.m-info-content text {
-		width: 80px;
+		width: 5rem;
 	}
 
 	.m-info-content .infoText {

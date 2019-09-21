@@ -14,7 +14,7 @@
 	background-color: #fff;
 	text-align: center;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 }
 .user-list.data-v-1a0afe74 {
 	padding: 13px;
@@ -35,7 +35,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e5e5ee;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 	padding: 13px;
 }
 .footermain.data-v-1a0afe74 {
@@ -105,9 +105,9 @@
 	        justify-content: center;
 	background-color: #fff;
 	padding: 12px 15px;
-	-webkit-box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
-	        box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
-	margin-bottom: 15px;
+	-webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+	        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+	margin-bottom: 1px;
 	/* position: fixed;
 	top: 78px; */
 }
@@ -122,7 +122,7 @@
 	padding: 10px 0 10px 15px;
 	border-bottom: 1px solid #d6d6d6;
 	font-size: 14px;
-	color: #666;
+	color: #616161;
 	line-height: 28px;
 }
 .companyCustomer.data-v-1a0afe74 {
@@ -217,10 +217,10 @@ text.data-v-1a0afe74 {
 	        flex: 1;
 }
 .m-info-content text.data-v-1a0afe74 {
-	width: 80px;
+	width: 5rem;
 }
 .m-info-content .infoText.data-v-1a0afe74 {
-	color: #666;
+	color: #616161;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;

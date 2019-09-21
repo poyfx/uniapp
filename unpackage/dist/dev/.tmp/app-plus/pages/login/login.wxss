@@ -19,8 +19,8 @@
 	margin-top: 15px;
 }
 .p-font text.data-v-20ff2a30 {
-	font-size: 45rpx;
-	color: #666;
+	font-size: 49rpx;
+	color: #424242;
 }
 .loginInfo.data-v-20ff2a30 {
 	display: -webkit-box;
@@ -31,12 +31,12 @@
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
-	font-size: 24rpx;
-	padding: 7px 11% 10px;
+	font-size: 28rpx;
+	padding: 12px 11% 10px;
 }
 .color-dff.data-v-20ff2a30 {
 	color: #009DFF;
-	font-size: 12px;
+	font-size: 28rpx;
 }
 .toReginster.data-v-20ff2a30 {
 	display: inline-block;

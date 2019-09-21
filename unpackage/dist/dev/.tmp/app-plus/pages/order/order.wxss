@@ -24,10 +24,10 @@
 	        justify-content: flex-start;
 }
 .m-info-content view {
-	color: #666;
+	color: #616161;
 }
 .m-info text {
-	width: 80px;
+	width: 4rem;
 }
 .m-info image {
 	width: 12px;
@@ -67,7 +67,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e5e5ee;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 }
 .footmodel .modelmain text {
 	display: block;
@@ -76,7 +76,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e5e5ee;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 }
 .footermain {
 	width: 100%;
@@ -196,7 +196,7 @@ text {
 	padding: 10px 0 10px 15px;
 	border-bottom: 1px solid #d6d6d6;
 	font-size: 14px;
-	color: #666;
+	color: #616161;
 	line-height: 28px;
 }
 
@@ -214,7 +214,7 @@ text {
 	padding: 12px 15px;
 	-webkit-box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
-	margin-bottom: 15px;
+	margin-bottom: 1px;
 	/* position: fixed;
 	left: 0;
 	top: 78px; */
@@ -225,12 +225,12 @@ text {
 	width: 100%;
 	padding: 4px 15px;
 }
-.self_header_position{
+.self_header_position {
 	position: fixed;
-	
+
 	left: 0;
 }
-.company_content{
+.company_content {
 	margin-top: 55px;
 }
 

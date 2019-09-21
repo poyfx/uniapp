@@ -303,7 +303,7 @@
 				})
 			},
 			payment(){
-				this.test.post('http://192.168.0.156:8080/api/bizcust/order/urgent_payment',{
+				this.test.post('order/urgent_payment',{
 					id:this.orderId
 				}).then(res=>{
 					console.log(res)

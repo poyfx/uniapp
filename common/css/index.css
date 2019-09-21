@@ -192,7 +192,7 @@
 
 .userIntegral .orderNumber {
 	padding-right: 10px;
-	margin: 6px 0 6px 10px;
+	margin: 3px 0 6px 10px;
 }
 
 .orderNumber view {
@@ -200,9 +200,12 @@
 }
 
 .orderNumber view .numberTitle {
+	font-size: 14px;
 	font-weight: bold;
 }
-
+.orderNumber view text{
+	font-size: 14px;
+}
 .userIntegral .integral {
 	min-width: 105px;
 	max-height: 90px;
@@ -489,9 +492,13 @@ input {
 	padding:0 10px;
 	position: relative;
 	margin: 10px 0;
+	
 }
-
+.orderList text{
+	font-size: 0.9em;
+}
 .orderList view {
+	
 	padding: 5px 0;
 }
 .stateBox{
@@ -509,12 +516,13 @@ input {
 }
 .unit {
 	bottom: 45px;
-	font-weight: bold;
 }
 
-.price {
+.orderList .price {
+	font-size: 1em;
 	font-weight: bold;
 	bottom: 15px;
+	color: #FF596A;
 }   
 .stateBox .orderListState {
 	/* position: absolute;
@@ -528,8 +536,8 @@ input {
 }
 
 .stay {
-	color: #00A8FF;
-	top: 45px;
+	color: #36D38A;
+	top: 15px;
 }
 
 
@@ -548,8 +556,8 @@ input {
 	color: #999;
 	text-align: center;
 	line-height: 44px;
-/* 	position: fixed; */
-	/* bottom: 0; */
+	position: absolute;
+	bottom: 0;
 }
 .loading image{
 	width:8px;

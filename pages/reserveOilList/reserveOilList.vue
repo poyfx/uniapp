@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<view class="status_bar">
-
+		<view class="self_header_bar">
+			<view class="top_view"></view>  
 		</view>
 		<view class="title_content">
 			<view class="flex title">
@@ -10,7 +10,7 @@
 				</view>
 
 				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
-				<view>提油记录</view>
+				<view style="font-size:40upx">提油记录</view>
 				<view @tap="searchs" style="padding-right:5px ;">搜索</view>
 			</view>
 		</view>
@@ -81,7 +81,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="loading" @tap="Smore" v-show="more">
+		<view class="loadings" @tap="Smore" v-show="more">
 			<view>
 				<img src="../../static/img/loading.png" alt> &nbsp; 点击加载更多...
 			</view>
@@ -122,7 +122,7 @@
 				page: 1,
 				pageSize: 10,
 				oil: [], //所有订单
-				more: true,
+				more: false,
 				status: '',
 				time: '',
 				day: '',
@@ -158,9 +158,9 @@
 					pageSize: this.pageSize,
 				}).then(res => {
 					console.log(res)
-				uni.hideLoading();
+					uni.hideLoading();
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-							
+
 						// this.oil = res.data.value;
 						res.data.value.forEach(el => {
 							this.oil.push(el)
@@ -170,7 +170,9 @@
 							this.time.push(new Date(el.reserve_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(
 								/-/g, '-'))
 						})
-						if (res.data.value.length < 10 && res.data.value.length > 0) {
+						if (res.data.value.length >= 10) {
+							this.more = true;
+						} else if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
 						} else if (res.data.value.length == 0) {
 							this.more = false;
@@ -204,8 +206,8 @@
 				}).catch(err => {
 					uni.hideLoading();
 					uni.showToast({
-						title:'加载失败',
-						icon:'none'
+						title: '加载失败',
+						icon: 'none'
 					})
 					console.log(err)
 				})
@@ -219,6 +221,9 @@
 				// this.$router.push('/complete');
 			},
 			changeMsg(e) {
+				uni.showLoading({
+					title: '加载中...'
+				})
 				console.log(e)
 				this.more = true;
 				this.oil = [];
@@ -229,7 +234,7 @@
 			},
 			Smore() {
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 				this.page += 1;
 				this.getReserveList();
@@ -265,14 +270,7 @@
 		height: 40px;
 	}
 
-	.status_bar {
-		height: var(--status-bar-height);
-		width: 100%;
-		background: #e5e5e5;
 
-	}
-
-	
 
 	.title {
 		width: 100%;
@@ -307,5 +305,20 @@
 		font-size: 14px;
 		position: absolute;
 		right: 8px;
+	}
+	.loadings {
+		width: 100%;
+		height: 49px;
+		background-color: #fff;
+		color: #999;
+		text-align: center;
+		line-height: 44px;
+		position: relative;
+		bottom: 0;
+		left: 0;
+	}
+	.loadings image{
+		width:8px;
+		height: 8px;
 	}
 </style>

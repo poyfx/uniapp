@@ -1,8 +1,8 @@
 <template>
 	<view class="">
 		<view class="chooseAddress">
-			<view class="status_bar">
-
+			<view class="self_header_bar">
+				<view class="top_view"></view>  
 			</view>
 			<view class="flex title">
 				<view class="left" @tap="back">
@@ -10,7 +10,7 @@
 				</view>
 
 				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
-				<view>预约详情</view>
+				<view style="font-size: 40upx;">预约详情</view>
 				<view v-show="status == 2 || status == 3 " @tap="getCode">提油码</view>
 			</view>
 			<view>

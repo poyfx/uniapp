@@ -130,9 +130,9 @@
 			</view> -->
 			<view class="self_header ">
 				<view class="self_header_bar">
-
+					<view class="top_view"></view>
 				</view>
-				<view class="self_header_title flex self_header_position">
+				<view class="self_header_title flex self_header_position" :style="{'margin-top':barHeight+'px'}">
 					<view class="leftBtn" @tap="chooseAddress =! chooseAddress">
 						<uni-icon type="arrowleft" size="27"></uni-icon>
 					</view>
@@ -154,8 +154,8 @@
 								<radio :value="String(item.is_default)" :checked="index === range" />设置为默认地址
 							</label>
 						</radio-group> -->
-						<!-- 编辑修改地址 和删除地址 暂时不用 -->
-						<!-- <view class="operation">
+					<!-- 编辑修改地址 和删除地址 暂时不用 -->
+					<!-- <view class="operation">
 							<button type="defult" class="write" size="small" @tap="edit">编辑</button>
 							<button type="defult" class="write" size="small" @tap="delate">删除</button>
 						</view> -->
@@ -174,9 +174,9 @@
 		<view v-show="showCompany" class="companyCustomer">
 			<view class="self_header ">
 				<view class="self_header_bar">
-
+					<view class="top_view"></view>
 				</view>
-				<view class="self_header_title flex self_header_position">
+				<view class="self_header_title flex self_header_position" :style="{'margin-top':barHeight+'px'}">
 					<view class="leftBtn" @tap="showCompany =! showCompany">
 						<uni-icon type="arrowleft" size="27"></uni-icon>
 					</view>
@@ -184,9 +184,14 @@
 				</view>
 			</view>
 			<view class="company_content">
-				<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
-					<view class="newCompany">{{item.name}}</view>
-				</view>
+				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:490px; position: relative;">
+					<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
+
+						<view class="newCompany">{{item.name}}</view>
+
+
+					</view>
+				</scroll-view>
 			</view>
 
 		</view>
@@ -215,13 +220,15 @@
 				<view class="search flex">
 					<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
 				</view>
-				<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="index">
-					<view>{{item.realname}}</view>
-					<view>{{item.phone}}</view>
-					<!-- <view>
+				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:462px; position: relative;">
+					<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="index">
+						<view>{{item.realname}}</view>
+						<view>{{item.phone}}</view>
+						<!-- <view>
 						{{item.departmentText}}
 					</view> -->
-				</view>
+					</view>
+				</scroll-view>
 			</view>
 			<view class="loading" @tap="Smore" v-show="more">
 				<view>
@@ -277,10 +284,14 @@
 				page: 1,
 				pageSize: 10,
 				man: [],
-				more: true,
+				more: false,
 				value: '',
 				myManagerId: '',
-
+				scrollTop: 0,
+				old: {
+					scrollTop: 0,
+				},
+				barHeight:25,
 			}
 		},
 		onLoad() {
@@ -324,7 +335,7 @@
 				this.page = 1;
 				this.showCompany = true;
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 				this.test.post('order/listOrgs')
 					.then(res => {
@@ -332,12 +343,12 @@
 						console.log(res);
 						that.newDatas = res.data.value;
 
-					}).catch(err=>{
-							uni.hideLoading();
-							uni.showToast({
-								title:'加载失败',
-								icon:'none'
-							})
+					}).catch(err => {
+						uni.hideLoading();
+						uni.showToast({
+							title: '加载失败',
+							icon: 'none'
+						})
 						console.log(err)
 					})
 			},
@@ -390,13 +401,13 @@
 				this.getNewCustemer();
 				this.showCoutomer = true;
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 			},
 			getNewCustemer() {
 				console.log(this.value)
 				this.test.post('base/listManagers', {
-						realname: this.value,
+						search: this.value,
 						org_id: this.companyId,
 						size: this.page,
 						pageSize: this.pageSize,
@@ -421,11 +432,11 @@
 								})
 							}
 						}
-					}).catch(err=>{
+					}).catch(err => {
 						uni.hideLoading();
 						uni.showToast({
-							title:'加载失败',
-							icon:'none'
+							title: '加载失败',
+							icon: 'none'
 						})
 						console.log(err)
 					})
@@ -454,7 +465,7 @@
 				this.page += 1;
 				this.getNewCustemer()
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 			},
 			// 付款方式
@@ -595,7 +606,16 @@
 					}
 				})
 			},
-
+			upper: function(e) {
+				console.log(e)
+			},
+			lower: function(e) {
+				// console.log(e)
+			},
+			scroll: function(e) {
+				// console.log(e)
+				// this.old.scrollTop = e.detail.scrollTop
+			},
 			toBuy() {
 				const that = this;
 				if (this.myManager !== null && this.myManager !== '' && this.myManager !== '请选择') {
@@ -608,10 +628,10 @@
 										title: '提示',
 										content: '提交后无法修改，是否提交',
 										success: function(res) {
-											
+
 											if (res.confirm) {
 												uni.showLoading({
-													title:'提交中...'
+													title: '提交中...'
 												})
 												that.test.post('order/make_order', { //http://192.168.0.156:8080/api/bizcust/
 													org_id: that.companyId,
@@ -655,8 +675,8 @@
 												}).catch(err => {
 													uni.hideLoading();
 													uni.showToast({
-														title:'提交失败',
-														icon:'none'
+														title: '提交失败',
+														icon: 'none'
 													})
 													console.log(err)
 												})
@@ -916,7 +936,7 @@
 		background-color: #fff;
 		padding: 12px 15px;
 		box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.16);
-		margin-bottom: 15px;
+		margin-bottom: 1px;
 		/* position: fixed;
 		left: 0;
 		top: 78px; */

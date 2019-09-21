@@ -56,9 +56,9 @@
 			</view> -->
 			<view class="self_header ">
 				<view class="self_header_bar">
-
+					<view class="top_view"></view>  
 				</view>
-				<view class="self_header_title flex self_header_position">
+				<view class="self_header_title flex self_header_position" >
 					<view class="leftBtn" @tap="showOrderNumber =! showOrderNumber">
 						<uni-icon type="arrowleft" size="27"></uni-icon>
 					</view>
@@ -66,7 +66,7 @@
 				</view>
 			</view>
 
-			<view class="mContent pB10">
+			<view class="mContent pB10" >
 				<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
 				 :key="item.id">
 					<view class="orderNumber">
@@ -142,7 +142,8 @@
 				remark: '', //备注
 				id: '',
 				more: true,
-				showAddress: true
+				showAddress: true,
+				barHeight:25,
 			}
 		},
 		onLoad() {

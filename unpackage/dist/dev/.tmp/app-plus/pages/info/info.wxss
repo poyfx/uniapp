@@ -1,7 +1,4 @@
 
-.infoThree {
-	padding: 10px 0;
-}
 image {
 	width: 25px;
 	height: 25px;
@@ -26,8 +23,7 @@ image {
 		        justify-content: flex-start;
 }
 .m-info text {
-		min-width: 70px;
-		margin-right: 10px;
+		width: 5rem;
 }
 .m-info input{
 	-webkit-box-flex: 1;

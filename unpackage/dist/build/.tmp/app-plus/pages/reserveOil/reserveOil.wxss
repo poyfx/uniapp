@@ -27,7 +27,7 @@
 	        flex: 1;
 }
 .m-info .m-info-contents text {
-	width: 80px;
+	width: 5rem;
 }
 .m-info-contents input {
 	-webkit-box-flex: 1;
@@ -58,7 +58,7 @@
 	        flex: 1;
 }
 .m-info-content text {
-	width: 80px;
+	width:4rem;
 }
 .m-info-content .infoText {
 	-webkit-box-flex: 1;

@@ -27,7 +27,7 @@
 	        flex: 1;
 }
 .m-info .m-info-contents text {
-	width: 80px;
+	width: 5rem;
 }
 .m-info-contents input {
 	-webkit-box-flex: 1;
@@ -58,7 +58,7 @@
 	        flex: 1;
 }
 .m-info-content text {
-	width: 80px;
+	width:4rem;
 }
 .m-info-content .infoText {
 	-webkit-box-flex: 1;
@@ -127,7 +127,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e5e5ee;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 }
 .footmodel .modelmain view {
 	display: block;
@@ -136,7 +136,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e5e5ee;
 	font-size: 18px;
-	color: #666;
+	color: #616161;
 }
 .footermain {
 	width: 100%;

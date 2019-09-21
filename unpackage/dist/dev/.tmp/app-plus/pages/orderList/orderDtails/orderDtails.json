@@ -1,10 +1,10 @@
 {
   "titleNView": {
-    "titleColor": "#666",
+    "titleColor": "#424242",
     "titleText": "订单详情",
     "backgroundColor": "#FFF",
     "fontWeight": "normal",
-    "titleSize": "17px"
+    "titleSize": "40upx"
   },
   "usingComponents": {
     "t-button": "/components/twoButton/twoButton",

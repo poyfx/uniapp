@@ -1,5 +1,11 @@
 {
-  "navigationBarTitleText": "首页",
+  "titleNView": {
+    "titleColor": "#424242",
+    "titleText": "首页",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "40upx"
+  },
   "usingComponents": {
     "banner": "/components/banner/banner",
     "navs": "/components/nav/nav"

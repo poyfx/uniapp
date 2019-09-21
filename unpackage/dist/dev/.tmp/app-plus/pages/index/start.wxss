@@ -1,8 +1,8 @@
 
 .background.data-v-638134ec {
 	/* background-color: #fff; */
-	background:url('https://wx4.sinaimg.cn/mw690/006C8C6Vgy1g6pwy2elotj30u01hdn3t.jpg') no-repeat ;
-	background-size:100% 100% ;
+	background: url('http://dev.pjy.name:8180/uploads/bizcust_main.png') no-repeat;
+	background-size: 100% 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -23,10 +23,13 @@
 	left: 50%;
 	margin-left: -65px;
 	text-align: center;
-	color:#666666;
+	color: #616161;
 }
-.p-size.data-v-638134ec {
-	font-size: 16px;
+.p-bx view.data-v-638134ec {
+	font-size: 24rpx;
+}
+.p-bx .p-size.data-v-638134ec {
+	font-size: 33rpx;
 	margin-bottom: 6px;
 }
 

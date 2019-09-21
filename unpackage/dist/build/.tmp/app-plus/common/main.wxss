@@ -312,6 +312,11 @@ input::-webkit-input-placeholdert {
 }
 
 
+.paddingLeft10{
+	padding-left: 10px;
+}
+
+
 .mTop10 {
 	margin-top: 10px;
 }
@@ -422,7 +427,17 @@ input::-webkit-input-placeholdert {
 .self_header_bar {
 	height: var(--status-bar-height);
 	width: 100%;
-	background: #EFEFF4;
+	background-color: #FFFFFF;  
+}
+
+
+.top_view{
+	 height: var(--status-bar-height);  
+	    width: 100%;  
+	    position: fixed;  
+	    background-color: #FFFFFF;  
+	    top: 0;  
+	    z-index: 9999;  
 }
 
 
@@ -453,7 +468,7 @@ input::-webkit-input-placeholdert {
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	color: #424242;
-	font-size: 17px;
+	font-size: 40rpx;
 	z-index: 997;
 	-webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -686,11 +701,10 @@ input::-webkit-input-placeholdert {
 }
 
 .priceLi .titles text{
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .userIntegraltitle text{
-	font-size: 14px;
 	font-weight: bold;
 	color: #616161;
 }
@@ -730,7 +744,7 @@ input::-webkit-input-placeholdert {
 
 .userIntegral .orderNumber {
 	padding-right: 10px;
-	margin: 6px 0 6px 10px;
+	margin: 3px 0 6px 10px;
 }
 
 .orderNumber view {
@@ -738,7 +752,12 @@ input::-webkit-input-placeholdert {
 }
 
 .orderNumber view .numberTitle {
+	font-size: 14px;
 	font-weight: bold;
+}
+
+.orderNumber view text{
+	font-size: 14px;
 }
 
 .userIntegral .integral {
@@ -776,9 +795,16 @@ input::-webkit-input-placeholdert {
 .userinfos {
 	padding-bottom: 11px;
 	border-bottom: 1px solid #e5e5e5;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
 }
 
 .userIntegral .integral view {
+	color: #fff;
 	font-size: 30px;
 }
 
@@ -1096,9 +1122,15 @@ input {
 	padding:0 10px;
 	position: relative;
 	margin: 10px 0;
+	
+}
+
+.orderList text{
+	font-size: 0.9em;
 }
 
 .orderList view {
+	
 	padding: 5px 0;
 }
 
@@ -1140,12 +1172,13 @@ input {
 
 .unit {
 	bottom: 45px;
-	font-weight: bold;
 }
 
-.price {
+.orderList .price {
+	font-size: 1em;
 	font-weight: bold;
 	bottom: 15px;
+	color: #FF596A;
 }
 
 .stateBox .orderListState {
@@ -1161,8 +1194,8 @@ input {
 }
 
 .stay {
-	color: #00A8FF;
-	top: 45px;
+	color: #36D38A;
+	top: 15px;
 }
 
 /* 已拒绝颜色样式 */
@@ -1181,8 +1214,8 @@ input {
 	color: #999;
 	text-align: center;
 	line-height: 44px;
-/* 	position: fixed; */
-	/* bottom: 0; */
+	position: absolute;
+	bottom: 0;
 }
 
 .loading image{

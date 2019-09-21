@@ -29,7 +29,7 @@
 					<input :type="info.type" :value="info.customerName"  :disabled="info.disabled" />
 				</view>
 			</view>
-			<view class="fget-num  bgcf borderRadius8 infoThree">
+			<view class="fget-num  bgcf borderRadius8 infoThree" style="padding-bottom: 10px;">
 				<view class="out">
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.apply" @toApply="toApply"></infoImg>
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.oilNum" @toStayOil="toStayOil"></infoImg>
@@ -231,8 +231,7 @@
 		}
 	
 		.m-info text {
-			min-width: 70px;
-			margin-right: 10px;
+			width: 5rem;
 		}
 	.m-info input{
 		flex: 1;

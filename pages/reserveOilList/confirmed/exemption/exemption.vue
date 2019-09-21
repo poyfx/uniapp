@@ -26,6 +26,7 @@
 		data() {
 			return {
 				titles:'免责条款',
+				barHeight:25,
 			}
 		},
 		methods: {

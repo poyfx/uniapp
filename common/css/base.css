@@ -173,9 +173,16 @@ input::-webkit-input-placeholdert {
 .self_header_bar {
 	height: var(--status-bar-height);
 	width: 100%;
-	background: #EFEFF4;
+	background-color: #FFFFFF;  
 }
-
+.top_view{
+	 height: var(--status-bar-height);  
+	    width: 100%;  
+	    position: fixed;  
+	    background-color: #FFFFFF;  
+	    top: 0;  
+	    z-index: 9999;  
+}
 /* 标题 */
 .self_header_title {
 	width: 100%;
@@ -190,7 +197,7 @@ input::-webkit-input-placeholdert {
 	background-color: rgba(255, 255, 255, 1);
 	justify-content: center;
 	color: #424242;
-	font-size: 17px;
+	font-size: 40upx;
 	z-index: 997;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
