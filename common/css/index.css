@@ -1,13 +1,16 @@
-
 .content {
+	width: 100%;
+	height: 100%;
 	margin: 0 auto;
-	padding-top: 15px;
+	padding: 15px 0 1px;
 }
 
 .mContent {
+	width: 100%;
+	height: 100%;
 	margin: 0 auto;
-	padding: 0 10px;
-	padding-top: 15px;
+	padding: 15px 10px;
+
 }
 
 /* 轮播图样式 */
@@ -16,7 +19,7 @@
 	overflow: hidden;
 	position: relative;
 	border-radius: 8px 8px 0 0;
-	
+
 }
 
 /* 导航 */
@@ -59,14 +62,14 @@
 	width: 100%;
 	margin-top: 10px;
 	border-radius: 8px;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 }
 
 .main .myManager {
 	width: 100%;
 	/* height: 157px; */
 	background-color: #fff;
-	padding: 15px 25px 15px 15px;
+	padding: 15px 25px 0px 15px;
 	margin-bottom: 10px;
 	border-radius: 8px;
 }
@@ -76,12 +79,11 @@
 	/* height: 157px; */
 	background-color: #fff;
 	padding: 15px 0px 0 15px;
-	margin-bottom: 10px;
 	border-radius: 8px;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 }
 
-.line{
+.line {
 	display: inline-block;
 	width: 4px;
 	height: 22px;
@@ -104,7 +106,7 @@
 	align-content: center;
 	align-items: center;
 	align-self: center;
-	margin-top:22px;
+	margin-top: 22px;
 }
 
 .index-title {
@@ -119,7 +121,7 @@
 .managerNum .call {
 	display: flex;
 	justify-content: space-between;
-	
+
 	color: #616161;
 }
 
@@ -141,7 +143,8 @@
 	border-bottom: 1px solid #E5E5E5;
 	padding: 10px 0;
 }
-.priceLiNo{
+
+.priceLiNo {
 	padding: 10px 0;
 }
 
@@ -149,10 +152,12 @@
 	display: flex;
 	justify-content: space-between;
 }
-.priceLi .titles{
+
+.priceLi .titles {
 	justify-content: space-between;
 }
-.priceLi .titles text{
+
+.priceLi .titles text {
 	font-size: 12px;
 }
 
@@ -160,7 +165,7 @@
 
 
 
-.userIntegraltitle text{
+.userIntegraltitle text {
 	font-weight: bold;
 	color: #616161;
 }
@@ -173,6 +178,7 @@
 /* 积分 */
 .userIntegral {
 	width: 100%;
+	min-height: 105px;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	display: flex;
 	justify-content: space-between;
@@ -182,6 +188,8 @@
 .userIntegral .company {
 	padding-right: 10px;
 	margin: 11px 0 11px 15px;
+	flex: 1;
+	font-size: 0.8rem;
 }
 
 .company {
@@ -203,12 +211,14 @@
 	font-size: 14px;
 	font-weight: bold;
 }
-.orderNumber view text{
+
+.orderNumber view text {
 	font-size: 14px;
 }
+
 .userIntegral .integral {
 	min-width: 105px;
-	max-height: 90px;
+	min-height: 105px;
 	background-color: #00A8FF;
 	display: flex;
 	flex-direction: column;
@@ -419,6 +429,11 @@ input {
 .fget-num .tellinfo {
 	text-align: center;
 	padding: 0 0 20px 0;
+
+}
+
+.fget-num .tellinfos text {
+	color: #009DFF;
 }
 
 .harvest {
@@ -489,31 +504,38 @@ input {
 
 /* orderList */
 .orderList {
-	padding:0 10px;
+	padding: 0 10px;
 	position: relative;
 	margin: 10px 0;
-	
+	border-radius: 4px;
+
 }
-.orderList text{
+
+.orderList text {
 	font-size: 0.9em;
 }
+
 .orderList view {
-	
+
 	padding: 5px 0;
 }
-.stateBox{
+
+.stateBox {
 	justify-content: space-between;
 }
-.stateBox .state-right{
-	 flex-direction: column;
+
+.stateBox .state-right {
+	flex-direction: column;
 	align-items: flex-end;
 	justify-content: space-between;
 }
-.oilPrice{
-	 flex-direction: column;
+
+.oilPrice {
+	flex-direction: column;
 	align-items: flex-end;
-	
+	padding-left: 5px;
 }
+
 .unit {
 	bottom: 45px;
 }
@@ -523,7 +545,8 @@ input {
 	font-weight: bold;
 	bottom: 15px;
 	color: #FF596A;
-}   
+}
+
 .stateBox .orderListState {
 	/* position: absolute;
 	right: 20px; */
@@ -543,8 +566,7 @@ input {
 
 
 /* 已拒绝颜色样式 */
-.stateBox 
-.oc {
+.stateBox .oc {
 	color: #FD8E65
 }
 
@@ -556,11 +578,12 @@ input {
 	color: #999;
 	text-align: center;
 	line-height: 44px;
-	position: absolute;
+	position: relative;
 	bottom: 0;
 }
-.loading image{
-	width:8px;
+
+.loading image {
+	width: 8px;
 	height: 8px;
 }
 
@@ -610,11 +633,14 @@ input {
 	font-weight: bold;
 	font-size: 32upx;
 }
-.state1,.state2 {
+
+.state1,
+.state2 {
 	align-items: center;
 	align-content: center;
 	align-self: center;
 }
+
 .discount {
 	/* width: 81px;
 	height: 53px; */
@@ -689,88 +715,157 @@ input {
 .flex {
 	display: flex;
 }
-.footmodel{
+
+.footmodel {
 	z-index: 999;
 }
 
-	.footmodel {
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.4);
-		position: absolute;
+.footmodel {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
+
+.footmodel .modelmain view {
+	background-color: #fff;
+	padding: 13px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5ee;
+	font-size: 18px;
+	color: #616161;
+}
+
+.footmodel .modelmain text {
+	display: block;
+	background-color: #fff;
+	padding: 13px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5ee;
+	font-size: 18px;
+	color: #616161;
+}
+
+.footermain {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	animation: show1 0.3s;
+	border-radius: 8px 8px 0 0;
+}
+
+.modelfooter {
+	width: 100%;
+	display: flex;
+	margin-top: 6px;
+	background-color: #fff;
+
+	line-height: 50px;
+}
+
+.modelfooter view {
+	width: 100%;
+	text-align: center;
+}
+
+.footmodel .modelmain view:hover {
+	background-color: #e5e5e5;
+}
+
+@keyframes show1 {
+	0% {
+		bottom: -241px;
+	}
+
+	100% {
 		bottom: 0px;
-		left: 0;
+	}
+}
+
+@keyframes leave {
+	100% {
+		bottom: 0px;
 	}
 
-	.footmodel .modelmain view {
-		background-color: #fff;
-		padding: 13px;
-		text-align: center;
-		border-bottom: 1px solid #e5e5ee;
-		font-size: 18px;
-		color: #616161;
+	0% {
+		bottom: -362px;
+	}
+}
+
+.times {
+	width: 100%;
+	/* padding: 4px 15px; */
+	border-radius: 4px 4px 0 0;
+	background-color: #fff;
+	text-align: center;
+}
+
+
+.height95 {
+	height: 95px;
+}
+
+.height55 {
+	height: 55px;
+}
+
+.status_days {
+	position: relative;
+	width: 100%;
+}
+
+.status_days_day {
+	width: 100%;
+	height: 0;
+	position: fixed;
+	z-index: 5;
+
+
+}
+
+/* oderList and reserveOilLost */
+.status_days_text {
+	font-size: 14px;
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+	right: 25px;
+	z-index: 1;
+}
+
+.hidetitles {
+	animation: hide 0.5s forwards;
+}
+
+.showtitles {
+	animation: show 0.5s forwards;
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
 	}
 
-	.footmodel .modelmain text {
-		display: block;
-		background-color: #fff;
-		padding: 13px;
-		text-align: center;
-		border-bottom: 1px solid #e5e5ee;
-		font-size: 18px;
-		color: #616161;
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes show {
+	from {
+		opacity: 0;
 	}
 
-	.footermain {
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		animation: show1 0.3s;
-		border-radius: 8px 8px 0 0;
+	to {
+		opacity: 1;
 	}
-
-	.modelfooter {
-		width: 100%;
-		display: flex;
-		margin-top: 6px;
-		background-color: #fff;
-
-		line-height: 50px;
-	}
-
-	.modelfooter view {
-		width: 100%;
-		text-align: center;
-	}
-
-	.footmodel .modelmain view:hover {
-		background-color: #e5e5e5;
-	}
-
-	@keyframes show1 {
-		0% {
-			bottom: -241px;
-		}
-
-		100% {
-			bottom: 0px;
-		}
-	}
-
-	@keyframes leave {
-		100% {
-			bottom: 0px;
-		}
-
-		0% {
-			bottom: -362px;
-		}
-	}
-	.times {
-		display: inline-block;
-		border-radius: 5px;
-		/* padding: 4px 15px; */
-		background-color: #fff;
-		text-align: center;
-	}
+}
+/* 订单列表和预约提油列表 */
+.list_content {
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-bottom: 10px;
+}

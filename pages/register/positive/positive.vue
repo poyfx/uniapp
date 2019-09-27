@@ -29,10 +29,12 @@
 			<view class="positive">
 				<image :src="src" class="idCard" mode="aspectFit"></image>
 			</view>
-			<view class="tellinfo">
+			<view class="tellinfo" @tap="previewImage(num)" v-if="num<2">
 				<text>{{tellinfo[num]}}</text>
 			</view>
-
+			<view class="tellinfo tellinfos" @tap="previewImage(num)" v-else>
+				<text>{{tellinfo[num]}}</text>
+			</view>
 			<view class="flex  m-info" v-show="btn.Dates">
 				<view class="flex center m-info-content">
 					<text>授权书有效期</text>
@@ -159,7 +161,7 @@
 					value: '下一步',
 					disabled: false,
 					content: '上一步',
-					commit: '提交',
+					commit: '注册',
 					stepOne: true,
 					stepTwo: false,
 					stepThree: false,
@@ -176,7 +178,7 @@
 					"提油",
 					"发票领取"
 				],
-				tellinfo: ["正面示例", "反面示例", "授权书示例"],
+				tellinfo: ["正面示例", "反面示例", "授权书示例", "授权书示例", "授权书示例"],
 				num: 0,
 				count: 0,
 				src: one,
@@ -197,25 +199,30 @@
 				day: '2019-01-01', //购油有效期
 				days: '2019-01-01', //提油有效期
 				voiceDate: '2019-01-01', //领取发票时间
-				clientID:'',
+				clientID: '',
+				faceimg: {
+					name: 'face_photo',
+					uri: '',
+				},
 			}
 		},
-		onLoad() {
+		onLoad(option) {
+			this.faceimg.uri = option.faceimg;
 			this.register = uni.getStorageSync('register');
 
 			console.log(this.register)
 			this.getclientid();
 		},
 		methods: {
-			getclientid(){
-					const that = this;
-					uni.getStorage({
-						key:'clientid',
-						success:function(res){
-							that.clientID= res.data;
-							console.log(res)
-						}
-					})
+			getclientid() {
+				const that = this;
+				uni.getStorage({
+					key: 'clientid',
+					success: function(res) {
+						that.clientID = res.data;
+						console.log(res)
+					}
+				})
 			},
 			all() {
 				if (this.btn.stepOne == true) {
@@ -259,7 +266,7 @@
 								name: 'id_bphoto',
 								uri: res.tempFilePaths[0]
 							};
-							that.img.splice(1,1,photo)
+							that.img.splice(1, 1, photo)
 						}
 					});
 				} else if (this.btn.stepThree == true) {
@@ -279,7 +286,7 @@
 								name: 'buy_auth_photo',
 								uri: res.tempFilePaths[0]
 							}
-							that.img.splice(2,1,photo)
+							that.img.splice(2, 1, photo)
 						}
 					});
 				} else if (this.btn.stepFour == true) {
@@ -299,7 +306,7 @@
 								name: 'get_auth_photo',
 								uri: res.tempFilePaths[0]
 							}
-							that.img.splice(3,1,photo)
+							that.img.splice(3, 1, photo)
 						}
 					});
 				} else if (this.btn.stepFive == true) {
@@ -319,7 +326,7 @@
 								name: 'bill_auth_photo',
 								uri: res.tempFilePaths[0]
 							}
-							that.img.splice(4,1,photo)
+							that.img.splice(4, 1, photo)
 						}
 					});
 				}
@@ -329,6 +336,7 @@
 
 			// 第一步下一步
 			oneSide() {
+				console.log(this.register)
 				console.log(this.register.role)
 				console.log(this.img)
 				if (this.img.length == 1) {
@@ -519,26 +527,29 @@
 
 			},
 			fiveStepNext() {
+				this.img.push(this.faceimg)
+
 				const imgs = this.img.map((value, index) => {
 					return {
 						name: value.name,
 						uri: value.uri
 					}
 				})
-
+				console.log(imgs)
+				 var _url = 'http://dev.pjy.name:8180/api/bizcust/base/regist'
+				//var _url = 'http://192.168.0.156:8080/api/bizcust/base/regist'
 				if (this.img.length >= 5) {
 					if (this.ifvoiceDate == true) {
 						console.log(this.register.role)
 						uni.uploadFile({
-							url: 'http://dev.pjy.name:8180/api/bizcust/base/regist',
-							// url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
+							url: _url,
 							files: imgs,
 							formData: {
 								"username": this.register.userPhoneNum,
 								"passwd": this.register.newPwd2,
 								"roles": this.register.role,
 								"customer_id": this.register.companyId,
-								"manager_id": this.register.customerId,
+								// "manager_id": this.register.customerId,
 								"realname": this.register.userName,
 								"id_card": this.register.userId,
 								"phone": this.register.userPhoneNum,
@@ -546,7 +557,7 @@
 								"buy_auth_exp": this.day,
 								"get_auth_exp": this.days,
 								"bill_auth_exp": this.voiceDate,
-								"client_id" :this.clientID,
+								"client_id": this.clientID,
 							},
 							success: function(res) {
 								var data = JSON.parse(res.data)
@@ -614,6 +625,19 @@
 				this.voiceDate = val.result;
 				this.ifvoiceDate = true
 			},
+			// 预览图片
+			previewImage(no) {
+				console.log(this.src, three)
+				if (no >= 2) {
+					uni.previewImage({
+						current: no,
+						urls: [three],
+					})
+				} else {
+					return;
+				}
+
+			},
 
 		},
 		components: {
@@ -645,10 +669,13 @@
 		align-content: center;
 		align-items: center;
 		align-self: center;
+
 	}
 
 	.m-info-content text {
-		width: 100px;
+		width: 6em;
+		font-size: 15px;
+		margin-right: 5px;
 	}
 
 	.m-info-text {

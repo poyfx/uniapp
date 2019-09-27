@@ -16,7 +16,10 @@
 				<view class="positive">
 					<image :src="src" class="idCard" mode="aspectFit"></image>
 				</view>
-				<view class="tellinfo">
+				<view class="tellinfo" @tap="previewImage(num)" v-if="num<2">
+					<text>{{tellinfo[num]}}</text>
+				</view>
+				<view class="tellinfo tellinfos" @tap="previewImage(num)" v-else>
 					<text>{{tellinfo[num]}}</text>
 				</view>
 				<view class="flex  m-info" v-show="btn.stepThree">
@@ -92,7 +95,7 @@
 					value: '下一步',
 					disabled: false,
 					content: '上一步',
-					commit: '提交',
+					commit: '注册',
 					stepOne: true,
 					stepTwo: false,
 					stepThree: false,
@@ -119,11 +122,18 @@
 				userCode: '',
 				user: '', //申请角色
 				clientID:'',//用户clientid
+				faceimg:{
+					name:'face_photo',
+					uri:'',
+				},
 			}
 		},
 		onLoad(option) {
 			this.user = option.user
 			this.userCode = option.userCode;
+			this.faceimg.uri = option.faceimg;
+			
+			console.log(this.faceimg)
 			this.register = uni.getStorageSync('register');
 			if (option.user == '发票领取人') {
 				this.info.push(option.user.slice(0, 4))
@@ -381,13 +391,20 @@
 			threeStepNext() {
 				if (this.name == "register") {
 					console.log(this.register.role)
+					if(this.register.user == '购油人'){
+						return this.img
+					}else{
+						this.img.push(this.faceimg)
+					}
+					
 					const imgs = this.img.map((value, index) => {
 						return {
 							name: value.name,
 							uri: value.uri
 						}
 					})
-					if (this.img.length == 3) {
+					console.log(imgs)
+					if (this.img.length >= 3) {
 						const that = this;
 						console.log(this.register.companyId,this.register.customerId)
 						if (this.ifday == true) {
@@ -404,7 +421,7 @@
 										"passwd": this.register.newPwd2,
 										"roles": this.register.role,
 										"customer_id": this.register.companyId,
-										"manager_id": this.register.customerId,
+										// "manager_id": this.register.customerId,
 										"realname": this.register.userName,
 										"id_card": this.register.userId,
 										"phone": this.register.userPhoneNum,
@@ -451,7 +468,7 @@
 										"passwd": this.register.newPwd2,
 										"roles": this.register.role,
 										"customer_id": this.register.companyId,
-										"manager_id": this.register.customerId,
+										// "manager_id": this.register.customerId,
 										"realname": this.register.userName,
 										"id_card": this.register.userId,
 										"phone": this.register.userPhoneNum,
@@ -498,7 +515,7 @@
 										"passwd": this.register.newPwd2,
 										"roles": this.register.role,
 										"customer_id": this.register.companyId,
-										"manager_id": this.register.customerId,
+										// "manager_id": this.register.customerId,
 										"realname": this.register.userName,
 										"id_card": this.register.userId,
 										"phone": this.register.userPhoneNum,
@@ -722,6 +739,19 @@
 				this.day = val.result;
 				this.ifday = true
 			},
+			// 预览图片
+			previewImage(no) {
+				console.log(this.src, three)
+				if (no >= 2) {
+					uni.previewImage({
+						current: no,
+						urls: [three],
+					})
+				} else {
+					return;
+				}
+			
+			},
 		},
 		computed: {
 			...mapState(["Token"])
@@ -755,10 +785,13 @@
 		align-content: center;
 		align-items: center;
 		align-self: center;
+		
 	}
 
 	.m-info-content text {
-		width: 100px;
+		width: 6em;
+		font-size: 15px;
+		margin-right: 5px;
 	}
 
 	.m-info-text {

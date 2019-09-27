@@ -1,20 +1,19 @@
 <template>
-	<view class="">
+	<view class="" style="width: 100%; height: 100%;">
 		<view class="self_header ">
 			<view class="self_header_bar">
-				<view class="top_view"></view>  
+				<view class="top_view"></view>
 			</view>
-			<view class="self_header_title flex" >
+			<view class="self_header_title flex">
 				<view class="leftBtn" @tap="back">
-					<uni-icon type="arrowleft" size="27"></uni-icon>
+					<uni-icons type="arrowleft" size="27"></uni-icons>
 				</view>
 				<view>注册</view>
 			</view>
 		</view>
-		<view class="mTop15" >
+		<view class="">
 
 			<view class="fget-num paddingLeft15">
-				<!-- <infoImg :imgText="text.user" :disabled="text.disabled" :placeholder="text.userP" v-model="info.user" @chooseUser="chooseUser"></infoImg> -->
 				<view class="flex  m-info" @tap="chooseUser">
 					<view class="flex center m-info-content">
 						<text>角色</text>
@@ -25,13 +24,24 @@
 
 				<infoImg :imgText="text.company" :disabled="text.disabled" :placeholder="text.companyP" @oilByCompany="oilByCompany"
 				 v-model="info.company"></infoImg>
+
+				<infoText :textValue="text.customerName" :placeholder="text.customerNameP" :disabled="text.disabled" class="noneB"
+				 v-model="info.customer"></infoText> <!-- 点击获取客户经理@chooseCustomer="chooseCustomer" -->
+
+
+				<infoImg :imgText="text.city" :placeholder="text.cityP" :disabled="text.disabled" v-model="info.userCity"
+				 @chooseCustomer="chooseCitys" v-if="!cityValue"></infoImg>
+
+				<infoText :textValue="text.city" :placeholder="text.cityP" :disabled="text.disabled" v-model="info.userCity" v-if="cityValue"></infoText>
+			</view>
+
+			<view class="fget-num paddingLeft15 mTop10">
+
 				<infoText :textValue="text.userName" :placeholder="text.userNameP" v-model="info.userName"></infoText>
 				<infoText :textValue="text.userId" :placeholder="text.userIdP" v-model="info.userId"></infoText>
-				<infoText :textValue="text.phoneNum" :placeholder="text.phoneNumP" v-model="info.userPhoneNum"></infoText>
-				<infoImg :imgText="text.city" :placeholder="text.cityP" :disabled="text.disabled" v-model="info.userCity"
-				 @chooseCustomer="chooseCitys"></infoImg>
-				<infoImg :imgText="text.customerName" :placeholder="text.customerNameP" :disabled="text.disabled" class="noneB"
-				 v-model="info.customer" @chooseCustomer="chooseCustomer"></infoImg>
+				<infoText :textValue="text.phoneNum" :placeholder="text.phoneNumP" :disabled="text.disabled" v-model="info.userPhoneNum"></infoText>
+
+
 				<setPassword :textValue="pws.textValue" :placeholder="pws.placeholder" v-model="info.newPwd1"></setPassword>
 				<setPassword :textValue="pws.newTextValue" :placeholder="pws.newPlaceholder" v-model="info.newPwd2"></setPassword>
 			</view>
@@ -72,36 +82,42 @@
 					<text>选择公司</text>
 				</view> -->
 				<view class="self_header ">
-					<view class="self_header_bar" >
-						<view class="top_view"></view>  
+					<view class="self_header_bar">
+						<view class="top_view"></view>
 					</view>
-					<view class="self_header_title flex self_header_position" >
+					<view class="self_header_title flex self_header_position">
 						<view class="leftBtn" @tap="showCompany =! showCompany">
-							<uni-icon type="arrowleft" size="27"></uni-icon>
+							<uni-icons type="arrowleft" size="27"></uni-icons>
 						</view>
 						<view>选择公司</view>
 					</view>
+
 				</view>
 
-				<view class="content " style="margin-top:44px;padding: 0; background: #EFEFF4;height: 100%;" >
+
+				<view class="choosemany" :style="{height:scrollheight+'px'}">
+
 					<view class="search flex">
 						<input type="text" value="" placeholder="根据编号和公司名称搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
 					</view>
-					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:450px; position: relative;">
+
+					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:scrollheight+'px'}">
 						<view class="customerCompany" @tap="chooseCompany(index,item.id)" v-for="(item,index) in datas" :key="item.id">
 							<view>{{item.num}}</view>
 							<view>{{item.name}}</view>
 							<view>{{item.addr}}</view>
 						</view>
+						<view class="loading" @tap="mores" v-show="Cmore">
+							<view>
+								<image src="/../static/img/loading.png" mode="aspectFit" style="width: 8px ;height: 8px;"></image>&nbsp;
+								点击加载更多...
+							</view>
+						</view>
 
 					</scroll-view>
+
 				</view>
-				<view class="loading" @tap="mores" v-show="Cmore">
-					<view>
-						<image src="/../static/img/loading.png" mode="aspectFit" style="width: 8px ;height: 8px;"></image>&nbsp;
-						点击加载更多...
-					</view>
-				</view>
+
 			</view>
 			<!-- 客户经理 -->
 			<view v-show="showCoutomer" class="companyCustomerCity">
@@ -111,21 +127,21 @@
 				</view -->
 				<view class="self_header ">
 					<view class="self_header_bar">
-						<view class="top_view"></view>  
+						<view class="top_view"></view>
 					</view>
-					<view class="self_header_title flex self_header_position" >
+					<view class="self_header_title flex self_header_position">
 						<view class="leftBtn" @tap="showCoutomer =! showCoutomer">
-							<uni-icon type="arrowleft" size="27"></uni-icon>
+							<uni-icons type="arrowleft" size="27"></uni-icons>
 						</view>
 						<view>选择客户经理</view>
 					</view>
 				</view>
 
-				<view class="content" style="margin-top:44px;padding: 0;background: #EFEFF4; height: 100%;" >
+				<view class=" choosemany">
 					<view class="search flex">
 						<input type="text" value="" placeholder="根据客户经理名称搜索" class="search_input" v-model="value" @input="searchCustomer" />
 					</view>
-					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:450px; position: relative;">
+					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y">
 						<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="item.id">
 							<view>{{item.realname}}</view>
 							<view>{{item.phone}}</view>
@@ -150,11 +166,11 @@
 				</view> -->
 				<view class="self_header ">
 					<view class="self_header_bar">
-						<view class="top_view"></view>  
+						<view class="top_view"></view>
 					</view>
-					<view class="self_header_title flex self_header_position" >
+					<view class="self_header_title flex self_header_position">
 						<view class="leftBtn" @tap="showCity =! showCity">
-							<uni-icon type="arrowleft" size="27"></uni-icon>
+							<uni-icons type="arrowleft" size="27"></uni-icons>
 						</view>
 						<view>选择城市</view>
 					</view>
@@ -162,8 +178,8 @@
 				<!-- <view class="search flex">
 					<input type="text" value="" placeholder="搜索" class="search_input" @input="searchCompany" v-model="inputValue" />
 				</view> -->
-				<view class="content " style="margin-top:44px;padding: 0;background: #EFEFF4; height: 100%;" >
-					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:490px; position: relative;">
+				<view class=" choosemany" style="padding-top: 54px;">
+					<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height100%">
 						<view class="customerCompany" @tap="chooseCity(index,item.id)" v-for="(item,index) in cityDatas" :key="index">
 							<!-- 	<view>{{item.id}}</view> -->
 							<view>{{item.name}}</view>
@@ -188,7 +204,7 @@
 	import setPassword from "../../components/setPassword/setPassword"
 	import mButton from '../../components/m-button.vue'
 	import titles from '../../components/title.vue'
-	import uniIcon from '../../components/uni-icon/uni-icon.vue'
+	// import uniIcon from '../../components/uni-icons/uni-icons.vue'
 	export default {
 		data() {
 			return {
@@ -204,11 +220,11 @@
 					disabled: true,
 					// userP: '请选择角色',
 					companyP: '选择公司',
-					userNameP: '姓名',
-					userIdP: '身份证号码',
+					userNameP: '请输入真实姓名',
+					userIdP: '请输入身份证号码',
 					phoneNumP: '电话号码',
-					cityP: '所在城市',
-					customerNameP: '请选择客户经理',
+					cityP: '客户经理所在城市',
+					customerNameP: '根据选择的公司进行分配',
 					disabled: true
 				},
 				pws: {
@@ -269,17 +285,37 @@
 				old: {
 					scrollTop: 0,
 				},
-				barHeight:25,
+				cityValue: true,
+				phoneHeight: '',
+				scrollheight: ''
 			}
 		},
-
+		onLoad(option) {
+			const that = this;
+			this.info.userPhoneNum = option.number;
+			uni.getSystemInfo({
+				success: function(res) {
+					// console.log(res.model);
+					// console.log(res.pixelRatio);
+					// console.log(res.windowWidth);
+					// console.log(res.windowHeight);
+					// console.log(res.language);
+					// console.log(res.version);
+					// console.log(res.platform);
+					that.phoneHeight = res.windowHeight;
+					that.scrollheight = that.phoneHeight - 44 - 44 - 25
+				}
+			});
+			//#ifdef APP-PLUS  
+			//#endif
+		},
 		methods: {
 			//点击角色
 			chooseUser() {
 				this.users = !this.users;
 			},
 			userNameBlur(e) {
-				console.log(e)
+				// console.log(e)
 			},
 
 			//选择公司
@@ -287,6 +323,7 @@
 				this.getCompanyInfo();
 				this.Cmore = true;
 				this.datas = [];
+				this.inputValue = '';
 				this.showCompany = !this.showCompany;
 				uni.showLoading({
 					title: '加载中...'
@@ -297,6 +334,7 @@
 				this.info.companyId = id;
 				this.info.company = this.datas[e].name;
 				this.showCompany = !this.showCompany;
+				this.getCustmerCity()
 
 			},
 			//公司输入框搜索
@@ -319,13 +357,16 @@
 					pageSize: this.pageSize
 				}).then(res => {
 					uni.hideLoading()
-					console.log(res)
+					// console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						console.log(res)
+						// console.log(res)
 						res.data.value.forEach(el => {
 							this.datas.push(el);
 						})
-						if (res.data.value.length < 10 && res.data.value.length > 0) {
+						if (res.data.value.length < 10 && res.data.value.length >= 1) {
+							this.Cmore = false;
+
+						} else if (res.data.value.length < 1) {
 							this.Cmore = false;
 							uni.showToast({
 								title: '没有更多了',
@@ -342,7 +383,26 @@
 					console.log(err)
 				})
 			},
+			// 通过所选城市获取客户经理&&城市
+			getCustmerCity() {
+				this.test.post('base/getCustomerData', {
+					customer_id: this.info.companyId
+				}).then(res => {
+					// console.log(res, this.info)
+					this.info.customer = res.data.value.manager_name;
+					this.info.userCity = res.data.value.city;
+					if (this.info.userCity == '' || this.info.userCity == null) {
 
+						this.cityValue = false;
+
+					} else {
+						
+						this.cityValue = true;
+					}
+				}).catch(err => {
+					console.log(err);
+				})
+			},
 
 			//角色选择
 			buyAndCarry() {
@@ -373,7 +433,7 @@
 			//选择市
 			getCityInfo() {
 				this.test.post('base/listUserCity').then(res => {
-					console.log(res)
+					// console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						res.data.value.forEach(el => {
 							this.cityDatas.push(el);
@@ -394,95 +454,96 @@
 				this.info.userCity = this.cityDatas[index].name;
 				this.ciytId = id;
 				this.page = 1;
-				this.test.post('base/listManagers', {
-					search: this.value,
-					org_id: this.ciytId,
-					size: this.page,
-					pageSize: this.pageSize
-				}).then(res => {
-					console.log(res)
-					this.info.customer = res.data.value[0].realname
-					this.info.customerId = res.data.value[0].id
-				}).catch(err => {})
+				// this.test.post('base/listManagers', {
+				// 	search: this.value,
+				// 	org_id: this.ciytId,
+				// 	size: this.page,
+				// 	pageSize: this.pageSize
+				// }).then(res => {
+				// 	console.log(res)
+				// 	this.info.customer = res.data.value[0].realname
+				// 	this.info.customerId = res.data.value[0].id
+				// }).catch(err => {})
 			},
 
 
 			// 选择客户经理
-			chooseCustomer(e) {
-				this.page = 1;
-				this.more = true;
-				this.man = [];
-				if (this.ciytId !== '') {
-					uni.showLoading({
-						title: '加载中...'
-					})
-					this.getCustomerInfo();
-					this.showCoutomer = !this.showCoutomer;
-				} else {
-					uni.showToast({
-						title: '请选择所在城市',
-						icon: 'none'
-					})
-				}
-			},
-			chooseCustomers(e, id) {
-				this.info.customerId = id;
-				this.info.customer = this.man[e].realname;
-				this.showCoutomer = !this.showCoutomer
-			},
+			// chooseCustomer(e) {
+			// 	this.page = 1;
+			// 	this.more = true;
+			// 	this.value = '';
+			// 	this.man = [];
+			// 	if (this.ciytId !== '') {
+			// 		uni.showLoading({
+			// 			title: '加载中...'
+			// 		})
+			// 		this.getCustomerInfo();
+			// 		this.showCoutomer = !this.showCoutomer;
+			// 	} else {
+			// 		uni.showToast({
+			// 			title: '请选择所在城市',
+			// 			icon: 'none'
+			// 		})
+			// 	}
+			// },
+			// chooseCustomers(e, id) {
+			// 	this.info.customerId = id;
+			// 	this.info.customer = this.man[e].realname;
+			// 	this.showCoutomer = !this.showCoutomer
+			// },
 			// 搜索客户经理
-			searchCustomer() {
-				this.page = 1;
-				if (this.value !== '' && this.value !== null) {
-					this.man = [];
-					this.getCustomerInfo();
-				} else {
-					this.page = 1;
-					this.value = '';
-					this.man = [];
-					this.getCustomerInfo();
-				}
-			},
-			//获取客户经理
-			getCustomerInfo() {
+			// searchCustomer() {
+			// 	this.page = 1;
+			// 	if (this.value !== '' && this.value !== null) {
+			// 		this.man = [];
+			// 		this.getCustomerInfo();
+			// 	} else {
+			// 		this.page = 1;
+			// 		this.value = '';
+			// 		this.man = [];
+			// 		this.getCustomerInfo();
+			// 	}
+			// },
+			// //获取客户经理
+			// getCustomerInfo() {
 
-				console.log(this.page, this.pageSize)
-				this.test.post('base/listManagers', {
-					realname: this.value,
-					org_id: this.ciytId,
-					size: this.page,
-					pageSize: this.pageSize
-				}).then(res => {
-					uni.hideLoading();
-					console.log(res)
+			// 	console.log(this.page, this.pageSize)
+			// 	this.test.post('base/listManagers', {
+			// 		search: this.value,
+			// 		org_id: this.ciytId,
+			// 		size: this.page,
+			// 		pageSize: this.pageSize
+			// 	}).then(res => {
+			// 		uni.hideLoading();
+			// 		console.log(res)
 
-					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						console.log(res)
-						res.data.value.forEach(el => {
+			// 		if (res.statusCode == 200 && res.data.errorCode == 0) {
+			// 			console.log(res)
+			// 			res.data.value.forEach(el => {
 
-							this.man.push(el)
-						})
+			// 				this.man.push(el)
+			// 			})
 
 
-						if (res.data.value.length < 10) {
-							this.more = false;
-						} else if (res.data.value.length <= 0) {
-							this.more = false;
-							uni.showToast({
-								title: '没有更多了',
-								icon: "none"
-							})
-						}
-					}
-				}).catch(err => {
-					uni.hideLoading();
-					uni.showToast({
-						title: '加载失败',
-						icon: 'none'
-					})
-					console.log(err)
-				})
-			},
+			// 			if (res.data.value.length < 10) {
+			// 				this.more = false;
+			// 			} else if (res.data.value.length <= 0) {
+			// 				this.more = false;
+			// 				uni.showToast({
+			// 					title: '没有更多了',
+			// 					icon: "none"
+			// 				})
+			// 			}
+			// 		}
+			// 	}).catch(err => {
+			// 		uni.hideLoading();
+			// 		uni.showToast({
+			// 			title: '加载失败',
+			// 			icon: 'none'
+			// 		})
+			// 		console.log(err)
+			// 	})
+			// },
 			// 点击加载更多
 			Smore() {
 				this.page += 1;
@@ -505,48 +566,62 @@
 			},
 			// 下一步
 			goPositive() {
+
 				const that = this;
 				const _this = this.info;
-				console.log(_this.userName)
+				// console.log(_this.userName)
 				if (_this.user !== '' && _this.user !== null) {
 					if (_this.company !== '' && _this.company !== null) {
-						if (_this.userName !== '' && _this.userName !== null) {
-							if (_this.userId !== '' && _this.userId !== null) {
-								if (_this.userId.length == 18) {
-									if (_this.userPhoneNum !== '' && _this.userPhoneNum !== null) {
-										// 判断手机号码
-										if (!/^1[3456789]\d{9}$/.test(_this.userPhoneNum)) {
-											return uni.showToast({
-												"title": '请填写正确的手机号码',
-												"icon": "none"
-											})
-										} else if (_this.userCity !== '' && _this.userCity !== null) {
-											if (_this.customer !== '' && _this.customer !== null) {
+						if (_this.userCity !== '' && _this.userCity !== null) {
+							if (_this.userName !== '' && _this.userName !== null) {
+								if (_this.userId !== '' && _this.userId !== null) {
+									if (_this.userId.length == 18) {
+										if (_this.userPhoneNum !== '' && _this.userPhoneNum !== null) {
+											// 判断手机号码
+											if (!/^1[3456789]\d{9}$/.test(_this.userPhoneNum)) {
+												return uni.showToast({
+													"title": '请填写正确的手机号码',
+													"icon": "none"
+												})
+											} else
+												// if (_this.customer !== '' && _this.customer !== null) {
 												if (_this.newPwd1 !== '' && _this.newPwd1 !== null) {
-													console.log(_this.newPwd1.length, _this.userId.length)
+													// console.log(_this.newPwd1.length, _this.userId.length)
 													if (_this.newPwd1.length >= 6) {
 														if (_this.newPwd1 === _this.newPwd2) {
-															console.log(this.checkUser)
+															// console.log(this.checkUser)
 															if (this.checkUser.length == 1) {
-																console.log(_this.user)
+																// console.log(_this.user)
 																if (this.checkUser[0] == '购油人') {
 																	this.info.role = '1';
+
 																} else if (this.checkUser[0] == '提油人') {
 																	this.info.role = '2';
 																} else {
 																	this.info.role = '3';
 																}
-																console.log(this.info.role)
+																// console.log(this.info.role)
+
+
+
 																uni.setStorage({
 																	key: 'register',
 																	data: this.info,
 																	success: function() {
-																		uni.navigateTo({
-																			url: "positive/positive1?name=" + "register" + "&user=" + that.checkUser,
-																			success: res => {
+																		if (that.checkUser[0] == '购油人') {
+																			uni.navigateTo({
+																				url: "positive/positive1?name=" + "register" + "&user=" + that.checkUser,
+																				success: res => {
 
-																			}
-																		})
+																				}
+																			})
+																		} else {
+																			uni.navigateTo({
+																				url: './uploadFace/uploadFace?name=' + "register" + "&user=" + that.checkUser + "&length=" +
+																					that.checkUser.length,
+																			})
+																		}
+
 																	}
 																})
 
@@ -565,7 +640,8 @@
 																	data: this.info,
 																	success: function() {
 																		uni.navigateTo({
-																			url: "positive/positive2?name=" + "register" + "&user=" + that.checkUser,
+																			url: "./uploadFace/uploadFace?name=" + "register" + "&user=" + that.checkUser + "&length=" +
+																				that.checkUser.length,
 																			success: res => {
 
 																			}
@@ -581,7 +657,8 @@
 																	data: this.info,
 																	success: function() {
 																		uni.navigateTo({
-																			url: "positive/positive?name=" + "register" + "&user=" + that.checkUser,
+																			url: "./uploadFace/uploadFace?name=" + "register" + "&user=" + that.checkUser + "&length=" +
+																				that.checkUser.length,
 																			success: res => {
 
 																			}
@@ -612,43 +689,44 @@
 													})
 												}
 												// 判断是否选择客户经理
-											} else {
-												return uni.showToast({
-													title: '请选择客户经理',
-													icon: 'none'
-												})
-											}
-											// 判断城市是否填写	
+												// } else {
+												// 	return uni.showToast({
+												// 		title: '请选择客户经理',
+												// 		icon: 'none'
+												// 	})
+												// }
+												// 判断城市是否填写	
+
 										} else {
 											return uni.showToast({
-												title: '所在城市不能为空',
+												title: '手机号码不能为空',
 												icon: 'none'
 											})
 										}
+										//判断身份证号码位数是否18位
 									} else {
 										return uni.showToast({
-											title: '手机号码不能为空',
+											title: '请填写18位身份证号码',
 											icon: 'none'
 										})
 									}
-									//判断身份证号码位数是否18位
+									//判断身份证号码
 								} else {
 									return uni.showToast({
-										title: '请填写18位身份证号码',
+										title: '身份证号码不能为空',
 										icon: 'none'
 									})
 								}
-								//判断身份证号码
+								//判断姓名是否填写
 							} else {
 								return uni.showToast({
-									title: '身份证号码不能为空',
+									title: '姓名不能为空',
 									icon: 'none'
 								})
 							}
-							//判断姓名是否填写
 						} else {
 							return uni.showToast({
-								title: '姓名不能为空',
+								title: '所在城市不能为空',
 								icon: 'none'
 							})
 						}
@@ -678,10 +756,15 @@
 			infoImg,
 			setPassword,
 			mButton,
-			uniIcon,
+			// uniIcon,
 			titles,
 
 		},
+		computed: {
+			// scrollheight(){
+			// 	return this.phoneHeight-44-44-25
+			// }
+		}
 
 	}
 </script>
@@ -780,8 +863,9 @@
 		padding: 12px 15px;
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 		margin-bottom: 1px;
-		/* position: fixed;
-		top: 78px; */
+		position: fixed;
+		top: 69px;
+		z-index: 1;
 	}
 
 	.search_input {
@@ -867,7 +951,7 @@
 	}
 
 	.m-info-content text {
-		width: 5rem;
+		width: 4rem;
 	}
 
 	.m-info-content .infoText {
@@ -893,5 +977,17 @@
 		position: fixed;
 
 		left: 0;
+	}
+
+	.scroll-Y {
+		position: relative;
+	}
+
+	.choosemany {
+		/* margin-top: 54px; */
+		padding-top: 98px;
+		background: #EFEFF4;
+		position: relative;
+		box-sizing: border-box;
 	}
 </style>

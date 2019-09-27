@@ -44,7 +44,7 @@
 	}
 
 	.m-info text {
-		width: 5rem;
+		width: 4rem;
 		/* min-width: 70px;
 		margin-right: 10px; */
 	}

@@ -247,35 +247,35 @@
 						"background": "white"
 					}
 				}
-				
-// 				"app-plus": {
-// 					"titleNView": {
-// 						"titleColor": "#424242",
-// 						"titleText": "订单列表",
-// 						"backgroundColor": "#FFF",
-// 						"fontWeight": "normal",
-// 						"titleSize": "40upx",
-// 						
-// 						"buttons": [ //{ //添加自定义按钮入口
-// 							// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
-// 							// 		"text": "返回",
-// 							// 		"fontSize": "28upx",
-// 							// 		"float": "left", //靠左第一个
-// 							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
-// 							// 	},
-// 							{
-// 								"text": "搜索",
-// 								"fontSize": "15px",
-// 								"float": "right", //靠右第一个
-// 								"width": "46px",
-// 								"color": "#424242"
-// 								//"redDot": true //默认图标按钮右上角有红色点状标志
-// 							}
-// 						]
-// 
-// 						
-// 					}
-// 				}
+
+				// 				"app-plus": {
+				// 					"titleNView": {
+				// 						"titleColor": "#424242",
+				// 						"titleText": "订单列表",
+				// 						"backgroundColor": "#FFF",
+				// 						"fontWeight": "normal",
+				// 						"titleSize": "40upx",
+				// 						
+				// 						"buttons": [ //{ //添加自定义按钮入口
+				// 							// 		//此处引用阿里图标库图标//（请参考https://www.jianshu.com/p/5347eabff1e4）
+				// 							// 		"text": "返回",
+				// 							// 		"fontSize": "28upx",
+				// 							// 		"float": "left", //靠左第一个
+				// 							// 		"id": "leftMenu" //自定义字段，用于以后对按钮事件处理
+				// 							// 	},
+				// 							{
+				// 								"text": "搜索",
+				// 								"fontSize": "15px",
+				// 								"float": "right", //靠右第一个
+				// 								"width": "46px",
+				// 								"color": "#424242"
+				// 								//"redDot": true //默认图标按钮右上角有红色点状标志
+				// 							}
+				// 						]
+				// 
+				// 						
+				// 					}
+				// 				}
 			}
 		}, {
 			"path": "pages/search/search",
@@ -516,6 +516,34 @@
 					}
 				}
 			}
+		}, {
+			"path": "pages/register/registerNumber",
+			"style": {
+				"titleNView": {
+					"titleColor": "#424242",
+					"titleText": "注册",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "40upx"
+				}
+			}
+		}, {
+			"path": "pages/register/uploadFace/uploadFace",
+
+			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "white"
+					}
+				}
+			}
+
 		}
 	],
 	"tabBar": {

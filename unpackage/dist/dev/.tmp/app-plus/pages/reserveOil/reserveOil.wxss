@@ -27,14 +27,13 @@
 	        flex: 1;
 }
 .m-info .m-info-contents text {
-	width: 5rem;
+	width: 4rem;
 }
 .m-info-contents input {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;
 	        flex: 1;
-	padding-left: 10px;
 }
 .m-info-content {
 	padding: 4px 0;

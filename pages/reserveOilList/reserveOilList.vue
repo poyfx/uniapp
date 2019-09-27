@@ -6,7 +6,7 @@
 		<view class="title_content">
 			<view class="flex title">
 				<view class="left" @tap="back">
-					<uni-icon type="arrowleft" size="27"></uni-icon>
+					<uni-icons type="arrowleft" size="27"></uni-icons>
 				</view>
 
 				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
@@ -15,24 +15,25 @@
 			</view>
 		</view>
 
-		<view class="select_day">
-			<view class="times" v-show="day">
-				<view class="times" style="padding: 4px 15px; position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
-			</view>
-			<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
-				<selects :list="list" :clearable="false" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
-				 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
-				</selects>
+<!-- 订单状态查询和日期 -->
+		<view class="status_days" ref="statusdays" :class="day?height95:height55" v-show="titleshow">
+			<view class="mContent status_days_day" :class="showhide">
+				<view class="times" v-show="day">
+					<view class="times" style="padding: 10px 15px; ">{{day}}</view>
+				</view>
+		
+				<view style="position: relative;box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);">
+					<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' border:none;'"
+					 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
+					</selects>
+					
+				</view>
 			</view>
 		</view>
 
 
-		<view class="mContent" style=" padding-top: 0px;">
-			<!-- <view class="times" v-show="day">
-				<view style="padding: 4px 15px;position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
-			</view> -->
-
-			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.no)" v-for="(item,index) in oil" :key="item.reserve_id">
+		<view class="mContent list_content">
+			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.no)" v-for="(item,index) in oil" :key="item.reserve_id" @touchmove="hidetitle" @touchend="showtitle">
 				<view class="stateBox flex">
 					<view class="">
 						<view>
@@ -129,9 +130,14 @@
 				no: '',
 				from: '',
 				to: '',
+				height95: 'height95',
+				height55: 'height55',
+				titleshow: true,
+				showhide:'',//点击滑动样式
 			}
 		},
 		onLoad(option) {
+			this.showhide = '';
 			this.to = option.to;
 			this.from = option.from;
 			this.no = option.ordernumber;
@@ -249,10 +255,18 @@
 					url: '../index/index',
 				})
 			},
+			hidetitle() {
+			
+				console.log(this.$refs.statusdays)
+				
+				this.showhide="hidetitles"
+			},
+			showtitle() {
+				
+				this.showhide="showtitles"
+			},
 		},
-		// onNavigationBarButtonTap(e) {
-		// 	
-		// },
+		
 		components: {
 			selects
 		}

@@ -2,11 +2,14 @@
     "name" : "安徽石油",
     "appid" : "__UNI__C5F30A1",
     "description" : "",
-    "versionName" : "0.0.7",
+    "versionName" : "0.0.91",
     "versionCode" : 1,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
+		"compatible":{
+			"ignoreVersion":true
+		},
         "usingComponents" : true,
         "splashscreen" : {
             "alwaysShowBeforeRender" : false,
@@ -14,6 +17,7 @@
             "autoclose" : true,
             "delay" : 0
         },
+		
         /* 模块配置 */// "modules" : {
         //     "Push" : {}
         // },

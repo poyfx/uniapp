@@ -11,7 +11,7 @@
 			<pwsInput :placeholder="placeholderPws" v-model="consumer.password"></pwsInput>
 			<view class="loginInfo">
 				<navigator url="forget/forget" class="forgetPwd color-dff">忘记密码</navigator>
-				<navigator url="../register/register" class="toReginster"> 没有账号？<text class="color-dff">马上注册</text></navigator>
+				<navigator url="../register/registerNumber" class="toReginster"> 没有账号？<text class="color-dff">马上注册</text></navigator>
 			</view>
 			<view class="mTop30">
 				<mButton :type="btnType" :disabled="btnDisabled" :value="btnValue" @handleLogin="handleLogin"></mButton>
@@ -93,7 +93,7 @@
 				if (this.consumer.username != "" && this.consumer.username != null) {
 					if (this.consumer.password != "" && this.consumer.password != null) {
 						const that = this;
-						this.test.post('base/login', {
+						this.test.post('base/login', {//http://192.168.0.156:8080/api/bizcust/
 							username: this.consumer.username,
 							passwd: this.consumer.password,
 							client_id: this.clientId,

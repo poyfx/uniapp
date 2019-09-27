@@ -96,10 +96,11 @@
 	}
 
 	.m-input {
-		width: 70%;
+		width: 100%;
 		padding: 11px 15px 11px 0;
 		border: none;
 		outline: none;
+			flex: 1;
 	}
 
 	.m-eye {
@@ -110,8 +111,9 @@
 		z-index: 333;
 	}
 	.m-input-view text{
-		width: 80px;
+		width: 4rem;
+	
 		box-sizing: border-box;
-		padding: 10px 10px 10px 0;
+		/* padding: 10px 10px 10px 0; */
 	}
 </style>

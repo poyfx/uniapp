@@ -37,7 +37,9 @@
 	        align-self: center;
 }
 .m-info-content text.data-v-4dd35464 {
-	width: 100px;
+	width: 6em;
+	font-size: 15px;
+	margin-right: 5px;
 }
 .m-info-text.data-v-4dd35464 {
 	-webkit-box-pack: start;

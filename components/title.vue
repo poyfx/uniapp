@@ -5,7 +5,7 @@
 		</view>
 		<view class="self_header_title flex" >
 			<view class="leftBtn" @tap="back">
-				<uni-icon type="arrowleft" size="27"></uni-icon>
+				<uni-icons type="arrowleft" size="27"></uni-icons>
 			</view>
 			<view>{{titles}}</view>
 		</view>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	import uniIcon from "@/components/uni-icon/uni-icon.vue"
+	// import uniIcon from "@/components/uni-icons/uni-icons.vue"
 	export default {
 		props:{
 			titles:{
@@ -34,7 +34,7 @@
 			},
 		},
 		components:{
-			uniIcon
+			 // uniIcon
 		}
 	}
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<view class="mContent">
 		<!-- 轮播图 -->
-		<banner :img="img" ></banner>
+		<banner :img="img"></banner>
 		<!-- 导航 -->
 		<navs :role='roles'></navs>
 		<!-- 天气 -->
@@ -20,21 +20,32 @@
 		</view>
 		<!-- 客户经理 -->
 		<view class="main">
-			<view class="myManager">
-				<text class="line"></text>
-				<text class="title-p">我的客户经理</text>
-				<view class="managerNum flex">
-					<view class="call">
-						<view class="manager">{{myManager}}</view>
-						<view class="">
-							{{managerTel}}
-						</view>
-					</view>
 
-					<view class=" ">
-						<text class="numberBtn" @click="callPhone(managerTel)">通话</text>
-					</view>
-				</view>
+			
+					<view class="myManager">
+						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration"
+			 :circular="circular" indicator-active-color="#65C6F8">
+				<swiper-item v-for="(item,index) in myManagerBox" :key="index" catchtouchmove="stopTouchMove">
+						
+						<text class="line"></text>
+						<text class="title-p">我的客户经理</text>
+						<view class="managerNum flex">
+							<view class="call">
+								<view class="manager">{{item.manager_name}}</view>
+								<view class="">
+									{{item.phone}}
+								</view>
+							</view>
+
+							<view class=" ">
+								<text class="numberBtn" @click="callPhone(item.phone)">通话</text>
+							</view>
+						</view>
+					
+
+				</swiper-item>
+
+			</swiper>
 			</view>
 		</view>
 
@@ -57,7 +68,7 @@
 				</view>
 			</view>
 			<view class="priceLi">
-				<view class="nowPrice" >
+				<view class="nowPrice">
 					<text class="oilName">0#柴油</text>
 					<view class="oilPrice">
 						<text :class="gain.diesel_0>0?s:j">{{datas.diesel_0}}</text>
@@ -69,7 +80,7 @@
 			<view class="priceLi">
 				<view class="nowPrice">
 					<text class="oilName">-10#柴油</text>
-					<view  class="oilPrice">
+					<view class="oilPrice">
 						<text :class="gain.diesel_10>0?s:j">{{datas.diesel_10}}</text>
 					</view>
 
@@ -78,7 +89,7 @@
 			</view>
 			<view class="priceLi">
 				<view class="nowPrice">
-					<text  class="oilName">92#国六</text>
+					<text class="oilName">92#国六</text>
 					<view class="oilPrice">
 						<text :class="gain.gas_92>0?s:j">{{datas.gas_92}}</text>
 					</view>
@@ -199,10 +210,10 @@
 		data() {
 			return {
 				title: '',
-				managerTel: "",
-				myManager: '',
-				datas: [],//油价
-				 gain:[],
+				// managerTel: "",
+				// myManager: '',
+				datas: [], //油价
+				gain: [],
 				img: [],
 				// role:'',
 				address: '',
@@ -215,22 +226,28 @@
 				date: '', //日期
 				week: '', //星期
 				temperature: '', //温度
-				s:'s',
-				j:'j'
+				s: 's',//油价颜色样式升
+				j: 'j',//油价颜色样式降
+				autoplay: false,
+				indicatorDots: true,
+				interval: 2000,
+				duration: 500,
+				circular:true,
+				myManagerBox:{},
 			}
 		},
 		onShow() {
 			this.getlocation();
-			
+
 			this.getDate();
 			console.log(this.hasLogin)
 			this.getInfo();
 		},
 		onLoad() {
-			
+
 		},
 		methods: {
-		
+
 			// 获取首页信息
 			getInfo() {
 				const that = this;
@@ -241,12 +258,18 @@
 						let price = res.data.oilPrice; //获取当前油价油价
 						that.datas = price.oilPrice;
 						that.gain = price.oilAmplitude;
-						let managerInfo = res.data.user;
-						that.myManager = managerInfo.manager_name; //客户经理信息
-						that.managerTel = managerInfo.manager_phone;
+						that.myManagerBox = res.data.managers;
+						if(that.myManagerBox.length<2){
+							that.indicatorDots = false
+						}else{
+							that.indicatorDots = true
+						}
+						// let managerInfo = res.data.user;
+						// that.myManager = managerInfo.manager_name; //客户经理信息
+						// that.managerTel = managerInfo.manager_phone;
 						let images = res.data.banners; //banner图
 						that.img = images;
-						
+
 					}
 				})
 
@@ -272,35 +295,35 @@
 			getlocation() {
 				const that = this;
 				uni.request({
-					url:"https://restapi.amap.com/v3/ip?parameters",
+					url: "https://restapi.amap.com/v3/ip?parameters",
 					header: {
 						'Content-Type': 'application/json;charset=UTF-8'
 					},
-					data:{
+					data: {
 						key: 'b5066e0a9a2a996397e9172fc67fdf40',
 					},
-					success:res=>{
+					success: res => {
 						that.city = res.data.city;
 						that.adcode = res.data.adcode;
 						// that.getAdcode();
 						that.getWeather();
 					}
 				})
-				
-// 				uni.getLocation({
-// 					type: 'wgs84',
-// 					geocode: true,
-// 					success: function(res) {
-// 						console.log(res)
-// 						const longitude = res.longitude;
-// 						const latitude = res.latitude;
-// 						that.city = res.address.city;
-// 						that.address = res.address.city + res.address.district;
-// 						that.district = res.address.district;
-// 						that.getAdcode();
-// 					},
-// 
-// 				});
+
+				// 				uni.getLocation({
+				// 					type: 'wgs84',
+				// 					geocode: true,
+				// 					success: function(res) {
+				// 						console.log(res)
+				// 						const longitude = res.longitude;
+				// 						const latitude = res.latitude;
+				// 						that.city = res.address.city;
+				// 						that.address = res.address.city + res.address.district;
+				// 						that.district = res.address.district;
+				// 						that.getAdcode();
+				// 					},
+				// 
+				// 				});
 			},
 			// getAdcode() {
 			// 	const that = this
@@ -352,8 +375,8 @@
 					methods: 'GET',
 					success: function(res) {
 						res.data.lives.forEach(res => {
-							that.temperature = res.temperature;//天气摄氏度
-							that.weather = res.weather;//天气
+							that.temperature = res.temperature; //天气摄氏度
+							that.weather = res.weather; //天气
 						})
 					}
 				})
@@ -393,7 +416,7 @@
 			}
 		},
 		computed: {
-			...mapState(["hasLogin", "userInfo","roles",'Token'])
+			...mapState(["hasLogin", "userInfo", "roles", 'Token'])
 		},
 		components: {
 			banner,
@@ -406,9 +429,10 @@
 	.nowPrice {
 		display: flex;
 		justify-content: space-between;
-		
+
 	}
-	.nowPrice:first-child>text{
+
+	.nowPrice:first-child>text {
 		width: 4rem;
 	}
 
@@ -454,7 +478,7 @@
 		font-size: 80upx;
 		padding-bottom: 9px;
 		font-weight: 100;
-		text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 	}
 
 	.weather-right {
@@ -474,7 +498,12 @@
 	.r-weather {
 		padding-bottom: 10px;
 	}
-	.oilName,.oilPrice{
+
+	.oilName,
+	.oilPrice {
 		flex: 1;
+	}
+	.swiper{
+		height: 100px;
 	}
 </style>

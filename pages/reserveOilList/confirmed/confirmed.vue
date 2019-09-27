@@ -1,12 +1,12 @@
 <template>
-	<view class="">
+	<view class="" style="width: 100%; height: 100%;">
 		<view class="chooseAddress">
 			<view class="self_header_bar">
 				<view class="top_view"></view>  
 			</view>
 			<view class="flex title">
 				<view class="left" @tap="back">
-					<uni-icon type="arrowleft" size="27"></uni-icon>
+					<uni-icons type="arrowleft" size="27"></uni-icons>
 				</view>
 
 				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
@@ -66,7 +66,7 @@
 	import step from '../../../components/step/step.vue'
 	import infoText from '../../../components/m-info-text/m-info-text'
 	import mButton from '../../../components/m-button.vue'
-	import uniIcon from "@/components/uni-icon/uni-icon.vue"
+ // import uniIcon from "@/components/uni-icons/uni-icons.vue"
 	import tButton from '../../../components/twoButton/twoButton'
 	export default {
 		data() {
@@ -207,22 +207,22 @@
 			step,
 			infoText,
 			mButton,
-			uniIcon,
+			 // uniIcon,
 			tButton
 		},
 	}
 </script>
 
 <style scoped>
-	/* .chooseAddress {
-		position: absolute;
+	.chooseAddress {
+		/* position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 9999;
+		z-index: 9999; */
 		width: 100%;
 		height: 100%;
 		background-color: #EFEFF4;
-	} */
+	}
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;

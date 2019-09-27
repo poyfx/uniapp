@@ -51,7 +51,7 @@
 		},
 		methods: {
 			order(role) {
-				console.log(role.length)
+				// console.log(role.length)
 				const token = uni.getStorageSync('Token');
 				if (token == null || token == '' || token == undefined) {
 					uni.showModal({
@@ -70,7 +70,7 @@
 						}
 					})
 				} else {
-					console.log(role)
+					// console.log(role)
 					role.forEach((el, index) => {
 							if (el.code == 1) {
 								this.buy_apply = true;
@@ -78,7 +78,7 @@
 								console.log(el,index)
 							}
 					})
-					console.log(this.arr)
+					// console.log(this.arr)
 					if (this.buy_apply) {
 						console.log(this.arr.role_status)
 						if (this.arr.role_status == 1 || this.arr.role_status == 2) {
@@ -91,14 +91,14 @@
 								icon: 'none'
 							})
 						} else {
-							console.log(1)
+							// console.log(1)
 							uni.showToast({
 								title: '权限不够，请在用户信息界面申请权限',
 								icon: 'none'
 							})
 						}
 					} else {
-						console.log(2)
+						// console.log(2)
 						uni.showToast({
 							title: '权限不够，请在用户信息界面申请权限',
 							icon: 'none'

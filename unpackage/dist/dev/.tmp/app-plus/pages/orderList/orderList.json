@@ -11,7 +11,6 @@
     "background": "white"
   },
   "usingComponents": {
-    "uni-icon": "/components/uni-icon/uni-icon",
     "selects": "/common/js/xfl-select"
   }
 }

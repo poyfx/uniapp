@@ -69,9 +69,9 @@
 			getNewInfo() {
 				const that = this;
 				this.test.post('user/get_base_data', {
-					Token: this.Token
+					Token: this.token
 				}).then(res => {
-					// console.log(res)
+					 console.log(res)
 					// debugger
 					// uni.setStorageSync('userInfo',res.data.value)
 					uni.setStorage({
@@ -113,16 +113,17 @@
 	}
 
 	.p-bx {
-		width: 130px;
+		width: 100%;
 		position: absolute;
 		bottom: 20px;
-		left: 50%;
-		margin-left: -65px;
+		left: 0;
+		
 		text-align: center;
 		color: #616161;
 	}
 
 	.p-bx view {
+		width: 100%;
 		font-size: 24upx;
 	}
 

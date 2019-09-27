@@ -47,11 +47,21 @@
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
 
-				<infoText :textValue="infos.buyoilText" :type="infos.number" @input="setNumber" :placeholder="infos.placeholder"
-				 :value="infos.muchOil" v-model="count"></infoText>
+
+				<view class="flex  m-info">
+					<view class="flex center m-info-content">
+						<text>购买数量</text>
+						<input type="text" :placeholder="infos.placeholder" v-model="count" />
+					</view>
+				</view>
+
+
+
+				<!-- <infoText :textValue="infos.buyoilText" :type="infos.number" @input="setNumber" :placeholder="infos.placeholder"
+				 :value="infos.muchOil" v-model="count"></infoText> -->
 
 				<view class="fget-eara underLine" @click="chooseAddr" v-show="addrShow">
-					<view class="first-li">配送地址：</view>
+					<view class="first-li">配送地址</view>
 					<view class="addressimg">
 						<view style="width: 90%;"> {{address}}</view>
 						<image src="../../static/img/right.png" mode="aspectFit"></image>
@@ -59,7 +69,7 @@
 
 				</view>
 				<view class="fget-eara">
-					<view class="first-li">备注：</view>
+					<view class="first-li">备注</view>
 					<view class="secend-in ml">
 						<textarea type="text" cols="38" auto-height placeholder="(选填)" v-model="Remarks"></textarea>
 						<b></b>
@@ -132,9 +142,9 @@
 				<view class="self_header_bar">
 					<view class="top_view"></view>
 				</view>
-				<view class="self_header_title flex self_header_position" :style="{'margin-top':barHeight+'px'}">
+				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="chooseAddress =! chooseAddress">
-						<uni-icon type="arrowleft" size="27"></uni-icon>
+						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
 					<view>{{addrTitles}}</view>
 				</view>
@@ -176,9 +186,9 @@
 				<view class="self_header_bar">
 					<view class="top_view"></view>
 				</view>
-				<view class="self_header_title flex self_header_position" :style="{'margin-top':barHeight+'px'}">
+				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="showCompany =! showCompany">
-						<uni-icon type="arrowleft" size="27"></uni-icon>
+						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
 					<view>{{companyTitles}}</view>
 				</view>
@@ -209,7 +219,7 @@
 				</view>
 				<view class="self_header_title flex self_header_position">
 					<view class="leftBtn" @tap="showCoutomer = !showCoutomer">
-						<uni-icon type="arrowleft" size="27"></uni-icon>
+						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
 					<view>{{coutomerTitles}}</view>
 				</view>
@@ -243,7 +253,7 @@
 <script>
 	import infoText from '../../components/m-info-text/m-info-text'
 	import mButton from '../../components/m-button.vue'
-	import uniIcon from '../../components/uni-icon/uni-icon.vue'
+	// import uniIcon from '../../components/uni-icons/uni-icons.vue'
 	export default {
 		data() {
 			return {
@@ -263,8 +273,8 @@
 				pay: false,
 				addrShow: true,
 				infos: {
-					placeholder: '请输入数量',
-					buyoilText: '购买数量(吨)',
+					placeholder: '请输入数量(吨)',
+					buyoilText: '购买数量',
 					number: 'number',
 					muchOil: "",
 				},
@@ -291,7 +301,7 @@
 				old: {
 					scrollTop: 0,
 				},
-				barHeight:25,
+				barHeight: 25,
 			}
 		},
 		onLoad() {
@@ -398,6 +408,7 @@
 				this.man = [];
 				this.page = 1;
 				this.more = true;
+				this.value = '';
 				this.getNewCustemer();
 				this.showCoutomer = true;
 				uni.showLoading({
@@ -732,7 +743,7 @@
 		components: {
 			mButton,
 			infoText,
-			uniIcon
+			// uniIcon
 		},
 		mounted() {
 			// setTimeout(() => { }, 0),

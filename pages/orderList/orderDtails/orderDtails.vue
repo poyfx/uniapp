@@ -17,7 +17,7 @@
 							<text class="oL" v-if="status == 3">待付款</text>
 							<text class="oL" v-if="status == 4">待确认收款</text>
 							<text class="oL" v-if="status == 5">待开票</text>
-							<text class="oL" v-if="status == 9">已完成</text>
+							<text class="oP" v-if="status == 9">已完成</text>
 						</view>
 
 					</view>
@@ -63,8 +63,8 @@
 				</view>
 				
 				<view class="processText" v-if="status == 9">
-					<view class="">{{statusinfo.content}}</view>
-					<view>{{dates}}</view>
+					<view class="oP">{{statusinfo.content}}</view>
+					<view  class="oP">{{dates}}</view>
 				</view>
 <image class="imgs" src="../../../static/img/right.png" mode="aspectFit"></image>
 				<!-- <image :class="rotate ? 'go' : 'imgs'" src="../../../static/img/right.png" mode="aspectFit"></image> -->
@@ -299,7 +299,7 @@
 			},
 			goRotate() {
 				uni.navigateTo({
-					url:'./orderStatus/orderStatus?id='+this.orderId +'&user_id='+this.order.user_id
+					url:'./orderStatus/orderStatus?id='+this.orderId +'&user_id='+this.order.user_id+'&status='+this.status
 				})
 			},
 			payment(){

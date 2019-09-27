@@ -10,7 +10,7 @@
 					<view class="flex center m-info-content">
 						<text>{{text.dayTimeText}}</text>
 						<ruiDatePicker class="minute" fields="minute" start="2010-00-00 00:00" end="2030-12-31 23:59" :value="day"
-						 @change="bindChange" style="width: 220px; justify-content:flex-start"></ruiDatePicker>
+						 @change="bindChange" style="width: 220px; justify-content:flex-start; padding:0;"></ruiDatePicker>
 					</view>
 					<view class="flex m-info-text">
 						<image src="../../static/img/right.png" mode="aspectFit" style="width: 12px; height: 12px;"></image>
@@ -18,7 +18,7 @@
 				</view>
 				<view class="flex  m-info" :model="text">
 					<view class="flex center m-info-contents">
-						<text>提油数量(吨)</text>
+						<text>提油数量</text>
 						<input type="number" v-model="values.muchOil" @input="getOilNum" :placeholder="text.muchOilText" />
 					</view>
 					<text class="allOil" @tap="allIn">全提</text>
@@ -28,7 +28,7 @@
 				<infoText :textValue="text.productOilText" :disabled="text.disabled" :value="values.productOil" :placeholder="text.productOilP"></infoText>
 				<infoText :textValue="text.modeOilText" :disabled="text.disabled" v-model="values.modeOil" :placeholder="text.modeOilP"></infoText>
 				<view class="fget-eara underLine" v-show="showAddress">
-					<view class="first-li">配送地址：</view>
+					<view class="first-li">配送地址</view>
 					<view class="addressimg">
 						<view style="width: 90%;">{{address}}</view>
 						<!-- <img src="../../static/img/right.png" alt> -->
@@ -37,7 +37,7 @@
 
 				</view>
 				<view class="fget-eara">
-					<view class="first-li">备注：</view>
+					<view class="first-li">备注</view>
 					<view class="secend-in ml">
 						<textarea auto-height="" placeholder="(选填)" v-model="remark"></textarea>
 						<b></b>
@@ -60,7 +60,7 @@
 				</view>
 				<view class="self_header_title flex self_header_position" >
 					<view class="leftBtn" @tap="showOrderNumber =! showOrderNumber">
-						<uni-icon type="arrowleft" size="27"></uni-icon>
+						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
 					<view>选择单号</view>
 				</view>
@@ -101,6 +101,7 @@
 	import infoText from '../../components/m-info-text/m-info-text'
 	import infoImg from '../../components/m-info-img/m-info-img'
 	import mButton from '../../components/m-button.vue'
+	// import uniIcon from '../../components/uni-icons/uni-icons.vue'
 	export default {
 		data() {
 			return {
@@ -110,7 +111,7 @@
 					dayTimeText: '提油时间',
 					productOilText: '提油油品',
 					modeOilText: '提油方式',
-					muchOilText: '提油数量',
+					muchOilText: '提油数量(吨)',
 					disabled: true,
 					orderNumberP: '选择订单编号',
 					dayP: '请选择时间',
@@ -350,7 +351,8 @@
 			infoImg,
 			infoText,
 			mButton,
-			ruiDatePicker
+			ruiDatePicker,
+			// uniIcon
 		},
 	}
 </script>
@@ -371,12 +373,11 @@
 	}
 
 	.m-info .m-info-contents text {
-		width: 5rem;
+		width: 4rem;
 	}
 
 	.m-info-contents input {
 		flex: 1;
-		padding-left: 10px;
 	}
 
 	.m-info-content {

@@ -1,35 +1,38 @@
 <template>
 	<view>
 		<view class="self_header_bar">
-			<view class="top_view"></view>  
+			<view class="top_view"></view>
 		</view>
 		<view class="title_content">
 			<view class="flex title">
 				<view class="left" @tap="back">
-					<uni-icon type="arrowleft" size="27"></uni-icon>
+					<uni-icons type="arrowleft" size="27"></uni-icons>
 				</view>
-		
+
 				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
 				<view style="font-size:40upx">订单列表</view>
 				<view @tap="searchs" style="padding-right:5px ;">搜索</view>
 			</view>
 		</view>
-		<view class="" style="position: relative; width: 100%;height: 25px;padding: 15px 0 10px 0;">
+
+		<!-- 订单状态查询和日期 -->
+		<view class="status_days" ref="statusdays" :class="day?height95:height55" v-show="titleshow">
+			<view class="mContent status_days_day" :class="showhide">
 				<view class="times" v-show="day">
-					<view class="times" style="padding: 4px 15px; position: absolute; left:3%; top: 10px; display:inline-block;">{{day}}</view>
+					<view class="times" style="padding: 10px 15px; ">{{day}}</view>
 				</view>
 
-				<view style="width: 120px;position: absolute; right:3%; top: 10px; display:inline-block;">
-					<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' font-size: 12px;'"
+				<view style="position: relative;box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);">
+					<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' border:none;'"
 					 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
 					</selects>
 				</view>
 			</view>
-		<view class="mContent">
-			
+		</view>
 
-			<view class="fget-num orderList"  v-for="(item,index) in info" :key='item.id'>
-				<view class="stateBox flex"  @tap="orderDtails(item.status,item.id,item.no)">
+		<view class="mContent list_content" >
+			<view class="fget-num orderList" v-for="(item,index) in info" :key='item.id'>
+				<view class="stateBox flex" @tap="orderDtails(item.status,item.id,item.no)" @touchmove="hidetitle" @touchend="showtitle">
 					<view class="state-left">
 						<view>
 							订单编号：
@@ -104,15 +107,17 @@
 				</view>
 			</view>
 
-			<view class="loadings" @tap="more" v-show="showMore">
-				<image src="../../static/img/loading.png" mode="aspectFit"></image> &nbsp; 点击加载更多...
-			</view>
+			
+		</view>
+		<view class="loadings" @tap="more" v-show="showMore">
+			<image src="../../static/img/loading.png" mode="aspectFit"></image> &nbsp; 点击加载更多...
 		</view>
 	</view>
 </template>
 
 <script>
 	import selects from '../../common/js/xfl-select.vue'
+	// import uniIcon from "@/components/uni-icons/uni-icons.vue"
 	export default {
 		data() {
 			return {
@@ -157,11 +162,16 @@
 				day: '',
 				days: false,
 				time: [],
-				from:'',
-				to:'',
+				from: '',
+				to: '',
+				height95: 'height95',
+				height55: 'height55',
+				titleshow: true,
+				showhide:'',//点击滑动样式
 			}
 		},
 		onLoad(option) {
+			this.showhide = '';
 			this.day = option.times;
 			this.to = option.to;
 			this.from = option.from;
@@ -194,13 +204,14 @@
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						const data = res.data.value;
 						// this.info = data (显示十条)
-						data.forEach(el=>{
+						data.forEach(el => {
 							this.info.push(el);
 						});
 						this.time = [];
 						this.info.forEach(el => {
-							this.time.push(new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(/-/g,'-')) 
-							
+							this.time.push(new Date(el.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(
+								/-/g, '-'))
+
 						});
 						if (data.length >= 10) {
 							this.showMore = true;
@@ -211,13 +222,10 @@
 							return uni.showToast({
 								title: '没有数据了',
 								icon: "none",
-								// success: function() {
-								// 	that.page = 1
-								// 	// that.getOrderListInfo()
-								// }
+							
 							})
 						};
-					}else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003){
+					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -233,7 +241,7 @@
 								}
 							}
 						})
-					}else{
+					} else {
 						uni.showToast({
 							title: res.data.message,
 							icon: "none"
@@ -242,8 +250,8 @@
 				}).catch(err => {
 					uni.hideLoading()
 					uni.showToast({
-						title:'加载失败',
-						icon:'none'
+						title: '加载失败',
+						icon: 'none'
 					})
 					console.log(err)
 				})
@@ -272,7 +280,7 @@
 				this.page += 1;
 				this.getOrderListInfo();
 				uni.showLoading({
-					title:'加载中...'
+					title: '加载中...'
 				})
 			},
 			back() {
@@ -280,23 +288,28 @@
 					url: '../index/index',
 				})
 			},
-			searchs(){
+			searchs() {
 				uni.navigateTo({
 					url: "../search/search?name=" + 'orderList'
 				})
 			},
-
+			hidetitle() {
+				
+				console.log(this.$refs.statusdays)
+				
+				this.showhide="hidetitles"
+			},
+			showtitle() {
+				this.showhide="showtitles"
+			},
 		},
-		// onNavigationBarButtonTap(e) {
-		// 	uni.navigateTo({
-		// 		url: "../search/search?name=" + 'orderList'
-		// 	})
-		// },
+		
 		components: {
-			selects
+			selects,
+			// uniIcon
 		}
 	}
-</script> 
+</script>
 
 <style>
 	.title {
@@ -314,25 +327,26 @@
 		position: fixed;
 		z-index: 998;
 	}
-	
+
 	.title .left {
 		width: 25px;
 		height: 25px;
 		margin-left: 5px;
 		position: absolute;
 		left: 10px;
-	
+
 	}
-	
+
 	.title view {
 		font-size: 16px;
 	}
-	
+
 	.title view:last-child {
 		font-size: 14px;
 		position: absolute;
 		right: 8px;
 	}
+
 	.loadings {
 		width: 100%;
 		height: 49px;
@@ -344,8 +358,11 @@
 		bottom: 0;
 		left: 0;
 	}
-	.loadings image{
-		width:8px;
+
+	.loadings image {
+		width: 8px;
 		height: 8px;
 	}
+
+
 </style>

@@ -7,7 +7,7 @@
   "id": "__UNI__C5F30A1",
   "name": "安徽石油",
   "version": {
-    "name": "0.0.7",
+    "name": "0.0.91",
     "code": 1
   },
   "description": "",
@@ -34,13 +34,14 @@
       "delay": 0
     },
     "popGesture": "close",
-    "launchwebview": {
-      "render": "always"
-    },
+    "launchwebview": {},
     "statusbar": {
       "immersed": "supportedDevice",
       "style": "dark",
       "background": "#fff"
+    },
+    "compatible": {
+      "ignoreVersion": true
     },
     "usingComponents": true,
     "distribute": {
@@ -141,7 +142,7 @@
     },
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.2.2",
+      "compilerVersion": "2.3.3",
       "control": "v8",
       "nvueCompiler": "weex",
       "renderer": "auto"

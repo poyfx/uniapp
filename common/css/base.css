@@ -12,6 +12,7 @@ body {
 	padding: 0;
 	font-size: 32upx;
 	background-color: #EFEFF4;
+		color: #616161;
 }
 
 input {
@@ -23,7 +24,7 @@ body,
 img,
 view,
 text {
-	color: #616161;
+
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -136,7 +137,7 @@ input::-webkit-input-placeholdert {
 .mBotton {
 	margin-bottom: 50px;
 }
-
+/* 已取消/已超时颜色 */
 .oT {
 	color: #fd8e65;
 }
@@ -144,7 +145,10 @@ input::-webkit-input-placeholdert {
 .oL {
 	color: #00a8ff;
 }
-
+/* 已完成 */
+.oP{
+	color: #36D38A;
+}
 /* 油价升 */
 .s {
 	color: #FF596A;
@@ -194,7 +198,7 @@ input::-webkit-input-placeholdert {
 	align-content: center;
 	align-items: center;
 	align-self: center;
-	background-color: rgba(255, 255, 255, 1);
+	background-color: #FFFFFF;
 	justify-content: center;
 	color: #424242;
 	font-size: 40upx;

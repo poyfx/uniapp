@@ -21,7 +21,7 @@
 				pws: {
 					textValue: '新密码',
 					placeholder: '请输入密码',
-					newTextValue: '确认新密码',
+					newTextValue: '确认密码',
 					newPlaceholder: '再次输入密码',
 					setPasswords: "",
 					newPassword: '',

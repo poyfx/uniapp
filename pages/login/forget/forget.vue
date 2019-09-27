@@ -45,30 +45,30 @@
 				const that = this;
 				if (this.phoneNum != "" && this.phoneNum != null) {
 					if (this.codeNums != "" && this.codeNums != null) {
-							this.test.post('base/forgetPwd/confSms', {
-								username: that.phoneNum,
-								pswCode: that.codeNums
-							}).then(res => {
-								console.log(res)
-								if (res.statusCode == 200 && res.data.errorCode == 0) {
-									uni.showToast({
-										"title": "验证成功",
-										"icon": 'none'
-									});
-									setTimeout(function() {
-										uni.redirectTo({
-											url: "../setPws/setPws?user=" + that.phoneNum + '&message=' + that.codeNums
-										})
-									}, 1000)
-								} else {
-									uni.showToast({
-										title: res.data.message,
-										icon: 'none'
+						this.test.post('base/forgetPwd/confSms', {
+							username: that.phoneNum,
+							pswCode: that.codeNums
+						}).then(res => {
+							console.log(res)
+							if (res.statusCode == 200 && res.data.errorCode == 0) {
+								uni.showToast({
+									"title": "验证成功",
+									"icon": 'none'
+								});
+								setTimeout(function() {
+									uni.redirectTo({
+										url: "../setPws/setPws?user=" + that.phoneNum + '&message=' + that.codeNums
 									})
-								}
-							}).catch(err => {
-								console.log(err)
-							})
+								}, 1000)
+							} else {
+								uni.showToast({
+									title: res.data.message,
+									icon: 'none'
+								})
+							}
+						}).catch(err => {
+							console.log(err)
+						})
 					} else if (this.number == "" || this.number == null) {
 						return uni.showToast({
 							"title": "验证码不能为空",
@@ -198,6 +198,10 @@
 		padding: 17px 10px;
 		text-align: center;
 		border-left: 1px solid #e5e5e5;
+	}
+
+	.getCode1 {
+		color: #e5e5e5;
 	}
 
 	.getCodeInput {

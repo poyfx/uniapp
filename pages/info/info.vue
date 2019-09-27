@@ -1,34 +1,66 @@
 <template>
 	<view>
 		<view class="mContent">
-			<view class="userIntegral borderRadius8 bgcf">
-				<view class="company userIntegraltitle">
-					<view>
-						<!-- <img src="../../static/img/company.png" alt> -->
-						<image src="../../static/img/company.png" mode="aspectFit"></image>
-						<text>公司</text>
+
+			<swiper class="swipers" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" :circular="circular" indicator-active-color="#65C6F8">
+				<swiper-item v-for="(item,index) in cac" :key="index" catchtouchmove="stopTouchMove">
+					<view class="userIntegral borderRadius8 bgcf">
+						<view class="company userIntegraltitle">
+							<view>
+								<!-- <img src="../../static/img/company.png" alt> -->
+								<image src="../../static/img/company.png" mode="aspectFit"></image>
+								<text>公司</text>
+							</view>
+							<view style="color: #616161;margin-top: 5px;">{{item.customer_name}}</view>
+						</view>
+						<view class="integral">
+							<view>{{item.integral}}</view>
+							<text>积分</text>
+						</view>
 					</view>
-					<view style="color: #616161;margin-top: 5px;">{{info.company}}</view>
-				</view>
-				<view class="integral">
-					<view>{{integral}}</view>
-					<text>积分</text>
-				</view>
-			</view>
-			<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8">
+					<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8 " style="margin-top: 15px;">
+						<view class="userinfos flex ">
+							<image src="../../static/img/customer.png" mode="aspectFit"></image>
+							<text style="font-weight: bold;">客户经理</text>
+						</view>
+						<view class="flex m-info underLine">
+							<text>姓名</text>
+							<input v-model="item.manager_name" disabled="disabled" />
+						</view>
+						<view class="flex m-info underLine">
+							<text>手机号</text>
+							<input v-model="item.phone" disabled="disabled" />
+						</view>
+						<view class="flex m-info">
+							<text>所在城市</text>
+							<input v-model="item.city" disabled="disabled" />
+						</view>
+
+
+
+						<!-- <infoText :type="info.type" :disabled="info.disabled" :textValue="info.text1" :value="item.manager_name"></infoText>
+						<infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="item.phone"></infoText>
+						<infoText :type="info.type" :disabled="info.disabled" :textValue="info.usercity" :value="info.city"></infoText> -->
+					</view>
+
+				</swiper-item>
+
+			</swiper>
+			<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8" >
 				<view class="userinfos flex">
-					<!-- <img src="../../static/img/user.png" alt> -->
+
 					<image src="../../static/img/user.png" mode="aspectFit"></image>
 					<text style="font-weight: bold;">个人信息</text>
 				</view>
 				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.text1" :value="info.username"></infoText>
 				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="info.phoneNum"></infoText>
-				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.usercity" :value="info.city"></infoText>
-				<view class="flex m-info">
-					<text>{{info.customer}}</text>
-					<input :type="info.type" :value="info.customerName"  :disabled="info.disabled" />
-				</view>
 			</view>
+
+
+
+
+
+
 			<view class="fget-num  bgcf borderRadius8 infoThree" style="padding-bottom: 10px;">
 				<view class="out">
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.apply" @toApply="toApply"></infoImg>
@@ -66,13 +98,19 @@
 					oilNum: '待提油量',
 					address: '收货地址',
 					editPsd: '修改密码',
-					feedback:'用户反馈',
+					feedback: '用户反馈',
 					disabled: true,
 					type: 'text',
 					username: '',
 					phoneNum: '',
 				},
-				integral: '0'
+				integral: '0',
+				autoplay: false,
+				indicatorDots: true,
+				interval: 2000,
+				duration: 500,
+				circular:true,
+				cac: {},
 			}
 		},
 		onShow() {
@@ -99,7 +137,7 @@
 		},
 		onLoad(option) {
 			console.log(option)
-			
+
 		},
 		methods: {
 			...mapActions(['handelOut']),
@@ -113,16 +151,26 @@
 			// 		}
 			// 	})
 			// },
+			stopTouchMove(){
+				return false
+			},
 			getuserinfo() {
 				const that = this;
 				uni.getStorage({
 					key: "userInfo",
 					success: function(res) {
 						console.log(res)
+						that.cac = res.data.managers;
+						console.log(that.cac.length)
+						if(that.cac.length<2){
+							that.indicatorDots = false
+						}else{
+							that.indicatorDots = true
+						}
 						that.info.username = res.data.user.realname;
 						that.info.phoneNum = res.data.user.username
 						that.info.city = res.data.user.city;
-						 that.info.company = res.data.user.customer_name;
+						that.info.company = res.data.user.customer_name;
 						that.info.customerName = res.data.user.manager_name;
 					}
 				})
@@ -198,9 +246,9 @@
 				}
 			},
 			//用户反馈
-			toFeedback(){
+			toFeedback() {
 				uni.navigateTo({
-					url:'feedback/feedback'
+					url: 'feedback/feedback'
 				})
 			},
 		},
@@ -215,25 +263,33 @@
 </script>
 
 <style>
+	.swipers {
+		height: 297px;
+	}
+
+	
+
 	image {
 		width: 25px;
 		height: 25px;
 	}
+
 	.m-info {
-			padding: 10px 15px 10px 0;
-			align-content: center;
-			align-items: center;
-			align-self: center;
-		}
-	
-		.m-info-content {
-			justify-content: flex-start;
-		}
-	
-		.m-info text {
-			width: 5rem;
-		}
-	.m-info input{
+		padding: 10px 15px 10px 0;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+	}
+
+	.m-info-content {
+		justify-content: flex-start;
+	}
+
+	.m-info text {
+		width: 4rem;
+	}
+
+	.m-info input {
 		flex: 1;
 		color: #666;
 	}

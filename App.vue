@@ -206,4 +206,13 @@
 	uni-page-wrapper {
 		display: flex;
 	}
+	.swipers .uni-swiper-dots-horizontal {
+		left: 50%;
+		bottom: 61%;
+		text-align: center;
+		white-space: nowrap;
+		-webkit-transform: translate(-50%);
+		transform: translate(-50%);
+	
+	}
 </style>
