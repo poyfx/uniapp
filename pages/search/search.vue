@@ -86,6 +86,7 @@
 								uni.showToast({
 									title: '没有找到相关的订单，请重新查询',
 									icon: 'none',
+									position:'bottom',
 								})
 							} else if (res.data.value.length > 0) {
 								uni.redirectTo({
@@ -98,7 +99,8 @@
 						uni.hideLoading();
 						uni.showToast({
 							title:'查询失败',
-							icon:'none'
+							icon:'none',
+							position:'bottom',
 						})
 						console.log(err)
 					})
@@ -119,7 +121,8 @@
 							if (res.data.value.length <= 0) {
 								uni.showToast({
 									title: '没有找到相关的订单，请重新查询',
-									icon: 'none'
+									icon: 'none',
+									position:'bottom',
 								})
 							} else if (res.data.value.length > 0) {
 								uni.redirectTo({
@@ -132,7 +135,8 @@
 						uni.hideLoading();
 						uni.showToast({
 							title:'查询失败',
-							icon:'none'
+							icon:'none',
+							position:'bottom',
 						})
 						console.log(err)
 					})

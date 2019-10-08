@@ -424,12 +424,16 @@
 		}, {
 			"path": "pages/reserveOilList/confirmed/oliCode/oliCode",
 			"style": {
-				"titleNView": {
-					"titleColor": "#424242",
-					"titleText": "提油码",
-					"backgroundColor": "#FFF",
-					"fontWeight": "normal",
-					"titleSize": "40upx"
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "white"
+					}
 				}
 			}
 		}, {
@@ -545,7 +549,19 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/reserveOilList/confirmed/replaceMan/replaceMan",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#424242",
+					"titleText": "填写代提油人信息",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "40upx"
+				}
+			}
+        }
+    ],
 	"tabBar": {
 		"color": "black",
 		"selectedColor": "#009DFF",

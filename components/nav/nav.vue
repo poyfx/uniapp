@@ -1,5 +1,5 @@
 <template>
-	<view>
+	
 		<view class="nav">
 			<view class="navbar">
 				<view @tap="order(role)">
@@ -29,7 +29,7 @@
 				</view>
 			</view>
 		</view>
-	</view>
+
 </template>
 
 <script>
@@ -88,20 +88,23 @@
 						} else if (this.arr.role_status == -1) {
 							uni.showToast({
 								title: '审核中...待审核通过后请重新登录',
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						} else {
 							// console.log(1)
 							uni.showToast({
 								title: '权限不够，请在用户信息界面申请权限',
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						}
 					} else {
 						// console.log(2)
 						uni.showToast({
 							title: '权限不够，请在用户信息界面申请权限',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 
@@ -152,7 +155,8 @@
 					} else {
 						uni.showToast({
 							title: '权限不够，请在用户信息界面申请权限',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 				}
@@ -192,18 +196,21 @@
 						} else if (this.arr.role_status == -1) {
 							uni.showToast({
 								title: '审核中...待审核通过后请重新登录',
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						} else {
 							uni.showToast({
 								title: '权限不够，请在用户信息界面申请权限',
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						}
 					} else {
 						uni.showToast({
 							title: '权限不够，请在用户信息界面申请权限',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 				}
@@ -236,7 +243,8 @@
 				} else {
 					uni.showToast({
 						title: '权限不够，请在用户信息界面申请权限',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				}
 
@@ -244,7 +252,8 @@
 			integral() {
 				uni.showToast({
 					title: '待开放，敬请期待',
-					icon: 'none'
+					icon: 'none',
+					position:'bottom',
 				})
 			},
 		},

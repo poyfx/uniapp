@@ -108,9 +108,9 @@
 	-webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	margin-bottom: 1px;
-	position: fixed;
+	/* position: fixed;
 	top: 69px;
-	z-index: 1;
+	z-index: 1; */
 }
 .search_input.data-v-1a0afe74 {
 	background-color: #e5e5e5;
@@ -259,7 +259,7 @@ text.data-v-1a0afe74 {
 }
 .choosemany.data-v-1a0afe74 {
 	/* margin-top: 54px; */
-	padding-top: 98px;
+	padding-top: 44px;
 	background: #EFEFF4;
 	position: relative;
 	-webkit-box-sizing: border-box;

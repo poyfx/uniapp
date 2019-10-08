@@ -114,27 +114,31 @@
 							} else {
 								uni.showToast({
 									"title": data.message,
-									"icon": "none"
+									"icon": "none",
+									position:'bottom',
 								})
 							}
 						}).catch(err => {
 							console.log(err)
 							uni.showToast({
 								title: err.errMsg,
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						})
 
 					} else {
 						return uni.showToast({
 							icon: "none",
-							title: "密码不能为空"
+							title: "密码不能为空",
+							position:'bottom',
 						})
 					}
 				} else {
 					return uni.showToast({
 						icon: "none",
-						title: "账号不能为空"
+						title: "账号不能为空",
+						position:'bottom',
 					})
 				}
 			},
@@ -143,7 +147,8 @@
 					uni.showToast({
 						title: '注册已提交，审核成功后即可登录使用',
 						position: 'bottom',
-						icon: 'none'
+						icon: 'none',
+					
 					});
 				}
 

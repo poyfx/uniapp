@@ -1,61 +1,145 @@
 <template>
-	<view class="" style="width: 100%; height: 100%;">
-		<view class="chooseAddress">
-			<view class="self_header_bar">
-				<view class="top_view"></view>  
-			</view>
-			<view class="flex title">
-				<view class="left" @tap="back">
+	<view class="">
+		<view class="self_header_bar">
+			<view class="top_view"></view>
+		</view>
+		<view class="title_content">
+			<view class="flex self_header_title">
+				<view class="leftBtn" @tap="back">
 					<uni-icons type="arrowleft" size="27"></uni-icons>
 				</view>
-
-				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
-				<view style="font-size: 40upx;">预约详情</view>
-				<view v-show="status == 2 || status == 3 " @tap="getCode">提油码</view>
+				<view>预约详情</view>
+				<view class="takecode" @tap="getCode" v-show="showAddress == false && status == 2">
+					提油码
+				</view>
 			</view>
-			<view>
-				<view class="step-box" v-show="main == '配送'"  v-if=" status == 1 || status == 2 || status == 3 ">
-					<step :value="status == 1? step.value1 :step.value11" :actives="step.waitSure"></step>
-					<step :value="status == 2 ? step.value2 :step.value22" :actives="step.waitSend"></step>
-					<step :value="step.value3" :actives="step.waitGet"></step>
-				</view>
-				
-				<view class="step-box" v-show="main == '自提'" v-if="status == 1 || status == 2 || status == 3 ">
-					<step :value="status == 1? step.value1 :step.value11" :actives="step.waitSure"></step>
-					<step :value="status == 2 || status == 1? step.selfget :step.selfget1" :actives="step.waitSend"></step>
-					<step :value="step.selfget2" :actives="step.waitGet"></step>
-				</view>
+		</view>
 
-				<view class="step-box" v-if="status == -1">
-					<step :value="step.value4" :actives="step.refuse"></step>
-				</view>
-				<view class="step-box" v-if="status == 9">
-					<step :value="step.value5" :actives="step.complete"></step>
-				</view>
-				<view class="content">
-					<view class="fget-num paddingLeft15">
-						<infoText :textValue="confirmed.order" :disabled="disabled" v-model="order"></infoText>
-						<infoText :textValue="confirmed.time" :disabled="disabled" v-model="time"></infoText>
-						<infoText :textValue="confirmed.company" :disabled="disabled" v-model="company"></infoText>
-						<infoText :textValue="confirmed.oil" :disabled="disabled" v-model="oil"></infoText>
-						<infoText :textValue="confirmed.much" :disabled="disabled" v-model="much"></infoText>
-						<infoText :textValue="confirmed.main" :disabled="disabled" v-model="main"></infoText>
+		<view class="chooseAddress">
 
-						<view class="fget-eara addressimg" v-show="showAddress">
-							<view class="first-li">送油地址：</view>
+			<!-- 配送司机信息 -->
+			<view class="driver_content bgcf" v-if="showAddress == true" v-show="status == 2 || status == 3 || status == 4 || status == 8 || status == 9">
+				<view class="driverinfos flex ">
+					<image src="../../../static/img/customer.png" style="width: 24px;height: 25px;" mode="aspectFit"></image>
+					<text style="font-weight: bold;">配送司机</text>
+				</view>
+				<view class="driver_info">
+					<text>秦明月</text>
+					<text>15815563248</text>
+				</view>
+				<view class="driver_info">
+					<text>车牌号</text>
+					<text>粤B58569</text>
+				</view>
+				<view class="driver_btn">
+					<view class="state" v-if="status == 2">已准备</view>
+					<view class="state" v-else-if="status == 3">待提油</view>
+					<view class="state" v-else-if="status == 4">已提油</view>
+					<view class="driver_btnP" v-else-if="status == 9">已完成</view>
+					<view class="driver_btnC" v-else-if="status == 8">已取消</view>
+				</view>
+			</view>
+			
+			<!-- 自提信息 -->
+			<view class="driver_content bgcf"  v-else v-show="status == 2 || status == 3 || status == 4 || status == 8 || status == 9">
+				<view class="driverinfos flex ">
+					<image src="../../../static/img/customer.png" style="width: 24px;height: 25px;" mode="aspectFit"></image>
+					<text style="font-weight: bold;">提油人</text>
+				</view>
+				<view class="driver_info">
+					<text>秦明月</text>
+					<text>15815563248</text>
+				</view>
+				<view class="driver_info">
+					<text>车牌号</text>
+					<text>粤B58569</text>
+				</view>
+				<view class="driver_btn">
+					<view class="state" v-if="status == 2">待提油</view>
+					<view class="driver_btnP" v-else-if="status == 9">已完成</view>
+					<view class="driver_btnC" v-else-if="status == 8">已取消</view>
+				</view>
+			</view>
+			
 
-							<view>{{address}}</view>
+			<view class="content">
+				<view class="fget-num paddingLeft15 confirmed_content" :class="{refuse:isrefuse}">
+					<view class="flex  m-info">
+						<view class="flex center m-info-content ">
+							<text>预约状态</text>
+							<view class="confirmed_status">
+								<text class="state" v-if="status == 2">预约已确认</text>
+								<text class="state" v-else-if="status == 3">待提油</text>
+								<text class="state" v-else-if="status == 4">已提油</text>
+								<text class="oP" v-else-if="status == 9">已完成</text>
+								<text class="s" v-else-if="status == 8">已取消</text>
+								<text class="oc" v-else-if="status == -1">已拒绝</text>
+							</view>
+
 						</view>
 					</view>
-					<view class="nextBox" v-show="status == 1 ||  status == 2 || status == -1 || status == 9">
-						<mButton :type='btn.type' :value="btn.value" @close="close"></mButton>
+					<view class="flex  m-info" v-show="status == -1">
+						<view class="flex center m-info-content">
+							<text>拒绝原因</text>
+							<view></view>
+						</view>
 					</view>
-					<view class="m-two-btn mTop30 mB" v-show="status == 3">
-						<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepLast="close" :content="btn.value"></tButton>
-						<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepNext="finish" :content="main == '配送' ? btn.commit : btn.commit1"></tButton>
+					<infoText :textValue="confirmed.order" :disabled="disabled" v-model="order"></infoText>
+					<infoText :textValue="confirmed.time" :disabled="disabled" v-model="time"></infoText>
+					<infoText :textValue="confirmed.company" :disabled="disabled" v-model="company"></infoText>
+					<infoText :textValue="confirmed.oil" :disabled="disabled" v-model="oil"></infoText>
+
+					<view class="flex  m-info">
+						<view class="flex center m-info-content">
+							<text>提油数量</text>
+							<view>{{much}}吨</view>
+						</view>
+					</view>
+					<infoText :textValue="confirmed.main" :disabled="disabled" v-model="main"></infoText>
+
+					<view class="fget-eara addressimg" v-show="showAddress">
+						<view class="first-li">送油地址：</view>
+
+						<view>{{address}}</view>
+					</view>
+
+				</view>
+				<view class="confirmed_btn flex" v-if="main == '配送'">
+					<view class="confirmed_btn_2 flex" v-if="status == 2">
+						<button type="primary">更换司机</button>
+						<button type="primary">同意配送</button>
+					</view>
+
+					<view class="confirmed_btn_3" v-else-if="status == 3">
+						<button type="primary">取消预约</button>
+					</view>
+					
+					<view class="confirmed_btn_2 flex" v-else-if="status == 4">
+						<button type="primary" @tap="close">关闭</button>
+						<button type="primary" @tap="finish">确认收油</button>
+					</view>
+					<view class="confirmed_btn_4" v-else>
+						<button type="primary" @tap="close">关闭</button>
 					</view>
 				</view>
+				<view class="confirmed_btn" v-else>
+					<view class="confirmed_btn_2 flex" v-if="status == 2">
+						<button type="primary">取消预约</button>
+						<button type="primary" @tap="finish">确认已提油</button>
+					</view>
+					<view class="confirmed_btn_4" v-else>
+						<button type="primary" @tap="close">关闭</button>
+					</view>
+				</view>
+				<!-- <view class="nextBox" v-show="status == 1 ||  status == 2 || status == -1 || status == 9">
+					<mButton :type='btn.type' :value="btn.value" @close="close"></mButton>
+				</view>
+				<view class="m-two-btn mTop30 mB" v-show="status == 3">
+					<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepLast="close" :content="btn.value"></tButton>
+					<tButton :type="btn.type" :disabled="btn.disabled" class="tButton" @threeStepNext="finish" :content="main == '配送' ? btn.commit : btn.commit1"></tButton>
+				</view> -->
 			</view>
+
 		</view>
 
 	</view>
@@ -66,41 +150,24 @@
 	import step from '../../../components/step/step.vue'
 	import infoText from '../../../components/m-info-text/m-info-text'
 	import mButton from '../../../components/m-button.vue'
- // import uniIcon from "@/components/uni-icons/uni-icons.vue"
+	// import uniIcon from "@/components/uni-icons/uni-icons.vue"
 	import tButton from '../../../components/twoButton/twoButton'
 	export default {
 		data() {
 			return {
-				step: {
-					selfget:'待提油',
-					selfget1:'已提油',
-					selfget2:'请确认',
-					value1: '待确认',
-					value11: '已确认',
-					value2: '待发油',
-					value22: '已发油',
-					value3: '待收油',
-					value4: '已拒绝',
-					value5: '已完成',
-					waitSure: '',
-					waitSend: '',
-					waitGet: '',
-					refuse: 'step-wait',
-					complete: 'step-ago',
-				},
 				confirmed: {
 					order: '预约单号',
 					time: '提油时间',
 					company: '提油单位',
 					oil: '油品类型',
-					much: '提油数量(吨)',
+					much: '提油数量',
 					main: '提油方式',
 				},
 				btn: {
 					type: 'primary',
 					value: '关闭',
-					commit:'确认收油',
-					commit1:'确认提油'
+					commit: '确认收油',
+					commit1: '确认提油'
 				},
 				disabled: true,
 				address: '', //提油地址
@@ -116,6 +183,8 @@
 				reserveInfo: '',
 				showAddress: false,
 				time: '',
+				isrefuse: false,
+				get_type:'',
 			}
 		},
 		onLoad(option) {
@@ -125,7 +194,7 @@
 		},
 		methods: {
 			getReserveOilList() {
-				this.test.post('order/query_reserve_info', {
+				this.test.post('reserve/query_reserve_info', {
 					reserve_id: this.rId,
 				}).then(res => {
 					console.log(res)
@@ -140,29 +209,17 @@
 						this.company = this.reserveInfo.org_name;
 						this.oil = this.reserveInfo.oil_type;
 						this.main = this.reserveInfo.get_type;
-						// if (this.reserveInfo.get_type == 0) {
-						// 	this.main = '配送'
-						// } else {
-						// 	this.main = '自提'
-						// };
 						if (this.main == '配送') {
 							this.showAddress = true
 						} else {
 							this.showAddress = false
 						};
-						if (this.status == 1) {
-							this.step.waitSure = "step-active"
-							this.step.waitSend = ""
-							this.step.waitGet = ""
-						} else if (this.status == 2 || this.status == 4) {
-							this.step.waitSure = "step-ago"
-							this.step.waitSend = "step-active"
-							this.step.waitGet = ""
-						} else if (this.status == 3 || this.status == 5) {
-							this.step.waitSure = "step-ago"
-							this.step.waitSend = "step-ago"
-							this.step.waitGet = "step-active"
-						};
+						console.log(this.status)
+						if (this.status == -1) {
+							this.isrefuse = true;
+						} else {
+							this.isrefuse = false;
+						}
 						// if (el.status == 1 || el.status == -1 || el.status == 9) {
 						// }
 
@@ -180,26 +237,26 @@
 			},
 			back() {
 				uni.navigateBack({
-					delta:1,
+					delta: 1,
 					"animationType": "pop-out",
 					"animationDuration": 200,
 				})
 			},
-			finish(){
-				this.test.post('order/confirm_reserve',{
-					id:this.rId
-				}).then(res=>{
+			finish() {
+				this.test.post('reserve/confirm_reserve', {
+					id: this.rId
+				}).then(res => {
 					console.log(res)
-					if(res.statusCode == 200 && res.data.errorCode == 0){
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.getReserveOilList()
 					}
-				}).catch(err=>{
+				}).catch(err => {
 					console.log(err)
 				})
 			},
 			getCode() {
 				uni.navigateTo({
-					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.order
+					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.order+ '&number='+this.much+ '&type=' +this.oil
 				})
 			},
 		},
@@ -207,7 +264,7 @@
 			step,
 			infoText,
 			mButton,
-			 // uniIcon,
+			// uniIcon,
 			tButton
 		},
 	}
@@ -223,6 +280,7 @@
 		height: 100%;
 		background-color: #EFEFF4;
 	}
+
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
@@ -240,7 +298,7 @@
 		align-content: center;
 		align-items: center;
 		align-self: center;
-		background-color: rgba(255,255,255,0.8);
+		background-color: rgba(255, 255, 255, 0.8);
 		justify-content: center;
 	}
 
@@ -261,5 +319,147 @@
 		font-size: 14px;
 		position: absolute;
 		right: 8px;
+	}
+
+	.m-info {
+		padding: 12px 0;
+		border-bottom: 1px solid #E5E5E5;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+		justify-content: space-between;
+	}
+
+	.m-info-content {
+		justify-content: flex-start;
+	}
+
+	.m-info-content view {
+		color: #616161;
+	}
+
+	.m-info text {
+		width: 4rem;
+	}
+
+	.m-info image {
+		width: 12px;
+		height: 12px;
+		padding-right: 15px;
+	}
+
+	.m-info .confirmed_status text {
+		width: 10rem;
+	}
+
+	.confirmed_content {
+		margin-top: -65px;
+		padding: 87px 0 46px 15px;
+	}
+
+	.driver_content {
+		position: relative;
+		top: 15px;
+		margin: 0 10px;
+		padding: 10px 0 1px 15px;
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		border-radius: 0.25em;
+	}
+
+	.driverinfos {
+		padding-bottom: 17px;
+		align-content: center;
+		align-self: center;
+		align-items: center;
+	}
+
+	.driverinfos image {
+		margin-right: 10px;
+
+	}
+
+	.driver_info {
+		width: 100%;
+		margin: 10px 0;
+	}
+
+	.driver_info text {
+		display: inline-block;
+
+	}
+
+	.driver_info text:first-child {
+		width: 3rem;
+		margin-right: 15px;
+	}
+
+	.driver_btn {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+
+	.driver_btn view {
+		padding: 12px 14px;
+		border-radius: 0.25em 0 0 0.25em;
+		background-color: #00A8FF;
+		color: #fff;
+	}
+
+	.driver_btn .driver_btnP {
+		background-color: #32BF75;
+	}
+
+	.driver_btn .driver_btnC {
+		background-color: #CBC5C5;
+	}
+
+	.confirmed_btn {
+		width: 100%;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+	}
+
+	.confirmed_btn_2,
+	.confirmed_btn_3,
+	.confirmed_btn_4{
+		width: 100%;
+	}
+
+	.confirmed_btn .confirmed_btn_2 button {
+		width: 50%;
+		border-radius: 0;
+		background-color: #00A8FF;
+	}
+
+	.confirmed_btn .confirmed_btn_3 button {
+		width: 100%;
+		border-radius: 0;
+		background-color: #fff;
+		color: #616161;
+	}
+	.confirmed_btn .confirmed_btn_4 button {
+		width: 100%;
+		border-radius: 0;
+		background-color: #00a8ff;
+		color: #fff;
+	}
+
+	.confirmed_btn .confirmed_btn_2 button:first-child {
+		background-color: #fff;
+		color: #616161;
+	}
+
+	.refuse {
+		margin: 0;
+		padding: 0 0 0 15px;
+	}
+
+	.takecode {
+		position: absolute;
+		right: 15px;
+		font-size: 16px;
 	}
 </style>

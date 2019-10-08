@@ -34,7 +34,10 @@
     "pages/orderList/orderDtails/orderStatus/orderStatus",
     "pages/info/test/test",
     "pages/info/apply/uploadImg/uploadImg",
-    "pages/reserveOilList/confirmed/exemption/exemption"
+    "pages/reserveOilList/confirmed/exemption/exemption",
+    "pages/register/registerNumber",
+    "pages/register/uploadFace/uploadFace",
+    "pages/reserveOilList/confirmed/replaceMan/replaceMan"
   ],
   "window": {
     "navigationBarTextStyle": "black",

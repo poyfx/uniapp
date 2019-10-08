@@ -205,6 +205,16 @@ uni-page-wrapper {
 	display: -ms-flexbox;
 	display: flex;
 }
+.swipers .uni-swiper-dots-horizontal {
+	left: 50%;
+	bottom: 61%;
+	text-align: center;
+	white-space: nowrap;
+	-webkit-transform: translate(-50%);
+	-ms-transform: translate(-50%);
+	    transform: translate(-50%);
+}
+
 
 /*
  * @Author: mikey.pi 
@@ -220,11 +230,7 @@ page {
 	padding: 0;
 	font-size: 32rpx;
 	background-color: #EFEFF4;
-}
-
-
-input {
-	font-size: 32rpx;
+		color: #616161;
 }
 
 
@@ -233,7 +239,7 @@ page,
 ._img,
 view,
 text {
-	color: #616161;
+
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -275,9 +281,9 @@ text {
 }
 
 
-input::-webkit-input-placeholdert {
-	color: #9e9e9e;
-}
+input::-webkit-input-placeholder {
+		color: #9e9e9e;
+	}
 
 
 .mTop15 {
@@ -348,7 +354,7 @@ input::-webkit-input-placeholdert {
 
 
 .borderRadius8 {
-	border-radius: 8px;
+	border-radius: 0.25rem;
 }
 
 
@@ -372,6 +378,9 @@ input::-webkit-input-placeholdert {
 }
 
 
+/* 已取消/已超时颜色 */
+
+
 .oT {
 	color: #fd8e65;
 }
@@ -379,6 +388,14 @@ input::-webkit-input-placeholdert {
 
 .oL {
 	color: #00a8ff;
+}
+
+
+/* 已完成 */
+
+
+.oP{
+	color: #36D38A;
 }
 
 
@@ -390,8 +407,19 @@ input::-webkit-input-placeholdert {
 }
 
 
+/* 油价降 */
+
+
 .j {
 	color: #28C792;
+}
+
+
+/*已拒绝 */
+
+
+.oc {
+	color: #FD8E65
 }
 
 
@@ -451,7 +479,7 @@ input::-webkit-input-placeholdert {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	/* background-color: black; */
-	position: relative;
+	position: fixed;
 	-webkit-align-content: center;
 	    -ms-flex-line-pack: center;
 	        align-content: center;
@@ -476,6 +504,52 @@ input::-webkit-input-placeholdert {
 }
 
 
+.self_header_title_code{
+	width: 100%;
+	height: 44px;
+	padding: 7px 3px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	/* background-color: black; */
+	position: fixed;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+	background-color: #00a8ff;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	color: #fff;
+	font-size: 40rpx;
+	z-index: 997;
+}
+
+
+.self_header_ba_code {
+	height: var(--status-bar-height);
+	width: 100%;
+	background-color: #00a8ff;  
+}
+
+
+.top_view_code{
+	 height: var(--status-bar-height);  
+	    width: 100%;  
+	    position: fixed;  
+	    background-color: #00a8ff;  
+	    top: 0;  
+	    z-index: 9999;  
+}
+
+
 /* 左边返回图标 */
 
 
@@ -489,16 +563,19 @@ input::-webkit-input-placeholdert {
 	color: #616161;
 }
 
-
 .content {
+	width: 100%;
+	height: 100%;
 	margin: 0 auto;
-	padding-top: 15px;
+	padding: 15px 0 1px;
 }
 
 .mContent {
+	width: 100%;
+	height: 100%;
 	margin: 0 auto;
-	padding: 0 10px;
-	padding-top: 15px;
+	padding: 15px 10px;
+
 }
 
 /* 轮播图样式 */
@@ -508,7 +585,7 @@ input::-webkit-input-placeholdert {
 	overflow: hidden;
 	position: relative;
 	border-radius: 8px 8px 0 0;
-	
+
 }
 
 /* 导航 */
@@ -516,9 +593,10 @@ input::-webkit-input-placeholdert {
 .nav {
 	background-color: #fff;
 	padding: 15px 13px 10px;
-	border-radius: 0 0 8px 8px;
+	border-radius: 0 0 0.25rem 0.25rem;
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	position: relative;
 }
 
 .navbar {
@@ -574,17 +652,17 @@ input::-webkit-input-placeholdert {
 	width: 100%;
 	margin-top: 10px;
 	border-radius: 8px;
-	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
-	        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 }
 
 .main .myManager {
 	width: 100%;
 	/* height: 157px; */
 	background-color: #fff;
-	padding: 15px 25px 15px 15px;
+	padding: 15px 25px 0px 15px;
 	margin-bottom: 10px;
-	border-radius: 8px;
+	border-radius: 0.25rem;
 }
 
 .oilPrices {
@@ -592,13 +670,12 @@ input::-webkit-input-placeholdert {
 	/* height: 157px; */
 	background-color: #fff;
 	padding: 15px 0px 0 15px;
-	margin-bottom: 10px;
-	border-radius: 8px;
-	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
-	        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+	border-radius: 0.25rem;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 }
 
-.line{
+.line {
 	display: inline-block;
 	width: 4px;
 	height: 22px;
@@ -632,7 +709,7 @@ input::-webkit-input-placeholdert {
 	-webkit-align-self: center;
 	    -ms-flex-item-align: center;
 	        align-self: center;
-	margin-top:22px;
+	margin-top: 22px;
 }
 
 .index-title {
@@ -652,7 +729,7 @@ input::-webkit-input-placeholdert {
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
-	
+
 	color: #616161;
 }
 
@@ -678,7 +755,7 @@ input::-webkit-input-placeholdert {
 	padding: 10px 0;
 }
 
-.priceLiNo{
+.priceLiNo {
 	padding: 10px 0;
 }
 
@@ -693,18 +770,18 @@ input::-webkit-input-placeholdert {
 	        justify-content: space-between;
 }
 
-.priceLi .titles{
+.priceLi .titles {
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 
-.priceLi .titles text{
+.priceLi .titles text {
 	font-size: 12px;
 }
 
-.userIntegraltitle text{
+.userIntegraltitle text {
 	font-weight: bold;
 	color: #616161;
 }
@@ -718,6 +795,7 @@ input::-webkit-input-placeholdert {
 
 .userIntegral {
 	width: 100%;
+	min-height: 105px;
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	display: -webkit-box;
@@ -734,6 +812,11 @@ input::-webkit-input-placeholdert {
 .userIntegral .company {
 	padding-right: 10px;
 	margin: 11px 0 11px 15px;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	font-size: 0.8rem;
 }
 
 .company {
@@ -756,13 +839,13 @@ input::-webkit-input-placeholdert {
 	font-weight: bold;
 }
 
-.orderNumber view text{
+.orderNumber view text {
 	font-size: 14px;
 }
 
 .userIntegral .integral {
 	min-width: 105px;
-	max-height: 90px;
+	min-height: 105px;
 	background-color: #00A8FF;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -869,9 +952,9 @@ input {
 /* 退出 */
 
 .safeout {
-	width: 90%;
-	background-color: #c5cccf;
-	color: #fff;
+	width: 100%;
+	background-color: #fff;
+	color: #9e9e9e;
 	margin: 10px auto;
 }
 
@@ -1023,10 +1106,10 @@ input {
 .fget-num .tellinfo {
 	text-align: center;
 	padding: 0 0 20px 0;
-	
+
 }
 
-.fget-num .tellinfo text{
+.fget-num .tellinfos text {
 	color: #009DFF;
 }
 
@@ -1046,11 +1129,12 @@ input {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
-	font-size: 19px;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	font-size: 1rem;
+	text-align: center;
 	color: #333;
 }
 
@@ -1060,7 +1144,7 @@ input {
 	width: 100%;
 	padding: 10px 10px 10px 0;
 	border-bottom: 1px solid #e5e5e5;
-	color: #333;
+	color: #757575;
 	font-size: 14px;
 
 }
@@ -1124,34 +1208,35 @@ input {
 /* orderList */
 
 .orderList {
-	padding:0 10px;
+	padding: 0 10px;
 	position: relative;
 	margin: 10px 0;
-	
+	border-radius: 4px;
+
 }
 
-.orderList text{
+.orderList text {
 	font-size: 0.9em;
 }
 
 .orderList view {
-	
+
 	padding: 5px 0;
 }
 
-.stateBox{
+.stateBox {
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 
-.stateBox .state-right{
-	 -webkit-box-orient: vertical;
-	 -webkit-box-direction: normal;
-	 -webkit-flex-direction: column;
-	     -ms-flex-direction: column;
-	         flex-direction: column;
+.stateBox .state-right {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
 	    -ms-flex-align: end;
@@ -1162,17 +1247,17 @@ input {
 	        justify-content: space-between;
 }
 
-.oilPrice{
-	 -webkit-box-orient: vertical;
-	 -webkit-box-direction: normal;
-	 -webkit-flex-direction: column;
-	     -ms-flex-direction: column;
-	         flex-direction: column;
+.oilPrice {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
 	    -ms-flex-align: end;
 	        align-items: flex-end;
-	
+	padding-left: 5px;
 }
 
 .unit {
@@ -1205,11 +1290,6 @@ input {
 
 /* 已拒绝颜色样式 */
 
-.stateBox 
-.oc {
-	color: #FD8E65
-}
-
 /* 加载更多 */
 
 .loading {
@@ -1219,12 +1299,12 @@ input {
 	color: #999;
 	text-align: center;
 	line-height: 44px;
-	position: absolute;
+	position: relative;
 	bottom: 0;
 }
 
-.loading image{
-	width:8px;
+.loading image {
+	width: 8px;
 	height: 8px;
 }
 
@@ -1244,6 +1324,10 @@ input {
 	        box-sizing: border-box;
 }
 
+.detailsState text{
+	font-size: 0.9rem;
+}
+
 .timeOut {
 	width: 90%;
 	height: 60px;
@@ -1251,7 +1335,7 @@ input {
 	position: absolute;
 	color: #fff;
 	text-align: center;
-	font-weight: bold;
+	/* font-weight: bold; */
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -1275,7 +1359,7 @@ input {
 }
 
 .time {
-	font-size: 56rpx;
+	font-size: 2em;
 	color: #fff;
 }
 
@@ -1291,10 +1375,12 @@ input {
 
 .detailsState .stateBox .state2 view text {
 	font-weight: bold;
+	color: #FF596A;
 	font-size: 32rpx;
 }
 
-.state1,.state2 {
+.state1,
+.state2 {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
@@ -1310,10 +1396,10 @@ input {
 .discount {
 	/* width: 81px;
 	height: 53px; */
-	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	-webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+	        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
 	text-align: center;
-	padding: 5px 15px 10px;
+	padding: 10px;
 	-webkit-align-content: center;
 	    -ms-flex-line-pack: center;
 	        align-content: center;
@@ -1327,16 +1413,12 @@ input {
 	font-weight: bold
 }
 
-.discount view {
-	font-size: 34rpx;
-}
-
-.discount text {
-	font-size: 32rpx;
-	color: #FF0000;
+.discount view text{
+	font-size: 1rem;
 }
 
 .orderDetails {
+	
 	padding: 10px 15px 10px;
 	background: #fff;
 	display: -webkit-box;
@@ -1350,6 +1432,10 @@ input {
 	        flex-direction: column;
 	margin: 10px 0;
 }
+
+/* .orderDetail textarea,text{
+	font-size: 28upx;
+} */
 
 .orderDetails view {
 	line-height: 30px
@@ -1388,10 +1474,17 @@ input {
 	color: #FD8E65;
 }
 
-.m-two-btn .cal {
+.m-two-btn .close {
 	color: #fff;
-	background-color: #C5CCCF;
+	background-color: #00A8FF;
 	padding: 0;
+}
+
+.m-two-btn .cal {
+	background-color: #fff;
+	padding: 0;
+	border: 1px solid #CBCBCB;
+	
 }
 
 .orderBtn .blue {
@@ -1405,194 +1498,205 @@ input {
 	display: flex;
 }
 
-.footmodel{
+.footmodel {
 	z-index: 999;
 }
 
 .footmodel {
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.4);
-		position: absolute;
-		bottom: 0px;
-		left: 0;
-	}
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
 
 .footmodel .modelmain view {
-		background-color: #fff;
-		padding: 13px;
-		text-align: center;
-		border-bottom: 1px solid #e5e5ee;
-		font-size: 18px;
-		color: #616161;
-	}
+	background-color: #fff;
+	padding: 13px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5ee;
+	font-size: 18px;
+	color: #616161;
+}
 
 .footmodel .modelmain text {
-		display: block;
-		background-color: #fff;
-		padding: 13px;
-		text-align: center;
-		border-bottom: 1px solid #e5e5ee;
-		font-size: 18px;
-		color: #616161;
-	}
+	display: block;
+	background-color: #fff;
+	padding: 13px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5ee;
+	font-size: 18px;
+	color: #616161;
+}
 
 .footermain {
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		-webkit-animation: show1 0.3s;
-		        animation: show1 0.3s;
-		border-radius: 8px 8px 0 0;
-	}
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	-webkit-animation: show1 0.3s;
+	        animation: show1 0.3s;
+	border-radius: 8px 8px 0 0;
+}
 
 .modelfooter {
-		width: 100%;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		margin-top: 6px;
-		background-color: #fff;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 6px;
+	background-color: #fff;
 
-		line-height: 50px;
-	}
+	line-height: 50px;
+}
 
 .modelfooter view {
-		width: 100%;
-		text-align: center;
-	}
+	width: 100%;
+	text-align: center;
+}
 
 .footmodel .modelmain view:hover {
-		background-color: #e5e5e5;
-	}
+	background-color: #e5e5e5;
+}
 
 @-webkit-keyframes show1 {
-		0% {
-			bottom: -241px;
-		}
-
-		100% {
-			bottom: 0px;
-		}
+	0% {
+		bottom: -241px;
 	}
+
+	100% {
+		bottom: 0px;
+	}
+}
 
 @keyframes show1 {
-		0% {
-			bottom: -241px;
-		}
-
-		100% {
-			bottom: 0px;
-		}
+	0% {
+		bottom: -241px;
 	}
+
+	100% {
+		bottom: 0px;
+	}
+}
 
 @-webkit-keyframes leave {
-		100% {
-			bottom: 0px;
-		}
-
-		0% {
-			bottom: -362px;
-		}
+	100% {
+		bottom: 0px;
 	}
+
+	0% {
+		bottom: -362px;
+	}
+}
 
 @keyframes leave {
-		100% {
-			bottom: 0px;
-		}
-
-		0% {
-			bottom: -362px;
-		}
+	100% {
+		bottom: 0px;
 	}
+
+	0% {
+		bottom: -362px;
+	}
+}
 
 .times {
-		width: 100%;
-		/* padding: 4px 15px; */
-		border-radius: 4px 4px 0 0;
-		background-color: #fff;
-		text-align: center;
-	}
+	width: 100%;
+	/* padding: 4px 15px; */
+	border-radius: 4px 4px 0 0;
+	background-color: #fff;
+	text-align: center;
+}
 
 .height95 {
-		height: 95px;
-	}
+	height: 95px;
+}
 
 .height55 {
-		height: 55px;
-	}
+	height: 55px;
+}
 
 .status_days {
-		position: relative;
-		width: 100%;
-	}
+	position: relative;
+	width: 100%;
+}
 
 .status_days_day {
-		width: 100%;
-		position: fixed;
-		z-index: 5;
-		
-	}
+	width: 100%;
+	height: 0;
+	position: fixed;
+	z-index: 5;
+
+
+}
 
 /* oderList and reserveOilLost */
 
 .status_days_text {
-		font-size: 14px;
-		position: absolute;
-		top: 50%;
-		margin-top: -8px;
-		right: 25px;
-		z-index: 1;
-	}
+	font-size: 14px;
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+	right: 25px;
+	z-index: 1;
+}
 
-.hidetitles{
-		-webkit-animation: hide 0.5s forwards;
-		        animation: hide 0.5s forwards;
-	}
+.hidetitles {
+	-webkit-animation: hide 0.5s forwards;
+	        animation: hide 0.5s forwards;
+}
 
-.showtitles{
-		-webkit-animation: show 0.5s forwards;
-		        animation: show 0.5s forwards;
-	}
+.showtitles {
+	-webkit-animation: show 0.5s forwards;
+	        animation: show 0.5s forwards;
+}
 
 @-webkit-keyframes hide {
-		0% {
-			opacity: 1;
-		}
-	
-		100% {
-			opacity: 0;
-		}
+	0% {
+		opacity: 1;
 	}
+
+	100% {
+		opacity: 0;
+	}
+}
 
 @keyframes hide {
-		0% {
-			opacity: 1;
-		}
-	
-		100% {
-			opacity: 0;
-		}
+	0% {
+		opacity: 1;
 	}
+
+	100% {
+		opacity: 0;
+	}
+}
 
 @-webkit-keyframes show {
-		from {
-			opacity: 0;
-		}
-	
-		to {
-			opacity: 1;
-		}
+	from {
+		opacity: 0;
 	}
 
-@keyframes show {
-		from {
-			opacity: 0;
-		}
-	
-		to {
-			opacity: 1;
-		}
+	to {
+		opacity: 1;
 	}
+}
+
+@keyframes show {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* 订单列表和预约提油列表 */
+
+.list_content {
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-bottom: 10px;
+}
+

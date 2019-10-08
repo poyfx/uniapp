@@ -9,6 +9,7 @@
     "background": "white"
   },
   "usingComponents": {
+    "uni-icons": "/components/uni-icon/uni-icons",
     "info-text": "/components/m-info-text/m-info-text",
     "info-img": "/components/m-info-img/m-info-img",
     "set-password": "/components/setPassword/setPassword",

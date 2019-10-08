@@ -40,9 +40,14 @@
 </script>
 
 <style>
+	.uni-padding-wrap{
+		width: 100%;
+		height: 150px;
+		position: relative;
+	}
 .swiper-item image{
 	width: 100%;
 	height: 150px;
-	border-radius: 8px 8px 0 0 ;
+	border-radius: 0.25rem 0.25rem 0 0 ;
 }
 </style>

@@ -4,11 +4,13 @@
 			<view class="self_header_bar">
 				<view class="top_view"></view>
 			</view>
-			<view class="self_header_title flex">
-				<view class="leftBtn" @tap="back">
-					<uni-icons type="arrowleft" size="27"></uni-icons>
+			<view class="title_content">
+				<view class="self_header_title flex">
+					<view class="leftBtn" @tap="back">
+						<uni-icons type="arrowleft" size="27"></uni-icons>
+					</view>
+					<view>注册</view>
 				</view>
-				<view>注册</view>
 			</view>
 		</view>
 		<view class="">
@@ -107,15 +109,15 @@
 							<view>{{item.name}}</view>
 							<view>{{item.addr}}</view>
 						</view>
-						<view class="loading" @tap="mores" v-show="Cmore">
-							<view>
-								<image src="/../static/img/loading.png" mode="aspectFit" style="width: 8px ;height: 8px;"></image>&nbsp;
-								点击加载更多...
-							</view>
-						</view>
+
 
 					</scroll-view>
-
+					<view class="loading" @tap="mores" v-show="Cmore">
+						<view>
+							<image src="/../static/img/loading.png" mode="aspectFit" style="width: 8px ;height: 8px;"></image>&nbsp;
+							点击加载更多...
+						</view>
+					</view>
 				</view>
 
 			</view>
@@ -303,7 +305,7 @@
 					// console.log(res.version);
 					// console.log(res.platform);
 					that.phoneHeight = res.windowHeight;
-					that.scrollheight = that.phoneHeight - 44 - 44 - 25
+					that.scrollheight = that.phoneHeight - 44 - 44 - 25 - 49
 				}
 			});
 			//#ifdef APP-PLUS  
@@ -351,7 +353,7 @@
 			},
 			// 获取公司信息
 			getCompanyInfo() {
-				this.test.post('base/listCustCompany', {
+				this.test.post('base/regist/listCustCompany', {
 					search: this.inputValue,
 					page: this.Cpage,
 					pageSize: this.pageSize
@@ -370,7 +372,8 @@
 							this.Cmore = false;
 							uni.showToast({
 								title: '没有更多了',
-								icon: "none"
+								icon: "none",
+								position:'bottom',
 							})
 						}
 					}
@@ -378,14 +381,15 @@
 					uni.hideLoading();
 					uni.showToast({
 						title: '加载失败',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 					console.log(err)
 				})
 			},
 			// 通过所选城市获取客户经理&&城市
 			getCustmerCity() {
-				this.test.post('base/getCustomerData', {
+				this.test.post('base/regist/getCustomerData', {
 					customer_id: this.info.companyId
 				}).then(res => {
 					// console.log(res, this.info)
@@ -396,7 +400,7 @@
 						this.cityValue = false;
 
 					} else {
-						
+
 						this.cityValue = true;
 					}
 				}).catch(err => {
@@ -432,7 +436,7 @@
 			},
 			//选择市
 			getCityInfo() {
-				this.test.post('base/listUserCity').then(res => {
+				this.test.post('base/regist/listUserCity').then(res => {
 					// console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						res.data.value.forEach(el => {
@@ -454,7 +458,7 @@
 				this.info.userCity = this.cityDatas[index].name;
 				this.ciytId = id;
 				this.page = 1;
-				// this.test.post('base/listManagers', {
+				// this.test.post('order/listManagers', {
 				// 	search: this.value,
 				// 	org_id: this.ciytId,
 				// 	size: this.page,
@@ -508,7 +512,7 @@
 			// getCustomerInfo() {
 
 			// 	console.log(this.page, this.pageSize)
-			// 	this.test.post('base/listManagers', {
+			// 	this.test.post('order/listManagers', {
 			// 		search: this.value,
 			// 		org_id: this.ciytId,
 			// 		size: this.page,
@@ -581,7 +585,8 @@
 											if (!/^1[3456789]\d{9}$/.test(_this.userPhoneNum)) {
 												return uni.showToast({
 													"title": '请填写正确的手机号码',
-													"icon": "none"
+													"icon": "none",
+													position:'bottom',
 												})
 											} else
 												// if (_this.customer !== '' && _this.customer !== null) {
@@ -672,20 +677,23 @@
 														} else {
 															return uni.showToast({
 																title: '两次密码不一致',
-																icon: 'none'
+																icon: 'none',
+																position:'bottom',
 															})
 														}
 													} else {
 														return uni.showToast({
 															title: '密码最小不能少于6位',
-															icon: 'none'
+															icon: 'none',
+															position:'bottom',
 														})
 													}
 													// 判断密码	
 												} else {
 													return uni.showToast({
 														title: '密码不能为空',
-														icon: 'none'
+														icon: 'none',
+														position:'bottom',
 													})
 												}
 												// 判断是否选择客户经理
@@ -700,48 +708,55 @@
 										} else {
 											return uni.showToast({
 												title: '手机号码不能为空',
-												icon: 'none'
+												icon: 'none',
+												position:'bottom',
 											})
 										}
 										//判断身份证号码位数是否18位
 									} else {
 										return uni.showToast({
 											title: '请填写18位身份证号码',
-											icon: 'none'
+											icon: 'none',
+											position:'bottom',
 										})
 									}
 									//判断身份证号码
 								} else {
 									return uni.showToast({
 										title: '身份证号码不能为空',
-										icon: 'none'
+										icon: 'none',
+										position:'bottom',
 									})
 								}
 								//判断姓名是否填写
 							} else {
 								return uni.showToast({
 									title: '姓名不能为空',
-									icon: 'none'
+									icon: 'none',
+									position:'bottom',
 								})
 							}
 						} else {
 							return uni.showToast({
 								title: '所在城市不能为空',
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						}
 						//判断公司是否选择
 					} else {
 						return uni.showToast({
 							title: '请选择公司',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 					//判断角色是否选择
 				} else {
 					return uni.showToast({
 						title: '请选择角色',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				}
 
@@ -863,9 +878,9 @@
 		padding: 12px 15px;
 		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 		margin-bottom: 1px;
-		position: fixed;
+		/* position: fixed;
 		top: 69px;
-		z-index: 1;
+		z-index: 1; */
 	}
 
 	.search_input {
@@ -985,7 +1000,7 @@
 
 	.choosemany {
 		/* margin-top: 54px; */
-		padding-top: 98px;
+		padding-top: 44px;
 		background: #EFEFF4;
 		position: relative;
 		box-sizing: border-box;

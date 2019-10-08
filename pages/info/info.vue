@@ -2,58 +2,66 @@
 	<view>
 		<view class="mContent">
 
-			<swiper class="swipers" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" :circular="circular" indicator-active-color="#65C6F8">
-				<swiper-item v-for="(item,index) in cac" :key="index" catchtouchmove="stopTouchMove">
-					<view class="userIntegral borderRadius8 bgcf">
-						<view class="company userIntegraltitle">
-							<view>
-								<!-- <img src="../../static/img/company.png" alt> -->
-								<image src="../../static/img/company.png" mode="aspectFit"></image>
-								<text>公司</text>
+			<swiper class="swipers" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration"
+			 :circular="circular" indicator-active-color="#65C6F8">
+				<swiper-item v-for="(item,index) in cac" :key="index" >
+					<view class="">
+						<view class="userIntegral borderRadius8 bgcf">
+							<view class="company userIntegraltitle">
+								<view>
+									<!-- <img src="../../static/img/company.png" alt> -->
+									<image src="../../static/img/company.png" mode="aspectFit"></image>
+									<text>公司</text>
+								</view>
+								<view style="color: #616161;margin-top: 5px;">{{item.customer_name}}</view>
 							</view>
-							<view style="color: #616161;margin-top: 5px;">{{item.customer_name}}</view>
+							<view class="integral">
+								<view>{{item.integral}}</view>
+								<text>积分</text>
+							</view>
 						</view>
-						<view class="integral">
-							<view>{{item.integral}}</view>
-							<text>积分</text>
-						</view>
-					</view>
-					<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8 " style="margin-top: 15px;">
-						<view class="userinfos flex ">
-							<image src="../../static/img/customer.png" mode="aspectFit"></image>
-							<text style="font-weight: bold;">客户经理</text>
-						</view>
-						<view class="flex m-info underLine">
-							<text>姓名</text>
-							<input v-model="item.manager_name" disabled="disabled" />
-						</view>
-						<view class="flex m-info underLine">
-							<text>手机号</text>
-							<input v-model="item.phone" disabled="disabled" />
-						</view>
-						<view class="flex m-info">
-							<text>所在城市</text>
-							<input v-model="item.city" disabled="disabled" />
-						</view>
+						<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8 " style="margin-top: 15px;">
+							<view class="userinfos flex ">
+								<image src="../../static/img/customer.png" mode="aspectFit"></image>
+								<text style="font-weight: bold;">客户经理</text>
+							</view>
+							<view class="flex m-info underLine">
+								<text>姓名</text>
+								<input v-model="item.manager_name" disabled="disabled" />
+							</view>
+							<view class="flex m-info underLine">
+								<text>手机号</text>
+								<input v-model="item.phone" disabled="disabled" />
+							</view>
+							<view class="flex m-info">
+								<text>所在城市</text>
+								<input v-model="item.city" disabled="disabled" />
+							</view>
 
 
 
-						<!-- <infoText :type="info.type" :disabled="info.disabled" :textValue="info.text1" :value="item.manager_name"></infoText>
+							<!-- <infoText :type="info.type" :disabled="info.disabled" :textValue="info.text1" :value="item.manager_name"></infoText>
 						<infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="item.phone"></infoText>
 						<infoText :type="info.type" :disabled="info.disabled" :textValue="info.usercity" :value="info.city"></infoText> -->
+						</view>
+
 					</view>
 
 				</swiper-item>
 
 			</swiper>
-			<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8" >
+			<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8">
 				<view class="userinfos flex">
 
 					<image src="../../static/img/user.png" mode="aspectFit"></image>
 					<text style="font-weight: bold;">个人信息</text>
 				</view>
 				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.text1" :value="info.username"></infoText>
-				<infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="info.phoneNum"></infoText>
+				<view class="flex m-info">
+					<text>手机号</text>
+					<input v-model="info.phoneNum" disabled="disabled" />
+				</view>
+				<!-- <infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="info.phoneNum"></infoText> -->
 			</view>
 
 
@@ -61,14 +69,23 @@
 
 
 
-			<view class="fget-num  bgcf borderRadius8 infoThree" style="padding-bottom: 10px;">
+			<view class="fget-num  bgcf borderRadius8 infoThree">
 				<view class="out">
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.apply" @toApply="toApply"></infoImg>
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.oilNum" @toStayOil="toStayOil"></infoImg>
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.address" @editAddress="editAddress"></infoImg>
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.editPsd" @toEditPsd="toEditPsd"></infoImg>
-					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.feedback" @toEditPsd="toFeedback"></infoImg>
+
+					<view class="flex  m-infos" @tap="toFeedback">
+						<view class="flex center m-info-contents">
+							<text>{{info.feedback}}</text>
+
+						</view>
+						<image src="../../static/img/right.png" mode="aspectFit"></image>
+					</view>
 				</view>
+			</view>
+			<view class="mTop20">
 				<button class="safeout" @tap="outsafe">安全退出</button>
 			</view>
 		</view>
@@ -109,7 +126,7 @@
 				indicatorDots: true,
 				interval: 2000,
 				duration: 500,
-				circular:true,
+				circular: true,
 				cac: {},
 			}
 		},
@@ -151,9 +168,10 @@
 			// 		}
 			// 	})
 			// },
-			stopTouchMove(){
-				return false
-			},
+			// stopTouchMove() {
+			// 	catchtouchmove="stopTouchMove"
+			// 	return false
+			// },
 			getuserinfo() {
 				const that = this;
 				uni.getStorage({
@@ -162,9 +180,9 @@
 						console.log(res)
 						that.cac = res.data.managers;
 						console.log(that.cac.length)
-						if(that.cac.length<2){
+						if (that.cac.length < 2) {
 							that.indicatorDots = false
-						}else{
+						} else {
 							that.indicatorDots = true
 						}
 						that.info.username = res.data.user.realname;
@@ -264,10 +282,10 @@
 
 <style>
 	.swipers {
-		height: 297px;
+		min-height: 301px;
 	}
 
-	
+
 
 	image {
 		width: 25px;
@@ -292,5 +310,23 @@
 	.m-info input {
 		flex: 1;
 		color: #666;
+	}
+
+	.m-infos {
+		padding: 12px 0;
+		align-content: center;
+		align-items: center;
+		align-self: center;
+		justify-content: space-between;
+	}
+
+	.m-info-contents view {
+		color: #616161;
+	}
+
+	.m-infos image {
+		width: 12px;
+		height: 12px;
+		padding-right: 15px;
 	}
 </style>

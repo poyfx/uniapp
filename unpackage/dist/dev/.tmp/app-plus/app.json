@@ -36,7 +36,8 @@
     "pages/info/apply/uploadImg/uploadImg",
     "pages/reserveOilList/confirmed/exemption/exemption",
     "pages/register/registerNumber",
-    "pages/register/uploadFace/uploadFace"
+    "pages/register/uploadFace/uploadFace",
+    "pages/reserveOilList/confirmed/replaceMan/replaceMan"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -70,7 +71,7 @@
     "autoclose": true
   },
   "appname": "安徽石油",
-  "compilerVersion": "2.3.2",
+  "compilerVersion": "2.3.3",
   "usingComponents": {
     "titles": "/components/title",
     "uni-icons": "/components/uni-icon/uni-icons"

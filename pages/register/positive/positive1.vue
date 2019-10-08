@@ -331,7 +331,8 @@
 				} else {
 					return uni.showToast({
 						title: '请上传身份证正面照',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				}
 			},
@@ -373,7 +374,8 @@
 				} else {
 					return uni.showToast({
 						title: '请上传身份证反面照',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				}
 			},
@@ -437,7 +439,8 @@
 											if (data.errorCode == 0) {
 												uni.showToast({
 													"title": '注册已提交，审核成功后即可登录使用',
-													icon:'none'
+													icon:'none',
+													position:'bottom',
 												})
 												uni.removeStorage({
 													key: 'register'
@@ -449,7 +452,8 @@
 											} else {
 												uni.showToast({
 													"title": data.message,
-													"icon": 'none'
+													"icon": 'none',
+													position:'bottom',
 												});
 
 											}
@@ -485,6 +489,7 @@
 												uni.showToast({
 													"title": '注册已提交，审核成功后即可登录使用',
 													icon:'none',
+													position:'bottom',
 												})
 												uni.removeStorage({
 													key: 'register'
@@ -496,7 +501,8 @@
 											} else {
 												uni.showToast({
 													"title": data.message,
-													"icon": 'none'
+													"icon": 'none',
+													position:'bottom',
 												});
 
 											}
@@ -531,7 +537,8 @@
 											if (data.errorCode == 0) {
 												uni.showToast({
 													"title": '注册已提交，审核成功后即可登录使用',
-													icon:'none'
+													icon:'none',
+													position:'bottom',
 												})
 												uni.removeStorage({
 													key: 'register'
@@ -543,7 +550,8 @@
 											} else {
 												uni.showToast({
 													"title": data.message,
-													"icon": 'none'
+													"icon": 'none',
+													position:'bottom',
 												});
 
 											}
@@ -558,13 +566,15 @@
 							console.log(this.ifday)
 							return uni.showToast({
 								title: '请选择授权有效期',
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						}
 					} else {
 						return uni.showToast({
 							title: '请上传购油授权书',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 					//申请提油人权限

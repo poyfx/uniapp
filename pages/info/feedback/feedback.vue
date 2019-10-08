@@ -90,12 +90,14 @@
 				if(this.feedbacks.length == 0){
 					return uni.showToast({
 						title:'请填写反馈意见',
-						icon:'none'
+						icon:'none',
+						position:'bottom',
 					})
 				}else if(this.feedbacks.length < 10){
 					return uni.showToast({
 						title:'反馈意见必须是10个字及以上',
-						icon:'none'
+						icon:'none',
+						position:'bottom',
 					})
 				}else{
 					if(this.imageData.length <= 0){
@@ -118,14 +120,16 @@
 								}else{
 									uni.showToast({
 										title:'上传失败',
-										icon:'none'
+										icon:'none',
+										position:'bottom',
 								})
 							}
 						}).catch(err=>{
 							uni.hideLoading();
 							uni.showToast({
 								title:'提交失败',
-								icon:'none'
+								icon:'none',
+								position:'bottom',
 							})
 							console.log(err)
 						})
@@ -160,7 +164,8 @@
 									}else{
 										uni.showToast({
 											title:'上传失败',
-											icon:'none'
+											icon:'none',
+											position:'bottom',
 										})
 									} 
 								},

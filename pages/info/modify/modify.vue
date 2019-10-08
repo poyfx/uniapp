@@ -75,7 +75,8 @@
 									} else {
 										uni.showToast({
 											title: res.data.message,
-											icon: "none"
+											icon: "none",
+											position:'bottom',
 										})
 									}
 								}).catch(err => {
@@ -84,26 +85,30 @@
 							} else {
 								uni.showToast({
 									title: "两次密码不一致",
-									icon: "none"
+									icon: "none",
+									position:'bottom',
 								})
 							}
 						} else {
 							uni.showToast({
 								title: "密码长度不能小于6",
-								icon: "none"
+								icon: "none",
+								position:'bottom',
 							})
 						}
 
 					} else {
 						uni.showToast({
 							title: "请输入新密码",
-							icon: "none"
+							icon: "none",
+							position:'bottom',
 						})
 					}
 				} else {
 					uni.showToast({
 						title: '请输入旧密码',
-						icon: "none"
+						icon: "none",
+						position:'bottom',
 					})
 				}
 			}

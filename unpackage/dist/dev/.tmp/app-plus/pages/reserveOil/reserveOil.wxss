@@ -57,7 +57,7 @@
 	        flex: 1;
 }
 .m-info-content text {
-	width:4rem;
+	width: 4rem;
 }
 .m-info-content .infoText {
 	-webkit-box-flex: 1;

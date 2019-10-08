@@ -63,7 +63,8 @@
 							} else {
 								uni.showToast({
 									title: res.data.message,
-									icon: 'none'
+									icon: 'none',
+									position:'bottom',
 								})
 							}
 						}).catch(err => {
@@ -72,13 +73,15 @@
 					} else if (this.number == "" || this.number == null) {
 						return uni.showToast({
 							"title": "验证码不能为空",
-							'icon': 'none'
+							'icon': 'none',
+							position:'bottom',
 						});
 					}
 				} else if (this.phoneNum == "" || this.phoneNum == null) {
 					return uni.showToast({
 						"title": "手机号码不能为空",
-						"icon": 'none'
+						"icon": 'none',
+						position:'bottom',
 					});
 				}
 
@@ -113,7 +116,8 @@
 							this.lock = !this.lock;
 							return uni.showToast({
 								"title": '请填写正确的手机号码',
-								"icon": "none"
+								"icon": "none",
+								position:'bottom',
 							})
 						} else {
 
@@ -136,7 +140,8 @@
 									this.lock = !this.lock;
 									uni.showToast({
 										title: res.data.message,
-										icon: 'none'
+										icon: 'none',
+										position:'bottom',
 									})
 								}
 							}).catch(err => {
@@ -149,7 +154,8 @@
 						this.lock = !this.lock;
 						return uni.showToast({
 							"title": "手机号码不能为空",
-							"icon": "none"
+							"icon": "none",
+							position:'bottom',
 						})
 					}
 

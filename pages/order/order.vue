@@ -4,7 +4,6 @@
 
 		<view class="content">
 			<view class="fget-num paddingLeft15">
-				<!-- 公司 -->
 				<view class="flex  m-info" @tap="getNewCompany()">
 					<view class="flex center m-info-content">
 						<text>售油公司</text>
@@ -12,7 +11,6 @@
 					</view>
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
-
 				<!-- 客户经理 -->
 				<view class="flex  m-info" @tap="getNewCustemerInfo()">
 					<view class="flex center m-info-content">
@@ -21,6 +19,21 @@
 					</view>
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
+
+			</view>
+
+
+			<view class="fget-num paddingLeft15 mTop10">
+				<!-- 公司 -->
+
+				<view class="flex  m-info" @tap="chooseOwnCompany">
+					<view class="flex center m-info-content">
+						<text>购油公司</text>
+						<view>{{buyCompany}}</view>
+					</view>
+					<image src="../../static/img/right.png" mode="aspectFit"></image>
+				</view>
+
 
 				<!-- 油品 -->
 				<view class="flex  m-info" @tap="chooseOilShow">
@@ -51,7 +64,7 @@
 				<view class="flex  m-info">
 					<view class="flex center m-info-content">
 						<text>购买数量</text>
-						<input type="text" :placeholder="infos.placeholder" v-model="count" />
+						<input type="text" :placeholder="infos.placeholder" v-model="count" placeholder-style="color:#9e9e9e" />
 					</view>
 				</view>
 
@@ -190,11 +203,12 @@
 					<view class="leftBtn" @tap="showCompany =! showCompany">
 						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
-					<view>{{companyTitles}}</view>
+					<view>选择公司</view>
 				</view>
 			</view>
-			<view class="company_content">
-				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:490px; position: relative;">
+			
+			<view class="company_content" v-show="nextConpany">
+				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:scrollheight+'px'}" style=" position: relative;">
 					<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
 
 						<view class="newCompany">{{item.name}}</view>
@@ -203,6 +217,18 @@
 					</view>
 				</scroll-view>
 			</view>
+			
+			<view class="company_content" v-show="!nextConpany">
+				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:scrollheight+'px'}" style=" position: relative;">
+					<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in managers" :key="index">
+			
+						<view class="newCompany">{{item.customer_name}}</view>
+			
+			
+					</view>
+				</scroll-view>
+			</view>
+			
 
 		</view>
 
@@ -221,16 +247,16 @@
 					<view class="leftBtn" @tap="showCoutomer = !showCoutomer">
 						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
-					<view>{{coutomerTitles}}</view>
+					<view>选择客户经理</view>
 				</view>
 			</view>
 
 
-			<view class="content" style="margin-top:44px; padding: 0;">
+			<view class="" style="margin-top:44px; padding: 0;">
 				<view class="search flex">
 					<input type="text" value="" placeholder="搜索" class="search_input" v-model="value" @input="searchCustomer" />
 				</view>
-				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" style="height:462px; position: relative;">
+				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:manergerscrollheight+'px'}">
 					<view class="customerCompany" @tap="chooseCustomers(index,item.id)" v-for="(item,index) in man" :key="index">
 						<view>{{item.realname}}</view>
 						<view>{{item.phone}}</view>
@@ -239,12 +265,13 @@
 					</view> -->
 					</view>
 				</scroll-view>
-			</view>
-			<view class="loading" @tap="Smore" v-show="more">
-				<view>
-					<img src="../../static/img/loading.png" alt /> &nbsp; 点击加载更多...
+				<view class="loading" @tap="Smore" v-show="more">
+					<view>
+						<img src="../../static/img/loading.png" alt /> &nbsp; 点击加载更多...
+					</view>
 				</view>
 			</view>
+
 		</view>
 
 	</view>
@@ -259,8 +286,6 @@
 			return {
 				titles: '下单购油',
 				addrTitles: '选择地址',
-				coutomerTitles: '选择客户经理',
-				companyTitles: '选择公司',
 				company: "",
 				productOil: '选择油品',
 				modeOil: "选择提油方式",
@@ -301,10 +326,31 @@
 				old: {
 					scrollTop: 0,
 				},
-				barHeight: 25,
+				managers:'',//多个购油公司选择
+				phoneHeight: '',//手机高
+				scrollheight: '',//实际需要高度
+				manergerscrollheight: '',//实际需要高度
+				buyCompany:'',//购油公司
+				buyCompanyID:'',
+				nextConpany:false,
 			}
 		},
 		onLoad() {
+			const that = this;
+			uni.getSystemInfo({
+				success: function(res) {
+					// console.log(res.model);
+					// console.log(res.pixelRatio);
+					// console.log(res.windowWidth);
+					// console.log(res.windowHeight);
+					// console.log(res.language);
+					// console.log(res.version);
+					// console.log(res.platform);
+					that.phoneHeight = res.windowHeight;
+					that.scrollheight = that.phoneHeight - 44 - 25;
+					that.manergerscrollheight = that.phoneHeight - 44 - 25 - 54;
+				}
+			});
 			this.getCompanyInfo();
 			this.getAddressInfo();
 		},
@@ -313,7 +359,7 @@
 			//获取默认公司
 			getCompanyInfo() {
 				const that = this;
-				this.test.post('user/order_company')
+				this.test.post('order/order_company')
 					.then(res => {
 						console.log(res)
 						// 
@@ -334,16 +380,29 @@
 				uni.getStorage({
 					key: 'userInfo',
 					success: function(res) {
-						// console.log(res)
-						that.myManager = res.data.user.manager_name; //客户经理信息
-						that.myManagerId = res.data.user.manager_id; //客户经理信息
+						console.log(res)
+						that.myManager = res.data.managers[0].manager_name; //客户经理信息
+						that.myManagerId = res.data.managers[0].manager_id; //客户经理信息
+						that.buyCompany = res.data.managers[0].customer_name;//购油公司信息
+						that.buyCompanyID = res.data.managers[0].customer_id;//购油公司信息
+						that.managers = res.data.managers;
 					}
 				})
+			},
+			
+			chooseOwnCompany(){
+				if(this.managers.length>1){
+					this.showCompany = true;
+					this.nextConpany = false;
+				}else{
+					return;
+				}
 			},
 			getNewCompany() {
 				const that = this;
 				this.page = 1;
 				this.showCompany = true;
+				this.nextConpany = true;
 				uni.showLoading({
 					title: '加载中...'
 				})
@@ -357,7 +416,8 @@
 						uni.hideLoading();
 						uni.showToast({
 							title: '加载失败',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 						console.log(err)
 					})
@@ -373,7 +433,7 @@
 				this.companyId = this.newDatas[e].id;
 				this.showCompany = !this.showCompany;
 				this.myManager = '请选择';
-				// this.test.post('base/listManagers', { //选择公司后默认第一个客户经理
+				// this.test.post('order/listManagers', { //选择公司后默认第一个客户经理
 				// 		realname: this.value,
 				// 		org_id: this.companyId,
 				// 		size: this.page,
@@ -417,7 +477,7 @@
 			},
 			getNewCustemer() {
 				console.log(this.value)
-				this.test.post('base/listManagers', {
+				this.test.post('order/listManagers', {
 						search: this.value,
 						org_id: this.companyId,
 						size: this.page,
@@ -439,7 +499,8 @@
 								this.more = false;
 								uni.showToast({
 									title: '没有更多了',
-									icon: "none"
+									icon: "none",
+									position:'bottom',
 								})
 							}
 						}
@@ -447,7 +508,8 @@
 						uni.hideLoading();
 						uni.showToast({
 							title: '加载失败',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 						console.log(err)
 					})
@@ -527,7 +589,8 @@
 				this.chooseAddress = !this.chooseAddress;
 				uni.showToast({
 					title: '选择你要收货的地址,然后点确认',
-					icon: 'none'
+					icon: 'none',
+					position:'bottom',
 				})
 			},
 			// 获取地址信息
@@ -556,7 +619,8 @@
 					this.count = ''
 					uni.showToast({
 						title: '购买数量不能为0',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				} else if (val !== 0) {
 					this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
@@ -648,6 +712,8 @@
 													org_id: that.companyId,
 													manager_id: that.myManagerId,
 													manager_name: that.myManager,
+													customer_name:that.buyCompany,
+													customer_id:that.buyCompanyID,
 													oil_type: that.productOil,
 													get_type: that.getTpe,
 													pay_type: that.modePay,
@@ -680,14 +746,16 @@
 													} else {
 														uni.showToast({
 															title: res.data.message,
-															icon: "none"
+															icon: "none",
+															position:'bottom',
 														})
 													}
 												}).catch(err => {
 													uni.hideLoading();
 													uni.showToast({
 														title: '提交失败',
-														icon: 'none'
+														icon: 'none',
+														position:'bottom',
 													})
 													console.log(err)
 												})
@@ -703,34 +771,39 @@
 								} else {
 									uni.showToast({
 										title: '请输入购油数量',
-										icon: 'none'
+										icon: 'none',
+										position:'bottom',
 									})
 								}
 								//付款方式
 							} else {
 								uni.showToast({
 									title: '请选择付款方式',
-									icon: 'none'
+									icon: 'none',
+									position:'bottom',
 								})
 							}
 							//提油	方式
 						} else {
 							uni.showToast({
 								title: '请选择提油方式',
-								icon: 'none'
+								icon: 'none',
+								position:'bottom',
 							})
 						}
 						//油品	
 					} else {
 						uni.showToast({
 							title: '请选择油品',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 				} else {
 					uni.showToast({
 						title: '请选择客户经理',
-						icon: "none"
+						icon: "none",
+						position:'bottom',
 					})
 				}
 

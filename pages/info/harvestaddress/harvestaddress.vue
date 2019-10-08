@@ -3,11 +3,12 @@
 		<view class="mContent">
 			<view class="harvest" v-for="(item,index) in info" :key="index">
 				<view class="harvest-name">
-					<view>{{item.realname}}</view>
-					<view>{{item.phone}}</view>
+					<view>{{item.customer_name}}</view>
 				</view>
-				<view class="harvest-address">
-					<view>{{item.address}}</view>
+				<!-- {{item.address}} -->
+				<view class="harvest-address flex">
+					<view style="width:3em">地址:</view>
+					<view style="flex: 1;">{{item.address}}</view>
 				</view>
 				<view class="harvest-write">
 					<radio-group @change="sure">
@@ -70,7 +71,8 @@
 					}else{
 						uni.showToast({
 							title: res.data.message,
-							icon: "none"
+							icon: "none",
+							position:'bottom',
 						})
 					}
 				}).catch(err => {

@@ -26,8 +26,9 @@
 .nav {
 	background-color: #fff;
 	padding: 15px 13px 10px;
-	border-radius: 0 0 8px 8px;
+	border-radius: 0 0 0.25rem 0.25rem;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	position: relative;
 }
 
 .navbar {
@@ -71,7 +72,7 @@
 	background-color: #fff;
 	padding: 15px 25px 0px 15px;
 	margin-bottom: 10px;
-	border-radius: 8px;
+	border-radius: 0.25rem;
 }
 
 .oilPrices {
@@ -79,7 +80,7 @@
 	/* height: 157px; */
 	background-color: #fff;
 	padding: 15px 0px 0 15px;
-	border-radius: 8px;
+	border-radius: 0.25rem;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 }
 
@@ -297,9 +298,9 @@ input {
 
 /* 退出 */
 .safeout {
-	width: 90%;
-	background-color: #c5cccf;
-	color: #fff;
+	width: 100%;
+	background-color: #fff;
+	color: #9e9e9e;
 	margin: 10px auto;
 }
 
@@ -448,8 +449,9 @@ input {
 .harvest-name {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
-	font-size: 19px;
+	justify-content: center;
+	font-size: 1rem;
+	text-align: center;
 	color: #333;
 }
 
@@ -458,7 +460,7 @@ input {
 	width: 100%;
 	padding: 10px 10px 10px 0;
 	border-bottom: 1px solid #e5e5e5;
-	color: #333;
+	color: #757575;
 	font-size: 14px;
 
 }
@@ -566,9 +568,7 @@ input {
 
 
 /* 已拒绝颜色样式 */
-.stateBox .oc {
-	color: #FD8E65
-}
+
 
 /* 加载更多 */
 .loading {
@@ -594,7 +594,9 @@ input {
 	justify-content: space-between;
 	box-sizing: border-box;
 }
-
+.detailsState text{
+	font-size: 0.9rem;
+}
 .timeOut {
 	width: 90%;
 	height: 60px;
@@ -602,7 +604,7 @@ input {
 	position: absolute;
 	color: #fff;
 	text-align: center;
-	font-weight: bold;
+	/* font-weight: bold; */
 	display: flex;
 	justify-content: space-around;
 	align-content: center;
@@ -614,7 +616,7 @@ input {
 }
 
 .time {
-	font-size: 56upx;
+	font-size: 2em;
 	color: #fff;
 }
 
@@ -631,6 +633,7 @@ input {
 
 .detailsState .stateBox .state2 view text {
 	font-weight: bold;
+	color: #FF596A;
 	font-size: 32upx;
 }
 
@@ -644,32 +647,32 @@ input {
 .discount {
 	/* width: 81px;
 	height: 53px; */
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
 	text-align: center;
-	padding: 5px 15px 10px;
+	padding: 10px;
 	align-content: center;
 	align-items: center;
 	align-self: center;
 	font-weight: bold
 }
 
-.discount view {
-	font-size: 34upx;
+.discount view text{
+	font-size: 1rem;
 }
 
-.discount text {
-	font-size: 32upx;
-	color: #FF0000;
-}
+
 
 .orderDetails {
+	
 	padding: 10px 15px 10px;
 	background: #fff;
 	display: flex;
 	flex-direction: column;
 	margin: 10px 0;
 }
-
+/* .orderDetail textarea,text{
+	font-size: 28upx;
+} */
 .orderDetails view {
 	line-height: 30px
 }
@@ -702,12 +705,17 @@ input {
 
 
 
-.m-two-btn .cal {
+.m-two-btn .close {
 	color: #fff;
-	background-color: #C5CCCF;
+	background-color: #00A8FF;
 	padding: 0;
 }
-
+.m-two-btn .cal {
+	background-color: #fff;
+	padding: 0;
+	border: 1px solid #CBCBCB;
+	
+}
 .orderBtn .blue {
 	background-color: #00A8FF;
 }

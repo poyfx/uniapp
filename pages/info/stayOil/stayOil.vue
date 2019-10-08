@@ -60,7 +60,8 @@
 							this.more = false;
 							uni.showToast({
 								title: '没有更多了',
-								icon: "none"
+								icon: "none",
+								position:'bottom',
 							})
 						}
 					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
@@ -82,7 +83,8 @@
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: "none"
+							icon: "none",
+							position:'bottom',
 						})
 					}
 				}).catch(err => {

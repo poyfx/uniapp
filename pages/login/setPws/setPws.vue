@@ -50,7 +50,6 @@
 								console.log(res)
 								uni.showToast({
 									"title": "修改成功",
-									"icon": "none",
 								})
 								setTimeout(function() {
 									uni.navigateTo({
@@ -86,19 +85,22 @@
 						} else {
 							return uni.showToast({
 								"title": "两次密码不一致",
-								"icon": 'none'
+								"icon": 'none',
+								position:'bottom',
 							})
 						}
 					} else {
 						uni.showToast({
 							"title": "密码不能小于6位",
-							"icon": "none"
+							"icon": "none",
+							position:'bottom',
 						})
 					}
 				} else {
 					return uni.showToast({
 						"title": "新密码不能为空",
-						"icon": "none"
+						"icon": "none",
+						position:'bottom',
 					})
 				}
 			}

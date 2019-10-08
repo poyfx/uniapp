@@ -173,7 +173,8 @@
 								} else {
 									uni.showToast({
 										title: res.data.message,
-										icon: 'none'
+										icon: 'none',
+										position:'bottom',
 									});
 								}
 							}).catch(err => {
@@ -192,7 +193,8 @@
 				if (this.typeInvoice == "请选择发票类型") {
 					uni.showToast({
 						title: '请选择发票类型',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					});
 				} else {
 					this.invoiceNum = [];
@@ -240,7 +242,8 @@
 													} else {
 														uni.showToast({
 															title: res.data.message,
-															icon: 'none'
+															icon: 'none',
+															position:'bottom',
 														});
 													}
 												}).catch(err => {
@@ -257,14 +260,16 @@
 								} else {
 									uni.showToast({
 										title: '发票拆分数量必须与当前油量一致',
-										icon: 'none'
+										icon: 'none',
+										position:'bottom',
 									})
 								}
 
 							} else {
 								uni.showToast({
 									title: '请填写拆分数量',
-									icon: 'none'
+									icon: 'none',
+									position:'bottom',
 								})
 							}
 
@@ -295,7 +300,8 @@
 											} else {
 												uni.showToast({
 													title: res.data.message,
-													icon: 'none'
+													icon: 'none',
+													position:'bottom',
 												});
 											}
 										}).catch(err => {
@@ -335,7 +341,8 @@
 													} else {
 														uni.showToast({
 															title: res.data.message,
-															icon: 'none'
+															icon: 'none',
+															position:'bottom',
 														});
 													}
 												}).catch(err => {
@@ -390,7 +397,8 @@
 											} else {
 												uni.showToast({
 													title: res.data.message,
-													icon: 'none'
+													icon: 'none',
+													position:'bottom',
 												});
 											}
 										}).catch(err => {
@@ -422,7 +430,8 @@
 					this.btn.disabled = true;
 					uni.showToast({
 						title: '输入的数字不能超过总吨数',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				} else {
 					this.btn.disabled = false;

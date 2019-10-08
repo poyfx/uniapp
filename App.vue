@@ -25,7 +25,7 @@
 					// 	"version": plus.runtime.version
 					// };
 					console.log(plus.runtime.appid, plus.runtime.version)
-					this.test.get('base/get_version', {
+					this.test.get('base/getVersion', {
 						appid: appid,
 						version: version,
 						type:'android'
@@ -60,7 +60,7 @@
 					// 	"version": plus.runtime.version
 					// };
 					console.log(plus.runtime.appid, plus.runtime.version)
-					this.test.get('base/get_version', {
+					this.test.get('base/getVersion', {
 						appid: appid,
 						version: version,
 						type:'ios'
@@ -215,4 +215,5 @@
 		transform: translate(-50%);
 	
 	}
+	
 </style>

@@ -30,7 +30,7 @@
 			</view>
 		</view>
 
-		<view class="mContent list_content" >
+		<view class="mContent list_content">
 			<view class="fget-num orderList" v-for="(item,index) in info" :key='item.id'>
 				<view class="stateBox flex" @tap="orderDtails(item.status,item.id,item.no)" @touchmove="hidetitle" @touchend="showtitle">
 					<view class="state-left">
@@ -48,7 +48,7 @@
 						</view>
 						<view>
 							购油数量：
-							<text>{{item.count}}</text>
+							<text>{{item.count}}吨</text>
 						</view>
 					</view>
 					<view class="state-right" v-if='item.status == 1'>
@@ -62,8 +62,8 @@
 							<text class="orderListState state ">已确认价格</text>
 						</view>
 						<view class="oilPrice flex">
-							<text class="orderListState unit">单价:</text>
-							<text class="orderListState price">{{item.oil_price}}/吨</text>
+							<text class="orderListState unit">总金额:</text>
+							<text class="orderListState price">￥{{item.oil_price*item.count}}</text>
 						</view>
 					</view>
 
@@ -107,7 +107,7 @@
 				</view>
 			</view>
 
-			
+
 		</view>
 		<view class="loadings" @tap="more" v-show="showMore">
 			<image src="../../static/img/loading.png" mode="aspectFit"></image> &nbsp; 点击加载更多...
@@ -167,7 +167,7 @@
 				height95: 'height95',
 				height55: 'height55',
 				titleshow: true,
-				showhide:'',//点击滑动样式
+				showhide: '', //点击滑动样式
 			}
 		},
 		onLoad(option) {
@@ -222,7 +222,7 @@
 							return uni.showToast({
 								title: '没有数据了',
 								icon: "none",
-							
+								position: 'bottom',
 							})
 						};
 					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
@@ -244,14 +244,16 @@
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: "none"
+							icon: "none",
+							position:'bottom',
 						})
 					}
 				}).catch(err => {
 					uni.hideLoading()
 					uni.showToast({
 						title: '加载失败',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 					console.log(err)
 				})
@@ -260,7 +262,8 @@
 				if (status == 1) {
 					uni.showToast({
 						title: '价格正在计算中,请稍等',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				} else {
 					uni.navigateTo({
@@ -294,16 +297,16 @@
 				})
 			},
 			hidetitle() {
-				
+
 				console.log(this.$refs.statusdays)
-				
-				this.showhide="hidetitles"
+
+				this.showhide = "hidetitles"
 			},
 			showtitle() {
-				this.showhide="showtitles"
+				this.showhide = "showtitles"
 			},
 		},
-		
+
 		components: {
 			selects,
 			// uniIcon
@@ -363,6 +366,4 @@
 		width: 8px;
 		height: 8px;
 	}
-
-
 </style>

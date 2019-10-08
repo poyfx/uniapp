@@ -25,7 +25,7 @@
 					<view class="myManager">
 						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration"
 			 :circular="circular" indicator-active-color="#65C6F8">
-				<swiper-item v-for="(item,index) in myManagerBox" :key="index" catchtouchmove="stopTouchMove">
+				<swiper-item v-for="(item,index) in myManagerBox" :key="index">
 						
 						<text class="line"></text>
 						<text class="title-p">我的客户经理</text>
@@ -38,7 +38,7 @@
 							</view>
 
 							<view class=" ">
-								<text class="numberBtn" @click="callPhone(item.phone)">通话</text>
+								<text class="numberBtn" @click="callPhone(item.phone,item.manager_name)">通话</text>
 							</view>
 						</view>
 					
@@ -275,9 +275,9 @@
 
 			},
 			// 打电话
-			callPhone(phoneNumber) {
+			callPhone(phoneNumber,name) {
 				uni.showModal({
-					title: "呼叫客户经理-" + this.myManager,
+					title: "呼叫客户经理-" + name,
 					confirmText: '呼叫',
 					content: phoneNumber,
 					success: function(res) {
@@ -449,7 +449,7 @@
 		display: flex;
 		background: #fff;
 		margin: 10px 0 10px 0;
-		border-radius: 8px;
+		border-radius: 0.25rem;
 		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	}
 

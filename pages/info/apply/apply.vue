@@ -96,17 +96,20 @@
 				} else if (stu == 1) {
 					uni.showToast({
 						"title": "您已有权限",
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				} else if (stu == -1) {
 					uni.showToast({
 						"title": "审核中...",
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				} else {
 					uni.showToast({
 						"title": "审核未通过",
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				}
 			},

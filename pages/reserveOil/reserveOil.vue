@@ -56,18 +56,20 @@
 			</view> -->
 			<view class="self_header ">
 				<view class="self_header_bar">
-					<view class="top_view"></view>  
+					<view class="top_view"></view>
 				</view>
-				<view class="self_header_title flex self_header_position" >
-					<view class="leftBtn" @tap="showOrderNumber =! showOrderNumber">
-						<uni-icons type="arrowleft" size="27"></uni-icons>
+				<view class="title_content">
+					<view class="self_header_title flex self_header_position">
+						<view class="leftBtn" @tap="showOrderNumber =! showOrderNumber">
+							<uni-icons type="arrowleft" size="27"></uni-icons>
+						</view>
+						<view>选择单号</view>
 					</view>
-					<view>选择单号</view>
 				</view>
 			</view>
 
-			<view class="mContent pB10" >
-				<view class="userIntegral mTop10 bgcf  borderRadius8" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
+			<view class=" pB10" style="width: 100%; padding:15px 10px;">
+				<view class="userIntegral  bgcf  borderRadius8 mB10" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
 				 :key="item.id">
 					<view class="orderNumber">
 						<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
@@ -144,7 +146,7 @@
 				id: '',
 				more: true,
 				showAddress: true,
-				barHeight:25,
+				barHeight: 25,
 			}
 		},
 		onLoad() {
@@ -154,7 +156,7 @@
 		methods: {
 			//获取订单编号
 			getorderNumberInfo() {
-				this.test.post('order/query_orderSnInfo', {
+				this.test.post('reserve/query_orderSnInfo', {
 					page: this.chooseNumber.page,
 					pageSize: this.chooseNumber.pageSize,
 				}).then(res => {
@@ -170,7 +172,8 @@
 							this.more = false;
 							uni.showToast({
 								title: '没有更多了',
-								icon: "none"
+								icon: "none",
+								position:'bottom',
 							})
 						}
 					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
@@ -192,7 +195,8 @@
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: "none"
+							icon: "none",
+							position:'bottom',
 						})
 					}
 				}).catch(err => {
@@ -249,7 +253,8 @@
 				if (this.values.orderNumber == '' || this.values.orderNumber == null) {
 					uni.showToast({
 						title: '请选择订单编号',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				} else {
 					this.values.muchOil = this.muchOilText
@@ -261,13 +266,15 @@
 				if (this.values.orderNumber == '' || this.values.orderNumber == null) {
 					uni.showToast({
 						title: '请选择订单编号',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				} else {
 					if (e.detail.value > this.muchOilText) {
 						uni.showToast({
 							title: '不能超过油的总量：' + this.muchOilText,
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 				}
@@ -290,7 +297,7 @@
 							success: function(res) {
 								if (res.confirm) {
 									console.log(typeof(oilNumbers), typeof(that.id))
-									that.test.post('order/mark_reserve', { //http://192.168.0.156:8080/api/bizcust/
+									that.test.post('reserve/mark_reserve', { //http://192.168.0.156:8080/api/bizcust/
 										bz_order_id: that.id,
 										reserve_time: that.day,
 										extract_num: oilNumbers,
@@ -335,13 +342,15 @@
 					} else {
 						uni.showToast({
 							title: '请输入提油数量',
-							icon: 'none'
+							icon: 'none',
+							position:'bottom',
 						})
 					}
 				} else {
 					uni.showToast({
 						title: '请选择订单编号',
-						icon: 'none'
+						icon: 'none',
+						position:'bottom',
 					})
 				}
 
@@ -390,7 +399,7 @@
 	}
 
 	.m-info-content text {
-		width:4rem;
+		width: 4rem;
 	}
 
 	.m-info-content .infoText {

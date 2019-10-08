@@ -59,7 +59,8 @@
 							if (res.data.value.length === 0) {
 								uni.showToast({
 									title: '没有更多了',
-									icon: 'none'
+									icon: 'none',
+									position:'bottom',
 								})
 							}
 						} else {

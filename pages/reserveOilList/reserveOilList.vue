@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="self_header_bar">
-			<view class="top_view"></view>  
+			<view class="top_view"></view>
 		</view>
 		<view class="title_content">
 			<view class="flex title">
@@ -15,25 +15,26 @@
 			</view>
 		</view>
 
-<!-- 订单状态查询和日期 -->
+		<!-- 订单状态查询和日期 -->
 		<view class="status_days" ref="statusdays" :class="day?height95:height55" v-show="titleshow">
 			<view class="mContent status_days_day" :class="showhide">
 				<view class="times" v-show="day">
 					<view class="times" style="padding: 10px 15px; ">{{day}}</view>
 				</view>
-		
+
 				<view style="position: relative;box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);">
 					<selects :list="list" :clearable="true" :showItemNum="6" :listShow="false" :isCanInput="false" :style_Container="' border:none;'"
 					 :placeholder="'placeholder'" :initValue="'全部订单'" @change="changeMsg">
 					</selects>
-					
+
 				</view>
 			</view>
 		</view>
 
 
 		<view class="mContent list_content">
-			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.no)" v-for="(item,index) in oil" :key="item.reserve_id" @touchmove="hidetitle" @touchend="showtitle">
+			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.no,item.status)" v-for="(item,index) in oil" :key="item.reserve_id"
+			 @touchmove="hidetitle" @touchend="showtitle">
 				<view class="stateBox flex">
 					<view class="">
 						<view>
@@ -65,19 +66,19 @@
 					<view class="flex reserveStatus" v-if='item.get_type=="配送"' style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
 						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
 						<text class="orderListState state " v-if="item.status==2 ">预约已确认</text>
-						<text class="orderListState state " v-if="item.status==2 ">待发油</text>
-						<text class="orderListState state " v-if="item.status==3 ">已发油</text>
-						<text class="orderListState state " v-if="item.status==3 ">待收油</text>
+						<text class="orderListState state " v-if="item.status==3 ">待提油</text>
+						<text class="orderListState state " v-if="item.status==4 ">已提油</text>
 						<text class="orderListState oc " v-if="item.status==-1">已拒绝</text>
-						<text class="orderListState state " v-if="item.status==9">已完成</text>
+						<text class="orderListState s " v-if="item.status== 8">已取消</text>
+						<text class="orderListState oP " v-if="item.status==9">已完成</text>
 					</view>
 					<view class="flex reserveStatus" v-else-if="item.get_type=='自提'" style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
 						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
 						<text class="orderListState state " v-if="item.status==2 ">预约已确认</text>
 						<text class="orderListState state " v-if="item.status==2 ">待提油</text>
-						<text class="orderListState state " v-if="item.status==3 ">已提油</text>
+						<text class="orderListState s " v-if="item.status==8 ">已取消</text>
 						<text class="orderListState oc " v-if="item.status==-1">已拒绝</text>
-						<text class="orderListState state " v-if="item.status==9">已完成</text>
+						<text class="orderListState oP " v-if="item.status==9">已完成</text>
 					</view>
 				</view>
 			</view>
@@ -104,20 +105,28 @@
 						label: -1
 					},
 					{
-						value: "已发油",
-						label: 3
-					},
-					{
-						value: "已完成",
-						label: 9
+						value: "等待预约确定",
+						label: 1
 					},
 					{
 						value: "预约已确定",
 						label: 2
 					},
 					{
-						value: "等待预约确定",
-						label: 1
+						value: "待提油",
+						label: 3
+					},
+					{
+						value: "已提油",
+						label: 4
+					},
+					{
+						value: "已取消",
+						label: 8
+					},
+					{
+						value: "已完成",
+						label: 9
 					}
 				],
 				page: 1,
@@ -133,7 +142,7 @@
 				height95: 'height95',
 				height55: 'height55',
 				titleshow: true,
-				showhide:'',//点击滑动样式
+				showhide: '', //点击滑动样式
 			}
 		},
 		onLoad(option) {
@@ -155,7 +164,7 @@
 				if (this.no == undefined || this.no == '' || this.no == null) {
 					this.no = ''
 				};
-				this.test.post('order/search_reserve', {
+				this.test.post('reserve/search_reserve', {
 					no: this.no,
 					status: this.status,
 					start_time: this.from,
@@ -185,6 +194,7 @@
 							uni.showToast({
 								title: '没有更多了',
 								icon: "none",
+								position: 'bottom',
 							})
 						};
 					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
@@ -206,22 +216,34 @@
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: 'none'
+							icon: 'none',
+							position: 'bottom',
 						})
 					}
 				}).catch(err => {
 					uni.hideLoading();
 					uni.showToast({
 						title: '加载失败',
-						icon: 'none'
+						icon: 'none',
+						position: 'bottom',
 					})
 					console.log(err)
 				})
 			},
-			reserveList(rId, oId) {
-				uni.navigateTo({
-					url: 'confirmed/confirmed?reserve_id=' + rId + '&no=' + oId,
-				})
+			reserveList(rId, oId,stu) {
+				if (stu !== 1) {
+					uni.navigateTo({
+						url: 'confirmed/confirmed?reserve_id=' + rId + '&no=' + oId,
+					})
+				}else{
+					uni.showToast({
+						title:'预约确认中...',
+						icon:'none',
+						position:'bottom',
+						duration:1500,
+					})
+				}
+
 			},
 			complete() {
 				// this.$router.push('/complete');
@@ -256,17 +278,17 @@
 				})
 			},
 			hidetitle() {
-			
+
 				console.log(this.$refs.statusdays)
-				
-				this.showhide="hidetitles"
+
+				this.showhide = "hidetitles"
 			},
 			showtitle() {
-				
-				this.showhide="showtitles"
+
+				this.showhide = "showtitles"
 			},
 		},
-		
+
 		components: {
 			selects
 		}
@@ -320,6 +342,7 @@
 		position: absolute;
 		right: 8px;
 	}
+
 	.loadings {
 		width: 100%;
 		height: 49px;
@@ -331,8 +354,9 @@
 		bottom: 0;
 		left: 0;
 	}
-	.loadings image{
-		width:8px;
+
+	.loadings image {
+		width: 8px;
 		height: 8px;
 	}
 </style>
