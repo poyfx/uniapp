@@ -14,16 +14,30 @@
 		{
 			"path": "pages/index/index",
 			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
 				"app-plus": {
-					"titleNView": {
-						"titleColor": "#424242",
-						"titleText": "首页",
-						"backgroundColor": "#FFF",
-						"fontWeight": "normal",
-						"titleSize": "40upx"
-					}
-
+					"bounce": "none",
+					"titleNView": false
+					// "statusbar": {
+					// 	"background": "white"
+					// }
 				}
+				
+				
+				
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"titleColor": "#424242",
+				// 		"titleText": "首页",
+				// 		"backgroundColor": "#FFF",
+				// 		"fontWeight": "normal",
+				// 		"titleSize": "40upx"
+				// 	}
+
+				// }
 			}
 		},
 		{
@@ -74,10 +88,10 @@
 				"onReachBottomDistance": 100,
 				"app-plus": {
 					"bounce": "none",
-					"titleNView": false,
-					"statusbar": {
-						"background": "white"
-					}
+					"titleNView": false
+					// "statusbar": {
+					// 	"background": "white"
+					// }
 				}
 
 			}
@@ -129,7 +143,16 @@
 		}, {
 			"path": "pages/info/info",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#424242",
+						"titleText": "我的",
+						"backgroundColor": "#FFF",
+						"fontWeight": "normal",
+						"titleSize": "40upx"
+					}
+				
+				}
 			}
 		}, {
 			"path": "pages/info/userPhoneNumber/userPhoneNumber",
@@ -289,21 +312,6 @@
 						"titleSize": "40upx"
 					}
 
-				}
-			}
-		}, {
-			"path": "pages/search/searchDateList/searchDateList",
-			"style": {
-				"navigationBarTitleText": "搜索列表",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "搜索",
-							"fontSize": "14px",
-							"float": "right", //靠右第一个
-							"id": "xiaoxi"
-						}]
-					}
 				}
 			}
 		}, {
@@ -555,6 +563,54 @@
 				"titleNView": {
 					"titleColor": "#424242",
 					"titleText": "填写代提油人信息",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "40upx"
+				}
+			}
+        }
+        ,{
+            "path" : "pages/index/letter/letter",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#424242",
+					"titleText": "消息中心",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "40upx"
+				}
+			}
+        }
+        ,{
+            "path" : "pages/index/letter/account/account",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#424242",
+					"titleText": "对账函",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "40upx"
+				}
+			}
+        }
+		,{
+		    "path" : "pages/index/letter/account/buyOilList",
+		    "style" : {
+				"titleNView": {
+					"titleColor": "#424242",
+					"titleText": "购油单",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "40upx"
+				}
+			}
+		}
+        ,{
+            "path" : "pages/index/letter/notice/notice",
+            "style" : {
+				"titleNView": {
+					"titleColor": "#424242",
+					"titleText": "公告",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
 					"titleSize": "40upx"

@@ -12,7 +12,7 @@ body {
 	padding: 0;
 	font-size: 32upx;
 	background-color: #EFEFF4;
-		color: #616161;
+	color: #616161;
 }
 
 html,
@@ -59,8 +59,8 @@ text {
 }
 
 input::-webkit-input-placeholder {
-		color: #9e9e9e;
-	}
+	color: #9e9e9e;
+}
 
 .mTop15 {
 	margin-top: 15px;
@@ -87,9 +87,11 @@ input::-webkit-input-placeholder {
 .padding11 {
 	padding: 11px 26px 10px 15px
 }
-.paddingLeft10{
+
+.paddingLeft10 {
 	padding-left: 10px;
 }
+
 .mTop10 {
 	margin-top: 10px;
 }
@@ -133,6 +135,7 @@ input::-webkit-input-placeholder {
 .mBotton {
 	margin-bottom: 50px;
 }
+
 /* 已取消/已超时颜色 */
 .oT {
 	color: #fd8e65;
@@ -141,25 +144,31 @@ input::-webkit-input-placeholder {
 .oL {
 	color: #00a8ff;
 }
+
 /* 已完成 */
-.oP{
+.oP {
 	color: #36D38A;
 }
+
 /* 油价升 */
 .s {
 	color: #FF596A;
 }
+
 /* 油价降 */
 .j {
 	color: #28C792;
 }
+
 /*已拒绝 */
 .oc {
 	color: #FD8E65
 }
+
 .underLine {
 	border-bottom: 1px solid #e5e5e5;
 }
+
 /* 头部定位保持宽高 */
 .title_content {
 	width: 100%;
@@ -176,16 +185,18 @@ input::-webkit-input-placeholder {
 .self_header_bar {
 	height: var(--status-bar-height);
 	width: 100%;
-	background-color: #FFFFFF;  
+	background-color: #FFFFFF;
 }
-.top_view{
-	 height: var(--status-bar-height);  
-	    width: 100%;  
-	    position: fixed;  
-	    background-color: #FFFFFF;  
-	    top: 0;  
-	    z-index: 9999;  
+
+.top_view {
+	height: var(--status-bar-height);
+	width: 100%;
+	position: fixed;
+	background-color: #FFFFFF;
+	top: 0;
+	z-index: 9999;
 }
+
 /* 标题 */
 .self_header_title {
 	width: 100%;
@@ -205,7 +216,8 @@ input::-webkit-input-placeholder {
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
 }
-.self_header_title_code{
+/* 二维码页面蓝色标题 */
+.self_header_title_code {
 	width: 100%;
 	height: 44px;
 	padding: 7px 3px;
@@ -221,18 +233,20 @@ input::-webkit-input-placeholder {
 	font-size: 40upx;
 	z-index: 997;
 }
-.self_header_ba_code {
+
+.self_header_bar_code {
 	height: var(--status-bar-height);
 	width: 100%;
-	background-color: #00a8ff;  
+	background-color: #00a8ff;
 }
-.top_view_code{
-	 height: var(--status-bar-height);  
-	    width: 100%;  
-	    position: fixed;  
-	    background-color: #00a8ff;  
-	    top: 0;  
-	    z-index: 9999;  
+
+.top_view_code {
+	height: var(--status-bar-height);
+	width: 100%;
+	position: fixed;
+	background-color: #00a8ff;
+	top: 0;
+	z-index: 9999;
 }
 
 /* 左边返回图标 */

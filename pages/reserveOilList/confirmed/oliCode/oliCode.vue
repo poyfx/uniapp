@@ -1,6 +1,6 @@
 <template>
 	<view style="position: absolute;width: 100%; height: 100%; background: #00a8ff;">
-		<view class="self_header_bar-code">
+		<view class="self_header_bar_code">
 			<view class="top_view_code"></view>
 		</view>
 		<view class="title_content">
@@ -12,12 +12,12 @@
 			</view>
 		</view>
 		<view class="oilCodeBox">
-			 <view class="oilCodeBox_title">
+			<view class="oilCodeBox_title">
 				<image src="../../../../static/img/code_top_bg.png" mode="" style=""></image>
 			</view>
-<view class="">
-	
-</view>
+			<view class="">
+
+			</view>
 			<image src="../../../../static/img/code_bg.png" mode="" style=""></image>
 			<view class="oilcode">
 				<view class="oilcode_title">
@@ -38,7 +38,7 @@
 			</view>
 
 		</view>
-		<view class="oilcode_btn">
+		<view class="oilcode_btn" v-show="instead == 0">
 			<button type="default" @tap="gotReplaceMan">申请代提人</button>
 		</view>
 	</view>
@@ -50,6 +50,7 @@
 	export default {
 		data() {
 			return {
+				titles:'提油码',
 				value: false,
 				options: [{
 					value: 1,
@@ -70,17 +71,19 @@
 				onval: true, // val值变化时自动重新生成二维码
 				loadMake: true, // 组件加载完成后自动生成二维码
 				src: '', // 二维码生成后的图片地址或base64
-				id: '',//订单id
-				no: '',//订单编号
-				number:'',//提油数量
-				oiltype:'',//油品类型
+				id: '', //订单id
+				no: '', //订单编号
+				number: '', //提油数量
+				oiltype: '', //油品类型
+				instead:'',//是否已经申请了待提人
 			}
 		},
 		onLoad(option) {
 			this.id = option.id;
 			this.no = option.no;
 			this.number = option.number;
-			this.oiltype =option.type;
+			this.oiltype = option.type;
+			this.instead = option.instead;
 			this.getCode();
 		},
 		methods: {
@@ -113,9 +116,9 @@
 					console.log(err)
 				})
 			},
-			gotReplaceMan(){
+			gotReplaceMan() {
 				uni.navigateTo({
-					url:'../replaceMan/replaceMan?no='+this.no + '&number=' + this.number + '&type=' + this.oiltype
+					url: '../replaceMan/replaceMan?no=' + this.no + '&number=' + this.number + '&type=' + this.oiltype
 				})
 			},
 			cancel() {
@@ -195,7 +198,7 @@
 		border-top: 1px dashed #cbcbcb;
 		border-bottom: 1px dashed #cbcbcb;
 		position: absolute;
-		top: 4.7rem;
+		top: 5.7rem;
 		z-index: 2;
 		text-align: center;
 		left: 50%;
@@ -236,6 +239,7 @@
 	.oilCodeBox>image {
 		width: 16rem;
 		height: 21.5rem;
+		position: relative;
 		left: 50%;
 		margin-left: -8rem;
 		top: -5px;
@@ -248,6 +252,7 @@
 	.oilCodeBox_title>image {
 		width: 17.4rem;
 		height: 1rem;
+		position: relative;
 		left: 50%;
 		margin-left: -8.7rem;
 		z-index: 1;

@@ -59,7 +59,7 @@
 						// 		this.buy = false
 						// 	}
 						// }
-					} else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003){
+					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -75,10 +75,11 @@
 								}
 							}
 						})
-					}else{
+					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: "none"
+							icon: "none",
+							position: 'bottom'
 						})
 					}
 				}).catch(err => {
@@ -90,26 +91,34 @@
 
 			GoBuyApply(stu, name, ind) {
 				if (stu == 0 || stu == 2) {
-					uni.navigateTo({
-						url: './uploadImg/uploadImg?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code
-					})
+					if (this.role[ind].code == 1) {
+						uni.navigateTo({
+							url: './uploadImg/uploadImg?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code
+						})
+					} else {
+						uni.navigateTo({
+							url: '../../register/uploadFace/uploadFace?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code
+						})
+					}
+
+
 				} else if (stu == 1) {
 					uni.showToast({
 						"title": "您已有权限",
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 				} else if (stu == -1) {
 					uni.showToast({
 						"title": "审核中...",
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 				} else {
 					uni.showToast({
 						"title": "审核未通过",
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 				}
 			},
@@ -121,10 +130,11 @@
 </script>
 
 <style>
-	.apply{
+	.apply {
 		width: 100%;
-		box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	}
+
 	.m-apply {
 		padding: 12px 12px;
 		border-bottom: 1px solid #E5E5E5;

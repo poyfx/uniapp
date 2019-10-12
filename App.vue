@@ -208,7 +208,7 @@
 	}
 	.swipers .uni-swiper-dots-horizontal {
 		left: 50%;
-		bottom: 61%;
+		bottom: 62%;
 		text-align: center;
 		white-space: nowrap;
 		-webkit-transform: translate(-50%);

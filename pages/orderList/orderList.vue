@@ -8,8 +8,6 @@
 				<view class="left" @tap="back">
 					<uni-icons type="arrowleft" size="27"></uni-icons>
 				</view>
-
-				<!-- <image src="../../../static/img/back.png" mode="aspectFit" ></image> -->
 				<view style="font-size:40upx">订单列表</view>
 				<view @tap="searchs" style="padding-right:5px ;">搜索</view>
 			</view>

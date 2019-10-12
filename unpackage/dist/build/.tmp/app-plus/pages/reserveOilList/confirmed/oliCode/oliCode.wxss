@@ -6,7 +6,7 @@
 	border-top: 1px dashed #cbcbcb;
 	border-bottom: 1px dashed #cbcbcb;
 	position: absolute;
-	top: 4.7rem;
+	top: 5.7rem;
 	z-index: 2;
 	text-align: center;
 	left: 50%;
@@ -43,6 +43,7 @@
 .oilCodeBox>image {
 	width: 16rem;
 	height: 21.5rem;
+	position: relative;
 	left: 50%;
 	margin-left: -8rem;
 	top: -5px;
@@ -53,6 +54,7 @@
 .oilCodeBox_title>image {
 	width: 17.4rem;
 	height: 1rem;
+	position: relative;
 	left: 50%;
 	margin-left: -8.7rem;
 	z-index: 1;

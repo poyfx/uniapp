@@ -64,7 +64,7 @@
 				<view class="flex  m-info">
 					<view class="flex center m-info-content">
 						<text>购买数量</text>
-						<input type="text" :placeholder="infos.placeholder" v-model="count" placeholder-style="color:#9e9e9e" />
+						<input type="number" :placeholder="infos.placeholder" v-model="count" @input="setNumber" placeholder-style="color:#9e9e9e" />
 					</view>
 				</view>
 
@@ -206,7 +206,7 @@
 					<view>选择公司</view>
 				</view>
 			</view>
-			
+
 			<view class="company_content" v-show="nextConpany">
 				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:scrollheight+'px'}" style=" position: relative;">
 					<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
@@ -217,18 +217,18 @@
 					</view>
 				</scroll-view>
 			</view>
-			
+
 			<view class="company_content" v-show="!nextConpany">
 				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:scrollheight+'px'}" style=" position: relative;">
 					<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in managers" :key="index">
-			
+
 						<view class="newCompany">{{item.customer_name}}</view>
-			
-			
+
+
 					</view>
 				</scroll-view>
 			</view>
-			
+
 
 		</view>
 
@@ -326,13 +326,13 @@
 				old: {
 					scrollTop: 0,
 				},
-				managers:'',//多个购油公司选择
-				phoneHeight: '',//手机高
-				scrollheight: '',//实际需要高度
-				manergerscrollheight: '',//实际需要高度
-				buyCompany:'',//购油公司
-				buyCompanyID:'',
-				nextConpany:false,
+				managers: [], //多个购油公司选择
+				phoneHeight: '', //手机高
+				scrollheight: '', //实际需要高度
+				manergerscrollheight: '', //实际需要高度
+				buyCompany: '', //购油公司
+				buyCompanyID: '',
+				nextConpany: false,
 			}
 		},
 		onLoad() {
@@ -383,21 +383,22 @@
 						console.log(res)
 						that.myManager = res.data.managers[0].manager_name; //客户经理信息
 						that.myManagerId = res.data.managers[0].manager_id; //客户经理信息
-						that.buyCompany = res.data.managers[0].customer_name;//购油公司信息
-						that.buyCompanyID = res.data.managers[0].customer_id;//购油公司信息
+						that.buyCompany = res.data.managers[0].customer_name; //购油公司信息
+						that.buyCompanyID = res.data.managers[0].customer_id; //购油公司信息
 						that.managers = res.data.managers;
 					}
 				})
 			},
-			
-			chooseOwnCompany(){
-				if(this.managers.length>1){
+			///选择购油公司
+			chooseOwnCompany() {
+				if (this.managers.length > 1) {
 					this.showCompany = true;
 					this.nextConpany = false;
-				}else{
+				} else {
 					return;
 				}
 			},
+			
 			getNewCompany() {
 				const that = this;
 				this.page = 1;
@@ -417,7 +418,7 @@
 						uni.showToast({
 							title: '加载失败',
 							icon: 'none',
-							position:'bottom',
+							position: 'bottom',
 						})
 						console.log(err)
 					})
@@ -427,39 +428,19 @@
 			//选择公司
 			chooseCompany(e) {
 				const that = this;
-				console.log(this.newDatas)
-				this.more = true;
-				this.company = this.newDatas[e].name;
-				this.companyId = this.newDatas[e].id;
-				this.showCompany = !this.showCompany;
-				this.myManager = '请选择';
-				// this.test.post('order/listManagers', { //选择公司后默认第一个客户经理
-				// 		realname: this.value,
-				// 		org_id: this.companyId,
-				// 		size: this.page,
-				// 		pageSize: this.pageSize,
-				// 	})
-				// 	.then(res => {
-				// 		// that.newDatas = res.data.value
-				// 		if (res.statusCode == 200 && res.data.errorCode == 0) {
-				// 			// console.log()
-				// 			that.man = [];
-				// 			res.data.value.forEach(el => {
-				// 				that.man.push(el)
-				// 			})
-				// 			this.myManager = this.man[0].realname;
-				// 			if (res.data.value.length < 10 && res.data.value.length > 0) {
-				// 				this.more = false;
-				// 			} else if (res.data.value.length == 0) {
-				// 				this.more = false;
-				// 				uni.showToast({
-				// 					title: '没有更多了',
-				// 					icon: "none"
-				// 				})
-				// 			}
-				// 		}
-				// 	})
-				// console.log(this.man)
+				console.log(this.newDatas);
+				if (this.newDatas.length !== 0) {
+					this.more = true;
+					this.company = this.newDatas[e].name;
+					this.companyId = this.newDatas[e].id;
+					this.showCompany = !this.showCompany;
+					this.myManager = '请选择';
+				} else {
+					this.buyCompany = this.managers[e].customer_name;
+					this.showCompany = !this.showCompany;
+				}
+
+
 
 
 			},
@@ -500,7 +481,7 @@
 								uni.showToast({
 									title: '没有更多了',
 									icon: "none",
-									position:'bottom',
+									position: 'bottom',
 								})
 							}
 						}
@@ -509,7 +490,7 @@
 						uni.showToast({
 							title: '加载失败',
 							icon: 'none',
-							position:'bottom',
+							position: 'bottom',
 						})
 						console.log(err)
 					})
@@ -519,13 +500,18 @@
 
 			// 搜索客户经理
 			searchCustomer(e) {
-				console.log(e)
 				this.page = 1;
 				if (e.target.value !== '' && e.target.value !== null) {
-					this.getNewCustemerInfo();
+					this.man = [];
+					this.page = 1;
+					this.more = true;
+					this.getNewCustemer();
 				} else {
+					this.man = [];
+					this.page = 1;
+					this.more = true;
 					this.value = '';
-					this.getNewCustemerInfo();
+					this.getNewCustemer();
 				}
 			},
 			chooseCustomers(e, id) {
@@ -590,7 +576,7 @@
 				uni.showToast({
 					title: '选择你要收货的地址,然后点确认',
 					icon: 'none',
-					position:'bottom',
+					position: 'bottom',
 				})
 			},
 			// 获取地址信息
@@ -614,17 +600,18 @@
 			},
 			//设置输入框只能为正整数
 			setNumber(val) {
-				console.log(val)
-				if (val == 0) {
-					this.count = ''
-					uni.showToast({
-						title: '购买数量不能为0',
-						icon: 'none',
-						position:'bottom',
-					})
-				} else if (val !== 0) {
+				console.log(val.detail.value)
+				if (val.detail.value < 1) {
 					this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
-				}
+					return uni.showToast({
+						title: '购买数量不能小于一吨',
+						icon: 'none',
+						position: 'bottom',
+					})
+					
+				 }// else if (val !== 0) {
+				// 	this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
+				// }
 
 			},
 
@@ -712,8 +699,8 @@
 													org_id: that.companyId,
 													manager_id: that.myManagerId,
 													manager_name: that.myManager,
-													customer_name:that.buyCompany,
-													customer_id:that.buyCompanyID,
+													customer_name: that.buyCompany,
+													customer_id: that.buyCompanyID,
 													oil_type: that.productOil,
 													get_type: that.getTpe,
 													pay_type: that.modePay,
@@ -747,7 +734,7 @@
 														uni.showToast({
 															title: res.data.message,
 															icon: "none",
-															position:'bottom',
+															position: 'bottom',
 														})
 													}
 												}).catch(err => {
@@ -755,7 +742,7 @@
 													uni.showToast({
 														title: '提交失败',
 														icon: 'none',
-														position:'bottom',
+														position: 'bottom',
 													})
 													console.log(err)
 												})
@@ -772,7 +759,7 @@
 									uni.showToast({
 										title: '请输入购油数量',
 										icon: 'none',
-										position:'bottom',
+										position: 'bottom',
 									})
 								}
 								//付款方式
@@ -780,7 +767,7 @@
 								uni.showToast({
 									title: '请选择付款方式',
 									icon: 'none',
-									position:'bottom',
+									position: 'bottom',
 								})
 							}
 							//提油	方式
@@ -788,7 +775,7 @@
 							uni.showToast({
 								title: '请选择提油方式',
 								icon: 'none',
-								position:'bottom',
+								position: 'bottom',
 							})
 						}
 						//油品	
@@ -796,14 +783,14 @@
 						uni.showToast({
 							title: '请选择油品',
 							icon: 'none',
-							position:'bottom',
+							position: 'bottom',
 						})
 					}
 				} else {
 					uni.showToast({
 						title: '请选择客户经理',
 						icon: "none",
-						position:'bottom',
+						position: 'bottom',
 					})
 				}
 

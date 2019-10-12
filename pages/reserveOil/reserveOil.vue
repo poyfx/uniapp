@@ -69,17 +69,23 @@
 			</view>
 
 			<view class=" pB10" style="width: 100%; padding:15px 10px;">
-				<view class="userIntegral  bgcf  borderRadius8 mB10" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
+				<view class="  bgcf  borderRadius8 mB10" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
 				 :key="item.id">
-					<view class="orderNumber">
-						<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
-						<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
-						<view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view>
+					<view class="userIntegral_company">
+						<text>{{item.customer_name}}</text>
 					</view>
-					<view class="integral">
-						<text>剩余油量(吨)</text>
-						<view>{{item.oil_remain}}</view>
+					<view class="userIntegral">
+						<view class="orderNumber">
+							<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
+							<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
+							<view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view>
+						</view>
+						<view class="integral">
+							<text>剩余油量(吨)</text>
+							<view>{{item.oil_remain}}</view>
+						</view>
 					</view>
+
 				</view>
 			</view>
 			<view class="loading" @tap="Smore" v-show="more">
@@ -144,7 +150,7 @@
 				muchOilText: '', //油的总数量
 				remark: '', //备注
 				id: '',
-				more: true,
+				more: false,
 				showAddress: true,
 				barHeight: 25,
 			}
@@ -173,7 +179,7 @@
 							uni.showToast({
 								title: '没有更多了',
 								icon: "none",
-								position:'bottom',
+								position: 'bottom',
 							})
 						}
 					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
@@ -196,7 +202,7 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position:'bottom',
+							position: 'bottom',
 						})
 					}
 				}).catch(err => {
@@ -254,7 +260,7 @@
 					uni.showToast({
 						title: '请选择订单编号',
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 				} else {
 					this.values.muchOil = this.muchOilText
@@ -267,16 +273,23 @@
 					uni.showToast({
 						title: '请选择订单编号',
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
-				} else {
-					if (e.detail.value > this.muchOilText) {
-						uni.showToast({
+				} else if (e.detail.value > this.muchOilText) {
+				
+					return	uni.showToast({
 							title: '不能超过油的总量：' + this.muchOilText,
 							icon: 'none',
-							position:'bottom',
+							position: 'bottom',
 						})
-					}
+					
+				}else if(e.detail.value<1){
+					this.values.muchOil = '';
+					return uni.showToast({
+							title: '提油量不得小于1吨',
+							icon: 'none',
+							position: 'bottom',
+						})
 				}
 
 			},
@@ -343,14 +356,14 @@
 						uni.showToast({
 							title: '请输入提油数量',
 							icon: 'none',
-							position:'bottom',
+							position: 'bottom',
 						})
 					}
 				} else {
 					uni.showToast({
 						title: '请选择订单编号',
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 				}
 

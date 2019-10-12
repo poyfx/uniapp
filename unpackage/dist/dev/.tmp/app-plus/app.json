@@ -37,7 +37,10 @@
     "pages/reserveOilList/confirmed/exemption/exemption",
     "pages/register/registerNumber",
     "pages/register/uploadFace/uploadFace",
-    "pages/reserveOilList/confirmed/replaceMan/replaceMan"
+    "pages/reserveOilList/confirmed/replaceMan/replaceMan",
+    "pages/index/letter/letter",
+    "pages/index/letter/account/account",
+    "pages/index/letter/account/buyOilList"
   ],
   "window": {
     "navigationBarTextStyle": "black",

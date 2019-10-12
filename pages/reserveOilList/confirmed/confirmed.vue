@@ -24,12 +24,12 @@
 					<text style="font-weight: bold;">配送司机</text>
 				</view>
 				<view class="driver_info">
-					<text>秦明月</text>
-					<text>15815563248</text>
+					<text>{{driverName}}</text>
+					<text>{{drivcerPhone}}</text>
 				</view>
 				<view class="driver_info">
 					<text>车牌号</text>
-					<text>粤B58569</text>
+					<text>{{carNumber}}</text>
 				</view>
 				<view class="driver_btn">
 					<view class="state" v-if="status == 2">已准备</view>
@@ -47,12 +47,14 @@
 					<text style="font-weight: bold;">提油人</text>
 				</view>
 				<view class="driver_info">
-					<text>秦明月</text>
-					<text>15815563248</text>
+					<text>姓名</text>
+					<text v-if="reserveInfo.is_instead == 0">{{reserveInfo.user_name}}</text>
+					<text v-else>{{reserveInfo.instead_name}}</text>
 				</view>
 				<view class="driver_info">
-					<text>车牌号</text>
-					<text>粤B58569</text>
+					<text>手机号</text>
+					<text v-if="reserveInfo.is_instead == 0">{{reserveInfo.user_phone}}</text>
+					<text v-else>{{reserveInfo.instead_phone}}</text>
 				</view>
 				<view class="driver_btn">
 					<view class="state" v-if="status == 2">待提油</view>
@@ -106,12 +108,13 @@
 				</view>
 				<view class="confirmed_btn flex" v-if="main == '配送'">
 					<view class="confirmed_btn_2 flex" v-if="status == 2">
-						<button type="primary">更换司机</button>
-						<button type="primary">同意配送</button>
+						<button type="primary" @tap="changeDriver(0)">更换司机</button>
+						<button type="primary" @tap="changeDriver(1)">同意配送</button>
 					</view>
 
-					<view class="confirmed_btn_3" v-else-if="status == 3">
-						<button type="primary">取消预约</button>
+					<view class="confirmed_btn_4" v-else-if="status == 3">
+						<!-- confirmed_btn_3<button type="primary">取消预约</button> -->
+						<button type="primary" @tap="close">关闭</button>
 					</view>
 					
 					<view class="confirmed_btn_2 flex" v-else-if="status == 4">
@@ -123,8 +126,12 @@
 					</view>
 				</view>
 				<view class="confirmed_btn" v-else>
-					<view class="confirmed_btn_2 flex" v-if="status == 2">
-						<button type="primary">取消预约</button>
+					<view class="confirmed_btn_4 flex" v-if="status == 2">
+						<button type="primary" @tap="close">关闭</button>
+					</view>
+					<view class="confirmed_btn_2 flex" v-else-if="status == 4">
+					<!-- 	<button type="primary">取消预约</button> -->
+						<button type="primary" @tap="close">关闭</button>
 						<button type="primary" @tap="finish">确认已提油</button>
 					</view>
 					<view class="confirmed_btn_4" v-else>
@@ -177,6 +184,9 @@
 				much: '', //油量
 				main: '', //提油方式
 				status: '', //预约状态
+				driverName:'',//司机名字
+				carNumber:'',//配送车车牌
+				drivcerPhone:'',//司机电话
 				right: true,
 				rId: '', //reserveId
 				oId: '', //orderId
@@ -209,12 +219,15 @@
 						this.company = this.reserveInfo.org_name;
 						this.oil = this.reserveInfo.oil_type;
 						this.main = this.reserveInfo.get_type;
+						this.driverName = this.reserveInfo.driver_name;
+						this.carNumber = this.reserveInfo.ship_car;
+						this.drivcerPhone = this.reserveInfo.driver_phone;
+						
 						if (this.main == '配送') {
 							this.showAddress = true
 						} else {
 							this.showAddress = false
 						};
-						console.log(this.status)
 						if (this.status == -1) {
 							this.isrefuse = true;
 						} else {
@@ -230,6 +243,24 @@
 					console.log(err)
 				})
 			},
+			changeDriver(change){
+				this.test.post('reserve/confirm_driver',{
+					id:this.rId,
+					is_agree:change,
+				}).then(res=>{
+					if(res.statusCode == 200 && res.data.errorCode == 0){
+						this.getReserveOilList();
+					}else{
+						uni.showToast({
+							title:res.data.message,
+							icon:'none',
+							position:'bottom',
+						})
+					}
+				}).catch(err=>{
+						console.log(err)
+				})
+			},
 			close() {
 				uni.redirectTo({
 					url: '../reserveOilList'
@@ -243,20 +274,36 @@
 				})
 			},
 			finish() {
-				this.test.post('reserve/confirm_reserve', {
-					id: this.rId
-				}).then(res => {
-					console.log(res)
-					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.getReserveOilList()
+				const that = this;
+				uni.showModal({
+					content: '确认账单无误？',
+					success: function(res) {
+						if (res.confirm) {
+							that.test.post('reserve/confirm_reserve', {
+								id: that.rId
+							}).then(res => {
+								console.log(res)
+								if (res.statusCode == 200 && res.data.errorCode == 0) {
+									that.getReserveOilList()
+								}
+							}).catch(err => {
+								console.log(err)
+							})
+						} else if (res.cancel) {
+							return;
+						}
+				
 					}
-				}).catch(err => {
-					console.log(err)
 				})
+				
+				
+				
+				
+				
 			},
 			getCode() {
 				uni.navigateTo({
-					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.order+ '&number='+this.much+ '&type=' +this.oil
+					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.order+ '&number='+this.much+ '&type=' +this.oil + '&instead=' + this.reserveInfo.is_instead
 				})
 			},
 		},
@@ -389,8 +436,8 @@
 	}
 
 	.driver_info text:first-child {
-		width: 3rem;
-		margin-right: 15px;
+		width: 3.5rem;
+		margin-right: 5px;
 	}
 
 	.driver_btn {

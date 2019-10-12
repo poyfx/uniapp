@@ -1,17 +1,23 @@
 <template>
 	<view>
 		<view class="mContent pB10" style="margin-bottom: 50px;">
-			<view class="userIntegral mTop10 bgcf  borderRadius8" v-for="item in orderInfo" :key="item.id">
+			<view class="mB10 bgcf  borderRadius8" v-for="item in orderInfo" :key="item.id">
 				<!-- @tap="getOrderNumber(item.no,item.oil_remain)" -->
-				<view class="orderNumber">
-					<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
-					<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
-					<view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view>
+				<view class="userIntegral_company">
+					<text>{{item.customer_name}}</text>
 				</view>
-				<view class="integral">
-					<text>剩余油量(吨)</text>
-					<view>{{item.oil_remain}}</view>
+				<view class="userIntegral">
+					<view class="orderNumber">
+						<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
+						<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
+						<view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view>
+					</view>
+					<view class="integral">
+						<text>剩余油量(吨)</text>
+						<view>{{item.oil_remain}}</view>
+					</view>
 				</view>
+				
 			</view>
 		</view>
 		<view class="loading" @tap="Smore" v-show="more">
@@ -37,13 +43,13 @@
 				page: 1,
 				pageSize: 10,
 				orderInfo: [], //总油量
-				more: true,
+				more: false,
 			}
 		},
 		methods: {
 			//获取订单编号
 			getorderNumberInfo() {
-				this.test.post('order/query_orderSnInfo', {
+				this.test.post('reserve/query_orderSnInfo', {
 					page: this.page,
 					pageSize: this.pageSize,
 				}).then(res => {

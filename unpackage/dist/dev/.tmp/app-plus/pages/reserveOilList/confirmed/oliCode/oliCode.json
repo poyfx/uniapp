@@ -9,7 +9,6 @@
     "background": "white"
   },
   "usingComponents": {
-    "uni-icons": "/components/uni-icon/uni-icons",
     "m-button": "/components/m-button",
     "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
   }

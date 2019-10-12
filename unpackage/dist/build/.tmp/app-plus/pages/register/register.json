@@ -5,9 +5,6 @@
   "onReachBottomDistance": 100,
   "bounce": "none",
   "titleNView": false,
-  "statusbar": {
-    "background": "white"
-  },
   "usingComponents": {
     "uni-icons": "/components/uni-icon/uni-icons",
     "info-text": "/components/m-info-text/m-info-text",

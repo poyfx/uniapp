@@ -72,7 +72,7 @@
 					uni.showLoading({
 						title:'查询中...'
 					})
-					this.test.post('order/search_order', {
+					this.test.post('reserve/search_order', {
 						no: this.ordernumber, //订单编号
 						start_time: this.from,
 						end_time: this.to,
@@ -94,6 +94,12 @@
 								})
 
 							}
+						}else{
+							uni.showToast({
+								title:res.data.message,
+								icon:'none',
+								position:'bottom',
+							})
 						}
 					}).catch(err => {
 						uni.hideLoading();
@@ -108,7 +114,7 @@
 					uni.showLoading({
 						title:'查询中...'
 					})
-					this.test.post('order/search_reserve', {
+					this.test.post('reserve/search_reserve', {
 						no: this.ordernumber, //订单编号
 						start_time: this.from,
 						end_time: this.to,
@@ -130,6 +136,12 @@
 								})
 
 							}
+						}else{
+							uni.showToast({
+								title:res.data.message,
+								icon:'none',
+								position:'bottom',
+							})
 						}
 					}).catch(err => {
 						uni.hideLoading();

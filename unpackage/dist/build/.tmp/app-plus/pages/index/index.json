@@ -1,12 +1,12 @@
 {
-  "titleNView": {
-    "titleColor": "#424242",
-    "titleText": "首页",
-    "backgroundColor": "#FFF",
-    "fontWeight": "normal",
-    "titleSize": "40upx"
-  },
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 100,
+  "bounce": "none",
+  "titleNView": false,
   "usingComponents": {
+    "uni-icons": "/components/uni-icon/uni-icons",
     "banner": "/components/banner/banner",
     "navs": "/components/nav/nav"
   }

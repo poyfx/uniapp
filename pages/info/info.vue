@@ -4,7 +4,7 @@
 
 			<swiper class="swipers" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration"
 			 :circular="circular" indicator-active-color="#65C6F8">
-				<swiper-item v-for="(item,index) in cac" :key="index" >
+				<swiper-item v-for="(item,index) in cac" :key="index">
 					<view class="">
 						<view class="userIntegral borderRadius8 bgcf">
 							<view class="company userIntegraltitle">
@@ -15,8 +15,9 @@
 								</view>
 								<view style="color: #616161;margin-top: 5px;">{{item.customer_name}}</view>
 							</view>
-							<view class="integral">
-								<view>{{item.integral}}</view>
+							<view class="integrals">
+								<view>0</view>
+								<!--{{item.integral}} -->
 								<text>积分</text>
 							</view>
 						</view>
@@ -37,18 +38,9 @@
 								<text>所在城市</text>
 								<input v-model="item.city" disabled="disabled" />
 							</view>
-
-
-
-							<!-- <infoText :type="info.type" :disabled="info.disabled" :textValue="info.text1" :value="item.manager_name"></infoText>
-						<infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="item.phone"></infoText>
-						<infoText :type="info.type" :disabled="info.disabled" :textValue="info.usercity" :value="info.city"></infoText> -->
 						</view>
-
 					</view>
-
 				</swiper-item>
-
 			</swiper>
 			<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8">
 				<view class="userinfos flex">
@@ -61,13 +53,7 @@
 					<text>手机号</text>
 					<input v-model="info.phoneNum" disabled="disabled" />
 				</view>
-				<!-- <infoText :type="info.type" :disabled="info.disabled" :textValue="info.userphone" :value="info.phoneNum"></infoText> -->
 			</view>
-
-
-
-
-
 
 			<view class="fget-num  bgcf borderRadius8 infoThree">
 				<view class="out">
@@ -282,7 +268,7 @@
 
 <style>
 	.swipers {
-		min-height: 301px;
+		min-height: 310px;
 	}
 
 

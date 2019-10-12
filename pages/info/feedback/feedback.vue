@@ -104,7 +104,7 @@
 						uni.showLoading({
 							title:'提交中...'
 						})
-						this.test.post('order/submit_feedback_notPhoto',{
+						this.test.post('user/submit_feedback_notPhoto',{
 							feedback:this.feedbacks
 						}).then(res=>{
 							uni.hideLoading()
@@ -144,7 +144,7 @@
 							})
 						console.log(imgs,this.feedbacks)  
 							uni.uploadFile({
-								url: 'http://dev.pjy.name:8180/api/bizcust/order/submit_feedback',
+								url: 'http://dev.pjy.name:8180/api/bizcust/user/submit_feedback',
 								files: imgs,
 								formData: {
 									feedback:this.feedbacks

@@ -1,5 +1,11 @@
 {
-  "navigationBarTitleText": "我的",
+  "titleNView": {
+    "titleColor": "#424242",
+    "titleText": "我的",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "40upx"
+  },
   "usingComponents": {
     "info-text": "/components/m-info-text/m-info-text",
     "info-img": "/components/m-info-img/m-info-img"

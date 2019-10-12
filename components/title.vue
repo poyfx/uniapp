@@ -21,7 +21,7 @@
 			titles: {
 				type: String,
 				value: '',
-			}
+			},
 		},
 		data() {
 			return {
