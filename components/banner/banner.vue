@@ -15,6 +15,7 @@
 </template>
 
 <script>
+	import imgs from '../../static/img/banner.jpg'
 	export default {
 		data() {
 			return {
@@ -23,7 +24,7 @@
 		props:{
 			img:{
 				type:Array,
-				
+				// default:imgs
 			}
 		},
 		methods: {

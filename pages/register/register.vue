@@ -392,7 +392,7 @@
 				this.test.post('base/regist/getCustomerData', {
 					customer_id: this.info.companyId
 				}).then(res => {
-					// console.log(res, this.info)
+					 console.log(res)
 					this.info.customer = res.data.value.manager_name;
 					this.info.userCity = res.data.value.city;
 					if (this.info.userCity == '' || this.info.userCity == null) {

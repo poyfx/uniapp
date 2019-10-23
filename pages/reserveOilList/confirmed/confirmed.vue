@@ -39,9 +39,9 @@
 					<view class="driver_btnC" v-else-if="status == 8">已取消</view>
 				</view>
 			</view>
-			
+
 			<!-- 自提信息 -->
-			<view class="driver_content bgcf"  v-else v-show="status == 2 || status == 3 || status == 4 || status == 8 || status == 9">
+			<view class="driver_content bgcf" v-else v-show="status == 2 || status == 3 || status == 4 || status == 8 || status == 9">
 				<view class="driverinfos flex ">
 					<image src="../../../static/img/customer.png" style="width: 24px;height: 25px;" mode="aspectFit"></image>
 					<text style="font-weight: bold;">提油人</text>
@@ -58,11 +58,12 @@
 				</view>
 				<view class="driver_btn">
 					<view class="state" v-if="status == 2">待提油</view>
+					<view class="state" v-else-if="status == 4">已提油</view>
 					<view class="driver_btnP" v-else-if="status == 9">已完成</view>
 					<view class="driver_btnC" v-else-if="status == 8">已取消</view>
 				</view>
 			</view>
-			
+
 
 			<view class="content">
 				<view class="fget-num paddingLeft15 confirmed_content" :class="{refuse:isrefuse}">
@@ -72,7 +73,8 @@
 							<view class="confirmed_status">
 								<text class="state" v-if="status == 2">预约已确认</text>
 								<text class="state" v-else-if="status == 3">待提油</text>
-								<text class="state" v-else-if="status == 4">已提油</text>
+								<text class="state" v-else-if="status == 4 && main=='配送'">已提油</text>
+								<!-- <text class="state" v-else-if="status == 4 && main=='自提'">请确认收油</text> -->
 								<text class="oP" v-else-if="status == 9">已完成</text>
 								<text class="s" v-else-if="status == 8">已取消</text>
 								<text class="oc" v-else-if="status == -1">已拒绝</text>
@@ -83,7 +85,7 @@
 					<view class="flex  m-info" v-show="status == -1">
 						<view class="flex center m-info-content">
 							<text>拒绝原因</text>
-							<view></view>
+							<view> <text class="oc">{{denialreason}}</text> </view>
 						</view>
 					</view>
 					<infoText :textValue="confirmed.order" :disabled="disabled" v-model="order"></infoText>
@@ -116,7 +118,7 @@
 						<!-- confirmed_btn_3<button type="primary">取消预约</button> -->
 						<button type="primary" @tap="close">关闭</button>
 					</view>
-					
+
 					<view class="confirmed_btn_2 flex" v-else-if="status == 4">
 						<button type="primary" @tap="close">关闭</button>
 						<button type="primary" @tap="finish">确认收油</button>
@@ -127,13 +129,11 @@
 				</view>
 				<view class="confirmed_btn" v-else>
 					<view class="confirmed_btn_4 flex" v-if="status == 2">
-						<button type="primary" @tap="close">关闭</button>
+						<button type="primary" @tap="getCode">查看提油码</button>
 					</view>
-					<view class="confirmed_btn_2 flex" v-else-if="status == 4">
-					<!-- 	<button type="primary">取消预约</button> -->
-						<button type="primary" @tap="close">关闭</button>
-						<button type="primary" @tap="finish">确认已提油</button>
-					</view>
+					<!-- <view class="confirmed_btn_4 flex" v-else-if="status == 4">
+						<button type="primary" @tap="finish">确认收油</button>
+					</view> -->
 					<view class="confirmed_btn_4" v-else>
 						<button type="primary" @tap="close">关闭</button>
 					</view>
@@ -176,6 +176,7 @@
 					commit: '确认收油',
 					commit1: '确认提油'
 				},
+				denialreason: '', //拒绝原因
 				disabled: true,
 				address: '', //提油地址
 				order: '', //预约单号
@@ -184,9 +185,9 @@
 				much: '', //油量
 				main: '', //提油方式
 				status: '', //预约状态
-				driverName:'',//司机名字
-				carNumber:'',//配送车车牌
-				drivcerPhone:'',//司机电话
+				driverName: '', //司机名字
+				carNumber: '', //配送车车牌
+				drivcerPhone: '', //司机电话
 				right: true,
 				rId: '', //reserveId
 				oId: '', //orderId
@@ -194,7 +195,7 @@
 				showAddress: false,
 				time: '',
 				isrefuse: false,
-				get_type:'',
+				get_type: '',
 			}
 		},
 		onLoad(option) {
@@ -222,7 +223,8 @@
 						this.driverName = this.reserveInfo.driver_name;
 						this.carNumber = this.reserveInfo.ship_car;
 						this.drivcerPhone = this.reserveInfo.driver_phone;
-						
+						this.denialreason = this.reserveInfo.denial_reason;
+
 						if (this.main == '配送') {
 							this.showAddress = true
 						} else {
@@ -243,22 +245,54 @@
 					console.log(err)
 				})
 			},
-			changeDriver(change){
-				this.test.post('reserve/confirm_driver',{
-					id:this.rId,
-					is_agree:change,
-				}).then(res=>{
-					if(res.statusCode == 200 && res.data.errorCode == 0){
-						this.getReserveOilList();
-					}else{
+			changeDriver(change) {
+				const that = this;
+				if (change == 0) {
+					uni.showModal({
+						content: '确认更换司机吗？',
+						success: (res) => {
+							if (res.confirm) {
+								that.isthisdriver(change)
+							}
+						}
+					})
+				} else {
+					uni.showModal({
+						content: '确认配送？',
+						success: (res) => {
+							if (res.confirm) {
+								that.isthisdriver(change)
+							}
+						}
+					})
+				}
+
+			},
+			//是否需要更换司机
+			isthisdriver(change) {
+				this.test.post('reserve/confirm_driver', {
+					id: this.rId,
+					is_agree: change,
+				}).then(res => {
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+
+						if (change == 0) {
+							uni.navigateTo({
+								url: '../reserveOilList'
+							})
+						} else {
+							this.getReserveOilList();
+						}
+
+					} else {
 						uni.showToast({
-							title:res.data.message,
-							icon:'none',
-							position:'bottom',
+							title: res.data.message,
+							icon: 'none',
+							position: 'bottom',
 						})
 					}
-				}).catch(err=>{
-						console.log(err)
+				}).catch(err => {
+					console.log(err)
 				})
 			},
 			close() {
@@ -292,18 +326,19 @@
 						} else if (res.cancel) {
 							return;
 						}
-				
+
 					}
 				})
-				
-				
-				
-				
-				
+
+
+
+
+
 			},
 			getCode() {
 				uni.navigateTo({
-					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.order+ '&number='+this.much+ '&type=' +this.oil + '&instead=' + this.reserveInfo.is_instead
+					url: "oliCode/oliCode?id=" + this.rId + '&no=' + this.order + '&number=' + this.much + '&type=' + this.oil +
+						'&instead=' + this.reserveInfo.is_instead
 				})
 			},
 		},
@@ -471,7 +506,7 @@
 
 	.confirmed_btn_2,
 	.confirmed_btn_3,
-	.confirmed_btn_4{
+	.confirmed_btn_4 {
 		width: 100%;
 	}
 
@@ -487,6 +522,7 @@
 		background-color: #fff;
 		color: #616161;
 	}
+
 	.confirmed_btn .confirmed_btn_4 button {
 		width: 100%;
 		border-radius: 0;

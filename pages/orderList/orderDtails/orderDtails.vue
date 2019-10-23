@@ -67,7 +67,8 @@
 				<!-- <image :class="rotate ? 'go' : 'imgs'" src="../../../static/img/right.png" mode="aspectFit"></image> -->
 			</view>
 
-			<view class="fget-num" ><!-- :class="status ==3 ? staypay : ''" 补充底部白 -->
+			<view class="fget-num">
+				<!-- :class="status ==3 ? staypay : ''" 补充底部白 -->
 				<view class="orderDetails">
 					<view>
 						<text>订单编号：</text>
@@ -99,7 +100,7 @@
 					</view>
 				</view>
 
-				
+
 			</view>
 			<!-- <view class="pay">
 				<view class="flex">
@@ -119,7 +120,7 @@
 				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
 				<tButton :type="type" class="tButton" :content="btnValue" :disabled="disabled" @tell="tells"></tButton>
 			</view>
-			
+
 			<view class="takeorder_content flex bgcf" v-show="status ==2">
 				<view class="takeorder_content_cash">
 					￥{{orderPrice}}
@@ -129,8 +130,8 @@
 					<text class="takeorder_content_sbtn" @tap="sureBuy(order.count)">{{con2}}</text>
 				</view>
 			</view>
-			
-			
+
+
 			<!-- <view class="m-two-btn" style="margin-top: 60px;" v-show="status ==2">
 				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
 				<tButton :type="type" class="tButton" :content="con2" @sureBuy="sureBuy(order.count)"></tButton>
@@ -288,7 +289,7 @@
 									uni.showToast({
 										title: '取消订单失败',
 										icon: 'none',
-										position:'bottom',
+										position: 'bottom',
 									})
 								}
 							}).catch(err => {
@@ -318,13 +319,13 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position:'bottom',
+							position: 'bottom',
 						})
 					} else {
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position:'bottom',
+							position: 'bottom',
 						})
 					}
 				}).catch(err => {
@@ -333,18 +334,21 @@
 			}
 		},
 		computed: {
+			//油总价
 			oilPrice() {
 				return parseFloat(this.order.oil_price * this.order.count).toFixed(2)
 			},
+			//油总价+运费
 			orderPrice() {
-				return (parseFloat(this.oilPrice) + parseFloat(this.delivery)).toFixed(2)
+				return (parseFloat(this.oilPrice) + this.order.ship_money).toFixed(2)
 			},
-			discounts() {
-				return (((this.order.market_price - this.order.oil_price) / this.order.market_price) * 100).toFixed(2)
-			},
-			delivery() {
-				return ((this.order.ship_price * this.order.ship_dis)).toFixed(2)
-			}
+			// discounts() {
+			// 	return (((this.order.market_price - this.order.oil_price) / this.order.market_price) * 100).toFixed(2)
+			// },
+			//配送距离及距离单价
+			// delivery() {
+			// 	return ((this.order.ship_price * this.order.ship_dis)).toFixed(2)
+			// }
 		},
 		components: {
 			tButton,
@@ -369,15 +373,16 @@
 
 	.processText {
 		flex: 1;
-		font-size: 14px;
+		font-size: 0.8rem;
 
 	}
 
 	.processText view:first-child {
 		color: #00A8FF;
 	}
-	.processText .oP:first-child{
-		color:#36D38A;
+
+	.processText .oP:first-child {
+		color: #36D38A;
 	}
 
 	.processText view:last-child {
@@ -407,37 +412,44 @@
 		top: 286px;
 		bottom: 0;
 	}
-.takeorder_content{
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	align-content: center;
-	align-items: center;
-}
-.takeorder_content_cash{
-	font-size: 1.1rem;
-	padding-left:15px;
-	color: #FF596A;
-	font-weight: bold;
-}
-.takeorder_content_btnbox{
-	flex: 1;
-	justify-content: space-between;
-	align-content: center;
-	align-items: center;
-	width: 70%;
-}
-.takeorder_content_cbtn,.takeorder_content_sbtn{
-	padding: 14px 5px 12px;
-	font-size: 1rem;
-	width: 50%;
-	text-align: center;
-}
-.takeorder_content_cbtn{
-	color: #9e9e9e;
-}
-.takeorder_content_sbtn{
-	color: #fff;
-	background-color: #00A8FF;
-}
+
+	.takeorder_content {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		align-content: center;
+		align-items: center;
+	}
+
+	.takeorder_content_cash {
+		font-size: 1.1rem;
+		padding-left: 15px;
+		color: #FF596A;
+		font-weight: bold;
+	}
+
+	.takeorder_content_btnbox {
+		flex: 1;
+		justify-content: space-between;
+		align-content: center;
+		align-items: center;
+		width: 70%;
+	}
+
+	.takeorder_content_cbtn,
+	.takeorder_content_sbtn {
+		padding: 14px 5px 12px;
+		font-size: 1rem;
+		width: 50%;
+		text-align: center;
+	}
+
+	.takeorder_content_cbtn {
+		color: #9e9e9e;
+	}
+
+	.takeorder_content_sbtn {
+		color: #fff;
+		background-color: #00A8FF;
+	}
 </style>

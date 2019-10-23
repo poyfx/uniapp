@@ -27,7 +27,7 @@
 					<tki-qrcode v-if="ifShow" cid="qrcode2" ref="qrcode2" :val="val" :size="size" :onval="onval" :loadMake="loadMake"
 					 :usingComponents="true" @result="qrR" />
 				</view>
-				<view style="padding-top: 16px; font-size:0.7rem; text-align: center;">{{val}}</view>
+				<view style=" font-size:0.7rem; text-align: center; ">{{val}}</view>
 				<view class="" style="padding-top: 16px; font-size:0.6rem; text-align: center;color: #9e9e9e;">
 					提油码每5分钟自动刷新，请勿轻易泄露给他人
 				</view>
@@ -38,8 +38,9 @@
 			</view>
 
 		</view>
-		<view class="oilcode_btn" v-show="instead == 0">
-			<button type="default" @tap="gotReplaceMan">申请代提人</button>
+		<view class="oilcode_btn" >
+			<button type="default" @tap="gotReplaceMan" v-if="instead == 0">申请代提人</button>
+			<button type="default" @tap="used" style="background-color: #f5f5f5; color: #b7b7b7;" v-else>已申请代提人</button>
 		</view>
 	</view>
 </template>
@@ -118,7 +119,14 @@
 			},
 			gotReplaceMan() {
 				uni.navigateTo({
-					url: '../replaceMan/replaceMan?no=' + this.no + '&number=' + this.number + '&type=' + this.oiltype
+					url: '../replaceMan/replaceMan?no=' + this.no + '&number=' + this.number + '&type=' + this.oiltype + '&id=' + this.id
+				})
+			},
+			used(){
+				uni.showToast({
+					title:'已申请代提人，请勿重新申请，保证石油安全',
+					icon:'none',
+					position:'bottom',
 				})
 			},
 			cancel() {
@@ -133,55 +141,55 @@
 					delta: 1
 				})
 			},
-			send() {
+			// send() {
 
-				if (this.checkes == true) {
-					// Toast("请阅读免责条款,勾选后方可发送");
-					return uni.showToast({
-						title: "请阅读免责条款,勾选后方可发送",
-						"icon": "none",
-						position: 'bottom',
-					})
-				} else {
-					if (this.otherNumber !== '') {
-						if (!/^1[3456789]\d{9}$/.test(this.otherNumber)) {
-							return uni.showToast({
-								"title": '请填写正确的手机号码',
-								"icon": "none",
-								position: 'bottom',
-							})
-						} else {
-							this.test.post('reserve/send_get_encrypt', {
-								phone: this.otherNumber,
-								encrypt_sn: this.val
-							}).then(res => {
-								console.log(res)
-								if (res.statusCode == 200 && res.data.errorCode == 0) {
-									uni.showToast({
-										title: '发送成功'
-									})
-								} else {
-									uni.showToast({
-										title: res.data.message,
-										icon: 'none'
-									})
-								}
-							}).catch(err => {
-								console.log(err)
-							})
+			// 	if (this.checkes == true) {
+			// 		// Toast("请阅读免责条款,勾选后方可发送");
+			// 		return uni.showToast({
+			// 			title: "请阅读免责条款,勾选后方可发送",
+			// 			"icon": "none",
+			// 			position: 'bottom',
+			// 		})
+			// 	} else {
+			// 		if (this.otherNumber !== '') {
+			// 			if (!/^1[3456789]\d{9}$/.test(this.otherNumber)) {
+			// 				return uni.showToast({
+			// 					"title": '请填写正确的手机号码',
+			// 					"icon": "none",
+			// 					position: 'bottom',
+			// 				})
+			// 			} else {
+			// 				this.test.post('reserve/send_get_encrypt', {
+			// 					phone: this.otherNumber,
+			// 					encrypt_sn: this.val
+			// 				}).then(res => {
+			// 					console.log(res)
+			// 					if (res.statusCode == 200 && res.data.errorCode == 0) {
+			// 						uni.showToast({
+			// 							title: '发送成功'
+			// 						})
+			// 					} else {
+			// 						uni.showToast({
+			// 							title: res.data.message,
+			// 							icon: 'none'
+			// 						})
+			// 					}
+			// 				}).catch(err => {
+			// 					console.log(err)
+			// 				})
 
-						}
-					} else {
-						return uni.showToast({
-							title: "请填写手机号码",
-							"icon": "none"
-						})
-					}
+			// 			}
+			// 		} else {
+			// 			return uni.showToast({
+			// 				title: "请填写手机号码",
+			// 				"icon": "none"
+			// 			})
+			// 		}
 
-				}
+			// 	}
 
 
-			}
+			// }
 		},
 		components: {
 			mButton,
@@ -192,17 +200,18 @@
 
 <style>
 	.oilcode {
-		width: 15rem;
+		width: 16rem;
 		height: 17.3rem;
 		margin: 0 auto;
 		border-top: 1px dashed #cbcbcb;
 		border-bottom: 1px dashed #cbcbcb;
 		position: absolute;
-		top: 5.7rem;
+		top: 1.5rem;
 		z-index: 2;
 		text-align: center;
 		left: 50%;
-		margin-left: -7.5rem;
+		margin-left: -8rem;
+		
 	}
 
 	.oilcode_title {
@@ -212,8 +221,11 @@
 
 	.oilcode_codebox {
 		width: 200px;
-		height: 200px;
-		margin: 0 auto;
+	/* 	margin: 0 auto 20px; */
+		position: relative;
+		left: 50%;
+		margin-left: -200upx;
+		margin-bottom: 16px;
 	}
 
 	.oilcode_foot {
@@ -222,7 +234,7 @@
 		margin: 0 auto;
 		text-align: center;
 		position: absolute;
-		top: 23rem;
+		top: 20rem;
 		z-index: 2;
 		font-size: 0.6rem;
 		color: #757575;
@@ -234,6 +246,7 @@
 		width: 100%;
 		margin-top: 15px;
 		box-sizing: border-box;
+		position: relative;
 	}
 
 	.oilCodeBox>image {

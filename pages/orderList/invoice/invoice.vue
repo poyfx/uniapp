@@ -24,12 +24,12 @@
 					<view class="first-li" style="padding:10px 0 15px 0px; color: #616161;">拆分方案(单位:吨)</view>
 					<view class="splitNum">
 						<view class="invoiceMeth">
-							<input type="number" v-model="num" value="0">
+							<input type="number" v-model="num" value="0" @input="incoiceSplit1">
 
 							<image src="../../../static/img/add.png" @tap="add" mode="aspectFit"></image>
 						</view>
 						<view class="invoiceMeth" v-for="(item,index) in list" :key="index">
-							<input type="text" v-model="item.nums" value="0">
+							<input type="number" v-model="item.nums" value="0" :id="index"  @input="incoiceSplit2" >
 
 							<image src="../../../static/img/move.png" @tap="detal(index)" mode="aspectFit"></image>
 						</view>
@@ -38,12 +38,12 @@
 				</view>
 
 				<view class="flex m-info">
-					<text>{{invoice.surplus}}</text>
+					<text>剩余未拆油量</text>
 					<input type="type" :value="surplusOil" :disabled="invoice.disabled" />
 				</view>
 
 			</view>
-			<view class="m-two-btn mTop15">
+			<view class="m-two-btn mTop15 pB10">
 
 				<button class="tButton cal" v-show="status == 2" @tap="cancelOrder">无需发票</button>
 				<tButton :type="btn.type" class="tButton" :disabled="btn.disabled" :content="btn.con2" @invoiceSure="invoiceSure(invoice.currentOil)"></tButton>
@@ -77,7 +77,7 @@
 				btn: {
 					type: 'primary',
 					con2: '确认',
-					dsiabled: false
+					disabled: false
 				},
 				invoice: {
 					company: 'xxxxxxxx公司',
@@ -89,7 +89,6 @@
 					types: '发票类型',
 					way: '拆分方式',
 					currentOil: '当前购油量',
-					surplus: '剩余未拆油量',
 				},
 				list: [], //拆分次数集合
 				ids: -1, //默认不需要发票
@@ -118,6 +117,28 @@
 			this.moeny = option.moeny; //油价
 		},
 		methods: {
+			incoiceSplit1(e){
+				console.log(e)
+				if(e.detail.value<0){
+						this.num = 0;
+					return uni.showToast({
+						title:'拆分油量不能小于0',
+						icon:'none',
+						position:'bottom',
+					})
+				}
+			},
+			incoiceSplit2(e){
+				console.log(e)
+				if(e.detail.value<0){
+					this.list[e.target.id].nums = 0	
+					return uni.showToast({
+						title:'拆分油量不能小于0',
+						icon:'none',
+						position:'bottom',
+					})
+				}
+			},
 			// 点击选择发票类型
 			chooseInvoice() {
 				this.invoiceTypes = !this.invoiceTypes
@@ -134,6 +155,7 @@
 			},
 			// 展开发票  
 			showIncoice(e) {
+				console.log(e)
 				if (e.target.value) {
 					this.yesORno = "是"
 					this.ids = 1; //需要发票
@@ -227,7 +249,7 @@
 												this.test.post('order/make_invoice', {
 													id: this.id,
 													invoice_type: this.typeInvoice,
-													is_invoice: this.yesORno,
+													is_invoice: '是',
 													invoice_split: this.invoiceNum,
 													invoice_money: this.moeny
 												}).then(res => {
@@ -285,7 +307,7 @@
 										this.test.post('order/make_invoice', {
 											id: this.id,
 											invoice_type: this.typeInvoice,
-											is_invoice: this.yesORno,
+											is_invoice: '是',
 											invoice_split: this.currentOil,
 											invoice_money: this.moeny
 										}).then(res => {
@@ -425,7 +447,7 @@
 		watch: {
 			// 监听用户是否输入数量超过购买总数
 			surplusOil(newValue, oldValue) {
-				console.log(newValue, oldValue)
+				// console.log(newValue, oldValue)
 				if (newValue < 0) {
 					this.btn.disabled = true;
 					uni.showToast({

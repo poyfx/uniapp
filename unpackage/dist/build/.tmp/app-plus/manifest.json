@@ -7,11 +7,11 @@
   "id": "__UNI__C5F30A1",
   "name": "安徽石油",
   "version": {
-    "name": "0.0.95",
+    "name": "0.1.04",
     "code": 1
   },
   "description": "",
-  "launch_path": "__uniapptabbar.html",
+  "launch_path": "__uniappview.html",
   "developer": {
     "name": "",
     "email": "",
@@ -25,7 +25,7 @@
   },
   "plus": {
     "useragent": {
-      "value": "uni-app appservice",
+      "value": "uni-app",
       "concatenate": true
     },
     "splashscreen": {
@@ -34,7 +34,11 @@
       "delay": 0
     },
     "popGesture": "close",
-    "launchwebview": {},
+    "launchwebview": {
+      "id": "1",
+      "kernel": "WKWebview",
+      "uni-app": "auto"
+    },
     "statusbar": {
       "immersed": "supportedDevice",
       "style": "dark",
@@ -142,15 +146,31 @@
     },
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.3.3",
+      "compilerVersion": "2.3.6",
       "control": "v8",
       "nvueCompiler": "weex",
       "renderer": "auto"
     },
-    "secondwebview": {
-      "id": "1",
-      "launch_path": "__uniappview.html",
-      "kernel": "WKWebview"
+    "tabBar": {
+      "color": "black",
+      "selectedColor": "#009DFF",
+      "backgroundColor": "#fff",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "static/img/home2.png",
+          "selectedIconPath": "static/img/home1.png",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/info/info",
+          "iconPath": "static/img/mine1.png",
+          "selectedIconPath": "static/img/mine2.png",
+          "text": "我的"
+        }
+      ],
+      "borderStyle": "rgba(0,0,0,0.4)",
+      "height": "50px"
     }
   }
 }

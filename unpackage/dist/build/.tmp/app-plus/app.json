@@ -40,7 +40,8 @@
     "pages/index/letter/letter",
     "pages/index/letter/account/account",
     "pages/index/letter/account/buyOilList",
-    "pages/index/letter/notice/notice"
+    "pages/index/letter/notice/notice",
+    "pages/index/letter/notice/noticeList"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -74,7 +75,7 @@
     "autoclose": true
   },
   "appname": "安徽石油",
-  "compilerVersion": "2.3.3",
+  "compilerVersion": "2.3.6",
   "usingComponents": {
     "titles": "/components/title",
     "uni-icons": "/components/uni-icon/uni-icons"

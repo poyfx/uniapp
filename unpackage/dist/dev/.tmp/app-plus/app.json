@@ -19,7 +19,6 @@
     "pages/oilByCompany/oilByCompany",
     "pages/orderList/orderList",
     "pages/search/search",
-    "pages/search/searchDateList/searchDateList",
     "pages/orderList/orderDtails/orderDtails",
     "pages/orderList/invoice/invoice",
     "pages/reserveOil/reserveOil",
@@ -40,7 +39,9 @@
     "pages/reserveOilList/confirmed/replaceMan/replaceMan",
     "pages/index/letter/letter",
     "pages/index/letter/account/account",
-    "pages/index/letter/account/buyOilList"
+    "pages/index/letter/account/buyOilList",
+    "pages/index/letter/notice/notice",
+    "pages/index/letter/notice/noticeList"
   ],
   "window": {
     "navigationBarTextStyle": "black",

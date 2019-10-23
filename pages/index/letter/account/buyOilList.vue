@@ -1,25 +1,20 @@
 <template>
-	<view class="mt">
-		<view class="notice">
-			<view class="notice_content">
-				<view class="notice_date flex">
-					<text>{{time}}</text><!--  -->
-				</view>
-				<view class="notice_list">
-					<view :class="list.photo == null?'notice_img_no':'notice_img'">
-						<image :src="list.photo" mode="top"></image>
-					</view>
-					<view :class="list.photo == null?'notice_text_notop':'notice_text'">
-						<view class="notice_title">
-							<text>{{list.title}}</text>
-						</view>
-						<view class="notice_article">
-							<text>{{list.content}}</text>
-						</view>
-					</view>
-				</view>
-			</view>
+	<view class="notice_details bgcf mt">
+		
+		<view class="notice_details_title">
+			<text>{{list.title}}</text>
 		</view>
+		<view class="notice_details_date">
+			<text>{{time}}</text>
+		</view>
+		<view class="notice_details_img" v-show="showImg">
+			<image :src="list.photo" mode="aspectFit" @tap="showPhoto(list.photo)"></image>
+		</view>
+		<view class="notice_details_content">
+			<text> {{list.content}}</text>
+		</view>
+		
+		
 		<view class="account_btnbox" v-show='list.confirm_type==0'> 
 			<button type="primary" @tap="confirm">确认账单无误</button>
 		</view>
@@ -34,6 +29,7 @@
 				letterID: '',
 				list: '',
 				time: '',
+				showImg: false, //显示图片
 			}
 		},
 		onLoad(option) {
@@ -55,6 +51,14 @@
 						that.time = new Date(res.data.value.create_time + 8 * 3600 * 1000).toJSON().substr(0, 16).replace('T', ' ').replace(
 							/-/g, '-')
 						// })
+						if (this.list.photo == '' || this.list.photo == 'null') {
+							this.showImg = false;
+						
+						
+						} else {
+							console.log(this.list.photo);
+							this.showImg = true;
+						}
 
 					} else {
 						uni.showToast({
@@ -67,6 +71,20 @@
 					console.log(err)
 				})
 			},
+			showPhoto(img){
+				 uni.previewImage({
+				            urls: [img],
+				            longPressActions: {
+				                itemList: ['发送给朋友', '保存图片', '收藏'],
+				                success: function(data) {
+				                    console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
+				                },
+				                fail: function(err) {
+				                    console.log(err.errMsg);
+				                }
+				            }
+				        });
+			},
 			confirm() {
 				const that = this;
 				uni.showModal({
@@ -76,6 +94,12 @@
 							that.test.post('user/confirm_letter', {
 								id: that.letterID,
 							}).then(res => {
+								if(res.statusCode == 200 && res.data.errorCode == 0){
+									uni.navigateBack({
+										// url:'./account'
+										delta:1
+									})
+								}
 								console.log(res)
 							}).catch(err => {
 								console.log(err)
@@ -95,89 +119,47 @@
 	.mt {
 		padding: 15px 15px 60px 15px;
 	}
-
-	.notice {
+	.notice_details {
 		width: 100%;
-
+		padding: 15px;
 	}
 
-	.notice_content {
+	.notice_details_title,
+	.notice_details_date,
+	.notice_details_img {
 		width: 100%;
-		padding: 15px 10px 0;
-	}
-
-	.notice_date {
-		width: 100%;
-		justify-content: center;
 		margin-bottom: 10px;
 	}
 
-	.notice_date text {
-		padding: 4px 15px;
-		border-radius: 1rem;
-		background-color: #CBCBCB;
-		color: #fff;
+	.notice_details_title text {
+		font-size: 1.1rem;
+		color: #424242;
+		font-weight: bold;
+	}
+
+		{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.notice_details_date text {
 		font-size: 0.6rem;
+		color: #9e9e9e;
 	}
 
-	.notice_list {
+	.notice_details_img image {
 		width: 100%;
-		border-radius: 0.25em;
-		margin-bottom: 15px;
-		position: relative;
+		height: 300upx;
 	}
 
-	.notice_img {
+	.notice_details_content {
 		width: 100%;
-		height: 153px;
-		border-radius: 0.25em 0.25em 0 0;
+		text-indent: 1.8em;
 	}
 
-	.notice_img image {
-		width: 100%;
-		height: 153px;
-	}
+	.notice_details_content text {
+		font-size: 0.9em;
 
-	.notice_img_no image {
-		width: 0;
-		height: 0px;
-	}
-
-	.notice_text {
-		width: 100%;
-		position: relative;
-		top: -44px;
-		left: 0;
-		border-radius: 0 0 0.25em 0.25em;
-	}
-
-	.notice_text_notop {
-		width: 100%;
-		position: relative;
-		top: 0px;
-		left: 0;
-		border-radius: 0 0 0.25em 0.25em;
-	}
-
-	.notice_title {
-		width: 100%;
-		background: rgba(0, 0, 0, 0.6);
-		padding: 10px 15px;
-	}
-
-	.notice_title text {
-		color: #fff;
-	}
-
-	.notice_article {
-		width: 100%;
-		background-color: #fff;
-		padding: 10px 15px;
-	}
-
-	.notice_article text {
-		font-size: 0.8rem;
-		color: rgba(117, 117, 117, 1.00);
 	}
 
 	.account_btnbox {

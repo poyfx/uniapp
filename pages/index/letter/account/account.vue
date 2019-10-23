@@ -15,7 +15,7 @@
 					<text>{{item.content}}</text>
 				</view>
 				<view class="account_content_confirm flex">
-					<text v-if="letter.confirm_type == 0">请点击查看，进行核实>></text>
+					<text v-if="item.confirm_type == 0">请点击查看，进行核实>></text>
 					<text style="color:#32BF75 ;" v-else>已核实</text>
 				</view>
 			</view>
@@ -32,7 +32,7 @@
 				time: [],
 			}
 		},
-		onLoad() {
+		onShow() {
 			this.getLtter()
 		},
 		methods: {
@@ -93,11 +93,13 @@
 		width: 100%;
 		padding: 0 10px;
 		margin-bottom: 10px;
-		text-align: center;
+		/* text-align: center; */
 	}
 
 	.account_content_title text {
-		font-size: 1.2em
+		font-size: 1.2em;
+		font-weight: bold;
+		color: #424242;
 	}
 
 	.account_content_img {
@@ -115,11 +117,12 @@
 		width: 100%;
 		padding: 0 10px;
 		margin-bottom: 10px;
-		text-align: center;
+		/* text-align: center; */
 	}
 
 	.account_content_info text {
-		font-size: 1em;
+		color: #757575;
+		font-size: 0.8rem;
 	}
 
 	.account_content_confirm {

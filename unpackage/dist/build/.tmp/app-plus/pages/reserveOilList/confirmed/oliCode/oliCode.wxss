@@ -1,16 +1,16 @@
 
 .oilcode {
-	width: 15rem;
+	width: 16rem;
 	height: 17.3rem;
 	margin: 0 auto;
 	border-top: 1px dashed #cbcbcb;
 	border-bottom: 1px dashed #cbcbcb;
 	position: absolute;
-	top: 5.7rem;
+	top: 1.5rem;
 	z-index: 2;
 	text-align: center;
 	left: 50%;
-	margin-left: -7.5rem;
+	margin-left: -8rem;
 }
 .oilcode_title {
 	margin: 10px 0;
@@ -18,8 +18,11 @@
 }
 .oilcode_codebox {
 	width: 200px;
-	height: 200px;
-	margin: 0 auto;
+/* 	margin: 0 auto 20px; */
+	position: relative;
+	left: 50%;
+	margin-left: -200rpx;
+	margin-bottom: 16px;
 }
 .oilcode_foot {
 	width: 15rem;
@@ -27,7 +30,7 @@
 	margin: 0 auto;
 	text-align: center;
 	position: absolute;
-	top: 23rem;
+	top: 20rem;
 	z-index: 2;
 	font-size: 0.6rem;
 	color: #757575;
@@ -39,6 +42,7 @@
 	margin-top: 15px;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
+	position: relative;
 }
 .oilCodeBox>image {
 	width: 16rem;

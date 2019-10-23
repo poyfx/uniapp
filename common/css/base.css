@@ -132,6 +132,7 @@ input::-webkit-input-placeholder {
 	padding-left: 15px;
 }
 
+
 .mBotton {
 	margin-bottom: 50px;
 }
@@ -216,6 +217,7 @@ input::-webkit-input-placeholder {
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
 }
+
 /* 二维码页面蓝色标题 */
 .self_header_title_code {
 	width: 100%;

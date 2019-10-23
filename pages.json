@@ -617,6 +617,18 @@
 				}
 			}
         }
+		,{
+		    "path" : "pages/index/letter/notice/noticeList",
+		    "style" : {
+				"titleNView": {
+					"titleColor": "#424242",
+					"titleText": "公告",
+					"backgroundColor": "#FFF",
+					"fontWeight": "normal",
+					"titleSize": "40upx"
+				}
+			}
+		}
     ],
 	"tabBar": {
 		"color": "black",

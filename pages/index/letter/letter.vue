@@ -7,9 +7,9 @@
 			<view class="letter_message">
 				<view class="letter_message_title flex">
 					<text>对账函</text>
-					<text>2019/10/8 13:30</text>
+					<text></text><!-- 2019/10/8 13:30 -->
 				</view>
-				<view class="letter_message_content">你有一张新的对账函，请查看核实</view>
+				<view class="letter_message_content">暂无新消息</view>
 			</view>
 		</view>
 		<view class="letter bgcf flex" @tap="notice">
@@ -19,9 +19,9 @@
 			<view class="letter_message">
 				<view class="letter_message_title flex">
 					<text>公告</text>
-					<text>2019/10/8 13:30</text>
+					<text></text><!-- 2019/10/8 13:3 -->
 				</view>
-				<view class="letter_message_content">你有新消息，点击查看</view>
+				<view class="letter_message_content">暂无新消息</view>
 			</view>
 		</view>
 	</view>

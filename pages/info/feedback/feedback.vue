@@ -117,6 +117,23 @@
 								uni.switchTab({
 									url:'../info'
 									})
+								}else if(res.data.errorCode == '-10001'){
+									uni.showModal({
+											title: '提示',
+											content: '用户信息已失效，请重新登录',
+											success: function(res) {
+												if (res.confirm) {
+													uni.reLaunch({
+														url: '../login/login'
+													})
+												} else {
+													uni.reLaunch({
+														url: '../login/login'
+													})
+												}
+											}
+										})
+									
 								}else{
 									uni.showToast({
 										title:'上传失败',

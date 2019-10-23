@@ -161,6 +161,15 @@
 			this.faceimg.uri = option.faceimg;
 			this.register = uni.getStorageSync('register');
 			console.log(this.register.user,this.faceimg)
+			if(this.register.user == '发票领取人,购油人'){
+				console.log(100)
+				this.register.user = '购油人,发票领取人'
+			}else if(this.register.user == '发票领取人,提油人'){
+				console.log(100)
+				this.register.user = '提油人,发票领取人'
+			}else if(this.register.user = '提油人,购油人'){
+				this.register.user = '购油人,提油人'
+			};
 			if (this.register.user == '购油人,提油人') {
 				this.info.push(this.register.user.slice(0, 2))
 				this.info.push(this.register.user.slice(4, 6))

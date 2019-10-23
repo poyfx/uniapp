@@ -207,7 +207,7 @@ uni-page-wrapper {
 }
 .swipers .uni-swiper-dots-horizontal {
 	left: 50%;
-	bottom: 61%;
+	bottom: 62%;
 	text-align: center;
 	white-space: nowrap;
 	-webkit-transform: translate(-50%);
@@ -565,6 +565,7 @@ input::-webkit-input-placeholder {
 	top: 20%;
 	color: #616161;
 }
+
 .content {
 	width: 100%;
 	height: 100%;
@@ -783,14 +784,14 @@ input::-webkit-input-placeholder {
 	font-size: 12px;
 }
 
-.userIntegral_company{
+.userIntegral_company {
 	width: 100%;
 	padding: 9px 0 10px;
 	text-align: center;
 	border-bottom: 1px solid #e5e5e5;
 }
 
-.userIntegral_company text{
+.userIntegral_company text {
 	font-size: 1.1em;
 }
 
@@ -862,6 +863,7 @@ input::-webkit-input-placeholder {
 .userIntegral .integral {
 	min-width: 105px;
 	min-height: 110px;
+	max-width: 120px;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -904,11 +906,59 @@ input::-webkit-input-placeholder {
 .userIntegral .integral view {
 	color: #00A8FF;
 	font-size: 2.5rem;
-	text-shadow: 1px 2px 0 rgba(0,0,0,0.16) ;
-	
+	text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
+
 }
 
 .userIntegral .integral text {
+	font-size: 0.8rem;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+}
+
+.userIntegral .integrals {
+	min-width: 105px;
+	min-height: 105px;
+	max-width: 120px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	padding: 6px 0;
+	border-radius: 0 0.25rem0.25rem 0;
+	background-color: #00A8FF;
+}
+
+.userIntegral .integrals view {
+	color: #fff;
+	font-size: 2.5rem;
+	text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
+
+}
+
+.userIntegral .integrals text {
+	color: #fff;
 	font-size: 0.8rem;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
@@ -1160,9 +1210,8 @@ input {
 .harvest-address {
 	width: 100%;
 	padding: 10px 10px 10px 0;
-	border-bottom: 1px solid #e5e5e5;
+	/* border-bottom: 1px solid #e5e5e5; */
 	color: #757575;
-	font-size: 14px;
 
 }
 
@@ -1341,7 +1390,7 @@ input {
 	        box-sizing: border-box;
 }
 
-.detailsState text{
+.detailsState text {
 	font-size: 0.9rem;
 }
 
@@ -1430,12 +1479,12 @@ input {
 	font-weight: bold
 }
 
-.discount view text{
+.discount view text {
 	font-size: 1rem;
 }
 
 .orderDetails {
-	
+
 	padding: 10px 15px 10px;
 	background: #fff;
 	display: -webkit-box;
@@ -1501,7 +1550,7 @@ input {
 	background-color: #fff;
 	padding: 0;
 	border: 1px solid #CBCBCB;
-	
+
 }
 
 .orderBtn .blue {

@@ -394,11 +394,11 @@
 				if (this.name == "register") {
 					console.log(this.register.role)
 					if(this.register.user == '购油人'){
-						return this.img
+						 this.img
 					}else{
 						this.img.push(this.faceimg)
 					}
-					
+				console.log(10)
 					const imgs = this.img.map((value, index) => {
 						return {
 							name: value.name,

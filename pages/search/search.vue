@@ -5,14 +5,14 @@
 				<view class="orderDate">
 					<view v-if="name=='orderList'">选择下单购油日期</view>
 					<view v-else>选择预约提油日期</view>
-					<view class="datetimesty">
+					<view class="datetimesty" @tap="bindChange">
 
-						<view style="text-align: center;" @tap="bindChange">{{date}}</view>
+						<view class="orderDate_text" style="text-align: center;" >{{date}}</view>
 
-						<w-picker mode="range" startYear="2019" endYear="2030" :defaultVal="[0,0,0,0,0,0,0]" :current="true" @confirm="onConfirm"
-						 ref="range" themeColor="#00A8FF"></w-picker>
+
 					</view>
-
+					<w-picker mode="range" startYear="2019" endYear="2030" :defaultVal="[0,0,0,0,0,0,0]" :current="true" @confirm="onConfirm"
+					 ref="range" themeColor="#00A8FF"></w-picker>
 					<view>订单编号</view>
 					<input type="text" v-model="ordernumber" value>
 				</view>
@@ -48,8 +48,8 @@
 				resultInfo: {
 					result: "2019-12-20 10:00:00"
 				},
-				 from:'',//第一个时间
-				 to:'',//第二个时间
+				from: '', //第一个时间
+				to: '', //第二个时间
 			};
 		},
 		onLoad(option) {
@@ -64,15 +64,15 @@
 				this.date = val.result;
 				this.from = val.from;
 				this.to = val.to;
-				
+
 			},
 			search() {
 				if (this.date == '请选择时间') this.date = '';
 				if (this.name == "orderList") {
 					uni.showLoading({
-						title:'查询中...'
+						title: '查询中...'
 					})
-					this.test.post('reserve/search_order', {
+					this.test.post('order/search_order', {
 						no: this.ordernumber, //订单编号
 						start_time: this.from,
 						end_time: this.to,
@@ -86,33 +86,34 @@
 								uni.showToast({
 									title: '没有找到相关的订单，请重新查询',
 									icon: 'none',
-									position:'bottom',
+									position: 'bottom',
 								})
 							} else if (res.data.value.length > 0) {
 								uni.redirectTo({
-									url: '../orderList/orderList?from=' + this.from +'&to=' + this.to + '&ordernumber=' + this.ordernumber + '&times=' + this.date
+									url: '../orderList/orderList?from=' + this.from + '&to=' + this.to + '&ordernumber=' + this.ordernumber +
+										'&times=' + this.date
 								})
 
 							}
-						}else{
+						} else {
 							uni.showToast({
-								title:res.data.message,
-								icon:'none',
-								position:'bottom',
+								title: res.data.message,
+								icon: 'none',
+								position: 'bottom',
 							})
 						}
 					}).catch(err => {
 						uni.hideLoading();
 						uni.showToast({
-							title:'查询失败',
-							icon:'none',
-							position:'bottom',
+							title: '查询失败',
+							icon: 'none',
+							position: 'bottom',
 						})
 						console.log(err)
 					})
 				} else if (this.name == "reserveOilList") {
 					uni.showLoading({
-						title:'查询中...'
+						title: '查询中...'
 					})
 					this.test.post('reserve/search_reserve', {
 						no: this.ordernumber, //订单编号
@@ -128,27 +129,28 @@
 								uni.showToast({
 									title: '没有找到相关的订单，请重新查询',
 									icon: 'none',
-									position:'bottom',
+									position: 'bottom',
 								})
 							} else if (res.data.value.length > 0) {
 								uni.redirectTo({
-									url: '../reserveOilList/reserveOilList?times=' + this.date + '&ordernumber=' + this.ordernumber + '&from=' + this.from +'&to=' + this.to
+									url: '../reserveOilList/reserveOilList?times=' + this.date + '&ordernumber=' + this.ordernumber + '&from=' +
+										this.from + '&to=' + this.to
 								})
 
 							}
-						}else{
+						} else {
 							uni.showToast({
-								title:res.data.message,
-								icon:'none',
-								position:'bottom',
+								title: res.data.message,
+								icon: 'none',
+								position: 'bottom',
 							})
 						}
 					}).catch(err => {
 						uni.hideLoading();
 						uni.showToast({
-							title:'查询失败',
-							icon:'none',
-							position:'bottom',
+							title: '查询失败',
+							icon: 'none',
+							position: 'bottom',
 						})
 						console.log(err)
 					})
@@ -182,5 +184,9 @@
 		justify-content: center;
 		line-height: 42px;
 		box-sizing: border-box;
+	}
+
+	.orderDate_text {
+		min-width: 90%;
 	}
 </style>

@@ -31,7 +31,7 @@
 						<text>购油公司</text>
 						<view>{{buyCompany}}</view>
 					</view>
-					<image src="../../static/img/right.png" mode="aspectFit"></image>
+					<image src="../../static/img/right.png" mode="aspectFit" v-show="buycompanyImg"></image>
 				</view>
 
 
@@ -73,11 +73,11 @@
 				<!-- <infoText :textValue="infos.buyoilText" :type="infos.number" @input="setNumber" :placeholder="infos.placeholder"
 				 :value="infos.muchOil" v-model="count"></infoText> -->
 
-				<view class="fget-eara underLine" @click="chooseAddr" v-show="addrShow">
+				<view class="fget-eara underLine" @tap="chooseAddr" v-show="addrShow">
 					<view class="first-li">配送地址</view>
 					<view class="addressimg">
 						<view style="width: 90%;"> {{address}}</view>
-						<image src="../../static/img/right.png" mode="aspectFit"></image>
+						<image src="../../static/img/right.png" mode="aspectFit" v-show="addrImg"></image>
 					</view>
 
 				</view>
@@ -159,15 +159,17 @@
 					<view class="leftBtn" @tap="chooseAddress =! chooseAddress">
 						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
-					<view>{{addrTitles}}</view>
+					<view>选择地址</view>
 				</view>
 			</view>
+
+
 			<view class="mContent" style="margin-top:44px">
 				<view class="harvest" v-for="(item,index) in info" :key="item.id">
-					<view class="harvest-name" @tap="isAddress(index)">
+					<!-- <view class="harvest-name" @tap="isAddress(index)">
 						<view>{{item.realname}}</view>
 						<view>{{item.phone}}</view>
-					</view>
+					</view> -->
 					<view class="harvest-address" @tap="isAddress(index)">
 						<view>{{item.address}}</view>
 					</view>
@@ -200,13 +202,13 @@
 					<view class="top_view"></view>
 				</view>
 				<view class="self_header_title flex self_header_position">
-					<view class="leftBtn" @tap="showCompany =! showCompany">
+					<view class="leftBtn" @tap="showCompany = !showCompany">
 						<uni-icons type="arrowleft" size="27"></uni-icons>
 					</view>
 					<view>选择公司</view>
 				</view>
 			</view>
-
+			<!-- 售油公司 -->
 			<view class="company_content" v-show="nextConpany">
 				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:scrollheight+'px'}" style=" position: relative;">
 					<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in newDatas" :key="index">
@@ -217,12 +219,12 @@
 					</view>
 				</scroll-view>
 			</view>
-
+			<!-- 购油公司 -->
 			<view class="company_content" v-show="!nextConpany">
 				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" :style="{height:scrollheight+'px'}" style=" position: relative;">
-					<view class="customerCompany " @tap="chooseCompany(index)" v-for="(item,index) in managers" :key="index">
+					<view class="customerCompany " @tap="chooseownCompany(index)" v-for="(item,index) in managers" :key="index">
 
-						<view class="newCompany">{{item.customer_name}}</view>
+						<view class="newCompany">{{item.name}}</view>
 
 
 					</view>
@@ -234,11 +236,7 @@
 
 		<!-- 客户经理 -->
 		<view v-show="showCoutomer" class="companyCustomer">
-			<!-- <view class="flex title">
-				<image src="../../static/img/back.png" mode="aspectFit" @tap="showCoutomer = !showCoutomer"></image>
-				<text>选择客户经理</text>
-			</view> -->
-			<!-- <titles :titles="coutomerTitles"></titles> -->
+
 			<view class="self_header">
 				<view class="self_header_bar">
 
@@ -285,7 +283,6 @@
 		data() {
 			return {
 				titles: '下单购油',
-				addrTitles: '选择地址',
 				company: "",
 				productOil: '选择油品',
 				modeOil: "选择提油方式",
@@ -307,12 +304,12 @@
 					primary: "primary",
 					btnvalue: "提交意向单",
 				},
-				info: [], //地址
+				info: [], //收货地址
 				range: 0,
 				chooseAddress: false,
 				getTpe: '',
 				myManager: '', //客户经理
-				newDatas: [],
+				newDatas: [], //售油公司
 				showCompany: false,
 				companyId: '',
 				showCoutomer: false,
@@ -331,8 +328,10 @@
 				scrollheight: '', //实际需要高度
 				manergerscrollheight: '', //实际需要高度
 				buyCompany: '', //购油公司
+				buycompanyImg: false,
+				addrImg: false, //地址图片
 				buyCompanyID: '',
-				nextConpany: false,
+				nextConpany: false, //区分购油公司和售油公司
 			}
 		},
 		onLoad() {
@@ -352,11 +351,12 @@
 				}
 			});
 			this.getCompanyInfo();
-			this.getAddressInfo();
+			// this.getAddressInfo();
+			this.getBuycompany(0)
 		},
 
 		methods: {
-			//获取默认公司
+			//获取默认售油公司
 			getCompanyInfo() {
 				const that = this;
 				this.test.post('order/order_company')
@@ -383,22 +383,50 @@
 						console.log(res)
 						that.myManager = res.data.managers[0].manager_name; //客户经理信息
 						that.myManagerId = res.data.managers[0].manager_id; //客户经理信息
-						that.buyCompany = res.data.managers[0].customer_name; //购油公司信息
-						that.buyCompanyID = res.data.managers[0].customer_id; //购油公司信息
-						that.managers = res.data.managers;
+						// that.buyCompany = res.data.managers[0].customer_name; //购油公司信息
+						// that.buyCompanyID = res.data.managers[0].customer_id; //购油公司信息
+						// that.managers = res.data.managers;
 					}
+				})
+			},
+			// 进入页面获取购油公司默认第一个公司及地址
+			getBuycompany(idx) {
+				this.test.post('order/order_customers').then(res => {
+					console.log(res);
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						this.managers = res.data.value;
+						this.buyCompany = this.managers[idx].name;
+						this.buyCompanyID = this.managers[idx].id;
+						this.info = this.managers[idx].customerLocations;
+						this.address = this.info[0].address;
+						console.log(this.info)
+						if (this.managers.length > 1) {
+							this.buycompanyImg = true;
+						} else {
+							this.buycompanyImg = false;
+						}
+						if (this.info.length > 1) {
+							this.addrImg = true;
+						} else {
+							this.addrImg = false;
+						}
+					}
+				}).catch(err => {
+					console.log(err)
 				})
 			},
 			///选择购油公司
 			chooseOwnCompany() {
 				if (this.managers.length > 1) {
+					this.buycompanyImg = true;
 					this.showCompany = true;
 					this.nextConpany = false;
 				} else {
+					this.buycompanyImg = false;
 					return;
 				}
 			},
-			
+			//获取售油公司
 			getNewCompany() {
 				const that = this;
 				this.page = 1;
@@ -428,23 +456,23 @@
 			//选择公司
 			chooseCompany(e) {
 				const that = this;
-				console.log(this.newDatas);
-				if (this.newDatas.length !== 0) {
+				console.log(e);
+				 //售油公司
+					console.log('收油')
 					this.more = true;
 					this.company = this.newDatas[e].name;
 					this.companyId = this.newDatas[e].id;
 					this.showCompany = !this.showCompany;
 					this.myManager = '请选择';
-				} else {
-					this.buyCompany = this.managers[e].customer_name;
-					this.showCompany = !this.showCompany;
-				}
-
-
-
-
+				
 			},
-
+			//购油公司
+			chooseownCompany(e) {
+				this.buyCompany = this.managers[e].name;
+				this.showCompany = !this.showCompany;
+				this.getBuycompany(e)
+				console.log(this.buyCompany)
+			},
 			getNewCustemerInfo() {
 				this.man = [];
 				this.page = 1;
@@ -456,6 +484,7 @@
 					title: '加载中...'
 				})
 			},
+			//获取客户经理
 			getNewCustemer() {
 				console.log(this.value)
 				this.test.post('order/listManagers', {
@@ -571,33 +600,41 @@
 			},
 
 			chooseAddr() {
-				this.getAddressInfo();
-				this.chooseAddress = !this.chooseAddress;
-				uni.showToast({
-					title: '选择你要收货的地址,然后点确认',
-					icon: 'none',
-					position: 'bottom',
-				})
+				// this.getAddressInfo();
+				console.log(this.info.length)
+
+				if (this.info.length > 1) {
+					this.addrImg = true;
+					this.chooseAddress = !this.chooseAddress;
+					uni.showToast({
+						title: '选择你要收货的地址,然后点确认',
+						icon: 'none',
+						position: 'bottom',
+					})
+				} else {
+					return;
+				}
+
 			},
 			// 获取地址信息
-			getAddressInfo() {
-				const that = this;
-				this.range = 0;
-				this.test.post('user/getAddrList').then(res => {
-					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.info = res.data.value;
-						//  console.log(this.info)
-						this.info.forEach(el => {
-							// console.log(el)
-							if (el.is_default == 1) {
-								that.address = el.address
-							}
-						})
-					}
-				}).catch(err => {
-					console.log(err)
-				})
-			},
+			// getAddressInfo() {
+			// 	const that = this;
+			// 	this.range = 0;
+			// 	this.test.post('user/getAddrList').then(res => {
+			// 		if (res.statusCode == 200 && res.data.errorCode == 0) {
+			// 			this.info = res.data.value;
+			// 			//  console.log(this.info)
+			// 			this.info.forEach(el => {
+			// 				// console.log(el)
+			// 				if (el.is_default == 1) {
+			// 					that.address = el.address
+			// 				}
+			// 			})
+			// 		}
+			// 	}).catch(err => {
+			// 		console.log(err)
+			// 	})
+			// },
 			//设置输入框只能为正整数
 			setNumber(val) {
 				console.log(val.detail.value)
@@ -608,8 +645,8 @@
 						icon: 'none',
 						position: 'bottom',
 					})
-					
-				 }// else if (val !== 0) {
+
+				} // else if (val !== 0) {
 				// 	this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
 				// }
 
@@ -637,37 +674,37 @@
 				})
 
 			},
-			sure(e) {
-				uni.showModal({
-					"title": "提示",
-					"content": '确认选择该地址为默认地址？',
-					success: res => {
-						if (res.confirm) {
-							for (let i = 0; i < this.info.length; i++) {
-								if (this.info[i].is_default == e.target.value) {
-									this.range = i;
-									console.log(this.info, e)
-									this.test.post("user/setDefaultAddr", {
-										addr_id: this.info[i].cl_id
-									}).then(res => {
-										console.log(res)
-										if (res.statusCode == 200 && res.data.errorCode == 0) {
-											uni.showToast({
-												title: '设置成功'
-											})
-										}
-									})
-									break;
-								}
-							}
-							// 点击取消
-						} else if (res.cancel) {
-							this.info = '',
-								this.getAddressInfo()
-						}
-					}
-				})
-			},
+			// sure(e) {
+			// 	uni.showModal({
+			// 		"title": "提示",
+			// 		"content": '确认选择该地址为默认地址？',
+			// 		success: res => {
+			// 			if (res.confirm) {
+			// 				for (let i = 0; i < this.info.length; i++) {
+			// 					if (this.info[i].is_default == e.target.value) {
+			// 						this.range = i;
+			// 						console.log(this.info, e)
+			// 						this.test.post("user/setDefaultAddr", {
+			// 							addr_id: this.info[i].cl_id
+			// 						}).then(res => {
+			// 							console.log(res)
+			// 							if (res.statusCode == 200 && res.data.errorCode == 0) {
+			// 								uni.showToast({
+			// 									title: '设置成功'
+			// 								})
+			// 							}
+			// 						})
+			// 						break;
+			// 					}
+			// 				}
+			// 				// 点击取消
+			// 			} else if (res.cancel) {
+			// 				this.info = '',
+			// 					this.getAddressInfo()
+			// 			}
+			// 		}
+			// 	})
+			// },
 			upper: function(e) {
 				console.log(e)
 			},
@@ -685,72 +722,82 @@
 						if (this.getTpe !== null && this.getTpe !== '') {
 							if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
 								if (this.count !== null && this.count !== '') {
+									if (this.count < 1) {
+										uni.showToast({
+											title: '购买数量不能小于一吨',
+											icon: 'none',
+											position: 'bottom',
+										});
+										this.count = '';
+									} else {
+										uni.showModal({
+											title: '提示',
+											content: '提交后无法修改，是否提交',
+											success: function(res) {
 
-									uni.showModal({
-										title: '提示',
-										content: '提交后无法修改，是否提交',
-										success: function(res) {
-
-											if (res.confirm) {
-												uni.showLoading({
-													title: '提交中...'
-												})
-												that.test.post('order/make_order', { //http://192.168.0.156:8080/api/bizcust/
-													org_id: that.companyId,
-													manager_id: that.myManagerId,
-													manager_name: that.myManager,
-													customer_name: that.buyCompany,
-													customer_id: that.buyCompanyID,
-													oil_type: that.productOil,
-													get_type: that.getTpe,
-													pay_type: that.modePay,
-													count: that.count,
-													ship_addr: that.address,
-													remark: that.Remarks,
-												}).then(res => {
-													console.log(res)
-													uni.hideLoading()
-													if (res.statusCode == 200 && res.data.errorCode == 0) {
-														uni.redirectTo({
-															url: '../orderList/orderList'
-														})
-													} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
-														uni.showModal({
-															title: '提示',
-															content: '用户信息已失效，请重新登录',
-															success: function(res) {
-																if (res.confirm) {
-																	uni.reLaunch({
-																		url: '../login/login'
-																	})
-																} else {
-																	uni.reLaunch({
-																		url: '../login/login'
-																	})
+												if (res.confirm) {
+													uni.showLoading({
+														title: '提交中...'
+													})
+													that.test.post('order/make_order', { //http://192.168.0.156:8080/api/bizcust/
+														org_id: that.companyId,
+														manager_id: that.myManagerId,
+														manager_name: that.myManager,
+														customer_name: that.buyCompany,
+														customer_id: that.buyCompanyID,
+														oil_type: that.productOil,
+														get_type: that.getTpe,
+														pay_type: that.modePay,
+														count: that.count,
+														ship_addr: that.address,
+														remark: that.Remarks,
+													}).then(res => {
+														console.log(res)
+														uni.hideLoading()
+														if (res.statusCode == 200 && res.data.errorCode == 0) {
+															uni.redirectTo({
+																url: '../orderList/orderList'
+															})
+														} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+															uni.showModal({
+																title: '提示',
+																content: '用户信息已失效，请重新登录',
+																success: function(res) {
+																	if (res.confirm) {
+																		uni.reLaunch({
+																			url: '../login/login'
+																		})
+																	} else {
+																		uni.reLaunch({
+																			url: '../login/login'
+																		})
+																	}
 																}
-															}
-														})
-													} else {
+															})
+														} else {
+															uni.showToast({
+																title: res.data.message,
+																icon: "none",
+																position: 'bottom',
+															})
+														}
+													}).catch(err => {
+														uni.hideLoading();
 														uni.showToast({
-															title: res.data.message,
-															icon: "none",
+															title: '提交失败',
+															icon: 'none',
 															position: 'bottom',
 														})
-													}
-												}).catch(err => {
-													uni.hideLoading();
-													uni.showToast({
-														title: '提交失败',
-														icon: 'none',
-														position: 'bottom',
+														console.log(err)
 													})
-													console.log(err)
-												})
-											} else {
-												return;
+												} else {
+													return;
+												}
 											}
-										}
-									})
+										})
+									}
+
+
 
 
 

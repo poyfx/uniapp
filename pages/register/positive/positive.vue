@@ -209,7 +209,10 @@
 		onLoad(option) {
 			this.faceimg.uri = option.faceimg;
 			this.register = uni.getStorageSync('register');
-
+			if(this.register.user !== '购油人,提油人,发票领取人'){
+	
+				this.register.user = '购油人,提油人,发票领取人'
+			}
 			console.log(this.register)
 			this.getclientid();
 		},

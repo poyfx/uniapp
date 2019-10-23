@@ -60,7 +60,7 @@
 						</view>
 						<view v-if="item.status==-1">
 							<text>拒绝原因：</text>
-							<text>油库没油</text>
+							<text>{{item.denial_reason}}</text>
 						</view>
 					</view>
 					<view class="flex reserveStatus" v-if='item.get_type=="配送"' style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
@@ -76,6 +76,7 @@
 						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
 						<text class="orderListState state " v-if="item.status==2 ">预约已确认</text>
 						<text class="orderListState state " v-if="item.status==2 ">待提油</text>
+						<!-- <text class="orderListState state " v-if="item.status==4 ">请确认收油</text> -->
 						<text class="orderListState s " v-if="item.status==8 ">已取消</text>
 						<text class="orderListState oc " v-if="item.status==-1">已拒绝</text>
 						<text class="orderListState oP " v-if="item.status==9">已完成</text>
@@ -118,6 +119,10 @@
 					},
 					{
 						value: "已提油",
+						label: 4
+					},
+					{
+						value: "请确认收油",
 						label: 4
 					},
 					{

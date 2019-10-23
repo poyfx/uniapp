@@ -214,7 +214,7 @@
 		</view> -->
 
 		</view>
-
+		<!-- 对账函 -->
 		<view class="index_model" v-show="modelshow" @touchstart.self.prevent="closeModel()">
 			<view class="model bgcf">
 				<view class="close" @tap="closeModel()">
@@ -229,6 +229,24 @@
 				</view>
 				<view class="model_btn">
 					<button @tap="setAccount()">查看</button>
+				</view>
+			</view>
+		</view>
+		<!-- 公告 -->
+		<view class="index_model" v-show="noticeshow" @touchstart.self.prevent="closeNotice()">
+			<view class="model bgcf">
+				<view class="close" @tap="closeNotice()">
+					<uni-icons type="closeempty" size="28" color="#000000"></uni-icons>
+				</view>
+
+				<view class="model_title">
+					<text>公告</text>
+				</view>
+				<view class="model_content">
+					<text>{{noticeContent}}</text>
+				</view>
+				<view class="model_btn">
+					<button @tap="setNoticies()">查看</button>
 				</view>
 			</view>
 		</view>
@@ -272,8 +290,10 @@
 				duration: 500,
 				circular: true,
 				myManagerBox: {},
-				modelshow: false,
+				modelshow: false, //是否显示对账函通知
 				dots: false,
+				noticeContent: '', //公告内容
+				noticeshow: false,
 			}
 		},
 		onShow() {
@@ -287,7 +307,7 @@
 			this.setDot();
 		},
 		methods: {
-			
+
 			// 获取首页信息
 			getInfo() {
 				const that = this;
@@ -335,7 +355,7 @@
 				this.test.post('user/get_letter').then(res => {
 					console.log(res)
 					if (res.statusCode && res.data.errorCode == 0) {
-						if (res.data.valu == null || res.data.valu == '') {
+						if (res.data.value == null || res.data.value == '') {
 							return
 						} else {
 							if (res.data.value.confirm_type == 0) {
@@ -368,12 +388,15 @@
 			setNotice() {
 				this.test.post('user/list_notices').then(res => {
 					console.log(res)
-					if (res.statusCode && res.data.errorCode == 0) {
-						if (res.data.valu == null || res.data.valu == '') {
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						if (res.data.value.length == 0) {
+							console.log(1)
 							return
 						} else {
-							if (res.data.value.confirm_type == 0) {
-								this.modelshow = true;
+
+							if (res.data.value[0].is_read == 0) {
+								this.noticeshow = true;
+								this.noticeContent = res.data.value[0].content
 							}
 						}
 
@@ -388,7 +411,16 @@
 					console.log(err)
 				})
 			},
-
+			//关闭对账函
+			closeNotice() {
+				this.noticeshow = false;
+				// console.log(event.target)
+			},
+			setNoticies() {
+				uni.navigateTo({
+					url: './letter/notice/notice'
+				})
+			},
 			// 打电话
 			callPhone(phoneNumber, name) {
 				uni.showModal({
@@ -686,7 +718,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 1000;
+		z-index: 10000;
 	}
 
 	.model {
