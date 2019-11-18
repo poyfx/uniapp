@@ -25,7 +25,7 @@
 			<view class="flex  m-info" v-show="btn.Dates">
 				<view class="flex center m-info-content">
 					<text>授权书有效期</text>
-					<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
+					<input placeholder="请选择" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
 					<view class="" style="width: 178px;" v-show="!times">
 						<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"></ruiDatePicker> -->
 						<view class="" v-show="!times">
@@ -47,7 +47,7 @@
 			<view class="flex  m-info" v-show="btn.dates">
 				<view class="flex center m-info-content">
 					<text>授权书有效期</text>
-					<input placeholder="请选择,需与授权书的有效日期一致" v-show="apply_one" @tap="changeTime" disabled="true" style="width: 222px; height: 37.5px;" />
+					<input placeholder="请选择" v-show="apply_one" @tap="changeTime" disabled="true" style="width: 222px; height: 37.5px;" />
 					<view class="" style="width: 178px;" v-show="!apply_one">
 						<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="days" @change="bindChanges"></ruiDatePicker> -->
 						<view class="" v-show="!apply_one  ">
@@ -132,7 +132,7 @@
 					"反面",
 
 				],
-				tellinfo: ["正面示例", "反面示例", "授权书示例"],
+				tellinfo: ["正面示例", "反面示例", "授权书示例","授权书示例"],
 				num: 0,
 				count: 0,
 				src: one,
@@ -146,6 +146,7 @@
 				buyOil: '',
 				takeOil: '',
 				register: '',
+				user:"",
 				img: [],
 				mode: 'date', //时间
 				day: '2019-01-01', //购油有效期
@@ -160,15 +161,19 @@
 		onLoad(option) {
 			this.faceimg.uri = option.faceimg;
 			this.register = uni.getStorageSync('register');
-			console.log(this.register.user,this.faceimg)
+			this.user = option.user;
+			console.log(typeof(this.register.user),this.faceimg)
 			if(this.register.user == '发票领取人,购油人'){
 				console.log(100)
-				this.register.user = '购油人,发票领取人'
+				this.register.user == '购油人,发票领取人'
+				
 			}else if(this.register.user == '发票领取人,提油人'){
 				console.log(100)
-				this.register.user = '提油人,发票领取人'
-			}else if(this.register.user = '提油人,购油人'){
-				this.register.user = '购油人,提油人'
+				this.register.user == '提油人,发票领取人'
+				
+			}else if(this.register.user == '提油人,购油人'){
+				console.log(100)
+				this.register.user == '购油人,提油人'
 			};
 			if (this.register.user == '购油人,提油人') {
 				this.info.push(this.register.user.slice(0, 2))
@@ -194,6 +199,7 @@
 				})
 			},
 			all() {
+			// debugger
 				if (this.btn.stepOne == true) {
 					const that = this;
 					uni.chooseImage({
@@ -235,8 +241,11 @@
 						}
 					});
 				} else if (this.btn.stepThree == true) {
+					if(this.register.user == '发票领取人,购油人'){
+						this.register.user == '购油人,发票领取人'
+					}
 					console.log(1)
-					console.log(this.register.user)
+					console.log(this.register)
 					const that = this;
 					if (this.register.user == '购油人,提油人' || this.register.user == '购油人,发票领取人') {
 						console.log(2)
@@ -476,7 +485,7 @@
 						uri: value.uri
 					}
 				})
-				 var _url = 'http://dev.pjy.name:8180/api/bizcust/base/regist'
+				 var _url = 'http://dev.pjy.name:8170/api/bizcust/base/regist'
 				//var _url = 'http://192.168.0.156:8080/api/bizcust/base/regist'
 				if (this.img.length >= 4) {
 					console.log(imgs)

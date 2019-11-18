@@ -53,11 +53,11 @@
 							<text>提油数量：</text>
 							<text>{{item.extract_num}} &nbsp;吨</text>
 						</view>
-						<view>
+						<!-- <view>
 							<text>提油方式：</text>
 							<text>{{item.get_type}}</text>
 
-						</view>
+						</view> -->
 						<view v-if="item.status==-1">
 							<text>拒绝原因：</text>
 							<text>{{item.denial_reason}}</text>
@@ -66,8 +66,8 @@
 					<view class="flex reserveStatus" v-if='item.get_type=="配送"' style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
 						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
 						<text class="orderListState state " v-if="item.status==2 ">预约已确认</text>
-						<text class="orderListState state " v-if="item.status==3 ">待提油</text>
-						<text class="orderListState state " v-if="item.status==4 ">已提油</text>
+						<!-- <text class="orderListState state " v-if="item.status==3 ">待提油</text>
+						<text class="orderListState state " v-if="item.status==4 ">已提油</text> -->
 						<text class="orderListState oc " v-if="item.status==-1">已拒绝</text>
 						<text class="orderListState s " v-if="item.status== 8">已取消</text>
 						<text class="orderListState oP " v-if="item.status==9">已完成</text>
@@ -75,7 +75,7 @@
 					<view class="flex reserveStatus" v-else-if="item.get_type=='自提'" style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
 						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
 						<text class="orderListState state " v-if="item.status==2 ">预约已确认</text>
-						<text class="orderListState state " v-if="item.status==2 ">待提油</text>
+						<!-- <text class="orderListState state " v-if="item.status==2 ">待提油</text> -->
 						<!-- <text class="orderListState state " v-if="item.status==4 ">请确认收油</text> -->
 						<text class="orderListState s " v-if="item.status==8 ">已取消</text>
 						<text class="orderListState oc " v-if="item.status==-1">已拒绝</text>
@@ -113,18 +113,18 @@
 						value: "预约已确定",
 						label: 2
 					},
-					{
-						value: "待提油",
-						label: 3
-					},
-					{
-						value: "已提油",
-						label: 4
-					},
-					{
-						value: "请确认收油",
-						label: 4
-					},
+					// {
+					// 	value: "待提油",
+					// 	label: 3
+					// },
+					// {
+					// 	value: "已提油",
+					// 	label: 4
+					// },
+					// {
+					// 	value: "请确认收油",
+					// 	label: 4
+					// },
 					{
 						value: "已取消",
 						label: 8

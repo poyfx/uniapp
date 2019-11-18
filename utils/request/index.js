@@ -10,7 +10,7 @@ test.setConfig((config) => { /* 设置全局配置 */
 	} catch (e) {
 		console.log(e)
 	}
-	config.baseUrl = 'http://dev.pjy.name:8180/api/bizcust/';
+	config.baseUrl = 'http://dev.pjy.name:8170/api/bizcust/';
 	config.header = {
 		'Content-Type': 'application/json;charset=UTF-8',
 		"Content-Type": "multipart/form-data",
@@ -55,7 +55,7 @@ test.interceptor.response((response) => { /* 请求之后拦截器 */
 
 const http = new Request();
 http.setConfig((config) => { /* 设置全局配置 */
-	config.baseUrl = 'http://dev.pjy.name:8180/api/bizcust/'; /* 根域名不同 */
+	config.baseUrl = 'http://dev.pjy.name:8170/api/bizcust/'; /* 根域名不同 */
 	config.header = {
 		// 'Content-Type': 'application/json;charset=UTF-8',
 		// "Content-Type": "application/x-www-form-urlencoded",

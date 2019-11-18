@@ -9,16 +9,16 @@
 					<uni-icons type="arrowleft" size="27"></uni-icons>
 				</view>
 				<view>预约详情</view>
-				<view class="takecode" @tap="getCode" v-show="showAddress == false && status == 2">
+				<!-- <view class="takecode" @tap="getCode" v-show="status == 2">
 					提油码
-				</view>
+				</view> -->
 			</view>
 		</view>
 
 		<view class="chooseAddress">
 
 			<!-- 配送司机信息 -->
-			<view class="driver_content bgcf" v-if="showAddress == true" v-show="status == 2 || status == 3 || status == 4 || status == 8 || status == 9">
+			<!-- <view class="driver_content bgcf" v-if="showAddress == true" v-show="status == 2 || status == 3 || status == 4 || status == 8 || status == 9">
 				<view class="driverinfos flex ">
 					<image src="../../../static/img/customer.png" style="width: 24px;height: 25px;" mode="aspectFit"></image>
 					<text style="font-weight: bold;">配送司机</text>
@@ -38,10 +38,11 @@
 					<view class="driver_btnP" v-else-if="status == 9">已完成</view>
 					<view class="driver_btnC" v-else-if="status == 8">已取消</view>
 				</view>
-			</view>
+			</view> -->
 
 			<!-- 自提信息 -->
-			<view class="driver_content bgcf" v-else v-show="status == 2 || status == 3 || status == 4 || status == 8 || status == 9">
+			<!-- v-else -->
+			<view class="driver_content bgcf" v-show="status == 2 ||  status == 8 || status == 9">
 				<view class="driverinfos flex ">
 					<image src="../../../static/img/customer.png" style="width: 24px;height: 25px;" mode="aspectFit"></image>
 					<text style="font-weight: bold;">提油人</text>
@@ -58,7 +59,7 @@
 				</view>
 				<view class="driver_btn">
 					<view class="state" v-if="status == 2">待提油</view>
-					<view class="state" v-else-if="status == 4">已提油</view>
+					<!-- <view class="state" v-else-if="status == 4">已提油</view> -->
 					<view class="driver_btnP" v-else-if="status == 9">已完成</view>
 					<view class="driver_btnC" v-else-if="status == 8">已取消</view>
 				</view>
@@ -72,8 +73,8 @@
 							<text>预约状态</text>
 							<view class="confirmed_status">
 								<text class="state" v-if="status == 2">预约已确认</text>
-								<text class="state" v-else-if="status == 3">待提油</text>
-								<text class="state" v-else-if="status == 4 && main=='配送'">已提油</text>
+								<!-- <text class="state" v-else-if="status == 3">待提油</text>
+								<text class="state" v-else-if="status == 4 && main=='配送'">已提油</text> -->
 								<!-- <text class="state" v-else-if="status == 4 && main=='自提'">请确认收油</text> -->
 								<text class="oP" v-else-if="status == 9">已完成</text>
 								<text class="s" v-else-if="status == 8">已取消</text>
@@ -99,8 +100,8 @@
 							<view>{{much}}吨</view>
 						</view>
 					</view>
-					<infoText :textValue="confirmed.main" :disabled="disabled" v-model="main"></infoText>
-
+					<!-- <infoText :textValue="confirmed.main" :disabled="disabled" v-model="main"></infoText>
+ -->
 					<view class="fget-eara addressimg" v-show="showAddress">
 						<view class="first-li">送油地址：</view>
 
@@ -110,25 +111,28 @@
 				</view>
 				<view class="confirmed_btn flex" v-if="main == '配送'">
 					<view class="confirmed_btn_2 flex" v-if="status == 2">
-						<button type="primary" @tap="changeDriver(0)">更换司机</button>
-						<button type="primary" @tap="changeDriver(1)">同意配送</button>
+						<view @tap="cancels">取消预约</view>
+						<button type="primary" @tap="getCode">查看提油码</button>
+						<!-- <button type="primary" @tap="changeDriver(0)">更换司机</button>
+						<button type="primary" @tap="changeDriver(1)">同意配送</button> -->
 					</view>
 
-					<view class="confirmed_btn_4" v-else-if="status == 3">
-						<!-- confirmed_btn_3<button type="primary">取消预约</button> -->
+					<!-- <view class="confirmed_btn_4" v-else-if="status == 3">
+					<button type="primary">取消预约</button>
 						<button type="primary" @tap="close">关闭</button>
 					</view>
 
 					<view class="confirmed_btn_2 flex" v-else-if="status == 4">
 						<button type="primary" @tap="close">关闭</button>
 						<button type="primary" @tap="finish">确认收油</button>
-					</view>
+					</view> -->
 					<view class="confirmed_btn_4" v-else>
 						<button type="primary" @tap="close">关闭</button>
 					</view>
 				</view>
 				<view class="confirmed_btn" v-else>
-					<view class="confirmed_btn_4 flex" v-if="status == 2">
+					<view class="confirmed_btn_2 flex" v-if="status == 2">
+						<view  @tap="cancels">取消预约</view>
 						<button type="primary" @tap="getCode">查看提油码</button>
 					</view>
 					<!-- <view class="confirmed_btn_4 flex" v-else-if="status == 4">
@@ -295,6 +299,34 @@
 					console.log(err)
 				})
 			},
+			cancels() {
+				uni.showModal({
+					content: '确认取消订单吗？',
+					success: (res) => {
+						if (res.confirm) {
+							this.test.post('reserve/cancel_reserve', {
+								id: this.rId
+							}).then(res => {
+								console.log(res)
+								if (res.statusCode == 200 && res.data.errorCode == 0) {
+									uni.navigateTo({
+										url:'../reserveOilList'
+									})
+								}else{
+									uni.showToast({
+										title: res.data.message,
+										icon: 'none',
+										position: 'bottom',
+									})
+								}
+							}).catch(err => {
+								console.log(err)
+							})
+						}
+					}
+				})
+
+			},
 			close() {
 				uni.redirectTo({
 					url: '../reserveOilList'
@@ -421,7 +453,7 @@
 	}
 
 	.m-info text {
-		width: 4rem;
+		width: 4.5rem;
 	}
 
 	.m-info image {
@@ -436,7 +468,7 @@
 
 	.confirmed_content {
 		margin-top: -65px;
-		padding: 87px 0 46px 15px;
+		padding: 68px 0 46px 15px;
 	}
 
 	.driver_content {
@@ -484,7 +516,7 @@
 
 	.driver_btn view {
 		padding: 12px 14px;
-		border-radius: 0.25em 0 0 0.25em;
+		border-radius: 0.25em 0 0.25em 0 ;
 		background-color: #00A8FF;
 		color: #fff;
 	}
@@ -508,6 +540,7 @@
 	.confirmed_btn_3,
 	.confirmed_btn_4 {
 		width: 100%;
+		box-shadow: 3px 0 6px 0 rgba(0,0,0,0.16);
 	}
 
 	.confirmed_btn .confirmed_btn_2 button {
@@ -534,7 +567,16 @@
 		background-color: #fff;
 		color: #616161;
 	}
-
+	.confirmed_btn_2 view{
+		width: 50%;
+		font-size: 0.95rem;
+		color: #9E9E9E;
+		background-color: #FFFFFF;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+	}
 	.refuse {
 		margin: 0;
 		padding: 0 0 0 15px;

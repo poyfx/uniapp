@@ -6,7 +6,7 @@
 				<infoImg :imgText="text.orderNumberText" :disabled="text.disabled" :value="values.orderNumber" :placeholder="text.orderNumberP"
 				 @goOrderNumber="goOrderNumber"></infoImg>
 
-				<view class="flex  m-info">
+				<view class="flex  m-info" v-show="reserve_type==0">
 					<view class="flex center m-info-content">
 						<text>{{text.dayTimeText}}</text>
 						<ruiDatePicker class="minute" fields="minute" start="2010-00-00 00:00" end="2030-12-31 23:59" :value="day"
@@ -19,20 +19,20 @@
 				<view class="flex  m-info" :model="text">
 					<view class="flex center m-info-contents">
 						<text>提油数量</text>
-						<input type="number" v-model="values.muchOil" @input="getOilNum" :placeholder="text.muchOilText" />
+						<input type="number" v-model="values.muchOil" @input="getOilNum" :placeholder="text.muchOilText" :class="placecolor?color9:colorRed" />
 					</view>
 					<text class="allOil" @tap="allIn">全提</text>
 
 				</view>
 
 				<infoText :textValue="text.productOilText" :disabled="text.disabled" :value="values.productOil" :placeholder="text.productOilP"></infoText>
-				<infoText :textValue="text.modeOilText" :disabled="text.disabled" v-model="values.modeOil" :placeholder="text.modeOilP"></infoText>
+				<!-- <infoText :textValue="text.modeOilText" :disabled="text.disabled" v-model="values.modeOil" :placeholder="text.modeOilP"></infoText> -->
 				<view class="fget-eara underLine" v-show="showAddress">
 					<view class="first-li">配送地址</view>
-					<view class="addressimg">
+					<view class="addressimg" @tap="showAddr">
 						<view style="width: 90%;">{{address}}</view>
 						<!-- <img src="../../static/img/right.png" alt> -->
-						<!-- <image src="../../static/img/right.png" mode="aspectFit"></image> -->
+						<image src="../../static/img/right.png" mode="aspectFit" v-show="showimg"></image>
 					</view>
 
 				</view>
@@ -78,7 +78,7 @@
 						<view class="orderNumber">
 							<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 							<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
-							<view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view>
+							<!-- <view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view> -->
 						</view>
 						<view class="integral">
 							<text>剩余油量(吨)</text>
@@ -95,7 +95,29 @@
 			</view>
 		</view>
 
+		<!-- 地址信息 -->
+		<view class="chooseAddress" v-show="chooseAddress">
+			<view class="self_header ">
+				<view class="self_header_bar">
+					<view class="top_view"></view>
+				</view>
+				<view class="self_header_title flex self_header_position">
+					<view class="leftBtn" @tap="chooseAddress =! chooseAddress">
+						<uni-icons type="arrowleft" size="27"></uni-icons>
+					</view>
+					<view>选择地址</view>
+				</view>
+			</view>
 
+			<view class="mContent" style="margin-top:44px">
+				<view class="harvest" v-for="(item,index) in addrs" :key="item.id">
+					<view class="harvest-address" @tap="isAddress(index)">
+						<view>{{item.address}}</view>
+					</view>
+				</view>
+
+			</view>
+		</view>
 
 	</view>
 </template>
@@ -151,15 +173,42 @@
 				remark: '', //备注
 				id: '',
 				more: false,
-				showAddress: true,
+				showAddress: true, //根据配送或自提显示地址
 				barHeight: 25,
+				dotIdx: '',
+				placecolor: true, //输入数量颜色
+				color9: 'color9',
+				colorRed: 'colorRed',
+				chooseAddress: false, //选择地址
+				addrs: [],
+				showimg: false,
+				realname: '',
+				username: '',
+				reserve_type: "", //0预约提油，1现场提油
+				 // api: 'http://192.168.0.156:8080/api/bizcust/'
 			}
 		},
-		onLoad() {
-
+		onLoad(option) {
+			this.reserve_type = option.type;
+			if (option.type == 1) {
+				this.showAddress = false;
+				this.titles = '现场提油'
+			}
+			this.getUser()
 
 		},
 		methods: {
+			getUser() {
+				const that = this
+				uni.getStorage({
+					key: 'userInfo',
+					success: (res) => {
+						console.log(res)
+						that.realname = res.data.user.realname;
+						that.username = res.data.user.username;
+					}
+				})
+			},
 			//获取订单编号
 			getorderNumberInfo() {
 				this.test.post('reserve/query_orderSnInfo', {
@@ -213,18 +262,6 @@
 			bindChange(val) {
 				console.log(val)
 				this.day = val;
-				// const date1 = new Date(this.day.replace(/-/g,"\/"))//now
-				// const date2 = new Date(val.replace(/-/g,"\/"))//选择时间
-				// if(date1>date2){
-				// 	this.day =formatDateMin(new Date())
-				// 	 return uni.showToast({
-				// 		title:'预约时间不得小于当前时间',
-				// 		icon:'none'
-				// 	});
-				// 	
-				// }else{
-				// 	this.day = val
-				// }
 			},
 			// 订单编号的显示
 			goOrderNumber() {
@@ -245,14 +282,21 @@
 				// } else {
 				// 	this.values.modeOil = '自提'
 				// }
-				if (this.values.modeOil == '' || this.values.modeOil == '配送') {
-					this.showAddress = true
-				} else if (this.values.modeOil == '自提') {
-					this.showAddress = false
+				if (this.reserve_type == 0) {
+					if (this.values.modeOil == '' || this.values.modeOil == '配送') {
+						this.showAddress = true
+						this.chooseaddr(e)
+					} else if (this.values.modeOil == '自提') {
+						this.showAddress = false
+					}
+				}else{
+					// return
 				}
+
 				this.muchOilText = this.chooseNumber.orderInfo[e].oil_remain; //保存油的数量
 				this.address = this.chooseNumber.orderInfo[e].ship_addr;
-				this.showOrderNumber = !this.showOrderNumber
+				this.showOrderNumber = !this.showOrderNumber;
+
 			},
 			// 全提
 			allIn() {
@@ -268,6 +312,8 @@
 
 			},
 			getOilNum(e) {
+				this.placecolor = true;
+				this.getUser()
 				console.log(e.detail.value)
 				if (this.values.orderNumber == '' || this.values.orderNumber == null) {
 					uni.showToast({
@@ -275,22 +321,77 @@
 						icon: 'none',
 						position: 'bottom',
 					})
+					this.values.muchOil = 0;
 				} else if (e.detail.value > this.muchOilText) {
-				
-					return	uni.showToast({
-							title: '不能超过油的总量：' + this.muchOilText,
-							icon: 'none',
-							position: 'bottom',
-						})
-					
-				}else if(e.detail.value<1){
-					this.values.muchOil = '';
-					return uni.showToast({
-							title: '提油量不得小于1吨',
-							icon: 'none',
-							position: 'bottom',
-						})
+
+					uni.showToast({
+						title: '不能超过油的总量：' + this.muchOilText,
+						icon: 'none',
+						position: 'bottom',
+					})
+					this.values.muchOil = 0;
+
+				} else if (e.detail.value < 0) {
+					this.values.muchOil = 0;
+					uni.showToast({
+						title: '提油量必须大于0',
+						icon: 'none',
+						position: 'bottom',
+					})
+					var s = e.detail.value;
+					console.log(s)
+					let dotIdx = s.indexOf('.');
+					console.log(dotIdx)
+					this.dotIdx = dotIdx
 				}
+
+			},
+			chooseaddr(e) {
+
+				this.test.post('user/getAddrListByCustomer', {
+					id: this.chooseNumber.orderInfo[e].customer_id
+				}).then(res => {
+					console.log(res)
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						console.log(res.data.value.length)
+						this.addrs = res.data.value
+						if (res.data.value.length >= 2) {
+							this.showimg = true;
+						} else {
+							this.showimg = false;
+							this.chooseAddress = false
+						}
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			},
+			showAddr() {
+				if (this.addrs.length >= 2) {
+					return this.chooseAddress = true;
+				} else {
+					this.chooseAddress = false;
+				}
+
+			},
+			// 选择地址
+			isAddress(inx) {
+
+				console.log(inx, this.addrs)
+				const that = this;
+				uni.showModal({
+					content: '确定选择该地址为收货地址',
+					success: function(res) {
+						if (res.confirm) {
+							that.address = that.addrs[inx].address + ',' + that.realname + ',' + that.username;
+							that.chooseAddress = !that.chooseAddress
+							console.log(that.address)
+						} else if (res.cancel) {
+							return;
+						}
+
+					}
+				})
 
 			},
 			Smore() {
@@ -303,55 +404,119 @@
 				console.log(day)
 				const that = this;
 				if (this.values.orderNumber !== '' && this.values.orderNumber !== null) {
-					if (this.values.muchOil !== '' && this.values.muchOil !== null) {
-						uni.showModal({
-							title: '提示',
-							content: '提交后无法修改，确认提交？',
-							success: function(res) {
-								if (res.confirm) {
-									console.log(typeof(oilNumbers), typeof(that.id))
-									that.test.post('reserve/mark_reserve', { //http://192.168.0.156:8080/api/bizcust/
-										bz_order_id: that.id,
-										reserve_time: that.day,
-										extract_num: oilNumbers,
-										remark: that.remark,
-									}).then(res => {
-										console.log(res)
-										if (res.statusCode == 200 && res.data.errorCode == 0) {
-											uni.redirectTo({
-												url: '../reserveOilList/reserveOilList',
-											});
-										} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
-											uni.showModal({
-												title: '提示',
-												content: '用户信息已失效，请重新登录',
-												success: function(res) {
-													if (res.confirm) {
-														uni.reLaunch({
-															url: '../login/login'
-														})
-													} else {
-														uni.reLaunch({
-															url: '../login/login'
-														})
+					if (this.values.muchOil !== '' && this.values.muchOil !== null && this.values.muchOil > 0) {
+						if (this.dotIdx == -1) {
+							uni.showModal({
+								title: '提示',
+								content: '提交后无法修改，确认提交？',
+								success: function(res) {
+									if (res.confirm) {
+										console.log(typeof(oilNumbers), typeof(that.id))
+										that.test.post('reserve/mark_reserve', { 
+											bz_order_id: that.id,
+											reserve_time: that.day,
+											extract_num: oilNumbers,
+											address: that.address,
+											reserve_type: that.reserve_type,
+											remark: that.remark,
+										}).then(res => {
+											console.log(res)
+											if (res.statusCode == 200 && res.data.errorCode == 0) {
+												uni.redirectTo({
+													url: '../reserveOilList/reserveOilList',
+												});
+											} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+												uni.showModal({
+													title: '提示',
+													content: '用户信息已失效，请重新登录',
+													success: function(res) {
+														if (res.confirm) {
+															uni.reLaunch({
+																url: '../login/login'
+															})
+														} else {
+															uni.reLaunch({
+																url: '../login/login'
+															})
+														}
 													}
+												})
+											} else {
+												uni.showToast({
+													title: res.data.message,
+													icon: "none"
+												})
+											}
+										}).catch(err => {
+											console.log(err)
+										})
+									} else {
+										return;
+									}
+								}
+							})
+						} else {
+							this.dotIdx = this.dotIdx + 7
+							if (this.values.muchOil.length > this.dotIdx) {
+								this.placecolor = false;
+								uni.showToast({
+									title: '提油数量最多保留六位小数',
+									icon: 'none',
+									position: 'bottom',
+								});
+								this.values.muchOil = 0;
+							} else {
+								uni.showModal({
+									title: '提示',
+									content: '提交后无法修改，确认提交？',
+									success: function(res) {
+										if (res.confirm) {
+											console.log(typeof(oilNumbers), typeof(that.id))
+											that.test.post('reserve/mark_reserve', { //http://192.168.0.156:8080/api/bizcust/
+												bz_order_id: that.id,
+												reserve_time: that.day,
+												extract_num: oilNumbers,
+												reserve_type: that.reserve_type,
+												remark: that.remark,
+											}).then(res => {
+												console.log(res)
+												if (res.statusCode == 200 && res.data.errorCode == 0) {
+													uni.redirectTo({
+														url: '../reserveOilList/reserveOilList',
+													});
+												} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+													uni.showModal({
+														title: '提示',
+														content: '用户信息已失效，请重新登录',
+														success: function(res) {
+															if (res.confirm) {
+																uni.reLaunch({
+																	url: '../login/login'
+																})
+															} else {
+																uni.reLaunch({
+																	url: '../login/login'
+																})
+															}
+														}
+													})
+												} else {
+													uni.showToast({
+														title: res.data.message,
+														icon: "none"
+													})
 												}
+											}).catch(err => {
+												console.log(err)
 											})
 										} else {
-											uni.showToast({
-												title: res.data.message,
-												icon: "none"
-											})
+											return;
 										}
-									}).catch(err => {
-										console.log(err)
-									})
-								} else {
-									return;
-								}
+									}
+								})
 							}
-						})
 
+						}
 					} else {
 						uni.showToast({
 							title: '请输入提油数量',
@@ -576,5 +741,22 @@
 		flex: 1;
 		font-size: 17px;
 
+	}
+
+	.color9 {
+		color: #666666;
+	}
+
+	.colorRed {
+		color: red;
+	}
+
+	.chooseAddress {
+		position: absolute;
+		top: 0;
+		z-index: 999;
+		width: 100%;
+		height: 100%;
+		background-color: #EFEFF4;
 	}
 </style>

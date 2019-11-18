@@ -233,4 +233,10 @@ text {
 .company_content {
 	margin-top: 55px;
 }
+.color9 {
+	color: #666666;
+}
+.colorRed {
+	color: red;
+}
 

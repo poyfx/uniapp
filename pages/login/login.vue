@@ -93,7 +93,7 @@
 				if (this.consumer.username != "" && this.consumer.username != null) {
 					if (this.consumer.password != "" && this.consumer.password != null) {
 						const that = this;
-						this.test.post('base/login', {//http://192.168.0.156:8080/api/bizcust/
+						this.test.post('base/login', {
 							username: this.consumer.username,
 							passwd: this.consumer.password,
 							client_id: this.clientId,

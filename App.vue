@@ -16,7 +16,7 @@
 			switch (uni.getSystemInfoSync().platform) {
 				case 'android':
 					console.log('运行Android上');
-					// var server = "http://dev.pjy.name:8180/api/bizcust/base/get_version"; //检查更新地址
+					// var server = "http://dev.pjy.name:8170/api/bizcust/base/get_version"; //检查更新地址
 					var appid = plus.runtime.appid
 					var version = plus.runtime.version
 					
@@ -51,7 +51,7 @@
 					break;
 				case 'ios':
 					console.log('运行iOS上');
-					// var server = "http://dev.pjy.name:8180/api/bizcust/base/get_version"; //检查更新地址
+					// var server = "http://dev.pjy.name:8170/api/bizcust/base/get_version"; //检查更新地址
 					var appid = plus.runtime.appid
 					var version = plus.runtime.version
 					
@@ -215,5 +215,4 @@
 		transform: translate(-50%);
 	
 	}
-	
 </style>

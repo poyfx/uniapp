@@ -9,6 +9,8 @@
     "background": "white"
   },
   "usingComponents": {
+    "titles": "/components/title",
+    "uni-icons": "/components/uni-icon/uni-icons",
     "m-button": "/components/m-button",
     "info-text": "/components/m-info-text/m-info-text"
   }

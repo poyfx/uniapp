@@ -1,7 +1,7 @@
 
-.background.data-v-1ad1f154 {
+.background.data-v-802aa65c {
 	/* background-color: #fff; */
-	background: url('http://dev.pjy.name:8180/uploads/bizcust_main.png') no-repeat;
+	background: url('http://dev.pjy.name:8170/uploads/bizcust_main.png') no-repeat;
 	background-size: 100% 100%;
 	position: absolute;
 	top: 0;
@@ -10,13 +10,13 @@
 	height: 100%;
 	text-align: center;
 }
-.startimg.data-v-1ad1f154 {
+.startimg.data-v-802aa65c {
 	width: 200px;
 	height: 200px;
 	/* box-shadow: 0 1px 3px rgba(0,0,0,0.14); */
 	margin-top: 108px;
 }
-.p-bx.data-v-1ad1f154 {
+.p-bx.data-v-802aa65c {
 	width: 100%;
 	position: absolute;
 	bottom: 20px;
@@ -25,11 +25,11 @@
 	text-align: center;
 	color: #616161;
 }
-.p-bx view.data-v-1ad1f154 {
+.p-bx view.data-v-802aa65c {
 	width: 100%;
 	font-size: 24rpx;
 }
-.p-bx .p-size.data-v-1ad1f154 {
+.p-bx .p-size.data-v-802aa65c {
 	font-size: 33rpx;
 	margin-bottom: 6px;
 }

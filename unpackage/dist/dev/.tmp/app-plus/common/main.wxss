@@ -215,7 +215,6 @@ uni-page-wrapper {
 	    transform: translate(-50%);
 }
 
-
 /*
  * @Author: mikey.pi 
  * @Date: 2019-06-14 16:37:11 
@@ -309,7 +308,7 @@ input::-webkit-input-placeholder {
 
 .mTop30p {
 	margin-top: 30px;
-	padding: 40px 26px 10px 15px;
+	padding: 40px 16px 10px 15px;
 }
 
 
@@ -411,7 +410,7 @@ input::-webkit-input-placeholder {
 
 
 .j {
-	color: #28C792;
+	color:#32BF75;
 }
 
 
@@ -595,11 +594,15 @@ input::-webkit-input-placeholder {
 
 .nav {
 	background-color: #fff;
-	padding: 15px 13px 10px;
+	padding: 12px 13px 12px;
 	border-radius: 0 0 0.25rem 0.25rem;
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	position: relative;
+}
+
+.nav .navbar:first-child{
+	margin-bottom: 16px;
 }
 
 .navbar {
@@ -608,14 +611,11 @@ input::-webkit-input-placeholder {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	/* justify-content: center; */
 }
 
 .navbar view {
-	width: 20%;
+	width: 25%;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -676,6 +676,7 @@ input::-webkit-input-placeholder {
 	border-radius: 0.25rem;
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	margin-bottom: 10px;
 }
 
 .line {
@@ -809,7 +810,7 @@ input::-webkit-input-placeholder {
 
 .userIntegral {
 	width: 100%;
-	min-height: 105px;
+	min-height: 78px;
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	display: -webkit-box;
@@ -840,7 +841,8 @@ input::-webkit-input-placeholder {
 }
 
 .userIntegral .orderNumber {
-	padding-right: 10px;
+	padding-right: 5px;
+	width: 100%;
 	margin: 3px 0 6px 10px;
 }
 
@@ -861,9 +863,9 @@ input::-webkit-input-placeholder {
 }
 
 .userIntegral .integral {
-	min-width: 105px;
-	min-height: 110px;
-	max-width: 120px;
+	min-width: 118px;
+	min-height: 78px;
+	max-width: 125px;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -905,17 +907,15 @@ input::-webkit-input-placeholder {
 
 .userIntegral .integral view {
 	color: #00A8FF;
-	font-size: 2.5rem;
-	text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
-
+	font-size: 0.85rem;
+	/* text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
+	font-weight: 550; */
 }
 
 .userIntegral .integral text {
-	font-size: 0.8rem;
-	-webkit-box-flex: 1;
-	-webkit-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
+	color: #9E9E9E;
+	font-size: 0.65rem;
+	margin-bottom: 8px;
 }
 
 .userIntegral .integrals {
@@ -953,7 +953,7 @@ input::-webkit-input-placeholder {
 .userIntegral .integrals view {
 	color: #fff;
 	font-size: 2.5rem;
-	text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
+	/* text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16); */
 
 }
 
@@ -1210,7 +1210,7 @@ input {
 .harvest-address {
 	width: 100%;
 	padding: 10px 10px 10px 0;
-	/* border-bottom: 1px solid #e5e5e5; */
+	border-bottom: 1px solid #e5e5e5;
 	color: #757575;
 
 }
@@ -1282,7 +1282,7 @@ input {
 }
 
 .orderList text {
-	font-size: 0.9em;
+	font-size: 0.75rem;
 }
 
 .orderList view {
@@ -1337,11 +1337,6 @@ input {
 	color: #FF596A;
 }
 
-.stateBox .orderListState {
-	/* position: absolute;
-	right: 20px; */
-}
-
 /* top15 */
 
 .state {
@@ -1391,7 +1386,7 @@ input {
 }
 
 .detailsState text {
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 }
 
 .timeOut {
@@ -1547,9 +1542,10 @@ input {
 }
 
 .m-two-btn .cal {
-	background-color: #fff;
+	background-color: #00A8FF;
+	color: #fff;
 	padding: 0;
-	border: 1px solid #CBCBCB;
+/* 	border: 1px solid #CBCBCB; */
 
 }
 

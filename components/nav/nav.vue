@@ -12,15 +12,29 @@
 					</image>
 					<text>订单查询</text>
 				</view>
-				<view @tap="reserveOil(role)">
+				<view @tap="reserveOil(role,0)">
 					<image src="../../static/img/appointment.png" alt />
 					</image>
 					<text>预约提油</text>
 				</view>
+				<view @tap="reserveOil(role,1)">
+					<image src="../../static/img/scene.png" alt />
+					</image>
+					<text>现场提油</text>
+				</view>
+				
+			</view>
+			<view class="navbar">
 				<view @tap="reserveOilList(role)">
 					<image src="../../static/img/record.png" alt />
 					</image>
 					<text>提油记录</text>
+				</view>
+				
+				<view @tap="invoice(role)">
+					<image src="../../static/img/invoice.png" alt />
+					</image>
+					<text>领取发票</text>
 				</view>
 				<view @tap="integral">
 					<image src="../../static/img/integral.png" alt />
@@ -46,6 +60,7 @@
 			return {
 				buy_apply: false,
 				get_apply: false,
+				get_invoice:false,
 				arr: ''
 			}
 		},
@@ -85,16 +100,9 @@
 							uni.navigateTo({
 								url: '../../pages/order/order'
 							})
-						} else if (this.arr.role_status == -1) {
+						} else if(this.arr.role_status == -1){
 							uni.showToast({
 								title: '审核中...待审核通过后请重新登录',
-								icon: 'none',
-								position:'bottom',
-							})
-						} else {
-							// console.log(1)
-							uni.showToast({
-								title: '权限不够，请在用户信息界面申请权限',
 								icon: 'none',
 								position:'bottom',
 							})
@@ -162,7 +170,8 @@
 				}
 
 			},
-			reserveOil(role) {
+// 预约提油
+			reserveOil(role,type) {
 
 				const token = uni.getStorageSync('Token');
 				if (token == null || token == '' || token == undefined) {
@@ -191,7 +200,7 @@
 					if (this.get_apply) {
 						if (this.arr.role_status == 1 || this.arr.role_status == 2) {
 							uni.navigateTo({
-								url: '../../pages/reserveOil/reserveOil'
+								url: '../../pages/reserveOil/reserveOil?type='+type
 							})
 						} else if (this.arr.role_status == -1) {
 							uni.showToast({
@@ -248,6 +257,67 @@
 					})
 				}
 
+			},
+			// 现场提油
+			invoice(role){
+				console.log(role)
+				const token = uni.getStorageSync('Token');
+				if (token == null || token == '' || token == undefined) {
+					uni.showModal({
+						title: '提示',
+						content: '用户信息已失效，请重新登录',
+						success: function(res) {
+							if (res.confirm) {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							} else {
+								uni.reLaunch({
+									url: '../login/login'
+								})
+							};
+						}
+					})
+				} else {
+					// console.log(role)
+					role.forEach((el, index) => {
+							if (el.code == 3) {
+								this.get_invoice = true;
+								this.arr = el
+								console.log(el,index)
+							}
+					})
+					// console.log(this.arr)
+					if (this.get_invoice) {
+						console.log(this.arr.role_status)
+						if (this.arr.role_status == 1 || this.arr.role_status == 2) {
+							uni.navigateTo({
+								url: '../../pages/receiveInvoice/receiveInvoice'
+							})
+						} else if (this.arr.role_status == -1) {
+							uni.showToast({
+								title: '审核中...待审核通过后请重新登录',
+								icon: 'none',
+								position:'bottom',
+							})
+						} else {
+							// console.log(1)
+							uni.showToast({
+								title: '权限不够，请在用户信息界面申请权限',
+								icon: 'none',
+								position:'bottom',
+							})
+						}
+					} else {
+						// console.log(2)
+						uni.showToast({
+							title: '权限不够，请在用户信息界面申请权限',
+							icon: 'none',
+							position:'bottom',
+						})
+					}
+				
+				}
 			},
 			integral() {
 				uni.showToast({

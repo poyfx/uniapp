@@ -410,12 +410,28 @@
 
 			//角色选择
 			buyAndCarry() {
-				// console.log(this.checkUser)
+				
+				console.log(this.checkUser)
+				var str = String(this.checkUser)
+				// if(str == '发票领取人,购油人'){
+				// 	console.log(100)
+				// 	this.info.user = '购油人,发票领取人'
+					
+				// }else if(str == '发票领取人,提油人'){
+				// 	console.log(99)
+				// 	this.info.user = '提油人,发票领取人'
+					
+				// }else if(str == '提油人,购油人'){
+				// 	console.log(98)
+				// 	this.info.user = '购油人,提油人'
+				// };
 				this.info.user = String(this.checkUser);
+				
 				this.users = !this.users;
 			},
 			checkboxChange(e) {
-				// console.log(e)
+				this.info.user = ''
+				 console.log(e)
 				this.checkUser = e.target.value;
 				var items = this.items,
 					values = e.detail.value;
@@ -632,11 +648,14 @@
 
 															} else if (this.checkUser.length == 2) {
 																console.log(_this.user)
-																if (this.checkUser[0] == '购油人' && this.checkUser[1] == '提油人') {
+																if (this.checkUser[0] == '购油人' && this.checkUser[1] == '提油人' || this.checkUser[0] == '提油人' && this.checkUser[1] == '购油人') {
+																	this.info.user='购油人,提油人'
 																	this.info.role = '1,2';
-																} else if (this.checkUser[0] == '购油人' && this.checkUser[1] == '发票领取人') {
+																} else if (this.checkUser[0] == '购油人' && this.checkUser[1] == '发票领取人' || this.checkUser[0] == '发票领取人' && this.checkUser[1] == '购油人') {
+																	this.info.user='购油人,发票领取人'
 																	this.info.role = '1,3';
-																} else {
+																} else if(this.checkUser[0] == '提油人' && this.checkUser[1] == '发票领取人' || this.checkUser[0] == '发票领取人' && this.checkUser[1] == '提油人'){
+																		this.info.user='提油人,发票领取人'
 																	this.info.role = '2,3';
 																}
 																console.log(this.info.role)

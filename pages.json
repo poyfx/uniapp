@@ -562,7 +562,7 @@
             "style" : {
 				"titleNView": {
 					"titleColor": "#424242",
-					"titleText": "填写代提油人信息",
+					"titleText": "填写代领人信息",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
 					"titleSize": "40upx"
@@ -598,7 +598,7 @@
 		    "style" : {
 				"titleNView": {
 					"titleColor": "#424242",
-					"titleText": "购油单",
+					"titleText": "对账函",
 					"backgroundColor": "#FFF",
 					"fontWeight": "normal",
 					"titleSize": "40upx"
@@ -629,9 +629,46 @@
 				}
 			}
 		}
+        ,{
+            "path" : "pages/receiveInvoice/receiveInvoice",
+            "style" : {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
+				"app-plus": {
+					"animationType": "pop-out",
+					"animationDuration": 200,
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "white"
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/receiveInvoice/receiveIntaile/receiveIntaile",
+            "style" : {
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"onReachBottomDistance": 100,
+				"app-plus": {
+					"animationType": "pop-out",
+					"animationDuration": 200,
+					"bounce": "none",
+					"titleNView": false,
+					"statusbar": {
+						"background": "white"
+					}
+				}
+			}
+        }
+
     ],
 	"tabBar": {
-		"color": "black",
+		"color": "#000000",
 		"selectedColor": "#009DFF",
 		"backgroundColor": "#fff",
 		"list": [{

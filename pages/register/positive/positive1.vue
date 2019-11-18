@@ -25,7 +25,7 @@
 				<view class="flex  m-info" v-show="btn.stepThree">
 					<view class="flex center m-info-content">
 						<text>授权书有效期</text>
-						<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;"
+						<input placeholder="请选择" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;"
 						 v-model="inputs" />
 						<view class="" style="width: 178px;"  v-show="!times">
 							<view class="" v-show="!times">
@@ -416,7 +416,7 @@
 								uni.uploadFile({
 									//注册地址
 									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									 url: 'http://dev.pjy.name:8180/api/bizcust/base/regist',
+									 url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
 									files: imgs,
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -465,7 +465,7 @@
 								uni.uploadFile({
 									//注册地址
 									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									url: 'http://dev.pjy.name:8180/api/bizcust/base/regist',
+									url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -514,7 +514,7 @@
 								uni.uploadFile({
 									//注册地址
 									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									url: 'http://dev.pjy.name:8180/api/bizcust/base/regist',
+									url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -596,7 +596,7 @@
 // 								uni.uploadFile({
 // 									//申请权限地址
 // 
-// 									url: 'http://dev.pjy.name:8180/api/bizcust/user/oil_authorize',
+// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
 // 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 // 									fileType: 'image',
 // 									filePath: '',
@@ -637,7 +637,7 @@
 // 							} else if (this.user == '提油人') {
 // 								uni.uploadFile({
 // 									//申请权限地址
-// 									url: 'http://dev.pjy.name:8180/api/bizcust/user/oil_authorize',
+// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
 // 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 // 									fileType: 'image',
 // 									filePath: '',
@@ -680,7 +680,7 @@
 // 								uni.uploadFile({
 // 									//申请权限地址
 // 									//url: 'http://192.168.0.156:8080/api/bizcust/user/oil_authorize',
-// 									url: 'http://dev.pjy.name:8180/api/bizcust/user/oil_authorize',
+// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
 // 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 // 									fileType: 'image',
 // 									filePath: '',

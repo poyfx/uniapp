@@ -3,7 +3,11 @@
 		<view class="content">
 			<view class="fget-num paddingLeft15">
 				<infoText :textValue="invoice.company" v-model="company" :disabled="invoice.disabled"></infoText>
-				<infoText :textValue="invoice.moeny" v-model="moeny" :disabled="invoice.disabled"></infoText>
+				<!-- <infoText :textValue="invoice.moeny" v-model="invoice_money" :disabled="invoice.disabled"></infoText> -->
+				<view class="flex m-info">
+					<text>开票金额</text>
+					<input type="type" :value="invoice_money" :disabled="invoice.disabled" style="font-weight: 550;"/>
+				</view>
 				<view class="fget-eara flex invoiceType underline" @tap="chooseInvoice">
 					<view class="">
 						<text class="first-li" style="margin-right: 10px;">发票类型：</text>
@@ -19,7 +23,11 @@
 			<view class="fget-num paddingLeft15" style="margin-top: 10px;" v-show="show">
 
 				<infoText :textValue="invoice.way" value="按数量" :disabled="invoice.disabled"></infoText>
-				<infoText :textValue="invoice.currentOil" v-model="currentOil" :disabled="invoice.disabled"></infoText>
+				<!-- <infoText :textValue="invoice.currentOil" v-model="currentOil" :disabled="invoice.disabled"></infoText> -->
+				<view class="flex m-info">
+					<text style="width: 5rem;">当前购油量</text>
+					<input type="type" :value="currentOil" :disabled="invoice.disabled" style=""/>
+				</view>
 				<view class="underline">
 					<view class="first-li" style="padding:10px 0 15px 0px; color: #616161;">拆分方案(单位:吨)</view>
 					<view class="splitNum">
@@ -82,7 +90,7 @@
 				invoice: {
 					company: 'xxxxxxxx公司',
 					disabled: true,
-					moeny: '111111111',
+					// moeny: '111111111',
 					placeholder: '22222222',
 					company: '开票公司',
 					moeny: '开票金额',
@@ -105,7 +113,8 @@
 				no: '',
 				company: '',
 				status: '',
-				moeny: '',
+				moeny: '',//总价格
+				invoice_money:'',
 			}
 		},
 		onLoad(option) {
@@ -114,7 +123,8 @@
 			this.no = option.no; //订单编号
 			this.company = option.company; //购油公司
 			this.status = option.status; //状态
-			this.moeny = option.moeny; //油价
+			this.moeny =option.moeny; //油价
+			this.invoice_money = '￥' + option.moeny;
 		},
 		methods: {
 			incoiceSplit1(e){
@@ -464,11 +474,11 @@
 			// 计算拆分发票油的数量
 			surplusOil() {
 				if (this.list.length === 0) {
-					return parseFloat(this.currentOil - this.num)
+					return parseFloat(this.currentOil - this.num).toFixed(6)
 				} else {
 					let sum = parseFloat(this.currentOil - this.num)
 					for (let i = 0; i < this.list.length; i++) {
-						sum = sum - this.list[i].nums;
+						sum = (sum - this.list[i].nums).toFixed(6);
 					}
 					return sum
 				}

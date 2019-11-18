@@ -9,7 +9,7 @@
 			<view class="flex never" v-else>
 				<text v-if="item.role_status == 0">未申请</text>
 				<text v-else-if="item.role_status == 2">已过期</text>
-				<text v-else-if="item.role_status == -1">等待后台审核</text>
+				<text v-else-if="item.role_status == -1">已申请，审核中</text>
 				<text v-else-if="item.role_status == 9">审核不通过</text>
 				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
 			</view>
@@ -29,17 +29,21 @@
 				take: false,
 				role: [],
 				statusAll: '',
-				userCode: ''
+				userCode: '',
+				customer_id:'',
 			}
 		},
 		onLoad(option) {
-			this.getJurisdiction()
+			
 			this.userCode = option.userCode;
-
+			this.customer_id = option.customer_id
+			this.getJurisdiction()
 		},
 		methods: {
 			getJurisdiction() {
-				this.test.post('user/list_user_role').then(res => {
+				this.test.post('user/list_user_role',{
+					customer_id:this.customer_id
+				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.role = res.data.value;
@@ -90,7 +94,7 @@
 
 
 			GoBuyApply(stu, name, ind) {
-				if (stu == 0 || stu == 2) {
+				if (stu == 0 || stu == 2 || stu == 9) {
 					if (this.role[ind].code == 1) {
 						uni.navigateTo({
 							url: './uploadImg/uploadImg?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code

@@ -24,7 +24,6 @@
 </template>
 
 <script>
-	var $api = "http://192.168.0.156:8080/api/bizcust/";
 	export default {
 		data() {
 			return {

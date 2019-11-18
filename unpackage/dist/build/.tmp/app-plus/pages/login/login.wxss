@@ -1,5 +1,5 @@
 
-.background.data-v-cdade2f2 {
+.background.data-v-bcdcacbe {
 	background-color: #fff;
 	position: absolute;
 	height: 100%;
@@ -7,22 +7,22 @@
 	left: 0;
 	top: 0;
 }
-.imgTop.data-v-cdade2f2 {
+.imgTop.data-v-bcdcacbe {
 	margin: 40px auto 44px;
 	text-align: center
 }
-.loginImg.data-v-cdade2f2 {
+.loginImg.data-v-bcdcacbe {
 	width: 100px;
 	height: 100px;
 }
-.p-font.data-v-cdade2f2 {
+.p-font.data-v-bcdcacbe {
 	margin-top: 15px;
 }
-.p-font text.data-v-cdade2f2 {
+.p-font text.data-v-bcdcacbe {
 	font-size: 49rpx;
 	color: #424242;
 }
-.loginInfo.data-v-cdade2f2 {
+.loginInfo.data-v-bcdcacbe {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -34,11 +34,11 @@
 	font-size: 28rpx;
 	padding: 12px 11% 10px;
 }
-.color-dff.data-v-cdade2f2 {
+.color-dff.data-v-bcdcacbe {
 	color: #009DFF;
 	font-size: 28rpx;
 }
-.toReginster.data-v-cdade2f2 {
+.toReginster.data-v-bcdcacbe {
 	display: inline-block;
 }
 

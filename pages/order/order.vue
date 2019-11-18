@@ -44,13 +44,13 @@
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
 				<!-- 提油方式 -->
-				<view class="flex  m-info" @tap="modeShow">
+				<!-- <view class="flex  m-info" @tap="modeShow">
 					<view class="flex center m-info-content">
 						<text>提油方式</text>
 						<view>{{modeOil}}</view>
 					</view>
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
-				</view>
+				</view> -->
 
 				<view class="flex  m-info" @tap="payShow">
 					<view class="flex center m-info-content">
@@ -62,9 +62,10 @@
 
 
 				<view class="flex  m-info">
-					<view class="flex center m-info-content">
+					<view class="flex center m-info-content" style="flex: 1;padding-right: 15px;">
 						<text>购买数量</text>
-						<input type="number" :placeholder="infos.placeholder" v-model="count" @input="setNumber" placeholder-style="color:#9e9e9e" />
+						<input type="number" :placeholder="infos.placeholder" v-model="count" @input="setNumber" placeholder-style="color:#9e9e9e"
+						 style="flex: 1;" :class="placecolor?color9:colorRed" />
 					</view>
 				</view>
 
@@ -74,7 +75,7 @@
 				 :value="infos.muchOil" v-model="count"></infoText> -->
 
 				<view class="fget-eara underLine" @tap="chooseAddr" v-show="addrShow">
-					<view class="first-li">配送地址</view>
+					<view class="first-li">客户地址</view>
 					<view class="addressimg">
 						<view style="width: 90%;"> {{address}}</view>
 						<image src="../../static/img/right.png" mode="aspectFit" v-show="addrImg"></image>
@@ -170,21 +171,10 @@
 						<view>{{item.realname}}</view>
 						<view>{{item.phone}}</view>
 					</view> -->
-					<view class="harvest-address" @tap="isAddress(index)">
+					<view class="harvests-address" @tap="isAddress(index)">
 						<view>{{item.address}}</view>
 					</view>
-					<!-- <view class="harvest-write">
-						<radio-group @change="sure">
-							<label class="radio">
-								<radio :value="String(item.is_default)" :checked="index === range" />设置为默认地址
-							</label>
-						</radio-group> -->
-					<!-- 编辑修改地址 和删除地址 暂时不用 -->
-					<!-- <view class="operation">
-							<button type="defult" class="write" size="small" @tap="edit">编辑</button>
-							<button type="defult" class="write" size="small" @tap="delate">删除</button>
-						</view> -->
-					<!-- </view> -->
+
 				</view>
 
 			</view>
@@ -295,7 +285,7 @@
 				pay: false,
 				addrShow: true,
 				infos: {
-					placeholder: '请输入数量(吨)',
+					placeholder: '请输入数量(吨)，可保留六位小数',
 					buyoilText: '购买数量',
 					number: 'number',
 					muchOil: "",
@@ -332,6 +322,10 @@
 				addrImg: false, //地址图片
 				buyCompanyID: '',
 				nextConpany: false, //区分购油公司和售油公司
+				dotIdx: '', //输入数量小数点下标
+				placecolor: true, //输入数量颜色
+				color9: 'color9',
+				colorRed: 'colorRed',
 			}
 		},
 		onLoad() {
@@ -457,14 +451,14 @@
 			chooseCompany(e) {
 				const that = this;
 				console.log(e);
-				 //售油公司
-					console.log('收油')
-					this.more = true;
-					this.company = this.newDatas[e].name;
-					this.companyId = this.newDatas[e].id;
-					this.showCompany = !this.showCompany;
-					this.myManager = '请选择';
-				
+				//售油公司
+				console.log('收油')
+				this.more = true;
+				this.company = this.newDatas[e].name;
+				this.companyId = this.newDatas[e].id;
+				this.showCompany = !this.showCompany;
+				this.myManager = '请选择';
+
 			},
 			//购油公司
 			chooseownCompany(e) {
@@ -635,13 +629,13 @@
 			// 		console.log(err)
 			// 	})
 			// },
-			//设置输入框只能为正整数
+			//设置输入框只能为整数
 			setNumber(val) {
-				console.log(val.detail.value)
-				if (val.detail.value < 1) {
+				this.placecolor = true;
+				if (val.detail.value < 0) {
 					this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
 					return uni.showToast({
-						title: '购买数量不能小于一吨',
+						title: '购买数量不能小于0',
 						icon: 'none',
 						position: 'bottom',
 					})
@@ -650,6 +644,36 @@
 				// 	this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
 				// }
 
+				// this.count = val.detail.value.replace(/[^\d.]/g, ""); //仅保留数字和"."
+				// this.count = val.detail.value.replace(/\.{2,}/g, "."); //两个连续的"."仅保留第一个"."
+				// this.count = val.detail.value.replace(".", "$#*").replace(/\./g, '').replace('$#*', '.'); //去除其他"."
+				// this.count = val.detail.value.replace(/^(\d+)\.(\d\d).*$/, '$1.$2');; //限制只能输入两个小数
+
+
+
+				var s = val.detail.value;
+				console.log(s)
+				let dotIdx = s.indexOf('.');
+				console.log(dotIdx)
+				this.dotIdx = dotIdx
+			
+			
+				// var reg = /^\d+(\.\d{1,2})?$/;
+				// if(reg.test(val.detail.value)){
+				//  console.log(reg.test(val.detail.value))
+				// this.count = val.detail.value;
+				// }else{
+				// uni.showToast({
+				// 	title:'最多只能输入两位小数',
+				// icon:'none',
+				// position:'bottom',
+				// })
+				// this.count = 0
+				// }
+
+				// if (val.detail.value.indexOf(".") < 0 && val.detail.value != "") { //首位是0的话去掉
+				// 	this.count = parseFloat(val.detail.value);
+				// }
 			},
 
 
@@ -717,18 +741,90 @@
 			},
 			toBuy() {
 				const that = this;
+				console.log(this.count.length, this.dotIdx)
 				if (this.myManager !== null && this.myManager !== '' && this.myManager !== '请选择') {
 					if (this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品') {
-						if (this.getTpe !== null && this.getTpe !== '') {
-							if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
-								if (this.count !== null && this.count !== '') {
-									if (this.count < 1) {
+						// if (this.getTpe !== null && this.getTpe !== '') {
+						if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
+							if (this.count !== null && this.count !== '' && this.count !== 0) {
+								if (this.dotIdx == -1) {
+									console.log(this.dotIdx)
+								return	uni.showModal({
+										title: '提示',
+										content: '提交后无法修改，是否提交',
+										success: function(res) {
+									
+											if (res.confirm) {
+												uni.showLoading({
+													title: '提交中...'
+												})
+												that.test.post('order/make_order', { //http://192.168.0.156:8080/api/bizcust/
+													org_id: that.companyId,
+													manager_id: that.myManagerId,
+													manager_name: that.myManager,
+													customer_name: that.buyCompany,
+													customer_id: that.buyCompanyID,
+													oil_type: that.productOil,
+													// get_type: that.getTpe,
+													pay_type: that.modePay,
+													count: that.count,
+													ship_addr: that.address,
+													remark: that.Remarks,
+												}).then(res => {
+													console.log(res)
+													uni.hideLoading()
+													if (res.statusCode == 200 && res.data.errorCode == 0) {
+														uni.redirectTo({
+															url: '../orderList/orderList'
+														})
+													} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+														uni.showModal({
+															title: '提示',
+															content: '用户信息已失效，请重新登录',
+															success: function(res) {
+																if (res.confirm) {
+																	uni.reLaunch({
+																		url: '../login/login'
+																	})
+																} else {
+																	uni.reLaunch({
+																		url: '../login/login'
+																	})
+																}
+															}
+														})
+													} else {
+														uni.showToast({
+															title: res.data.message,
+															icon: "none",
+															position: 'bottom',
+														})
+													}
+												}).catch(err => {
+													uni.hideLoading();
+													uni.showToast({
+														title: '提交失败',
+														icon: 'none',
+														position: 'bottom',
+													})
+													console.log(err)
+												})
+											} else {
+												return;
+											}
+										}
+									})
+																		
+								} else {
+										this.dotIdx = this.dotIdx + 7
+									if (this.count.length > this.dotIdx) {
+										this.placecolor = false;
 										uni.showToast({
-											title: '购买数量不能小于一吨',
+											title: '购买数量最多保留六位有效数字',
 											icon: 'none',
 											position: 'bottom',
 										});
-										this.count = '';
+										this.count = 0;
 									} else {
 										uni.showModal({
 											title: '提示',
@@ -746,7 +842,7 @@
 														customer_name: that.buyCompany,
 														customer_id: that.buyCompanyID,
 														oil_type: that.productOil,
-														get_type: that.getTpe,
+														// get_type: that.getTpe,
 														pay_type: that.modePay,
 														count: that.count,
 														ship_addr: that.address,
@@ -795,36 +891,39 @@
 												}
 											}
 										})
+									
 									}
-
-
-
-
-
-									//购油数量	
-								} else {
-									uni.showToast({
-										title: '请输入购油数量',
-										icon: 'none',
-										position: 'bottom',
-									})
 								}
-								//付款方式
+
+
+
+
+
+
+								//购油数量	
 							} else {
 								uni.showToast({
-									title: '请选择付款方式',
+									title: '请输入购油数量',
 									icon: 'none',
 									position: 'bottom',
 								})
 							}
-							//提油	方式
+							//付款方式
 						} else {
 							uni.showToast({
-								title: '请选择提油方式',
+								title: '请选择付款方式',
 								icon: 'none',
 								position: 'bottom',
 							})
 						}
+						//提油	方式
+						// } else {
+						// 	uni.showToast({
+						// 		title: '请选择提油方式',
+						// 		icon: 'none',
+						// 		position: 'bottom',
+						// 	})
+						// }
 						//油品	
 					} else {
 						uni.showToast({
@@ -1075,5 +1174,20 @@
 
 	.company_content {
 		margin-top: 55px;
+	}
+
+	.color9 {
+		color: #666666;
+	}
+
+	.colorRed {
+		color: red;
+	}
+	.harvests-address {
+		width: 100%;
+		padding: 10px 10px 10px 0;
+	/* 	border-bottom: 1px solid #e5e5e5; */
+		color: #757575;
+	
 	}
 </style>

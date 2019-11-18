@@ -1,5 +1,5 @@
 <template>
-	<view class="">
+	<view id="index">
 		<view class="self_header_bar">
 			<view class="top_view"></view>
 		</view>
@@ -69,13 +69,13 @@
 
 
 			<!-- 当前油价 -->
-			<view class="oilPrices">
+			<view class="oilPrices" v-show="priceshow">
 				<view class="flex index-title">
 					<view class="">
 						<text class="line"></text>
 						<text class="title-p">当前油品批发价</text>
 					</view>
-					<text class="paddingRight15">{{date}}</text>
+					<text class="paddingRight15 date_c">{{datasTime}}</text>
 				</view>
 				<view class="priceLi">
 					<view class="flex titles">
@@ -136,44 +136,74 @@
 			</view>
 
 			<!-- 地炼价格行情 -->
-			<!-- <view class="oilPrices">
-			<view class="flex index-title">
-				<view class="">
-					<text class="line"></text>
-					<text class="title-p">地炼价格行情</text>
-				</view>
-				<text  class="paddingRight15">{{date}}</text>
-			</view>
-			<view class="priceLi">
-				<view class="flex titles">
-					<text>油品名称</text>
-					<text>价格(元/吨)</text>
-					<text class="paddingRight19">涨跌幅</text>
-				</view>
-			</view>
-			<view class="priceLi">
-				<view class="nowPrice">
-					<text>0#柴油</text>
+			<view class="oilPrices">
+				<view class="flex index-title">
 					<view class="">
-						<text>{{datas.oilPrice.diesel_0}}</text>
+						<text class="line"></text>
+						<text class="title-p">地炼价格行情</text>
 					</view>
+					<text class="paddingRight15 date_c">{{refiningTime}}</text>
+				</view>
+				<view class="priceLi">
+					<view class="flex titles">
+						<text>油品名称</text>
+						<text>价格(元/吨)</text>
+						<text class="paddingRight19">涨跌幅</text>
+					</view>
+				</view>
+				<view class="priceLi">
+					<view class="nowPrice">
+						<text>0#柴油</text>
+						<view class="">
+							<text :class="refiningGain.diesel_0>0?s:j">{{refining.diesel_0}}</text>
+						</view>
 
-					<text>+2.33%</text>
+					<text class="paddingLeft10" :class="refiningGain.diesel_0>0?s:j">{{refiningGain.diesel_0}}%</text>
+					</view>
+				</view>
+				<view class="priceLi">
+					<view class="nowPrice">
+						<text>-10#柴油</text>
+						<view class="">
+							<text :class="refiningGain.gas_95>0?s:j">{{refining.diesel_10}}</text>
+						</view>
+				
+						<text class="paddingLeft10" :class="refiningGain.diesel_10>0?s:j">{{refiningGain.diesel_10}}%</text>
+					</view>
+				</view>
+
+				<view class="priceLi">
+					<view class="nowPrice">
+						<text>92#国六</text>
+						<view class="">
+							<text :class="refiningGain.gas_92>0?s:j">{{refining.gas_92}}</text>
+						</view>
+
+						<text class="paddingLeft10" :class="refiningGain.gas_92>0?s:j">{{refiningGain.gas_92}}%</text>
+					</view>
+				</view>
+
+				<view class="priceLi">
+					<view class="nowPrice">
+						<text class="oilName">95#国六</text>
+						<view class="oilPrice">
+							<text :class="refiningGain.gas_95>0?s:j">{{refining.gas_95}}</text>
+						</view>
+
+						<text class="paddingLeft10" :class="refiningGain.gas_95>0?s:j">{{refiningGain.gas_95}}%</text>
+					</view>
+				</view>
+				<view class="priceLiNo">
+					<view class="nowPrice">
+						<text class="oilName">98#国六</text>
+						<view class="oilPrice">
+							<text :class="refiningGain.gas_98>0?s:j">{{refining.gas_98}}</text>
+						</view>
+						<text class="paddingLeft10" :class="refiningGain.gas_98>0?s:j">{{refiningGain.gas_98}}%</text>
+					</view>
 				</view>
 			</view>
 
-			<view class="priceLiNo">
-				<view class="nowPrice">
-					<text>92#国六</text>
-					<view class="">
-						<text>{{datas.oilPrice.diesel_0}}</text>
-					</view>
-
-					<text>+2.33%</text>
-				</view>
-			</view>
-		</view>
- -->
 			<!-- 国际原油价格 -->
 			<!-- <view class="oilPrices">
 			<view class="flex index-title">
@@ -240,13 +270,13 @@
 				</view>
 
 				<view class="model_title">
-					<text>公告</text>
+					<text>{{noticeContent.title}}</text>
 				</view>
 				<view class="model_content">
-					<text>{{noticeContent}}</text>
+					<text>{{noticeContent.content}}</text>
 				</view>
 				<view class="model_btn">
-					<button @tap="setNoticies()">查看</button>
+					<button @tap="setNoticies(noticeContent.id)">查看</button>
 				</view>
 			</view>
 		</view>
@@ -261,7 +291,6 @@
 		mapState,
 		mapActions
 	} from 'vuex'
-	var $api = "http://192.168.0.156:8080/api/bizcust/";
 	export default {
 		data() {
 			return {
@@ -270,6 +299,10 @@
 				// myManager: '',
 				datas: [], //油价
 				gain: [],
+				datasTime:'',
+				refining:[],//地炼价格
+				refiningGain:[],//地炼涨跌幅
+				refiningTime:'',
 				img: [],
 				// role:'',
 				address: '',
@@ -289,36 +322,48 @@
 				interval: 2000,
 				duration: 500,
 				circular: true,
-				myManagerBox: {},
+				myManagerBox: {}, //客户经理集合
 				modelshow: false, //是否显示对账函通知
 				dots: false,
 				noticeContent: '', //公告内容
-				noticeshow: false,
+				noticeshow: false, //公告显示
+				priceshow: Boolean,
+				letterContent:'',
 			}
 		},
 		onShow() {
 			this.getlocation();
-
 			this.getDate();
-			console.log(this.hasLogin)
 			this.getInfo();
 			this.setLetter();
 			this.setNotice();
 			this.setDot();
+			
 		},
+		
 		methods: {
-
 			// 获取首页信息
 			getInfo() {
 				const that = this;
 				uni.getStorage({
 					key: 'userInfo',
 					success: function(res) {
-						// console.log(res)
+						console.log(res)
+							console.log( that.datas.validTime)
 						let price = res.data.oilPrice; //获取当前油价油价
 						that.datas = price.oilPrice;
 						that.gain = price.oilAmplitude;
 						that.myManagerBox = res.data.managers;
+						that.datasTime = new Date(that.datas.valid_time + 8 * 3600 * 1000).toJSON().substr(0, 10).replace('T', ' ').replace(
+							/-/g, '-')
+						
+						let bizcustRefining = res.data.bizcustRefining;
+						that.refining = bizcustRefining.refiningPrice;
+						that.refiningGain = bizcustRefining.refiningOilAmplitude;
+						
+						
+						that.refiningTime = new Date(that.refining.valid_time + 8 * 3600 * 1000).toJSON().substr(0, 10).replace('T', ' ').replace(
+							/-/g, '-')
 						if (that.myManagerBox.length < 2) {
 							that.indicatorDots = false
 						} else {
@@ -329,6 +374,8 @@
 						// that.managerTel = managerInfo.manager_phone;
 						let images = res.data.banners; //banner图
 						that.img = images;
+					
+						that.priceshow = res.data.isShow.oilPrice;
 
 					}
 				})
@@ -338,7 +385,7 @@
 			setDot() {
 
 				this.test.post('user/count_letter_notice').then(res => {
-					console.log(res)
+					// console.log(res)
 					if (res.data.value == 0) {
 						this.dots = false
 					} else {
@@ -353,13 +400,14 @@
 			setLetter() {
 				// const that = this;
 				this.test.post('user/get_letter').then(res => {
-					console.log(res)
+					 console.log(res)
 					if (res.statusCode && res.data.errorCode == 0) {
 						if (res.data.value == null || res.data.value == '') {
 							return
 						} else {
 							if (res.data.value.confirm_type == 0) {
 								this.modelshow = true;
+								this.letterContent = res.data.value
 							}
 						}
 
@@ -376,7 +424,7 @@
 			},
 			setAccount() {
 				uni.navigateTo({
-					url: './letter/account/account'
+					url: './letter/account/buyOilList?id='+this.letterContent.id
 				})
 			},
 			//关闭对账函
@@ -387,7 +435,7 @@
 			//处理公告
 			setNotice() {
 				this.test.post('user/list_notices').then(res => {
-					console.log(res)
+					 console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						if (res.data.value.length == 0) {
 							console.log(1)
@@ -396,7 +444,7 @@
 
 							if (res.data.value[0].is_read == 0) {
 								this.noticeshow = true;
-								this.noticeContent = res.data.value[0].content
+								this.noticeContent = res.data.value[0]
 							}
 						}
 
@@ -416,9 +464,9 @@
 				this.noticeshow = false;
 				// console.log(event.target)
 			},
-			setNoticies() {
+			setNoticies(id) {
 				uni.navigateTo({
-					url: './letter/notice/notice'
+					url: './letter/notice/noticeList?id='+id
 				})
 			},
 			// 打电话
@@ -595,6 +643,10 @@
 		align-items: center;
 		align-self: center;
 	}
+	.date_c{
+		font-size: 0.65rem;
+		color: #9E9E9E;
+	}
 
 	/* 天气样式 */
 	.sy-weather {
@@ -654,7 +706,7 @@
 
 	.oilName,
 	.oilPrice {
-		flex: 1;
+		/* flex: 1; */
 	}
 
 	.swiper {
@@ -715,7 +767,7 @@
 		width: 100%;
 		height: 100vh;
 		background: rgba(0, 0, 0, 0.3);
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: 10000;
@@ -723,7 +775,8 @@
 
 	.model {
 		width: 300px;
-		height: 178px;
+		min-height: 178px;
+		max-height: 400px;
 		position: relative;
 		top: 50%;
 		margin: -89px auto 0;
@@ -733,6 +786,7 @@
 
 	.model_title {
 		text-align: center;
+		display: flex;
 	}
 
 	.model_title text {
@@ -755,6 +809,7 @@
 
 	.model_btn button {
 		width: 11em;
+		font-size: 0.85rem;
 		background-color: #00A8FF;
 		border-radius: 1.2rem;
 		color: #fff;

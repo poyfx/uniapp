@@ -20,4 +20,7 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
+.orderDate_text.data-v-425d6f58 {
+	min-width: 90%;
+}
 

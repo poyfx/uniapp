@@ -1,16 +1,15 @@
 <template>
 	<view>
 		<view class="mContent pB10" style="margin-bottom: 50px;">
-			<view class="mB10 bgcf  borderRadius8" v-for="item in orderInfo" :key="item.id">
+			<view class="mB10 bgcf  borderRadius8" v-for="item in orderInfo" :key="item.id" style="box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);">
 				<!-- @tap="getOrderNumber(item.no,item.oil_remain)" -->
 				<view class="userIntegral_company">
 					<text>{{item.customer_name}}</text>
 				</view>
-				<view class="userIntegral">
+				<view class="oilUserIntegral">
 					<view class="orderNumber">
 						<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 						<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
-						<view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view>
 					</view>
 					<view class="integral">
 						<text>剩余油量(吨)</text>
@@ -119,6 +118,59 @@
 	}
 </script>
 
-<style>
+<style scoped>
+.oilUserIntegral{
+	width: 100%;
+	min-height: 78px;
+	/* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16); */
+	display: flex;
+	justify-content: space-between;
+}
+.oilUserIntegral .orderNumber {
+	padding-right: 5px;
+	width: 100%;
+	margin: 3px 0 6px 10px;
+}
 
+.orderNumber view {
+	padding: 3px;
+	margin: 5px 0;
+}
+
+.orderNumber view .numberTitle {
+	font-size: 14px;
+	/* font-weight: bold;
+	color: #616161; */
+	margin-right: 8px;
+}
+
+.orderNumber view text {
+	font-size: 14px;
+}
+.oilUserIntegral .integral {
+	min-width: 118px;
+	min-height: 78px;
+	max-width: 125px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	align-self: center;
+	justify-content: center;
+	padding: 6px 0;
+	border-radius: 0 8px 8px 0;
+	border-left: 1px solid #e5e5e5;
+}
+.oilUserIntegral .integral view {
+	color: #00A8FF;
+	font-size: 0.85rem;
+	/* text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
+	font-weight: 550; */
+}
+
+.oilUserIntegral .integral text {
+	color: #9E9E9E;
+	font-size: 0.65rem;
+	margin-bottom: 8px;
+}
 </style>

@@ -21,9 +21,21 @@
 						</view>
 					</view>
 					<view class="state2 flex">
+						<text>油品单价：</text>
+						<view>
+							<text>{{order.oil_price}}吨</text>
+						</view>
+					</view>
+					<view class="state2 flex">
 						<text>订单总金额：</text>
 						<view class="">
-							<text>￥{{orderPrice}}</text>
+							<text>￥{{order.total_money}}</text>
+						</view>
+					</view>
+					<view class="state2 flex" v-show='order.credit_rating !== "普通"'>
+						<text>剩余{{order.credit_rating}}额度：</text>
+						<view class="">
+							<text>￥{{order.credit_limit}}</text>
 						</view>
 					</view>
 				</view>
@@ -82,18 +94,20 @@
 						<text>购油单位：</text>
 						<text>{{order.org_name}}</text>
 					</view>
-
+					<view>
+						<text>提油油库：</text>
+						<text>{{order.oil_depot}}</text>
+					</view>
 					<view v-show="status == 3 || status == 4 || status == 5 || status == 9">
 						<text>发票状态：</text>
 						<text v-if="order.is_invoice == '是'">已开发票</text>
 						<text v-else>未开发票</text>
 					</view>
 
-					<view>
+					<!-- <view>
 						<text>提油方式：</text>
 						<text>{{order.get_type}}</text>
-						<!-- <text v-if="order.get_type ==1">自提</text> -->
-					</view>
+					</view> -->
 					<view v-show="order.get_type == '配送'">
 						<text>送油地址：</text>
 						<text>{{order.ship_addr}}</text>
@@ -123,7 +137,7 @@
 
 			<view class="takeorder_content flex bgcf" v-show="status ==2">
 				<view class="takeorder_content_cash">
-					￥{{orderPrice}}
+					￥{{order.total_money}}
 				</view>
 				<view class="takeorder_content_btnbox flex">
 					<text class="takeorder_content_cbtn" @tap="cancelOrder">取消订单</text>
@@ -146,7 +160,7 @@
 			</view>
 			<view class="m-two-btn" style="margin: 60px 0 15px;" v-show="status == 9  ">
 				<button class="tButton close" @tap="closePage">关闭</button>
-				<button class="tButton " type="primary" style="padding: 0;" @tap="sureBuy(order.count)" v-show="order.is_invoice == '否'">补开发票</button>
+				<button class="tButton close" type="primary" style="padding: 0;" @tap="sureBuy(order.count)" v-show="order.is_invoice == '否'">补开发票</button>
 			</view>
 		</view>
 	</view>
@@ -235,7 +249,7 @@
 			sureBuy(num) {
 				uni.redirectTo({
 					url: "../invoice/invoice?id=" + this.orderId + '&number=' + num + '&no=' + this.no + '&status=' + this.status +
-						'&company=' + this.order.org_name + '&moeny=' + this.oilPrice
+						'&company=' + this.order.org_name + '&moeny=' + this.order.total_money
 				})
 			},
 			tells() {

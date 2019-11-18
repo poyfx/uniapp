@@ -114,6 +114,7 @@
 				duration: 500,
 				circular: true,
 				cac: {},
+				customer_id:'',
 			}
 		},
 		onShow() {
@@ -165,6 +166,7 @@
 					success: function(res) {
 						console.log(res)
 						that.cac = res.data.managers;
+						that.customer_id = res.data.user.roles[0].customer_id
 						console.log(that.cac.length)
 						if (that.cac.length < 2) {
 							that.indicatorDots = false
@@ -186,7 +188,7 @@
 			},
 			toApply() {
 				uni.navigateTo({
-					url: 'apply/apply'
+					url: 'apply/apply?customer_id='+this.customer_id
 				})
 			},
 			// 修改地址
@@ -268,7 +270,7 @@
 
 <style>
 	.swipers {
-		min-height: 310px;
+		min-height: 285px;
 	}
 
 

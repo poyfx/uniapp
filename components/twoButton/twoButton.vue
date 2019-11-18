@@ -36,6 +36,6 @@
 
 <style>
 .m-btn{
-	background: #00A8FF;
+	background-color: #00A8FF;
 }
 </style>

@@ -161,7 +161,7 @@
 							})
 						console.log(imgs,this.feedbacks)  
 							uni.uploadFile({
-								url: 'http://dev.pjy.name:8180/api/bizcust/user/submit_feedback',
+								url: 'http://dev.pjy.name:8170/api/bizcust/user/submit_feedback',
 								files: imgs,
 								formData: {
 									feedback:this.feedbacks
@@ -239,9 +239,11 @@
 	text-align: center;
 	line-height: 65px;
 	color: #d9d9d9;
+	border-radius: 4px;
 }
 .img_list image{
 	width: 80px;
 	height: 80px;
+	border-radius: 4px;
 }
 </style>

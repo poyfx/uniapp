@@ -38,7 +38,7 @@
 			<view class="flex  m-info" v-show="btn.Dates">
 				<view class="flex center m-info-content">
 					<text>授权书有效期</text>
-					<input placeholder="请选择,需与授权书的有效日期一致" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
+					<input placeholder="请选择" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;" />
 					<view class="" v-show="!times">
 						<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="day" @change="bindChange"></ruiDatePicker> -->
 						<view class="" style="width: 178px;" v-show="!times">
@@ -61,7 +61,7 @@
 			<view class="flex  m-info" v-show="btn.dates">
 				<view class="flex center m-info-content">
 					<text>授权书有效期</text>
-					<input placeholder="请选择,需与授权书的有效日期一致" v-show="apply_one" @tap="changeTime" disabled="true" style="width: 222px; height: 37.5px;" />
+					<input placeholder="请选择" v-show="apply_one" @tap="changeTime" disabled="true" style="width: 222px; height: 37.5px;" />
 					<view class="" style="width: 178px;" v-show="!apply_one">
 						<!-- <ruiDatePicker class="day" fields="day" start="2010-00-00" end="2030-12-31" :value="days" @change="bindChanges"></ruiDatePicker> -->
 						<view class="" v-show="!apply_one  ">
@@ -84,7 +84,7 @@
 			<view class="flex  m-info" v-show="btn.voiceDates">
 				<view class="flex center m-info-content">
 					<text>授权书有效期</text>
-					<input placeholder="请选择,需与授权书的有效日期一致" v-show="apply_two" @tap="voiceDates" disabled="true" style="width: 222px; height: 37.5px;" />
+					<input placeholder="请选择" v-show="apply_two" @tap="voiceDates" disabled="true" style="width: 222px; height: 37.5px;" />
 					<view class="" style="width: 178px;" v-show="!apply_two">
 						<view class="" v-show="!apply_two  ">
 							<view class="" @tap="voiceDates">
@@ -545,7 +545,7 @@
 					}
 				})
 				console.log(imgs)
-				 var _url = 'http://dev.pjy.name:8180/api/bizcust/base/regist'
+				 var _url = 'http://dev.pjy.name:8170/api/bizcust/base/regist'
 				//var _url = 'http://192.168.0.156:8080/api/bizcust/base/regist'
 				if (this.img.length >= 5) {
 					if (this.ifvoiceDate == true) {

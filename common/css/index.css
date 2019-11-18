@@ -25,20 +25,22 @@
 /* 导航 */
 .nav {
 	background-color: #fff;
-	padding: 15px 13px 10px;
+	padding: 12px 13px 12px;
 	border-radius: 0 0 0.25rem 0.25rem;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	position: relative;
 }
-
+.nav .navbar:first-child{
+	margin-bottom: 16px;
+}
 .navbar {
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	/* justify-content: center; */
 }
 
 .navbar view {
-	width: 20%;
+	width: 25%;
 	display: flex;
 	flex-direction: column;
 	align-content: center;
@@ -82,6 +84,7 @@
 	padding: 15px 0px 0 15px;
 	border-radius: 0.25rem;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	margin-bottom: 10px;
 }
 
 .line {
@@ -189,7 +192,7 @@
 /* 积分 */
 .userIntegral {
 	width: 100%;
-	min-height: 105px;
+	min-height: 78px;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 	display: flex;
 	justify-content: space-between;
@@ -210,7 +213,8 @@
 }
 
 .userIntegral .orderNumber {
-	padding-right: 10px;
+	padding-right: 5px;
+	width: 100%;
 	margin: 3px 0 6px 10px;
 }
 
@@ -231,9 +235,9 @@
 }
 
 .userIntegral .integral {
-	min-width: 105px;
-	min-height: 110px;
-	max-width: 120px;
+	min-width: 118px;
+	min-height: 78px;
+	max-width: 125px;
 	display: flex;
 	flex-direction: column;
 	align-content: center;
@@ -254,19 +258,20 @@
 
 .userIntegral .integral view {
 	color: #00A8FF;
-	font-size: 2.5rem;
-	text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
-
+	font-size: 0.85rem;
+	/* text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
+	font-weight: 550; */
 }
 
 .userIntegral .integral text {
-	font-size: 0.8rem;
-	flex: 1;
+	color: #9E9E9E;
+	font-size: 0.65rem;
+	margin-bottom: 8px;
 }
 
 .userIntegral .integrals {
 	min-width: 105px;
-	min-height: 105px;
+	min-height: 90px;
 	max-width: 120px;
 	display: flex;
 	flex-direction: column;
@@ -281,8 +286,8 @@
 
 .userIntegral .integrals view {
 	color: #fff;
-	font-size: 2.5rem;
-	text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
+	font-size: 1.7rem;
+	/* text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16); */
 
 }
 
@@ -502,7 +507,7 @@ input {
 .harvest-address {
 	width: 100%;
 	padding: 10px 10px 10px 0;
-	/* border-bottom: 1px solid #e5e5e5; */
+	border-bottom: 1px solid #e5e5e5;
 	color: #757575;
 
 }
@@ -556,7 +561,7 @@ input {
 }
 
 .orderList text {
-	font-size: 0.9em;
+	font-size: 0.75rem;
 }
 
 .orderList view {
@@ -591,10 +596,7 @@ input {
 	color: #FF596A;
 }
 
-.stateBox .orderListState {
-	/* position: absolute;
-	right: 20px; */
-}
+
 
 /* top15 */
 .state {
@@ -638,7 +640,7 @@ input {
 }
 
 .detailsState text {
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 }
 
 .timeOut {
@@ -757,9 +759,10 @@ input {
 }
 
 .m-two-btn .cal {
-	background-color: #fff;
+	background-color: #00A8FF;
+	color: #fff;
 	padding: 0;
-	border: 1px solid #CBCBCB;
+/* 	border: 1px solid #CBCBCB; */
 
 }
 

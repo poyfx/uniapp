@@ -48,6 +48,10 @@
 							购油数量：
 							<text>{{item.count}}吨</text>
 						</view>
+						<view v-show='item.status !== 1'>
+							油品单价：
+							<text>￥{{item.oil_price}}/吨</text>
+						</view>
 					</view>
 					<view class="state-right" v-if='item.status == 1'>
 						<view class="">
@@ -61,7 +65,7 @@
 						</view>
 						<view class="oilPrice flex">
 							<text class="orderListState unit">总金额:</text>
-							<text class="orderListState price">￥{{item.oil_price*item.count}}</text>
+							<text class="orderListState price">￥{{(item.total_money)}}</text>
 						</view>
 					</view>
 
@@ -71,7 +75,7 @@
 						</view>
 						<view class="oilPrice flex">
 							<text class="orderListState unit">总金额:</text>
-							<text class="orderListState price">￥{{item.oil_price*item.count}}</text>
+							<text class="orderListState price">￥{{(item.total_money)}}</text>
 						</view>
 					</view>
 

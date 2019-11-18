@@ -95,7 +95,7 @@
 <style scoped>
 	.background {
 		/* background-color: #fff; */
-		background: url('http://dev.pjy.name:8180/uploads/bizcust_main.png') no-repeat;
+		background: url('http://dev.pjy.name:8170/uploads/bizcust_main.png') no-repeat;
 		background-size: 100% 100%;
 		position: absolute;
 		top: 0;
