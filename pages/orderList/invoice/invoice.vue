@@ -53,7 +53,7 @@
 			</view>
 			<view class="m-two-btn mTop15 pB10">
 
-				<button class="tButton cal" v-show="status == 2" @tap="cancelOrder">无需发票</button>
+				<button class="tButton cal" v-show="status == 2" @tap="cancelOrder">暂不开票</button>
 				<tButton :type="btn.type" class="tButton" :disabled="btn.disabled" :content="btn.con2" @invoiceSure="invoiceSure(invoice.currentOil)"></tButton>
 			</view>
 		</view>

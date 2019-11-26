@@ -239,4 +239,10 @@ text {
 .colorRed {
 	color: red;
 }
+.harvests-address {
+	width: 100%;
+	padding: 10px 10px 10px 0;
+/* 	border-bottom: 1px solid #e5e5e5; */
+	color: #757575;
+}
 

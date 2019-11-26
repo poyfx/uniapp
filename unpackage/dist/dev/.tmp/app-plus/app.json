@@ -77,7 +77,7 @@
     "autoclose": true
   },
   "appname": "安徽石油",
-  "compilerVersion": "2.4.1",
+  "compilerVersion": "2.4.2",
   "usingComponents": {
     "titles": "/components/title",
     "uni-icons": "/components/uni-icon/uni-icons"

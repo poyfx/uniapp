@@ -70,7 +70,7 @@
 
 			<view class=" pB10" style="width: 100%; padding:15px 10px;">
 				<view class="  bgcf  borderRadius8 mB10" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
-				 :key="item.id">
+				 :key="item.id"  style="box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);">
 					<view class="userIntegral_company">
 						<text>{{item.customer_name}}</text>
 					</view>
@@ -78,11 +78,15 @@
 						<view class="orderNumber">
 							<view><text class="numberTitle">订单编号:</text> <text>{{item.no}}</text></view>
 							<view><text class="numberTitle">油品类型:</text> <text>{{item.oil_type}}</text></view>
+							<view><text class="numberTitle">提油油库:</text> <text>{{item.oil_depot}}</text></view>
+							<view><text class="numberTitle">购油时间:</text> <text>{{orderTime[index]}}</text></view>
 							<!-- <view><text class="numberTitle">提油方式:</text> <text>{{item.get_type}}</text></view> -->
 						</view>
 						<view class="integral">
+							<view class="name"><text>{{item.user_name}}</text></view>
 							<text>剩余油量(吨)</text>
 							<view>{{item.oil_remain}}</view>
+						
 						</view>
 					</view>
 
@@ -184,6 +188,7 @@
 				showimg: false,
 				realname: '',
 				username: '',
+				orderTime:[],
 				reserve_type: "", //0预约提油，1现场提油
 				 // api: 'http://192.168.0.156:8080/api/bizcust/'
 			}
@@ -220,6 +225,8 @@
 						// this.chooseNumber.orderInfo = res.data.value
 						res.data.value.forEach(el => {
 							this.chooseNumber.orderInfo.push(el)
+							this.orderTime.push(new Date(el.confirm_time + 8 * 3600 * 1000).toJSON().substr(0, 10).replace('T', ' ').replace(
+							/-/g, '-'))
 						})
 						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
@@ -230,6 +237,8 @@
 								icon: "none",
 								position: 'bottom',
 							})
+						}else{
+							this.more = true;
 						}
 					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
 						uni.showModal({

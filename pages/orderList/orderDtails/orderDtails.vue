@@ -20,13 +20,13 @@
 							<text>{{order.count}}吨</text>
 						</view>
 					</view>
-					<view class="state2 flex">
+					<view class="state2 flex"  v-show="showUnit">
 						<text>油品单价：</text>
 						<view>
-							<text>{{order.oil_price}}吨</text>
+							<text>{{order.oil_price}}/吨</text>
 						</view>
 					</view>
-					<view class="state2 flex">
+					<view class="state2 flex" v-show="showUnit">
 						<text>订单总金额：</text>
 						<view class="">
 							<text>￥{{order.total_money}}</text>
@@ -40,19 +40,25 @@
 					</view>
 				</view>
 				<view class="discount">
-					<view>
-						<text class="oT" v-if="status == -1">已取消</text>
-						<text class="oT" v-if="status == -2">超时已取消</text>
-						<text class="oL" v-if="status == 2">已确认价格</text>
-						<text class="oL" v-if="status == 3">待付款</text>
-						<text class="oL" v-if="status == 4">待确认收款</text>
-						<text class="oL" v-if="status == 5">待开票</text>
-						<text class="oP" v-if="status == 9">已完成</text>
-					</view>
+
+					<text class="oT" v-if="status == -1">已取消</text>
+					<text class="oT" v-if="status == -2" style="font-size: 0.95rem;">超时已取消</text>
+					<text class="s" v-if="status == -3">已拒绝</text>
+					<text class="oL" v-if="status == 1">等待价格</text>
+					<text class="oL" v-if="status == 2">已确认价格</text>
+					<text class="oL" v-if="status == 3">待付款</text>
+					<text class="oL" v-if="status == 4">待确认收款</text>
+					<text class="oL" v-if="status == 5">待开票</text>
+					<text class="oP" v-if="status == 9">已完成</text>
+
 				</view>
 			</view>
 
-			<view class="fget-num detailsProcess" @tap="goRotate" v-if="status == 2 || status == 3 || status == 4 || status == 5 ||status == 9">
+			<view class="fget-num detailsProcess" @tap="goRotate" v-if="status == 1 || status == 2 || status == 3 || status == 4 || status == 5 ||status == 9">
+				<view class="processText" v-if="status == 1">
+					<view class="">{{statusinfo.content}}</view>
+					<view>{{dates}}</view>
+				</view>
 				<view class="processText" v-if="status == 2">
 					<view class="">{{statusinfo.content}}</view>
 					<view>{{dates}}</view>
@@ -94,7 +100,7 @@
 						<text>购油单位：</text>
 						<text>{{order.org_name}}</text>
 					</view>
-					<view>
+					<view v-show="showUnit">
 						<text>提油油库：</text>
 						<text>{{order.oil_depot}}</text>
 					</view>
@@ -108,9 +114,13 @@
 						<text>提油方式：</text>
 						<text>{{order.get_type}}</text>
 					</view> -->
-					<view v-show="order.get_type == '配送'">
-						<text>送油地址：</text>
-						<text>{{order.ship_addr}}</text>
+					<view v-if="status == 1 || status == -1 || status == -3 " style="display: flex;">
+						<text>客户地址：</text>
+						<text style="flex: 1;  ">{{order.ship_addr}}</text>
+					</view>
+					<view v-if="status == -3" style="display: flex;">
+						<text>拒绝原因：</text>
+						<text class="s" style="flex: 1;  ">{{order.denial_reason}}</text>
 					</view>
 				</view>
 
@@ -130,6 +140,10 @@
 				</view>
 
 			</view> -->
+			<view class=" nextBox" style="margin: 60px 0 15px;" v-show="status ==1">
+				<button type="primary" style="width:90%; background-color: #FFFFFF; border: 1px solid #DEDEDE; color: #616161;"
+				 @tap="cancelOrder">取消预约</button>
+			</view>
 			<view class="m-two-btn " style="margin: 60px 0 15px;" v-show="status ==3">
 				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
 				<tButton :type="type" class="tButton" :content="btnValue" :disabled="disabled" @tell="tells"></tButton>
@@ -150,7 +164,7 @@
 				<button class="tButton cal" @tap="cancelOrder">取消订单</button>
 				<tButton :type="type" class="tButton" :content="con2" @sureBuy="sureBuy(order.count)"></tButton>
 			</view> -->
-			<view class=" nextBox" style="margin: 60px 0 15px;" v-show="status ==-1  || status ==-2 || status ==5">
+			<view class=" nextBox" style="margin: 60px 0 15px;" v-show="status ==-1  || status ==-2 || status == -3 || status ==5">
 				<mButton :type="type" :value="closed" @tell="closePage"></mButton>
 			</view>
 
@@ -194,6 +208,7 @@
 				status: '',
 				statusinfo: [],
 				staypay: 'staypay',
+				showUnit:true,
 				// delivery:'100',
 				// discount:this.order.oil_price,//优惠
 			}
@@ -203,11 +218,16 @@
 			this.status = option.status;
 			this.no = option.no;
 			this.getOrderDtails();
-			if (this.status == -2 || this.status == -1 || this.status == 9 || this.status == 5) {
+			if (this.status == -2 || this.status == -1 || this.status == 1 || this.status == 9 || this.status == 5 || this.status == -3) {
 				this.have = true
 
 			} else {
 				this.have = false
+			}
+			if(this.status == -3 || this.status == -1 || this.status == 1 ){
+				this.showUnit = false;
+			}else{
+				this.showUnit = true
 			}
 		},
 		methods: {
@@ -465,5 +485,9 @@
 	.takeorder_content_sbtn {
 		color: #fff;
 		background-color: #00A8FF;
+	}
+
+	.orderDetails text {
+		font-size: 0.75rem;
 	}
 </style>

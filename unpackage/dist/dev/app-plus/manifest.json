@@ -7,7 +7,7 @@
   "id": "__UNI__C5F30A1",
   "name": "安徽石油",
   "version": {
-    "name": "0.1.16",
+    "name": "0.1.19",
     "code": 1
   },
   "description": "",
@@ -148,7 +148,7 @@
     "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\",\"id\":0}",
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.4.1",
+      "compilerVersion": "2.4.2",
       "control": "v8",
       "nvueCompiler": "uni-app",
       "renderer": "auto",

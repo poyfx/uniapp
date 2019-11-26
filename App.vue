@@ -206,7 +206,7 @@
 	uni-page-wrapper {
 		display: flex;
 	}
-	.swipers .uni-swiper-dots-horizontal {
+	/* .swipers .uni-swiper-dots-horizontal {
 		left: 50%;
 		bottom: 62%;
 		text-align: center;
@@ -214,5 +214,5 @@
 		-webkit-transform: translate(-50%);
 		transform: translate(-50%);
 	
-	}
+	} */
 </style>

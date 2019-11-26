@@ -62,14 +62,22 @@
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.address" @editAddress="editAddress"></infoImg>
 					<infoImg :type="info.type" :disabled="info.disabled" :imgText="info.editPsd" @toEditPsd="toEditPsd"></infoImg>
 
-					<view class="flex  m-infos" @tap="toFeedback">
+					<view class="flex  m-infos" @tap="toFeedback" style="border-bottom: 1px solid #e5e5e5;">
 						<view class="flex center m-info-contents">
-							<text>{{info.feedback}}</text>
+							<text>用户反馈</text>
 
 						</view>
 						<image src="../../static/img/right.png" mode="aspectFit"></image>
 					</view>
+					<view class="flex  m-infos" @tap="testing">
+						<view class="flex center m-info-contents">
+							<text>版本更新</text>
+					
+						</view>
+						<image src="../../static/img/right.png" mode="aspectFit"></image>
+					</view>
 				</view>
+			
 			</view>
 			<view class="mTop20">
 				<button class="safeout" @tap="outsafe">安全退出</button>
@@ -101,7 +109,6 @@
 					oilNum: '待提油量',
 					address: '收货地址',
 					editPsd: '修改密码',
-					feedback: '用户反馈',
 					disabled: true,
 					type: 'text',
 					username: '',
@@ -202,6 +209,90 @@
 				uni.navigateTo({
 					url: 'modify/modify'
 				})
+			},
+			//检测版本
+			testing(){
+				switch (uni.getSystemInfoSync().platform) {
+					case 'android':
+						console.log('运行Android上');
+						// var server = "http://dev.pjy.name:8170/api/bizcust/base/get_version"; //检查更新地址
+						var appid = plus.runtime.appid
+						var version = plus.runtime.version
+						
+						// var req = { //升级检测数据  
+						// 	"appid": plus.runtime.appid,
+						// 	"version": plus.runtime.version
+						// };
+						console.log(plus.runtime.appid, plus.runtime.version)
+						this.test.get('base/getVersion', {
+							appid: appid,
+							version: version,
+							type:'android'
+						}).then(res => {
+							console.log(res)
+							var url = res.data.value.url
+							if (res.statusCode == 200 && res.data.errorCode === 0) {
+								if (res.data.value.status == 1) {
+									uni.showModal({ //提醒用户更新  
+										title: "更新提示",
+										content: res.data.value.note,
+										success: (res) => {
+											if (res.confirm) {
+												plus.runtime.openURL(url);
+											}
+										}
+									})
+								}else{
+									uni.showToast({
+										title:'当前版本已经是最新版本',
+										icon:'none',
+									})
+								}
+						
+							}
+						}).catch(err => {
+							console.log(err)
+						})
+						break;
+					case 'ios':
+						console.log('运行iOS上');
+						// var server = "http://dev.pjy.name:8170/api/bizcust/base/get_version"; //检查更新地址
+						var appid = plus.runtime.appid
+						var version = plus.runtime.version
+						
+						// var req = { //升级检测数据  
+						// 	"appid": plus.runtime.appid,
+						// 	"version": plus.runtime.version
+						// };
+						console.log(plus.runtime.appid, plus.runtime.version)
+						this.test.get('base/getVersion', {
+							appid: appid,
+							version: version,
+							type:'ios'
+						}).then(res => {
+							var url = res.data.value.url
+							if (res.statusCode == 200 && res.data.errorCode === 0) {
+								if (res.data.value.status == 1) {
+									uni.showModal({ //提醒用户更新  
+										title: "更新提示",
+										content: res.data.value.note,
+										success: (res) => {
+											if (res.confirm) {
+												plus.runtime.openURL(url);
+											}
+										}
+									})
+								}
+						
+							}
+						}).catch(err => {
+							console.log(err)
+						})
+						break;
+					default:
+						console.log('运行在开发者工具上')
+						break;
+				}
 			},
 			//安全退出
 			outsafe() {

@@ -48,7 +48,7 @@
 							购油数量：
 							<text>{{item.count}}吨</text>
 						</view>
-						<view v-show='item.status !== 1'>
+						<view v-show='item.status !== 1 && item.status !== -3 && item.status !== -1'>
 							油品单价：
 							<text>￥{{item.oil_price}}/吨</text>
 						</view>
@@ -56,6 +56,11 @@
 					<view class="state-right" v-if='item.status == 1'>
 						<view class="">
 							<text class="orderListState state ">等待价格</text>
+						</view>
+					</view>
+					<view class="state-right" v-if='item.status == -3'>
+						<view class="">
+							<text class="orderListState s">已拒绝</text>
 						</view>
 					</view>
 
@@ -261,17 +266,17 @@
 				})
 			},
 			orderDtails(status, id, order) {
-				if (status == 1) {
-					uni.showToast({
-						title: '价格正在计算中,请稍等',
-						icon: 'none',
-						position:'bottom',
-					})
-				} else {
+				// if (status == 1) {
+				// 	uni.showToast({
+				// 		title: '价格正在计算中,请稍等',
+				// 		icon: 'none',
+				// 		position:'bottom',
+				// 	})
+				// } else {
 					uni.navigateTo({
 						url: './orderDtails/orderDtails?id=' + id + '&no=' + order + '&status=' + status
 					})
-				}
+				// }
 
 			},
 			changeMsg(e) {

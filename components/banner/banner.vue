@@ -5,7 +5,7 @@
 				<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 					<swiper-item v-for="item in img" :key="item.id">
 				<!-- 	<web-view :src="item.link"> -->
-						<view class="swiper-item"><image :src="item.photo" @tap="otherWeb(item.link)" ></image></view>
+						<view class="swiper-item"><image :src="item.photo" @tap="otherWeb(item.link)" mode="aspectFill"></image></view>
 					<!-- </web-view> -->
 					</swiper-item>
 				</swiper>

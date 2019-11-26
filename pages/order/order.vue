@@ -39,7 +39,9 @@
 				<view class="flex  m-info" @tap="chooseOilShow">
 					<view class="flex center m-info-content">
 						<text>选择油品</text>
-						<view>{{productOil}}</view>
+						<input type="text" placeholder="选择油品" v-model="productOil" disabled="true" placeholder-style="color:#9e9e9e"
+						 style="flex: 1;" />
+						<!-- <view>{{productOil}}</view> -->
 					</view>
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
@@ -55,7 +57,9 @@
 				<view class="flex  m-info" @tap="payShow">
 					<view class="flex center m-info-content">
 						<text>付款方式</text>
-						<view>{{modePay}}</view>
+						<input type="text" placeholder="请选择付款方式" v-model="modePay" disabled="true" placeholder-style="color:#9e9e9e"
+						 style="flex: 1;" />
+						<!-- <view>{{modePay}}</view> -->
 					</view>
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
 				</view>
@@ -74,13 +78,13 @@
 				<!-- <infoText :textValue="infos.buyoilText" :type="infos.number" @input="setNumber" :placeholder="infos.placeholder"
 				 :value="infos.muchOil" v-model="count"></infoText> -->
 
-				<view class="fget-eara underLine" @tap="chooseAddr" v-show="addrShow">
+				<view class="fget-eara underLine addr" @tap="chooseAddr" v-show="addrShow">
 					<view class="first-li">客户地址</view>
 					<view class="addressimg">
 						<view style="width: 90%;"> {{address}}</view>
-						<image src="../../static/img/right.png" mode="aspectFit" v-show="addrImg"></image>
-					</view>
 
+					</view>
+					<image src="../../static/img/right.png" mode="aspectFit" v-show="addrImg"></image>
 				</view>
 				<view class="fget-eara">
 					<view class="first-li">备注</view>
@@ -274,9 +278,9 @@
 			return {
 				titles: '下单购油',
 				company: "",
-				productOil: '选择油品',
+				productOil: '',
 				modeOil: "选择提油方式",
-				modePay: '请选择付款方式',
+				modePay: '',
 				address: "请选择地址",
 				count: '',
 				Remarks: '',
@@ -656,8 +660,8 @@
 				let dotIdx = s.indexOf('.');
 				console.log(dotIdx)
 				this.dotIdx = dotIdx
-			
-			
+
+
 				// var reg = /^\d+(\.\d{1,2})?$/;
 				// if(reg.test(val.detail.value)){
 				//  console.log(reg.test(val.detail.value))
@@ -749,11 +753,11 @@
 							if (this.count !== null && this.count !== '' && this.count !== 0) {
 								if (this.dotIdx == -1) {
 									console.log(this.dotIdx)
-								return	uni.showModal({
+									return uni.showModal({
 										title: '提示',
 										content: '提交后无法修改，是否提交',
 										success: function(res) {
-									
+
 											if (res.confirm) {
 												uni.showLoading({
 													title: '提交中...'
@@ -814,9 +818,9 @@
 											}
 										}
 									})
-																		
+
 								} else {
-										this.dotIdx = this.dotIdx + 7
+									this.dotIdx = this.dotIdx + 7
 									if (this.count.length > this.dotIdx) {
 										this.placecolor = false;
 										uni.showToast({
@@ -891,7 +895,7 @@
 												}
 											}
 										})
-									
+
 									}
 								}
 
@@ -996,17 +1000,17 @@
 		animation: leave 0.3s;
 	}
 
-	.addressimg {
+	.addr {
 		position: relative;
 	}
 
-	.addressimg image {
+	.addr image {
 		width: 12px;
 		height: 12px;
 		position: absolute;
-		right: 5px;
+		right: 15px;
 		top: 50%;
-		margin: -6px;
+		margin-top: -6px;
 	}
 
 	.footmodel {
@@ -1183,11 +1187,12 @@
 	.colorRed {
 		color: red;
 	}
+
 	.harvests-address {
 		width: 100%;
 		padding: 10px 10px 10px 0;
-	/* 	border-bottom: 1px solid #e5e5e5; */
+		/* 	border-bottom: 1px solid #e5e5e5; */
 		color: #757575;
-	
+
 	}
 </style>

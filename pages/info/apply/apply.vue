@@ -1,22 +1,47 @@
 <template>
-	<view class="mTop15 bgcf apply">
-		<view class="flex m-apply" @tap="GoBuyApply(item.role_status,item.name,index)" v-for="(item,index) in role" :key="item.id">
+	<view class="mTop15  apply">
+		<view class="apply_manycompany bgcf" v-for="(items,index) in role" :key="index">
+			<view class="company_name flex">
+				<text>{{items[0].customer_name}}</text>
+			</view> 
+			<view class="" v-for="item in items" :key="item.id">
+				
+				<view class="flex m-apply" @tap="GoBuyApply(item.role_status,item.name,index ,item.code,item.customer_id)">
+					<text>{{item.name}}</text>
+					<view class="flex never good" v-if="item.role_status == 1">
+						<image src="../../../static/img/good.png" mode=""></image>
+						<text>已拥有权限</text>
+					</view>
+					<view class="flex never" v-else>
+						<text v-if="item.role_status == 0">未申请</text>
+						<text v-else-if="item.role_status == 2">已过期，请重申</text>
+						<text v-else-if="item.role_status == -1">已申请，审核中</text>
+						<text v-else-if="item.role_status == 9">不通过，请重申</text>
+						<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
+					</view>
+
+				</view>
+			</view>
+		</view>
+
+
+
+		<!-- <view class="flex m-apply" @tap="GoBuyApply(item.role_status,item.name,index)" v-for="(item,index) in role" :key="item.id">
 			<text>{{item.name}}</text>
 			<view class="flex never good" v-if="item.role_status == 1">
 				<image src="../../../static/img/good.png" mode=""></image>
-				<text>审核通过</text>
+				<text>已拥有权限</text>
 			</view>
 			<view class="flex never" v-else>
 				<text v-if="item.role_status == 0">未申请</text>
-				<text v-else-if="item.role_status == 2">已过期</text>
+				<text v-else-if="item.role_status == 2">已过期，请重申</text>
 				<text v-else-if="item.role_status == -1">已申请，审核中</text>
-				<text v-else-if="item.role_status == 9">审核不通过</text>
+				<text v-else-if="item.role_status == 9">不通过，请重申</text>
 				<image src="../../../static/img/right.png" class="" mode="aspectFit" alt></image>
 			</view>
 
 
-		</view>
-
+		</view> -->
 	</view>
 </template>
 
@@ -28,25 +53,31 @@
 				buy: true,
 				take: false,
 				role: [],
+				company: [],
 				statusAll: '',
 				userCode: '',
-				customer_id:'',
+				customer_id: '',
 			}
 		},
 		onLoad(option) {
-			
+
 			this.userCode = option.userCode;
 			this.customer_id = option.customer_id
 			this.getJurisdiction()
 		},
 		methods: {
 			getJurisdiction() {
-				this.test.post('user/list_user_role',{
-					customer_id:this.customer_id
+				const that = this;
+				var _url = 'http://192.168.0.156:9494/api/bizcust/'
+				this.test.post('user/list_user_role', {
+					customer_id: this.customer_id
 				}).then(res => {
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-						this.role = res.data.value;
+						this.company = res.data.value;
+						this.company.map(el => {
+							that.role.push(el)
+						})
 						console.log(this.role)
 						// if (this.role.length == 2) {
 						// 	console.log(1)
@@ -93,15 +124,16 @@
 
 
 
-			GoBuyApply(stu, name, ind) {
+			GoBuyApply(stu, name, ind,code,customer_id) {
 				if (stu == 0 || stu == 2 || stu == 9) {
-					if (this.role[ind].code == 1) {
+					console.log(code)
+					if (code == 1) {
 						uni.navigateTo({
-							url: './uploadImg/uploadImg?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code
+							url: './uploadImg/uploadImg?name=' + "apply" + '&user=' + name + '&userCode=' + code +'&customer_id='+customer_id
 						})
 					} else {
 						uni.navigateTo({
-							url: '../../register/uploadFace/uploadFace?name=' + "apply" + '&user=' + name + '&userCode=' + this.role[ind].code
+							url: '../../register/uploadFace/uploadFace?name=' + "apply" + '&user=' + name + '&userCode=' + code+'&customer_id='+customer_id
 						})
 					}
 
@@ -134,6 +166,16 @@
 </script>
 
 <style>
+	.apply_manycompany{
+		margin-bottom: 10px;
+	}
+	.company_name{
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+		padding: 12px 12px;
+		border-bottom: 1px solid #E5E5E5;
+	}
 	.apply {
 		width: 100%;
 		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);

@@ -1,5 +1,5 @@
 <template>
-	<button  class="m-btn" :type="type" :size="size" :disabled="disabled" @tap="go">{{value}}</button>
+	<button  class="m-btn" :type="type" :size="size" :disabled="disabled" @tap="go" style="background-color: #00A8FF;">{{value}}</button>
 </template>
 
 <script>

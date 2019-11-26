@@ -202,6 +202,9 @@
 				get_type: '',
 			}
 		},
+		onShow: () => {
+			
+		},
 		onLoad(option) {
 			this.rId = option.reserve_id;
 			this.oId = option.no;

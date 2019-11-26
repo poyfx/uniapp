@@ -1,6 +1,6 @@
 
 .swipers {
-	min-height: 310px;
+	min-height: 285px;
 }
 image {
 	width: 25px;

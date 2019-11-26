@@ -1,6 +1,6 @@
 <template>
 	<view >
-		<button class="m-btn" :type="type" :disabled="disabled" @tap="go">{{content}}</button>
+		<button class="m-btn" :type="type" :disabled="disabled" @tap="go" style="background-color: #00A8FF;">{{content}}</button>
 	</view>
 </template>
 
