@@ -70,7 +70,7 @@
 
 			<view class=" pB10" style="width: 100%; padding:15px 10px;">
 				<view class="  bgcf  borderRadius8 mB10" @tap="chooseNumbers(index,item.id)" v-for="(item,index) in chooseNumber.orderInfo"
-				 :key="item.id"  style="box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);">
+				 :key="item.id" style="box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);">
 					<view class="userIntegral_company">
 						<text>{{item.customer_name}}</text>
 					</view>
@@ -86,7 +86,7 @@
 							<view class="name"><text>{{item.user_name}}</text></view>
 							<text>剩余油量(吨)</text>
 							<view>{{item.oil_remain}}</view>
-						
+
 						</view>
 					</view>
 
@@ -188,9 +188,9 @@
 				showimg: false,
 				realname: '',
 				username: '',
-				orderTime:[],
+				orderTime: [],
 				reserve_type: "", //0预约提油，1现场提油
-				 // api: 'http://192.168.0.156:8080/api/bizcust/'
+				// api: 'http://192.168.0.156:8080/api/bizcust/'
 			}
 		},
 		onLoad(option) {
@@ -226,7 +226,7 @@
 						res.data.value.forEach(el => {
 							this.chooseNumber.orderInfo.push(el)
 							this.orderTime.push(new Date(el.confirm_time + 8 * 3600 * 1000).toJSON().substr(0, 10).replace('T', ' ').replace(
-							/-/g, '-'))
+								/-/g, '-'))
 						})
 						if (res.data.value.length < 10 && res.data.value.length > 0) {
 							this.more = false;
@@ -237,30 +237,33 @@
 								icon: "none",
 								position: 'bottom',
 							})
-						}else{
+						} else {
 							this.more = true;
 						}
-					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
+						10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
 							success: function(res) {
 								if (res.confirm) {
 									uni.reLaunch({
-										url: '../../login/login'
+										url: '../login/login'
 									})
 								} else {
 									uni.reLaunch({
-										url: '../../login/login'
+										url: '../login/login'
 									})
 								}
 							}
 						})
+					} else if (res.data.errorCode == -10000) {
+						console.log(1)
 					} else {
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom',
+							position: 'bottom'
 						})
 					}
 				}).catch(err => {
@@ -298,7 +301,7 @@
 					} else if (this.values.modeOil == '自提') {
 						this.showAddress = false
 					}
-				}else{
+				} else {
 					// return
 				}
 
@@ -421,7 +424,7 @@
 								success: function(res) {
 									if (res.confirm) {
 										console.log(typeof(oilNumbers), typeof(that.id))
-										that.test.post('reserve/mark_reserve', { 
+										that.test.post('reserve/mark_reserve', {
 											bz_order_id: that.id,
 											reserve_time: that.day,
 											extract_num: oilNumbers,

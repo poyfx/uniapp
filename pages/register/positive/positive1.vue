@@ -27,7 +27,7 @@
 						<text>授权书有效期</text>
 						<input placeholder="请选择" v-show="times" @tap="changeTimes" disabled="true" style="width: 222px; height: 37.5px;"
 						 v-model="inputs" />
-						<view class="" style="width: 178px;"  v-show="!times">
+						<view class="" style="width: 178px;" v-show="!times">
 							<view class="" v-show="!times">
 								<view class="" @tap="changeTimes">
 									{{day}}
@@ -63,7 +63,9 @@
 <script>
 	import one from '../../../static/img/positive3x.png'
 	import two from '../../../static/img/otherside3x.png'
-	import three from '../../../static/img/information3x.png'
+	import three from '../../../static/img/buyoil.jpg'
+	import four from '../../../static/img/getoil.jpg'
+	import five from '../../../static/img/getinvoice.jpg'
 	import step from '../../../components/step/step'
 	import mButton from '../../../components/m-button.vue'
 	import tButton from '../../../components/twoButton/twoButton'
@@ -121,10 +123,10 @@
 				mode: 'date', //时间
 				userCode: '',
 				user: '', //申请角色
-				clientID:'',//用户clientid
-				faceimg:{
-					name:'face_photo',
-					uri:'',
+				clientID: '', //用户clientid
+				faceimg: {
+					name: 'face_photo',
+					uri: '',
 				},
 			}
 		},
@@ -132,7 +134,7 @@
 			this.user = option.user
 			this.userCode = option.userCode;
 			this.faceimg.uri = option.faceimg;
-			
+
 			console.log(this.faceimg)
 			this.register = uni.getStorageSync('register');
 			if (option.user == '发票领取人') {
@@ -148,15 +150,15 @@
 			this.getclientid();
 		},
 		methods: {
-			getclientid(){
-					const that = this;
-					uni.getStorage({
-						key:'clientid',
-						success:function(res){
-							that.clientID= res.data;
-							console.log(res)
-						}
-					})
+			getclientid() {
+				const that = this;
+				uni.getStorage({
+					key: 'clientid',
+					success: function(res) {
+						that.clientID = res.data;
+						console.log(res)
+					}
+				})
 			},
 			all() {
 				const ctx = uni.createCanvasContext('myCanvas')
@@ -309,13 +311,13 @@
 			// 第一步下一步
 
 			oneSide() {
-			
+
 				if (this.img.length == 1) {
 					console.log(1)
 					this.btn.stepOne = false;
 					this.btn.stepTwo = true;
 					this.num = 1;
-					
+
 					this.src = two;
 					this.step.active = "step-ago";
 					this.step.kong = "step-active";
@@ -324,7 +326,7 @@
 					this.btn.stepOne = false;
 					this.btn.stepTwo = true;
 					this.num = 1;
-					
+
 					this.src = this.img[1].uri;
 					this.step.active = "step-ago";
 					this.step.kong = "step-active";
@@ -332,7 +334,7 @@
 					return uni.showToast({
 						title: '请上传身份证正面照',
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 				}
 			},
@@ -342,7 +344,7 @@
 				this.btn.stepOne = true;
 				this.btn.stepTwo = false;
 				this.num = 0;
-				
+
 				this.active = "step-active";
 				this.kong = "";
 				this.src = this.img[0].uri;
@@ -350,14 +352,27 @@
 			// 第二步下一步
 			nextStep() {
 				console.log(this.count)
-			
+
 				if (this.img.length == 2) {
 					this.btn.stepTwo = false;
 					this.btn.stepThree = true;
 					this.btn.Dates = true;
 					this.num = 2;
-					
-					this.src = three;
+					switch (this.register.user) {
+						case '购油人':
+							this.src = three;
+							break;
+						case '提油人':
+							this.src = four;
+							break;
+						case '发票领取人':
+							this.src = five;
+							break;
+						default:
+							break;
+					}
+
+
 					this.step.active = "step-ago";
 					this.step.kong = "step-ago";
 					this.step.kong1 = "step-active";
@@ -366,7 +381,7 @@
 					this.btn.stepThree = true;
 					this.btn.Dates = true;
 					this.num = 2;
-					
+
 					this.src = this.img[2].uri;
 					this.step.active = "step-ago";
 					this.step.kong = "step-ago";
@@ -375,7 +390,7 @@
 					return uni.showToast({
 						title: '请上传身份证反面照',
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 				}
 			},
@@ -384,7 +399,7 @@
 				this.btn.stepThree = false;
 				this.btn.stepTwo = true;
 				this.num = 1;
-				
+
 				this.step.active = "step-ago";
 				this.step.kong = "step-active";
 				this.src = this.img[1].uri;
@@ -393,12 +408,12 @@
 			threeStepNext() {
 				if (this.name == "register") {
 					console.log(this.register.role)
-					if(this.register.user == '购油人'){
-						 this.img
-					}else{
+					if (this.register.user == '购油人') {
+						this.img
+					} else {
 						this.img.push(this.faceimg)
 					}
-				console.log(10)
+					console.log(10)
 					const imgs = this.img.map((value, index) => {
 						return {
 							name: value.name,
@@ -408,7 +423,7 @@
 					console.log(imgs)
 					if (this.img.length >= 3) {
 						const that = this;
-						console.log(this.register.companyId,this.register.customerId)
+						console.log(this.register.companyId, this.register.customerId)
 						if (this.ifday == true) {
 							console.log(typeof this.register.role)
 							if (this.register.user == '购油人') {
@@ -416,7 +431,7 @@
 								uni.uploadFile({
 									//注册地址
 									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									 url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
+									url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
 									files: imgs,
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -429,18 +444,18 @@
 										"phone": this.register.userPhoneNum,
 										"city": this.register.userCity,
 										"buy_auth_exp": this.day,
-										"client_id" :this.clientID,
+										"client_id": this.clientID,
 									},
 									success: function(res) {
-										 var data = JSON.parse(res.data)
+										var data = JSON.parse(res.data)
 										//	var data = res.data
 										console.log(res)
 										if (res.statusCode == 200) {
 											if (data.errorCode == 0) {
 												uni.showToast({
 													"title": '注册已提交，审核成功后即可登录使用',
-													icon:'none',
-													position:'bottom',
+													icon: 'none',
+													position: 'bottom',
 												})
 												uni.removeStorage({
 													key: 'register'
@@ -453,7 +468,7 @@
 												uni.showToast({
 													"title": data.message,
 													"icon": 'none',
-													position:'bottom',
+													position: 'bottom',
 												});
 
 											}
@@ -478,7 +493,7 @@
 										"phone": this.register.userPhoneNum,
 										"city": this.register.userCity,
 										"get_auth_exp": this.day,
-										"client_id" :this.clientID,
+										"client_id": this.clientID,
 									},
 									success: function(res) {
 										//	var data = res.data
@@ -488,8 +503,8 @@
 											if (data.errorCode == 0) {
 												uni.showToast({
 													"title": '注册已提交，审核成功后即可登录使用',
-													icon:'none',
-													position:'bottom',
+													icon: 'none',
+													position: 'bottom',
 												})
 												uni.removeStorage({
 													key: 'register'
@@ -502,7 +517,7 @@
 												uni.showToast({
 													"title": data.message,
 													"icon": 'none',
-													position:'bottom',
+													position: 'bottom',
 												});
 
 											}
@@ -527,7 +542,7 @@
 										"phone": this.register.userPhoneNum,
 										"city": this.register.userCity,
 										"bill_auth_exp": this.day,
-										"client_id" :this.clientID,
+										"client_id": this.clientID,
 									},
 									success: function(res) {
 										//var data = res.data
@@ -537,8 +552,8 @@
 											if (data.errorCode == 0) {
 												uni.showToast({
 													"title": '注册已提交，审核成功后即可登录使用',
-													icon:'none',
-													position:'bottom',
+													icon: 'none',
+													position: 'bottom',
 												})
 												uni.removeStorage({
 													key: 'register'
@@ -551,7 +566,7 @@
 												uni.showToast({
 													"title": data.message,
 													"icon": 'none',
-													position:'bottom',
+													position: 'bottom',
 												});
 
 											}
@@ -567,177 +582,177 @@
 							return uni.showToast({
 								title: '请选择授权有效期',
 								icon: 'none',
-								position:'bottom',
+								position: 'bottom',
 							})
 						}
 					} else {
 						return uni.showToast({
 							title: '请上传购油授权书',
 							icon: 'none',
-							position:'bottom',
+							position: 'bottom',
 						})
 					}
 					//申请提油人权限
-				} 
-// 				else {
-// 
-// 					console.log(this.register.role)
-// 					const imgs = this.img.map((value, index) => {
-// 						return {
-// 							name: value.name,
-// 							uri: value.uri
-// 						}
-// 					})
-// 					console.log(this.img, imgs)
-// 					if (this.count == 3) {
-// 						const that = this;
-// 						if (this.ifday == true) {
-// 							if (this.user == '购油人') {
-// 								uni.uploadFile({
-// 									//申请权限地址
-// 
-// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
-// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
-// 									fileType: 'image',
-// 									filePath: '',
-// 									name: 'file',
-// 									formData: {
-// 										"roles": this.userCode,
-// 										"buy_auth_exp": this.day,
-// 									},
-// 									header: {
-// 										Token: this.Token
-// 									},
-// 									success: function(res) {
-// 										var data = JSON.parse(res.data)
-// 										//var data = res.data
-// 										console.log(data)
-// 										if (res.statusCode == 200) {
-// 											if (data.errorCode == 0) {
-// 												uni.showToast({
-// 													"title": '申请成功'
-// 												})
-// 												uni.removeStorage({
-// 													key: 'register'
-// 												})
-// 												uni.switchTab({
-// 													url: '../../info/info?val=' + data.value,
-// 												});
-// 
-// 											} else {
-// 												uni.showToast({
-// 													"title": data.message,
-// 													"icon": 'none'
-// 												});
-// 
-// 											}
-// 										}
-// 									}
-// 								})
-// 							} else if (this.user == '提油人') {
-// 								uni.uploadFile({
-// 									//申请权限地址
-// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
-// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
-// 									fileType: 'image',
-// 									filePath: '',
-// 									name: 'file',
-// 									formData: {
-// 										"roles": this.userCode,
-// 										"get_auth_exp": this.day,
-// 									},
-// 									header: {
-// 										Token: this.Token
-// 									},
-// 									success: function(res) {
-// 										var data = JSON.parse(res.data)
-// 										//var data = res.data
-// 										console.log(data)
-// 										if (res.statusCode == 200) {
-// 											if (data.errorCode == 0) {
-// 												uni.showToast({
-// 													"title": '申请成功'
-// 												})
-// 												uni.removeStorage({
-// 													key: 'register'
-// 												})
-// 												uni.switchTab({
-// 													url: '../../info/info?val=' + data.value,
-// 												});
-// 
-// 											} else {
-// 												uni.showToast({
-// 													"title": data.message,
-// 													"icon": 'none'
-// 												});
-// 
-// 											}
-// 										}
-// 									}
-// 								})
-// 							} else {
-// 								console.log(this.userCode)
-// 								uni.uploadFile({
-// 									//申请权限地址
-// 									//url: 'http://192.168.0.156:8080/api/bizcust/user/oil_authorize',
-// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
-// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
-// 									fileType: 'image',
-// 									filePath: '',
-// 									name: 'file',
-// 									formData: {
-// 										"roles": this.userCode,
-// 										"bill_auth_exp": this.day,
-// 									},
-// 									header: {
-// 										Token: this.Token
-// 									},
-// 									success: function(res) {
-// 										var data = JSON.parse(res.data)
-// 										//var data = res.data
-// 										console.log(data)
-// 										if (res.statusCode == 200) {
-// 											if (data.errorCode == 0) {
-// 												uni.showToast({
-// 													"title": '申请成功'
-// 												})
-// 												uni.removeStorage({
-// 													key: 'register'
-// 												})
-// 												uni.switchTab({
-// 													url: '../../info/info?val=' + data.value,
-// 												});
-// 
-// 											} else {
-// 												uni.showToast({
-// 													"title": data.message,
-// 													"icon": 'none'
-// 												});
-// 
-// 											}
-// 										}
-// 									},
-// 
-// 								})
-// 							}
-// 
-// 
-// 
-// 
-// 						} else if (this.ifday == false) {
-// 							console.log(this.ifday)
-// 							return uni.showToast({
-// 								title: '请选择授权有效期',
-// 								icon: 'none'
-// 							})
-// 						}
-// 					} else {
-// 						return uni.showToast({
-// 							title: '请上传购油授权书',
-// 							icon: 'none'
-// 						})
-// 					}
-// 				}
+				}
+				// 				else {
+				// 
+				// 					console.log(this.register.role)
+				// 					const imgs = this.img.map((value, index) => {
+				// 						return {
+				// 							name: value.name,
+				// 							uri: value.uri
+				// 						}
+				// 					})
+				// 					console.log(this.img, imgs)
+				// 					if (this.count == 3) {
+				// 						const that = this;
+				// 						if (this.ifday == true) {
+				// 							if (this.user == '购油人') {
+				// 								uni.uploadFile({
+				// 									//申请权限地址
+				// 
+				// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
+				// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
+				// 									fileType: 'image',
+				// 									filePath: '',
+				// 									name: 'file',
+				// 									formData: {
+				// 										"roles": this.userCode,
+				// 										"buy_auth_exp": this.day,
+				// 									},
+				// 									header: {
+				// 										Token: this.Token
+				// 									},
+				// 									success: function(res) {
+				// 										var data = JSON.parse(res.data)
+				// 										//var data = res.data
+				// 										console.log(data)
+				// 										if (res.statusCode == 200) {
+				// 											if (data.errorCode == 0) {
+				// 												uni.showToast({
+				// 													"title": '申请成功'
+				// 												})
+				// 												uni.removeStorage({
+				// 													key: 'register'
+				// 												})
+				// 												uni.switchTab({
+				// 													url: '../../info/info?val=' + data.value,
+				// 												});
+				// 
+				// 											} else {
+				// 												uni.showToast({
+				// 													"title": data.message,
+				// 													"icon": 'none'
+				// 												});
+				// 
+				// 											}
+				// 										}
+				// 									}
+				// 								})
+				// 							} else if (this.user == '提油人') {
+				// 								uni.uploadFile({
+				// 									//申请权限地址
+				// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
+				// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
+				// 									fileType: 'image',
+				// 									filePath: '',
+				// 									name: 'file',
+				// 									formData: {
+				// 										"roles": this.userCode,
+				// 										"get_auth_exp": this.day,
+				// 									},
+				// 									header: {
+				// 										Token: this.Token
+				// 									},
+				// 									success: function(res) {
+				// 										var data = JSON.parse(res.data)
+				// 										//var data = res.data
+				// 										console.log(data)
+				// 										if (res.statusCode == 200) {
+				// 											if (data.errorCode == 0) {
+				// 												uni.showToast({
+				// 													"title": '申请成功'
+				// 												})
+				// 												uni.removeStorage({
+				// 													key: 'register'
+				// 												})
+				// 												uni.switchTab({
+				// 													url: '../../info/info?val=' + data.value,
+				// 												});
+				// 
+				// 											} else {
+				// 												uni.showToast({
+				// 													"title": data.message,
+				// 													"icon": 'none'
+				// 												});
+				// 
+				// 											}
+				// 										}
+				// 									}
+				// 								})
+				// 							} else {
+				// 								console.log(this.userCode)
+				// 								uni.uploadFile({
+				// 									//申请权限地址
+				// 									//url: 'http://192.168.0.156:8080/api/bizcust/user/oil_authorize',
+				// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
+				// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
+				// 									fileType: 'image',
+				// 									filePath: '',
+				// 									name: 'file',
+				// 									formData: {
+				// 										"roles": this.userCode,
+				// 										"bill_auth_exp": this.day,
+				// 									},
+				// 									header: {
+				// 										Token: this.Token
+				// 									},
+				// 									success: function(res) {
+				// 										var data = JSON.parse(res.data)
+				// 										//var data = res.data
+				// 										console.log(data)
+				// 										if (res.statusCode == 200) {
+				// 											if (data.errorCode == 0) {
+				// 												uni.showToast({
+				// 													"title": '申请成功'
+				// 												})
+				// 												uni.removeStorage({
+				// 													key: 'register'
+				// 												})
+				// 												uni.switchTab({
+				// 													url: '../../info/info?val=' + data.value,
+				// 												});
+				// 
+				// 											} else {
+				// 												uni.showToast({
+				// 													"title": data.message,
+				// 													"icon": 'none'
+				// 												});
+				// 
+				// 											}
+				// 										}
+				// 									},
+				// 
+				// 								})
+				// 							}
+				// 
+				// 
+				// 
+				// 
+				// 						} else if (this.ifday == false) {
+				// 							console.log(this.ifday)
+				// 							return uni.showToast({
+				// 								title: '请选择授权有效期',
+				// 								icon: 'none'
+				// 							})
+				// 						}
+				// 					} else {
+				// 						return uni.showToast({
+				// 							title: '请上传购油授权书',
+				// 							icon: 'none'
+				// 						})
+				// 					}
+				// 				}
 
 			},
 			// 选择时间
@@ -760,7 +775,7 @@
 				} else {
 					return;
 				}
-			
+
 			},
 		},
 		computed: {
@@ -795,7 +810,7 @@
 		align-content: center;
 		align-items: center;
 		align-self: center;
-		
+
 	}
 
 	.m-info-content text {

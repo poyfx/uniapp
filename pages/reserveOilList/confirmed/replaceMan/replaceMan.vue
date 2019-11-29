@@ -28,7 +28,7 @@
 					<radio value="已阅读" :checked='checked' @tap="cancel" />
 				</label>
 				<text>已阅读</text>
-				<text style="color: #009DFF; ;" @tap="exemption">《免责条款》</text>
+				<text style="color: #009DFF; ;" @tap="exemption">《{{type}}免责条款》</text>
 			</view>
 		</view>
 		<view class="replace_info_btn_content">
@@ -59,6 +59,7 @@
 				Token: '',
 				id: '', //订单ID
 				name: '', //区分进入页面
+				type:'',//免责条款名字
 			}
 		},
 		onLoad(option) {
@@ -67,8 +68,11 @@
 			this.oil_type = option.type;
 			this.id = option.id;
 			this.name = option.name,
-				console.log(this.Token);
 			this.getToken();
+			if(this.name !== "invoice"){
+				return this.type = '提油代领人'
+			}
+			return this.type = '发票代领人'
 		},
 		methods: {
 			getToken() {
@@ -104,8 +108,9 @@
 				})
 			},
 			exemption() {
+				
 				uni.navigateTo({
-					url: '../exemption/exemption'
+					url: '../exemption/exemption?name='+this.type
 				})
 			},
 			send() {

@@ -23,7 +23,7 @@
 							<text>发票状态</text>
 							<view class="confirmed_status">
 								<text class="state" v-if="reserveInfo.status == 0">未领取</text>
-								<text class="state" v-else-if="reserveInfo.status == 1">已领取</text>
+								<text class=" j" v-else-if="reserveInfo.status == 1">已领取</text>
 							</view>
 
 						</view>
@@ -111,7 +111,7 @@
 				</view>
 
 
-				<view class="invoice_btnbox flex">
+				<view class="invoice_btnbox flex" v-show="reserveInfo.status== 0">
 					<button type="primary" @tap="apply(0)" v-if="reserveInfo.is_instead == 0">申请代领人</button>
 					<button class="exchange" type="primary" @tap="apply(1)" v-else>更换代领人</button>
 				</view>

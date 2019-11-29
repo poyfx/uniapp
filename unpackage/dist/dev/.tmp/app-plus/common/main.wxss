@@ -789,7 +789,7 @@ input::-webkit-input-placeholder {
 	width: 100%;
 	padding: 9px 0 10px;
 	text-align: center;
-	border-bottom: 1px solid #e5e5e5;
+	/* border-bottom: 1px solid #e5e5e5; */
 }
 
 .userIntegral_company text {
@@ -811,8 +811,7 @@ input::-webkit-input-placeholder {
 .userIntegral {
 	width: 100%;
 	min-height: 78px;
-	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
-	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+/* 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16); */
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -847,7 +846,7 @@ input::-webkit-input-placeholder {
 }
 
 .orderNumber view {
-	padding: 3px;
+/* 	padding: 3px; */
 	margin: 5px 0;
 }
 
@@ -863,8 +862,8 @@ input::-webkit-input-placeholder {
 }
 
 .userIntegral .integral {
-	min-width: 118px;
-	min-height: 78px;
+	min-width: 130px;
+	min-height: 122px;
 	max-width: 125px;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -889,9 +888,9 @@ input::-webkit-input-placeholder {
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
 	        justify-content: center;
-	padding: 6px 0;
+	padding: 6px 10px 6px 0;
 	border-radius: 0 8px 8px 0;
-	border-left: 1px solid #e5e5e5;
+	/* border-left: 1px solid #e5e5e5; */
 }
 
 .userinfos {
@@ -907,14 +906,33 @@ input::-webkit-input-placeholder {
 
 .userIntegral .integral view {
 	color: #00A8FF;
-	font-size: 0.85rem;
+	font-size: 0.7rem;
 	/* text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.16);
 	font-weight: 550; */
 }
 
+.userIntegral .integral .name {
+		-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+		        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+		padding: 11px 12px;
+		margin-bottom: 10px;
+		border-radius: 0.2rem;
+	    min-width: 122px;
+		max-width: 122;
+	    text-align: center;
+		overflow: hidden;
+		
+}
+
+.userIntegral .integral .name text{
+	font-size: 0.95rem;
+	color: #00A8FF;
+	white-space:nowrap;
+}
+
 .userIntegral .integral text {
 	color: #9E9E9E;
-	font-size: 0.65rem;
+	font-size: 0.7rem;
 	margin-bottom: 8px;
 }
 

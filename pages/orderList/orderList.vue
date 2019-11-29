@@ -232,7 +232,8 @@
 								position: 'bottom',
 							})
 						};
-					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
+						10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -248,11 +249,13 @@
 								}
 							}
 						})
+					} else if (res.data.errorCode == -10000) {
+						console.log(1)
 					} else {
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position:'bottom',
+							position: 'bottom'
 						})
 					}
 				}).catch(err => {
@@ -260,7 +263,7 @@
 					uni.showToast({
 						title: '加载失败',
 						icon: 'none',
-						position:'bottom',
+						position: 'bottom',
 					})
 					console.log(err)
 				})
@@ -273,9 +276,9 @@
 				// 		position:'bottom',
 				// 	})
 				// } else {
-					uni.navigateTo({
-						url: './orderDtails/orderDtails?id=' + id + '&no=' + order + '&status=' + status
-					})
+				uni.navigateTo({
+					url: './orderDtails/orderDtails?id=' + id + '&no=' + order + '&status=' + status
+				})
 				// }
 
 			},

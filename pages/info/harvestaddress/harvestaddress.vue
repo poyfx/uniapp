@@ -52,27 +52,29 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value
-					}else if(res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003){
+					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
 							success: function(res) {
 								if (res.confirm) {
 									uni.reLaunch({
-										url: '../login/login'
+										url: '../../login/login'
 									})
 								} else {
 									uni.reLaunch({
-										url: '../login/login'
+										url: '../../login/login'
 									})
 								}
 							}
 						})
-					}else{
+					}else if(res.data.errorCode == -10000 ){
+						console.log(1)
+					} else {
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position:'bottom',
+							position: 'bottom'
 						})
 					}
 				}).catch(err => {

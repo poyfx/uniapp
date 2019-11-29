@@ -42,16 +42,16 @@
 	-webkit-animation: leave 0.3s;
 	        animation: leave 0.3s;
 }
-.addressimg {
+.addr {
 	position: relative;
 }
-.addressimg image {
+.addr image {
 	width: 12px;
 	height: 12px;
 	position: absolute;
-	right: 5px;
+	right: 15px;
 	top: 50%;
-	margin: -6px;
+	margin-top: -6px;
 }
 .footmodel {
 	width: 100%;
@@ -242,7 +242,7 @@ text {
 .harvests-address {
 	width: 100%;
 	padding: 10px 10px 10px 0;
-/* 	border-bottom: 1px solid #e5e5e5; */
+	/* 	border-bottom: 1px solid #e5e5e5; */
 	color: #757575;
 }
 

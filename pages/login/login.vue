@@ -105,7 +105,11 @@
 								console.log(res)
 								uni.setStorage({
 									key: 'Token',
-									data: res.data.value.token
+									data: res.data.value.access_token
+								})
+								uni.setStorage({
+									key: 'TokenR',
+									data: res.data.value.refresh_token
 								})
 								this.handeLogin(datas);
 								uni.switchTab({

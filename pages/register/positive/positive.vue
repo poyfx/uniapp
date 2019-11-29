@@ -131,7 +131,9 @@
 <script>
 	import one from '../../../static/img/positive3x.png'
 	import two from '../../../static/img/otherside3x.png'
-	import three from '../../../static/img/information3x.png'
+	import three from '../../../static/img/buyoil.jpg'
+	import four from '../../../static/img/getoil.jpg'
+	import five from '../../../static/img/getinvoice.jpg'
 	import step from '../../../components/step/step'
 	import mButton from '../../../components/m-button.vue'
 	import tButton from '../../../components/twoButton/twoButton'
@@ -436,7 +438,7 @@
 						this.btn.dates = true;
 						this.num = 3;
 						// this.count += 1;
-						this.src = three;
+						this.src = four;
 						this.step.kong = "step-ago",
 							this.step.kong1 = "step-ago"
 						this.step.kong2 = "step-active"
@@ -490,7 +492,7 @@
 						this.btn.voiceDates = true;
 						this.num = 4;
 						// this.count += 1;
-						this.src = three;
+						this.src = five;
 						this.step.kong1 = "step-ago",
 							this.step.kong2 = "step-ago"
 						this.step.kong3 = "step-active"

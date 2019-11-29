@@ -33,8 +33,8 @@
 
 
 		<view class="mContent list_content">
-			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.no,item.status)" v-for="(item,index) in oil" :key="item.reserve_id"
-			 @touchmove="hidetitle" @touchend="showtitle">
+			<view class="fget-num orderList" @tap="reserveList(item.reserve_id,item.no,item.status)" v-for="(item,index) in oil"
+			 :key="index" @touchmove="hidetitle" @touchend="showtitle">
 				<view class="stateBox flex">
 					<view class="">
 						<view>
@@ -67,26 +67,27 @@
 							<text>{{item.denial_reason}}</text>
 						</view>
 					</view>
-					<view class="flex reserveStatus" v-if='item.get_type=="配送"' style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
+					<!-- v-if='item.get_type=="配送"' -->
+					<view class="flex reserveStatus" style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
 						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
 						<text class="orderListState state " v-else-if="item.status==2 ">预约已确认</text>
 						<!-- <text class="orderListState state " v-if="item.status==3 ">待提油</text>
 						<text class="orderListState state " v-if="item.status==4 ">已提油</text> -->
 						<text class="orderListState oc " v-else-if="item.status==-1">已拒绝</text>
-						<text class="orderListState oc " v-else-if="item.status==7">已冲销</text>
+						<text class="orderListState s " v-else-if="item.status==7">已冲销</text>
 						<text class="orderListState s " v-else-if="item.status== 8">已取消</text>
 						<text class="orderListState oP " v-else-if="item.status==9">已完成</text>
 					</view>
-					<view class="flex reserveStatus" v-else-if="item.get_type=='自提'" style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
+					<!-- <view class="flex reserveStatus" v-else-if="item.get_type=='自提'" style="flex-direction: column; align-items: flex-end;padding: 10px 0;">
 						<text class="orderListState state " v-if="item.status==1">等待预约确认</text>
 						<text class="orderListState state " v-else-if="item.status==2 ">预约已确认</text>
-						<!-- <text class="orderListState state " v-if="item.status==2 ">待提油</text> -->
-						<!-- <text class="orderListState state " v-if="item.status==4 ">请确认收油</text> -->
+						<text class="orderListState state " v-if="item.status==2 ">待提油</text>
+						<text class="orderListState state " v-if="item.status==4 ">请确认收油</text>
 						<text class="orderListState oc " v-else-if="item.status==7">已冲销</text>
 						<text class="orderListState s " v-else-if="item.status==8 ">已取消</text>
 						<text class="orderListState oc " v-else-if="item.status==-1">已拒绝</text>
 						<text class="orderListState oP " v-else-if="item.status==9">已完成</text>
-					</view>
+					</view> -->
 				</view>
 			</view>
 		</view>
@@ -208,7 +209,8 @@
 								position: 'bottom',
 							})
 						};
-					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
+						10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -224,11 +226,13 @@
 								}
 							}
 						})
+					} else if (res.data.errorCode == -10000) {
+						console.log(1)
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: 'none',
-							position: 'bottom',
+							icon: "none",
+							position: 'bottom'
 						})
 					}
 				}).catch(err => {
@@ -241,19 +245,19 @@
 					console.log(err)
 				})
 			},
-			reserveList(rId, oId,stu) {
+			reserveList(rId, oId, stu) {
 				if (stu == 7) {
-					return 
-				}else if(stu !== 1){
+					return
+				} else if (stu !== 1) {
 					uni.navigateTo({
 						url: 'confirmed/confirmed?reserve_id=' + rId + '&no=' + oId,
 					})
-				}else{
+				} else {
 					uni.showToast({
-						title:'预约确认中...',
-						icon:'none',
-						position:'bottom',
-						duration:1500,
+						title: '预约确认中...',
+						icon: 'none',
+						position: 'bottom',
+						duration: 1500,
 					})
 				}
 

@@ -117,24 +117,25 @@
 								uni.switchTab({
 									url:'../info'
 									})
-								}else if(res.data.errorCode == '-10001'){
-									uni.showModal({
-											title: '提示',
-											content: '用户信息已失效，请重新登录',
-											success: function(res) {
-												if (res.confirm) {
-													uni.reLaunch({
-														url: '../login/login'
-													})
-												} else {
-													uni.reLaunch({
-														url: '../login/login'
-													})
-												}
-											}
-										})
-									
-								}else{
+								} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+						uni.showModal({
+							title: '提示',
+							content: res.data.message,
+							success: function(res) {
+								if (res.confirm) {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								} else {
+									uni.reLaunch({
+										url: '../../login/login'
+									})
+								}
+							}
+						})
+					}else if(res.data.errorCode == -10000 ){
+						return
+					}else{
 									uni.showToast({
 										title:'上传失败',
 										icon:'none',

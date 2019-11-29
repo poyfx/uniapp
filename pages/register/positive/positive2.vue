@@ -91,7 +91,9 @@
 <script>
 	import one from '../../../static/img/positive3x.png'
 	import two from '../../../static/img/otherside3x.png'
-	import three from '../../../static/img/information3x.png'
+	import three from '../../../static/img/buyoil.jpg'
+	import four from '../../../static/img/getoil.jpg'
+	import five from '../../../static/img/getinvoice.jpg'
 	import step from '../../../components/step/step'
 	import mButton from '../../../components/m-button.vue'
 	import tButton from '../../../components/twoButton/twoButton'
@@ -387,7 +389,12 @@
 					this.btn.Dates = true;
 					this.num = 2;
 					// this.count += 1;
-					this.src = three;
+						if (this.register.user == '购油人,提油人' || this.register.user == '购油人,发票领取人') {
+							this.src = three;
+						}else{
+							this.src = four;
+						}
+					
 					this.step.active = "step-ago",
 						this.step.kong = "step-ago"
 					this.step.kong1 = "step-active"
@@ -433,7 +440,12 @@
 						this.btn.dates = true;
 						this.num = 3;
 						// this.count += 1;
-						this.src = three;
+						if (this.register.user == '购油人,提油人') {
+							this.src = four;
+						}else{
+							this.src = five;
+						}
+						
 						this.step.kong = "step-ago",
 							this.step.kong1 = "step-ago"
 						this.step.kong2 = "step-active"

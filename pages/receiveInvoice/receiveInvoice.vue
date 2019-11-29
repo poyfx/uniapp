@@ -51,7 +51,7 @@
 					<view class="flex invoiceStatus" style="">
 
 						<text class="invoiceListState state" v-if="item.status==0">未领取</text>
-						<text class="invoiceListState s " v-if="item.status== 1">已领取</text>
+						<text class="invoiceListState j" v-if="item.status== 1">已领取</text>
 					</view>
 
 
@@ -139,7 +139,8 @@
 								position: 'bottom',
 							})
 						};
-					} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
+						10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -155,11 +156,13 @@
 								}
 							}
 						})
+					} else if (res.data.errorCode == -10000) {
+						console.log(1)
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: 'none',
-							position: 'bottom',
+							icon: "none",
+							position: 'bottom'
 						})
 					}
 				}).catch(err => {

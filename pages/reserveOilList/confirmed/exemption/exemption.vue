@@ -2,20 +2,45 @@
 	<view >
 		<titles :titles="titles"></titles>
 		<view class="bgcf exemption">
-			<view class="exemption_title">
-				用户信息丢失、泄露免责声明：
+			<view class="exemption_content flex bgcf" v-show="oilOrInvoice">
+				<view class="flex">
+					1、<text>您在申请发票代领人服务之前，请您仔细阅读并理解本条款全部内容，做出您认为适当的选择。当您勾选“已同意《代领发票免责条款》”即表示您已经仔细阅读并完全理解、同意以下全部条款。</text>
+				</view>
+				<view class="flex">
+					2、<text>您申请的发票代领人应当具备中华人民共和国法律规定的具有完全民事行为能力人并征得当事人同意。所填写的信息，上传的资料完全合法、准确、有效。如因提交的资料不真实或者更新不及时而引发的问题，您应承担相应责任。</text>
+				</view>
+				<view class="flex">
+					3、<text>您应妥善保证自己的帐号和密码，定期修改密码，防止账号密码泄露，保证信息安全。您应当对以其账户进行的所有活动和事件负法律责任。委托单位或个人对申请人和代领人所有行为承担连带法律责任。</text>
+				</view>
+				<view class="flex">
+					4、<text>因遇不可抗力造成无法为用户提供服务的，中国石化销售股份有限公司安徽石油分公司下属分公司不承担任何法律责任，不可抗力包括但不限于：政府行为、自然灾害、战争、罢工、电脑病毒、黑客攻击、电信管理部门因技术调整导致网络中断等。</text>
+				</view>
+				<view class="flex">
+					5、<text>其他可能导致委托单位或个人损失的风险或事项。</text>
+				</view>
+				<view class="flex">
+					6、<text>上述风险所导致的损失或责任，均应由委托人和申请人承担，我司对此不承担任何责任。一经使用代领人领取发票方式，即视为申请人已经完全了解并理解各类风险，并且能够承担可能带来的风险或损失。我公司在此郑重提醒委托人和申请人，以上各条款均为免责条款， 中国石化销售股份有限公司安徽石油分公司及下属分公司不承担与此相关的任何损失和法律责任。</text>
+				</view>
 			</view>
-			<view class="exemption_content flex">
+			<view class="exemption_content flex bgcf"  v-show="!oilOrInvoice">
 				<view class="flex">
-					1、<text>用户自行承担注册账号及密码的保管责任，并就其账号及密码项下之一切活动负全部责任。</text>
+					1、<text>您在申请提油代提人服务之前，请您仔细阅读并理解本条款全部内容，做出您认为适当的选择。当您勾选“已同意《提油免责条款》”即表示您已经仔细阅读并完全理解、同意以下全部条款。</text>
 				</view>
 				<view class="flex">
-					2、<text>用户应注意网络安全防护，定期更改密码、设置密码安全保护问题，防止账号密码泄露，保证个人信息安全。</text>
+					2、<text>您申请的提油代提人应当具备中华人民共和国法律规定的具有完全民事行为能力人并征得当事人同意。所填写的信息，上传的资料完全合法、准确、有效。如因提交的资料不真实或者更新不及时而引发的问题，您应承担相应责任。</text>
 				</view>
 				<view class="flex">
-					3、<text>因用户账户丢失、泄露或提油码发送他人后给用户造成的损失，本平台不承担任何责任。</text>
+					3、<text>您应妥善保证自己的帐号和密码，定期修改密码，防止账号密码泄露，保证信息安全。您应当对以其账户进行的所有活动和事件负法律责任。委托单位或个人对申请人和代领人所有行为承担连带法律责任。</text>
 				</view>
-				
+				<view class="flex">
+					4、<text>因遇不可抗力造成无法为用户提供服务的，中石化安徽石油分公司不承担任何法律责任，不可抗力包括但不限于：政府行为、自然灾害、战争、罢工、电脑病毒、黑客攻击、电信管理部门因技术调整导致网络中断等。</text>
+				</view>
+				<view class="flex">
+					5、<text>其他可能导致委托单位或个人损失的风险或事项。</text>
+				</view>
+				<view class="flex">
+					6、<text>上述风险所导致的损失或责任，均应由委托人和申请人承担，我司对此不承担任何责任。一经使用代领人提取油品方式，即视为申请人已经完全了解并理解各类风险，并且能够承担可能带来的风险或损失。我公司在此郑重提醒委托人和申请人，以上各条款均为免责条款， 中国石化销售股份有限公司安徽石油分公司及下属分公司不承担与此相关的任何损失和法律责任。</text>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -27,8 +52,20 @@
 			return {
 				titles:'免责条款',
 				barHeight:25,
+				oilOrInvoice:'',
 			}
 		},
+		onLoad(option){
+			this.titles = option.name + '免责条款'
+			if(option.name !== '提油代领人'){
+				//发票领取人
+				this.oilOrInvoice = true
+			}else{
+				//提油领取人
+				this.oilOrInvoice = false
+			}
+			
+		}, 
 		methods: {
 			
 		}
@@ -40,6 +77,7 @@
 	width: 100%;
 	position: absolute;
 	margin-top:44px;
+	padding-top: 24px;
 	top: 0;
 	bottom: 0;
 }
@@ -49,12 +87,19 @@
 	color: #333;
 }
 .exemption_content{
+	/* margin-top: 24px; */
 	width: 100%;
 	padding: 0 21px;
 	flex-direction: column;
 	color: #333;
 }
 .exemption_content>view{
-	margin: 10px auto;
+	margin: 0 0 32px;
+}
+.exemption_content view,text{
+	font-size: 0.7rem;
+	color: #757575;
+	letter-spacing: 1px;
+	line-height: 21px;
 }
 </style>

@@ -106,5 +106,7 @@
 		position: absolute;
 		right: 15%;
 		z-index: 333;
+		top: 50%;
+		margin-top: -12px;
 	}
 </style>

@@ -397,6 +397,8 @@
 						this.buyCompanyID = this.managers[idx].id;
 						this.info = this.managers[idx].customerLocations;
 						this.address = this.info[0].address;
+						
+						
 						console.log(this.info)
 						if (this.managers.length > 1) {
 							this.buycompanyImg = true;
@@ -408,6 +410,31 @@
 						} else {
 							this.addrImg = false;
 						}
+					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
+						10003) {
+					return	uni.showModal({
+							title: '提示',
+							content: res.data.message,
+							success: function(res) {
+								if (res.confirm) {
+									uni.reLaunch({
+										url: '../login/login'
+									})
+								} else {
+									uni.reLaunch({
+										url: '../login/login'
+									})
+								}
+							}
+						})
+					} else if (res.data.errorCode == -10000) {
+						console.log(1)
+					} else {
+						uni.showToast({
+							title: res.data.message,
+							icon: "none",
+							position: 'bottom'
+						})
 					}
 				}).catch(err => {
 					console.log(err)
@@ -468,8 +495,19 @@
 			chooseownCompany(e) {
 				this.buyCompany = this.managers[e].name;
 				this.showCompany = !this.showCompany;
-				this.getBuycompany(e)
-				console.log(this.buyCompany)
+				if(this.managers[e].customerLocations !== null ){
+					console.log(this.managers[e].customerLocations)
+					this.info = this.managers[e].customerLocations;
+					this.address = this.info[0].address;
+					
+				}else{
+					this.info =[];
+					this.address = '';
+					this.addrImg = false
+				}
+				
+				// this.getBuycompany(e)
+				console.log(this.managers[e])
 			},
 			getNewCustemerInfo() {
 				this.man = [];
@@ -511,6 +549,31 @@
 									position: 'bottom',
 								})
 							}
+						} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
+							10003) {
+						return	uni.showModal({
+								title: '提示',
+								content: res.data.message,
+								success: function(res) {
+									if (res.confirm) {
+										uni.reLaunch({
+											url: '../login/login'
+										})
+									} else {
+										uni.reLaunch({
+											url: '../login/login'
+										})
+									}
+								}
+							})
+						} else if (res.data.errorCode == -10000) {
+							console.log(1)
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: "none",
+								position: 'bottom'
+							})
 						}
 					}).catch(err => {
 						uni.hideLoading();
@@ -781,10 +844,11 @@
 														uni.redirectTo({
 															url: '../orderList/orderList'
 														})
-													} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+													} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
+														10003) {
 														uni.showModal({
 															title: '提示',
-															content: '用户信息已失效，请重新登录',
+															content: res.data.message,
 															success: function(res) {
 																if (res.confirm) {
 																	uni.reLaunch({
@@ -797,11 +861,13 @@
 																}
 															}
 														})
+													} else if (res.data.errorCode == -10000) {
+														console.log(1)
 													} else {
 														uni.showToast({
 															title: res.data.message,
 															icon: "none",
-															position: 'bottom',
+															position: 'bottom'
 														})
 													}
 												}).catch(err => {

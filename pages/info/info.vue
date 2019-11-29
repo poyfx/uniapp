@@ -72,12 +72,12 @@
 					<view class="flex  m-infos" @tap="testing">
 						<view class="flex center m-info-contents">
 							<text>版本更新</text>
-					
+
 						</view>
 						<image src="../../static/img/right.png" mode="aspectFit"></image>
 					</view>
 				</view>
-			
+
 			</view>
 			<view class="mTop20">
 				<button class="safeout" @tap="outsafe">安全退出</button>
@@ -121,7 +121,7 @@
 				duration: 500,
 				circular: true,
 				cac: {},
-				customer_id:'',
+				customer_id: '',
 			}
 		},
 		onShow() {
@@ -195,7 +195,7 @@
 			},
 			toApply() {
 				uni.navigateTo({
-					url: 'apply/apply?customer_id='+this.customer_id
+					url: 'apply/apply?customer_id=' + this.customer_id
 				})
 			},
 			// 修改地址
@@ -211,14 +211,14 @@
 				})
 			},
 			//检测版本
-			testing(){
+			testing() {
 				switch (uni.getSystemInfoSync().platform) {
 					case 'android':
 						console.log('运行Android上');
 						// var server = "http://dev.pjy.name:8170/api/bizcust/base/get_version"; //检查更新地址
 						var appid = plus.runtime.appid
 						var version = plus.runtime.version
-						
+
 						// var req = { //升级检测数据  
 						// 	"appid": plus.runtime.appid,
 						// 	"version": plus.runtime.version
@@ -227,7 +227,7 @@
 						this.test.get('base/getVersion', {
 							appid: appid,
 							version: version,
-							type:'android'
+							type: 'android'
 						}).then(res => {
 							console.log(res)
 							var url = res.data.value.url
@@ -242,13 +242,13 @@
 											}
 										}
 									})
-								}else{
+								} else {
 									uni.showToast({
-										title:'当前版本已经是最新版本',
-										icon:'none',
+										title: '当前版本已经是最新版本',
+										icon: 'none',
 									})
 								}
-						
+
 							}
 						}).catch(err => {
 							console.log(err)
@@ -259,7 +259,7 @@
 						// var server = "http://dev.pjy.name:8170/api/bizcust/base/get_version"; //检查更新地址
 						var appid = plus.runtime.appid
 						var version = plus.runtime.version
-						
+
 						// var req = { //升级检测数据  
 						// 	"appid": plus.runtime.appid,
 						// 	"version": plus.runtime.version
@@ -268,7 +268,7 @@
 						this.test.get('base/getVersion', {
 							appid: appid,
 							version: version,
-							type:'ios'
+							type: 'ios'
 						}).then(res => {
 							var url = res.data.value.url
 							if (res.statusCode == 200 && res.data.errorCode === 0) {
@@ -283,7 +283,7 @@
 										}
 									})
 								}
-						
+
 							}
 						}).catch(err => {
 							console.log(err)
@@ -311,7 +311,7 @@
 										uni.navigateTo({
 											url: '../login/login'
 										})
-									} else {
+									} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -10003) {
 										uni.showModal({
 											title: '提示',
 											content: res.data.message,
@@ -326,6 +326,14 @@
 													})
 												}
 											}
+										})
+									} else if (res.data.errorCode == -10000) {
+										console.log(1)
+									} else {
+										uni.showToast({
+											title: res.data.message,
+											icon: "none",
+											position: 'bottom'
 										})
 									}
 								}).catch(err => {
