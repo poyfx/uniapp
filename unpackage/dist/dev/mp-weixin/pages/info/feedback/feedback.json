@@ -1,0 +1,13 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "用户反馈",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {
+    "robby-image-upload": "/components/robby-image-upload/robby-image-upload",
+    "m-button": "/components/m-button"
+  }
+}

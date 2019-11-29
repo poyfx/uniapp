@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "t-button": "/components/twoButton/twoButton",
+    "info-img": "/components/m-info-img/m-info-img",
+    "info-text": "/components/m-info-text/m-info-text"
+  }
+}

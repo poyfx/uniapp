@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-button": "/components/twoButton/twoButton",
+    "m-button": "/components/m-button"
+  }
+}

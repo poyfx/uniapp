@@ -1,0 +1,14 @@
+{
+  "titleNView": {
+    "titleColor": "#424242",
+    "titleText": "忘记密码",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "40upx"
+  },
+  "usingComponents": {
+    "get-code": "/components/getCode/getCode",
+    "code-num": "/components/codeNum/codeNum",
+    "m-button": "/components/m-button"
+  }
+}

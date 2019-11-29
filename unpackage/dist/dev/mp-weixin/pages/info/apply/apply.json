@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "info-text": "/components/m-info-text/m-info-text"
+  }
+}

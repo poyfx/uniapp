@@ -1,0 +1,27 @@
+
+.exemption{
+	width: 100%;
+	position: absolute;
+	margin-top:44px;
+	top: 0;
+	bottom: 0;
+}
+.exemption_title{
+	padding: 20px 15px;
+	font-size: 19px;
+	color: #333;
+}
+.exemption_content{
+	width: 100%;
+	padding: 0 21px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	color: #333;
+}
+.exemption_content>view{
+	margin: 10px auto;
+}
+

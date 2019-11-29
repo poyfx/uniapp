@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "info-text": "/components/m-info-text/m-info-text",
+    "m-button": "/components/m-button"
+  }
+}

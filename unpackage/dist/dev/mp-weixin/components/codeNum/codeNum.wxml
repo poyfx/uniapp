@@ -1,0 +1,1 @@
+<view class="f-get-code-num"><text class="f-get-code-numtitle">验证码</text><input class="getCodeInput" type="text" placeholder="请输入验证码" value="{{value}}"/></view>

@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"goNext { margin-top: 23px; }\n",],undefined,{path:"./pages/login/setPws/setPws.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/login/setPws/setPws.wxml') } }));

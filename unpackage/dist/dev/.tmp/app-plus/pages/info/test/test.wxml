@@ -1,0 +1,1 @@
+<view><text>{{"clientid:"+clientid}}</text></view>

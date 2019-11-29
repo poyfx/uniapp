@@ -1,0 +1,10 @@
+{
+  "titleNView": {
+    "titleColor": "#424242",
+    "titleText": "跳转",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "40upx"
+  },
+  "usingComponents": {}
+}

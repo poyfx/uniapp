@@ -1,0 +1,1 @@
+<view class="background data-v-638134ec"><view class="data-v-638134ec"><view class="ce mt300 data-v-638134ec"><image class="startimg data-v-638134ec" src="{{src}}" mode="aspectFit"></image></view><view class="p-bx data-v-638134ec"><view class="p-size data-v-638134ec">{{name}}</view><view class="data-v-638134ec">version 1.0</view></view></view></view>

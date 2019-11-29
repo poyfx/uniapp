@@ -1,0 +1,22 @@
+
+.orderDate.data-v-425d6f58 {
+	padding: 10px 15px 24px;
+}
+.orderDate input.data-v-425d6f58,
+.datetimesty.data-v-425d6f58 {
+	width: 100%;
+	height: 42px;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	margin: 10px 0;
+	padding-left: 10px;
+	background-color: #fff;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	line-height: 42px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+

@@ -1,0 +1,10 @@
+{
+  "titleNView": {
+    "titleColor": "#424242",
+    "titleText": "对账函",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "40upx"
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,1 @@
+<view class="orderStatus mTop15"><block wx:for="{{statusInfo}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="{{['processText',index==0?active:'']}}"><view>{{item.content}}</view><view>{{time[index]}}</view></view></block></view>

@@ -1,0 +1,1 @@
+<view class="m-input-view data-v-1869e0b1"><input class="m-input data-v-1869e0b1" type="type" placeholder="{{placeholder}}" data-event-opts="{{[['input',[['onInput',['$event']]]],['focus',[['onFocus',['$event']]]],['blur',[['onBlur',['$event']]]]]}}" value="{{value}}" bindinput="__e" bindfocus="__e" bindblur="__e"/></view>

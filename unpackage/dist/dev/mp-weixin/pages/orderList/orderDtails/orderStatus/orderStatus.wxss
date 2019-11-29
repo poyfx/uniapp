@@ -1,0 +1,41 @@
+
+.orderStatus {
+	padding-left: 15px;
+	background-color: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.processText {
+	padding: 10px 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	font-size: 14px;
+	color: #999;
+	border-bottom: 1px solid #e5e5e5;
+}
+.processText view:first-child{
+
+	margin-bottom: 4px;
+}
+.processText:last-child{
+
+	border: none;
+}
+.active {
+	color: #00A8FF;
+}
+

@@ -1,0 +1,1 @@
+<view><view data-event-opts="{{[['tap',[['go',['$event']]]]]}}" class="flex  m-info" bindtap="__e"><view class="flex center m-info-content"><text>{{imgText}}</text><input class="infoText" type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}" value="{{value}}"/><image src="../../static/img/right.png" mode="aspectFit"></image></view></view></view>

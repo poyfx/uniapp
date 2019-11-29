@@ -1,0 +1,13 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "上传授权资料",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {
+    "w-picker": "/components/w-picker/w-picker",
+    "step": "/components/step/step"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "m-input": "/components/m-input",
+    "pws-input": "/components/input-password",
+    "m-button": "/components/m-button"
+  }
+}

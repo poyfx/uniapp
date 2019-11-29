@@ -1,0 +1,10 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "订单详情",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {}
+}

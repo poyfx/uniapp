@@ -1,0 +1,243 @@
+
+.nowPrice {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.nowPrice:first-child>text {
+	width: 4rem;
+}
+.index-title {
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+.date_c{
+	font-size: 0.65rem;
+	color: #9E9E9E;
+}
+
+/* 天气样式 */
+.sy-weather {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	background: #fff;
+	margin: 10px 0 10px 0;
+	border-radius: 0.25rem;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+}
+.weather-left {
+	width: 50%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+.sy-times {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	padding: 9px 0 8px 0;
+}
+.sy-times text {
+	font-size: 24rpx;
+	padding: 0 4px;
+}
+.temperature {
+	font-size: 80rpx;
+	padding-bottom: 9px;
+	font-weight: 100;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.weather-right {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 50%;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+.weather-right text {
+	font-size: 40rpx;
+}
+.r-weather {
+	padding-bottom: 10px;
+}
+.oilName,
+.oilPrice {
+	/* flex: 1; */
+}
+.swiper {
+	height: 100px;
+}
+.title {
+	width: 100%;
+	height: 44px;
+	padding: 7px 3px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	/* background-color: black; */
+	-webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+	        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+	background-color: rgba(255, 255, 255, 1);
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	position: fixed;
+	z-index: 998;
+}
+.title .right {
+	width: 25px;
+	height: 25px;
+	margin-right: 5px;
+	position: absolute;
+	right: 10px;
+}
+.title .right image {
+	width: 25px;
+	height: 25px;
+}
+.title view {
+	font-size: 16px;
+}
+.title view:last-child {
+	font-size: 14px;
+	position: absolute;
+	right: 8px;
+}
+.dot {
+	background-color: red;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	position: absolute;
+	right: 0px;
+	top: 2px;
+}
+.index_model {
+	width: 100%;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.3);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+}
+.model {
+	width: 300px;
+	min-height: 178px;
+	max-height: 400px;
+	position: relative;
+	top: 50%;
+	margin: -89px auto 0;
+	padding: 15px 20px 20px;
+	z-index: 9999;
+}
+.model_title {
+	text-align: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.model_title text {
+
+	color: #424242;
+	font-size: 1.1rem;
+}
+.model_content {
+	width: 100%;
+	margin: 15px 0 20px;
+}
+.model_btn {
+	width: 100%;
+	position: absolute;
+	bottom: 15px;
+	left: 0;
+}
+.model_btn button {
+	width: 11em;
+	font-size: 0.85rem;
+	background-color: #00A8FF;
+	border-radius: 1.2rem;
+	color: #fff;
+}
+.close {
+	position: absolute;
+	right: 6px;
+	top: 5px;
+}
+

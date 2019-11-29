@@ -1,0 +1,32 @@
+
+.notice_details {
+	width: 100%;
+	padding: 15px;
+}
+.notice_details_title,
+.notice_details_date,
+.notice_details_img {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.notice_details_title text {
+	font-size: 1.1rem;
+	color: #424242;
+	font-weight: bold;
+}
+.notice_details_date text {
+	font-size: 0.6rem;
+	color: #9e9e9e;
+}
+.notice_details_img image {
+	width: 100%;
+	height: 300rpx;
+}
+.notice_details_content {
+	width: 100%;
+	text-indent: 1.8em;
+}
+.notice_details_content text {
+	font-size: 0.9em;
+}
+

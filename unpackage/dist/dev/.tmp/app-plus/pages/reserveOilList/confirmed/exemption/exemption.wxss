@@ -1,0 +1,35 @@
+
+.exemption{
+	width: 100%;
+	position: absolute;
+	margin-top:44px;
+	padding-top: 24px;
+	top: 0;
+	bottom: 0;
+}
+.exemption_title{
+	padding: 20px 15px;
+	font-size: 19px;
+	color: #333;
+}
+.exemption_content{
+	/* margin-top: 24px; */
+	width: 100%;
+	padding: 0 21px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	color: #333;
+}
+.exemption_content>view{
+	margin: 0 0 32px;
+}
+.exemption_content view,text{
+	font-size: 0.7rem;
+	color: #757575;
+	letter-spacing: 1px;
+	line-height: 21px;
+}
+

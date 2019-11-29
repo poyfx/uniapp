@@ -1,0 +1,14 @@
+{
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 100,
+  "bounce": "none",
+  "titleNView": false,
+  "statusbar": {
+    "background": "white"
+  },
+  "usingComponents": {
+    "uni-icons": "/components/uni-icon/uni-icons"
+  }
+}

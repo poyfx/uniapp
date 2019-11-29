@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "set-password": "/components/setPassword/setPassword",
+    "m-button": "/components/m-button"
+  }
+}

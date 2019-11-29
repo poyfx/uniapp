@@ -1,0 +1,10 @@
+{
+  "titleNView": {
+    "titleColor": "#666",
+    "titleText": "选择客户经理",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "17px"
+  },
+  "usingComponents": {}
+}

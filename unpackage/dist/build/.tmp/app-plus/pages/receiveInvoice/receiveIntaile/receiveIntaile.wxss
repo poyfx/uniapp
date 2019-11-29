@@ -1,0 +1,75 @@
+
+.chooseAddress.data-v-a7b31908 {
+	/* position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999; */
+	width: 100%;
+	height: 100%;
+	background-color: #EFEFF4;
+}
+.m-info.data-v-a7b31908 {
+	padding: 12px 0;
+	border-bottom: 1px solid #E5E5E5;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.m-info-content.data-v-a7b31908 {
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
+.m-info-content view.data-v-a7b31908 {
+	color: #616161;
+}
+.m-info text.data-v-a7b31908 {
+	width: 4rem;
+}
+.m-info image.data-v-a7b31908 {
+	width: 12px;
+	height: 12px;
+	padding-right: 15px;
+}
+.refuse.data-v-a7b31908 {
+	margin: 0;
+	padding: 0 0 0 15px;
+}
+.takecode.data-v-a7b31908 {
+	position: absolute;
+	right: 15px;
+	font-size: 16px;
+}
+.invoice_btnbox.data-v-a7b31908,
+.invoice_btnboxs.data-v-a7b31908 {
+	width: 100%;
+	margin: 24px 0 15px;
+}
+.invoice_btnbox button.data-v-a7b31908 {
+	width: 90%;
+	background-color: #00A8FF;
+}
+.invoice_btnboxs button.data-v-a7b31908 {
+	width: 90%;
+	background-color: #F5F5F5;
+	color: #9E9E9E;
+}
+.invoice_btnbox .exchange.data-v-a7b31908{
+	background-color: #fff;
+	color: #616161;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+	        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+}
+

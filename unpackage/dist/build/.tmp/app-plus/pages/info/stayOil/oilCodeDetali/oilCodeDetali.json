@@ -1,0 +1,12 @@
+{
+  "titleNView": {
+    "titleColor": "#424242",
+    "titleText": "提油码",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "40upx"
+  },
+  "usingComponents": {
+    "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
+  }
+}

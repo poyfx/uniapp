@@ -1,0 +1,12 @@
+{
+  "titleNView": {
+    "titleColor": "#424242",
+    "titleText": "填写代领人信息",
+    "backgroundColor": "#FFF",
+    "fontWeight": "normal",
+    "titleSize": "40upx"
+  },
+  "usingComponents": {
+    "uni-icons": "/components/uni-icon/uni-icons"
+  }
+}

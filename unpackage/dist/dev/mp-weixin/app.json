@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/index/start",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/login/forget/forget",
+    "pages/login/setPws/setPws",
+    "pages/register/register",
+    "pages/register/positive/positive",
+    "pages/register/positive/positive1",
+    "pages/register/positive/positive2",
+    "pages/info/info",
+    "pages/info/userPhoneNumber/userPhoneNumber",
+    "pages/info/apply/apply",
+    "pages/info/harvestaddress/harvestaddress",
+    "pages/info/harvestaddress/newAddress/newAddress",
+    "pages/info/modify/modify",
+    "pages/order/order",
+    "pages/oilByCompany/oilByCompany",
+    "pages/orderList/orderList",
+    "pages/search/search",
+    "pages/search/searchDateList/searchDateList",
+    "pages/orderList/orderDtails/orderDtails",
+    "pages/orderList/invoice/invoice",
+    "pages/reserveOil/reserveOil",
+    "pages/reserveOil/orederNumber/orederNumber",
+    "pages/reserveOilList/reserveOilList",
+    "pages/reserveOilList/confirmed/confirmed",
+    "pages/reserveOilList/confirmed/oliCode/oliCode",
+    "pages/info/stayOil/stayOil",
+    "pages/customer/customer",
+    "pages/info/stayOil/oilCodeDetali/oilCodeDetali",
+    "pages/newWeb/newWeb",
+    "pages/info/feedback/feedback",
+    "pages/orderList/orderDtails/orderStatus/orderStatus",
+    "pages/info/test/test",
+    "pages/info/apply/uploadImg/uploadImg",
+    "pages/reserveOilList/confirmed/exemption/exemption"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fff"
+  },
+  "tabBar": {
+    "color": "black",
+    "selectedColor": "#009DFF",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/img/home2.png",
+        "selectedIconPath": "static/img/home1.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "iconPath": "static/img/mine1.png",
+        "selectedIconPath": "static/img/mine2.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "titles": "/components/title",
+    "uni-icon": "/components/uni-icon/uni-icon"
+  },
+  "sitemapLocation": "sitemap98.json"
+}
