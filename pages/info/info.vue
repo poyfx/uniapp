@@ -224,7 +224,7 @@
 						// 	"version": plus.runtime.version
 						// };
 						console.log(plus.runtime.appid, plus.runtime.version)
-						this.test.get('base/getVersion', {
+						this.test.post('base/getVersion', {
 							appid: appid,
 							version: version,
 							type: 'android'
@@ -265,7 +265,7 @@
 						// 	"version": plus.runtime.version
 						// };
 						console.log(plus.runtime.appid, plus.runtime.version)
-						this.test.get('base/getVersion', {
+						this.test.post('base/getVersion', {
 							appid: appid,
 							version: version,
 							type: 'ios'
@@ -369,7 +369,7 @@
 
 <style>
 	.swipers {
-		min-height: 285px;
+		min-height: 300px;
 	}
 
 

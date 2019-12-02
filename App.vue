@@ -25,11 +25,12 @@
 					// 	"version": plus.runtime.version
 					// };
 					console.log(plus.runtime.appid, plus.runtime.version)
-					this.test.get('base/getVersion', {
+					this.test.post('base/getVersion', {
 						appid: appid,
 						version: version,
 						type:'android'
 					}).then(res => {
+						console.log(res)
 						var url = res.data.value.url
 						if (res.statusCode == 200 && res.data.errorCode === 0) {
 							if (res.data.value.status == 1) {
@@ -60,7 +61,7 @@
 					// 	"version": plus.runtime.version
 					// };
 					console.log(plus.runtime.appid, plus.runtime.version)
-					this.test.get('base/getVersion', {
+					this.test.post('base/getVersion', {
 						appid: appid,
 						version: version,
 						type:'ios'

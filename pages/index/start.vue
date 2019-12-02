@@ -13,10 +13,10 @@
 </template>
 <script>
 	import logo from "../../static/img/logo.png"
-	import {
-		mapState,
-		mapActions,
-	} from 'vuex'
+	// import {
+	// 	mapState,
+	// 	mapActions,
+	// } from 'vuex'
 	export default {
 		name: 'Start',
 		data() {
@@ -24,43 +24,63 @@
 				name: '安徽石油商户中心',
 				src: logo,
 				version: '',
-				token:'',
+				token: '',
 			}
 		},
 		onShow() {
 			//#ifdef APP-PLUS  
-				this.version = plus.runtime.version
+			this.version = plus.runtime.version
 			//#endif
 			console.log(this.hasLogin)
 			const that = this;
 			uni.getStorage({
-				key:"Token",
-				success:function(res){
+				key: "TokenR",
+				success: function(res) {
 					console.log(res)
-					 that.token = res.data
+					that.token = res.data
+					that.updateToken()
+				},
+				fail:function(err){
+					const timer = setTimeout(function() {
+						uni.navigateTo({
+							url: '../login/login',
+							success: function() {
+								clearTimeout(timer)
+							}
+						})
+					}, 2000)
 				}
 			})
-			if (this.token == '' || this.token== null) {
-				const timer = setTimeout(function() {
-					uni.navigateTo({
-						url: '../login/login',
-						success: function() {
-							clearTimeout(timer)
-						}
-					})
-				}, 2000)
+			// try {
+			//     const value = uni.getStorageSync('TokenR');
+			//     if (value) {
+			//         console.log(value);
+			//     }
+			// } catch (e) {
+			//     // error
+			// }
+			
+			// if (this.token == '' || this.token== null) {
+			// 	const timer = setTimeout(function() {
+			// 		uni.navigateTo({
+			// 			url: '../login/login',
+			// 			success: function() {
+			// 				clearTimeout(timer)
+			// 			}
+			// 		})
+			// 	}, 2000)
 
-			} else {
-				const timer = setTimeout(function() {
-					uni.switchTab({
-						url: 'index',
-						success: function() {
-							clearTimeout(timer)
-						}
-					})
-				}, 2000)
-				this.getNewInfo();
-			};
+			// } else {
+			// 	const timer = setTimeout(function() {
+			// 		uni.switchTab({
+			// 			url: 'index',
+			// 			success: function() {
+			// 				clearTimeout(timer)
+			// 			}
+			// 		})
+			// 	}, 2000)
+			// 	this.getNewInfo();
+			// };
 
 		},
 		methods: {
@@ -71,7 +91,7 @@
 				this.test.post('user/get_base_data', {
 					Token: this.token
 				}).then(res => {
-					 console.log(res)
+					console.log(res)
 					// debugger
 					// uni.setStorageSync('userInfo',res.data.value)
 					uni.setStorage({
@@ -85,11 +105,39 @@
 					console.log(err)
 				})
 			},
+			updateToken() {
+				this.test.post('base/refreshToken', {
+					refresh_token: this.token,
+				}).then(res => {
+					if (res.statusCode == 200 && res.data.errorCode == 0) {
+						const timer = setTimeout(function() {
+							uni.switchTab({
+								url: './index',
+								success: function() {
+									clearTimeout(timer)
+								}
+							})
+						}, 2000)
+						this.getNewInfo();
+					} else {
+						const timer = setTimeout(function() {
+							uni.navigateTo({
+								url: '../login/login',
+								success: function() {
+									clearTimeout(timer)
+								}
+							})
+						}, 2000)
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			},
 
 		},
-		computed: {
-			...mapState(["hasLogin", "userInfo", "roles"])
-		},
+		// computed: {
+		// 	...mapState(["hasLogin", "userInfo", "roles"])
+		// },
 	}
 </script>
 <style scoped>
@@ -117,7 +165,7 @@
 		position: absolute;
 		bottom: 20px;
 		left: 0;
-		
+
 		text-align: center;
 		color: #616161;
 	}

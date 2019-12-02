@@ -2875,7 +2875,7 @@ Z([[7],[3,'newDatas']])
 Z(z[220])
 Z(z[5])
 Z([3,'customerCompany '])
-Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'chooseCompany']],[[4],[[5],[1,'$0']]]],[[4],[[5],[1,'newDatas']]]]]]]]]]])
+Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'chooseCompany']],[[4],[[5],[[7],[3,'index']]]]]]]]]]]])
 Z([3,'newCompany'])
 Z([a,[[6],[[7],[3,'item']],[3,'name']]])
 Z(z[243])
@@ -2890,7 +2890,7 @@ Z([[7],[3,'managers']])
 Z(z[220])
 Z(z[5])
 Z(z[254])
-Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'chooseownCompany']],[[4],[[5],[1,'$0']]]],[[4],[[5],[1,'newDatas']]]]]]]]]]])
+Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'chooseownCompany']],[[4],[[5],[[7],[3,'index']]]]]]]]]]]])
 Z(z[256])
 Z([a,z[257][1]])
 Z(z[229])
@@ -3413,7 +3413,7 @@ Z([[2,'=='],[[6],[[7],[3,'reserveInfo']],[3,'status']],[1,0]])
 Z([3,'state data-v-42f9ec75'])
 Z([3,'未领取'])
 Z([[2,'=='],[[6],[[7],[3,'reserveInfo']],[3,'status']],[1,1]])
-Z(z[24])
+Z([3,' j data-v-42f9ec75'])
 Z([3,'已领取'])
 Z(z[18])
 Z([3,'flex center m-info-content data-v-42f9ec75'])
@@ -3499,6 +3499,7 @@ Z(z[0])
 Z(z[82])
 Z([a,[[2,'+'],[1,'￥'],[[7],[3,'item']]]])
 Z([3,'invoice_btnbox flex data-v-42f9ec75'])
+Z([[2,'!'],[[2,'=='],[[6],[[7],[3,'reserveInfo']],[3,'status']],[1,0]]])
 Z([[2,'=='],[[6],[[7],[3,'reserveInfo']],[3,'is_instead']],[1,0]])
 Z(z[5])
 Z(z[0])
@@ -3508,7 +3509,7 @@ Z([3,'申请代领人'])
 Z(z[5])
 Z([3,'exchange data-v-42f9ec75'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'apply']],[[4],[[5],[1,1]]]]]]]]]]])
-Z(z[117])
+Z(z[118])
 Z([3,'更换代领人'])
 Z([3,'invoice_btnboxs flex data-v-42f9ec75'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_47);return __WXML_GLOBAL__.ops_cached.$gwx_47
@@ -3578,7 +3579,7 @@ Z([[2,'=='],[[6],[[7],[3,'item']],[3,'status']],[1,0]])
 Z([3,'invoiceListState state'])
 Z([3,'未领取'])
 Z([[2,'=='],[[6],[[7],[3,'item']],[3,'status']],[1,1]])
-Z([3,'invoiceListState s '])
+Z([3,'invoiceListState j'])
 Z([3,'已领取'])
 Z(z[4])
 Z([3,'loadings'])
@@ -9379,26 +9380,25 @@ return aNLB
 oJLB.wxXCkey=2
 _2z(z,102,cKLB,e,s,gg,oJLB,'item','index','index')
 _(c9IB,h5KB)
-var hWLB=_n('view')
-_rz(z,hWLB,'class',112,e,s,gg)
+var hWLB=_mz(z,'view',['class',112,'hidden',1],[],e,s,gg)
 var oXLB=_v()
 _(hWLB,oXLB)
-if(_oz(z,113,e,s,gg)){oXLB.wxVkey=1
-var cYLB=_mz(z,'button',['bindtap',114,'class',1,'data-event-opts',2,'type',3],[],e,s,gg)
-var oZLB=_oz(z,118,e,s,gg)
+if(_oz(z,114,e,s,gg)){oXLB.wxVkey=1
+var cYLB=_mz(z,'button',['bindtap',115,'class',1,'data-event-opts',2,'type',3],[],e,s,gg)
+var oZLB=_oz(z,119,e,s,gg)
 _(cYLB,oZLB)
 _(oXLB,cYLB)
 }
 else{oXLB.wxVkey=2
-var l1LB=_mz(z,'button',['bindtap',119,'class',1,'data-event-opts',2,'type',3],[],e,s,gg)
-var a2LB=_oz(z,123,e,s,gg)
+var l1LB=_mz(z,'button',['bindtap',120,'class',1,'data-event-opts',2,'type',3],[],e,s,gg)
+var a2LB=_oz(z,124,e,s,gg)
 _(l1LB,a2LB)
 _(oXLB,l1LB)
 }
 oXLB.wxXCkey=1
 _(c9IB,hWLB)
 var t3LB=_n('view')
-_rz(z,t3LB,'class',124,e,s,gg)
+_rz(z,t3LB,'class',125,e,s,gg)
 _(c9IB,t3LB)
 _(o8IB,c9IB)
 _(tYIB,o8IB)
@@ -11827,9 +11827,9 @@ style.childNodes[0].nodeValue = css;
 }
 return rewritor;
 }
-setCssToHead([])();setCssToHead([[2,0]],"Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors.(./app.wxss:304:1)",{path:"./app.wxss"})();
+setCssToHead([])();setCssToHead([[2,0]],"Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors.(./app.wxss:305:1)",{path:"./app.wxss"})();
 
-__wxAppCode__['app.wxss']=setCssToHead([[2,0]],"Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors.(./app.wxss:304:1)",{path:"./app.wxss"});    
+__wxAppCode__['app.wxss']=setCssToHead([[2,0]],"Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors.(./app.wxss:305:1)",{path:"./app.wxss"});    
 __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['common/js/xfl-select.wxss']=setCssToHead([".",[1],"show-box.",[1],"data-v-2f16ebe6 { text-align: left; -webkit-appearance: none; background-color: #fff; background-image: none; border-radius: 0 0 4px 4px; border: 1px solid #c0c4cc; -webkit-box-sizing: border-box; box-sizing: border-box; display: inline-block; font-size: inherit; line-height: inherit; outline: none; padding: 10px 7% 10px 5%; -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); -o-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); width: 100%; position: relative; }\n.",[1],"show-box.",[1],"active.",[1],"data-v-2f16ebe6 { border-color: #409eff; }\n.",[1],"show-box.",[1],"disabled.",[1],"data-v-2f16ebe6 { background-color: #f0f0f0; }\n.",[1],"show-box .",[1],"input.",[1],"data-v-2f16ebe6 { width: 100%; height: 100%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; }\n.",[1],"show-box .",[1],"right-arrow.",[1],"data-v-2f16ebe6 { -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); transition: -webkit-transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); -o-transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); position: absolute; font-size: 1em; right: 4px; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; top: 0; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; color: #c0c4cc; height: 100%; font-weight: 100; width: 7%; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; }\n.",[1],"show-box .",[1],"right-arrow.",[1],"isRotate.",[1],"data-v-2f16ebe6 { -webkit-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }\n.",[1],"show-box .",[1],"clear.",[1],"data-v-2f16ebe6 { color: #fff; background-color: #c0c4cc; border-radius: 50%; padding: 1.5px 3px 2px 3px; }\n.",[1],"show-box .",[1],"list-container.",[1],"data-v-2f16ebe6 { position: absolute; width: 100%; left: 0; top: 50px; -webkit-box-sizing: border-box; box-sizing: border-box; z-index: 100; }\n.",[1],"show-box .",[1],"list-container .",[1],"popper__arrow.",[1],"data-v-2f16ebe6 { -webkit-transform: translateX(-400%); -ms-transform: translateX(-400%); transform: translateX(-400%); position: absolute; display: block; width: 0; height: 0; border-color: transparent; border-style: solid; border-width: 6px; -webkit-filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.03)); filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.03)); left: 30%; margin-right: 3px; border-top-width: 0; border-bottom-color: #dcdfe6; top: -5px; }\n.",[1],"show-box .",[1],"list-container .",[1],"popper__arrow.",[1],"data-v-2f16ebe6:after { content: \x22 \x22; border-width: 6px; position: absolute; display: block; width: 0; height: 0; border-color: transparent; border-style: solid; top: 1px; margin-left: -6px; border-top-width: 0; border-bottom-color: #fff; }\n.",[1],"show-box .",[1],"list-container .",[1],"shows.",[1],"data-v-2f16ebe6 { -webkit-animation: 0.3s myshow-data-v-2f16ebe6; animation: 0.3s myshow-data-v-2f16ebe6; }\n.",[1],"show-box .",[1],"list-container .",[1],"hides.",[1],"data-v-2f16ebe6 { -webkit-animation: 0.3s myhide-data-v-2f16ebe6; animation: 0.3s myhide-data-v-2f16ebe6; }\n@-webkit-keyframes myshow-data-v-2f16ebe6 { 0% { height: 0; }\n100% { height: 15em; }\n}@keyframes myshow-data-v-2f16ebe6 { 0% { height: 0; }\n100% { height: 15em; }\n}@-webkit-keyframes myhide-data-v-2f16ebe6 { 0% { height: 15em; }\n100% { height: 0; }\n}@keyframes myhide-data-v-2f16ebe6 { 0% { height: 15em; }\n100% { height: 0; }\n}.",[1],"show-box .",[1],"list-container .",[1],"list.",[1],"data-v-2f16ebe6 { border-radius: 4px; border: 1px solid #dcdfe6; width: 100%; max-height: 10em; background-color: #fff; -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); padding: 5px 0; position: absolute; top: 18px; padding: 0 0 0 10px; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center; }\n.",[1],"show-box .",[1],"list-container .",[1],"list .",[1],"item.",[1],"data-v-2f16ebe6 { border-bottom: 1px solid #E5E5E5; padding: 3px 5%; line-height: 2; }\n.",[1],"show-box .",[1],"list-container .",[1],"list .",[1],"item:hover.disabled.data-v-2f16ebe6 { background-color: transparent; }\n.",[1],"show-box .",[1],"list-container .",[1],"list .",[1],"item.",[1],"active.",[1],"data-v-2f16ebe6 { color: #409eff; font-weight: 500; }\n.",[1],"show-box .",[1],"list-container .",[1],"list .",[1],"item.",[1],"disabled.",[1],"data-v-2f16ebe6 { color: #c0c4cc; }\n.",[1],"show-box .",[1],"list-container .",[1],"list .",[1],"data-state.",[1],"data-v-2f16ebe6 { color: #c0c4cc; }\n@font-face { font-family: \x22iconfont\x22; src: url(\x27data:application/x-font-woff2;charset\x3dutf-8;base64,d09GMgABAAAAAAM8AAsAAAAAB1gAAALvAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqCEIFsATYCJAMQCwoABCAFhG0HSxthBhEVlKdkPwvsmHgLNqmwEc2pDxvYjI1gkX0f4uFrv9dz3+772RAqQJV8FbKANj5RiB1f1q0ioyorK1THs2Qj0gAJVYn///3mxT27TKyJJ63gD/KkYhr/9woe4ghtLxKJk5AWd7icc+CiJuQLU5SVQ48+ST+l0H2/pM2sm89zOb2VZYHMb1luYy3a0496AWYLKLA9sQ0UaAEFxC2yi7gTF3GaQJtRTbFxcfcIRYYmBeKyjDJQCiFZNrJFaDSszOI11Ep1IQZeRd+P/zAXcip1gmbuHJ/nYeWX9redqtuqPU6AYj4vjHUkNJGJ08bUviQMXtL2m2wJRVHxS/sz/N1+2CZOdizDemP/eBXRgCo7wIKcTvzSUnlmGMoSgt/tChX8EEOBlNvCLsQdpgv8HuNG8wuia9YA1Tfni5TZR1QthTxh8ZM2VCAHtiBtzfWtz1RtObA8IXowr5rzRK4/sRYpfjm1FBA9nrPl/qNAJRZLKJNsUumMKdb3dkIlkqjEtt8VrbNjZgnB48fG1XqNHax98/uI4xs768DFXVceFql2do6594N/t9vl/tw+ZlhKP6ngFjorHQq/AOmpcAlI98L7Pz/KG7P0OqU7+SuqQ7d8OXhYRvZsnLHcTCD4zwpgXfZVyJGzq6byIJiNgyZUaNOGv5ujz885jIPgWkIxOCLYYiRDUkyTmdNErd0CGopltJm1vb5dv3tJ5DDjpYTQ4wMqXT4h6fGZzJwfqA2R/SGlDxGUnsO0o4onyuKUUDLWoDbodPCGuFjE1U9sJispr4r4X6Sxi0IRiZWzD/RIc8wZ56ZkNmAoOLhL56G1ASKFHjWnLXOssmix6UWpDm4nnCJIYqgGlA3oaIFneHMmKp9/Qo2JJVEHqyf9hcio6x0UUjmAfOg9iHUvl4xmjRJjBjBI4IC7NAxZVgBi87Ae0liqHZGIKhluZKD6dH2j+8Jd0AY9MUcVKXLU5I9a6XU7FUcUppMkCss5MAeXmM7a3Q4A\x27) format(\x27woff2\x27), url(\x27data:application/x-font-woff;charset\x3dutf-8;base64,d09GMgABAAAAAAM8AAsAAAAAB1gAAALvAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqCEIFsATYCJAMQCwoABCAFhG0HSxthBhEVlKdkPwvsmHgLNqmwEc2pDxvYjI1gkX0f4uFrv9dz3+772RAqQJV8FbKANj5RiB1f1q0ioyorK1THs2Qj0gAJVYn///3mxT27TKyJJ63gD/KkYhr/9woe4ghtLxKJk5AWd7icc+CiJuQLU5SVQ48+ST+l0H2/pM2sm89zOb2VZYHMb1luYy3a0496AWYLKLA9sQ0UaAEFxC2yi7gTF3GaQJtRTbFxcfcIRYYmBeKyjDJQCiFZNrJFaDSszOI11Ep1IQZeRd+P/zAXcip1gmbuHJ/nYeWX9redqtuqPU6AYj4vjHUkNJGJ08bUviQMXtL2m2wJRVHxS/sz/N1+2CZOdizDemP/eBXRgCo7wIKcTvzSUnlmGMoSgt/tChX8EEOBlNvCLsQdpgv8HuNG8wuia9YA1Tfni5TZR1QthTxh8ZM2VCAHtiBtzfWtz1RtObA8IXowr5rzRK4/sRYpfjm1FBA9nrPl/qNAJRZLKJNsUumMKdb3dkIlkqjEtt8VrbNjZgnB48fG1XqNHax98/uI4xs768DFXVceFql2do6594N/t9vl/tw+ZlhKP6ngFjorHQq/AOmpcAlI98L7Pz/KG7P0OqU7+SuqQ7d8OXhYRvZsnLHcTCD4zwpgXfZVyJGzq6byIJiNgyZUaNOGv5ujz885jIPgWkIxOCLYYiRDUkyTmdNErd0CGopltJm1vb5dv3tJ5DDjpYTQ4wMqXT4h6fGZzJwfqA2R/SGlDxGUnsO0o4onyuKUUDLWoDbodPCGuFjE1U9sJispr4r4X6Sxi0IRiZWzD/RIc8wZ56ZkNmAoOLhL56G1ASKFHjWnLXOssmix6UWpDm4nnCJIYqgGlA3oaIFneHMmKp9/Qo2JJVEHqyf9hcio6x0UUjmAfOg9iHUvl4xmjRJjBjBI4IC7NAxZVgBi87Ae0liqHZGIKhluZKD6dH2j+8Jd0AY9MUcVKXLU5I9a6XU7FUcUppMkCss5MAeXmM7a3Q4A\x27) format(\x27woff\x27); }\n.",[1],"iconfont.",[1],"data-v-2f16ebe6 { font-family: \x22iconfont\x22 !important; font-size: 16px; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }\n.",[1],"iconshanchu1.",[1],"data-v-2f16ebe6:before { content: \x22\\E68C\x22; }\n.",[1],"icongou.",[1],"data-v-2f16ebe6:before { content: \x22\\E786\x22; }\n.",[1],"iconarrowBottom-fill.",[1],"data-v-2f16ebe6:before { content: \x22\\E60E\x22; }\n",],undefined,{path:"./common/js/xfl-select.wxss"});    
@@ -11844,7 +11844,7 @@ __wxAppCode__['components/codeNum/codeNum.wxml']=$gwx('./components/codeNum/code
 __wxAppCode__['components/getCode/getCode.wxss']=setCssToHead([".",[1],"fget-nums{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; background-color: #fff; border-bottom: 1px solid #e5e5e5; }\n.",[1],"phontNum{ padding: 0 10px; }\n.",[1],"getCode,.",[1],"getCode1{ width: 98px; margin: 0; background-color: #fff; color:#009DFF; font-size: 12px; border: none; padding: 10px; border-left: 1px solid #e5e5e5; }\n.",[1],"getCodeInput{ -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; margin-left: ",[0,18],"; }\nwx-uni-button:after { content: \x22 \x22; width: 0; height: 0; }\n",],undefined,{path:"./components/getCode/getCode.wxss"});    
 __wxAppCode__['components/getCode/getCode.wxml']=$gwx('./components/getCode/getCode.wxml');
 
-__wxAppCode__['components/input-password.wxss']=setCssToHead([".",[1],"m-input-view.",[1],"data-v-300b4d47 { position: relative; width: 100%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; }\n.",[1],"m-input.",[1],"data-v-300b4d47 { width: 70%; border: 1px solid #c3c3c3; padding: 10px 15px; border-radius: 0 0 4px 4px; font-size: 17px; line-height: 28px; outline: none; }\n.",[1],"m-eye.",[1],"data-v-300b4d47 { width: 25px; height: 25px; position: absolute; right: 15%; z-index: 333; }\n",],undefined,{path:"./components/input-password.wxss"});    
+__wxAppCode__['components/input-password.wxss']=setCssToHead([".",[1],"m-input-view.",[1],"data-v-300b4d47 { position: relative; width: 100%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; }\n.",[1],"m-input.",[1],"data-v-300b4d47 { width: 70%; border: 1px solid #c3c3c3; padding: 10px 15px; border-radius: 0 0 4px 4px; font-size: 17px; line-height: 28px; outline: none; }\n.",[1],"m-eye.",[1],"data-v-300b4d47 { width: 25px; height: 25px; position: absolute; right: 15%; z-index: 333; top: 50%; margin-top: -12px; }\n",],undefined,{path:"./components/input-password.wxss"});    
 __wxAppCode__['components/input-password.wxml']=$gwx('./components/input-password.wxml');
 
 __wxAppCode__['components/m-button.wxss']=setCssToHead([".",[1],"m-btn{ width: 78%; -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2); box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2); background: #00A8FF; }\n",],undefined,{path:"./components/m-button.wxss"});    
@@ -11922,7 +11922,7 @@ __wxAppCode__['pages/info/harvestaddress/harvestaddress.wxml']=$gwx('./pages/inf
 __wxAppCode__['pages/info/harvestaddress/newAddress/newAddress.wxss']=undefined;    
 __wxAppCode__['pages/info/harvestaddress/newAddress/newAddress.wxml']=$gwx('./pages/info/harvestaddress/newAddress/newAddress.wxml');
 
-__wxAppCode__['pages/info/info.wxss']=setCssToHead([".",[1],"swipers { min-height: 285px; }\nwx-image { width: 25px; height: 25px; }\n.",[1],"m-info { padding: 10px 15px 10px 0; -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; }\n.",[1],"m-info-content { -webkit-box-pack: start; -webkit-justify-content: flex-start; -ms-flex-pack: start; justify-content: flex-start; }\n.",[1],"m-info wx-text { width: 4rem; }\n.",[1],"m-info wx-input { -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; color: #666; }\n.",[1],"m-infos { padding: 12px 0; -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; }\n.",[1],"m-info-contents wx-view { color: #616161; }\n.",[1],"m-infos wx-image { width: 12px; height: 12px; padding-right: 15px; }\n",],undefined,{path:"./pages/info/info.wxss"});    
+__wxAppCode__['pages/info/info.wxss']=setCssToHead([".",[1],"swipers { min-height: 300px; }\nwx-image { width: 25px; height: 25px; }\n.",[1],"m-info { padding: 10px 15px 10px 0; -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; }\n.",[1],"m-info-content { -webkit-box-pack: start; -webkit-justify-content: flex-start; -ms-flex-pack: start; justify-content: flex-start; }\n.",[1],"m-info wx-text { width: 4rem; }\n.",[1],"m-info wx-input { -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; color: #666; }\n.",[1],"m-infos { padding: 12px 0; -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; }\n.",[1],"m-info-contents wx-view { color: #616161; }\n.",[1],"m-infos wx-image { width: 12px; height: 12px; padding-right: 15px; }\n",],undefined,{path:"./pages/info/info.wxss"});    
 __wxAppCode__['pages/info/info.wxml']=$gwx('./pages/info/info.wxml');
 
 __wxAppCode__['pages/info/modify/modify.wxss']=setCssToHead([".",[1],"new { border: none; }\n",],undefined,{path:"./pages/info/modify/modify.wxss"});    
