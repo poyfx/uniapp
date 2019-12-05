@@ -1,5 +1,5 @@
 <template>
-	<view >
+	<view style="height: 100vh;background-color: #FFFFFF;">
 		<titles :titles="titles"></titles>
 		<view class="bgcf exemption">
 			<view class="exemption_content flex bgcf" v-show="oilOrInvoice">
@@ -57,7 +57,7 @@
 		},
 		onLoad(option){
 			this.titles = option.name + '免责条款'
-			if(option.name !== '提油代领人'){
+			if(option.name !== '代提油'){
 				//发票领取人
 				this.oilOrInvoice = true
 			}else{
@@ -77,15 +77,15 @@
 	width: 100%;
 	position: absolute;
 	margin-top:44px;
-	padding-top: 24px;
+	padding-top:44px;
 	top: 0;
 	bottom: 0;
 }
-.exemption_title{
+/* .exemption_title{
 	padding: 20px 15px;
 	font-size: 19px;
 	color: #333;
-}
+} */
 .exemption_content{
 	/* margin-top: 24px; */
 	width: 100%;

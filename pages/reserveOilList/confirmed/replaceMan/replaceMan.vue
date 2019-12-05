@@ -70,9 +70,9 @@
 			this.name = option.name,
 			this.getToken();
 			if(this.name !== "invoice"){
-				return this.type = '提油代领人'
+				return this.type = '代提油'
 			}
-			return this.type = '发票代领人'
+			return this.type = '代领发票'
 		},
 		methods: {
 			getToken() {

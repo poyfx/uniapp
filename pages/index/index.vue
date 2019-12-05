@@ -20,7 +20,7 @@
 			<!-- 轮播图 -->
 			<banner :img="img"></banner>
 			<!-- 导航 -->
-			<navs :role='roles'></navs>
+			<navs :role='roles' :lock="lock"></navs>
 			<!-- 天气 -->
 			<view class="sy-weather">
 				<view class="weather-left">
@@ -79,12 +79,25 @@
 				</view>
 				<view class="priceLi">
 					<view class="flex titles">
-						<text>油品名称</text>
+						<text style="width: 20%;">油品名称</text>
 						<text>价格(元/吨)</text>
 						<text class="paddingRight19">涨跌幅</text>
 					</view>
 				</view>
-				<view class="priceLi">
+				
+				<view class="priceLi" v-for="(item,index) in datas" :key="index" v-if="index !== 'valid_time'">
+					<view class="nowPrice">
+						<text class="oilName">{{index}}</text>
+						<view class="oilPrice">
+							<text v-if="item.oilAmplitude=='0'">{{item.oilPrice}}</text>
+							<text :class="item.oilAmplitude>0?s:j" v-else>{{item.oilPrice}}</text>
+						</view>
+						<text class="paddingLeft10" v-if="item.oilAmplitude=='0'">{{item.oilAmplitude}}%</text>
+						<text class="paddingLeft10" :class="item.oilAmplitude>0?s:j" v-else>{{item.oilAmplitude}}%</text>
+					</view>
+				</view>
+				
+			<!-- 	<view class="priceLi">
 					<view class="nowPrice">
 						<text class="oilName">0#柴油</text>
 						<view class="oilPrice">
@@ -132,7 +145,7 @@
 						</view>
 						<text class="paddingLeft10" :class="gain.gas_98>0?s:j">{{gain.gas_98}}%</text>
 					</view>
-				</view>
+				</view> -->
 			</view>
 
 			<!-- 地炼价格行情 -->
@@ -142,19 +155,19 @@
 						<text class="line"></text>
 						<text class="title-p">地炼价格行情</text>
 					</view>
-					<text class="paddingRight15 date_c">{{refiningTime}}</text>
+					<text class="paddingRight15 date_c">{{datasTime}}</text>
 				</view>
 				<view class="priceLi">
 					<view class="flex titles">
-						<text>油品名称</text>
+						<text style="width: 20%;">油品名称</text>
 						<text>价格(元/吨)</text>
 						<text class="paddingRight19">涨跌幅</text>
 					</view>
 				</view>
 				<view class="priceLi">
 					<view class="nowPrice">
-						<text>0#柴油</text>
-						<view class="">
+						<text class="oilName">0#柴油</text>
+						<view class="oilPrice">
 							<text :class="refiningGain.diesel_0>0?s:j">{{refining.diesel_0}}</text>
 						</view>
 
@@ -163,8 +176,8 @@
 				</view>
 				<view class="priceLi">
 					<view class="nowPrice">
-						<text>-10#柴油</text>
-						<view class="">
+						<text class="oilName">-10#柴油</text>
+						<view class="oilPrice">
 							<text :class="refiningGain.gas_95>0?s:j">{{refining.diesel_10}}</text>
 						</view>
 				
@@ -174,8 +187,8 @@
 
 				<view class="priceLi">
 					<view class="nowPrice">
-						<text>92#国六</text>
-						<view class="">
+						<text class="oilName">92#国六</text>
+						<view class="oilPrice">
 							<text :class="refiningGain.gas_92>0?s:j">{{refining.gas_92}}</text>
 						</view>
 
@@ -193,55 +206,18 @@
 						<text class="paddingLeft10" :class="refiningGain.gas_95>0?s:j">{{refiningGain.gas_95}}%</text>
 					</view>
 				</view>
-				<view class="priceLiNo">
+				<view class="priceLi">
 					<view class="nowPrice">
 						<text class="oilName">98#国六</text>
 						<view class="oilPrice">
 							<text :class="refiningGain.gas_98>0?s:j">{{refining.gas_98}}</text>
 						</view>
-						<text class="paddingLeft10" :class="refiningGain.gas_98>0?s:j">{{refiningGain.gas_98}}%</text>
+				
+					<text class="paddingLeft10" :class="refiningGain.gas_98>0?s:j">{{refiningGain.gas_98}}%</text>
 					</view>
 				</view>
+				
 			</view>
-
-			<!-- 国际原油价格 -->
-			<!-- <view class="oilPrices">
-			<view class="flex index-title">
-				<view class="">
-					<text class="line"></text>
-					<text class="title-p">国际原油价格</text>
-				</view>
-				<text class="paddingRight15">{{date}}</text>
-			</view>
-			<view class="priceLi">
-				<view class="flex titles">
-					<text>油品名称</text>
-					<text>价格(元/吨)</text>
-					<text class="paddingRight19">涨跌幅</text>
-				</view>
-			</view>
-			<view class="priceLi">
-				<view class="nowPrice">
-					<text>0#柴油</text>
-					<view class="">
-						<text>{{datas.oilPrize.diesel_0}}</text>
-					</view>
-
-					<text>+2.33%</text>
-				</view>
-			</view>
-
-			<view class="priceLiNo">
-				<view class="nowPrice">
-					<text>92#国六</text>
-					<view class="">
-						<text>{{datas.oilPrice.diesel_0}}</text>
-					</view>
-
-					<text>+2.33%</text>
-				</view>
-			</view>
-		</view> -->
 
 		</view>
 		<!-- 对账函 -->
@@ -329,6 +305,7 @@
 				noticeshow: false, //公告显示
 				priceshow: Boolean,
 				letterContent:'',
+				lock:'',
 			}
 		},
 		onShow() {
@@ -349,19 +326,19 @@
 					key: 'userInfo',
 					success: function(res) {
 						console.log(res)
-							console.log( that.datas.validTime)
-						let price = res.data.oilPrice; //获取当前油价油价
-						that.datas = price.oilPrice;
-						that.gain = price.oilAmplitude;
+						// let price = res.data.oilPrice; //获取当前油价油价
+						that.datas = res.data.oilPrice;
+						console.log(that.datas )
+						// that.gain = price.oilAmplitude;
 						that.myManagerBox = res.data.managers;
-						that.datasTime = new Date(that.datas.valid_time + 8 * 3600 * 1000).toJSON().substr(0, 10).replace('T', ' ').replace(
-							/-/g, '-')
+						// that.datasTime = new Date(that.datas.valid_time + 8 * 3600 * 1000).toJSON().substr(0, 10).replace('T', ' ').replace(
+						// 	/-/g, '-')
 						
 						let bizcustRefining = res.data.bizcustRefining;
 						that.refining = bizcustRefining.refiningPrice;
 						that.refiningGain = bizcustRefining.refiningOilAmplitude;
-						
-						
+						that.lock = res.data.openFlag;
+						console.log(that.lock)
 						that.refiningTime = new Date(that.refining.valid_time + 8 * 3600 * 1000).toJSON().substr(0, 10).replace('T', ' ').replace(
 							/-/g, '-')
 						if (that.myManagerBox.length < 2) {
@@ -666,11 +643,20 @@
 	.nowPrice {
 		display: flex;
 		justify-content: space-between;
-
+		font-size: 0.75rem;
 	}
 
-	.nowPrice:first-child>text {
-		width: 4rem;
+	.nowPrice text {
+		width:20%;
+		align-self: center;
+		text-align: center;
+		justify-content: center;
+		margin-right: 5px;
+	}
+.nowPrice .oilName {
+		width:30%;
+		text-align:left;
+		justify-content: flex-start;
 	}
 
 	.index-title {
@@ -740,11 +726,7 @@
 		padding-bottom: 10px;
 	}
 
-	.oilName,
-	.oilPrice {
-		/* flex: 1; */
-	}
-
+	
 	.swiper {
 		height: 100px;
 	}

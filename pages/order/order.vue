@@ -40,7 +40,7 @@
 					<view class="flex center m-info-content">
 						<text>选择油品</text>
 						<input type="text" placeholder="选择油品" v-model="productOil" disabled="true" placeholder-style="color:#9e9e9e"
-						 style="flex: 1;" />
+						 style="flex: 1;width: 100%;" />
 						<!-- <view>{{productOil}}</view> -->
 					</view>
 					<image src="../../static/img/right.png" mode="aspectFit"></image>
@@ -104,11 +104,14 @@
 				<view class="footermain">
 					<view class="modelmain">
 						<text>请选择油品</text>
-						<view ref="chooseOne" @tap="chooseOne" id='92#国六'>92#国六</view>
+						<!-- <view ref="chooseOne" @tap="chooseOne" id='92#国六'>92#国六</view>
 						<view ref="chooseOne" @tap="chooseOne" id='95#国六'>95#国六</view>
 						<view ref="chooseOne" @tap="chooseOne" id='98#国六'>98#国六</view>
 						<view ref="chooseOne" @tap="chooseOne" id='-10#柴油'>-10#柴油</view>
-						<view ref="chooseOne" @tap="chooseOne" id='0#柴油'>0#柴油</view>
+						<view ref="chooseOne" @tap="chooseOne" id='0#柴油'>0#柴油</view> -->
+						<scroll-view scroll-y="true" style="max-height: 255px;">
+							<view v-for="(item ,index) in oiltypeNum" :key="index" @tap="chooseOne(item)">{{item}}</view>
+						</scroll-view>
 					</view>
 					<view class="modelfooter">
 						<view @tap="chooseOilShow">取消</view>
@@ -330,6 +333,7 @@
 				placecolor: true, //输入数量颜色
 				color9: 'color9',
 				colorRed: 'colorRed',
+				oiltypeNum: [], //油品种类
 			}
 		},
 		onLoad() {
@@ -359,7 +363,7 @@
 				const that = this;
 				this.test.post('order/order_company')
 					.then(res => {
-						console.log(res)
+					
 						// 
 						if (res.statusCode == 200 && res.data.errorCode == 0) {
 							// res.data.value.forEach(el => {
@@ -378,7 +382,7 @@
 				uni.getStorage({
 					key: 'userInfo',
 					success: function(res) {
-						console.log(res)
+					
 						that.myManager = res.data.managers[0].manager_name; //客户经理信息
 						that.myManagerId = res.data.managers[0].manager_id; //客户经理信息
 						// that.buyCompany = res.data.managers[0].customer_name; //购油公司信息
@@ -390,15 +394,15 @@
 			// 进入页面获取购油公司默认第一个公司及地址
 			getBuycompany(idx) {
 				this.test.post('order/order_customers').then(res => {
-					console.log(res);
+					
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.managers = res.data.value;
 						this.buyCompany = this.managers[idx].name;
 						this.buyCompanyID = this.managers[idx].id;
 						this.info = this.managers[idx].customerLocations;
 						this.address = this.info[0].address;
-						
-						
+
+
 						console.log(this.info)
 						if (this.managers.length > 1) {
 							this.buycompanyImg = true;
@@ -412,7 +416,7 @@
 						}
 					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
 						10003) {
-					return	uni.showModal({
+						return uni.showModal({
 							title: '提示',
 							content: res.data.message,
 							success: function(res) {
@@ -495,19 +499,21 @@
 			chooseownCompany(e) {
 				this.buyCompany = this.managers[e].name;
 				this.showCompany = !this.showCompany;
-				if(this.managers[e].customerLocations !== null ){
-					console.log(this.managers[e].customerLocations)
+				if (this.managers[e].customerLocations !== null) {
+					console.log(this.managers[e])
 					this.info = this.managers[e].customerLocations;
 					this.address = this.info[0].address;
 					
-				}else{
-					this.info =[];
+
+				} else {
+					this.info = [];
 					this.address = '';
 					this.addrImg = false
 				}
-				
+
 				// this.getBuycompany(e)
-				console.log(this.managers[e])
+				console.log(this.managers[e].id)
+				this.buyCompanyID = this.managers[e].id;
 			},
 			getNewCustemerInfo() {
 				this.man = [];
@@ -522,7 +528,7 @@
 			},
 			//获取客户经理
 			getNewCustemer() {
-				console.log(this.value)
+				
 				this.test.post('order/listManagers', {
 						search: this.value,
 						org_id: this.companyId,
@@ -551,7 +557,7 @@
 							}
 						} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
 							10003) {
-						return	uni.showModal({
+							return uni.showModal({
 								title: '提示',
 								content: res.data.message,
 								success: function(res) {
@@ -626,16 +632,27 @@
 			},
 			//选择油品
 			chooseOilShow() {
+				this.getoiltype();
 				this.show = !this.show;
+
 			},
 			// 取消
 			chooseOilLeave() {
 				this.mode = !this.mode;
 			},
+			getoiltype() {
+				this.test.post('base/queryOilType').then(res => {
+				
+					this.oiltypeNum = res.data.value;
+					
+				}).catch(err => {
+					console.log(err)
+				})
+			},
 			chooseOne(val) {
-				console.log(val)
+				
 				this.show = !this.show;
-				this.productOil = val.target.id;
+				this.productOil = val;
 				//  this.$refs.chooseOne.className="modelmainActive"
 			},
 			pays(val) {
@@ -646,7 +663,7 @@
 				this.mode = !this.mode;
 			},
 			chooseTwo(val) {
-				console.log(val);
+				
 				this.mode = !this.mode;
 				this.getTpe = val.target.id
 				if (val.target.id == '配送') {
@@ -808,14 +825,14 @@
 			},
 			toBuy() {
 				const that = this;
-				console.log(this.count.length, this.dotIdx)
+			
 				if (this.myManager !== null && this.myManager !== '' && this.myManager !== '请选择') {
 					if (this.productOil !== null && this.productOil !== '' && this.productOil !== '选择油品') {
 						// if (this.getTpe !== null && this.getTpe !== '') {
 						if (this.modePay !== null && this.modePay !== '' && this.modePay !== '请选择付款方式') {
 							if (this.count !== null && this.count !== '' && this.count !== 0) {
 								if (this.dotIdx == -1) {
-									console.log(this.dotIdx)
+								
 									return uni.showModal({
 										title: '提示',
 										content: '提交后无法修改，是否提交',
@@ -1042,6 +1059,8 @@
 
 	.m-info-content {
 		justify-content: flex-start;
+		flex: 1;
+		    margin-right: 20px;
 	}
 
 	.m-info-content view {
@@ -1081,7 +1100,7 @@
 
 	.footmodel {
 		width: 100%;
-		height: 100%;
+		max-height: 100%;
 		background-color: rgba(0, 0, 0, 0.4);
 		position: absolute;
 		bottom: 0px;
@@ -1112,6 +1131,7 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
+		overflow: hidden;
 		animation: show1 0.3s;
 		border-radius: 8px 8px 0 0;
 	}

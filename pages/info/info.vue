@@ -21,7 +21,7 @@
 								<text>积分</text>
 							</view>
 						</view>
-						<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8 " style="margin-top: 15px;">
+						<view class="fget-num userinfo bgcf userIntegraltitle borderRadius8 " style="margin-top: 10px;">
 							<view class="userinfos flex ">
 								<image src="../../static/img/customer.png" mode="aspectFit"></image>
 								<text style="font-weight: bold;">客户经理</text>

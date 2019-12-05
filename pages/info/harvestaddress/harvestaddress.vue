@@ -1,28 +1,35 @@
 <template>
 	<view>
 		<view class="mContent">
-			<view class="harvest" v-for="(item,index) in info" :key="index">
-				<view class="harvest-name">
-					<view>{{item.customer_name}}</view>
-				</view>
-				<!-- {{item.address}} -->
-				<view class="harvest-address flex">
-					<view style="width:3em">地址:</view>
-					<view style="flex: 1;">{{item.address}}</view>
-				</view>
-				<view class="harvest-write">
-					<radio-group @change="sure">
-						<label class="radio">
-							<radio :value="String(item.is_default)"  :checked="index === range" />设置为默认地址
-						</label>
-					</radio-group>
-					<!-- 编辑修改地址 和删除地址 暂时不用 -->
-					<!-- <view class="operation">
+			<view v-for="(item,index) in info" :key="index">
+
+				<view class="harvest" v-for="(list,key) in item.customerLocations" :key="key">
+					
+						<view class="harvest-name">
+							<view>{{item.customer_name}}</view>
+						</view>
+						<!-- {{item.address}} -->
+						<view class="harvest-address flex">
+							<view style="width:3em">地址:</view>
+							<view style="flex: 1;">{{list.address}}</view>
+						</view>
+						<view class="harvest-write">
+<radio-group @change="sure">
+							<label class="radio">
+								<radio :value="String(list.id)"  :checked="list.is_default === 1" />设置为默认地址
+							</label>
+</radio-group>
+							<!-- 编辑修改地址 和删除地址 暂时不用 -->
+							<!-- <view class="operation">
 						<button type="defult" class="write" size="small" @tap="edit">编辑</button>
 						<button type="defult" class="write" size="small" @tap="delate">删除</button>
 					</view> -->
+						</view>
+					
 				</view>
+
 			</view>
+
 
 		</view>
 		<!-- 新增地址暂时不用 -->
@@ -38,13 +45,15 @@
 		data() {
 			return {
 				info: [],
-				range: 0,
+				range:[],
+				location: [],
 			}
 		},
 		onLoad() {
 			// 页面加载获取后台地址数据
 			this.getAddressInfo()
 		},
+		
 		methods: {
 			// 获取地址信息
 			getAddressInfo() {
@@ -52,6 +61,8 @@
 					console.log(res)
 					if (res.statusCode == 200 && res.data.errorCode == 0) {
 						this.info = res.data.value
+						
+					console.log(this.info)
 					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -10003) {
 						uni.showModal({
 							title: '提示',
@@ -68,7 +79,7 @@
 								}
 							}
 						})
-					}else if(res.data.errorCode == -10000 ){
+					} else if (res.data.errorCode == -10000) {
 						console.log(1)
 					} else {
 						uni.showToast({
@@ -90,27 +101,34 @@
 					success: res => {
 						if (res.confirm) {
 							for (let i = 0; i < this.info.length; i++) {
-								console.log(res)
-								if (this.info[i].is_default == e.target.value) {
-									this.range = i;
-									console.log(this.info[i].cl_id)
-									this.test.post("user/setDefaultAddr", {
-										 addr_id:this.info[i].cl_id
-									}).then(res=>{
-										console.log(res)
-										if(res.statusCode == 200 && res.data.errorCode == 0){
-											uni.showToast({
-												title:'设置成功'
-											})
-										}
-									})
-									break;
+								console.log(this.location)
+								for (let j = 0; j < this.info[i].customerLocations.length; j++) {
+
+									if (this.info[i].customerLocations[j].id == e.target.value) {
+										this.range = this.info[i].customerLocations[j].is_default;
+										this.test.post("user/setDefaultAddr", {
+											addr_id:this.info[i].customerLocations[j].id
+										}).then(res => {
+											console.log(res)
+											if (res.statusCode == 200 && res.data.errorCode == 0) {
+												uni.showToast({
+													title: '设置成功'
+												})
+												this.info = '';
+												this.getAddressInfo()
+											}
+
+										})
+										break;
+									}
 								}
+
+
 							}
 							// 点击取消
-						}else if(res.cancel){
+						} else if (res.cancel) {
 							this.info = '',
-							this.getAddressInfo()
+								this.getAddressInfo()
 						}
 					}
 				})

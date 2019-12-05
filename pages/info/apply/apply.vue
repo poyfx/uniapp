@@ -68,7 +68,6 @@
 		methods: {
 			getJurisdiction() {
 				const that = this;
-				var _url = 'http://192.168.0.156:9494/api/bizcust/'
 				this.test.post('user/list_user_role', {
 					customer_id: this.customer_id
 				}).then(res => {

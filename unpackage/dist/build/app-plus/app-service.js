@@ -1211,13 +1211,19 @@ Z([3,'__l'])
 Z([[7],[3,'img']])
 Z([3,'1'])
 Z(z[2])
+Z([[7],[3,'lock']])
 Z([[7],[3,'roles']])
 Z([3,'2'])
+Z(z[0])
+Z([3,'item'])
+Z([[7],[3,'datas']])
+Z(z[0])
+Z([[2,'!=='],[[7],[3,'index']],[1,'valid_time']])
 Z([3,'__e'])
 Z([3,'index_model'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'touchstart']],[[4],[[5],[[4],[[5],[1,'closeModel']]]]]]]]])
 Z([[2,'!'],[[7],[3,'modelshow']]])
-Z(z[8])
+Z(z[14])
 Z([3,'close'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[1,'closeModel']]]]]]]]])
 Z(z[2])
@@ -1225,17 +1231,17 @@ Z([3,'#000000'])
 Z([3,'28'])
 Z([3,'closeempty'])
 Z([3,'3'])
-Z(z[8])
-Z(z[9])
+Z(z[14])
+Z(z[15])
 Z([[4],[[5],[[4],[[5],[[5],[1,'touchstart']],[[4],[[5],[[4],[[5],[1,'closeNotice']]]]]]]]])
 Z([[2,'!'],[[7],[3,'noticeshow']]])
-Z(z[8])
-Z(z[13])
+Z(z[14])
+Z(z[19])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[1,'closeNotice']]]]]]]]])
 Z(z[2])
-Z(z[16])
-Z(z[17])
-Z(z[18])
+Z(z[22])
+Z(z[23])
+Z(z[24])
 Z([3,'4'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_19);return __WXML_GLOBAL__.ops_cached.$gwx_19
 }
@@ -2742,21 +2748,33 @@ var oPB=_n('view')
 _rz(z,oPB,'class',1,e,s,gg)
 var lQB=_mz(z,'banner',['bind:__l',2,'img',1,'vueId',2],[],e,s,gg)
 _(oPB,lQB)
-var aRB=_mz(z,'navs',['bind:__l',5,'role',1,'vueId',2],[],e,s,gg)
+var aRB=_mz(z,'navs',['bind:__l',5,'lock',1,'role',2,'vueId',3],[],e,s,gg)
 _(oPB,aRB)
+var tSB=_v()
+_(oPB,tSB)
+var eTB=function(oVB,bUB,xWB,gg){
+var fYB=_v()
+_(xWB,fYB)
+if(_oz(z,13,oVB,bUB,gg)){fYB.wxVkey=1
+}
+fYB.wxXCkey=1
+return xWB
+}
+tSB.wxXCkey=2
+_2z(z,11,eTB,e,s,gg,tSB,'item','index','index')
 _(cOB,oPB)
-var tSB=_mz(z,'view',['bindtouchstart',8,'class',1,'data-event-opts',2,'hidden',3],[],e,s,gg)
-var eTB=_mz(z,'view',['bindtap',12,'class',1,'data-event-opts',2],[],e,s,gg)
-var bUB=_mz(z,'uni-icons',['bind:__l',15,'color',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(eTB,bUB)
-_(tSB,eTB)
-_(cOB,tSB)
-var oVB=_mz(z,'view',['bindtouchstart',20,'class',1,'data-event-opts',2,'hidden',3],[],e,s,gg)
-var xWB=_mz(z,'view',['bindtap',24,'class',1,'data-event-opts',2],[],e,s,gg)
-var oXB=_mz(z,'uni-icons',['bind:__l',27,'color',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(xWB,oXB)
-_(oVB,xWB)
-_(cOB,oVB)
+var cZB=_mz(z,'view',['bindtouchstart',14,'class',1,'data-event-opts',2,'hidden',3],[],e,s,gg)
+var h1B=_mz(z,'view',['bindtap',18,'class',1,'data-event-opts',2],[],e,s,gg)
+var o2B=_mz(z,'uni-icons',['bind:__l',21,'color',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(h1B,o2B)
+_(cZB,h1B)
+_(cOB,cZB)
+var c3B=_mz(z,'view',['bindtouchstart',26,'class',1,'data-event-opts',2,'hidden',3],[],e,s,gg)
+var o4B=_mz(z,'view',['bindtap',30,'class',1,'data-event-opts',2],[],e,s,gg)
+var l5B=_mz(z,'uni-icons',['bind:__l',33,'color',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(o4B,l5B)
+_(c3B,o4B)
+_(cOB,c3B)
 _(r,cOB)
 return r
 }
@@ -2800,84 +2818,84 @@ e_[x[24]]={f:m24,j:[],i:[],ti:[],ic:[]}
 d_[x[25]]={}
 var m25=function(e,s,r,gg){
 var z=gz$gwx_26()
-var a6B=_v()
-_(r,a6B)
-var t7B=function(b9B,e8B,o0B,gg){
-var oBC=_v()
-_(o0B,oBC)
-var fCC=function(hEC,cDC,oFC,gg){
-var oHC=_mz(z,'view',['bindtap',8,'class',1,'data-event-opts',2],[],hEC,cDC,gg)
+var fCC=_v()
+_(r,fCC)
+var cDC=function(oFC,hEC,cGC,gg){
 var lIC=_v()
-_(oHC,lIC)
-if(_oz(z,11,hEC,cDC,gg)){lIC.wxVkey=1
+_(cGC,lIC)
+var aJC=function(eLC,tKC,bMC,gg){
+var xOC=_mz(z,'view',['bindtap',8,'class',1,'data-event-opts',2],[],eLC,tKC,gg)
+var oPC=_v()
+_(xOC,oPC)
+if(_oz(z,11,eLC,tKC,gg)){oPC.wxVkey=1
 }
-else{lIC.wxVkey=2
-var aJC=_n('view')
-_rz(z,aJC,'class',12,hEC,cDC,gg)
-var tKC=_v()
-_(aJC,tKC)
-if(_oz(z,13,hEC,cDC,gg)){tKC.wxVkey=1
+else{oPC.wxVkey=2
+var fQC=_n('view')
+_rz(z,fQC,'class',12,eLC,tKC,gg)
+var cRC=_v()
+_(fQC,cRC)
+if(_oz(z,13,eLC,tKC,gg)){cRC.wxVkey=1
 }
-else{tKC.wxVkey=2
-var eLC=_v()
-_(tKC,eLC)
-if(_oz(z,14,hEC,cDC,gg)){eLC.wxVkey=1
+else{cRC.wxVkey=2
+var hSC=_v()
+_(cRC,hSC)
+if(_oz(z,14,eLC,tKC,gg)){hSC.wxVkey=1
 }
-else{eLC.wxVkey=2
-var bMC=_v()
-_(eLC,bMC)
-if(_oz(z,15,hEC,cDC,gg)){bMC.wxVkey=1
+else{hSC.wxVkey=2
+var oTC=_v()
+_(hSC,oTC)
+if(_oz(z,15,eLC,tKC,gg)){oTC.wxVkey=1
 }
-else{bMC.wxVkey=2
-var oNC=_v()
-_(bMC,oNC)
-if(_oz(z,16,hEC,cDC,gg)){oNC.wxVkey=1
+else{oTC.wxVkey=2
+var cUC=_v()
+_(oTC,cUC)
+if(_oz(z,16,eLC,tKC,gg)){cUC.wxVkey=1
 }
-oNC.wxXCkey=1
+cUC.wxXCkey=1
 }
-bMC.wxXCkey=1
+oTC.wxXCkey=1
 }
-eLC.wxXCkey=1
+hSC.wxXCkey=1
 }
-tKC.wxXCkey=1
-_(lIC,aJC)
+cRC.wxXCkey=1
+_(oPC,fQC)
 }
-lIC.wxXCkey=1
-_(oFC,oHC)
-return oFC
+oPC.wxXCkey=1
+_(bMC,xOC)
+return bMC
 }
-oBC.wxXCkey=2
-_2z(z,6,fCC,b9B,e8B,gg,oBC,'item','__i0__','id')
-return o0B
+lIC.wxXCkey=2
+_2z(z,6,aJC,oFC,hEC,gg,lIC,'item','__i0__','id')
+return cGC
 }
-a6B.wxXCkey=2
-_2z(z,2,t7B,e,s,gg,a6B,'items','index','index')
+fCC.wxXCkey=2
+_2z(z,2,cDC,e,s,gg,fCC,'items','index','index')
 return r
 }
 e_[x[25]]={f:m25,j:[],i:[],ti:[],ic:[]}
 d_[x[26]]={}
 var m26=function(e,s,r,gg){
 var z=gz$gwx_27()
-var oPC=_mz(z,'form',['bindreset',0,'data-event-opts',1,'enctype',1],[],e,s,gg)
-var fQC=_mz(z,'w-picker',['bind:__l',3,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(oPC,fQC)
-_(r,oPC)
+var lWC=_mz(z,'form',['bindreset',0,'data-event-opts',1,'enctype',1],[],e,s,gg)
+var aXC=_mz(z,'w-picker',['bind:__l',3,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
+_(lWC,aXC)
+_(r,lWC)
 return r
 }
 e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
 d_[x[27]]={}
 var m27=function(e,s,r,gg){
 var z=gz$gwx_28()
-var hSC=_n('view')
-_rz(z,hSC,'class',0,e,s,gg)
-var oTC=_v()
-_(hSC,oTC)
-if(_oz(z,1,e,s,gg)){oTC.wxVkey=1
+var eZC=_n('view')
+_rz(z,eZC,'class',0,e,s,gg)
+var b1C=_v()
+_(eZC,b1C)
+if(_oz(z,1,e,s,gg)){b1C.wxVkey=1
 }
-var cUC=_mz(z,'m-button',['bind:__l',2,'bind:commit',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
-_(hSC,cUC)
-oTC.wxXCkey=1
-_(r,hSC)
+var o2C=_mz(z,'m-button',['bind:__l',2,'bind:commit',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
+_(eZC,o2C)
+b1C.wxXCkey=1
+_(r,eZC)
 return r
 }
 e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
@@ -2890,76 +2908,76 @@ e_[x[28]]={f:m28,j:[],i:[],ti:[],ic:[]}
 d_[x[29]]={}
 var m29=function(e,s,r,gg){
 var z=gz$gwx_30()
-var aXC=_n('view')
-_rz(z,aXC,'class',0,e,s,gg)
-var tYC=_n('view')
-_rz(z,tYC,'class',1,e,s,gg)
-var eZC=_mz(z,'info-text',['bind:__l',2,'placeholder',1,'textValue',2,'vueId',3],[],e,s,gg)
-_(tYC,eZC)
-var b1C=_mz(z,'info-text',['bind:__l',6,'placeholder',1,'textValue',2,'vueId',3],[],e,s,gg)
-_(tYC,b1C)
-var o2C=_mz(z,'info-text',['bind:__l',10,'placeholder',1,'textValue',2,'vueId',3],[],e,s,gg)
-_(tYC,o2C)
-_(aXC,tYC)
-var x3C=_mz(z,'m-button',['bind:__l',14,'type',1,'value',2,'vueId',3],[],e,s,gg)
-_(aXC,x3C)
-_(r,aXC)
+var f5C=_n('view')
+_rz(z,f5C,'class',0,e,s,gg)
+var c6C=_n('view')
+_rz(z,c6C,'class',1,e,s,gg)
+var h7C=_mz(z,'info-text',['bind:__l',2,'placeholder',1,'textValue',2,'vueId',3],[],e,s,gg)
+_(c6C,h7C)
+var o8C=_mz(z,'info-text',['bind:__l',6,'placeholder',1,'textValue',2,'vueId',3],[],e,s,gg)
+_(c6C,o8C)
+var c9C=_mz(z,'info-text',['bind:__l',10,'placeholder',1,'textValue',2,'vueId',3],[],e,s,gg)
+_(c6C,c9C)
+_(f5C,c6C)
+var o0C=_mz(z,'m-button',['bind:__l',14,'type',1,'value',2,'vueId',3],[],e,s,gg)
+_(f5C,o0C)
+_(r,f5C)
 return r
 }
 e_[x[29]]={f:m29,j:[],i:[],ti:[],ic:[]}
 d_[x[30]]={}
 var m30=function(e,s,r,gg){
 var z=gz$gwx_31()
-var f5C=_n('view')
-_rz(z,f5C,'class',0,e,s,gg)
-var c6C=_mz(z,'info-text',['bind:__l',1,'disabled',1,'textValue',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
-_(f5C,c6C)
-var h7C=_n('view')
-_rz(z,h7C,'class',7,e,s,gg)
-var o8C=_mz(z,'info-img',['bind:__l',8,'bind:toApply',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
-_(h7C,o8C)
-var c9C=_mz(z,'info-img',['bind:__l',15,'bind:toStayOil',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
-_(h7C,c9C)
-var o0C=_mz(z,'info-img',['bind:__l',22,'bind:editAddress',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
-_(h7C,o0C)
-var lAD=_mz(z,'info-img',['bind:__l',29,'bind:toEditPsd',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
-_(h7C,lAD)
-_(f5C,h7C)
-_(r,f5C)
+var aBD=_n('view')
+_rz(z,aBD,'class',0,e,s,gg)
+var tCD=_mz(z,'info-text',['bind:__l',1,'disabled',1,'textValue',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
+_(aBD,tCD)
+var eDD=_n('view')
+_rz(z,eDD,'class',7,e,s,gg)
+var bED=_mz(z,'info-img',['bind:__l',8,'bind:toApply',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
+_(eDD,bED)
+var oFD=_mz(z,'info-img',['bind:__l',15,'bind:toStayOil',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
+_(eDD,oFD)
+var xGD=_mz(z,'info-img',['bind:__l',22,'bind:editAddress',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
+_(eDD,xGD)
+var oHD=_mz(z,'info-img',['bind:__l',29,'bind:toEditPsd',1,'data-event-opts',2,'disabled',3,'imgText',4,'type',5,'vueId',6],[],e,s,gg)
+_(eDD,oHD)
+_(aBD,eDD)
+_(r,aBD)
 return r
 }
 e_[x[30]]={f:m30,j:[],i:[],ti:[],ic:[]}
 d_[x[31]]={}
 var m31=function(e,s,r,gg){
 var z=gz$gwx_32()
-var tCD=_n('view')
-_rz(z,tCD,'class',0,e,s,gg)
-var eDD=_n('view')
-_rz(z,eDD,'class',1,e,s,gg)
-var bED=_mz(z,'set-password',['bind:__l',2,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
-_(eDD,bED)
-var oFD=_mz(z,'set-password',['bind:__l',9,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
-_(eDD,oFD)
-var xGD=_mz(z,'set-password',['bind:__l',16,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(eDD,xGD)
-_(tCD,eDD)
-var oHD=_mz(z,'m-button',['bind:__l',24,'bind:sureModify',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
-_(tCD,oHD)
-_(r,tCD)
+var cJD=_n('view')
+_rz(z,cJD,'class',0,e,s,gg)
+var hKD=_n('view')
+_rz(z,hKD,'class',1,e,s,gg)
+var oLD=_mz(z,'set-password',['bind:__l',2,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
+_(hKD,oLD)
+var cMD=_mz(z,'set-password',['bind:__l',9,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
+_(hKD,cMD)
+var oND=_mz(z,'set-password',['bind:__l',16,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(hKD,oND)
+_(cJD,hKD)
+var lOD=_mz(z,'m-button',['bind:__l',24,'bind:sureModify',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
+_(cJD,lOD)
+_(r,cJD)
 return r
 }
 e_[x[31]]={f:m31,j:[],i:[],ti:[],ic:[]}
 d_[x[32]]={}
 var m32=function(e,s,r,gg){
 var z=gz$gwx_33()
-var cJD=_v()
-_(r,cJD)
-if(_oz(z,0,e,s,gg)){cJD.wxVkey=1
-var hKD=_mz(z,'tki-qrcode',['bind:__l',1,'bind:result',1,'cid',2,'class',3,'data-event-opts',4,'data-ref',5,'loadMake',6,'onval',7,'size',8,'usingComponents',9,'val',10,'vueId',11],[],e,s,gg)
-_(cJD,hKD)
+var tQD=_v()
+_(r,tQD)
+if(_oz(z,0,e,s,gg)){tQD.wxVkey=1
+var eRD=_mz(z,'tki-qrcode',['bind:__l',1,'bind:result',1,'cid',2,'class',3,'data-event-opts',4,'data-ref',5,'loadMake',6,'onval',7,'size',8,'usingComponents',9,'val',10,'vueId',11],[],e,s,gg)
+_(tQD,eRD)
 }
-cJD.wxXCkey=1
-cJD.wxXCkey=3
+tQD.wxXCkey=1
+tQD.wxXCkey=3
 return r
 }
 e_[x[32]]={f:m32,j:[],i:[],ti:[],ic:[]}
@@ -2984,41 +3002,41 @@ e_[x[35]]={f:m35,j:[],i:[],ti:[],ic:[]}
 d_[x[36]]={}
 var m36=function(e,s,r,gg){
 var z=gz$gwx_37()
-var aPD=_mz(z,'m-button',['bind:__l',0,'bind:goNext',1,'data-event-opts',1,'type',2,'value',3,'vueId',4],[],e,s,gg)
-_(r,aPD)
+var fWD=_mz(z,'m-button',['bind:__l',0,'bind:goNext',1,'data-event-opts',1,'type',2,'value',3,'vueId',4],[],e,s,gg)
+_(r,fWD)
 return r
 }
 e_[x[36]]={f:m36,j:[],i:[],ti:[],ic:[]}
 d_[x[37]]={}
 var m37=function(e,s,r,gg){
 var z=gz$gwx_38()
-var eRD=_n('view')
-_rz(z,eRD,'class',0,e,s,gg)
-var bSD=_mz(z,'m-input',['bind:__l',1,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'value',5,'vueId',6],[],e,s,gg)
-_(eRD,bSD)
-var oTD=_mz(z,'pws-input',['bind:__l',8,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'value',5,'vueId',6],[],e,s,gg)
-_(eRD,oTD)
-var xUD=_mz(z,'m-button',['bind:__l',15,'bind:handleLogin',1,'class',2,'data-event-opts',3,'disabled',4,'type',5,'value',6,'vueId',7],[],e,s,gg)
-_(eRD,xUD)
-_(r,eRD)
+var hYD=_n('view')
+_rz(z,hYD,'class',0,e,s,gg)
+var oZD=_mz(z,'m-input',['bind:__l',1,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'value',5,'vueId',6],[],e,s,gg)
+_(hYD,oZD)
+var c1D=_mz(z,'pws-input',['bind:__l',8,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'value',5,'vueId',6],[],e,s,gg)
+_(hYD,c1D)
+var o2D=_mz(z,'m-button',['bind:__l',15,'bind:handleLogin',1,'class',2,'data-event-opts',3,'disabled',4,'type',5,'value',6,'vueId',7],[],e,s,gg)
+_(hYD,o2D)
+_(r,hYD)
 return r
 }
 e_[x[37]]={f:m37,j:[],i:[],ti:[],ic:[]}
 d_[x[38]]={}
 var m38=function(e,s,r,gg){
 var z=gz$gwx_39()
-var fWD=_n('view')
-_rz(z,fWD,'class',0,e,s,gg)
-var cXD=_n('view')
-_rz(z,cXD,'class',1,e,s,gg)
-var hYD=_mz(z,'set-password',['bind:__l',2,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
-_(cXD,hYD)
-var oZD=_mz(z,'set-password',['bind:__l',9,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
-_(cXD,oZD)
-_(fWD,cXD)
-var c1D=_mz(z,'m-button',['bind:__l',16,'bind:sureModify',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
-_(fWD,c1D)
-_(r,fWD)
+var a4D=_n('view')
+_rz(z,a4D,'class',0,e,s,gg)
+var t5D=_n('view')
+_rz(z,t5D,'class',1,e,s,gg)
+var e6D=_mz(z,'set-password',['bind:__l',2,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
+_(t5D,e6D)
+var b7D=_mz(z,'set-password',['bind:__l',9,'bind:input',1,'data-event-opts',2,'placeholder',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
+_(t5D,b7D)
+_(a4D,t5D)
+var o8D=_mz(z,'m-button',['bind:__l',16,'bind:sureModify',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
+_(a4D,o8D)
+_(r,a4D)
 return r
 }
 e_[x[38]]={f:m38,j:[],i:[],ti:[],ic:[]}
@@ -3037,157 +3055,157 @@ e_[x[40]]={f:m40,j:[],i:[],ti:[],ic:[]}
 d_[x[41]]={}
 var m41=function(e,s,r,gg){
 var z=gz$gwx_42()
-var t5D=_n('view')
-var e6D=_mz(z,'titles',['bind:__l',0,'titles',1,'vueId',1],[],e,s,gg)
-_(t5D,e6D)
-var b7D=_mz(z,'m-button',['bind:__l',3,'bind:toBuy',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
-_(t5D,b7D)
-var o8D=_mz(z,'view',['bindtap',9,'class',1,'data-event-opts',2],[],e,s,gg)
-var x9D=_mz(z,'uni-icons',['bind:__l',12,'size',1,'type',2,'vueId',3],[],e,s,gg)
-_(o8D,x9D)
-_(t5D,o8D)
-var o0D=_mz(z,'view',['bindtap',16,'class',1,'data-event-opts',2],[],e,s,gg)
-var fAE=_mz(z,'uni-icons',['bind:__l',19,'size',1,'type',2,'vueId',3],[],e,s,gg)
-_(o0D,fAE)
-_(t5D,o0D)
-var cBE=_mz(z,'view',['bindtap',23,'class',1,'data-event-opts',2],[],e,s,gg)
-var hCE=_mz(z,'uni-icons',['bind:__l',26,'size',1,'type',2,'vueId',3],[],e,s,gg)
+var cBE=_n('view')
+var hCE=_mz(z,'titles',['bind:__l',0,'titles',1,'vueId',1],[],e,s,gg)
 _(cBE,hCE)
-_(t5D,cBE)
-_(r,t5D)
+var oDE=_mz(z,'m-button',['bind:__l',3,'bind:toBuy',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
+_(cBE,oDE)
+var cEE=_mz(z,'view',['bindtap',9,'class',1,'data-event-opts',2],[],e,s,gg)
+var oFE=_mz(z,'uni-icons',['bind:__l',12,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(cEE,oFE)
+_(cBE,cEE)
+var lGE=_mz(z,'view',['bindtap',16,'class',1,'data-event-opts',2],[],e,s,gg)
+var aHE=_mz(z,'uni-icons',['bind:__l',19,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(lGE,aHE)
+_(cBE,lGE)
+var tIE=_mz(z,'view',['bindtap',23,'class',1,'data-event-opts',2],[],e,s,gg)
+var eJE=_mz(z,'uni-icons',['bind:__l',26,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(tIE,eJE)
+_(cBE,tIE)
+_(r,cBE)
 return r
 }
 e_[x[41]]={f:m41,j:[],i:[],ti:[],ic:[]}
 d_[x[42]]={}
 var m42=function(e,s,r,gg){
 var z=gz$gwx_43()
-var cEE=_n('view')
-_rz(z,cEE,'class',0,e,s,gg)
-var oFE=_mz(z,'info-text',['bind:__l',1,'bind:input',1,'data-event-opts',2,'disabled',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
-_(cEE,oFE)
-var lGE=_mz(z,'info-text',['bind:__l',8,'disabled',1,'textValue',2,'value',3,'vueId',4],[],e,s,gg)
-_(cEE,lGE)
-var aHE=_mz(z,'t-button',['bind:__l',13,'bind:invoiceSure',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(cEE,aHE)
-_(r,cEE)
+var oLE=_n('view')
+_rz(z,oLE,'class',0,e,s,gg)
+var xME=_mz(z,'info-text',['bind:__l',1,'bind:input',1,'data-event-opts',2,'disabled',3,'textValue',4,'value',5,'vueId',6],[],e,s,gg)
+_(oLE,xME)
+var oNE=_mz(z,'info-text',['bind:__l',8,'disabled',1,'textValue',2,'value',3,'vueId',4],[],e,s,gg)
+_(oLE,oNE)
+var fOE=_mz(z,'t-button',['bind:__l',13,'bind:invoiceSure',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(oLE,fOE)
+_(r,oLE)
 return r
 }
 e_[x[42]]={f:m42,j:[],i:[],ti:[],ic:[]}
 d_[x[43]]={}
 var m43=function(e,s,r,gg){
 var z=gz$gwx_44()
-var eJE=_n('view')
-_rz(z,eJE,'class',0,e,s,gg)
-var bKE=_v()
-_(eJE,bKE)
-if(_oz(z,1,e,s,gg)){bKE.wxVkey=1
-}
-var xME=_n('view')
-_rz(z,xME,'class',2,e,s,gg)
-var oNE=_v()
-_(xME,oNE)
-if(_oz(z,3,e,s,gg)){oNE.wxVkey=1
-}
-var fOE=_v()
-_(xME,fOE)
-if(_oz(z,4,e,s,gg)){fOE.wxVkey=1
-}
-var cPE=_v()
-_(xME,cPE)
-if(_oz(z,5,e,s,gg)){cPE.wxVkey=1
-}
-var hQE=_v()
-_(xME,hQE)
-if(_oz(z,6,e,s,gg)){hQE.wxVkey=1
-}
+var hQE=_n('view')
+_rz(z,hQE,'class',0,e,s,gg)
 var oRE=_v()
-_(xME,oRE)
-if(_oz(z,7,e,s,gg)){oRE.wxVkey=1
+_(hQE,oRE)
+if(_oz(z,1,e,s,gg)){oRE.wxVkey=1
 }
-var cSE=_v()
-_(xME,cSE)
-if(_oz(z,8,e,s,gg)){cSE.wxVkey=1
-}
-var oTE=_v()
-_(xME,oTE)
-if(_oz(z,9,e,s,gg)){oTE.wxVkey=1
-}
+var oTE=_n('view')
+_rz(z,oTE,'class',2,e,s,gg)
 var lUE=_v()
-_(xME,lUE)
-if(_oz(z,10,e,s,gg)){lUE.wxVkey=1
+_(oTE,lUE)
+if(_oz(z,3,e,s,gg)){lUE.wxVkey=1
 }
 var aVE=_v()
-_(xME,aVE)
-if(_oz(z,11,e,s,gg)){aVE.wxVkey=1
+_(oTE,aVE)
+if(_oz(z,4,e,s,gg)){aVE.wxVkey=1
 }
-oNE.wxXCkey=1
-fOE.wxXCkey=1
-cPE.wxXCkey=1
-hQE.wxXCkey=1
-oRE.wxXCkey=1
-cSE.wxXCkey=1
-oTE.wxXCkey=1
-lUE.wxXCkey=1
-aVE.wxXCkey=1
-_(eJE,xME)
-var oLE=_v()
-_(eJE,oLE)
-if(_oz(z,12,e,s,gg)){oLE.wxVkey=1
-var tWE=_mz(z,'view',['bindtap',13,'class',1,'data-event-opts',2],[],e,s,gg)
+var tWE=_v()
+_(oTE,tWE)
+if(_oz(z,5,e,s,gg)){tWE.wxVkey=1
+}
 var eXE=_v()
-_(tWE,eXE)
-if(_oz(z,16,e,s,gg)){eXE.wxVkey=1
+_(oTE,eXE)
+if(_oz(z,6,e,s,gg)){eXE.wxVkey=1
 }
 var bYE=_v()
-_(tWE,bYE)
-if(_oz(z,17,e,s,gg)){bYE.wxVkey=1
+_(oTE,bYE)
+if(_oz(z,7,e,s,gg)){bYE.wxVkey=1
 }
 var oZE=_v()
-_(tWE,oZE)
-if(_oz(z,18,e,s,gg)){oZE.wxVkey=1
+_(oTE,oZE)
+if(_oz(z,8,e,s,gg)){oZE.wxVkey=1
 }
 var x1E=_v()
-_(tWE,x1E)
-if(_oz(z,19,e,s,gg)){x1E.wxVkey=1
+_(oTE,x1E)
+if(_oz(z,9,e,s,gg)){x1E.wxVkey=1
 }
 var o2E=_v()
-_(tWE,o2E)
-if(_oz(z,20,e,s,gg)){o2E.wxVkey=1
+_(oTE,o2E)
+if(_oz(z,10,e,s,gg)){o2E.wxVkey=1
 }
 var f3E=_v()
-_(tWE,f3E)
-if(_oz(z,21,e,s,gg)){f3E.wxVkey=1
+_(oTE,f3E)
+if(_oz(z,11,e,s,gg)){f3E.wxVkey=1
 }
+lUE.wxXCkey=1
+aVE.wxXCkey=1
+tWE.wxXCkey=1
 eXE.wxXCkey=1
 bYE.wxXCkey=1
 oZE.wxXCkey=1
 x1E.wxXCkey=1
 o2E.wxXCkey=1
 f3E.wxXCkey=1
-_(oLE,tWE)
-}
-var c4E=_n('view')
-_rz(z,c4E,'class',22,e,s,gg)
+_(hQE,oTE)
+var cSE=_v()
+_(hQE,cSE)
+if(_oz(z,12,e,s,gg)){cSE.wxVkey=1
+var c4E=_mz(z,'view',['bindtap',13,'class',1,'data-event-opts',2],[],e,s,gg)
 var h5E=_v()
 _(c4E,h5E)
-if(_oz(z,23,e,s,gg)){h5E.wxVkey=1
+if(_oz(z,16,e,s,gg)){h5E.wxVkey=1
 }
 var o6E=_v()
 _(c4E,o6E)
-if(_oz(z,24,e,s,gg)){o6E.wxVkey=1
+if(_oz(z,17,e,s,gg)){o6E.wxVkey=1
+}
+var c7E=_v()
+_(c4E,c7E)
+if(_oz(z,18,e,s,gg)){c7E.wxVkey=1
+}
+var o8E=_v()
+_(c4E,o8E)
+if(_oz(z,19,e,s,gg)){o8E.wxVkey=1
+}
+var l9E=_v()
+_(c4E,l9E)
+if(_oz(z,20,e,s,gg)){l9E.wxVkey=1
+}
+var a0E=_v()
+_(c4E,a0E)
+if(_oz(z,21,e,s,gg)){a0E.wxVkey=1
 }
 h5E.wxXCkey=1
 o6E.wxXCkey=1
-_(eJE,c4E)
-var c7E=_mz(z,'t-button',['bind:__l',25,'bind:tell',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(eJE,c7E)
-var o8E=_mz(z,'m-button',['bind:__l',33,'bind:tell',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
-_(eJE,o8E)
-var l9E=_mz(z,'m-button',['bind:__l',39,'bind:tell',1,'data-event-opts',2,'disabled',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
-_(eJE,l9E)
-bKE.wxXCkey=1
-oLE.wxXCkey=1
-_(r,eJE)
+c7E.wxXCkey=1
+o8E.wxXCkey=1
+l9E.wxXCkey=1
+a0E.wxXCkey=1
+_(cSE,c4E)
+}
+var tAF=_n('view')
+_rz(z,tAF,'class',22,e,s,gg)
+var eBF=_v()
+_(tAF,eBF)
+if(_oz(z,23,e,s,gg)){eBF.wxVkey=1
+}
+var bCF=_v()
+_(tAF,bCF)
+if(_oz(z,24,e,s,gg)){bCF.wxVkey=1
+}
+eBF.wxXCkey=1
+bCF.wxXCkey=1
+_(hQE,tAF)
+var oDF=_mz(z,'t-button',['bind:__l',25,'bind:tell',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(hQE,oDF)
+var xEF=_mz(z,'m-button',['bind:__l',33,'bind:tell',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
+_(hQE,xEF)
+var oFF=_mz(z,'m-button',['bind:__l',39,'bind:tell',1,'data-event-opts',2,'disabled',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
+_(hQE,oFF)
+oRE.wxXCkey=1
+cSE.wxXCkey=1
+_(r,hQE)
 return r
 }
 e_[x[43]]={f:m43,j:[],i:[],ti:[],ic:[]}
@@ -3200,348 +3218,348 @@ e_[x[44]]={f:m44,j:[],i:[],ti:[],ic:[]}
 d_[x[45]]={}
 var m45=function(e,s,r,gg){
 var z=gz$gwx_46()
-var eBF=_n('view')
-var bCF=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
-var oDF=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
-_(bCF,oDF)
-_(eBF,bCF)
-var xEF=_mz(z,'selects',['bind:__l',7,'bind:change',1,'clearable',2,'data-event-opts',3,'initValue',4,'isCanInput',5,'list',6,'listShow',7,'placeholder',8,'showItemNum',9,'style_Container',10,'vueId',11],[],e,s,gg)
-_(eBF,xEF)
-var oFF=_v()
-_(eBF,oFF)
-var fGF=function(hIF,cHF,oJF,gg){
-var oLF=_mz(z,'view',['bindtap',23,'bindtouchend',1,'bindtouchmove',2,'class',3,'data-event-opts',4],[],hIF,cHF,gg)
+var hIF=_n('view')
+var oJF=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
+var cKF=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(oJF,cKF)
+_(hIF,oJF)
+var oLF=_mz(z,'selects',['bind:__l',7,'bind:change',1,'clearable',2,'data-event-opts',3,'initValue',4,'isCanInput',5,'list',6,'listShow',7,'placeholder',8,'showItemNum',9,'style_Container',10,'vueId',11],[],e,s,gg)
+_(hIF,oLF)
 var lMF=_v()
-_(oLF,lMF)
-if(_oz(z,28,hIF,cHF,gg)){lMF.wxVkey=1
-}
-var aNF=_v()
-_(oLF,aNF)
-if(_oz(z,29,hIF,cHF,gg)){aNF.wxVkey=1
-}
-else{aNF.wxVkey=2
+_(hIF,lMF)
+var aNF=function(ePF,tOF,bQF,gg){
+var xSF=_mz(z,'view',['bindtap',23,'bindtouchend',1,'bindtouchmove',2,'class',3,'data-event-opts',4],[],ePF,tOF,gg)
 var oTF=_v()
-_(aNF,oTF)
-if(_oz(z,30,hIF,cHF,gg)){oTF.wxVkey=1
+_(xSF,oTF)
+if(_oz(z,28,ePF,tOF,gg)){oTF.wxVkey=1
 }
-else{oTF.wxVkey=2
 var fUF=_v()
-_(oTF,fUF)
-if(_oz(z,31,hIF,cHF,gg)){fUF.wxVkey=1
+_(xSF,fUF)
+if(_oz(z,29,ePF,tOF,gg)){fUF.wxVkey=1
 }
-fUF.wxXCkey=1
+else{fUF.wxVkey=2
+var l1F=_v()
+_(fUF,l1F)
+if(_oz(z,30,ePF,tOF,gg)){l1F.wxVkey=1
+}
+else{l1F.wxVkey=2
+var a2F=_v()
+_(l1F,a2F)
+if(_oz(z,31,ePF,tOF,gg)){a2F.wxVkey=1
+}
+a2F.wxXCkey=1
+}
+l1F.wxXCkey=1
+}
+var cVF=_v()
+_(xSF,cVF)
+if(_oz(z,32,ePF,tOF,gg)){cVF.wxVkey=1
+}
+var hWF=_v()
+_(xSF,hWF)
+if(_oz(z,33,ePF,tOF,gg)){hWF.wxVkey=1
+}
+var oXF=_v()
+_(xSF,oXF)
+if(_oz(z,34,ePF,tOF,gg)){oXF.wxVkey=1
+}
+var cYF=_v()
+_(xSF,cYF)
+if(_oz(z,35,ePF,tOF,gg)){cYF.wxVkey=1
+}
+var oZF=_v()
+_(xSF,oZF)
+if(_oz(z,36,ePF,tOF,gg)){oZF.wxVkey=1
 }
 oTF.wxXCkey=1
+fUF.wxXCkey=1
+cVF.wxXCkey=1
+hWF.wxXCkey=1
+oXF.wxXCkey=1
+cYF.wxXCkey=1
+oZF.wxXCkey=1
+_(bQF,xSF)
+return bQF
 }
-var tOF=_v()
-_(oLF,tOF)
-if(_oz(z,32,hIF,cHF,gg)){tOF.wxVkey=1
-}
-var ePF=_v()
-_(oLF,ePF)
-if(_oz(z,33,hIF,cHF,gg)){ePF.wxVkey=1
-}
-var bQF=_v()
-_(oLF,bQF)
-if(_oz(z,34,hIF,cHF,gg)){bQF.wxVkey=1
-}
-var oRF=_v()
-_(oLF,oRF)
-if(_oz(z,35,hIF,cHF,gg)){oRF.wxVkey=1
-}
-var xSF=_v()
-_(oLF,xSF)
-if(_oz(z,36,hIF,cHF,gg)){xSF.wxVkey=1
-}
-lMF.wxXCkey=1
-aNF.wxXCkey=1
-tOF.wxXCkey=1
-ePF.wxXCkey=1
-bQF.wxXCkey=1
-oRF.wxXCkey=1
-xSF.wxXCkey=1
-_(oJF,oLF)
-return oJF
-}
-oFF.wxXCkey=2
-_2z(z,21,fGF,e,s,gg,oFF,'item','index','id')
-_(r,eBF)
+lMF.wxXCkey=2
+_2z(z,21,aNF,e,s,gg,lMF,'item','index','id')
+_(r,hIF)
 return r
 }
 e_[x[45]]={f:m45,j:[],i:[],ti:[],ic:[]}
 d_[x[46]]={}
 var m46=function(e,s,r,gg){
 var z=gz$gwx_47()
-var hWF=_n('view')
-_rz(z,hWF,'class',0,e,s,gg)
-var oXF=_mz(z,'view',['bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var cYF=_mz(z,'uni-icons',['bind:__l',4,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(oXF,cYF)
-_(hWF,oXF)
-var oZF=_n('view')
-_rz(z,oZF,'class',9,e,s,gg)
-var l1F=_v()
-_(oZF,l1F)
-if(_oz(z,10,e,s,gg)){l1F.wxVkey=1
+var e4F=_n('view')
+_rz(z,e4F,'class',0,e,s,gg)
+var b5F=_mz(z,'view',['bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var o6F=_mz(z,'uni-icons',['bind:__l',4,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(b5F,o6F)
+_(e4F,b5F)
+var x7F=_n('view')
+_rz(z,x7F,'class',9,e,s,gg)
+var o8F=_v()
+_(x7F,o8F)
+if(_oz(z,10,e,s,gg)){o8F.wxVkey=1
 }
-else{l1F.wxVkey=2
-var a2F=_v()
-_(l1F,a2F)
-if(_oz(z,11,e,s,gg)){a2F.wxVkey=1
+else{o8F.wxVkey=2
+var f9F=_v()
+_(o8F,f9F)
+if(_oz(z,11,e,s,gg)){f9F.wxVkey=1
 }
-a2F.wxXCkey=1
+f9F.wxXCkey=1
 }
-l1F.wxXCkey=1
-_(hWF,oZF)
-_(r,hWF)
+o8F.wxXCkey=1
+_(e4F,x7F)
+_(r,e4F)
 return r
 }
 e_[x[46]]={f:m46,j:[],i:[],ti:[],ic:[]}
 d_[x[47]]={}
 var m47=function(e,s,r,gg){
 var z=gz$gwx_48()
-var e4F=_n('view')
-var b5F=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
-var o6F=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
-_(b5F,o6F)
-_(e4F,b5F)
-var x7F=_mz(z,'selects',['bind:__l',7,'bind:change',1,'clearable',2,'data-event-opts',3,'initValue',4,'isCanInput',5,'list',6,'listShow',7,'placeholder',8,'showItemNum',9,'style_Container',10,'vueId',11],[],e,s,gg)
-_(e4F,x7F)
-var o8F=_v()
-_(e4F,o8F)
-var f9F=function(hAG,c0F,oBG,gg){
-var oDG=_mz(z,'view',['bindtouchend',23,'bindtouchmove',1,'class',2,'data-event-opts',3],[],hAG,c0F,gg)
-var lEG=_mz(z,'view',['bindtap',27,'class',1,'data-event-opts',2],[],hAG,c0F,gg)
-var aFG=_n('view')
-_rz(z,aFG,'class',30,hAG,c0F,gg)
-var tGG=_v()
-_(aFG,tGG)
-if(_oz(z,31,hAG,c0F,gg)){tGG.wxVkey=1
+var hAG=_n('view')
+var oBG=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
+var cCG=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(oBG,cCG)
+_(hAG,oBG)
+var oDG=_mz(z,'selects',['bind:__l',7,'bind:change',1,'clearable',2,'data-event-opts',3,'initValue',4,'isCanInput',5,'list',6,'listShow',7,'placeholder',8,'showItemNum',9,'style_Container',10,'vueId',11],[],e,s,gg)
+_(hAG,oDG)
+var lEG=_v()
+_(hAG,lEG)
+var aFG=function(eHG,tGG,bIG,gg){
+var xKG=_mz(z,'view',['bindtouchend',23,'bindtouchmove',1,'class',2,'data-event-opts',3],[],eHG,tGG,gg)
+var oLG=_mz(z,'view',['bindtap',27,'class',1,'data-event-opts',2],[],eHG,tGG,gg)
+var fMG=_n('view')
+_rz(z,fMG,'class',30,eHG,tGG,gg)
+var cNG=_v()
+_(fMG,cNG)
+if(_oz(z,31,eHG,tGG,gg)){cNG.wxVkey=1
 }
-var eHG=_v()
-_(aFG,eHG)
-if(_oz(z,32,hAG,c0F,gg)){eHG.wxVkey=1
+var hOG=_v()
+_(fMG,hOG)
+if(_oz(z,32,eHG,tGG,gg)){hOG.wxVkey=1
 }
-tGG.wxXCkey=1
-eHG.wxXCkey=1
-_(lEG,aFG)
-_(oDG,lEG)
-_(oBG,oDG)
-return oBG
+cNG.wxXCkey=1
+hOG.wxXCkey=1
+_(oLG,fMG)
+_(xKG,oLG)
+_(bIG,xKG)
+return bIG
 }
-o8F.wxXCkey=2
-_2z(z,21,f9F,e,s,gg,o8F,'item','index','reserve_id')
-_(r,e4F)
+lEG.wxXCkey=2
+_2z(z,21,aFG,e,s,gg,lEG,'item','index','reserve_id')
+_(r,hAG)
 return r
 }
 e_[x[47]]={f:m47,j:[],i:[],ti:[],ic:[]}
 d_[x[48]]={}
 var m48=function(e,s,r,gg){
 var z=gz$gwx_49()
-var oJG=_n('view')
-_rz(z,oJG,'class',0,e,s,gg)
-var xKG=_n('view')
-_rz(z,xKG,'class',1,e,s,gg)
-var oLG=_mz(z,'w-picker',['bind:__l',2,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(xKG,oLG)
-var fMG=_mz(z,'w-picker',['bind:__l',14,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(xKG,fMG)
-var cNG=_mz(z,'w-picker',['bind:__l',26,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(xKG,cNG)
-_(oJG,xKG)
-var hOG=_mz(z,'m-button',['bind:__l',38,'bind:oneSide',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
-_(oJG,hOG)
-var oPG=_mz(z,'view',['class',45,'hidden',1],[],e,s,gg)
-var cQG=_mz(z,'t-button',['bind:__l',47,'bind:lastStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oPG,cQG)
-var oRG=_mz(z,'t-button',['bind:__l',55,'bind:nextStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oPG,oRG)
-_(oJG,oPG)
-var lSG=_mz(z,'view',['class',63,'hidden',1],[],e,s,gg)
-var aTG=_mz(z,'t-button',['bind:__l',65,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(lSG,aTG)
-var tUG=_mz(z,'t-button',['bind:__l',73,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(lSG,tUG)
-_(oJG,lSG)
-var eVG=_mz(z,'view',['class',81,'hidden',1],[],e,s,gg)
-var bWG=_mz(z,'t-button',['bind:__l',83,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(eVG,bWG)
-var oXG=_mz(z,'t-button',['bind:__l',91,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(eVG,oXG)
-_(oJG,eVG)
-var xYG=_mz(z,'view',['class',99,'hidden',1],[],e,s,gg)
-var oZG=_mz(z,'t-button',['bind:__l',101,'bind:fiveStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(xYG,oZG)
-var f1G=_mz(z,'t-button',['bind:__l',109,'bind:fiveStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(xYG,f1G)
-_(oJG,xYG)
-_(r,oJG)
+var cQG=_n('view')
+_rz(z,cQG,'class',0,e,s,gg)
+var oRG=_n('view')
+_rz(z,oRG,'class',1,e,s,gg)
+var lSG=_mz(z,'w-picker',['bind:__l',2,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
+_(oRG,lSG)
+var aTG=_mz(z,'w-picker',['bind:__l',14,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
+_(oRG,aTG)
+var tUG=_mz(z,'w-picker',['bind:__l',26,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
+_(oRG,tUG)
+_(cQG,oRG)
+var eVG=_mz(z,'m-button',['bind:__l',38,'bind:oneSide',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
+_(cQG,eVG)
+var bWG=_mz(z,'view',['class',45,'hidden',1],[],e,s,gg)
+var oXG=_mz(z,'t-button',['bind:__l',47,'bind:lastStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(bWG,oXG)
+var xYG=_mz(z,'t-button',['bind:__l',55,'bind:nextStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(bWG,xYG)
+_(cQG,bWG)
+var oZG=_mz(z,'view',['class',63,'hidden',1],[],e,s,gg)
+var f1G=_mz(z,'t-button',['bind:__l',65,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(oZG,f1G)
+var c2G=_mz(z,'t-button',['bind:__l',73,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(oZG,c2G)
+_(cQG,oZG)
+var h3G=_mz(z,'view',['class',81,'hidden',1],[],e,s,gg)
+var o4G=_mz(z,'t-button',['bind:__l',83,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(h3G,o4G)
+var c5G=_mz(z,'t-button',['bind:__l',91,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(h3G,c5G)
+_(cQG,h3G)
+var o6G=_mz(z,'view',['class',99,'hidden',1],[],e,s,gg)
+var l7G=_mz(z,'t-button',['bind:__l',101,'bind:fiveStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(o6G,l7G)
+var a8G=_mz(z,'t-button',['bind:__l',109,'bind:fiveStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(o6G,a8G)
+_(cQG,o6G)
+_(r,cQG)
 return r
 }
 e_[x[48]]={f:m48,j:[],i:[],ti:[],ic:[]}
 d_[x[49]]={}
 var m49=function(e,s,r,gg){
 var z=gz$gwx_50()
-var h3G=_n('view')
-_rz(z,h3G,'class',0,e,s,gg)
-var o4G=_n('view')
-_rz(z,o4G,'class',1,e,s,gg)
-var c5G=_mz(z,'step',['actives',2,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
-_(o4G,c5G)
-var o6G=_mz(z,'step',['actives',8,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
-_(o4G,o6G)
-var l7G=_mz(z,'step',['actives',14,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
-_(o4G,l7G)
-_(h3G,o4G)
-var a8G=_mz(z,'form',['bindreset',20,'data-event-opts',1,'enctype',2],[],e,s,gg)
-var t9G=_mz(z,'w-picker',['bind:__l',23,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(a8G,t9G)
-_(h3G,a8G)
-var e0G=_mz(z,'m-button',['bind:__l',35,'bind:oneSide',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
-_(h3G,e0G)
-var bAH=_mz(z,'view',['class',41,'hidden',1],[],e,s,gg)
-var oBH=_mz(z,'t-button',['bind:__l',43,'bind:lastStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+var e0G=_n('view')
+_rz(z,e0G,'class',0,e,s,gg)
+var bAH=_n('view')
+_rz(z,bAH,'class',1,e,s,gg)
+var oBH=_mz(z,'step',['actives',2,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
 _(bAH,oBH)
-var xCH=_mz(z,'t-button',['bind:__l',51,'bind:nextStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+var xCH=_mz(z,'step',['actives',8,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
 _(bAH,xCH)
-_(h3G,bAH)
-var oDH=_mz(z,'view',['class',59,'hidden',1],[],e,s,gg)
-var fEH=_mz(z,'t-button',['bind:__l',61,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oDH,fEH)
-var cFH=_mz(z,'t-button',['bind:__l',69,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oDH,cFH)
-_(h3G,oDH)
-_(r,h3G)
+var oDH=_mz(z,'step',['actives',14,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
+_(bAH,oDH)
+_(e0G,bAH)
+var fEH=_mz(z,'form',['bindreset',20,'data-event-opts',1,'enctype',2],[],e,s,gg)
+var cFH=_mz(z,'w-picker',['bind:__l',23,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
+_(fEH,cFH)
+_(e0G,fEH)
+var hGH=_mz(z,'m-button',['bind:__l',35,'bind:oneSide',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
+_(e0G,hGH)
+var oHH=_mz(z,'view',['class',41,'hidden',1],[],e,s,gg)
+var cIH=_mz(z,'t-button',['bind:__l',43,'bind:lastStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(oHH,cIH)
+var oJH=_mz(z,'t-button',['bind:__l',51,'bind:nextStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(oHH,oJH)
+_(e0G,oHH)
+var lKH=_mz(z,'view',['class',59,'hidden',1],[],e,s,gg)
+var aLH=_mz(z,'t-button',['bind:__l',61,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(lKH,aLH)
+var tMH=_mz(z,'t-button',['bind:__l',69,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(lKH,tMH)
+_(e0G,lKH)
+_(r,e0G)
 return r
 }
 e_[x[49]]={f:m49,j:[],i:[],ti:[],ic:[]}
 d_[x[50]]={}
 var m50=function(e,s,r,gg){
 var z=gz$gwx_51()
-var oHH=_n('view')
-_rz(z,oHH,'class',0,e,s,gg)
-var cIH=_n('view')
-_rz(z,cIH,'class',1,e,s,gg)
-var oJH=_mz(z,'step',['actives',2,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
-_(cIH,oJH)
-var lKH=_mz(z,'step',['actives',8,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
-_(cIH,lKH)
-var aLH=_mz(z,'step',['actives',14,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
-_(cIH,aLH)
-var tMH=_mz(z,'step',['actives',20,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
-_(cIH,tMH)
-_(oHH,cIH)
-var eNH=_n('view')
-_rz(z,eNH,'class',26,e,s,gg)
-var bOH=_mz(z,'w-picker',['bind:__l',27,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(eNH,bOH)
-var oPH=_mz(z,'w-picker',['bind:__l',39,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(eNH,oPH)
-_(oHH,eNH)
-var xQH=_mz(z,'m-button',['bind:__l',51,'bind:oneSide',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
-_(oHH,xQH)
-var oRH=_mz(z,'view',['class',58,'hidden',1],[],e,s,gg)
-var fSH=_mz(z,'t-button',['bind:__l',60,'bind:lastStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oRH,fSH)
-var cTH=_mz(z,'t-button',['bind:__l',68,'bind:nextStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oRH,cTH)
-_(oHH,oRH)
-var hUH=_mz(z,'view',['class',76,'hidden',1],[],e,s,gg)
-var oVH=_mz(z,'t-button',['bind:__l',78,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+var bOH=_n('view')
+_rz(z,bOH,'class',0,e,s,gg)
+var oPH=_n('view')
+_rz(z,oPH,'class',1,e,s,gg)
+var xQH=_mz(z,'step',['actives',2,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
+_(oPH,xQH)
+var oRH=_mz(z,'step',['actives',8,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
+_(oPH,oRH)
+var fSH=_mz(z,'step',['actives',14,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
+_(oPH,fSH)
+var cTH=_mz(z,'step',['actives',20,'bind:__l',1,'class',2,'data-ref',3,'value',4,'vueId',5],[],e,s,gg)
+_(oPH,cTH)
+_(bOH,oPH)
+var hUH=_n('view')
+_rz(z,hUH,'class',26,e,s,gg)
+var oVH=_mz(z,'w-picker',['bind:__l',27,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
 _(hUH,oVH)
-var cWH=_mz(z,'t-button',['bind:__l',86,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+var cWH=_mz(z,'w-picker',['bind:__l',39,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
 _(hUH,cWH)
-_(oHH,hUH)
-var oXH=_mz(z,'view',['class',94,'hidden',1],[],e,s,gg)
-var lYH=_mz(z,'t-button',['bind:__l',96,'bind:fourStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oXH,lYH)
-var aZH=_mz(z,'t-button',['bind:__l',104,'bind:fourStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
-_(oXH,aZH)
-_(oHH,oXH)
-_(r,oHH)
+_(bOH,hUH)
+var oXH=_mz(z,'m-button',['bind:__l',51,'bind:oneSide',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
+_(bOH,oXH)
+var lYH=_mz(z,'view',['class',58,'hidden',1],[],e,s,gg)
+var aZH=_mz(z,'t-button',['bind:__l',60,'bind:lastStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(lYH,aZH)
+var t1H=_mz(z,'t-button',['bind:__l',68,'bind:nextStep',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(lYH,t1H)
+_(bOH,lYH)
+var e2H=_mz(z,'view',['class',76,'hidden',1],[],e,s,gg)
+var b3H=_mz(z,'t-button',['bind:__l',78,'bind:threeStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(e2H,b3H)
+var o4H=_mz(z,'t-button',['bind:__l',86,'bind:threeStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(e2H,o4H)
+_(bOH,e2H)
+var x5H=_mz(z,'view',['class',94,'hidden',1],[],e,s,gg)
+var o6H=_mz(z,'t-button',['bind:__l',96,'bind:fourStepLast',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(x5H,o6H)
+var f7H=_mz(z,'t-button',['bind:__l',104,'bind:fourStepNext',1,'class',2,'content',3,'data-event-opts',4,'disabled',5,'type',6,'vueId',7],[],e,s,gg)
+_(x5H,f7H)
+_(bOH,x5H)
+_(r,bOH)
 return r
 }
 e_[x[50]]={f:m50,j:[],i:[],ti:[],ic:[]}
 d_[x[51]]={}
 var m51=function(e,s,r,gg){
 var z=gz$gwx_52()
-var e2H=_mz(z,'view',['class',0,'style',1],[],e,s,gg)
-var b3H=_mz(z,'view',['bindtap',2,'class',1,'data-event-opts',2],[],e,s,gg)
-var o4H=_mz(z,'uni-icons',['bind:__l',5,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(b3H,o4H)
-_(e2H,b3H)
-var x5H=_n('view')
-_rz(z,x5H,'class',10,e,s,gg)
-var o6H=_n('view')
-_rz(z,o6H,'class',11,e,s,gg)
-var h9H=_mz(z,'info-img',['bind:__l',12,'bind:input',1,'bind:oilByCompany',2,'class',3,'data-event-opts',4,'disabled',5,'imgText',6,'placeholder',7,'value',8,'vueId',9],[],e,s,gg)
-_(o6H,h9H)
-var o0H=_mz(z,'info-text',['bind:__l',22,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'placeholder',5,'textValue',6,'value',7,'vueId',8],[],e,s,gg)
-_(o6H,o0H)
-var f7H=_v()
-_(o6H,f7H)
-if(_oz(z,31,e,s,gg)){f7H.wxVkey=1
-var cAI=_mz(z,'info-img',['bind:__l',32,'bind:chooseCustomer',1,'bind:input',2,'class',3,'data-event-opts',4,'disabled',5,'imgText',6,'placeholder',7,'value',8,'vueId',9],[],e,s,gg)
-_(f7H,cAI)
-}
-var c8H=_v()
-_(o6H,c8H)
-if(_oz(z,42,e,s,gg)){c8H.wxVkey=1
-var oBI=_mz(z,'info-text',['bind:__l',43,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'placeholder',5,'textValue',6,'value',7,'vueId',8],[],e,s,gg)
-_(c8H,oBI)
-}
-f7H.wxXCkey=1
-f7H.wxXCkey=3
-c8H.wxXCkey=1
-c8H.wxXCkey=3
-_(x5H,o6H)
+var h9H=_mz(z,'view',['class',0,'style',1],[],e,s,gg)
+var o0H=_mz(z,'view',['bindtap',2,'class',1,'data-event-opts',2],[],e,s,gg)
+var cAI=_mz(z,'uni-icons',['bind:__l',5,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(o0H,cAI)
+_(h9H,o0H)
+var oBI=_n('view')
+_rz(z,oBI,'class',10,e,s,gg)
 var lCI=_n('view')
-_rz(z,lCI,'class',52,e,s,gg)
-var aDI=_mz(z,'info-text',['bind:__l',53,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(lCI,aDI)
-var tEI=_mz(z,'info-text',['bind:__l',61,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(lCI,tEI)
-var eFI=_mz(z,'info-text',['bind:__l',69,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'placeholder',5,'textValue',6,'value',7,'vueId',8],[],e,s,gg)
+_rz(z,lCI,'class',11,e,s,gg)
+var eFI=_mz(z,'info-img',['bind:__l',12,'bind:input',1,'bind:oilByCompany',2,'class',3,'data-event-opts',4,'disabled',5,'imgText',6,'placeholder',7,'value',8,'vueId',9],[],e,s,gg)
 _(lCI,eFI)
-var bGI=_mz(z,'set-password',['bind:__l',78,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+var bGI=_mz(z,'info-text',['bind:__l',22,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'placeholder',5,'textValue',6,'value',7,'vueId',8],[],e,s,gg)
 _(lCI,bGI)
-var oHI=_mz(z,'set-password',['bind:__l',86,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(lCI,oHI)
-_(x5H,lCI)
-var xII=_mz(z,'m-button',['bind:__l',94,'bind:goPositive',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
-_(x5H,xII)
-var oJI=_mz(z,'view',['bindtap',101,'class',1,'data-event-opts',2],[],e,s,gg)
-var fKI=_mz(z,'uni-icons',['bind:__l',104,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+var aDI=_v()
+_(lCI,aDI)
+if(_oz(z,31,e,s,gg)){aDI.wxVkey=1
+var oHI=_mz(z,'info-img',['bind:__l',32,'bind:chooseCustomer',1,'bind:input',2,'class',3,'data-event-opts',4,'disabled',5,'imgText',6,'placeholder',7,'value',8,'vueId',9],[],e,s,gg)
+_(aDI,oHI)
+}
+var tEI=_v()
+_(lCI,tEI)
+if(_oz(z,42,e,s,gg)){tEI.wxVkey=1
+var xII=_mz(z,'info-text',['bind:__l',43,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'placeholder',5,'textValue',6,'value',7,'vueId',8],[],e,s,gg)
+_(tEI,xII)
+}
+aDI.wxXCkey=1
+aDI.wxXCkey=3
+tEI.wxXCkey=1
+tEI.wxXCkey=3
+_(oBI,lCI)
+var oJI=_n('view')
+_rz(z,oJI,'class',52,e,s,gg)
+var fKI=_mz(z,'info-text',['bind:__l',53,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
 _(oJI,fKI)
-_(x5H,oJI)
-var cLI=_mz(z,'view',['bindtap',109,'class',1,'data-event-opts',2],[],e,s,gg)
-var hMI=_mz(z,'uni-icons',['bind:__l',112,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(cLI,hMI)
-_(x5H,cLI)
-var oNI=_mz(z,'view',['bindtap',117,'class',1,'data-event-opts',2],[],e,s,gg)
-var cOI=_mz(z,'uni-icons',['bind:__l',120,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(oNI,cOI)
-_(x5H,oNI)
-_(e2H,x5H)
-_(r,e2H)
+var cLI=_mz(z,'info-text',['bind:__l',61,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(oJI,cLI)
+var hMI=_mz(z,'info-text',['bind:__l',69,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'placeholder',5,'textValue',6,'value',7,'vueId',8],[],e,s,gg)
+_(oJI,hMI)
+var oNI=_mz(z,'set-password',['bind:__l',78,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(oJI,oNI)
+var cOI=_mz(z,'set-password',['bind:__l',86,'bind:input',1,'class',2,'data-event-opts',3,'placeholder',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(oJI,cOI)
+_(oBI,oJI)
+var oPI=_mz(z,'m-button',['bind:__l',94,'bind:goPositive',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
+_(oBI,oPI)
+var lQI=_mz(z,'view',['bindtap',101,'class',1,'data-event-opts',2],[],e,s,gg)
+var aRI=_mz(z,'uni-icons',['bind:__l',104,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(lQI,aRI)
+_(oBI,lQI)
+var tSI=_mz(z,'view',['bindtap',109,'class',1,'data-event-opts',2],[],e,s,gg)
+var eTI=_mz(z,'uni-icons',['bind:__l',112,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(tSI,eTI)
+_(oBI,tSI)
+var bUI=_mz(z,'view',['bindtap',117,'class',1,'data-event-opts',2],[],e,s,gg)
+var oVI=_mz(z,'uni-icons',['bind:__l',120,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(bUI,oVI)
+_(oBI,bUI)
+_(h9H,oBI)
+_(r,h9H)
 return r
 }
 e_[x[51]]={f:m51,j:[],i:[],ti:[],ic:[]}
 d_[x[52]]={}
 var m52=function(e,s,r,gg){
 var z=gz$gwx_53()
-var lQI=_mz(z,'m-button',['bind:__l',0,'bind:goNext',1,'data-event-opts',1,'type',2,'value',3,'vueId',4],[],e,s,gg)
-_(r,lQI)
+var oXI=_mz(z,'m-button',['bind:__l',0,'bind:goNext',1,'data-event-opts',1,'type',2,'value',3,'vueId',4],[],e,s,gg)
+_(r,oXI)
 return r
 }
 e_[x[52]]={f:m52,j:[],i:[],ti:[],ic:[]}
 d_[x[53]]={}
 var m53=function(e,s,r,gg){
 var z=gz$gwx_54()
-var tSI=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
-var eTI=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
-_(tSI,eTI)
-_(r,tSI)
+var cZI=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
+var h1I=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(cZI,h1I)
+_(r,cZI)
 return r
 }
 e_[x[53]]={f:m53,j:[],i:[],ti:[],ic:[]}
@@ -3554,235 +3572,235 @@ e_[x[54]]={f:m54,j:[],i:[],ti:[],ic:[]}
 d_[x[55]]={}
 var m55=function(e,s,r,gg){
 var z=gz$gwx_56()
-var xWI=_n('view')
-var oXI=_mz(z,'titles',['bind:__l',0,'titles',1,'vueId',1],[],e,s,gg)
-_(xWI,oXI)
-var fYI=_n('view')
-_rz(z,fYI,'class',3,e,s,gg)
-var cZI=_n('view')
-_rz(z,cZI,'class',4,e,s,gg)
-var h1I=_mz(z,'info-img',['bind:__l',5,'bind:goOrderNumber',1,'data-event-opts',2,'disabled',3,'imgText',4,'placeholder',5,'value',6,'vueId',7],[],e,s,gg)
-_(cZI,h1I)
-var o2I=_mz(z,'rui-date-picker',['bind:__l',13,'bind:change',1,'class',2,'data-event-opts',3,'end',4,'fields',5,'start',6,'style',7,'value',8,'vueId',9],[],e,s,gg)
-_(cZI,o2I)
-var c3I=_mz(z,'info-text',['bind:__l',23,'disabled',1,'placeholder',2,'textValue',3,'value',4,'vueId',5],[],e,s,gg)
-_(cZI,c3I)
-_(fYI,cZI)
-var o4I=_mz(z,'m-button',['bind:__l',29,'bind:commit',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
-_(fYI,o4I)
-_(xWI,fYI)
-var l5I=_mz(z,'view',['bindtap',35,'class',1,'data-event-opts',2],[],e,s,gg)
-var a6I=_mz(z,'uni-icons',['bind:__l',38,'size',1,'type',2,'vueId',3],[],e,s,gg)
-_(l5I,a6I)
-_(xWI,l5I)
-var t7I=_mz(z,'view',['bindtap',42,'class',1,'data-event-opts',2],[],e,s,gg)
-var e8I=_mz(z,'uni-icons',['bind:__l',45,'size',1,'type',2,'vueId',3],[],e,s,gg)
+var o4I=_n('view')
+var l5I=_mz(z,'titles',['bind:__l',0,'titles',1,'vueId',1],[],e,s,gg)
+_(o4I,l5I)
+var a6I=_n('view')
+_rz(z,a6I,'class',3,e,s,gg)
+var t7I=_n('view')
+_rz(z,t7I,'class',4,e,s,gg)
+var e8I=_mz(z,'info-img',['bind:__l',5,'bind:goOrderNumber',1,'data-event-opts',2,'disabled',3,'imgText',4,'placeholder',5,'value',6,'vueId',7],[],e,s,gg)
 _(t7I,e8I)
-_(xWI,t7I)
-_(r,xWI)
+var b9I=_mz(z,'rui-date-picker',['bind:__l',13,'bind:change',1,'class',2,'data-event-opts',3,'end',4,'fields',5,'start',6,'style',7,'value',8,'vueId',9],[],e,s,gg)
+_(t7I,b9I)
+var o0I=_mz(z,'info-text',['bind:__l',23,'disabled',1,'placeholder',2,'textValue',3,'value',4,'vueId',5],[],e,s,gg)
+_(t7I,o0I)
+_(a6I,t7I)
+var xAJ=_mz(z,'m-button',['bind:__l',29,'bind:commit',1,'data-event-opts',2,'type',3,'value',4,'vueId',5],[],e,s,gg)
+_(a6I,xAJ)
+_(o4I,a6I)
+var oBJ=_mz(z,'view',['bindtap',35,'class',1,'data-event-opts',2],[],e,s,gg)
+var fCJ=_mz(z,'uni-icons',['bind:__l',38,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(oBJ,fCJ)
+_(o4I,oBJ)
+var cDJ=_mz(z,'view',['bindtap',42,'class',1,'data-event-opts',2],[],e,s,gg)
+var hEJ=_mz(z,'uni-icons',['bind:__l',45,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(cDJ,hEJ)
+_(o4I,cDJ)
+_(r,o4I)
 return r
 }
 e_[x[55]]={f:m55,j:[],i:[],ti:[],ic:[]}
 d_[x[56]]={}
 var m56=function(e,s,r,gg){
 var z=gz$gwx_57()
-var o0I=_n('view')
-_rz(z,o0I,'class',0,e,s,gg)
-var xAJ=_mz(z,'view',['bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var oBJ=_mz(z,'uni-icons',['bind:__l',4,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(xAJ,oBJ)
-_(o0I,xAJ)
-var fCJ=_n('view')
-_rz(z,fCJ,'class',9,e,s,gg)
-var cDJ=_n('view')
-_rz(z,cDJ,'class',10,e,s,gg)
-var hEJ=_v()
-_(cDJ,hEJ)
-if(_oz(z,11,e,s,gg)){hEJ.wxVkey=1
-}
-else{hEJ.wxVkey=2
-var oFJ=_v()
-_(hEJ,oFJ)
-if(_oz(z,12,e,s,gg)){oFJ.wxVkey=1
-}
-else{oFJ.wxVkey=2
-var cGJ=_v()
-_(oFJ,cGJ)
-if(_oz(z,13,e,s,gg)){cGJ.wxVkey=1
-}
-cGJ.wxXCkey=1
-}
-oFJ.wxXCkey=1
-}
-hEJ.wxXCkey=1
-_(fCJ,cDJ)
-var oHJ=_n('view')
-_rz(z,oHJ,'class',14,e,s,gg)
-var lIJ=_n('view')
-_rz(z,lIJ,'class',15,e,s,gg)
-var aJJ=_v()
-_(lIJ,aJJ)
-if(_oz(z,16,e,s,gg)){aJJ.wxVkey=1
-}
-else{aJJ.wxVkey=2
-var tKJ=_v()
-_(aJJ,tKJ)
-if(_oz(z,17,e,s,gg)){tKJ.wxVkey=1
-}
-else{tKJ.wxVkey=2
+var cGJ=_n('view')
+_rz(z,cGJ,'class',0,e,s,gg)
+var oHJ=_mz(z,'view',['bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var lIJ=_mz(z,'uni-icons',['bind:__l',4,'class',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(oHJ,lIJ)
+_(cGJ,oHJ)
+var aJJ=_n('view')
+_rz(z,aJJ,'class',9,e,s,gg)
+var tKJ=_n('view')
+_rz(z,tKJ,'class',10,e,s,gg)
 var eLJ=_v()
 _(tKJ,eLJ)
-if(_oz(z,18,e,s,gg)){eLJ.wxVkey=1
+if(_oz(z,11,e,s,gg)){eLJ.wxVkey=1
 }
 else{eLJ.wxVkey=2
 var bMJ=_v()
 _(eLJ,bMJ)
-if(_oz(z,19,e,s,gg)){bMJ.wxVkey=1
+if(_oz(z,12,e,s,gg)){bMJ.wxVkey=1
+}
+else{bMJ.wxVkey=2
+var oNJ=_v()
+_(bMJ,oNJ)
+if(_oz(z,13,e,s,gg)){oNJ.wxVkey=1
+}
+oNJ.wxXCkey=1
 }
 bMJ.wxXCkey=1
 }
 eLJ.wxXCkey=1
+_(aJJ,tKJ)
+var xOJ=_n('view')
+_rz(z,xOJ,'class',14,e,s,gg)
+var oPJ=_n('view')
+_rz(z,oPJ,'class',15,e,s,gg)
+var fQJ=_v()
+_(oPJ,fQJ)
+if(_oz(z,16,e,s,gg)){fQJ.wxVkey=1
 }
-tKJ.wxXCkey=1
+else{fQJ.wxVkey=2
+var cRJ=_v()
+_(fQJ,cRJ)
+if(_oz(z,17,e,s,gg)){cRJ.wxVkey=1
 }
-aJJ.wxXCkey=1
-_(oHJ,lIJ)
-var oNJ=_mz(z,'info-text',['bind:__l',20,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(oHJ,oNJ)
-var xOJ=_mz(z,'info-text',['bind:__l',28,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(oHJ,xOJ)
-var oPJ=_mz(z,'info-text',['bind:__l',36,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(oHJ,oPJ)
-var fQJ=_mz(z,'info-text',['bind:__l',44,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
-_(oHJ,fQJ)
-_(fCJ,oHJ)
-_(o0I,fCJ)
-_(r,o0I)
+else{cRJ.wxVkey=2
+var hSJ=_v()
+_(cRJ,hSJ)
+if(_oz(z,18,e,s,gg)){hSJ.wxVkey=1
+}
+else{hSJ.wxVkey=2
+var oTJ=_v()
+_(hSJ,oTJ)
+if(_oz(z,19,e,s,gg)){oTJ.wxVkey=1
+}
+oTJ.wxXCkey=1
+}
+hSJ.wxXCkey=1
+}
+cRJ.wxXCkey=1
+}
+fQJ.wxXCkey=1
+_(xOJ,oPJ)
+var cUJ=_mz(z,'info-text',['bind:__l',20,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(xOJ,cUJ)
+var oVJ=_mz(z,'info-text',['bind:__l',28,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(xOJ,oVJ)
+var lWJ=_mz(z,'info-text',['bind:__l',36,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(xOJ,lWJ)
+var aXJ=_mz(z,'info-text',['bind:__l',44,'bind:input',1,'class',2,'data-event-opts',3,'disabled',4,'textValue',5,'value',6,'vueId',7],[],e,s,gg)
+_(xOJ,aXJ)
+_(aJJ,xOJ)
+_(cGJ,aJJ)
+_(r,cGJ)
 return r
 }
 e_[x[56]]={f:m56,j:[],i:[],ti:[],ic:[]}
 d_[x[57]]={}
 var m57=function(e,s,r,gg){
 var z=gz$gwx_58()
-var hSJ=_mz(z,'titles',['bind:__l',0,'titles',1,'vueId',1],[],e,s,gg)
-_(r,hSJ)
+var eZJ=_mz(z,'titles',['bind:__l',0,'titles',1,'vueId',1],[],e,s,gg)
+_(r,eZJ)
 return r
 }
 e_[x[57]]={f:m57,j:[],i:[],ti:[],ic:[]}
 d_[x[58]]={}
 var m58=function(e,s,r,gg){
 var z=gz$gwx_59()
-var cUJ=_n('view')
-_rz(z,cUJ,'style',0,e,s,gg)
-var lWJ=_mz(z,'view',['bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var aXJ=_mz(z,'uni-icons',['bind:__l',4,'size',1,'style',2,'type',3,'vueId',4],[],e,s,gg)
-_(lWJ,aXJ)
-_(cUJ,lWJ)
-var oVJ=_v()
-_(cUJ,oVJ)
-if(_oz(z,9,e,s,gg)){oVJ.wxVkey=1
-var tYJ=_mz(z,'tki-qrcode',['bind:__l',10,'bind:result',1,'cid',2,'class',3,'data-event-opts',4,'data-ref',5,'loadMake',6,'onval',7,'size',8,'usingComponents',9,'val',10,'vueId',11],[],e,s,gg)
-_(oVJ,tYJ)
+var o2J=_n('view')
+_rz(z,o2J,'style',0,e,s,gg)
+var o4J=_mz(z,'view',['bindtap',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var f5J=_mz(z,'uni-icons',['bind:__l',4,'size',1,'style',2,'type',3,'vueId',4],[],e,s,gg)
+_(o4J,f5J)
+_(o2J,o4J)
+var x3J=_v()
+_(o2J,x3J)
+if(_oz(z,9,e,s,gg)){x3J.wxVkey=1
+var c6J=_mz(z,'tki-qrcode',['bind:__l',10,'bind:result',1,'cid',2,'class',3,'data-event-opts',4,'data-ref',5,'loadMake',6,'onval',7,'size',8,'usingComponents',9,'val',10,'vueId',11],[],e,s,gg)
+_(x3J,c6J)
 }
-oVJ.wxXCkey=1
-oVJ.wxXCkey=3
-_(r,cUJ)
+x3J.wxXCkey=1
+x3J.wxXCkey=3
+_(r,o2J)
 return r
 }
 e_[x[58]]={f:m58,j:[],i:[],ti:[],ic:[]}
 d_[x[59]]={}
 var m59=function(e,s,r,gg){
 var z=gz$gwx_60()
-var b1J=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1,'hidden',2],[],e,s,gg)
-var o2J=_mz(z,'uni-icons',['bind:__l',4,'color',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
-_(b1J,o2J)
-_(r,b1J)
+var o8J=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1,'hidden',2],[],e,s,gg)
+var c9J=_mz(z,'uni-icons',['bind:__l',4,'color',1,'size',2,'type',3,'vueId',4],[],e,s,gg)
+_(o8J,c9J)
+_(r,o8J)
 return r
 }
 e_[x[59]]={f:m59,j:[],i:[],ti:[],ic:[]}
 d_[x[60]]={}
 var m60=function(e,s,r,gg){
 var z=gz$gwx_61()
-var o4J=_n('view')
-var f5J=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
-var c6J=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
-_(f5J,c6J)
-_(o4J,f5J)
-var h7J=_mz(z,'selects',['bind:__l',7,'bind:change',1,'clearable',2,'data-event-opts',3,'initValue',4,'isCanInput',5,'list',6,'listShow',7,'placeholder',8,'showItemNum',9,'style_Container',10,'vueId',11],[],e,s,gg)
-_(o4J,h7J)
-var o8J=_v()
-_(o4J,o8J)
-var c9J=function(lAK,o0J,aBK,gg){
-var eDK=_mz(z,'view',['bindtap',23,'bindtouchend',1,'bindtouchmove',2,'class',3,'data-event-opts',4],[],lAK,o0J,gg)
-var bEK=_n('view')
-_rz(z,bEK,'class',28,lAK,o0J,gg)
-var oFK=_v()
-_(bEK,oFK)
-if(_oz(z,29,lAK,o0J,gg)){oFK.wxVkey=1
-}
-var xGK=_mz(z,'view',['class',30,'style',1],[],lAK,o0J,gg)
-var oHK=_v()
-_(xGK,oHK)
-if(_oz(z,32,lAK,o0J,gg)){oHK.wxVkey=1
-}
-else{oHK.wxVkey=2
-var fIK=_v()
-_(oHK,fIK)
-if(_oz(z,33,lAK,o0J,gg)){fIK.wxVkey=1
-}
-else{fIK.wxVkey=2
-var cJK=_v()
-_(fIK,cJK)
-if(_oz(z,34,lAK,o0J,gg)){cJK.wxVkey=1
-}
-else{cJK.wxVkey=2
-var hKK=_v()
-_(cJK,hKK)
-if(_oz(z,35,lAK,o0J,gg)){hKK.wxVkey=1
-}
-else{hKK.wxVkey=2
-var oLK=_v()
-_(hKK,oLK)
-if(_oz(z,36,lAK,o0J,gg)){oLK.wxVkey=1
-}
-else{oLK.wxVkey=2
+var lAK=_n('view')
+var aBK=_mz(z,'view',['bindtap',0,'class',1,'data-event-opts',1],[],e,s,gg)
+var tCK=_mz(z,'uni-icons',['bind:__l',3,'size',1,'type',2,'vueId',3],[],e,s,gg)
+_(aBK,tCK)
+_(lAK,aBK)
+var eDK=_mz(z,'selects',['bind:__l',7,'bind:change',1,'clearable',2,'data-event-opts',3,'initValue',4,'isCanInput',5,'list',6,'listShow',7,'placeholder',8,'showItemNum',9,'style_Container',10,'vueId',11],[],e,s,gg)
+_(lAK,eDK)
+var bEK=_v()
+_(lAK,bEK)
+var oFK=function(oHK,xGK,fIK,gg){
+var hKK=_mz(z,'view',['bindtap',23,'bindtouchend',1,'bindtouchmove',2,'class',3,'data-event-opts',4],[],oHK,xGK,gg)
+var oLK=_n('view')
+_rz(z,oLK,'class',28,oHK,xGK,gg)
 var cMK=_v()
 _(oLK,cMK)
-if(_oz(z,37,lAK,o0J,gg)){cMK.wxVkey=1
+if(_oz(z,29,oHK,xGK,gg)){cMK.wxVkey=1
 }
+var oNK=_mz(z,'view',['class',30,'style',1],[],oHK,xGK,gg)
+var lOK=_v()
+_(oNK,lOK)
+if(_oz(z,32,oHK,xGK,gg)){lOK.wxVkey=1
+}
+else{lOK.wxVkey=2
+var aPK=_v()
+_(lOK,aPK)
+if(_oz(z,33,oHK,xGK,gg)){aPK.wxVkey=1
+}
+else{aPK.wxVkey=2
+var tQK=_v()
+_(aPK,tQK)
+if(_oz(z,34,oHK,xGK,gg)){tQK.wxVkey=1
+}
+else{tQK.wxVkey=2
+var eRK=_v()
+_(tQK,eRK)
+if(_oz(z,35,oHK,xGK,gg)){eRK.wxVkey=1
+}
+else{eRK.wxVkey=2
+var bSK=_v()
+_(eRK,bSK)
+if(_oz(z,36,oHK,xGK,gg)){bSK.wxVkey=1
+}
+else{bSK.wxVkey=2
+var oTK=_v()
+_(bSK,oTK)
+if(_oz(z,37,oHK,xGK,gg)){oTK.wxVkey=1
+}
+oTK.wxXCkey=1
+}
+bSK.wxXCkey=1
+}
+eRK.wxXCkey=1
+}
+tQK.wxXCkey=1
+}
+aPK.wxXCkey=1
+}
+lOK.wxXCkey=1
+_(oLK,oNK)
 cMK.wxXCkey=1
+_(hKK,oLK)
+_(fIK,hKK)
+return fIK
 }
-oLK.wxXCkey=1
-}
-hKK.wxXCkey=1
-}
-cJK.wxXCkey=1
-}
-fIK.wxXCkey=1
-}
-oHK.wxXCkey=1
-_(bEK,xGK)
-oFK.wxXCkey=1
-_(eDK,bEK)
-_(aBK,eDK)
-return aBK
-}
-o8J.wxXCkey=2
-_2z(z,21,c9J,e,s,gg,o8J,'item','index','index')
-_(r,o4J)
+bEK.wxXCkey=2
+_2z(z,21,oFK,e,s,gg,bEK,'item','index','index')
+_(r,lAK)
 return r
 }
 e_[x[60]]={f:m60,j:[],i:[],ti:[],ic:[]}
 d_[x[61]]={}
 var m61=function(e,s,r,gg){
 var z=gz$gwx_62()
-var lOK=_n('view')
-_rz(z,lOK,'class',0,e,s,gg)
-var aPK=_mz(z,'w-picker',['bind:__l',1,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
-_(lOK,aPK)
-var tQK=_mz(z,'m-button',['bind:__l',13,'bind:search',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
-_(lOK,tQK)
-_(r,lOK)
+var oVK=_n('view')
+_rz(z,oVK,'class',0,e,s,gg)
+var fWK=_mz(z,'w-picker',['bind:__l',1,'bind:confirm',1,'class',2,'current',3,'data-event-opts',4,'data-ref',5,'defaultVal',6,'endYear',7,'mode',8,'startYear',9,'themeColor',10,'vueId',11],[],e,s,gg)
+_(oVK,fWK)
+var cXK=_mz(z,'m-button',['bind:__l',13,'bind:search',1,'class',2,'data-event-opts',3,'type',4,'value',5,'vueId',6],[],e,s,gg)
+_(oVK,cXK)
+_(r,oVK)
 return r
 }
 e_[x[61]]={f:m61,j:[],i:[],ti:[],ic:[]}
@@ -5399,20 +5417,20 @@ define('components/nav/nav.js',function(require, module, exports, window, docume
     "use strict";
 
     n.r(t);
-    var e = n("7886"),
+    var e = n("3fbd"),
         i = n("3bfe");
 
-    for (var r in i) {
-      "default" !== r && function (o) {
+    for (var s in i) {
+      "default" !== s && function (o) {
         n.d(t, o, function () {
           return i[o];
         });
-      }(r);
+      }(s);
     }
 
-    var s = n("2877"),
-        a = Object(s["a"])(i["default"], e["a"], e["b"], !1, null, null, null);
-    t["default"] = a.exports;
+    var a = n("2877"),
+        r = Object(a["a"])(i["default"], e["a"], e["b"], !1, null, null, null);
+    t["default"] = r.exports;
   },
   "3bfe": function bfe(o, t, n) {
     "use strict";
@@ -5421,17 +5439,17 @@ define('components/nav/nav.js',function(require, module, exports, window, docume
     var e = n("8d56"),
         i = n.n(e);
 
-    for (var r in e) {
-      "default" !== r && function (o) {
+    for (var s in e) {
+      "default" !== s && function (o) {
         n.d(t, o, function () {
           return e[o];
         });
-      }(r);
+      }(s);
     }
 
     t["default"] = i.a;
   },
-  7886: function _(o, t, n) {
+  "3fbd": function fbd(o, t, n) {
     "use strict";
 
     var e = function e() {
@@ -5461,6 +5479,10 @@ define('components/nav/nav.js',function(require, module, exports, window, docume
             default: function _default() {
               return [];
             }
+          },
+          lock: {
+            type: Number,
+            default: 0
           }
         },
         data: function data() {
@@ -5472,125 +5494,158 @@ define('components/nav/nav.js',function(require, module, exports, window, docume
           };
         },
         methods: {
-          order: function order(t) {
-            var e = this,
-                i = o.getStorageSync("Token");
-            null == i || "" == i || void 0 == i ? o.showModal({
-              title: "提示",
-              content: "用户信息已失效，请重新登录",
-              success: function success(t) {
-                t.confirm, o.reLaunch({
-                  url: "../login/login"
-                });
-              }
-            }) : (t.forEach(function (o, t) {
-              1 == o.code && (e.buy_apply = !0, e.arr = o, console.log(n(o, t, " at components\\nav\\nav.vue:93")));
-            }), this.buy_apply ? (console.log(n(this.arr.role_status, " at components\\nav\\nav.vue:98")), 1 == this.arr.role_status || 2 == this.arr.role_status ? o.navigateTo({
-              url: "../../pages/order/order"
-            }) : -1 == this.arr.role_status && o.showToast({
-              title: "审核中...待审核通过后请重新登录",
+          order: function order(t, e) {
+            var i = this;
+
+            if (e & this.lock) {
+              var s = o.getStorageSync("Token");
+              null == s || "" == s || void 0 == s ? o.showModal({
+                title: "提示",
+                content: "用户信息已失效，请重新登录",
+                success: function success(t) {
+                  t.confirm, o.reLaunch({
+                    url: "../login/login"
+                  });
+                }
+              }) : (t.forEach(function (o, t) {
+                1 == o.code && (i.buy_apply = !0, i.arr = o, console.log(n(o, t, " at components\\nav\\nav.vue:97")));
+              }), this.buy_apply ? 1 == this.arr.role_status || 2 == this.arr.role_status ? o.navigateTo({
+                url: "../../pages/order/order"
+              }) : -1 == this.arr.role_status && o.showToast({
+                title: "审核中...待审核通过后请重新登录",
+                icon: "none",
+                position: "bottom"
+              }) : o.showToast({
+                title: "权限不够，请在用户信息界面申请权限",
+                icon: "none",
+                position: "bottom"
+              }));
+            } else o.showToast({
+              title: "待开放，敬请期待",
               icon: "none",
               position: "bottom"
-            })) : o.showToast({
-              title: "权限不够，请在用户信息界面申请权限",
-              icon: "none",
-              position: "bottom"
-            }));
+            });
           },
-          orderList: function orderList(t) {
-            var n = this,
-                e = o.getStorageSync("Token");
-            null == e || "" == e || void 0 == e ? o.showModal({
-              title: "提示",
-              content: "用户信息已失效，请重新登录",
-              success: function success(t) {
-                t.confirm, o.reLaunch({
-                  url: "../login/login"
-                });
-              }
-            }) : (t.forEach(function (o) {
-              1 == o.code && (n.buy_apply = !0, n.arr = o);
-            }), this.buy_apply ? o.navigateTo({
-              url: "../../pages/orderList/orderList"
-            }) : o.showToast({
-              title: "权限不够，请在用户信息界面申请权限",
+          orderList: function orderList(t, n) {
+            var e = this;
+
+            if (n & this.lock) {
+              var i = o.getStorageSync("Token");
+              null == i || "" == i || void 0 == i ? o.showModal({
+                title: "提示",
+                content: "用户信息已失效，请重新登录",
+                success: function success(t) {
+                  t.confirm, o.reLaunch({
+                    url: "../login/login"
+                  });
+                }
+              }) : (t.forEach(function (o) {
+                1 == o.code && (e.buy_apply = !0, e.arr = o);
+              }), this.buy_apply ? o.navigateTo({
+                url: "../../pages/orderList/orderList"
+              }) : o.showToast({
+                title: "权限不够，请在用户信息界面申请权限",
+                icon: "none",
+                position: "bottom"
+              }));
+            } else o.showToast({
+              title: "待开放，敬请期待",
               icon: "none",
               position: "bottom"
-            }));
+            });
           },
-          reserveOil: function reserveOil(t, n) {
-            var e = this,
-                i = o.getStorageSync("Token");
-            null == i || "" == i || void 0 == i ? o.showModal({
-              title: "提示",
-              content: "用户信息已失效，请重新登录",
-              success: function success(t) {
-                t.confirm, o.reLaunch({
-                  url: "../login/login"
-                });
-              }
-            }) : (t.forEach(function (o) {
+          reserveOil: function reserveOil(t, n, e) {
+            var i = this;
+
+            if (e & this.lock) {
+              var s = o.getStorageSync("Token");
+              null == s || "" == s || void 0 == s ? o.showModal({
+                title: "提示",
+                content: "用户信息已失效，请重新登录",
+                success: function success(t) {
+                  t.confirm, o.reLaunch({
+                    url: "../login/login"
+                  });
+                }
+              }) : (t.forEach(function (o) {
+                2 == o.code && (i.get_apply = !0, i.arr = o);
+              }), this.get_apply ? 1 == this.arr.role_status || 2 == this.arr.role_status ? o.navigateTo({
+                url: "../../pages/reserveOil/reserveOil?type=" + n
+              }) : -1 == this.arr.role_status ? o.showToast({
+                title: "审核中...待审核通过后请重新登录",
+                icon: "none",
+                position: "bottom"
+              }) : o.showToast({
+                title: "权限不够，请在用户信息界面申请权限",
+                icon: "none",
+                position: "bottom"
+              }) : o.showToast({
+                title: "权限不够，请在用户信息界面申请权限",
+                icon: "none",
+                position: "bottom"
+              }));
+            } else o.showToast({
+              title: "待开放，敬请期待",
+              icon: "none",
+              position: "bottom"
+            });
+          },
+          reserveOilList: function reserveOilList(t, n) {
+            var e = this;
+            n & this.lock ? (t.forEach(function (o) {
               2 == o.code && (e.get_apply = !0, e.arr = o);
-            }), this.get_apply ? 1 == this.arr.role_status || 2 == this.arr.role_status ? o.navigateTo({
-              url: "../../pages/reserveOil/reserveOil?type=" + n
-            }) : -1 == this.arr.role_status ? o.showToast({
-              title: "审核中...待审核通过后请重新登录",
-              icon: "none",
-              position: "bottom"
-            }) : o.showToast({
-              title: "权限不够，请在用户信息界面申请权限",
-              icon: "none",
-              position: "bottom"
-            }) : o.showToast({
-              title: "权限不够，请在用户信息界面申请权限",
-              icon: "none",
-              position: "bottom"
-            }));
-          },
-          reserveOilList: function reserveOilList(t) {
-            var n = this;
-            t.forEach(function (o) {
-              2 == o.code && (n.get_apply = !0, n.arr = o);
             }), this.get_apply ? o.navigateTo({
               url: "../../pages/reserveOilList/reserveOilList"
             }) : o.showToast({
               title: "权限不够，请在用户信息界面申请权限",
               icon: "none",
               position: "bottom"
+            })) : o.showToast({
+              title: "待开放，敬请期待",
+              icon: "none",
+              position: "bottom"
             });
           },
-          invoice: function invoice(t) {
-            var e = this;
-            console.log(n(t, " at components\\nav\\nav.vue:263"));
-            var i = o.getStorageSync("Token");
-            null == i || "" == i || void 0 == i ? o.showModal({
-              title: "提示",
-              content: "用户信息已失效，请重新登录",
-              success: function success(t) {
-                t.confirm, o.reLaunch({
-                  url: "../login/login"
-                });
-              }
-            }) : (t.forEach(function (o, t) {
-              3 == o.code && (e.get_invoice = !0, e.arr = o, console.log(n(o, t, " at components\\nav\\nav.vue:287")));
-            }), this.get_invoice ? (console.log(n(this.arr.role_status, " at components\\nav\\nav.vue:292")), 1 == this.arr.role_status || 2 == this.arr.role_status ? o.navigateTo({
-              url: "../../pages/receiveInvoice/receiveInvoice"
-            }) : -1 == this.arr.role_status ? o.showToast({
-              title: "审核中...待审核通过后请重新登录",
+          invoice: function invoice(t, e) {
+            var i = this;
+
+            if (e & this.lock) {
+              var s = o.getStorageSync("Token");
+              null == s || "" == s || void 0 == s ? o.showModal({
+                title: "提示",
+                content: "用户信息已失效，请重新登录",
+                success: function success(t) {
+                  t.confirm, o.reLaunch({
+                    url: "../login/login"
+                  });
+                }
+              }) : (t.forEach(function (o, t) {
+                3 == o.code && (i.get_invoice = !0, i.arr = o, console.log(n(o, t, " at components\\nav\\nav.vue:329")));
+              }), this.get_invoice ? (console.log(n(this.arr.role_status, " at components\\nav\\nav.vue:334")), 1 == this.arr.role_status || 2 == this.arr.role_status ? o.navigateTo({
+                url: "../../pages/receiveInvoice/receiveInvoice"
+              }) : -1 == this.arr.role_status ? o.showToast({
+                title: "审核中...待审核通过后请重新登录",
+                icon: "none",
+                position: "bottom"
+              }) : o.showToast({
+                title: "权限不够，请在用户信息界面申请权限",
+                icon: "none",
+                position: "bottom"
+              })) : o.showToast({
+                title: "权限不够，请在用户信息界面申请权限",
+                icon: "none",
+                position: "bottom"
+              }));
+            } else o.showToast({
+              title: "待开放，敬请期待",
               icon: "none",
               position: "bottom"
-            }) : o.showToast({
-              title: "权限不够，请在用户信息界面申请权限",
-              icon: "none",
-              position: "bottom"
-            })) : o.showToast({
-              title: "权限不够，请在用户信息界面申请权限",
-              icon: "none",
-              position: "bottom"
-            }));
+            });
+
+            console.log(n(t, " at components\\nav\\nav.vue:371"));
           },
-          integral: function integral() {
-            o.showToast({
+          integral: function integral(t) {
+            this.lock, o.showToast({
               title: "待开放，敬请期待",
               icon: "none",
               position: "bottom"
@@ -7335,7 +7390,7 @@ require('pages/index/start.js');
 __wxRoute = 'pages/index/index';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index/index.js';
 
 define('pages/index/index.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index/index"],{"1fb7":function(e,t,n){"use strict";(function(e){n("8790"),n("921b");a(n("66fd"));var t=a(n("a4fc"));function a(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])},4129:function(e,t,n){"use strict";var a=function(){var e=this,t=e.$createElement;e._self._c},o=[];n.d(t,"a",function(){return a}),n.d(t,"b",function(){return o})},"62a2":function(e,t,n){},"678e":function(e,t,n){"use strict";n.r(t);var a=n("f415"),o=n.n(a);for(var i in a)"default"!==i&&function(e){n.d(t,e,function(){return a[e]})}(i);t["default"]=o.a},a4fc:function(e,t,n){"use strict";n.r(t);var a=n("4129"),o=n("678e");for(var i in o)"default"!==i&&function(e){n.d(t,e,function(){return o[e]})}(i);n("b040");var r=n("2877"),s=Object(r["a"])(o["default"],a["a"],a["b"],!1,null,null,null);t["default"]=s.exports},b040:function(e,t,n){"use strict";var a=n("62a2"),o=n.n(a);o.a},f415:function(e,t,n){"use strict";(function(e,a){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=n("2f62");function i(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},a=Object.keys(n);"function"===typeof Object.getOwnPropertySymbols&&(a=a.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),a.forEach(function(t){r(e,t,n[t])})}return e}function r(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var s=function(){return Promise.all([n.e("common/vendor"),n.e("components/banner/banner")]).then(n.bind(null,"0655"))},c=function(){return n.e("components/nav/nav").then(n.bind(null,"123d"))},u={data:function(){return{title:"",datas:[],gain:[],datasTime:"",refining:[],refiningGain:[],refiningTime:"",img:[],address:"",city:"",district:"",adcode:"",cityInfo:"",weather:"",dates:"",date:"",week:"",temperature:"",s:"s",j:"j",autoplay:!1,indicatorDots:!0,interval:2e3,duration:500,circular:!0,myManagerBox:{},modelshow:!1,dots:!1,noticeContent:"",noticeshow:!1,priceshow:Boolean,letterContent:""}},onShow:function(){this.getlocation(),this.getDate(),this.getInfo(),this.setLetter(),this.setNotice(),this.setDot()},methods:{getInfo:function(){var t=this;e.getStorage({key:"userInfo",success:function(e){console.log(a(e," at pages\\index\\index.vue:351")),console.log(a(t.datas.validTime," at pages\\index\\index.vue:352"));var n=e.data.oilPrice;t.datas=n.oilPrice,t.gain=n.oilAmplitude,t.myManagerBox=e.data.managers,t.datasTime=new Date(t.datas.valid_time+288e5).toJSON().substr(0,10).replace("T"," ").replace(/-/g,"-");var o=e.data.bizcustRefining;t.refining=o.refiningPrice,t.refiningGain=o.refiningOilAmplitude,t.refiningTime=new Date(t.refining.valid_time+288e5).toJSON().substr(0,10).replace("T"," ").replace(/-/g,"-"),t.myManagerBox.length<2?t.indicatorDots=!1:t.indicatorDots=!0;var i=e.data.banners;t.img=i,t.priceshow=e.data.isShow.oilPrice}})},setDot:function(){var e=this;this.test.post("user/count_letter_notice").then(function(t){0==t.data.value?e.dots=!1:e.dots=!0}).catch(function(e){console.log(a(e," at pages\\index\\index.vue:396"))})},setLetter:function(){var t=this;this.test.post("user/get_letter").then(function(n){if(console.log(a(n," at pages\\index\\index.vue:403")),n.statusCode&&0==n.data.errorCode){if(null==n.data.value||""==n.data.value)return;0==n.data.value.confirm_type&&(t.modelshow=!0,t.letterContent=n.data.value)}else{if(-10001==n.data.errorCode||-10002==n.data.errorCode||-10003==n.data.errorCode)return e.showModal({title:"提示",content:n.data.message,success:function(t){t.confirm,e.reLaunch({url:"../login/login"})}});-1e4==n.data.errorCode?console.log(a(1," at pages\\index\\index.vue:431")):e.showToast({title:n.data.message,icon:"none",position:"bottom"})}}).catch(function(e){console.log(a(e," at pages\\index\\index.vue:440"))})},setAccount:function(){e.navigateTo({url:"./letter/account/buyOilList?id="+this.letterContent.id})},closeModel:function(){this.modelshow=!1},setNotice:function(){var t=this;this.test.post("user/list_notices").then(function(n){if(console.log(a(n," at pages\\index\\index.vue:456")),200==n.statusCode&&0==n.data.errorCode){if(0==n.data.value.length)return void console.log(a(1," at pages\\index\\index.vue:459"));0==n.data.value[0].is_read&&(t.noticeshow=!0,t.noticeContent=n.data.value[0])}else{if(-10001==n.data.errorCode||-10002==n.data.errorCode||-10003==n.data.errorCode)return e.showModal({title:"提示",content:n.data.message,success:function(t){t.confirm,e.reLaunch({url:"../login/login"})}});-1e4==n.data.errorCode?console.log(a(1," at pages\\index\\index.vue:486")):e.showToast({title:n.data.message,icon:"none",position:"bottom"})}}).catch(function(e){console.log(a(e," at pages\\index\\index.vue:495"))})},closeNotice:function(){this.noticeshow=!1},setNoticies:function(t){e.navigateTo({url:"./letter/notice/noticeList?id="+t})},callPhone:function(t,n){e.showModal({title:"呼叫客户经理-"+n,confirmText:"呼叫",content:t,success:function(n){if(n.confirm)e.makePhoneCall({phoneNumber:t});else if(n.cancel)return}})},getlocation:function(){var t=this;e.request({url:"https://restapi.amap.com/v3/ip?parameters",header:{"Content-Type":"application/json;charset=UTF-8"},data:{key:"b5066e0a9a2a996397e9172fc67fdf40"},success:function(e){t.city=e.data.city,t.adcode=e.data.adcode,t.getWeather()}})},getWeather:function(){var t=this;e.request({url:"https://restapi.amap.com/v3/weather/weatherInfo?parameters",header:{"Content-Type":"application/json;charset=UTF-8"},data:{key:"b5066e0a9a2a996397e9172fc67fdf40",city:t.adcode,extensions:"base"},methods:"GET",success:function(e){e.data.lives.forEach(function(e){t.temperature=e.temperature,t.weather=e.weather})}})},getDate:function(){var e=new Date,t=e.getDay(),n=e.getMonth()+1,a=e.getFullYear(),o=e.getDate();switch(this.date=a+"-"+n+"-"+o,this.dates=n+"月"+o+"日",t){case 0:return this.week="星期天";case 1:return this.week="星期一";case 2:return this.week="星期二";case 3:return this.week="星期三";case 4:return this.week="星期四";case 5:return this.week="星期五";case 6:return this.week="星期六"}},message:function(){e.navigateTo({url:"./letter/letter"})}},computed:i({},(0,o.mapState)(["hasLogin","userInfo","roles","Token"])),components:{banner:s,navs:c}};t.default=u}).call(this,n("6e42")["default"],n("0de9")["default"])}},[["1fb7","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index/index"],{"1fb7":function(e,t,n){"use strict";(function(e){n("8790"),n("921b");a(n("66fd"));var t=a(n("a4fc"));function a(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])},"62a2":function(e,t,n){},"678e":function(e,t,n){"use strict";n.r(t);var a=n("f415"),o=n.n(a);for(var i in a)"default"!==i&&function(e){n.d(t,e,function(){return a[e]})}(i);t["default"]=o.a},7297:function(e,t,n){"use strict";var a=function(){var e=this,t=e.$createElement;e._self._c},o=[];n.d(t,"a",function(){return a}),n.d(t,"b",function(){return o})},a4fc:function(e,t,n){"use strict";n.r(t);var a=n("7297"),o=n("678e");for(var i in o)"default"!==i&&function(e){n.d(t,e,function(){return o[e]})}(i);n("b040");var r=n("2877"),s=Object(r["a"])(o["default"],a["a"],a["b"],!1,null,null,null);t["default"]=s.exports},b040:function(e,t,n){"use strict";var a=n("62a2"),o=n.n(a);o.a},f415:function(e,t,n){"use strict";(function(e,a){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=n("2f62");function i(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},a=Object.keys(n);"function"===typeof Object.getOwnPropertySymbols&&(a=a.concat(Object.getOwnPropertySymbols(n).filter(function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable}))),a.forEach(function(t){r(e,t,n[t])})}return e}function r(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var s=function(){return Promise.all([n.e("common/vendor"),n.e("components/banner/banner")]).then(n.bind(null,"0655"))},c=function(){return n.e("components/nav/nav").then(n.bind(null,"123d"))},u={data:function(){return{title:"",datas:[],gain:[],datasTime:"",refining:[],refiningGain:[],refiningTime:"",img:[],address:"",city:"",district:"",adcode:"",cityInfo:"",weather:"",dates:"",date:"",week:"",temperature:"",s:"s",j:"j",autoplay:!1,indicatorDots:!0,interval:2e3,duration:500,circular:!0,myManagerBox:{},modelshow:!1,dots:!1,noticeContent:"",noticeshow:!1,priceshow:Boolean,letterContent:"",lock:""}},onShow:function(){this.getlocation(),this.getDate(),this.getInfo(),this.setLetter(),this.setNotice(),this.setDot()},methods:{getInfo:function(){var t=this;e.getStorage({key:"userInfo",success:function(e){console.log(a(e," at pages\\index\\index.vue:328")),t.datas=e.data.oilPrice,console.log(a(t.datas," at pages\\index\\index.vue:331")),t.myManagerBox=e.data.managers;var n=e.data.bizcustRefining;t.refining=n.refiningPrice,t.refiningGain=n.refiningOilAmplitude,t.lock=e.data.openFlag,console.log(a(t.lock," at pages\\index\\index.vue:341")),t.refiningTime=new Date(t.refining.valid_time+288e5).toJSON().substr(0,10).replace("T"," ").replace(/-/g,"-"),t.myManagerBox.length<2?t.indicatorDots=!1:t.indicatorDots=!0;var o=e.data.banners;t.img=o,t.priceshow=e.data.isShow.oilPrice}})},setDot:function(){var e=this;this.test.post("user/count_letter_notice").then(function(t){0==t.data.value?e.dots=!1:e.dots=!0}).catch(function(e){console.log(a(e," at pages\\index\\index.vue:373"))})},setLetter:function(){var t=this;this.test.post("user/get_letter").then(function(n){if(console.log(a(n," at pages\\index\\index.vue:380")),n.statusCode&&0==n.data.errorCode){if(null==n.data.value||""==n.data.value)return;0==n.data.value.confirm_type&&(t.modelshow=!0,t.letterContent=n.data.value)}else{if(-10001==n.data.errorCode||-10002==n.data.errorCode||-10003==n.data.errorCode)return e.showModal({title:"提示",content:n.data.message,success:function(t){t.confirm,e.reLaunch({url:"../login/login"})}});-1e4==n.data.errorCode?console.log(a(1," at pages\\index\\index.vue:408")):e.showToast({title:n.data.message,icon:"none",position:"bottom"})}}).catch(function(e){console.log(a(e," at pages\\index\\index.vue:417"))})},setAccount:function(){e.navigateTo({url:"./letter/account/buyOilList?id="+this.letterContent.id})},closeModel:function(){this.modelshow=!1},setNotice:function(){var t=this;this.test.post("user/list_notices").then(function(n){if(console.log(a(n," at pages\\index\\index.vue:433")),200==n.statusCode&&0==n.data.errorCode){if(0==n.data.value.length)return void console.log(a(1," at pages\\index\\index.vue:436"));0==n.data.value[0].is_read&&(t.noticeshow=!0,t.noticeContent=n.data.value[0])}else{if(-10001==n.data.errorCode||-10002==n.data.errorCode||-10003==n.data.errorCode)return e.showModal({title:"提示",content:n.data.message,success:function(t){t.confirm,e.reLaunch({url:"../login/login"})}});-1e4==n.data.errorCode?console.log(a(1," at pages\\index\\index.vue:463")):e.showToast({title:n.data.message,icon:"none",position:"bottom"})}}).catch(function(e){console.log(a(e," at pages\\index\\index.vue:472"))})},closeNotice:function(){this.noticeshow=!1},setNoticies:function(t){e.navigateTo({url:"./letter/notice/noticeList?id="+t})},callPhone:function(t,n){e.showModal({title:"呼叫客户经理-"+n,confirmText:"呼叫",content:t,success:function(n){if(n.confirm)e.makePhoneCall({phoneNumber:t});else if(n.cancel)return}})},getlocation:function(){var t=this;e.request({url:"https://restapi.amap.com/v3/ip?parameters",header:{"Content-Type":"application/json;charset=UTF-8"},data:{key:"b5066e0a9a2a996397e9172fc67fdf40"},success:function(e){t.city=e.data.city,t.adcode=e.data.adcode,t.getWeather()}})},getWeather:function(){var t=this;e.request({url:"https://restapi.amap.com/v3/weather/weatherInfo?parameters",header:{"Content-Type":"application/json;charset=UTF-8"},data:{key:"b5066e0a9a2a996397e9172fc67fdf40",city:t.adcode,extensions:"base"},methods:"GET",success:function(e){e.data.lives.forEach(function(e){t.temperature=e.temperature,t.weather=e.weather})}})},getDate:function(){var e=new Date,t=e.getDay(),n=e.getMonth()+1,a=e.getFullYear(),o=e.getDate();switch(this.date=a+"-"+n+"-"+o,this.dates=n+"月"+o+"日",t){case 0:return this.week="星期天";case 1:return this.week="星期一";case 2:return this.week="星期二";case 3:return this.week="星期三";case 4:return this.week="星期四";case 5:return this.week="星期五";case 6:return this.week="星期六"}},message:function(){e.navigateTo({url:"./letter/letter"})}},computed:i({},(0,o.mapState)(["hasLogin","userInfo","roles","Token"])),components:{banner:s,navs:c}};t.default=u}).call(this,n("6e42")["default"],n("0de9")["default"])}},[["1fb7","common/runtime","common/vendor"]]]);
 });
 require('pages/index/index.js');
 __wxRoute = 'pages/login/login';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/login/login.js';
@@ -7383,7 +7438,7 @@ require('pages/register/positive/positive2.js');
 __wxRoute = 'pages/info/info';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/info/info.js';
 
 define('pages/info/info.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/info/info"],{"17ea":function(e,n,t){"use strict";var o=function(){var e=this,n=e.$createElement;e._self._c},a=[];t.d(n,"a",function(){return o}),t.d(n,"b",function(){return a})},"2bc9":function(e,n,t){},"435d":function(e,n,t){"use strict";(function(e){t("8790"),t("921b");o(t("66fd"));var n=o(t("9f3c"));function o(e){return e&&e.__esModule?e:{default:e}}e(n.default)}).call(this,t("6e42")["createPage"])},"6a05":function(e,n,t){"use strict";(function(e,o){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var a=t("2f62");function i(e){for(var n=1;n<arguments.length;n++){var t=null!=arguments[n]?arguments[n]:{},o=Object.keys(t);"function"===typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(t).filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),o.forEach(function(n){s(e,n,t[n])})}return e}function s(e,n,t){return n in e?Object.defineProperty(e,n,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[n]=t,e}var u=function(){return t.e("components/m-info-text/m-info-text").then(t.bind(null,"1655"))},r=function(){return t.e("components/m-info-img/m-info-img").then(t.bind(null,"8eb7"))},c={data:function(){return{info:{text1:"姓名",userphone:"手机号",company:"",usercity:"所在城市",city:"合肥",customer:"客户经理",customerName:"李勇",apply:"申请权限",oilNum:"待提油量",address:"收货地址",editPsd:"修改密码",disabled:!0,type:"text",username:"",phoneNum:""},integral:"0",autoplay:!1,indicatorDots:!0,interval:2e3,duration:500,circular:!0,cac:{},customer_id:""}},onShow:function(){var n=e.getStorageSync("Token");null!=n&&""!=n&&void 0!=n||e.showModal({title:"提示",content:"用户信息已失效，请重新登录",success:function(n){n.confirm,e.reLaunch({url:"../login/login"})}}),this.getuserinfo()},onLoad:function(e){console.log(o(e," at pages\\info\\info.vue:150"))},methods:i({},(0,a.mapActions)(["handelOut"]),{getuserinfo:function(){var n=this;e.getStorage({key:"userInfo",success:function(e){console.log(o(e," at pages\\info\\info.vue:174")),n.cac=e.data.managers,n.customer_id=e.data.user.roles[0].customer_id,console.log(o(n.cac.length," at pages\\info\\info.vue:177")),n.cac.length<2?n.indicatorDots=!1:n.indicatorDots=!0,n.info.username=e.data.user.realname,n.info.phoneNum=e.data.user.username,n.info.city=e.data.user.city,n.info.company=e.data.user.customer_name,n.info.customerName=e.data.user.manager_name}})},toStayOil:function(){e.navigateTo({url:"./stayOil/stayOil"})},toApply:function(){e.navigateTo({url:"apply/apply?customer_id="+this.customer_id})},editAddress:function(){e.navigateTo({url:"harvestaddress/harvestaddress"})},toEditPsd:function(){e.navigateTo({url:"modify/modify"})},testing:function(){switch(e.getSystemInfoSync().platform){case"android":console.log(o("运行Android上"," at pages\\info\\info.vue:217"));var n=plus.runtime.appid,t=plus.runtime.version;console.log(o(plus.runtime.appid,plus.runtime.version," at pages\\info\\info.vue:226")),this.test.post("base/getVersion",{appid:n,version:t,type:"android"}).then(function(n){console.log(o(n," at pages\\info\\info.vue:232"));var t=n.data.value.url;200==n.statusCode&&0===n.data.errorCode&&(1==n.data.value.status?e.showModal({title:"更新提示",content:n.data.value.note,success:function(e){e.confirm&&plus.runtime.openURL(t)}}):e.showToast({title:"当前版本已经是最新版本",icon:"none"}))}).catch(function(e){console.log(o(e," at pages\\info\\info.vue:254"))});break;case"ios":console.log(o("运行iOS上"," at pages\\info\\info.vue:258"));n=plus.runtime.appid,t=plus.runtime.version;console.log(o(plus.runtime.appid,plus.runtime.version," at pages\\info\\info.vue:267")),this.test.post("base/getVersion",{appid:n,version:t,type:"ios"}).then(function(n){var t=n.data.value.url;200==n.statusCode&&0===n.data.errorCode&&1==n.data.value.status&&e.showModal({title:"更新提示",content:n.data.value.note,success:function(e){e.confirm&&plus.runtime.openURL(t)}})}).catch(function(e){console.log(o(e," at pages\\info\\info.vue:289"))});break;default:console.log(o("运行在开发者工具上"," at pages\\info\\info.vue:293"));break}},outsafe:function(){var n=this;console.log(o(this.hasLogin," at pages\\info\\info.vue:300")),this.hasLogin?e.showModal({title:"提示",content:"退出当前账号",success:function(t){if(t.confirm)n.test.post("user/logout").then(function(t){console.log(o(t," at pages\\info\\info.vue:308")),0==t.data.errorCode&&t.statusCode?(n.handelOut(),e.navigateTo({url:"../login/login"})):-10001==t.data.errorCode||-10002==t.data.errorCode||-10003==t.data.errorCode?e.showModal({title:"提示",content:t.data.message,success:function(n){n.confirm,e.reLaunch({url:"../login/login"})}}):-1e4==t.data.errorCode?console.log(o(1," at pages\\info\\info.vue:331")):e.showToast({title:t.data.message,icon:"none",position:"bottom"})}).catch(function(e){console.log(o(e," at pages\\info\\info.vue:340"))});else if(t.cancel)return}}):e.navigateTo({url:"../login/login"})},toFeedback:function(){e.navigateTo({url:"feedback/feedback"})}}),computed:i({},(0,a.mapState)(["hasLogin","userInfo"])),components:{infoText:u,infoImg:r}};n.default=c}).call(this,t("6e42")["default"],t("0de9")["default"])},"8bd2":function(e,n,t){"use strict";t.r(n);var o=t("6a05"),a=t.n(o);for(var i in o)"default"!==i&&function(e){t.d(n,e,function(){return o[e]})}(i);n["default"]=a.a},"9f3c":function(e,n,t){"use strict";t.r(n);var o=t("17ea"),a=t("8bd2");for(var i in a)"default"!==i&&function(e){t.d(n,e,function(){return a[e]})}(i);t("c6fb");var s=t("2877"),u=Object(s["a"])(a["default"],o["a"],o["b"],!1,null,null,null);n["default"]=u.exports},c6fb:function(e,n,t){"use strict";var o=t("2bc9"),a=t.n(o);a.a}},[["435d","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/info/info"],{"2bc9":function(e,n,t){},"435d":function(e,n,t){"use strict";(function(e){t("8790"),t("921b");o(t("66fd"));var n=o(t("9f3c"));function o(e){return e&&e.__esModule?e:{default:e}}e(n.default)}).call(this,t("6e42")["createPage"])},"6a05":function(e,n,t){"use strict";(function(e,o){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var a=t("2f62");function i(e){for(var n=1;n<arguments.length;n++){var t=null!=arguments[n]?arguments[n]:{},o=Object.keys(t);"function"===typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(t).filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),o.forEach(function(n){s(e,n,t[n])})}return e}function s(e,n,t){return n in e?Object.defineProperty(e,n,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[n]=t,e}var u=function(){return t.e("components/m-info-text/m-info-text").then(t.bind(null,"1655"))},r=function(){return t.e("components/m-info-img/m-info-img").then(t.bind(null,"8eb7"))},c={data:function(){return{info:{text1:"姓名",userphone:"手机号",company:"",usercity:"所在城市",city:"合肥",customer:"客户经理",customerName:"李勇",apply:"申请权限",oilNum:"待提油量",address:"收货地址",editPsd:"修改密码",disabled:!0,type:"text",username:"",phoneNum:""},integral:"0",autoplay:!1,indicatorDots:!0,interval:2e3,duration:500,circular:!0,cac:{},customer_id:""}},onShow:function(){var n=e.getStorageSync("Token");null!=n&&""!=n&&void 0!=n||e.showModal({title:"提示",content:"用户信息已失效，请重新登录",success:function(n){n.confirm,e.reLaunch({url:"../login/login"})}}),this.getuserinfo()},onLoad:function(e){console.log(o(e," at pages\\info\\info.vue:150"))},methods:i({},(0,a.mapActions)(["handelOut"]),{getuserinfo:function(){var n=this;e.getStorage({key:"userInfo",success:function(e){console.log(o(e," at pages\\info\\info.vue:174")),n.cac=e.data.managers,n.customer_id=e.data.user.roles[0].customer_id,console.log(o(n.cac.length," at pages\\info\\info.vue:177")),n.cac.length<2?n.indicatorDots=!1:n.indicatorDots=!0,n.info.username=e.data.user.realname,n.info.phoneNum=e.data.user.username,n.info.city=e.data.user.city,n.info.company=e.data.user.customer_name,n.info.customerName=e.data.user.manager_name}})},toStayOil:function(){e.navigateTo({url:"./stayOil/stayOil"})},toApply:function(){e.navigateTo({url:"apply/apply?customer_id="+this.customer_id})},editAddress:function(){e.navigateTo({url:"harvestaddress/harvestaddress"})},toEditPsd:function(){e.navigateTo({url:"modify/modify"})},testing:function(){switch(e.getSystemInfoSync().platform){case"android":console.log(o("运行Android上"," at pages\\info\\info.vue:217"));var n=plus.runtime.appid,t=plus.runtime.version;console.log(o(plus.runtime.appid,plus.runtime.version," at pages\\info\\info.vue:226")),this.test.post("base/getVersion",{appid:n,version:t,type:"android"}).then(function(n){console.log(o(n," at pages\\info\\info.vue:232"));var t=n.data.value.url;200==n.statusCode&&0===n.data.errorCode&&(1==n.data.value.status?e.showModal({title:"更新提示",content:n.data.value.note,success:function(e){e.confirm&&plus.runtime.openURL(t)}}):e.showToast({title:"当前版本已经是最新版本",icon:"none"}))}).catch(function(e){console.log(o(e," at pages\\info\\info.vue:254"))});break;case"ios":console.log(o("运行iOS上"," at pages\\info\\info.vue:258"));n=plus.runtime.appid,t=plus.runtime.version;console.log(o(plus.runtime.appid,plus.runtime.version," at pages\\info\\info.vue:267")),this.test.post("base/getVersion",{appid:n,version:t,type:"ios"}).then(function(n){var t=n.data.value.url;200==n.statusCode&&0===n.data.errorCode&&1==n.data.value.status&&e.showModal({title:"更新提示",content:n.data.value.note,success:function(e){e.confirm&&plus.runtime.openURL(t)}})}).catch(function(e){console.log(o(e," at pages\\info\\info.vue:289"))});break;default:console.log(o("运行在开发者工具上"," at pages\\info\\info.vue:293"));break}},outsafe:function(){var n=this;console.log(o(this.hasLogin," at pages\\info\\info.vue:300")),this.hasLogin?e.showModal({title:"提示",content:"退出当前账号",success:function(t){if(t.confirm)n.test.post("user/logout").then(function(t){console.log(o(t," at pages\\info\\info.vue:308")),0==t.data.errorCode&&t.statusCode?(n.handelOut(),e.navigateTo({url:"../login/login"})):-10001==t.data.errorCode||-10002==t.data.errorCode||-10003==t.data.errorCode?e.showModal({title:"提示",content:t.data.message,success:function(n){n.confirm,e.reLaunch({url:"../login/login"})}}):-1e4==t.data.errorCode?console.log(o(1," at pages\\info\\info.vue:331")):e.showToast({title:t.data.message,icon:"none",position:"bottom"})}).catch(function(e){console.log(o(e," at pages\\info\\info.vue:340"))});else if(t.cancel)return}}):e.navigateTo({url:"../login/login"})},toFeedback:function(){e.navigateTo({url:"feedback/feedback"})}}),computed:i({},(0,a.mapState)(["hasLogin","userInfo"])),components:{infoText:u,infoImg:r}};n.default=c}).call(this,t("6e42")["default"],t("0de9")["default"])},"7a42":function(e,n,t){"use strict";var o=function(){var e=this,n=e.$createElement;e._self._c},a=[];t.d(n,"a",function(){return o}),t.d(n,"b",function(){return a})},"8bd2":function(e,n,t){"use strict";t.r(n);var o=t("6a05"),a=t.n(o);for(var i in o)"default"!==i&&function(e){t.d(n,e,function(){return o[e]})}(i);n["default"]=a.a},"9f3c":function(e,n,t){"use strict";t.r(n);var o=t("7a42"),a=t("8bd2");for(var i in a)"default"!==i&&function(e){t.d(n,e,function(){return a[e]})}(i);t("c6fb");var s=t("2877"),u=Object(s["a"])(a["default"],o["a"],o["b"],!1,null,null,null);n["default"]=u.exports},c6fb:function(e,n,t){"use strict";var o=t("2bc9"),a=t.n(o);a.a}},[["435d","common/runtime","common/vendor"]]]);
 });
 require('pages/info/info.js');
 __wxRoute = 'pages/info/userPhoneNumber/userPhoneNumber';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/info/userPhoneNumber/userPhoneNumber.js';
@@ -7395,13 +7450,13 @@ require('pages/info/userPhoneNumber/userPhoneNumber.js');
 __wxRoute = 'pages/info/apply/apply';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/info/apply/apply.js';
 
 define('pages/info/apply/apply.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/info/apply/apply"],{4728:function(o,t,e){"use strict";(function(o){e("8790"),e("921b");n(e("66fd"));var t=n(e("9cf0"));function n(o){return o&&o.__esModule?o:{default:o}}o(t.default)}).call(this,e("6e42")["createPage"])},"5a85":function(o,t,e){},"98c6":function(o,t,e){"use strict";e.r(t);var n=e("fb0c"),a=e.n(n);for(var u in n)"default"!==u&&function(o){e.d(t,o,function(){return n[o]})}(u);t["default"]=a.a},"9cf0":function(o,t,e){"use strict";e.r(t);var n=e("d218"),a=e("98c6");for(var u in a)"default"!==u&&function(o){e.d(t,o,function(){return a[o]})}(u);e("daa3");var i=e("2877"),s=Object(i["a"])(a["default"],n["a"],n["b"],!1,null,null,null);t["default"]=s.exports},d218:function(o,t,e){"use strict";var n=function(){var o=this,t=o.$createElement;o._self._c},a=[];e.d(t,"a",function(){return n}),e.d(t,"b",function(){return a})},daa3:function(o,t,e){"use strict";var n=e("5a85"),a=e.n(n);a.a},fb0c:function(o,t,e){"use strict";(function(o,n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a=function(){return e.e("components/m-info-text/m-info-text").then(e.bind(null,"1655"))},u={data:function(){return{buy:!0,take:!1,role:[],company:[],statusAll:"",userCode:"",customer_id:""}},onLoad:function(o){this.userCode=o.userCode,this.customer_id=o.customer_id,this.getJurisdiction()},methods:{getJurisdiction:function(){var t=this,e=this;this.test.post("user/list_user_role",{customer_id:this.customer_id}).then(function(a){console.log(o(a," at pages\\info\\apply\\apply.vue:75")),200==a.statusCode&&0==a.data.errorCode?(t.company=a.data.value,t.company.map(function(o){e.role.push(o)}),console.log(o(t.role," at pages\\info\\apply\\apply.vue:81"))):-10001==a.data.errorCode||-10002==a.data.errorCode||-10003==a.data.errorCode?n.showModal({title:"提示",content:a.data.message,success:function(o){o.confirm,n.reLaunch({url:"../../login/login"})}}):-1e4==a.data.errorCode?console.log(o(1," at pages\\info\\apply\\apply.vue:114")):n.showToast({title:a.data.message,icon:"none",position:"bottom"})}).catch(function(t){console.log(o(t," at pages\\info\\apply\\apply.vue:123"))})},GoBuyApply:function(t,e,a,u,i){0==t||2==t||9==t?(console.log(o(u," at pages\\info\\apply\\apply.vue:131")),1==u?n.navigateTo({url:"./uploadImg/uploadImg?name=apply&user="+e+"&userCode="+u+"&customer_id="+i}):n.navigateTo({url:"../../register/uploadFace/uploadFace?name=apply&user="+e+"&userCode="+u+"&customer_id="+i})):1==t?n.showToast({title:"您已有权限",icon:"none",position:"bottom"}):-1==t?n.showToast({title:"审核中...",icon:"none",position:"bottom"}):n.showToast({title:"审核未通过",icon:"none",position:"bottom"})}},components:{infoText:a}};t.default=u}).call(this,e("0de9")["default"],e("6e42")["default"])}},[["4728","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/info/apply/apply"],{"44cb":function(o,t,e){"use strict";var n=function(){var o=this,t=o.$createElement;o._self._c},a=[];e.d(t,"a",function(){return n}),e.d(t,"b",function(){return a})},4728:function(o,t,e){"use strict";(function(o){e("8790"),e("921b");n(e("66fd"));var t=n(e("9cf0"));function n(o){return o&&o.__esModule?o:{default:o}}o(t.default)}).call(this,e("6e42")["createPage"])},"5a85":function(o,t,e){},"98c6":function(o,t,e){"use strict";e.r(t);var n=e("fb0c"),a=e.n(n);for(var u in n)"default"!==u&&function(o){e.d(t,o,function(){return n[o]})}(u);t["default"]=a.a},"9cf0":function(o,t,e){"use strict";e.r(t);var n=e("44cb"),a=e("98c6");for(var u in a)"default"!==u&&function(o){e.d(t,o,function(){return a[o]})}(u);e("daa3");var i=e("2877"),s=Object(i["a"])(a["default"],n["a"],n["b"],!1,null,null,null);t["default"]=s.exports},daa3:function(o,t,e){"use strict";var n=e("5a85"),a=e.n(n);a.a},fb0c:function(o,t,e){"use strict";(function(o,n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a=function(){return e.e("components/m-info-text/m-info-text").then(e.bind(null,"1655"))},u={data:function(){return{buy:!0,take:!1,role:[],company:[],statusAll:"",userCode:"",customer_id:""}},onLoad:function(o){this.userCode=o.userCode,this.customer_id=o.customer_id,this.getJurisdiction()},methods:{getJurisdiction:function(){var t=this,e=this;this.test.post("user/list_user_role",{customer_id:this.customer_id}).then(function(a){console.log(o(a," at pages\\info\\apply\\apply.vue:74")),200==a.statusCode&&0==a.data.errorCode?(t.company=a.data.value,t.company.map(function(o){e.role.push(o)}),console.log(o(t.role," at pages\\info\\apply\\apply.vue:80"))):-10001==a.data.errorCode||-10002==a.data.errorCode||-10003==a.data.errorCode?n.showModal({title:"提示",content:a.data.message,success:function(o){o.confirm,n.reLaunch({url:"../../login/login"})}}):-1e4==a.data.errorCode?console.log(o(1," at pages\\info\\apply\\apply.vue:113")):n.showToast({title:a.data.message,icon:"none",position:"bottom"})}).catch(function(t){console.log(o(t," at pages\\info\\apply\\apply.vue:122"))})},GoBuyApply:function(t,e,a,u,i){0==t||2==t||9==t?(console.log(o(u," at pages\\info\\apply\\apply.vue:130")),1==u?n.navigateTo({url:"./uploadImg/uploadImg?name=apply&user="+e+"&userCode="+u+"&customer_id="+i}):n.navigateTo({url:"../../register/uploadFace/uploadFace?name=apply&user="+e+"&userCode="+u+"&customer_id="+i})):1==t?n.showToast({title:"您已有权限",icon:"none",position:"bottom"}):-1==t?n.showToast({title:"审核中...",icon:"none",position:"bottom"}):n.showToast({title:"审核未通过",icon:"none",position:"bottom"})}},components:{infoText:a}};t.default=u}).call(this,e("0de9")["default"],e("6e42")["default"])}},[["4728","common/runtime","common/vendor"]]]);
 });
 require('pages/info/apply/apply.js');
 __wxRoute = 'pages/info/harvestaddress/harvestaddress';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/info/harvestaddress/harvestaddress.js';
 
 define('pages/info/harvestaddress/harvestaddress.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/info/harvestaddress/harvestaddress"],{3896:function(e,t,a){"use strict";a.r(t);var s=a("a572"),n=a("81f8");for(var o in n)"default"!==o&&function(e){a.d(t,e,function(){return n[e]})}(o);var r=a("2877"),d=Object(r["a"])(n["default"],s["a"],s["b"],!1,null,null,null);t["default"]=d.exports},"81f8":function(e,t,a){"use strict";a.r(t);var s=a("a15c"),n=a.n(s);for(var o in s)"default"!==o&&function(e){a.d(t,e,function(){return s[e]})}(o);t["default"]=n.a},a15c:function(e,t,a){"use strict";(function(e,a){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var s={data:function(){return{info:[],range:0}},onLoad:function(){this.getAddressInfo()},methods:{getAddressInfo:function(){var t=this;this.test.post("user/getAddrList").then(function(s){console.log(e(s," at pages\\info\\harvestaddress\\harvestaddress.vue:52")),200==s.statusCode&&0==s.data.errorCode?t.info=s.data.value:-10001==s.data.errorCode||-10002==s.data.errorCode||-10003==s.data.errorCode?a.showModal({title:"提示",content:s.data.message,success:function(e){e.confirm,a.reLaunch({url:"../../login/login"})}}):-1e4==s.data.errorCode?console.log(e(1," at pages\\info\\harvestaddress\\harvestaddress.vue:72")):a.showToast({title:s.data.message,icon:"none",position:"bottom"})}).catch(function(t){console.log(e(t," at pages\\info\\harvestaddress\\harvestaddress.vue:81"))})},sure:function(t){var s=this;console.log(e(t," at pages\\info\\harvestaddress\\harvestaddress.vue:86")),a.showModal({title:"提示",content:"确认选择该地址为默认地址？",success:function(n){if(n.confirm){for(var o=0;o<s.info.length;o++)if(console.log(e(n," at pages\\info\\harvestaddress\\harvestaddress.vue:93")),s.info[o].is_default==t.target.value){s.range=o,console.log(e(s.info[o].cl_id," at pages\\info\\harvestaddress\\harvestaddress.vue:96")),s.test.post("user/setDefaultAddr",{addr_id:s.info[o].cl_id}).then(function(t){console.log(e(t," at pages\\info\\harvestaddress\\harvestaddress.vue:100")),200==t.statusCode&&0==t.data.errorCode&&a.showToast({title:"设置成功"})});break}}else n.cancel&&(s.info="",s.getAddressInfo())}})},newadd:function(){a.navigateTo({url:"newAddress/newAddress"})},edit:function(){},delate:function(){}}};t.default=s}).call(this,a("0de9")["default"],a("6e42")["default"])},a572:function(e,t,a){"use strict";var s=function(){var e=this,t=e.$createElement,a=(e._self._c,e.__map(e.info,function(t,a){var s=String(t.is_default);return{$orig:e.__get_orig(t),m0:s}}));e.$mp.data=Object.assign({},{$root:{l0:a}})},n=[];a.d(t,"a",function(){return s}),a.d(t,"b",function(){return n})},da71:function(e,t,a){"use strict";(function(e){a("8790"),a("921b");s(a("66fd"));var t=s(a("3896"));function s(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,a("6e42")["createPage"])}},[["da71","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/info/harvestaddress/harvestaddress"],{3896:function(e,t,o){"use strict";o.r(t);var a=o("c762"),n=o("81f8");for(var s in n)"default"!==s&&function(e){o.d(t,e,function(){return n[e]})}(s);var r=o("2877"),d=Object(r["a"])(n["default"],a["a"],a["b"],!1,null,null,null);t["default"]=d.exports},"81f8":function(e,t,o){"use strict";o.r(t);var a=o("a15c"),n=o.n(a);for(var s in a)"default"!==s&&function(e){o.d(t,e,function(){return a[e]})}(s);t["default"]=n.a},a15c:function(e,t,o){"use strict";(function(e,o){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a={data:function(){return{info:[],range:[],location:[]}},onLoad:function(){this.getAddressInfo()},methods:{getAddressInfo:function(){var t=this;this.test.post("user/getAddrList").then(function(a){console.log(e(a," at pages\\info\\harvestaddress\\harvestaddress.vue:61")),200==a.statusCode&&0==a.data.errorCode?(t.info=a.data.value,console.log(e(t.info," at pages\\info\\harvestaddress\\harvestaddress.vue:65"))):-10001==a.data.errorCode||-10002==a.data.errorCode||-10003==a.data.errorCode?o.showModal({title:"提示",content:a.data.message,success:function(e){e.confirm,o.reLaunch({url:"../../login/login"})}}):-1e4==a.data.errorCode?console.log(e(1," at pages\\info\\harvestaddress\\harvestaddress.vue:83")):o.showToast({title:a.data.message,icon:"none",position:"bottom"})}).catch(function(t){console.log(e(t," at pages\\info\\harvestaddress\\harvestaddress.vue:92"))})},sure:function(t){var a=this;console.log(e(t," at pages\\info\\harvestaddress\\harvestaddress.vue:97")),o.showModal({title:"提示",content:"确认选择该地址为默认地址？",success:function(n){if(n.confirm)for(var s=0;s<a.info.length;s++){console.log(e(a.location," at pages\\info\\harvestaddress\\harvestaddress.vue:104"));for(var r=0;r<a.info[s].customerLocations.length;r++)if(a.info[s].customerLocations[r].id==t.target.value){a.range=a.info[s].customerLocations[r].is_default,a.test.post("user/setDefaultAddr",{addr_id:a.info[s].customerLocations[r].id}).then(function(t){console.log(e(t," at pages\\info\\harvestaddress\\harvestaddress.vue:112")),200==t.statusCode&&0==t.data.errorCode&&(o.showToast({title:"设置成功"}),a.info="",a.getAddressInfo())});break}}else n.cancel&&(a.info="",a.getAddressInfo())}})},newadd:function(){o.navigateTo({url:"newAddress/newAddress"})},edit:function(){},delate:function(){}}};t.default=a}).call(this,o("0de9")["default"],o("6e42")["default"])},c762:function(e,t,o){"use strict";var a=function(){var e=this,t=e.$createElement,o=(e._self._c,e.__map(e.info,function(t,o){var a=e.__map(t.customerLocations,function(t,o){var a=String(t.id);return{$orig:e.__get_orig(t),m0:a}});return{$orig:e.__get_orig(t),l0:a}}));e.$mp.data=Object.assign({},{$root:{l1:o}})},n=[];o.d(t,"a",function(){return a}),o.d(t,"b",function(){return n})},da71:function(e,t,o){"use strict";(function(e){o("8790"),o("921b");a(o("66fd"));var t=a(o("3896"));function a(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,o("6e42")["createPage"])}},[["da71","common/runtime","common/vendor"]]]);
 });
 require('pages/info/harvestaddress/harvestaddress.js');
 __wxRoute = 'pages/info/harvestaddress/newAddress/newAddress';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/info/harvestaddress/newAddress/newAddress.js';
@@ -7419,7 +7474,7 @@ require('pages/info/modify/modify.js');
 __wxRoute = 'pages/order/order';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/order/order.js';
 
 define('pages/order/order.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/order/order"],{"0c01":function(o,e,t){"use strict";var n=function(){var o=this,e=o.$createElement,n=(o._self._c,t("79f9"));o._isMounted||(o.e0=function(e){o.chooseAddress=!o.chooseAddress},o.e1=function(e){o.showCompany=!o.showCompany},o.e2=function(e){o.showCoutomer=!o.showCoutomer}),o.$mp.data=Object.assign({},{$root:{m0:n}})},s=[];t.d(e,"a",function(){return n}),t.d(e,"b",function(){return s})},"1dd9":function(o,e,t){},"357c":function(o,e,t){"use strict";var n=t("1dd9"),s=t.n(n);s.a},"59a3":function(o,e,t){"use strict";t.r(e);var n=t("70d7"),s=t.n(n);for(var a in n)"default"!==a&&function(o){t.d(e,o,function(){return n[o]})}(a);e["default"]=s.a},"70d7":function(o,e,t){"use strict";(function(o,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var s=function(){return t.e("components/m-info-text/m-info-text").then(t.bind(null,"1655"))},a=function(){return t.e("components/m-button").then(t.bind(null,"1460"))},r={data:function(){return{titles:"下单购油",company:"",productOil:"",modeOil:"选择提油方式",modePay:"",address:"请选择地址",count:"",Remarks:"",show:!1,mode:!1,pay:!1,addrShow:!0,infos:{placeholder:"请输入数量(吨)，可保留六位小数",buyoilText:"购买数量",number:"number",muchOil:""},btn:{primary:"primary",btnvalue:"提交意向单"},info:[],range:0,chooseAddress:!1,getTpe:"",myManager:"",newDatas:[],showCompany:!1,companyId:"",showCoutomer:!1,page:1,pageSize:10,man:[],more:!1,value:"",myManagerId:"",scrollTop:0,old:{scrollTop:0},managers:[],phoneHeight:"",scrollheight:"",manergerscrollheight:"",buyCompany:"",buycompanyImg:!1,addrImg:!1,buyCompanyID:"",nextConpany:!1,dotIdx:"",placecolor:!0,color9:"color9",colorRed:"colorRed"}},onLoad:function(){var e=this;o.getSystemInfo({success:function(o){e.phoneHeight=o.windowHeight,e.scrollheight=e.phoneHeight-44-25,e.manergerscrollheight=e.phoneHeight-44-25-54}}),this.getCompanyInfo(),this.getBuycompany(0)},methods:{getCompanyInfo:function(){var e=this;this.test.post("order/order_company").then(function(o){console.log(n(o," at pages\\order\\order.vue:362")),200==o.statusCode&&0==o.data.errorCode&&(e.company=o.data.value.name,e.companyId=o.data.value.id)}).catch(function(o){console.log(n(o," at pages\\order\\order.vue:376"))}),o.getStorage({key:"userInfo",success:function(o){console.log(n(o," at pages\\order\\order.vue:381")),e.myManager=o.data.managers[0].manager_name,e.myManagerId=o.data.managers[0].manager_id}})},getBuycompany:function(e){var t=this;this.test.post("order/order_customers").then(function(s){if(console.log(n(s," at pages\\order\\order.vue:393")),200==s.statusCode&&0==s.data.errorCode)t.managers=s.data.value,t.buyCompany=t.managers[e].name,t.buyCompanyID=t.managers[e].id,t.info=t.managers[e].customerLocations,t.address=t.info[0].address,console.log(n(t.info," at pages\\order\\order.vue:402")),t.managers.length>1?t.buycompanyImg=!0:t.buycompanyImg=!1,t.info.length>1?t.addrImg=!0:t.addrImg=!1;else{if(-10001==s.data.errorCode||-10002==s.data.errorCode||-10003==s.data.errorCode)return o.showModal({title:"提示",content:s.data.message,success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}});-1e4==s.data.errorCode?console.log(n(1," at pages\\order\\order.vue:431")):o.showToast({title:s.data.message,icon:"none",position:"bottom"})}}).catch(function(o){console.log(n(o," at pages\\order\\order.vue:440"))})},chooseOwnCompany:function(){this.managers.length>1?(this.buycompanyImg=!0,this.showCompany=!0,this.nextConpany=!1):this.buycompanyImg=!1},getNewCompany:function(){var e=this;this.page=1,this.showCompany=!0,this.nextConpany=!0,o.showLoading({title:"加载中..."}),this.test.post("order/listOrgs").then(function(t){o.hideLoading(),console.log(n(t," at pages\\order\\order.vue:466")),e.newDatas=t.data.value}).catch(function(e){o.hideLoading(),o.showToast({title:"加载失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:476"))})},chooseCompany:function(o){console.log(n(o," at pages\\order\\order.vue:484")),console.log(n("收油"," at pages\\order\\order.vue:486")),this.more=!0,this.company=this.newDatas[o].name,this.companyId=this.newDatas[o].id,this.showCompany=!this.showCompany,this.myManager="请选择"},chooseownCompany:function(o){this.buyCompany=this.managers[o].name,this.showCompany=!this.showCompany,null!==this.managers[o].customerLocations?(console.log(n(this.managers[o].customerLocations," at pages\\order\\order.vue:499")),this.info=this.managers[o].customerLocations,this.address=this.info[0].address):(this.info=[],this.address="",this.addrImg=!1),console.log(n(this.managers[o]," at pages\\order\\order.vue:510"))},getNewCustemerInfo:function(){this.man=[],this.page=1,this.more=!0,this.value="",this.getNewCustemer(),this.showCoutomer=!0,o.showLoading({title:"加载中..."})},getNewCustemer:function(){var e=this;console.log(n(this.value," at pages\\order\\order.vue:525")),this.test.post("order/listManagers",{search:this.value,org_id:this.companyId,size:this.page,pageSize:this.pageSize}).then(function(t){if(o.hideLoading(),console.log(n(t," at pages\\order\\order.vue:535")),200==t.statusCode&&0==t.data.errorCode)t.data.value.forEach(function(o){e.man.push(o)}),t.data.value.length<10&&t.data.value.length>0?e.more=!1:0==t.data.value.length&&(e.more=!1,o.showToast({title:"没有更多了",icon:"none",position:"bottom"}));else{if(-10001==t.data.errorCode||-10002==t.data.errorCode||-10003==t.data.errorCode)return o.showModal({title:"提示",content:t.data.message,success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}});-1e4==t.data.errorCode?console.log(n(1," at pages\\order\\order.vue:570")):o.showToast({title:t.data.message,icon:"none",position:"bottom"})}}).catch(function(e){o.hideLoading(),o.showToast({title:"加载失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:585"))})},searchCustomer:function(o){this.page=1,""!==o.target.value&&null!==o.target.value?(this.man=[],this.page=1,this.more=!0,this.getNewCustemer()):(this.man=[],this.page=1,this.more=!0,this.value="",this.getNewCustemer())},chooseCustomers:function(o,e){this.myManagerId=e,this.myManager=this.man[o].realname,this.showCoutomer=!this.showCoutomer},Smore:function(){this.page+=1,this.getNewCustemer(),o.showLoading({title:"加载中..."})},payShow:function(){this.pay=!this.pay},chooseOilShowPay:function(){this.pay=!this.pay},chooseOilShow:function(){this.show=!this.show},chooseOilLeave:function(){this.mode=!this.mode},chooseOne:function(o){console.log(n(o," at pages\\order\\order.vue:636")),this.show=!this.show,this.productOil=o.target.id},pays:function(o){this.pay=!this.pay,this.modePay=o.target.id},modeShow:function(){this.mode=!this.mode},chooseTwo:function(o){console.log(n(o," at pages\\order\\order.vue:649")),this.mode=!this.mode,this.getTpe=o.target.id,"配送"==o.target.id?this.addrShow=!0:this.addrShow=!1,this.modeOil=o.target.id},chooseAddr:function(){console.log(n(this.info.length," at pages\\order\\order.vue:665")),this.info.length>1&&(this.addrImg=!0,this.chooseAddress=!this.chooseAddress,o.showToast({title:"选择你要收货的地址,然后点确认",icon:"none",position:"bottom"}))},setNumber:function(e){if(this.placecolor=!0,e.detail.value<0)return this.count=this.count.replace(/^(0+)|[^\d]+/g,""),o.showToast({title:"购买数量不能小于0",icon:"none",position:"bottom"});var t=e.detail.value;console.log(n(t," at pages\\order\\order.vue:722"));var s=t.indexOf(".");console.log(n(s," at pages\\order\\order.vue:724")),this.dotIdx=s},isAddress:function(e){console.log(n(e,this.info," at pages\\order\\order.vue:751"));var t=this;o.showModal({content:"确定选择该地址为收货地址",success:function(o){if(o.confirm)t.address=t.info[e].address,t.chooseAddress=!t.chooseAddress,console.log(n(t.address," at pages\\order\\order.vue:759"));else if(o.cancel)return}})},upper:function(o){console.log(n(o," at pages\\order\\order.vue:800"))},lower:function(o){},scroll:function(o){},toBuy:function(){var e=this;if(console.log(n(this.count.length,this.dotIdx," at pages\\order\\order.vue:811")),null!==this.myManager&&""!==this.myManager&&"请选择"!==this.myManager)if(null!==this.productOil&&""!==this.productOil&&"选择油品"!==this.productOil)if(null!==this.modePay&&""!==this.modePay&&"请选择付款方式"!==this.modePay)if(null!==this.count&&""!==this.count&&0!==this.count){if(-1==this.dotIdx)return console.log(n(this.dotIdx," at pages\\order\\order.vue:818")),o.showModal({title:"提示",content:"提交后无法修改，是否提交",success:function(t){t.confirm&&(o.showLoading({title:"提交中..."}),e.test.post("order/make_order",{org_id:e.companyId,manager_id:e.myManagerId,manager_name:e.myManager,customer_name:e.buyCompany,customer_id:e.buyCompanyID,oil_type:e.productOil,pay_type:e.modePay,count:e.count,ship_addr:e.address,remark:e.Remarks}).then(function(e){console.log(n(e," at pages\\order\\order.vue:841")),o.hideLoading(),200==e.statusCode&&0==e.data.errorCode?o.redirectTo({url:"../orderList/orderList"}):-10001==e.data.errorCode||-10002==e.data.errorCode||-10003==e.data.errorCode?o.showModal({title:"提示",content:e.data.message,success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}}):-1e4==e.data.errorCode?console.log(n(1," at pages\\order\\order.vue:865")):o.showToast({title:e.data.message,icon:"none",position:"bottom"})}).catch(function(e){o.hideLoading(),o.showToast({title:"提交失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:880"))}))}});this.dotIdx=this.dotIdx+7,this.count.length>this.dotIdx?(this.placecolor=!1,o.showToast({title:"购买数量最多保留六位有效数字",icon:"none",position:"bottom"}),this.count=0):o.showModal({title:"提示",content:"提交后无法修改，是否提交",success:function(t){t.confirm&&(o.showLoading({title:"提交中..."}),e.test.post("order/make_order",{org_id:e.companyId,manager_id:e.myManagerId,manager_name:e.myManager,customer_name:e.buyCompany,customer_id:e.buyCompanyID,oil_type:e.productOil,pay_type:e.modePay,count:e.count,ship_addr:e.address,remark:e.Remarks}).then(function(e){console.log(n(e," at pages\\order\\order.vue:921")),o.hideLoading(),200==e.statusCode&&0==e.data.errorCode?o.redirectTo({url:"../orderList/orderList"}):10001==e.data.errorCode||10002==e.data.errorCode||10003==e.data.errorCode?o.showModal({title:"提示",content:"用户信息已失效，请重新登录",success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}}):o.showToast({title:e.data.message,icon:"none",position:"bottom"})}).catch(function(e){o.hideLoading(),o.showToast({title:"提交失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:957"))}))}})}else o.showToast({title:"请输入购油数量",icon:"none",position:"bottom"});else o.showToast({title:"请选择付款方式",icon:"none",position:"bottom"});else o.showToast({title:"请选择油品",icon:"none",position:"bottom"});else o.showToast({title:"请选择客户经理",icon:"none",position:"bottom"})}},components:{mButton:a,infoText:s},mounted:function(){setTimeout(function(){this.company="小花"},0)}};e.default=r}).call(this,t("6e42")["default"],t("0de9")["default"])},a49c:function(o,e,t){"use strict";(function(o){t("8790"),t("921b");n(t("66fd"));var e=n(t("b955"));function n(o){return o&&o.__esModule?o:{default:o}}o(e.default)}).call(this,t("6e42")["createPage"])},b955:function(o,e,t){"use strict";t.r(e);var n=t("0c01"),s=t("59a3");for(var a in s)"default"!==a&&function(o){t.d(e,o,function(){return s[o]})}(a);t("357c");var r=t("2877"),i=Object(r["a"])(s["default"],n["a"],n["b"],!1,null,null,null);e["default"]=i.exports}},[["a49c","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/order/order"],{"1dd9":function(o,e,t){},"20a2":function(o,e,t){"use strict";var n=function(){var o=this,e=o.$createElement,n=(o._self._c,t("79f9"));o._isMounted||(o.e0=function(e){o.chooseAddress=!o.chooseAddress},o.e1=function(e){o.showCompany=!o.showCompany},o.e2=function(e){o.showCoutomer=!o.showCoutomer}),o.$mp.data=Object.assign({},{$root:{m0:n}})},a=[];t.d(e,"a",function(){return n}),t.d(e,"b",function(){return a})},"357c":function(o,e,t){"use strict";var n=t("1dd9"),a=t.n(n);a.a},"59a3":function(o,e,t){"use strict";t.r(e);var n=t("70d7"),a=t.n(n);for(var s in n)"default"!==s&&function(o){t.d(e,o,function(){return n[o]})}(s);e["default"]=a.a},"70d7":function(o,e,t){"use strict";(function(o,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var a=function(){return t.e("components/m-info-text/m-info-text").then(t.bind(null,"1655"))},s=function(){return t.e("components/m-button").then(t.bind(null,"1460"))},i={data:function(){return{titles:"下单购油",company:"",productOil:"",modeOil:"选择提油方式",modePay:"",address:"请选择地址",count:"",Remarks:"",show:!1,mode:!1,pay:!1,addrShow:!0,infos:{placeholder:"请输入数量(吨)，可保留六位小数",buyoilText:"购买数量",number:"number",muchOil:""},btn:{primary:"primary",btnvalue:"提交意向单"},info:[],range:0,chooseAddress:!1,getTpe:"",myManager:"",newDatas:[],showCompany:!1,companyId:"",showCoutomer:!1,page:1,pageSize:10,man:[],more:!1,value:"",myManagerId:"",scrollTop:0,old:{scrollTop:0},managers:[],phoneHeight:"",scrollheight:"",manergerscrollheight:"",buyCompany:"",buycompanyImg:!1,addrImg:!1,buyCompanyID:"",nextConpany:!1,dotIdx:"",placecolor:!0,color9:"color9",colorRed:"colorRed",oiltypeNum:[]}},onLoad:function(){var e=this;o.getSystemInfo({success:function(o){e.phoneHeight=o.windowHeight,e.scrollheight=e.phoneHeight-44-25,e.manergerscrollheight=e.phoneHeight-44-25-54}}),this.getCompanyInfo(),this.getBuycompany(0)},methods:{getCompanyInfo:function(){var e=this;this.test.post("order/order_company").then(function(o){200==o.statusCode&&0==o.data.errorCode&&(e.company=o.data.value.name,e.companyId=o.data.value.id)}).catch(function(o){console.log(n(o," at pages\\order\\order.vue:380"))}),o.getStorage({key:"userInfo",success:function(o){e.myManager=o.data.managers[0].manager_name,e.myManagerId=o.data.managers[0].manager_id}})},getBuycompany:function(e){var t=this;this.test.post("order/order_customers").then(function(a){if(200==a.statusCode&&0==a.data.errorCode)t.managers=a.data.value,t.buyCompany=t.managers[e].name,t.buyCompanyID=t.managers[e].id,t.info=t.managers[e].customerLocations,t.address=t.info[0].address,console.log(n(t.info," at pages\\order\\order.vue:406")),t.managers.length>1?t.buycompanyImg=!0:t.buycompanyImg=!1,t.info.length>1?t.addrImg=!0:t.addrImg=!1;else{if(-10001==a.data.errorCode||-10002==a.data.errorCode||-10003==a.data.errorCode)return o.showModal({title:"提示",content:a.data.message,success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}});-1e4==a.data.errorCode?console.log(n(1," at pages\\order\\order.vue:435")):o.showToast({title:a.data.message,icon:"none",position:"bottom"})}}).catch(function(o){console.log(n(o," at pages\\order\\order.vue:444"))})},chooseOwnCompany:function(){this.managers.length>1?(this.buycompanyImg=!0,this.showCompany=!0,this.nextConpany=!1):this.buycompanyImg=!1},getNewCompany:function(){var e=this;this.page=1,this.showCompany=!0,this.nextConpany=!0,o.showLoading({title:"加载中..."}),this.test.post("order/listOrgs").then(function(t){o.hideLoading(),console.log(n(t," at pages\\order\\order.vue:470")),e.newDatas=t.data.value}).catch(function(e){o.hideLoading(),o.showToast({title:"加载失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:480"))})},chooseCompany:function(o){console.log(n(o," at pages\\order\\order.vue:488")),console.log(n("收油"," at pages\\order\\order.vue:490")),this.more=!0,this.company=this.newDatas[o].name,this.companyId=this.newDatas[o].id,this.showCompany=!this.showCompany,this.myManager="请选择"},chooseownCompany:function(o){this.buyCompany=this.managers[o].name,this.showCompany=!this.showCompany,null!==this.managers[o].customerLocations?(console.log(n(this.managers[o]," at pages\\order\\order.vue:503")),this.info=this.managers[o].customerLocations,this.address=this.info[0].address):(this.info=[],this.address="",this.addrImg=!1),console.log(n(this.managers[o].id," at pages\\order\\order.vue:515")),this.buyCompanyID=this.managers[o].id},getNewCustemerInfo:function(){this.man=[],this.page=1,this.more=!0,this.value="",this.getNewCustemer(),this.showCoutomer=!0,o.showLoading({title:"加载中..."})},getNewCustemer:function(){var e=this;this.test.post("order/listManagers",{search:this.value,org_id:this.companyId,size:this.page,pageSize:this.pageSize}).then(function(t){if(o.hideLoading(),console.log(n(t," at pages\\order\\order.vue:541")),200==t.statusCode&&0==t.data.errorCode)t.data.value.forEach(function(o){e.man.push(o)}),t.data.value.length<10&&t.data.value.length>0?e.more=!1:0==t.data.value.length&&(e.more=!1,o.showToast({title:"没有更多了",icon:"none",position:"bottom"}));else{if(-10001==t.data.errorCode||-10002==t.data.errorCode||-10003==t.data.errorCode)return o.showModal({title:"提示",content:t.data.message,success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}});-1e4==t.data.errorCode?console.log(n(1," at pages\\order\\order.vue:576")):o.showToast({title:t.data.message,icon:"none",position:"bottom"})}}).catch(function(e){o.hideLoading(),o.showToast({title:"加载失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:591"))})},searchCustomer:function(o){this.page=1,""!==o.target.value&&null!==o.target.value?(this.man=[],this.page=1,this.more=!0,this.getNewCustemer()):(this.man=[],this.page=1,this.more=!0,this.value="",this.getNewCustemer())},chooseCustomers:function(o,e){this.myManagerId=e,this.myManager=this.man[o].realname,this.showCoutomer=!this.showCoutomer},Smore:function(){this.page+=1,this.getNewCustemer(),o.showLoading({title:"加载中..."})},payShow:function(){this.pay=!this.pay},chooseOilShowPay:function(){this.pay=!this.pay},chooseOilShow:function(){this.getoiltype(),this.show=!this.show},chooseOilLeave:function(){this.mode=!this.mode},getoiltype:function(){var o=this;this.test.post("base/queryOilType").then(function(e){o.oiltypeNum=e.data.value}).catch(function(o){console.log(n(o," at pages\\order\\order.vue:649"))})},chooseOne:function(o){this.show=!this.show,this.productOil=o},pays:function(o){this.pay=!this.pay,this.modePay=o.target.id},modeShow:function(){this.mode=!this.mode},chooseTwo:function(o){this.mode=!this.mode,this.getTpe=o.target.id,"配送"==o.target.id?this.addrShow=!0:this.addrShow=!1,this.modeOil=o.target.id},chooseAddr:function(){console.log(n(this.info.length," at pages\\order\\order.vue:682")),this.info.length>1&&(this.addrImg=!0,this.chooseAddress=!this.chooseAddress,o.showToast({title:"选择你要收货的地址,然后点确认",icon:"none",position:"bottom"}))},setNumber:function(e){if(this.placecolor=!0,e.detail.value<0)return this.count=this.count.replace(/^(0+)|[^\d]+/g,""),o.showToast({title:"购买数量不能小于0",icon:"none",position:"bottom"});var t=e.detail.value;console.log(n(t," at pages\\order\\order.vue:739"));var a=t.indexOf(".");console.log(n(a," at pages\\order\\order.vue:741")),this.dotIdx=a},isAddress:function(e){console.log(n(e,this.info," at pages\\order\\order.vue:768"));var t=this;o.showModal({content:"确定选择该地址为收货地址",success:function(o){if(o.confirm)t.address=t.info[e].address,t.chooseAddress=!t.chooseAddress,console.log(n(t.address," at pages\\order\\order.vue:776"));else if(o.cancel)return}})},upper:function(o){console.log(n(o," at pages\\order\\order.vue:817"))},lower:function(o){},scroll:function(o){},toBuy:function(){var e=this;if(null!==this.myManager&&""!==this.myManager&&"请选择"!==this.myManager)if(null!==this.productOil&&""!==this.productOil&&"选择油品"!==this.productOil)if(null!==this.modePay&&""!==this.modePay&&"请选择付款方式"!==this.modePay)if(null!==this.count&&""!==this.count&&0!==this.count){if(-1==this.dotIdx)return o.showModal({title:"提示",content:"提交后无法修改，是否提交",success:function(t){t.confirm&&(o.showLoading({title:"提交中..."}),e.test.post("order/make_order",{org_id:e.companyId,manager_id:e.myManagerId,manager_name:e.myManager,customer_name:e.buyCompany,customer_id:e.buyCompanyID,oil_type:e.productOil,pay_type:e.modePay,count:e.count,ship_addr:e.address,remark:e.Remarks}).then(function(e){console.log(n(e," at pages\\order\\order.vue:858")),o.hideLoading(),200==e.statusCode&&0==e.data.errorCode?o.redirectTo({url:"../orderList/orderList"}):-10001==e.data.errorCode||-10002==e.data.errorCode||-10003==e.data.errorCode?o.showModal({title:"提示",content:e.data.message,success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}}):-1e4==e.data.errorCode?console.log(n(1," at pages\\order\\order.vue:882")):o.showToast({title:e.data.message,icon:"none",position:"bottom"})}).catch(function(e){o.hideLoading(),o.showToast({title:"提交失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:897"))}))}});this.dotIdx=this.dotIdx+7,this.count.length>this.dotIdx?(this.placecolor=!1,o.showToast({title:"购买数量最多保留六位有效数字",icon:"none",position:"bottom"}),this.count=0):o.showModal({title:"提示",content:"提交后无法修改，是否提交",success:function(t){t.confirm&&(o.showLoading({title:"提交中..."}),e.test.post("order/make_order",{org_id:e.companyId,manager_id:e.myManagerId,manager_name:e.myManager,customer_name:e.buyCompany,customer_id:e.buyCompanyID,oil_type:e.productOil,pay_type:e.modePay,count:e.count,ship_addr:e.address,remark:e.Remarks}).then(function(e){console.log(n(e," at pages\\order\\order.vue:938")),o.hideLoading(),200==e.statusCode&&0==e.data.errorCode?o.redirectTo({url:"../orderList/orderList"}):10001==e.data.errorCode||10002==e.data.errorCode||10003==e.data.errorCode?o.showModal({title:"提示",content:"用户信息已失效，请重新登录",success:function(e){e.confirm,o.reLaunch({url:"../login/login"})}}):o.showToast({title:e.data.message,icon:"none",position:"bottom"})}).catch(function(e){o.hideLoading(),o.showToast({title:"提交失败",icon:"none",position:"bottom"}),console.log(n(e," at pages\\order\\order.vue:974"))}))}})}else o.showToast({title:"请输入购油数量",icon:"none",position:"bottom"});else o.showToast({title:"请选择付款方式",icon:"none",position:"bottom"});else o.showToast({title:"请选择油品",icon:"none",position:"bottom"});else o.showToast({title:"请选择客户经理",icon:"none",position:"bottom"})}},components:{mButton:s,infoText:a},mounted:function(){setTimeout(function(){this.company="小花"},0)}};e.default=i}).call(this,t("6e42")["default"],t("0de9")["default"])},a49c:function(o,e,t){"use strict";(function(o){t("8790"),t("921b");n(t("66fd"));var e=n(t("b955"));function n(o){return o&&o.__esModule?o:{default:o}}o(e.default)}).call(this,t("6e42")["createPage"])},b955:function(o,e,t){"use strict";t.r(e);var n=t("20a2"),a=t("59a3");for(var s in a)"default"!==s&&function(o){t.d(e,o,function(){return a[o]})}(s);t("357c");var i=t("2877"),r=Object(i["a"])(a["default"],n["a"],n["b"],!1,null,null,null);e["default"]=r.exports}},[["a49c","common/runtime","common/vendor"]]]);
 });
 require('pages/order/order.js');
 __wxRoute = 'pages/oilByCompany/oilByCompany';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/oilByCompany/oilByCompany.js';
@@ -7527,7 +7582,7 @@ require('pages/info/apply/uploadImg/uploadImg.js');
 __wxRoute = 'pages/reserveOilList/confirmed/exemption/exemption';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/reserveOilList/confirmed/exemption/exemption.js';
 
 define('pages/reserveOilList/confirmed/exemption/exemption.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/reserveOilList/confirmed/exemption/exemption"],{"0d60":function(e,t,n){"use strict";var i=n("62e5"),u=n.n(i);u.a},"62e5":function(e,t,n){},"6a5a":function(e,t,n){"use strict";n.r(t);var i=n("f556"),u=n("6e14");for(var a in u)"default"!==a&&function(e){n.d(t,e,function(){return u[e]})}(a);n("0d60");var o=n("2877"),r=Object(o["a"])(u["default"],i["a"],i["b"],!1,null,null,null);t["default"]=r.exports},"6e14":function(e,t,n){"use strict";n.r(t);var i=n("ed65"),u=n.n(i);for(var a in i)"default"!==a&&function(e){n.d(t,e,function(){return i[e]})}(a);t["default"]=u.a},a6b0:function(e,t,n){"use strict";(function(e){n("8790"),n("921b");i(n("66fd"));var t=i(n("6a5a"));function i(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])},ed65:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i={data:function(){return{titles:"免责条款",barHeight:25,oilOrInvoice:""}},onLoad:function(e){this.titles=e.name+"免责条款","提油代领人"!==e.name?this.oilOrInvoice=!0:this.oilOrInvoice=!1},methods:{}};t.default=i},f556:function(e,t,n){"use strict";var i=function(){var e=this,t=e.$createElement;e._self._c},u=[];n.d(t,"a",function(){return i}),n.d(t,"b",function(){return u})}},[["a6b0","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/reserveOilList/confirmed/exemption/exemption"],{"07a9":function(e,t,n){"use strict";var a=function(){var e=this,t=e.$createElement;e._self._c},i=[];n.d(t,"a",function(){return a}),n.d(t,"b",function(){return i})},"0d60":function(e,t,n){"use strict";var a=n("62e5"),i=n.n(a);i.a},"62e5":function(e,t,n){},"6a5a":function(e,t,n){"use strict";n.r(t);var a=n("07a9"),i=n("6e14");for(var u in i)"default"!==u&&function(e){n.d(t,e,function(){return i[e]})}(u);n("0d60");var o=n("2877"),r=Object(o["a"])(i["default"],a["a"],a["b"],!1,null,null,null);t["default"]=r.exports},"6e14":function(e,t,n){"use strict";n.r(t);var a=n("ed65"),i=n.n(a);for(var u in a)"default"!==u&&function(e){n.d(t,e,function(){return a[e]})}(u);t["default"]=i.a},a6b0:function(e,t,n){"use strict";(function(e){n("8790"),n("921b");a(n("66fd"));var t=a(n("6a5a"));function a(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])},ed65:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a={data:function(){return{titles:"免责条款",barHeight:25,oilOrInvoice:""}},onLoad:function(e){this.titles=e.name+"免责条款","代提油"!==e.name?this.oilOrInvoice=!0:this.oilOrInvoice=!1},methods:{}};t.default=a}},[["a6b0","common/runtime","common/vendor"]]]);
 });
 require('pages/reserveOilList/confirmed/exemption/exemption.js');
 __wxRoute = 'pages/register/registerNumber';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/register/registerNumber.js';
@@ -7545,13 +7600,13 @@ require('pages/register/uploadFace/uploadFace.js');
 __wxRoute = 'pages/reserveOilList/confirmed/replaceMan/replaceMan';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/reserveOilList/confirmed/replaceMan/replaceMan.js';
 
 define('pages/reserveOilList/confirmed/replaceMan/replaceMan.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/reserveOilList/confirmed/replaceMan/replaceMan"],{"180e":function(e,t,o){},"27d6":function(e,t,o){"use strict";(function(e,n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=a(o("39fa"));o("2f62");function a(e){return e&&e.__esModule?e:{default:e}}var s={data:function(){return{showimg:!1,src:"",checked:!1,checkes:!0,repace_name:"",repace_ID:"",repace_phone:"",num:"",orderNumber:"",oil_type:"",Token:"",id:"",name:"",type:""}},onLoad:function(e){return this.num=e.number,this.orderNumber=e.no,this.oil_type=e.type,this.id=e.id,this.name=e.name,this.getToken(),"invoice"!==this.name?this.type="提油代领人":this.type="发票代领人"},methods:{getToken:function(){var t=this;e.getStorage({key:"Token",success:function(e){t.Token=e.data}})},cancel:function(){this.checked=!this.checked,this.checkes=!this.checkes},takephoto:function(){e.previewImage({urls:[i.default]})},uploadphoto:function(){var t=this;e.chooseImage({count:1,success:function(e){console.log(n(e," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:101")),t.src=e.tempFilePaths[0],t.showimg=!0},fail:function(){console.log(n(res," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:106"))}})},exemption:function(){e.navigateTo({url:"../exemption/exemption?name="+this.type})},send:function(){if(1==this.checkes)return e.showToast({title:"请阅读免责条款,勾选后方可发送",icon:"none",position:"bottom"});if(""!==this.src)if(""!==this.repace_name)if(""!==this.repace_ID)if(18==this.repace_ID.length){if(""===this.repace_phone)return e.showToast({title:"请填写手机号码",icon:"none"});if(!/^1[3456789]\d{9}$/.test(this.repace_phone))return e.showToast({title:"手机号输入有误，请输入11位阿拉伯数字",icon:"none",position:"bottom"});if("invoice"!==this.name){var t="http://dev.pjy.name:8170/api/bizcust/";e.uploadFile({url:t+"reserve/instead_get_oil",filePath:this.src,name:"exp_photo",formData:{no:this.orderNumber,name:this.repace_name,phone:this.repace_phone,id_card:this.repace_ID,oil_type:this.oil_type,num:this.num,id:this.id},header:{Token:this.Token},success:function(t){var o=JSON.parse(t.data);console.log(n(o," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:163")),200==t.statusCode&&0==o.errorCode?e.showToast({title:"发送成功",position:"bottom",success:function(){var t=setInterval(function(){clearInterval(t),e.hideToast(),e.navigateBack({delta:2})},1500)}}):(t.errorCode,e.showToast({title:o.message,icon:"none",position:"bottom"}))}})}else{t="http://dev.pjy.name:8170/api/bizcust/";e.uploadFile({url:t+"order/bizcust_invoice",filePath:this.src,name:"face_photo",formData:{no:this.orderNumber,name:this.repace_name,phone:this.repace_phone,id_card:this.repace_ID},header:{Token:this.Token},success:function(t){var o=JSON.parse(t.data);console.log(n(o," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:221")),200==t.statusCode&&0==o.errorCode?e.showToast({title:"发送成功",position:"bottom",success:function(){var t=setInterval(function(){clearInterval(t),e.hideToast(),e.navigateBack({delta:2})},1500)}}):(t.errorCode,e.showToast({title:o.message,icon:"none",position:"bottom"}))}})}}else e.showToast({title:"身份证号有误，请输入18位身份证号",icon:"none",position:"bottom"});else e.showToast({title:"请填写替代人的身份证号码",icon:"none",position:"bottom"});else e.showToast({title:"请填写替代人的真实姓名",icon:"none",position:"bottom"});else e.showToast({title:"请上传替代人的真实照片",icon:"none",position:"bottom"})}}};t.default=s}).call(this,o("6e42")["default"],o("0de9")["default"])},"70c4":function(e,t,o){"use strict";var n=function(){var e=this,t=e.$createElement;e._self._c},i=[];o.d(t,"a",function(){return n}),o.d(t,"b",function(){return i})},bf27:function(e,t,o){"use strict";(function(e){o("8790"),o("921b");n(o("66fd"));var t=n(o("d0b5"));function n(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,o("6e42")["createPage"])},d0b5:function(e,t,o){"use strict";o.r(t);var n=o("70c4"),i=o("f8e3");for(var a in i)"default"!==a&&function(e){o.d(t,e,function(){return i[e]})}(a);o("f324");var s=o("2877"),r=Object(s["a"])(i["default"],n["a"],n["b"],!1,null,null,null);t["default"]=r.exports},f324:function(e,t,o){"use strict";var n=o("180e"),i=o.n(n);i.a},f8e3:function(e,t,o){"use strict";o.r(t);var n=o("27d6"),i=o.n(n);for(var a in n)"default"!==a&&function(e){o.d(t,e,function(){return n[e]})}(a);t["default"]=i.a}},[["bf27","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/reserveOilList/confirmed/replaceMan/replaceMan"],{"08ba":function(e,t,o){"use strict";var n=function(){var e=this,t=e.$createElement;e._self._c},i=[];o.d(t,"a",function(){return n}),o.d(t,"b",function(){return i})},"180e":function(e,t,o){},"27d6":function(e,t,o){"use strict";(function(e,n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=a(o("39fa"));o("2f62");function a(e){return e&&e.__esModule?e:{default:e}}var s={data:function(){return{showimg:!1,src:"",checked:!1,checkes:!0,repace_name:"",repace_ID:"",repace_phone:"",num:"",orderNumber:"",oil_type:"",Token:"",id:"",name:"",type:""}},onLoad:function(e){return this.num=e.number,this.orderNumber=e.no,this.oil_type=e.type,this.id=e.id,this.name=e.name,this.getToken(),"invoice"!==this.name?this.type="代提油":this.type="代领发票"},methods:{getToken:function(){var t=this;e.getStorage({key:"Token",success:function(e){t.Token=e.data}})},cancel:function(){this.checked=!this.checked,this.checkes=!this.checkes},takephoto:function(){e.previewImage({urls:[i.default]})},uploadphoto:function(){var t=this;e.chooseImage({count:1,success:function(e){console.log(n(e," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:101")),t.src=e.tempFilePaths[0],t.showimg=!0},fail:function(){console.log(n(res," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:106"))}})},exemption:function(){e.navigateTo({url:"../exemption/exemption?name="+this.type})},send:function(){if(1==this.checkes)return e.showToast({title:"请阅读免责条款,勾选后方可发送",icon:"none",position:"bottom"});if(""!==this.src)if(""!==this.repace_name)if(""!==this.repace_ID)if(18==this.repace_ID.length){if(""===this.repace_phone)return e.showToast({title:"请填写手机号码",icon:"none"});if(!/^1[3456789]\d{9}$/.test(this.repace_phone))return e.showToast({title:"手机号输入有误，请输入11位阿拉伯数字",icon:"none",position:"bottom"});if("invoice"!==this.name){var t="http://dev.pjy.name:8170/api/bizcust/";e.uploadFile({url:t+"reserve/instead_get_oil",filePath:this.src,name:"exp_photo",formData:{no:this.orderNumber,name:this.repace_name,phone:this.repace_phone,id_card:this.repace_ID,oil_type:this.oil_type,num:this.num,id:this.id},header:{Token:this.Token},success:function(t){var o=JSON.parse(t.data);console.log(n(o," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:163")),200==t.statusCode&&0==o.errorCode?e.showToast({title:"发送成功",position:"bottom",success:function(){var t=setInterval(function(){clearInterval(t),e.hideToast(),e.navigateBack({delta:2})},1500)}}):(t.errorCode,e.showToast({title:o.message,icon:"none",position:"bottom"}))}})}else{t="http://dev.pjy.name:8170/api/bizcust/";e.uploadFile({url:t+"order/bizcust_invoice",filePath:this.src,name:"face_photo",formData:{no:this.orderNumber,name:this.repace_name,phone:this.repace_phone,id_card:this.repace_ID},header:{Token:this.Token},success:function(t){var o=JSON.parse(t.data);console.log(n(o," at pages\\reserveOilList\\confirmed\\replaceMan\\replaceMan.vue:221")),200==t.statusCode&&0==o.errorCode?e.showToast({title:"发送成功",position:"bottom",success:function(){var t=setInterval(function(){clearInterval(t),e.hideToast(),e.navigateBack({delta:2})},1500)}}):(t.errorCode,e.showToast({title:o.message,icon:"none",position:"bottom"}))}})}}else e.showToast({title:"身份证号有误，请输入18位身份证号",icon:"none",position:"bottom"});else e.showToast({title:"请填写替代人的身份证号码",icon:"none",position:"bottom"});else e.showToast({title:"请填写替代人的真实姓名",icon:"none",position:"bottom"});else e.showToast({title:"请上传替代人的真实照片",icon:"none",position:"bottom"})}}};t.default=s}).call(this,o("6e42")["default"],o("0de9")["default"])},bf27:function(e,t,o){"use strict";(function(e){o("8790"),o("921b");n(o("66fd"));var t=n(o("d0b5"));function n(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,o("6e42")["createPage"])},d0b5:function(e,t,o){"use strict";o.r(t);var n=o("08ba"),i=o("f8e3");for(var a in i)"default"!==a&&function(e){o.d(t,e,function(){return i[e]})}(a);o("f324");var s=o("2877"),r=Object(s["a"])(i["default"],n["a"],n["b"],!1,null,null,null);t["default"]=r.exports},f324:function(e,t,o){"use strict";var n=o("180e"),i=o.n(n);i.a},f8e3:function(e,t,o){"use strict";o.r(t);var n=o("27d6"),i=o.n(n);for(var a in n)"default"!==a&&function(e){o.d(t,e,function(){return n[e]})}(a);t["default"]=i.a}},[["bf27","common/runtime","common/vendor"]]]);
 });
 require('pages/reserveOilList/confirmed/replaceMan/replaceMan.js');
 __wxRoute = 'pages/index/letter/letter';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index/letter/letter.js';
 
 define('pages/index/letter/letter.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index/letter/letter"],{"2af2":function(t,n,e){"use strict";var u=e("7acb"),a=e.n(u);a.a},"6a86":function(t,n,e){"use strict";(function(t){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var e={data:function(){return{}},methods:{letter:function(){t.navigateTo({url:"./account/account"})},notice:function(){t.navigateTo({url:"./notice/notice"})}}};n.default=e}).call(this,e("6e42")["default"])},"704c":function(t,n,e){"use strict";var u=function(){var t=this,n=t.$createElement;t._self._c},a=[];e.d(n,"a",function(){return u}),e.d(n,"b",function(){return a})},"7acb":function(t,n,e){},bff3:function(t,n,e){"use strict";(function(t){e("8790"),e("921b");u(e("66fd"));var n=u(e("eb2b"));function u(t){return t&&t.__esModule?t:{default:t}}t(n.default)}).call(this,e("6e42")["createPage"])},d815:function(t,n,e){"use strict";e.r(n);var u=e("6a86"),a=e.n(u);for(var c in u)"default"!==c&&function(t){e.d(n,t,function(){return u[t]})}(c);n["default"]=a.a},eb2b:function(t,n,e){"use strict";e.r(n);var u=e("704c"),a=e("d815");for(var c in a)"default"!==c&&function(t){e.d(n,t,function(){return a[t]})}(c);e("2af2");var o=e("2877"),r=Object(o["a"])(a["default"],u["a"],u["b"],!1,null,null,null);n["default"]=r.exports}},[["bff3","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index/letter/letter"],{"2af2":function(e,t,n){"use strict";var a=n("7acb"),o=n.n(a);o.a},"6a86":function(e,t,n){"use strict";(function(e,n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a={data:function(){return{letters:"",notices:"",letterTime:"",noticeTime:""}},onLoad:function(){this.getLetterNum(),this.getNoticeNum()},methods:{getNoticeNum:function(){var t=this;this.test.post("user/query_notice_unread_info").then(function(n){console.log(e(n," at pages\\index\\letter\\letter.vue:52")),200==n.statusCode&&0==n.data.errorCode&&(t.notices=n.data.value.count,console.log(e(t.notices," at pages\\index\\letter\\letter.vue:55")),t.noticeTime=new Date(n.data.value.create_time+288e5).toJSON().substr(0,16).replace("T"," ").replace(/-/g,"-"))}).catch(function(t){console.log(e(t," at pages\\index\\letter\\letter.vue:60"))})},getLetterNum:function(){var t=this;this.test.post("user/query_letter_unread_info").then(function(n){console.log(e(n," at pages\\index\\letter\\letter.vue:65")),200==n.statusCode&&0==n.data.errorCode&&(t.letters=n.data.value.count,t.letterTime=new Date(n.data.value.create_time+288e5).toJSON().substr(0,16).replace("T"," ").replace(/-/g,"-"))}).catch(function(t){console.log(e(t," at pages\\index\\letter\\letter.vue:73"))})},letter:function(){n.navigateTo({url:"./account/account"})},notice:function(){n.navigateTo({url:"./notice/notice"})}}};t.default=a}).call(this,n("0de9")["default"],n("6e42")["default"])},"7acb":function(e,t,n){},bff3:function(e,t,n){"use strict";(function(e){n("8790"),n("921b");a(n("66fd"));var t=a(n("eb2b"));function a(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])},d013:function(e,t,n){"use strict";var a=function(){var e=this,t=e.$createElement;e._self._c},o=[];n.d(t,"a",function(){return a}),n.d(t,"b",function(){return o})},d815:function(e,t,n){"use strict";n.r(t);var a=n("6a86"),o=n.n(a);for(var u in a)"default"!==u&&function(e){n.d(t,e,function(){return a[e]})}(u);t["default"]=o.a},eb2b:function(e,t,n){"use strict";n.r(t);var a=n("d013"),o=n("d815");for(var u in o)"default"!==u&&function(e){n.d(t,e,function(){return o[e]})}(u);n("2af2");var r=n("2877"),c=Object(r["a"])(o["default"],a["a"],a["b"],!1,null,null,null);t["default"]=c.exports}},[["bff3","common/runtime","common/vendor"]]]);
 });
 require('pages/index/letter/letter.js');
 __wxRoute = 'pages/index/letter/account/account';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index/letter/account/account.js';
@@ -7563,7 +7618,7 @@ require('pages/index/letter/account/account.js');
 __wxRoute = 'pages/index/letter/account/buyOilList';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index/letter/account/buyOilList.js';
 
 define('pages/index/letter/account/buyOilList.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index/letter/account/buyOilList"],{"0e0f":function(t,e,n){},1058:function(t,e,n){"use strict";n.r(e);var o=n("8d99"),i=n.n(o);for(var a in o)"default"!==a&&function(t){n.d(e,t,function(){return o[t]})}(a);e["default"]=i.a},2936:function(t,e,n){"use strict";var o=function(){var t=this,e=t.$createElement;t._self._c},i=[];n.d(e,"a",function(){return o}),n.d(e,"b",function(){return i})},"64a0":function(t,e,n){"use strict";(function(t){n("8790"),n("921b");o(n("66fd"));var e=o(n("c567"));function o(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,n("6e42")["createPage"])},"8d99":function(t,e,n){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o={data:function(){return{letterID:"",list:"",time:"",showImg:!1}},onLoad:function(t){this.letterID=t.id,this.getLetter()},methods:{getLetter:function(){var e=this,o=this;this.test.post("user/query_letter_info",{id:this.letterID}).then(function(i){console.log(t(i," at pages\\index\\letter\\account\\buyOilList.vue:45")),200==i.statusCode&&0==i.data.errorCode?(console.log(t(" at pages\\index\\letter\\account\\buyOilList.vue:47")),e.list=i.data.value,o.time=new Date(i.data.value.create_time+288e5).toJSON().substr(0,16).replace("T"," ").replace(/-/g,"-"),""==e.list.photo||"null"==e.list.photo?e.showImg=!1:(console.log(t(e.list.photo," at pages\\index\\letter\\account\\buyOilList.vue:59")),e.showImg=!0)):n.showToast({title:i.data.message,icon:"none",position:"bottom"})}).catch(function(e){console.log(t(e," at pages\\index\\letter\\account\\buyOilList.vue:71"))})},showPhoto:function(e){n.previewImage({urls:[e],longPressActions:{itemList:["发送给朋友","保存图片","收藏"],success:function(e){console.log(t("选中了第"+(e.tapIndex+1)+"个按钮,第"+(e.index+1)+"张图片"," at pages\\index\\letter\\account\\buyOilList.vue:80"))},fail:function(e){console.log(t(e.errMsg," at pages\\index\\letter\\account\\buyOilList.vue:83"))}}})},confirm:function(){var e=this;n.showModal({content:"确认账单无误？",success:function(o){if(o.confirm)e.test.post("user/confirm_letter",{id:e.letterID}).then(function(e){200==e.statusCode&&0==e.data.errorCode&&n.navigateBack({delta:1}),console.log(t(e," at pages\\index\\letter\\account\\buyOilList.vue:103"))}).catch(function(e){console.log(t(e," at pages\\index\\letter\\account\\buyOilList.vue:105"))});else if(o.cancel)return}})}}};e.default=o}).call(this,n("0de9")["default"],n("6e42")["default"])},"99a5":function(t,e,n){"use strict";var o=n("0e0f"),i=n.n(o);i.a},c567:function(t,e,n){"use strict";n.r(e);var o=n("2936"),i=n("1058");for(var a in i)"default"!==a&&function(t){n.d(e,t,function(){return i[t]})}(a);n("99a5");var u=n("2877"),s=Object(u["a"])(i["default"],o["a"],o["b"],!1,null,null,null);e["default"]=s.exports}},[["64a0","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index/letter/account/buyOilList"],{"0e0f":function(t,e,n){},1058:function(t,e,n){"use strict";n.r(e);var o=n("8d99"),i=n.n(o);for(var a in o)"default"!==a&&function(t){n.d(e,t,function(){return o[t]})}(a);e["default"]=i.a},"64a0":function(t,e,n){"use strict";(function(t){n("8790"),n("921b");o(n("66fd"));var e=o(n("c567"));function o(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,n("6e42")["createPage"])},"70bb":function(t,e,n){"use strict";var o=function(){var t=this,e=t.$createElement;t._self._c},i=[];n.d(e,"a",function(){return o}),n.d(e,"b",function(){return i})},"8d99":function(t,e,n){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o={data:function(){return{letterID:"",list:"",time:"",showImg:!1}},onLoad:function(t){this.letterID=t.id,this.getLetter()},methods:{getLetter:function(){var e=this,o=this;this.test.post("user/query_letter_info",{id:this.letterID}).then(function(i){console.log(t(i," at pages\\index\\letter\\account\\buyOilList.vue:45")),200==i.statusCode&&0==i.data.errorCode?(console.log(t(" at pages\\index\\letter\\account\\buyOilList.vue:47")),e.list=i.data.value,o.time=new Date(i.data.value.create_time+288e5).toJSON().substr(0,16).replace("T"," ").replace(/-/g,"-"),""==e.list.photo||"null"==e.list.photo?e.showImg=!1:(console.log(t(e.list.photo," at pages\\index\\letter\\account\\buyOilList.vue:59")),e.showImg=!0)):n.showToast({title:i.data.message,icon:"none",position:"bottom"})}).catch(function(e){console.log(t(e," at pages\\index\\letter\\account\\buyOilList.vue:71"))})},showPhoto:function(e){n.previewImage({urls:[e],longPressActions:{itemList:["发送给朋友","保存图片","收藏"],success:function(e){console.log(t("选中了第"+(e.tapIndex+1)+"个按钮,第"+(e.index+1)+"张图片"," at pages\\index\\letter\\account\\buyOilList.vue:80"))},fail:function(e){console.log(t(e.errMsg," at pages\\index\\letter\\account\\buyOilList.vue:83"))}}})},confirm:function(){var e=this;n.showModal({content:"确认账单无误？",success:function(o){if(o.confirm)e.test.post("user/confirm_letter",{id:e.letterID}).then(function(e){200==e.statusCode&&0==e.data.errorCode&&n.navigateBack({delta:1}),console.log(t(e," at pages\\index\\letter\\account\\buyOilList.vue:103"))}).catch(function(e){console.log(t(e," at pages\\index\\letter\\account\\buyOilList.vue:105"))});else if(o.cancel)return}})}}};e.default=o}).call(this,n("0de9")["default"],n("6e42")["default"])},"99a5":function(t,e,n){"use strict";var o=n("0e0f"),i=n.n(o);i.a},c567:function(t,e,n){"use strict";n.r(e);var o=n("70bb"),i=n("1058");for(var a in i)"default"!==a&&function(t){n.d(e,t,function(){return i[t]})}(a);n("99a5");var u=n("2877"),s=Object(u["a"])(i["default"],o["a"],o["b"],!1,null,null,null);e["default"]=s.exports}},[["64a0","common/runtime","common/vendor"]]]);
 });
 require('pages/index/letter/account/buyOilList.js');
 __wxRoute = 'pages/index/letter/notice/notice';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index/letter/notice/notice.js';
