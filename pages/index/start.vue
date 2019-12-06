@@ -2,7 +2,7 @@
 	<view class="background">
 		<view class="">
 			<view class="ce mt300">
-				<image class="startimg" :src="src" mode="aspectFit"></image>
+				<image class="startimg"  :src="src" mode="aspectFit"></image>
 			</view>
 			<view class="p-bx">
 				<view class="p-size">{{name}}</view>
@@ -28,12 +28,14 @@
 			}
 		},
 		onShow() {
+				
 			//#ifdef APP-PLUS  
 			this.version = plus.runtime.version
 			//#endif
 			console.log(this.hasLogin)
 			const that = this;
 			uni.getStorage({
+			
 				key: "TokenR",
 				success: function(res) {
 					console.log(res)
@@ -42,6 +44,7 @@
 				},
 				fail:function(err){
 					const timer = setTimeout(function() {
+							
 						uni.navigateTo({
 							url: '../login/login',
 							success: function() {
@@ -87,6 +90,7 @@
 
 			//app退出再次进入时获取最新信息
 			getNewInfo() {
+			
 				const that = this;
 				this.test.post('user/get_base_data', {
 					Token: this.token
@@ -106,6 +110,7 @@
 				})
 			},
 			updateToken() {
+			
 				this.test.post('base/refreshToken', {
 					refresh_token: this.token,
 				}).then(res => {
@@ -156,8 +161,9 @@
 	.startimg {
 		width: 200px;
 		height: 200px;
-		/* box-shadow: 0 1px 3px rgba(0,0,0,0.14); */
+		box-shadow: 0 3px 6px rgba(0,0,0,0.14);
 		margin-top: 108px;
+		border-radius:38px ;
 	}
 
 	.p-bx {

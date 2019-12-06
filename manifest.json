@@ -1,5 +1,5 @@
 {
-    "name" : "安徽石油",
+    "name" : "石化油e购",
     "appid" : "__UNI__C5F30A1",
     "description" : "",
     "versionName" : "0.1.28",
@@ -72,27 +72,27 @@
                     "xxxhdpi" : "./static/img/icon.png"
                 },
                 "ios" : {
-                    "appstore" : "./static/img/store.png",
+                    "appstore" : "static/img/store.png",
                     "iphone" : {
                         "app@2x" : "./static/img/icon.png",
                         "app@3x" : "./static/img/icon.png",
-                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
-                        "spotlight@3x" : "unpackage/res/icons/120x120.png",
-                        "settings@2x" : "unpackage/res/icons/58x58.png",
-                        "settings@3x" : "unpackage/res/icons/87x87.png",
-                        "notification@2x" : "unpackage/res/icons/40x40.png",
-                        "notification@3x" : "unpackage/res/icons/60x60.png"
+                        "spotlight@2x" : "./static/img/icon.png",
+                        "spotlight@3x" : "./static/img/icon.png",
+                        "settings@2x" : "./static/img/icon.png",
+                        "settings@3x" : "./static/img/icon.png",
+                        "notification@2x" : "./static/img/icon.png",
+                        "notification@3x" : "./static/img/icon.png"
                     },
                     "ipad" : {
-                        "app" : "unpackage/res/icons/76x76.png",
-                        "app@2x" : "unpackage/res/icons/152x152.png",
-                        "notification" : "unpackage/res/icons/20x20.png",
-                        "notification@2x" : "unpackage/res/icons/40x40.png",
-                        "proapp@2x" : "unpackage/res/icons/167x167.png",
-                        "settings" : "unpackage/res/icons/29x29.png",
-                        "settings@2x" : "unpackage/res/icons/58x58.png",
-                        "spotlight" : "unpackage/res/icons/40x40.png",
-                        "spotlight@2x" : "unpackage/res/icons/80x80.png"
+                        "app" : "./static/img/icon.png",
+                        "app@2x" : "./static/img/icon.png",
+                        "notification" : "./static/img/icon.png",
+                        "notification@2x" : "./static/img/icon.png",
+                        "proapp@2x" : "./static/img/icon.png",
+                        "settings" : "./static/img/icon.png",
+                        "settings@2x" : "./static/img/icon.png",
+                        "spotlight" : "./static/img/icon.png",
+                        "spotlight@2x" : "./static/img/icon.png"
                     }
                 }
             },
