@@ -139,10 +139,9 @@
 											
 											// 预约提油
 											if (this.name !== 'invoice') {
-												var _url = 'http://dev.pjy.name:8170/api/bizcust/'
-											//	var _url = 'http://192.168.0.156:9494/api/bizcust/'
+											
 												uni.uploadFile({
-													url: _url + 'reserve/instead_get_oil',
+													url: this.$api + 'reserve/instead_get_oil',
 													filePath: this.src,
 													name: 'exp_photo',
 													formData: {
@@ -198,12 +197,11 @@
 
 											}else{
 												//发票领取
-													var _url = 'http://dev.pjy.name:8170/api/bizcust/'
-												//	var _url = 'http://192.168.0.156:8080/api/bizcust/'
+												
 													const that = this;
 												uni.uploadFile({
 												
-													url: _url + 'order/bizcust_invoice',
+													url: this.$api + 'order/bizcust_invoice',
 													filePath: this.src,
 													name: 'face_photo',
 													formData: {

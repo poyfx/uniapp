@@ -239,11 +239,7 @@
 							console.log(res.tempFiles[0].path);
 							that.idCardZ = res.tempFilePaths;
 							that.src = res.tempFiles[0].path;
-							// that.img.push({
-							// 	name: 'id_fphoto',
-							// 	uri: res.tempFilePaths[0]
-							// })
-
+							
 							const photo = {
 								name: 'id_fphoto',
 								uri: res.tempFilePaths[0]
@@ -263,10 +259,7 @@
 							that.count = 2;
 							that.idCardF = res.tempFilePaths;
 							that.src = res.tempFiles[0].path;
-							// that.img.push({
-							// 	name: 'id_bphoto',
-							// 	uri: res.tempFilePaths[0]
-							// })
+							
 							const photo = {
 								name: 'id_bphoto',
 								uri: res.tempFilePaths[0]
@@ -283,10 +276,7 @@
 							that.count = 3;
 							that.buyOil = res.tempFilePaths;
 							that.src = res.tempFiles[0].path;
-							// that.img.push({
-							// 	name: 'buy_auth_photo',
-							// 	uri: res.tempFilePaths[0]
-							// })
+							
 							const photo = {
 								name: 'buy_auth_photo',
 								uri: res.tempFilePaths[0]
@@ -303,10 +293,7 @@
 							that.count = 4;
 							that.takeOil = res.tempFilePaths;
 							that.src = res.tempFiles[0].path;
-							// that.img.push({
-							// 	name: 'get_auth_photo',
-							// 	uri: res.tempFilePaths[0]
-							// })
+							
 							const photo = {
 								name: 'get_auth_photo',
 								uri: res.tempFilePaths[0]
@@ -323,10 +310,7 @@
 							that.count = 5;
 							that.takeOil = res.tempFilePaths;
 							that.src = res.tempFiles[0].path;
-							// that.img.push({
-							// 	name: 'bill_auth_photo',
-							// 	uri: res.tempFilePaths[0]
-							// })
+							
 							const photo = {
 								name: 'bill_auth_photo',
 								uri: res.tempFilePaths[0]
@@ -547,8 +531,7 @@
 					}
 				})
 				console.log(imgs)
-				 var _url = 'http://dev.pjy.name:8170/api/bizcust/base/regist'
-				//var _url = 'http://192.168.0.156:8080/api/bizcust/base/regist'
+				 var _url = this.$api+'base/regist'
 				if (this.img.length >= 5) {
 					if (this.ifvoiceDate == true) {
 						console.log(this.register.role)

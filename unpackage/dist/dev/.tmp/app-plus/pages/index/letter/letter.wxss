@@ -37,9 +37,11 @@
 .letter_message_title text:last-child{
 	font-size: 0.6rem;
 	color:#9e9e9e ;
+	margin-right: 10px;
 	vertical-align: bottom;
 }
 .letter_message_content{
-	font-size: 0.8rem;
+	font-size: 0.7rem;
+	color: #757575;
 }
 

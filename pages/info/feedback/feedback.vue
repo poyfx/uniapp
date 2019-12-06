@@ -117,7 +117,7 @@
 								uni.switchTab({
 									url:'../info'
 									})
-								} else if (res.data.errorCode == 10001 || res.data.errorCode == 10002 || res.data.errorCode == 10003) {
+								} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -10003) {
 						uni.showModal({
 							title: '提示',
 							content: res.data.message,
@@ -134,7 +134,7 @@
 							}
 						})
 					}else if(res.data.errorCode == -10000 ){
-						return
+						console.log(1)
 					}else{
 									uni.showToast({
 										title:'上传失败',
@@ -160,9 +160,9 @@
 									uri: value.uri
 								}
 							})
-						console.log(imgs,this.feedbacks)  
+						console.log(this.Token)  
 							uni.uploadFile({
-								url: 'http://dev.pjy.name:8170/api/bizcust/user/submit_feedback',
+								url:this.$api+ 'user/submit_feedback',
 								files: imgs,
 								formData: {
 									feedback:this.feedbacks

@@ -240,20 +240,6 @@
 				}
 			}
 		}, {
-			"path": "pages/oilByCompany/oilByCompany",
-			"style": {
-				"app-plus": {
-					"titleNView": {
-						"titleColor": "#424242",
-						"titleText": "选择公司",
-						"backgroundColor": "#FFF",
-						"fontWeight": "normal",
-						"titleSize": "40upx"
-					}
-
-				}
-			}
-		}, {
 			"path": "pages/orderList/orderList",
 			"style": {
 				// "navigationBarTitleText": "订单列表",
@@ -355,19 +341,7 @@
 					}
 				}
 			}
-		}, {
-			"path": "pages/reserveOil/orederNumber/orederNumber",
-			"style": {
-				"titleNView": {
-					"titleColor": "#424242",
-					"titleText": "选择单号",
-					"backgroundColor": "#FFF",
-					"fontWeight": "normal",
-					"titleSize": "40upx"
-				}
-			}
-
-		}, {
+		},  {
 			"path": "pages/reserveOilList/reserveOilList",
 			"style": {
 				"navigationBarTextStyle": "black",

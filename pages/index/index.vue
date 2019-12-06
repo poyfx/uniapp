@@ -178,7 +178,7 @@
 					<view class="nowPrice">
 						<text class="oilName">-10#柴油</text>
 						<view class="oilPrice">
-							<text :class="refiningGain.gas_95>0?s:j">{{refining.diesel_10}}</text>
+							<text :class="refiningGain.diesel_10>0?s:j">{{refining.diesel_10}}</text>
 						</view>
 				
 						<text class="paddingLeft10" :class="refiningGain.diesel_10>0?s:j">{{refiningGain.diesel_10}}%</text>

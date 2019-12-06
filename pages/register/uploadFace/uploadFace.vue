@@ -175,7 +175,7 @@
 				})
 			},
 			commit() {
-				var _url = 'http://dev.pjy.name:8170/api/bizcust/base/detection_face'
+				var _url =this.$api+ 'base/detection_face'
 				const that = this
 				if (this.upimg == true) {
 

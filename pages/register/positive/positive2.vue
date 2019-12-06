@@ -497,8 +497,8 @@
 						uri: value.uri
 					}
 				})
-				 var _url = 'http://dev.pjy.name:8170/api/bizcust/base/regist'
-				//var _url = 'http://192.168.0.156:8080/api/bizcust/base/regist'
+				 var _url = this.$api + 'base/regist'
+				
 				if (this.img.length >= 4) {
 					console.log(imgs)
 					if (this.ifdays == true) {

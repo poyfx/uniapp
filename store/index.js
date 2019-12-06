@@ -19,7 +19,7 @@ const store = new Vuex.Store({
 		login(state, provider) { //改变登录状态
 			console.log(provider)
 			state.hasLogin = true;
-			state.Token = provider.token;
+			state.Token = provider.access_token;
 			state.userInfo = provider;
 			state.roles = provider.user.roles;
 			// state.userInfo.realname = provider.realname;

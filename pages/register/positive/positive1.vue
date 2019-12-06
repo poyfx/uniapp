@@ -430,8 +430,7 @@
 								console.log(this.register.role)
 								uni.uploadFile({
 									//注册地址
-									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
+									url:this.$api + 'base/regist',
 									files: imgs,
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -479,8 +478,8 @@
 							} else if (this.register.user == '提油人') {
 								uni.uploadFile({
 									//注册地址
-									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
+									
+									url:this.$api + 'base/regist',
 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -528,8 +527,8 @@
 							} else {
 								uni.uploadFile({
 									//注册地址
-									//url: 'http://192.168.0.156:8080/api/bizcust/base/regist',
-									url: 'http://dev.pjy.name:8170/api/bizcust/base/regist',
+									
+									url:this.$api + 'base/regist',
 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
 									formData: {
 										"username": this.register.userPhoneNum,
@@ -594,166 +593,7 @@
 					}
 					//申请提油人权限
 				}
-				// 				else {
-				// 
-				// 					console.log(this.register.role)
-				// 					const imgs = this.img.map((value, index) => {
-				// 						return {
-				// 							name: value.name,
-				// 							uri: value.uri
-				// 						}
-				// 					})
-				// 					console.log(this.img, imgs)
-				// 					if (this.count == 3) {
-				// 						const that = this;
-				// 						if (this.ifday == true) {
-				// 							if (this.user == '购油人') {
-				// 								uni.uploadFile({
-				// 									//申请权限地址
-				// 
-				// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
-				// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
-				// 									fileType: 'image',
-				// 									filePath: '',
-				// 									name: 'file',
-				// 									formData: {
-				// 										"roles": this.userCode,
-				// 										"buy_auth_exp": this.day,
-				// 									},
-				// 									header: {
-				// 										Token: this.Token
-				// 									},
-				// 									success: function(res) {
-				// 										var data = JSON.parse(res.data)
-				// 										//var data = res.data
-				// 										console.log(data)
-				// 										if (res.statusCode == 200) {
-				// 											if (data.errorCode == 0) {
-				// 												uni.showToast({
-				// 													"title": '申请成功'
-				// 												})
-				// 												uni.removeStorage({
-				// 													key: 'register'
-				// 												})
-				// 												uni.switchTab({
-				// 													url: '../../info/info?val=' + data.value,
-				// 												});
-				// 
-				// 											} else {
-				// 												uni.showToast({
-				// 													"title": data.message,
-				// 													"icon": 'none'
-				// 												});
-				// 
-				// 											}
-				// 										}
-				// 									}
-				// 								})
-				// 							} else if (this.user == '提油人') {
-				// 								uni.uploadFile({
-				// 									//申请权限地址
-				// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
-				// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
-				// 									fileType: 'image',
-				// 									filePath: '',
-				// 									name: 'file',
-				// 									formData: {
-				// 										"roles": this.userCode,
-				// 										"get_auth_exp": this.day,
-				// 									},
-				// 									header: {
-				// 										Token: this.Token
-				// 									},
-				// 									success: function(res) {
-				// 										var data = JSON.parse(res.data)
-				// 										//var data = res.data
-				// 										console.log(data)
-				// 										if (res.statusCode == 200) {
-				// 											if (data.errorCode == 0) {
-				// 												uni.showToast({
-				// 													"title": '申请成功'
-				// 												})
-				// 												uni.removeStorage({
-				// 													key: 'register'
-				// 												})
-				// 												uni.switchTab({
-				// 													url: '../../info/info?val=' + data.value,
-				// 												});
-				// 
-				// 											} else {
-				// 												uni.showToast({
-				// 													"title": data.message,
-				// 													"icon": 'none'
-				// 												});
-				// 
-				// 											}
-				// 										}
-				// 									}
-				// 								})
-				// 							} else {
-				// 								console.log(this.userCode)
-				// 								uni.uploadFile({
-				// 									//申请权限地址
-				// 									//url: 'http://192.168.0.156:8080/api/bizcust/user/oil_authorize',
-				// 									url: 'http://dev.pjy.name:8170/api/bizcust/user/oil_authorize',
-				// 									files: imgs, //[this.idCardZ[0], this.idCardF[0], this.buyOil[0]]
-				// 									fileType: 'image',
-				// 									filePath: '',
-				// 									name: 'file',
-				// 									formData: {
-				// 										"roles": this.userCode,
-				// 										"bill_auth_exp": this.day,
-				// 									},
-				// 									header: {
-				// 										Token: this.Token
-				// 									},
-				// 									success: function(res) {
-				// 										var data = JSON.parse(res.data)
-				// 										//var data = res.data
-				// 										console.log(data)
-				// 										if (res.statusCode == 200) {
-				// 											if (data.errorCode == 0) {
-				// 												uni.showToast({
-				// 													"title": '申请成功'
-				// 												})
-				// 												uni.removeStorage({
-				// 													key: 'register'
-				// 												})
-				// 												uni.switchTab({
-				// 													url: '../../info/info?val=' + data.value,
-				// 												});
-				// 
-				// 											} else {
-				// 												uni.showToast({
-				// 													"title": data.message,
-				// 													"icon": 'none'
-				// 												});
-				// 
-				// 											}
-				// 										}
-				// 									},
-				// 
-				// 								})
-				// 							}
-				// 
-				// 
-				// 
-				// 
-				// 						} else if (this.ifday == false) {
-				// 							console.log(this.ifday)
-				// 							return uni.showToast({
-				// 								title: '请选择授权有效期',
-				// 								icon: 'none'
-				// 							})
-				// 						}
-				// 					} else {
-				// 						return uni.showToast({
-				// 							title: '请上传购油授权书',
-				// 							icon: 'none'
-				// 						})
-				// 					}
-				// 				}
-
+				
 			},
 			// 选择时间
 			changeTimes() {

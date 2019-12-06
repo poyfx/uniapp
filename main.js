@@ -10,6 +10,7 @@ import titles from './components/title.vue'
 Vue.component('titles',titles)
  import uniIcons from './components/uni-icon/uni-icons.vue'
  Vue.component('uniIcons',uniIcons)
+ Vue.prototype.$api = 'http://dev.pjy.name:8170/api/bizcust/'
 
 
 

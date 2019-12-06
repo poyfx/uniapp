@@ -3,15 +3,15 @@
 	width: 100%;
 	position: absolute;
 	margin-top:44px;
-	padding-top: 24px;
+	padding-top:44px;
 	top: 0;
 	bottom: 0;
 }
-.exemption_title{
+/* .exemption_title{
 	padding: 20px 15px;
 	font-size: 19px;
 	color: #333;
-}
+} */
 .exemption_content{
 	/* margin-top: 24px; */
 	width: 100%;

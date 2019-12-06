@@ -369,7 +369,7 @@
 
 <style>
 	.swipers {
-		min-height: 300px;
+		min-height: 320px;
 	}
 
 
