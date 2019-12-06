@@ -121,6 +121,7 @@
 						title: "请阅读免责条款,勾选后方可发送",
 						icon: "none",
 						position: 'bottom',
+							duration: 3000,
 					})
 				} else {
 
@@ -134,6 +135,7 @@
 												"title": '手机号输入有误，请输入11位阿拉伯数字',
 												"icon": "none",
 												position: 'bottom',
+													duration: 3000,
 											})
 										} else {
 											
@@ -164,6 +166,7 @@
 															uni.showToast({
 																title: '发送成功',
 																position: 'bottom',
+																	duration: 3000,
 																success() {
 																	var timer = setInterval(function() {
 																		clearInterval(timer)
@@ -182,13 +185,15 @@
 															uni.showToast({
 																title: data.message,
 																icon: 'none',
-																position:'bottom'
+																position:'bottom',
+																	duration: 3000,
 															})
 														} else {
 															uni.showToast({
 																title: data.message,
 																icon: 'none',
-																position:'bottom'
+																position:'bottom',
+																	duration: 3000,
 															})
 														}
 													},
@@ -221,6 +226,7 @@
 															uni.showToast({
 																title: '发送成功',
 																position: 'bottom',
+																	duration: 3000,
 																success() {
 																	var timer = setInterval(function() {
 																		clearInterval(timer)
@@ -228,9 +234,7 @@
 																		uni.navigateBack({
 																			delta:2
 																		})
-																		// ({
-																		// 	url:'../../../receiveInvoice/receiveIntaile/receiveIntaile?id='+that.id+'&no='+that.orderNumber
-																		// })
+																		
 																	}, 1500)
 												
 																}
@@ -239,13 +243,15 @@
 															uni.showToast({
 																title: data.message,
 																icon: 'none',
-																position:'bottom'
+																position:'bottom',
+																	duration: 3000,
 															})
 														}else {
 															uni.showToast({
 																title: data.message,
 																icon: 'none',
-																position:'bottom'
+																position:'bottom',
+																	duration: 3000,
 															})
 														}
 													},
@@ -259,7 +265,8 @@
 									} else {
 										return uni.showToast({
 											title: "请填写手机号码",
-											"icon": "none"
+											"icon": "none",
+												duration: 3000,
 										})
 									}
 								} else {
@@ -267,6 +274,7 @@
 										title: "身份证号有误，请输入18位身份证号",
 										icon: 'none',
 										position: 'bottom',
+											duration: 3000,
 									});
 
 								}
@@ -276,6 +284,7 @@
 									title: '请填写替代人的身份证号码',
 									icon: 'none',
 									position: 'bottom',
+										duration: 3000,
 								})
 							}
 						} else {
@@ -283,6 +292,7 @@
 								title: '请填写替代人的真实姓名',
 								icon: 'none',
 								position: 'bottom',
+									duration: 3000,
 							})
 						}
 
@@ -291,6 +301,7 @@
 							title: '请上传替代人的真实照片',
 							icon: 'none',
 							position: 'bottom',
+								duration: 3000,
 						})
 					}
 

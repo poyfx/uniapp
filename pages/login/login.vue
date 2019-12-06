@@ -16,7 +16,7 @@
 			<view class="mTop30">
 				<mButton :type="btnType" :disabled="btnDisabled" :value="btnValue" @handleLogin="handleLogin"></mButton>
 			</view>
-			
+
 		</view>
 
 	</view>
@@ -50,7 +50,7 @@
 				},
 				status: '',
 				clientId: '',
-				device:'',//设备型号
+				device: '', //设备型号
 			}
 		},
 		onLoad(option) {
@@ -58,7 +58,7 @@
 			this.status = option.val;
 			this.showToasts();
 			this.getclientId();
-			 this.device= uni.getStorageSync('device');
+			this.device = uni.getStorageSync('device');
 		},
 		computed: {
 			...mapState(['hasLogin', 'userInfo'])
@@ -99,7 +99,7 @@
 							username: this.consumer.username,
 							passwd: this.consumer.password,
 							client_id: this.clientId,
-							device:this.device,
+							device: this.device,
 						}).then(res => {
 							console.log(res)
 							const data = res.data;
@@ -122,7 +122,8 @@
 								uni.showToast({
 									"title": data.message,
 									"icon": "none",
-									position:'bottom',
+									position: 'bottom',
+									duration: 3000,
 								})
 							}
 						}).catch(err => {
@@ -130,7 +131,8 @@
 							uni.showToast({
 								title: err.errMsg,
 								icon: 'none',
-								position:'bottom',
+								position: 'bottom',
+								duration: 3000,
 							})
 						})
 
@@ -138,14 +140,16 @@
 						return uni.showToast({
 							icon: "none",
 							title: "密码不能为空",
-							position:'bottom',
+							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				} else {
 					return uni.showToast({
 						icon: "none",
 						title: "账号不能为空",
-						position:'bottom',
+						position: 'bottom',
+						duration: 3000,
 					})
 				}
 			},
@@ -155,7 +159,7 @@
 						title: '注册已提交，审核成功后即可登录使用',
 						position: 'bottom',
 						icon: 'none',
-					
+						duration: 3000,
 					});
 				}
 

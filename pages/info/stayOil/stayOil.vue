@@ -67,6 +67,7 @@
 								title: '没有更多了',
 								icon: "none",
 								position:'bottom',
+								duration: 3000,
 							})
 						}
 					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -10003) {
@@ -91,7 +92,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {

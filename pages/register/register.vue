@@ -374,6 +374,7 @@
 								title: '没有更多了',
 								icon: "none",
 								position:'bottom',
+									duration: 3000,
 							})
 						}
 					}
@@ -383,6 +384,7 @@
 						title: '加载失败',
 						icon: 'none',
 						position:'bottom',
+							duration: 3000,
 					})
 					console.log(err)
 				})
@@ -413,18 +415,7 @@
 				
 				console.log(this.checkUser)
 				var str = String(this.checkUser)
-				// if(str == '发票领取人,购油人'){
-				// 	console.log(100)
-				// 	this.info.user = '购油人,发票领取人'
-					
-				// }else if(str == '发票领取人,提油人'){
-				// 	console.log(99)
-				// 	this.info.user = '提油人,发票领取人'
-					
-				// }else if(str == '提油人,购油人'){
-				// 	console.log(98)
-				// 	this.info.user = '购油人,提油人'
-				// };
+			
 				this.info.user = String(this.checkUser);
 				
 				this.users = !this.users;
@@ -474,96 +465,8 @@
 				this.info.userCity = this.cityDatas[index].name;
 				this.ciytId = id;
 				this.page = 1;
-				// this.test.post('order/listManagers', {
-				// 	search: this.value,
-				// 	org_id: this.ciytId,
-				// 	size: this.page,
-				// 	pageSize: this.pageSize
-				// }).then(res => {
-				// 	console.log(res)
-				// 	this.info.customer = res.data.value[0].realname
-				// 	this.info.customerId = res.data.value[0].id
-				// }).catch(err => {})
+				
 			},
-
-
-			// 选择客户经理
-			// chooseCustomer(e) {
-			// 	this.page = 1;
-			// 	this.more = true;
-			// 	this.value = '';
-			// 	this.man = [];
-			// 	if (this.ciytId !== '') {
-			// 		uni.showLoading({
-			// 			title: '加载中...'
-			// 		})
-			// 		this.getCustomerInfo();
-			// 		this.showCoutomer = !this.showCoutomer;
-			// 	} else {
-			// 		uni.showToast({
-			// 			title: '请选择所在城市',
-			// 			icon: 'none'
-			// 		})
-			// 	}
-			// },
-			// chooseCustomers(e, id) {
-			// 	this.info.customerId = id;
-			// 	this.info.customer = this.man[e].realname;
-			// 	this.showCoutomer = !this.showCoutomer
-			// },
-			// 搜索客户经理
-			// searchCustomer() {
-			// 	this.page = 1;
-			// 	if (this.value !== '' && this.value !== null) {
-			// 		this.man = [];
-			// 		this.getCustomerInfo();
-			// 	} else {
-			// 		this.page = 1;
-			// 		this.value = '';
-			// 		this.man = [];
-			// 		this.getCustomerInfo();
-			// 	}
-			// },
-			// //获取客户经理
-			// getCustomerInfo() {
-
-			// 	console.log(this.page, this.pageSize)
-			// 	this.test.post('order/listManagers', {
-			// 		search: this.value,
-			// 		org_id: this.ciytId,
-			// 		size: this.page,
-			// 		pageSize: this.pageSize
-			// 	}).then(res => {
-			// 		uni.hideLoading();
-			// 		console.log(res)
-
-			// 		if (res.statusCode == 200 && res.data.errorCode == 0) {
-			// 			console.log(res)
-			// 			res.data.value.forEach(el => {
-
-			// 				this.man.push(el)
-			// 			})
-
-
-			// 			if (res.data.value.length < 10) {
-			// 				this.more = false;
-			// 			} else if (res.data.value.length <= 0) {
-			// 				this.more = false;
-			// 				uni.showToast({
-			// 					title: '没有更多了',
-			// 					icon: "none"
-			// 				})
-			// 			}
-			// 		}
-			// 	}).catch(err => {
-			// 		uni.hideLoading();
-			// 		uni.showToast({
-			// 			title: '加载失败',
-			// 			icon: 'none'
-			// 		})
-			// 		console.log(err)
-			// 	})
-			// },
 			// 点击加载更多
 			Smore() {
 				this.page += 1;
@@ -603,6 +506,7 @@
 													"title": '请填写正确的手机号码',
 													"icon": "none",
 													position:'bottom',
+														duration: 3000,
 												})
 											} else
 												// if (_this.customer !== '' && _this.customer !== null) {
@@ -698,6 +602,7 @@
 																title: '两次密码不一致',
 																icon: 'none',
 																position:'bottom',
+																	duration: 3000,
 															})
 														}
 													} else {
@@ -705,6 +610,7 @@
 															title: '密码最小不能少于6位',
 															icon: 'none',
 															position:'bottom',
+																duration: 3000,
 														})
 													}
 													// 判断密码	
@@ -713,6 +619,7 @@
 														title: '密码不能为空',
 														icon: 'none',
 														position:'bottom',
+															duration: 3000,
 													})
 												}
 												// 判断是否选择客户经理
@@ -729,6 +636,7 @@
 												title: '手机号码不能为空',
 												icon: 'none',
 												position:'bottom',
+													duration: 3000,
 											})
 										}
 										//判断身份证号码位数是否18位
@@ -737,6 +645,7 @@
 											title: '请填写18位身份证号码',
 											icon: 'none',
 											position:'bottom',
+												duration: 3000,
 										})
 									}
 									//判断身份证号码
@@ -745,6 +654,7 @@
 										title: '身份证号码不能为空',
 										icon: 'none',
 										position:'bottom',
+											duration: 3000,
 									})
 								}
 								//判断姓名是否填写
@@ -753,6 +663,7 @@
 									title: '姓名不能为空',
 									icon: 'none',
 									position:'bottom',
+										duration: 3000,
 								})
 							}
 						} else {
@@ -760,6 +671,7 @@
 								title: '所在城市不能为空',
 								icon: 'none',
 								position:'bottom',
+									duration: 3000,
 							})
 						}
 						//判断公司是否选择
@@ -768,6 +680,7 @@
 							title: '请选择公司',
 							icon: 'none',
 							position:'bottom',
+								duration: 3000,
 						})
 					}
 					//判断角色是否选择
@@ -776,6 +689,7 @@
 						title: '请选择角色',
 						icon: 'none',
 						position:'bottom',
+							duration: 3000,
 					})
 				}
 

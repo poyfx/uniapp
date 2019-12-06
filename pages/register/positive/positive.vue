@@ -353,6 +353,7 @@
 						title: '请上传身份证正面照',
 						icon: 'none',
 						position:'bottom',
+							duration: 3000,
 					})
 				}
 
@@ -397,6 +398,7 @@
 						title: '请上传身份证反面照',
 						icon: 'none',
 						position:'bottom',
+							duration: 3000,
 					})
 				}
 			},
@@ -433,6 +435,7 @@
 							title: '请选择授权有效期',
 							icon: "none",
 							position:'bottom',
+								duration: 3000,
 						})
 					}
 
@@ -452,6 +455,7 @@
 						title: '请上传购油授权书',
 						icon: 'none',
 						position:'bottom',
+							duration: 3000,
 					})
 				}
 
@@ -487,6 +491,7 @@
 							title: '请选择授权有效期',
 							icon: "none",
 							position:'bottom',
+								duration: 3000,
 						})
 					}
 
@@ -506,6 +511,7 @@
 						title: '请上传提油授权书',
 						icon: 'none',
 						position:'bottom',
+							duration: 3000,
 					})
 				}
 
@@ -566,6 +572,7 @@
 											"title": '注册已提交，审核成功后即可登录使用',
 											icon: 'none',
 											position:'bottom',
+												duration: 3000,
 										})
 										uni.removeStorage({
 											key: 'register'
@@ -579,6 +586,7 @@
 											"title": data.message,
 											"icon": 'none',
 											position:'bottom',
+												duration: 3000,
 										});
 
 									}
@@ -590,6 +598,7 @@
 							title: '请选择授权有效期',
 							icon: 'none',
 							position:'bottom',
+								duration: 3000,
 						})
 					}
 				} else {
@@ -597,6 +606,7 @@
 						title: '请上传提油授权书',
 						icon: 'none',
 						position:'bottom',
+							duration: 3000,
 					})
 				}
 			},

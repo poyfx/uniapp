@@ -78,7 +78,8 @@
 										uni.showToast({
 											title: res.data.message,
 											icon: "none",
-											position: 'bottom'
+											position: 'bottom',
+											duration: 3000,
 										})
 									}
 								}).catch(err => {
@@ -89,6 +90,7 @@
 									title: "两次密码不一致",
 									icon: "none",
 									position: 'bottom',
+									duration: 3000,
 								})
 							}
 						} else {
@@ -96,6 +98,7 @@
 								title: "密码长度不能小于6",
 								icon: "none",
 								position: 'bottom',
+								duration: 3000,
 							})
 						}
 
@@ -104,6 +107,7 @@
 							title: "请输入新密码",
 							icon: "none",
 							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				} else {
@@ -111,6 +115,7 @@
 						title: '请输入旧密码',
 						icon: "none",
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 			}

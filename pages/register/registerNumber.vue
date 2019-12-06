@@ -57,7 +57,8 @@
 							if (res.statusCode == 200 && res.data.errorCode == 0) {
 								uni.showToast({
 									"title": "验证成功",
-									"icon": 'none'
+									"icon": 'none',
+										duration: 3000,
 								});
 								setTimeout(function() {
 									// uni.reLaunch({
@@ -73,6 +74,7 @@
 									title: res.data.message,
 									icon: 'none',
 									position:'bottom',
+										duration: 3000,
 								})
 							}
 						}).catch(err => {
@@ -81,7 +83,8 @@
 					} else if (this.number == "" || this.number == null) {
 						return uni.showToast({
 							"title": "验证码不能为空",
-							'icon': 'none'
+							'icon': 'none',
+								duration: 3000,
 						});
 					}
 				} else if (this.phoneNum == "" || this.phoneNum == null) {
@@ -89,6 +92,7 @@
 						"title": "手机号码不能为空",
 						"icon": 'none',
 						position:'bottom',
+							duration: 3000,
 					});
 				}
 
@@ -125,6 +129,7 @@
 								"title": '请填写正确的手机号码',
 								"icon": "none",
 								position:'bottom',
+									duration: 3000,
 							})
 						} else {
 
@@ -138,7 +143,8 @@
 								if (res.data.errorCode == 0 && res.statusCode == 200) {
 									this.show = !that.show;
 									uni.showToast({
-										title: '短信已发送'
+										title: '短信已发送',
+											duration: 3000,
 									})
 									that.mess = res.data.value;
 									that.timeDown(60);
@@ -149,6 +155,7 @@
 										title: res.data.message,
 										icon: 'none',
 										position:'bottom',
+											duration: 3000,
 									})
 								}
 							}).catch(err => {
@@ -163,6 +170,7 @@
 							"title": "手机号码不能为空",
 							"icon": "none",
 							position:'bottom',
+								duration: 3000,
 						})
 					}
 

@@ -148,6 +148,7 @@
 											title: '申请成功，待管理员确认',
 											icon: 'none',
 											position: 'bottom',
+											duration: 1500,
 										})
 										setTimeout(function() {
 											uni.hideToast();
@@ -160,6 +161,7 @@
 											title: data.message,
 											icon: 'none',
 											position: 'bottom',
+											duration: 3000,
 										})
 									}
 								},
@@ -195,6 +197,7 @@
 											title: '申请成功，待管理员确认',
 											icon: 'none',
 											position: 'bottom',
+											duration: 1500,
 										})
 										setTimeout(function() {
 											uni.hideToast();
@@ -207,6 +210,7 @@
 											title: data.message,
 											icon: 'none',
 											position: 'bottom',
+											duration: 3000,
 										})
 									}
 								},
@@ -246,6 +250,7 @@
 											title: '申请成功，待管理员确认',
 											icon: 'none',
 											position: 'bottom',
+											duration: 3000,
 										})
 										setTimeout(function() {
 											uni.hideToast();
@@ -259,6 +264,7 @@
 											title: data.message,
 											icon: 'none',
 											position: 'bottom',
+											duration: 3000,
 										})
 									}
 								},
@@ -272,6 +278,7 @@
 							title: '请选择授权书的有效时间',
 							icon: 'none',
 							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				} else {
@@ -279,6 +286,7 @@
 						title: '上传图片不能为空',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 			},

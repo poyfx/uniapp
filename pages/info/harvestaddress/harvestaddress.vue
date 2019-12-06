@@ -85,7 +85,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {
@@ -112,7 +113,8 @@
 											console.log(res)
 											if (res.statusCode == 200 && res.data.errorCode == 0) {
 												uni.showToast({
-													title: '设置成功'
+													title: '设置成功',
+													duration: 3000,
 												})
 												this.info = '';
 												this.getAddressInfo()

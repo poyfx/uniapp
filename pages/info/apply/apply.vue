@@ -115,7 +115,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {
@@ -150,12 +151,14 @@
 						"title": "审核中...",
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				} else {
 					uni.showToast({
 						"title": "审核未通过",
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 			},

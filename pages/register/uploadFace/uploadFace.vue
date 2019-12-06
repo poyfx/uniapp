@@ -228,7 +228,8 @@
 								uni.showToast({
 									title: datas.message,
 									icon: 'none',
-									position: 'bottom'
+									position: 'bottom',
+										duration: 3000,
 								})
 							}
 						},
@@ -243,6 +244,7 @@
 						title: '请先拍张自拍照',
 						icon: 'none',
 						position: 'bottom',
+							duration: 3000,
 					})
 				}
 

@@ -246,6 +246,7 @@
 									uni.showToast({
 										title: '当前版本已经是最新版本',
 										icon: 'none',
+										duration: 3000,
 									})
 								}
 
@@ -333,7 +334,8 @@
 										uni.showToast({
 											title: res.data.message,
 											icon: "none",
-											position: 'bottom'
+											position: 'bottom',
+											duration: 3000,
 										})
 									}
 								}).catch(err => {

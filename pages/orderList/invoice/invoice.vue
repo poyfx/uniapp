@@ -135,6 +135,7 @@
 						title:'拆分油量不能小于0',
 						icon:'none',
 						position:'bottom',
+						duration: 3000,
 					})
 				}
 			},
@@ -146,6 +147,7 @@
 						title:'拆分油量不能小于0',
 						icon:'none',
 						position:'bottom',
+						duration: 3000,
 					})
 				}
 			},
@@ -207,6 +209,7 @@
 										title: res.data.message,
 										icon: 'none',
 										position:'bottom',
+										duration: 3000,
 									});
 								}
 							}).catch(err => {
@@ -227,6 +230,7 @@
 						title: '请选择发票类型',
 						icon: 'none',
 						position:'bottom',
+						duration: 3000,
 					});
 				} else {
 					this.invoiceNum = [];
@@ -266,7 +270,8 @@
 													console.log(res)
 													if (res.statusCode == 200 && res.data.errorCode == 0) {
 														uni.showToast({
-															title: '开票成功'
+															title: '开票成功',
+															duration: 3000,
 														})
 														uni.redirectTo({
 															url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
@@ -276,6 +281,7 @@
 															title: res.data.message,
 															icon: 'none',
 															position:'bottom',
+															duration: 3000,
 														});
 													}
 												}).catch(err => {
@@ -294,6 +300,7 @@
 										title: '发票拆分数量必须与当前油量一致',
 										icon: 'none',
 										position:'bottom',
+										duration: 3000,
 									})
 								}
 
@@ -302,6 +309,7 @@
 									title: '请填写拆分数量',
 									icon: 'none',
 									position:'bottom',
+									duration: 3000,
 								})
 							}
 
@@ -324,7 +332,8 @@
 											console.log(res)
 											if (res.statusCode == 200 && res.data.errorCode == 0) {
 												uni.showToast({
-													title: '开票成功'
+													title: '开票成功',
+													duration: 3000,
 												})
 												uni.redirectTo({
 													url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
@@ -334,6 +343,7 @@
 													title: res.data.message,
 													icon: 'none',
 													position:'bottom',
+													duration: 3000,
 												});
 											}
 										}).catch(err => {
@@ -365,7 +375,8 @@
 													console.log(res)
 													if (res.statusCode == 200 && res.data.errorCode == 0) {
 														uni.showToast({
-															title: '开票成功'
+															title: '开票成功',
+															duration: 3000,
 														})
 														uni.redirectTo({
 															url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
@@ -375,6 +386,7 @@
 															title: res.data.message,
 															icon: 'none',
 															position:'bottom',
+															duration: 3000,
 														});
 													}
 												}).catch(err => {
@@ -391,14 +403,16 @@
 								} else {
 									uni.showToast({
 										title: '发票拆分数量必须与当前油量一致',
-										icon: 'none'
+										icon: 'none',
+										duration: 3000,
 									})
 								}
 						
 							} else {
 								uni.showToast({
 									title: '请填写拆分数量',
-									icon: 'none'
+									icon: 'none',
+									duration: 3000,
 								})
 							}
 						
@@ -421,7 +435,8 @@
 											console.log(res)
 											if (res.statusCode == 200 && res.data.errorCode == 0) {
 												uni.showToast({
-													title: '开票成功'
+													title: '开票成功',
+													duration: 3000,
 												})
 												uni.redirectTo({
 													url: '../orderDtails/orderDtails?id=' + this.id + '&no=' + this.no + '&status=' + this.status
@@ -431,6 +446,7 @@
 													title: res.data.message,
 													icon: 'none',
 													position:'bottom',
+													duration: 3000,
 												});
 											}
 										}).catch(err => {
@@ -464,6 +480,7 @@
 						title: '输入的数字不能超过总吨数',
 						icon: 'none',
 						position:'bottom',
+						duration: 3000,
 					})
 				} else {
 					this.btn.disabled = false;

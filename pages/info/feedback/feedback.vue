@@ -92,12 +92,14 @@
 						title:'请填写反馈意见',
 						icon:'none',
 						position:'bottom',
+						duration: 3000,
 					})
 				}else if(this.feedbacks.length < 10){
 					return uni.showToast({
 						title:'反馈意见必须是10个字及以上',
 						icon:'none',
 						position:'bottom',
+						duration: 3000,
 					})
 				}else{
 					if(this.imageData.length <= 0){
@@ -112,7 +114,7 @@
 							if(res.statusCode == 200 && res.data.errorCode == 0){
 								uni.showToast({
 									title:'上传成功',
-										
+										duration: 3000,
 									});
 								uni.switchTab({
 									url:'../info'
@@ -140,6 +142,7 @@
 										title:'上传失败',
 										icon:'none',
 										position:'bottom',
+										duration: 3000,
 								})
 							}
 						}).catch(err=>{
@@ -148,6 +151,7 @@
 								title:'提交失败',
 								icon:'none',
 								position:'bottom',
+								duration: 3000,
 							})
 							console.log(err)
 						})
@@ -174,7 +178,7 @@
 									if(res.statusCode == 200 && data.errorCode == 0){
 										uni.showToast({
 											title:'上传成功',
-											
+											duration: 3000,
 										})
 										  uni.switchTab({
 											url:'../info'
@@ -184,6 +188,7 @@
 											title:'上传失败',
 											icon:'none',
 											position:'bottom',
+											duration: 3000,
 										})
 									} 
 								},

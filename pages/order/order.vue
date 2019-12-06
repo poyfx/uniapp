@@ -437,7 +437,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {
@@ -476,6 +477,7 @@
 							title: '加载失败',
 							icon: 'none',
 							position: 'bottom',
+							duration: 3000,
 						})
 						console.log(err)
 					})
@@ -578,7 +580,8 @@
 							uni.showToast({
 								title: res.data.message,
 								icon: "none",
-								position: 'bottom'
+								position: 'bottom',
+								duration: 3000,
 							})
 						}
 					}).catch(err => {
@@ -587,6 +590,7 @@
 							title: '加载失败',
 							icon: 'none',
 							position: 'bottom',
+							duration: 3000,
 						})
 						console.log(err)
 					})
@@ -688,31 +692,14 @@
 						title: '选择你要收货的地址,然后点确认',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				} else {
 					return;
 				}
 
 			},
-			// 获取地址信息
-			// getAddressInfo() {
-			// 	const that = this;
-			// 	this.range = 0;
-			// 	this.test.post('user/getAddrList').then(res => {
-			// 		if (res.statusCode == 200 && res.data.errorCode == 0) {
-			// 			this.info = res.data.value;
-			// 			//  console.log(this.info)
-			// 			this.info.forEach(el => {
-			// 				// console.log(el)
-			// 				if (el.is_default == 1) {
-			// 					that.address = el.address
-			// 				}
-			// 			})
-			// 		}
-			// 	}).catch(err => {
-			// 		console.log(err)
-			// 	})
-			// },
+			
 			//设置输入框只能为整数
 			setNumber(val) {
 				this.placecolor = true;
@@ -722,42 +709,16 @@
 						title: '购买数量不能小于0',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 
-				} // else if (val !== 0) {
-				// 	this.count = this.count.replace(/^(0+)|[^\d]+/g, '')
-				// }
-
-				// this.count = val.detail.value.replace(/[^\d.]/g, ""); //仅保留数字和"."
-				// this.count = val.detail.value.replace(/\.{2,}/g, "."); //两个连续的"."仅保留第一个"."
-				// this.count = val.detail.value.replace(".", "$#*").replace(/\./g, '').replace('$#*', '.'); //去除其他"."
-				// this.count = val.detail.value.replace(/^(\d+)\.(\d\d).*$/, '$1.$2');; //限制只能输入两个小数
-
-
-
+				} 
 				var s = val.detail.value;
 				console.log(s)
 				let dotIdx = s.indexOf('.');
 				console.log(dotIdx)
 				this.dotIdx = dotIdx
 
-
-				// var reg = /^\d+(\.\d{1,2})?$/;
-				// if(reg.test(val.detail.value)){
-				//  console.log(reg.test(val.detail.value))
-				// this.count = val.detail.value;
-				// }else{
-				// uni.showToast({
-				// 	title:'最多只能输入两位小数',
-				// icon:'none',
-				// position:'bottom',
-				// })
-				// this.count = 0
-				// }
-
-				// if (val.detail.value.indexOf(".") < 0 && val.detail.value != "") { //首位是0的话去掉
-				// 	this.count = parseFloat(val.detail.value);
-				// }
 			},
 
 
@@ -782,37 +743,7 @@
 				})
 
 			},
-			// sure(e) {
-			// 	uni.showModal({
-			// 		"title": "提示",
-			// 		"content": '确认选择该地址为默认地址？',
-			// 		success: res => {
-			// 			if (res.confirm) {
-			// 				for (let i = 0; i < this.info.length; i++) {
-			// 					if (this.info[i].is_default == e.target.value) {
-			// 						this.range = i;
-			// 						console.log(this.info, e)
-			// 						this.test.post("user/setDefaultAddr", {
-			// 							addr_id: this.info[i].cl_id
-			// 						}).then(res => {
-			// 							console.log(res)
-			// 							if (res.statusCode == 200 && res.data.errorCode == 0) {
-			// 								uni.showToast({
-			// 									title: '设置成功'
-			// 								})
-			// 							}
-			// 						})
-			// 						break;
-			// 					}
-			// 				}
-			// 				// 点击取消
-			// 			} else if (res.cancel) {
-			// 				this.info = '',
-			// 					this.getAddressInfo()
-			// 			}
-			// 		}
-			// 	})
-			// },
+			
 			upper: function(e) {
 				console.log(e)
 			},
@@ -884,7 +815,8 @@
 														uni.showToast({
 															title: res.data.message,
 															icon: "none",
-															position: 'bottom'
+															position: 'bottom',
+															duration: 3000,
 														})
 													}
 												}).catch(err => {
@@ -893,6 +825,7 @@
 														title: '提交失败',
 														icon: 'none',
 														position: 'bottom',
+														duration: 3000,
 													})
 													console.log(err)
 												})
@@ -910,6 +843,7 @@
 											title: '购买数量最多保留六位有效数字',
 											icon: 'none',
 											position: 'bottom',
+											duration: 3000,
 										});
 										this.count = 0;
 									} else {
@@ -962,6 +896,7 @@
 																title: res.data.message,
 																icon: "none",
 																position: 'bottom',
+																duration: 3000,
 															})
 														}
 													}).catch(err => {
@@ -970,6 +905,7 @@
 															title: '提交失败',
 															icon: 'none',
 															position: 'bottom',
+															duration: 3000,
 														})
 														console.log(err)
 													})
@@ -982,17 +918,13 @@
 									}
 								}
 
-
-
-
-
-
 								//购油数量	
 							} else {
 								uni.showToast({
 									title: '请输入购油数量',
 									icon: 'none',
 									position: 'bottom',
+									duration: 3000,
 								})
 							}
 							//付款方式
@@ -1001,22 +933,16 @@
 								title: '请选择付款方式',
 								icon: 'none',
 								position: 'bottom',
+								duration: 3000,
 							})
 						}
-						//提油	方式
-						// } else {
-						// 	uni.showToast({
-						// 		title: '请选择提油方式',
-						// 		icon: 'none',
-						// 		position: 'bottom',
-						// 	})
-						// }
-						//油品	
+					
 					} else {
 						uni.showToast({
 							title: '请选择油品',
 							icon: 'none',
 							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				} else {
@@ -1024,12 +950,9 @@
 						title: '请选择客户经理',
 						icon: "none",
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
-
-
-
-
 			},
 		},
 

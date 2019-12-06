@@ -50,6 +50,7 @@
 								console.log(res)
 								uni.showToast({
 									"title": "修改成功",
+									duration: 3000,
 								})
 								setTimeout(function() {
 									uni.navigateTo({
@@ -59,34 +60,13 @@
 							}).catch(err => {
 								console.log(err)
 							})
-							// uni.request({
-							// 	url:this.$https + 'user/forgetPwd/update',
-							// 	data:{
-							// 		username:this.username,
-							// 		pswCode:this.message,
-							// 		newPwd:this.newPassword
-							// 	},
-							// 	method:"GET",
-							// 	header:{
-							// 		"Content-Type": "application/x-www-form-urlencoded",
-							// 	},
-							// 	success:function(res){
-							// 		uni.showToast({
-							// 			"title":"修改成功",
-							// 			"icon":"none",
-							// 		})
-							// 		setTimeout(function() {
-							// 			uni.navigateTo({
-							// 				url:'../login'
-							// 			})
-							// 		}, 1200)
-							// 	}
-							// })
+							
 						} else {
 							return uni.showToast({
 								"title": "两次密码不一致",
 								"icon": 'none',
 								position:'bottom',
+								duration: 3000,
 							})
 						}
 					} else {
@@ -94,6 +74,7 @@
 							"title": "密码不能小于6位",
 							"icon": "none",
 							position:'bottom',
+							duration: 3000,
 						})
 					}
 				} else {
@@ -101,6 +82,7 @@
 						"title": "新密码不能为空",
 						"icon": "none",
 						position:'bottom',
+						duration: 3000,
 					})
 				}
 			}

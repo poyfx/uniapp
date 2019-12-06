@@ -207,6 +207,7 @@
 								title: '没有更多了',
 								icon: "none",
 								position: 'bottom',
+									duration: 3000,
 							})
 						};
 					} else if (res.data.errorCode == -10001 || res.data.errorCode == -10002 || res.data.errorCode == -
@@ -232,7 +233,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+								duration: 3000,
 						})
 					}
 				}).catch(err => {
@@ -241,6 +243,7 @@
 						title: '加载失败',
 						icon: 'none',
 						position: 'bottom',
+							duration: 3000,
 					})
 					console.log(err)
 				})
@@ -257,7 +260,7 @@
 						title: '预约确认中...',
 						icon: 'none',
 						position: 'bottom',
-						duration: 1500,
+							duration: 3000,
 					})
 				}
 

@@ -410,7 +410,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {
@@ -465,7 +466,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {
@@ -518,56 +520,9 @@
 					}
 				})
 
-				// 				uni.getLocation({
-				// 					type: 'wgs84',
-				// 					geocode: true,
-				// 					success: function(res) {
-				// 						console.log(res)
-				// 						const longitude = res.longitude;
-				// 						const latitude = res.latitude;
-				// 						that.city = res.address.city;
-				// 						that.address = res.address.city + res.address.district;
-				// 						that.district = res.address.district;
-				// 						that.getAdcode();
-				// 					},
-				// 
-				// 				});
+			
 			},
-			// getAdcode() {
-			// 	const that = this
-			// 	console.log(that.city)
-			// 	uni.request({
-			// 		//行政区域查询
-			// 		url: 'https://restapi.amap.com/v3/config/district?parameters',
-			// 		header: {
-			// 			'Content-Type': 'application/json;charset=UTF-8'
-			// 		},
-			// 		data: {
-			// 			key: 'b5066e0a9a2a996397e9172fc67fdf40',
-			// 			keywords:that.city,
-			// 			subdistrict: 1
-			// 		},
-			// 		methods: 'GET',
-			// 		success: function(res) {
-			// 			console.log(res)
-			// 			res.data.districts.forEach(res => {
-			// 				console.log(res)
-			// 				that.cityInfo = res
-			// 				console.log(that.cityInfo)
-			// 			})
-			// 			if (res.statusCode == 200 && res.data.status == 1) {
-			// 				for (let i = 0; i < that.cityInfo.districts.length; i++) {
-			// 					// if (that.district == that.cityInfo.districts[i].name) {
-			// 					// 	that.adcode = that.cityInfo.districts[i].adcode
-			// 					// 	that.district = 
-			// 					// 	that.getWeather()
-			// 					// }
-			// 				}
-			// 			}
-			// 			
-			// 		}
-			// 	})
-			// },
+			
 			getWeather() {
 				const that = this;
 				uni.request({

@@ -108,6 +108,7 @@
 									title: '审核中...待审核通过后请重新登录',
 									icon: 'none',
 									position: 'bottom',
+									duration: 3000,
 								})
 							}
 						} else {
@@ -116,6 +117,7 @@
 								title: '权限不够，请在用户信息界面申请权限',
 								icon: 'none',
 								position: 'bottom',
+								duration: 3000,
 							})
 						}
 
@@ -126,6 +128,7 @@
 						title: '待开放，敬请期待',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 				// console.log(role.length)
@@ -178,6 +181,7 @@
 								title: '权限不够，请在用户信息界面申请权限',
 								icon: 'none',
 								position: 'bottom',
+								duration: 3000,
 							})
 						}
 					}
@@ -187,6 +191,7 @@
 						title: '待开放，敬请期待',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 
@@ -228,12 +233,14 @@
 									title: '审核中...待审核通过后请重新登录',
 									icon: 'none',
 									position: 'bottom',
+									duration: 3000,
 								})
 							} else {
 								uni.showToast({
 									title: '权限不够，请在用户信息界面申请权限',
 									icon: 'none',
 									position: 'bottom',
+									duration: 3000,
 								})
 							}
 						} else {
@@ -241,6 +248,7 @@
 								title: '权限不够，请在用户信息界面申请权限',
 								icon: 'none',
 								position: 'bottom',
+								duration: 3000,
 							})
 						}
 					}
@@ -251,6 +259,7 @@
 						title: '待开放，敬请期待',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 
@@ -286,6 +295,7 @@
 							title: '权限不够，请在用户信息界面申请权限',
 							icon: 'none',
 							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				} else {
@@ -293,6 +303,7 @@
 						title: '待开放，敬请期待',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 
@@ -341,6 +352,7 @@
 									title: '审核中...待审核通过后请重新登录',
 									icon: 'none',
 									position: 'bottom',
+									duration: 3000,
 								})
 							} else {
 								// console.log(1)
@@ -348,6 +360,7 @@
 									title: '权限不够，请在用户信息界面申请权限',
 									icon: 'none',
 									position: 'bottom',
+									duration: 3000,
 								})
 							}
 						} else {
@@ -356,6 +369,7 @@
 								title: '权限不够，请在用户信息界面申请权限',
 								icon: 'none',
 								position: 'bottom',
+								duration: 3000,
 							})
 						}
 					
@@ -366,6 +380,7 @@
 						title: '待开放，敬请期待',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 				console.log(role)
@@ -377,12 +392,14 @@
 						title: '待开放，敬请期待',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				} else {
 					uni.showToast({
 						title: '待开放，敬请期待',
 						icon: 'none',
 						position: 'bottom',
+						duration: 3000,
 					})
 				}
 

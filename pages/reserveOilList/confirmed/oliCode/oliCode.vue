@@ -127,6 +127,7 @@
 					title:'已申请代提人，请勿重新申请，保证石油安全',
 					icon:'none',
 					position:'bottom',
+						duration: 3000,
 				})
 			},
 			cancel() {
@@ -141,55 +142,7 @@
 					delta: 1
 				})
 			},
-			// send() {
-
-			// 	if (this.checkes == true) {
-			// 		// Toast("请阅读免责条款,勾选后方可发送");
-			// 		return uni.showToast({
-			// 			title: "请阅读免责条款,勾选后方可发送",
-			// 			"icon": "none",
-			// 			position: 'bottom',
-			// 		})
-			// 	} else {
-			// 		if (this.otherNumber !== '') {
-			// 			if (!/^1[3456789]\d{9}$/.test(this.otherNumber)) {
-			// 				return uni.showToast({
-			// 					"title": '请填写正确的手机号码',
-			// 					"icon": "none",
-			// 					position: 'bottom',
-			// 				})
-			// 			} else {
-			// 				this.test.post('reserve/send_get_encrypt', {
-			// 					phone: this.otherNumber,
-			// 					encrypt_sn: this.val
-			// 				}).then(res => {
-			// 					console.log(res)
-			// 					if (res.statusCode == 200 && res.data.errorCode == 0) {
-			// 						uni.showToast({
-			// 							title: '发送成功'
-			// 						})
-			// 					} else {
-			// 						uni.showToast({
-			// 							title: res.data.message,
-			// 							icon: 'none'
-			// 						})
-			// 					}
-			// 				}).catch(err => {
-			// 					console.log(err)
-			// 				})
-
-			// 			}
-			// 		} else {
-			// 			return uni.showToast({
-			// 				title: "请填写手机号码",
-			// 				"icon": "none"
-			// 			})
-			// 		}
-
-			// 	}
-
-
-			// }
+		
 		},
 		components: {
 			mButton,

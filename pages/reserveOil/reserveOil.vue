@@ -236,6 +236,7 @@
 								title: '没有更多了',
 								icon: "none",
 								position: 'bottom',
+									duration: 3000,
 							})
 						} else {
 							this.more = true;
@@ -263,7 +264,8 @@
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
-							position: 'bottom'
+							position: 'bottom',
+								duration: 3000,
 						})
 					}
 				}).catch(err => {
@@ -317,6 +319,7 @@
 						title: '请选择订单编号',
 						icon: 'none',
 						position: 'bottom',
+							duration: 3000,
 					})
 				} else {
 					this.values.muchOil = this.muchOilText
@@ -332,6 +335,7 @@
 						title: '请选择订单编号',
 						icon: 'none',
 						position: 'bottom',
+							duration: 3000,
 					})
 					this.values.muchOil = 0;
 				} else if (e.detail.value > this.muchOilText) {
@@ -340,6 +344,7 @@
 						title: '不能超过油的总量：' + this.muchOilText,
 						icon: 'none',
 						position: 'bottom',
+							duration: 3000,
 					})
 					this.values.muchOil = 0;
 
@@ -349,6 +354,7 @@
 						title: '提油量必须大于0',
 						icon: 'none',
 						position: 'bottom',
+							duration: 3000,
 					})
 					var s = e.detail.value;
 					console.log(s)
@@ -456,7 +462,8 @@
 											} else {
 												uni.showToast({
 													title: res.data.message,
-													icon: "none"
+													icon: "none",
+														duration: 3000,
 												})
 											}
 										}).catch(err => {
@@ -475,6 +482,7 @@
 									title: '提油数量最多保留六位小数',
 									icon: 'none',
 									position: 'bottom',
+										duration: 3000,
 								});
 								this.values.muchOil = 0;
 							} else {
@@ -515,7 +523,8 @@
 												} else {
 													uni.showToast({
 														title: res.data.message,
-														icon: "none"
+														icon: "none",
+															duration: 3000,
 													})
 												}
 											}).catch(err => {
@@ -534,6 +543,7 @@
 							title: '请输入提油数量',
 							icon: 'none',
 							position: 'bottom',
+								duration: 3000,
 						})
 					}
 				} else {
@@ -541,6 +551,7 @@
 						title: '请选择订单编号',
 						icon: 'none',
 						position: 'bottom',
+							duration: 3000,
 					})
 				}
 

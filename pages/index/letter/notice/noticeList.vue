@@ -53,6 +53,7 @@
 							title: res.data.message,
 							icon: 'none',
 							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {

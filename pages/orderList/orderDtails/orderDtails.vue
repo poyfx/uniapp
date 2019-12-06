@@ -318,12 +318,14 @@
 									})
 									uni.showToast({
 										title: '取消订单成功',
+										duration: 3000,
 									})
 								} else {
 									uni.showToast({
 										title: '取消订单失败',
 										icon: 'none',
 										position: 'bottom',
+										duration: 3000,
 									})
 								}
 							}).catch(err => {
@@ -354,12 +356,14 @@
 							title: res.data.message,
 							icon: "none",
 							position: 'bottom',
+							duration: 3000,
 						})
 					} else {
 						uni.showToast({
 							title: res.data.message,
 							icon: "none",
 							position: 'bottom',
+							duration: 3000,
 						})
 					}
 				}).catch(err => {
