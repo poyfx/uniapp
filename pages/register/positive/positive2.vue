@@ -158,6 +158,7 @@
 					name:'face_photo',
 					uri:'',
 				},
+				device:'',//设备型号
 			}
 		},
 		onLoad(option) {
@@ -188,6 +189,7 @@
 			}
 			console.log(this.info)
 			this.getclientid();
+			 this.device= uni.getStorageSync('device');
 		},
 		methods: {
 			getclientid() {
@@ -520,6 +522,7 @@
 									"buy_auth_exp": this.day,
 									"get_auth_exp": this.days,
 									"client_id": this.clientID,
+									"device":this.device,
 								},
 								success: function(res) {
 									var data = JSON.parse(res.data)
@@ -568,6 +571,7 @@
 									"buy_auth_exp": this.day,
 									"bill_auth_exp": this.days,
 									"client_id": this.clientID,
+									"device":this.device,
 								},
 								success: function(res) {
 									var data = JSON.parse(res.data)
@@ -616,6 +620,7 @@
 									"get_auth_exp": this.day,
 									"bill_auth_exp": this.days,
 									"client_id": this.clientID,
+									"device":this.device,
 								},
 								success: function(res) {
 									var data = JSON.parse(res.data)

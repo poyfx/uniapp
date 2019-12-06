@@ -50,6 +50,7 @@
 				},
 				status: '',
 				clientId: '',
+				device:'',//设备型号
 			}
 		},
 		onLoad(option) {
@@ -57,6 +58,7 @@
 			this.status = option.val;
 			this.showToasts();
 			this.getclientId();
+			 this.device= uni.getStorageSync('device');
 		},
 		computed: {
 			...mapState(['hasLogin', 'userInfo'])
@@ -97,6 +99,7 @@
 							username: this.consumer.username,
 							passwd: this.consumer.password,
 							client_id: this.clientId,
+							device:this.device,
 						}).then(res => {
 							console.log(res)
 							const data = res.data;

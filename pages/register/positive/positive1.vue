@@ -128,6 +128,7 @@
 					name: 'face_photo',
 					uri: '',
 				},
+				device:'',//设备型号
 			}
 		},
 		onLoad(option) {
@@ -144,10 +145,11 @@
 			}
 
 			console.log(this.info)
-			// this.day = formatDate(new Date());
+			
 			this.name = option.name
 			console.log(this.register)
 			this.getclientid();
+			 this.device= uni.getStorageSync('device');
 		},
 		methods: {
 			getclientid() {
@@ -173,10 +175,7 @@
 								name: 'id_fphoto',
 								uri: res.tempFilePaths[0],
 							}
-							// that.img.push({
-							// 	name: 'id_fphoto',
-							// 	uri: res.tempFilePaths[0]
-							// })
+						
 							that.img.splice(0, 1, photo)
 							that.src = res.tempFiles[0].path;
 						}
@@ -192,10 +191,7 @@
 								name: 'id_bphoto',
 								uri: res.tempFilePaths[0]
 							}
-							// that.img.push({
-							// 	name: 'id_bphoto',
-							// 	uri: res.tempFilePaths[0]
-							// })
+						
 							that.img.splice(1, 1, photo)
 							that.src = res.tempFiles[0].path;
 						}
@@ -444,6 +440,7 @@
 										"city": this.register.userCity,
 										"buy_auth_exp": this.day,
 										"client_id": this.clientID,
+										"device":this.device,
 									},
 									success: function(res) {
 										var data = JSON.parse(res.data)
@@ -493,6 +490,7 @@
 										"city": this.register.userCity,
 										"get_auth_exp": this.day,
 										"client_id": this.clientID,
+										"device":this.device,
 									},
 									success: function(res) {
 										//	var data = res.data
@@ -542,6 +540,7 @@
 										"city": this.register.userCity,
 										"bill_auth_exp": this.day,
 										"client_id": this.clientID,
+										"device":this.device,
 									},
 									success: function(res) {
 										//var data = res.data

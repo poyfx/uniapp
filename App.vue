@@ -20,10 +20,10 @@
 					var appid = plus.runtime.appid
 					var version = plus.runtime.version
 					
-					// var req = { //升级检测数据  
-					// 	"appid": plus.runtime.appid,
-					// 	"version": plus.runtime.version
-					// };
+					uni.setStorage({
+						key:'device',
+						data:'android'
+					})
 					console.log(plus.runtime.appid, plus.runtime.version)
 					this.test.post('base/getVersion', {
 						appid: appid,
@@ -55,7 +55,10 @@
 					// var server = "http://dev.pjy.name:8170/api/bizcust/base/get_version"; //检查更新地址
 					var appid = plus.runtime.appid
 					var version = plus.runtime.version
-					
+					uni.setStorage({
+						key:'device',
+						data:'ios'
+					})
 					// var req = { //升级检测数据  
 					// 	"appid": plus.runtime.appid,
 					// 	"version": plus.runtime.version

@@ -206,6 +206,7 @@
 					name: 'face_photo',
 					uri: '',
 				},
+				device:'',//设备型号
 			}
 		},
 		onLoad(option) {
@@ -217,6 +218,7 @@
 			}
 			console.log(this.register)
 			this.getclientid();
+			 this.device= uni.getStorageSync('device');
 		},
 		methods: {
 			getclientid() {
@@ -552,6 +554,7 @@
 								"get_auth_exp": this.days,
 								"bill_auth_exp": this.voiceDate,
 								"client_id": this.clientID,
+								"device":this.device,
 							},
 							success: function(res) {
 								var data = JSON.parse(res.data)
