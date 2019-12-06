@@ -66,6 +66,8 @@ function getTokenDebounce() {
 test.setConfig((config) => { /* 设置全局配置 */
 		//config.baseUrl = 'http://192.168.0.148:8080/api/bizcust/'
 	config.baseUrl = 'http://dev.pjy.name:8170/api/bizcust/';//开发
+	//config.baseUrl = 'https://sinopec.pjy.name/api/bizcust/';//正式环境
+	
 	config.header = {
 		...config.header,
 		//'content-type': 'application/json;charset=UTF-8'
@@ -124,6 +126,7 @@ const refreshToken = getTokenDebounce()
 reReqest.setConfig(config => {
 	//config.baseUrl = 'http://192.168.0.148:8080/api/bizcust/' /* 根域名不同 */
 		config.baseUrl = 'http://dev.pjy.name:8170/api/bizcust/';//开发
+		//config.baseUrl = 'https://sinopec.pjy.name/api/bizcust/';//正式环境
 	return config
 })
 
